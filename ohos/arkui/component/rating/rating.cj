@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.base.{ResourceStr}
 import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRatingCreate(rating: Float64, indicator: Bool): Unit
@@ -52,7 +52,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      * Initializes a Rating component with optional initial rating value and indicator mode.
      *
      * @param { ?Float64 } rating - Current rating value.
-     * @param { ?Bool } [indicator] - Whether the rating component is used as indicator (read-only mode).
+     * @param { ?Bool } indicator - Whether the rating component is used as indicator (read-only mode).
      */
     @!APILevel[
         since: "22",
@@ -108,7 +108,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
      *
      * @param { ?ResourceStr } backgroundUri - Background URI option for unselected stars.
      * @param { ?ResourceStr } foregroundUri - Foreground URI option for selected stars.
-     * @param { ?ResourceStr } [secondaryUri] - Secondary URI option for partially selected stars.
+     * @param { ?ResourceStr } secondaryUri - Secondary URI option for partially selected stars.
      * @returns { This } Returns the Rating instance.
      */
     @!APILevel[
@@ -133,7 +133,7 @@ public class Rating <: CommonMethodComponent<Rating> & RatingAttribute {
     }
 
     /**
-     * Called when the star rating of the operation scoring bar changes.
+     * Triggered when the user changes the rating value by clicking or sliding.
      *
      * @param { ?(Float64) -> Unit } callback - Callback function when rating changes.
      * The parameter is the new rating value.

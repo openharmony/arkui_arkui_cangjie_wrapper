@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, }
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
 import ohos.base.{ResourceStr, ResourceColor, Length}
 import ohos.resource.{AppResource, getResourceLength}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkQRCodeCreate(value: CString): Unit

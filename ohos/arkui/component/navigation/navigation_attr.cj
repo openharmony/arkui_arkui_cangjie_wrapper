@@ -16,7 +16,7 @@
 package ohos.arkui.component.navigation
 
 import ohos.arkui.component.common.{CommonMethod, CustomBuilder}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceStr, Callback}
 
 /**

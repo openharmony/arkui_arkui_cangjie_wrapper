@@ -23,7 +23,7 @@ import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLe
 import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp}
 import ohos.ffi.{Callback2Param}
 import ohos.resource.{AppResource, getResourceString, getResourceMedia}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type VectorNativeSelectOptionHandle = CPointer<Unit>
@@ -162,7 +162,7 @@ public class SelectOption {
      * Constructor selectOption.
      *
      * @param { ?ResourceStr } value - The label of Select component.
-     * @param { ?ResourceStr } [icon] - The icon of Select component.
+     * @param { ?ResourceStr } icon - The icon of Select component.
      */
     @!APILevel[
         since: "22",
@@ -305,10 +305,10 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     /**
      * Sets the text properties of the select button itself.
      *
-     * @param { ?FontStyle } [style] - The font style of current Select component.
-     * @param { ?FontWeight } [weight] - The font weight of current Select component.
-     * @param { ?Length } [size] - The font size of current Select component.
-     * @param { ?ResourceStr } [family] - The font family of current Select component.
+     * @param { ?FontStyle } style - The font style of current Select component.
+     * @param { ?FontWeight } weight - The font weight of current Select component.
+     * @param { ?Length } size - The font size of current Select component.
+     * @param { ?ResourceStr } family - The font family of current Select component.
      * @returns { This }
      */
     @!APILevel[
@@ -389,10 +389,10 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     /**
      * Sets the text style of the selected items in the select.
      *
-     * @param { ?FontStyle } [style] - The selected item font style.
-     * @param { ?FontWeight } [weight] - The selected item font weight.
-     * @param { ?Length } [size] - The selected item font size.
-     * @param { ?String } [family] - The selected item font family.
+     * @param { ?FontStyle } style - The selected item font style.
+     * @param { ?FontWeight } weight - The selected item font weight.
+     * @param { ?Length } size - The selected item font size.
+     * @param { ?String } family - The selected item font family.
      * @returns { This }
      */
     @!APILevel[
@@ -466,10 +466,10 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     /**
      * Sets the text style for select items.
      *
-     * @param { ?FontStyle } [style] - The selected item font style.
-     * @param { ?FontWeight } [weight] - The selected item font weight.
-     * @param { ?Length } [size] - The selected item font size.
-     * @param { ?ResourceStr } [family] - The selected item font family.
+     * @param { ?FontStyle } style - The selected item font style.
+     * @param { ?FontWeight } weight - The selected item font weight.
+     * @param { ?Length } size - The selected item font size.
+     * @param { ?ResourceStr } family - The selected item font family.
      * @returns { This }
      */
     @!APILevel[

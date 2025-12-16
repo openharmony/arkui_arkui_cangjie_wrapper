@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 protected type VectorStringHandle = CPointer<Unit>
 

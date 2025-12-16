@@ -20,7 +20,7 @@ package ohos.arkui.component.column
 import ohos.arkui.component.common.{CommonMethodComponent, HorizontalAlign, FlexAlign}
 import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkColumnCreate(): Unit
@@ -51,8 +51,8 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
      * Column constructor.
      *
-     * @param { ?Length } [space] - The spacing between child elements in the vertical layout.
-     * @param { () -> Unit } [child] - The child component of the column.
+     * @param { ?Length } space - The spacing between child elements in the vertical layout.
+     * @param { () -> Unit } child - The child component of the column.
      */
     @!APILevel[
         since: "22",

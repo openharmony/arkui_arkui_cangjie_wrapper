@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJRespon
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceColor, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 foreign {
@@ -76,11 +76,12 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
+
     /**
      * Set parameters to obtain the toggle.
      *
      * @param { ?ToggleType } toggleType - Type of the toggle button.
-     * @param { ?Bool } [isOn] - Initial selected state of the toggle button.
+     * @param { ?Bool } isOn - Initial selected state of the toggle button.
      */
     @!APILevel[
         since: "22",

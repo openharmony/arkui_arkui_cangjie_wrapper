@@ -23,7 +23,7 @@ import ohos.arkui.component.image.{ImageLoadResult, ColorFilter, ImageCompleteCa
 import ohos.base.{VectorFloat32Handle, ResourceStr, FFIVectorFloat32, Length}
 import ohos.ffi.{Callback1Param}
 import ohos.resource.{AppResource, getResourceMedia}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.multimedia.image.PixelMap
 
 @C

@@ -20,7 +20,7 @@ package ohos.arkui.component.divider
 import ohos.arkui.component.common.{CommonMethodComponent, LineCapStyle}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
 import ohos.base.{ResourceColor, Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkDividerCreate(): Unit
@@ -114,7 +114,8 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
      * Sets the end style of the split line.
      *
-     * @param { ?LineCapStyle } value - The end style of the split line. The default value is LineCapStyle.butt.
+     * @param { ?LineCapStyle } value - The end style of the split line.
+     * @default LineCapStyle.Butt
      * @returns { This } - The instance of the component.
      */
     @!APILevel[

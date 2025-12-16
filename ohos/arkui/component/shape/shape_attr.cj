@@ -15,7 +15,7 @@
 
 package ohos.arkui.component.shape
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Length}
 
 /**

@@ -17,7 +17,7 @@
 
 package ohos.arkui.state_management
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.{EquatableCollection}
 import ohos.business_exception.BusinessException
 
@@ -243,7 +243,7 @@ public class AppStorage {
      * Delete all properties from the AppStorage.
      * Precondition is that there are no subscribers, see Delete().
      *
-     * @returns { Bool } false and deletes no properties if there is any property that still has subscribers.
+     * @returns { boolean } false and deletes no properties if there is any property that still has subscribers.
      * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[

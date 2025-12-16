@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod, ShadowO
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback2Param}
 import ohos.base.{Length, ResourceColor, ResourceStr, Color, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type VectorNativeTextTimerShadow = CPointer<Unit>
@@ -191,9 +191,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * A constructor used to create a TextTimer object.
      *
-     * @param { ?Bool } [isCountDown] - Whether to count down.
-     * @param { ?Int64 } [count] - The initial count value.
-     * @param { ?TextTimerController } [controller] - The controller for the text timer.
+     * @param { ?Bool } isCountDown - Whether to count down.
+     * @param { ?Int64 } count - The initial count value.
+     * @param { ?TextTimerController } controller - The controller for the text timer.
      */
     @!APILevel[
         since: "22",
@@ -369,7 +369,6 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
 
     /**
      * Sets the text shadow.
-     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.

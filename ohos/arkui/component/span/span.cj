@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{UINodeBase, FontStyle, FontWeight, TextDecor
 import ohos.arkui.component.native_struct.{VectorNativeTextShadow, CBorderRadiuses, CJClickEvent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp, Color}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type VectorNativeTextShadows = CPointer<Unit>
@@ -227,9 +227,9 @@ public class Span <: BaseSpan {
     /**
      * Called when the text decoration of the text is set.
      * Sets the text decoration (e.g., underline, strikethrough) for the text in the span.
-     *
+     * 
      * @param { ?TextDecorationType } decorationType - The type of text decoration.
-     * @param { ?ResourceColor } [color] - The color of the text decoration.
+     * @param { ?ResourceColor } color - The color of the text decoration.
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[

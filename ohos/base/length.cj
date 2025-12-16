@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 import std.deriving.Derive
 
@@ -129,7 +129,7 @@ public class LengthMetrics <: Length {
      * LengthMetrics constructor.
      *
      * @param { Float64 } value - The value of length
-     * @param { LengthUnit } [unit] - The unit of length
+     * @param { LengthUnit } unit - The unit of length
      * @default unit - LengthUnit.Vp
      */
     @!APILevel[

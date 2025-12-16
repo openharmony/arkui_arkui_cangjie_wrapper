@@ -16,7 +16,7 @@
 package ohos.arkui.component.grid_row
 
 import ohos.arkui.component.common.{CommonMethod, ItemAlign}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines the GridRow attribute functions.

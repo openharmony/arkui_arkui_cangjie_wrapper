@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{CJClickEvent}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, ResourceColor, VoidCallback, LengthProp, Color, CStringExtend}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 const DEFAULT_CACHED_COUNT: Int32 = 1
 
@@ -812,11 +812,12 @@ public class SwiperController <: RemoteDataLite {
 ]
 public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     let controllerDefault: SwiperController = SwiperController()
+
     /**
      * Create a Swiper with controller and child component.
      * Initializes a Swiper component with optional controller and child content.
      *
-     * @param { ?SwiperController } [controller] - Controller for managing Swiper operations.
+     * @param { ?SwiperController } controller - Controller for managing Swiper operations.
      * @param { () -> Unit } child - Builder function for Swiper content.
      */
     @!APILevel[
@@ -954,7 +955,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?Bool } indicator - Whether to show the navigation indicator.
+     * @param { ?Bool } value - Whether to show the navigation indicator.
      * @default true
      * @returns { This } Returns the Swiper instance.
      */
@@ -972,7 +973,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DotIndicator } indicator - Dot-style navigation indicator.
+     * @param { ?DotIndicator } value - Dot-style navigation indicator.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -990,7 +991,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DigitIndicator } indicator - Digit-style navigation indicator.
+     * @param { ?DigitIndicator } value - Digit-style navigation indicator.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1084,7 +1085,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
      * 5. When turning pages, turn pages by group.
      *
      * @param { ?Int32 } value - Number of elements to display per page. Default value is 1.
-     * @param { ?Bool } [swipeByGroup] - Whether to turn pages by group. Default value is false.
+     * @param { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1145,7 +1146,6 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
 
     /**
      * Sets the animation curve.
-     * Curve is an enumeration type for common curves.
      *
      * @param { ?Curve } value - Animation curve.
      * @default Curve.Linear

@@ -16,7 +16,7 @@
 package ohos.arkui.component.divider
 
 import ohos.arkui.component.common.{CommonMethod, LineCapStyle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length}
 
 /**

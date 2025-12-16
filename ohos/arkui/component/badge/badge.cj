@@ -20,7 +20,7 @@ package ohos.arkui.component.badge
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, Color, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
@@ -171,13 +171,13 @@ public class BadgeStyle {
     /**
      * BadgeStyle constructor.
      *
-     * @param { ?ResourceColor } [color] - Font color.
-     * @param { ?Length } [fontSize] - Font size.
-     * @param { ?Length } [badgeSize] - Badge size.
-     * @param { ?ResourceColor } [badgeColor] - Badge color.
-     * @param { ?FontWeight } [fontWeight] - Font weight of the text.
-     * @param { ?ResourceColor } [borderColor] - Border color of the background.
-     * @param { ?Length } [borderWidth] - Border width of the background.
+     * @param { ?ResourceColor } color - Font color.
+     * @param { ?Length } fontSize - Font size.
+     * @param { ?Length } badgeSize - Badge size.
+     * @param { ?ResourceColor } badgeColor - Badge color.
+     * @param { ?FontWeight } fontWeight - Font weight of the text.
+     * @param { ?ResourceColor } borderColor - Border color of the background.
+     * @param { ?Length } borderWidth - Border width of the background.
      */
     @!APILevel[
         since: "22",
@@ -228,8 +228,8 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      *
      * @param { Int32 } count - Number of notifications.
      * @param { ?BadgeStyle } style - Style of the badge, including the font color, font size, badge color, and badge size.
-     * @param { ?BadgePosition } [position] - Position to display the badge relative to the parent component.
-     * @param { ?Int32 } [maxCount] - Maximum number of notifications.
+     * @param { ?BadgePosition } position - Position to display the badge relative to the parent component.
+     * @param { ?Int32 } maxCount - Maximum number of notifications.
      * @param { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[
@@ -261,7 +261,7 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      *
      * @param { String } value - Prompt content.
      * @param { ?BadgeStyle } style - Style of the badge, including the font color, font size, badge color, and badge size.
-     * @param { ?BadgePosition } [position] - Position to display the badge relative to the parent component.
+     * @param { ?BadgePosition } position - Position to display the badge relative to the parent component.
      * @param { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[

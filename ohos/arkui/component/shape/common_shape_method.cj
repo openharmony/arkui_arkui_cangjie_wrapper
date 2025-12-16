@@ -20,7 +20,7 @@ import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResou
 import ohos.business_exception.BusinessException
 import ohos.base.{ResourceColor, Length, FFIVectorFloat64, FFIVectorInt32}
 import ohos.resource.{AppResource, getResourceLength}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.multimedia.image.PixelMap
 
 /**

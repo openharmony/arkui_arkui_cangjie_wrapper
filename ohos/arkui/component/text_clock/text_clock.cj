@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeTextShadow, NativeTextSha
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
 import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
 import ohos.base.{ResourceStr, Length, ResourceColor, Color, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 foreign {
@@ -257,25 +257,25 @@ public class DateTimeOptions {
     /**
      * Creates a new DateTimeOptions instance with the specified formatting options.
      *
-     * @param { ?String } [locale] - Valid locale ID, for example, "zh-Hans-CN".
-     * @param { ?String } [dateStyle] - Date display format.
-     * @param { ?String } [timeStyle] - Time display format.
-     * @param { ?String } [hourCycle] - Hour cycle.
-     * @param { ?String } [timeZone] - Time zone in use.
-     * @param { ?String } [numberingSystem] - Numbering system.
-     * @param { ?Bool } [hour12] - Whether to use the 12-hour clock.
-     * @param { ?String } [weekday] - Week display format.
-     * @param { ?String } [era] - Epoch display format.
-     * @param { ?String } [year] - Year display format.
-     * @param { ?String } [month] - Month display format.
-     * @param { ?String } [day] - Day display format.
-     * @param { ?String } [hour] - Hour display format.
-     * @param { ?String } [minute] - Minute display format.
-     * @param { ?String } [second] - Second display format.
-     * @param { ?String } [timeZoneName] - Localized representation of a time zone name.
-     * @param { ?String } [dayPeriod] - Time period display format.
-     * @param { ?String } [localeMatcher] - Locale matching algorithm.
-     * @param { ?String } [formatMatcher] - Format matching algorithm.
+     * @param { ?String } locale - Valid locale ID, for example, "zh-Hans-CN".
+     * @param { ?String } dateStyle - Date display format.
+     * @param { ?String } timeStyle - Time display format.
+     * @param { ?String } hourCycle - Hour cycle.
+     * @param { ?String } timeZone - Time zone in use.
+     * @param { ?String } numberingSystem - Numbering system.
+     * @param { ?Bool } hour12 - Whether to use the 12-hour clock.
+     * @param { ?String } weekday - Week display format.
+     * @param { ?String } era - Epoch display format.
+     * @param { ?String } year - Year display format.
+     * @param { ?String } month - Month display format.
+     * @param { ?String } day - Day display format.
+     * @param { ?String } hour - Hour display format.
+     * @param { ?String } minute - Minute display format.
+     * @param { ?String } second - Second display format.
+     * @param { ?String } timeZoneName - Localized representation of a time zone name.
+     * @param { ?String } dayPeriod - Time period display format.
+     * @param { ?String } localeMatcher - Locale matching algorithm.
+     * @param { ?String } formatMatcher - Format matching algorithm.
      */
     @!APILevel[
         since: "22",
@@ -418,8 +418,8 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * The valid value is an integer ranging from -14 to 12,
      * where a negative value indicates the western time zone and a positive value indicates the eastern time zone.
      *
-     * @param { ?Float32 } [timeZoneOffset] - The time zone offset in hours.
-     * @param { ?TextClockController } [controller] - The controller for the text clock.
+     * @param { ?Float32 } timeZoneOffset - The time zone offset in hours.
+     * @param { ?TextClockController } controller - The controller for the text clock.
      */
     @!APILevel[
         since: "22",

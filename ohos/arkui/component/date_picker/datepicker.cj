@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, PickerTextStyle, Font
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, LENGTH_PERCENT}
 import ohos.base.{Callback, Length, LengthProp}
 import ohos.ffi.{Callback3Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.time.{DateTime, Month}
 
 /**
@@ -161,9 +161,9 @@ public class DatePicker <: CommonMethodComponent<DatePicker> & DatePickerAttribu
     /**
      * Parameters of the date picker.
      *
-     * @param { ?DateTime } [start] - Start date of the picker.
-     * @param { ?DateTime } [end] - End date of the picker.
-     * @param { ?DateTime } [selected] - Date of the selected item.
+     * @param { ?DateTime } start - Start date of the picker.
+     * @param { ?DateTime } end - End date of the picker.
+     * @param { ?DateTime } selected - Date of the selected item.
      */
     @!APILevel[
         since: "22",

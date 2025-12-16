@@ -18,7 +18,7 @@
 package ohos.base
 
 import std.collection.HashMap
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines class ReuseParams.

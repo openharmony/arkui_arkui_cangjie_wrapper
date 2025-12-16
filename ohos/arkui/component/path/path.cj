@@ -20,7 +20,7 @@ package ohos.arkui.component.path
 import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
 import ohos.base.{ResourceStr, Length}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkPathCreate(commands: CString): Unit
@@ -42,7 +42,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
     /**
      * Create a path.
      *
-     * @param { ?ResourceStr } [commands] - Commands option.
+     * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
         since: "22",
@@ -62,7 +62,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      *
      * @param { ?Length } width - Width option.
      * @param { ?Length } height - Height option.
-     * @param { ?ResourceStr } [commands] - Commands option.
+     * @param { ?ResourceStr } commands - Commands option.
      */
     @!APILevel[
         since: "22",
@@ -84,7 +84,7 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
      * Called when the command string drawn by the path is set.
      *
      * @param { ?ResourceStr } value - The command string to draw the path.
-     * @returns { This } - The path Component.
+     * @returns { This }
      */
     @!APILevel[
         since: "22",

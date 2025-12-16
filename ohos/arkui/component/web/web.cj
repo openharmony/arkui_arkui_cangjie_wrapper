@@ -20,7 +20,7 @@ import ohos.arkui.component.native_struct.{FfiMapToCFFIArray, FfiWebResourceRequ
 import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToResourceColor, transAppResourceToLength}
 import ohos.base.{APP_LOG, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color, Length, LengthProp}
 import ohos.ffi.{CArrString, Callback1Param, BaseCallBack}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.web.webview.{WebviewController}
 import std.collection.ArrayList
 import ohos.business_exception.BusinessException
@@ -733,7 +733,7 @@ public class PermissionRequest {
     /**
      * Grant origin access to a given resource.
      *
-     * @param { Array<String> } resources - An array of resources to grant access to.
+     * @param { Array<string> } resources - An array of resources to grant access to.
      */
     @!APILevel[
         since: "22",

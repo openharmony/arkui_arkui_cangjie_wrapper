@@ -22,7 +22,7 @@ import ohos.arkui.component.util.{transResourceMediaToString, transResourceStrTo
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkMenuItemCreateByBuilder(builder: Int64): Unit
@@ -59,10 +59,11 @@ let DEFAULT_MENU_ITEM_CONTENT_FONT_COLOR = 0xE5000000
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
+
     /**
      * Initializes a MenuItem component with optional child content.
      *
-     * @param { () -> Unit } [child] - The child component builder function for the menu item.
+     * @param { () -> Unit } child - The child component builder function for the menu item.
      */
     @!APILevel[
         since: "22",
@@ -81,7 +82,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @param { ?ResourceStr } content - Defines the content string display info.
      * @param { ?ResourceStr } endIcon - Defines the end display image info.
      * @param { ?ResourceStr } labelInfo - Defines the end label info like shortcut.
-     * @param { Option<() -> Unit> } [builder] - Create the submenu.
+     * @param { Option<() -> Unit> } builder - Create the submenu.
      */
     @!APILevel[
         since: "22",
@@ -172,10 +173,10 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     /**
      * Configures the font properties of the menu item content text.
      *
-     * @param { ?Length } [size] - Indicates the font size of content text.
-     * @param { ?FontWeight } [weight] - Indicates the font weight of content text.
-     * @param { ?ResourceStr } [family] - Indicates the font family of content text.
-     * @param { ?FontStyle } [style] - Indicates the font style of content text.
+     * @param { ?Length } size - Indicates the font size of content text.
+     * @param { ?FontWeight } weight - Indicates the font weight of content text.
+     * @param { ?ResourceStr } family - Indicates the font family of content text.
+     * @param { ?FontStyle } style - Indicates the font style of content text.
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
@@ -226,12 +227,12 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Sets the label info font style.
-     * Family and style are not supported currently and will be fixed in future.
+     * Configures the font properties of the menu item label text.
      *
-     * @param { ?Length } [size] - Indicates the font size of label info text.
-     * @param { ?FontWeight } [weight] - Indicates the font weight of label info text.
-     * @param { ?ResourceStr } [family] - Indicates the font family of label info text.
-     * @param { ?FontStyle } [style] - Indicates the font style of label info text.
+     * @param { ?Length } size - Indicates the font size of label info text.
+     * @param { ?FontWeight } weight - Indicates the font weight of label info text.
+     * @param { ?ResourceStr } family - Indicates the font family of label info text.
+     * @param { ?FontStyle } style - Indicates the font style of label info text.
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[

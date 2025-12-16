@@ -18,7 +18,7 @@ package ohos.arkui.component.video
 import ohos.arkui.component.common.{CommonMethodComponent, SeekMode, PlaybackSpeed, ImageFit}
 import ohos.base.{ResourceStr, VoidCallback, Callback}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.arkui.component.util.{transResourceMediaToString}
 import ohos.business_exception.BusinessException
 
@@ -263,10 +263,10 @@ public class Video <: CommonMethodComponent<Video> & VideoAttribute {
     /**
      * Initializes the video component with the specified options.
      *
-     * @param { ?ResourceStr } [src] - The source URL or resource of the video to play.
-     * @param { ?PlaybackSpeed } [currentProgressRate] - The playback speed. The default value is PlaybackSpeed.Speed_Forward_1_00_X.
-     * @param { ?ResourceStr } [previewUri] - The URI of the preview image to display before the video loads.
-     * @param { ?VideoController } [controller] - The video controller for managing playback.
+     * @param { ?ResourceStr } src - The source URL or resource of the video to play.
+     * @param { ?PlaybackSpeed } currentProgressRate - The playback speed. The default value is PlaybackSpeed.Speed_Forward_1_00_X.
+     * @param { ?ResourceStr } previewUri - The URI of the preview image to display before the video loads.
+     * @param { ?VideoController } controller - The video controller for managing playback.
      */
     @!APILevel[
         since: "22",

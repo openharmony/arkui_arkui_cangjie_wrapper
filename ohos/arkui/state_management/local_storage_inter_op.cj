@@ -16,7 +16,7 @@
 package ohos.arkui.state_management
 
 import ohos.ark_interop.{JSContext, JSModule, JSValue, JSFunction}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 var globalContext: ?JSContext = None
 let INIT_LOCAL_STORAGE_ENV_MODULE = JSModule.registerModule {

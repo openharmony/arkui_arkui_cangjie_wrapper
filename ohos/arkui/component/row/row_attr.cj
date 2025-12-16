@@ -16,7 +16,7 @@
 package ohos.arkui.component.row
 
 import ohos.arkui.component.common.{CommonMethod, VerticalAlign, FlexAlign}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{LengthProp}
 
 /**

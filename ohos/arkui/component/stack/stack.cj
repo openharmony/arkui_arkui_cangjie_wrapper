@@ -20,7 +20,7 @@ package ohos.arkui.component.stack
 import ohos.arkui.component.common.{CommonMethodComponent, Alignment}
 import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkStackCreate(value: Int32): Unit
@@ -52,12 +52,12 @@ foreign {
 ]
 public class Stack <: CommonMethodComponent<Stack> & StackAttribute {
     /**
-     * Defines the constructor of Stack.
-     * Initializes a Stack component with optional alignment and child content.
-     *
-     * @param { ?Alignment } [alignContent] - Alignment of child components within the stack.
-     * @param { ?() -> Unit } [child] - Builder function for Stack content.
-     */
+    * Defines the constructor of Stack.
+    * Initializes a Stack component with optional alignment and child content.
+    *
+    * @param { ?Alignment } alignContent - Alignment of child components within the stack.
+    * @param { ?() -> Unit } child - Builder function for Stack content.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

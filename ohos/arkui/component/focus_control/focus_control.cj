@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.focus_control
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign func FFIOHOSAceFrameworkRequestFocus(inspectorKey: CString): Bool
 

@@ -20,7 +20,7 @@ package ohos.arkui.component.counter
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.base.{VoidCallback}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkCounterCreate(): Unit
@@ -62,8 +62,9 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the increase button of counter component is available or not.
      *
-     * @param { ?Bool } value - Whether to enable the increment button. The default value is true.
-     * @returns { This } - The instance of the Counter.
+     * @param { ?Bool } value - Whether to enable the increment button.
+     * @default true
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -79,8 +80,9 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
     /**
      * Indicates whether the decrease button of counter component is available or not.
      *
-     * @param { ?Bool } value - Whether to enable the decrement button. The default value is true.
-     * @returns { This } - The instance of the Counter.
+     * @param { ?Bool } value - Whether to enable the decrement button.
+     * @default true
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -97,7 +99,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * Listen to the event that the value increases.
      *
      * @param { ?VoidCallback } event - The callback function triggered when the counter value increases.
-     * @returns { This } - The instance of the Counter.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -115,7 +117,7 @@ public class Counter <: CommonMethodComponent<Counter> & CounterAttribute {
      * Listens to the number decrease event.
      *
      * @param { ?VoidCallback } event - The callback function triggered when the counter value decreases.
-     * @returns { This } - The instance of the Counter.
+     * @returns { This } - The instance of the component.
      */
     @!APILevel[
         since: "22",

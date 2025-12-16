@@ -16,7 +16,7 @@
 package ohos.arkui.component.scroll
 
 import ohos.arkui.component.common.{ScrollDirection, ScrollState, ScrollSource}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines the Scroll attribute functions.
@@ -79,15 +79,11 @@ sealed interface ScrollAttribute <: ScrollableCommonMethod<ScrollAttribute> {
 
     /**
      * Triggered when the Scroll component scrolls.
+     * 1. This event is triggered when scrolling is started by the Scroll component or other input settings,such as keyboard and mouse operations;
+     * 2. This event is triggered when the controller API is called;
+     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * <p><strong>NOTE</strong>
-     * <br>1. This event is triggered when scrolling is started by the <em>Scroll</em> component or other input settings,
-     * such as keyboard and mouse operations.
-     * <br>2. This event is triggered when the controller API is called.
-     * <br>3. This event supports the out-of-bounds bounce effect.
-     * </p>
-     *
-     * @param { ?ScrollOnScrollCallback } callback -  Callback triggered when the <em>Scroll</em> component scrolls.
+     * @param { ?ScrollOnScrollCallback } callback - Callback triggered after scrolling.
      * @returns { ScrollAttribute }
      */
     @!APILevel[

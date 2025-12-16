@@ -20,7 +20,7 @@ package ohos.arkui.component.list_item
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder, SwipeEdgeEffect}
 import ohos.arkui.state_management.{ViewStackProcessor}
 import ohos.ffi.{Callback1Param, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkListItemCreate(): Unit
@@ -116,10 +116,10 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
     /**
      * Sets the action item that appears when the list item slides in the cross axis direction of the list.
      *
-     * @param { ?CustomBuilder } [start] - The action when swipe start.
-     * @param { ?CustomBuilder } [end] - The action when swipe end.
-     * @param { ?SwipeEdgeEffect } [edgeEffect] - The swipe edge effect.
-     * @param { ?(Float64) -> Unit } [onOffsetChange] - The callback on offset change.
+     * @param { ?CustomBuilder } start - The action when swipe start.
+     * @param { ?CustomBuilder } end - The action when swipe end.
+     * @param { ?SwipeEdgeEffect } edgeEffect - The swipe edge effect.
+     * @param { ?(Float64) -> Unit } onOffsetChange - The callback on offset change.
      * @returns { This }
      */
     @!APILevel[

@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, SliderStyle, Axis, Sl
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback2Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 @C
@@ -88,9 +88,8 @@ foreign {
 
     func FfiOHOSAceFrameworkSliderResetSelectedColor(): Unit
 }
-
 /**
- * Defines Slider Component.
+ * A component that provides a slider for selecting values within a range.
  */
 @!APILevel[
     since: "22",
@@ -98,17 +97,17 @@ foreign {
 ]
 public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
     /**
-     * Defines Slider Component instance.
-     *
-     * @param { ?Float64 } [min] - Minimum value.
-     * @param { ?Float64 } [max] - Maximum value.
-     * @param { ?Float64 } [step] - Step of the slider.
-     * @param { ?Float64 } [value] - Current value of Slider.
-     * @param { ?SliderStyle } [style] - Style of the slider thumb and track.
-     * @param { ?Axis } [direction] - Whether the slider moves horizontally or vertically.
-     * @param { ?Bool } [reverse] - Whether the slider values are revers. By default, the values increase from left to right for a horizontal
-     *      slider and from top to bottom for a vertical slider.
-     */
+    * Defines Slider Component instance.
+    *
+    * @param { ?Float64 } min - Minimum value.
+    * @param { ?Float64 } max - Maximum value.
+    * @param { ?Float64 } step - Step of the slider.
+    * @param { ?Float64 } value - Current value of Slider.
+    * @param { ?SliderStyle } style - Style of the slider thumb and track.
+    * @param { ?Axis } direction - Whether the slider moves horizontally or vertically.
+    * @param { ?Bool } reverse - Whether the slider values are revers. By default, the values increase from left to right for a horizontal
+    *      slider and from top to bottom for a vertical slider.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -152,7 +151,6 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
                     reverse ?? false))
         }
     }
-
     /**
     * Called when the slider color of the slider bar is set.
     *
@@ -236,15 +234,14 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         }
         this
     }
-
     /**
-     * Called when the percentage of bubble prompt is set when sliding.
-     *
-     * @param { ?Bool } value - Whether to display the bubble.
-     * @param { ?ResourceStr } [content] - Text content in the bubble.If the content is not specified,
-     *     the current percentage is displayed by default.
-     * @returns { This }
-     */
+    * Called when the percentage of bubble prompt is set when sliding.
+    *
+    * @param { ?Bool } value - Whether to display the bubble.
+    * @param { ?ResourceStr } content - Text content in the bubble.If the content is not specified,
+    *     the current percentage is displayed by default.
+    * @returns { This }
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -263,7 +260,6 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         }
         this
     }
-
     /**
     * Called when the thickness of track is set.
     *
@@ -281,13 +277,12 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         }
         this
     }
-
     /**
-     * Triggered when the slider is dragged or clicked.
-     *
-     * @param { ?(Float64, SliderChangeMode) -> Unit } callback
-     * @returns { This }
-     */
+    * Triggered when the slider is dragged or clicked.
+    *
+    * @param { ?(Float64, SliderChangeMode) -> Unit } callback
+    * @returns { This }
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

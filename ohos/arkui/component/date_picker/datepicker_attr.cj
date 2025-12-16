@@ -16,7 +16,7 @@
 package ohos.arkui.component.date_picker
 
 import ohos.arkui.component.common.{CommonMethod, PickerTextStyle, FontWeight, FontStyle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Callback, Length}
 import std.time.{DateTime}
 

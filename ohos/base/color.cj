@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 /**
@@ -152,7 +152,7 @@ public class Color <: ResourceColor {
      * @param { UInt8 } red - Red component of color
      * @param { UInt8 } green - Green component of color
      * @param { UInt8 } blue - Blue component of color
-     * @param { ?Float32 } [alpha] - Alpha component of color
+     * @param { ?Float32 } alpha - Alpha component of color
      * @default alpha - 1.0
      */
     @!APILevel[

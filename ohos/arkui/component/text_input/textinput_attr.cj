@@ -16,7 +16,7 @@
 package ohos.arkui.component.text_input
 
 import ohos.arkui.component.common.{CommonMethod, EnterKeyType, TextAlign, FontWeight, FontStyle, CustomBuilder, TextInputStyle}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
@@ -119,7 +119,8 @@ sealed interface TextInputAttribute <: CommonMethod<TextInputAttribute> {
      * <br>The value cannot be a percentage.
      * <br>The default value on wearable devices is 18.fp.
      *
-     * @param { ?Length } value - The value of font size.
+     * @param { ?Length } value - .The default value on wearable devices is 18.fp.
+     * @default 16.fp
      * @returns { TextInputAttribute }
      */
     @!APILevel[

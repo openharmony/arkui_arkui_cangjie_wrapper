@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, BarrierDirection, Axi
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length}
 import ohos.ffi.{CArrString}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 @C
@@ -275,11 +275,11 @@ public class GuideLinePosition {
     public var end: ?Length
 
     /**
-     * Defines the constructor of GuideLinePosition.
-     *
-     * @param { ?Length } [start] - Distance to start of container.
-     * @param { ?Length } [end] - Distance to end of container.
-     */
+    * Defines the constructor of GuideLinePosition.
+    *
+    * @param { ?Length } start
+    * @param { ?Length } end
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -352,10 +352,10 @@ public class GuideLineStyle {
 ]
 public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & RelativeContainerAttribute {
     /**
-     * Constructor of relativeContainer
-     *
-     * @param { () -> Unit } [child] - Content of the relative container.
-     */
+    * Constructor of relativeContainer
+    *
+    * @param { () -> Unit } child
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

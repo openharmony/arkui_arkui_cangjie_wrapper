@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, LineCapStyle, LineJoi
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, Color, LengthProp}
 import ohos.resource.{AppResource, getResourceLength}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 import ohos.multimedia.image.PixelMap
 

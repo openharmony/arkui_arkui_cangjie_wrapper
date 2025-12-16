@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, 
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, APP_LOG, BASE_LOG, LengthProp}
 import ohos.ffi.{BaseCallBack}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import std.collection.ArrayList
 import ohos.business_exception.BusinessException
 
@@ -168,7 +168,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     /**
      * CheckboxGroup Constructor.
      *
-     * @param { ?String } [group] - The group name of the checkbox group.
+     * @param { ?String } group - The group name of the checkbox group.
      */
     @!APILevel[
         since: "22",

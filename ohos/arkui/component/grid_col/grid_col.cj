@@ -16,7 +16,7 @@
 package ohos.arkui.component.grid_col
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 struct NativeGridColColumnOption {
@@ -111,12 +111,12 @@ public class GridColOptions {
      * Defines the constructor of GridColOptions.
      * Creates a GridColOptions instance with specific values for different screen sizes.
      *
-     * @param { ?Int32 } [xs] - Grid Col Column Option xs. Defines how many columns the grid item should span on extra small screens.
-     * @param { ?Int32 } [sm] - Grid Col Column Option sm. Defines how many columns the grid item should span on small screens.
-     * @param { ?Int32 } [md] - Grid Col Column Option md. Defines how many columns the grid item should span on medium screens.
-     * @param { ?Int32 } [lg] - Grid Col Column Option lg. Defines how many columns the grid item should span on large screens.
-     * @param { ?Int32 } [xl] - Grid Col Column Option xl. Defines how many columns the grid item should span on extra large screens.
-     * @param { ?Int32 } [xxl] - Grid Col Column Option xxl. Defines how many columns the grid item should span on double extra large screens.
+     * @param { ?Int32 } xs - Grid Col Column Option xs. Defines how many columns the grid item should span on extra small screens.
+     * @param { ?Int32 } sm - Grid Col Column Option sm. Defines how many columns the grid item should span on small screens.
+     * @param { ?Int32 } md - Grid Col Column Option md. Defines how many columns the grid item should span on medium screens.
+     * @param { ?Int32 } lg - Grid Col Column Option lg. Defines how many columns the grid item should span on large screens.
+     * @param { ?Int32 } xl - Grid Col Column Option xl. Defines how many columns the grid item should span on extra large screens.
+     * @param { ?Int32 } xxl - Grid Col Column Option xxl. Defines how many columns the grid item should span on double extra large screens.
      */
     @!APILevel[
         since: "22",
@@ -198,10 +198,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * GridCol constructor.
      * Creates a GridCol component with integer values for span, offset, and order.
      *
-     * @param { ?Int32 } [span] - Sets the span of current grid-container item. Defines how many columns the item should span.
-     * @param { ?Int32 } [offset] - Sets the offset of current grid-container item. Defines how many columns to offset the item from its normal position.
-     * @param { ?Int32 } [order] - Sets the order of current grid-container item. Defines the display order of the item in the grid.
-     * @param { () -> Unit } [child] - The child component of GridCol. This is the content to be displayed within the grid item.
+     * @param { ?Int32 } span - Sets the span of current grid-container item. Defines how many columns the item should span.
+     * @param { ?Int32 } offset - Sets the offset of current grid-container item. Defines how many columns to offset the item from its normal position.
+     * @param { ?Int32 } order - Sets the order of current grid-container item. Defines the display order of the item in the grid.
+     * @param { () -> Unit } child - The child component of GridCol. This is the content to be displayed within the grid item.
      */
     @!APILevel[
         since: "22",
@@ -221,7 +221,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
      * @param { ?GridColOptions } span - Sets the span of current grid-container item. Defines how many columns the item should span on different screen sizes.
      * @param { ?GridColOptions } offset - Sets the offset of current grid-container item. Defines how many columns to offset the item from its normal position on different screen sizes.
      * @param { ?GridColOptions } order - Sets the order of current grid-container item. Defines the display order of the item in the grid on different screen sizes.
-     * @param { () -> Unit } [child] - The child component of GridCol. This is the content to be displayed within the grid item.
+     * @param { () -> Unit } child - The child component of GridCol. This is the content to be displayed within the grid item.
      */
     @!APILevel[
         since: "22",

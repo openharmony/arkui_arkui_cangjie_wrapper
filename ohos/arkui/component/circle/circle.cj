@@ -20,7 +20,7 @@ package ohos.arkui.component.circle
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
 import ohos.arkui.component.util.transAppResourceToLength
 import ohos.base.{Length, LengthProp}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkCircleCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
@@ -38,9 +38,9 @@ foreign {
 public class Circle <: CommonShapeMethodComponent<Circle> & CircleAttribute {
     /**
      * Create a circle.
-     *
-     * @param { ?Length } [width] - The width of the circle component.
-     * @param { ?Length } [height] - The height of the circle component.
+     * 
+     * @param { ?Length } width - The width of the circle component.
+     * @param { ?Length } height - The height of the circle component.
      */
     @!APILevel[
         since: "22",

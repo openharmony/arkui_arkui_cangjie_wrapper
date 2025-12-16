@@ -16,7 +16,7 @@
 package ohos.arkui.component.refresh
 
 import ohos.arkui.component.common.{CommonMethod, RefreshStatus}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines Refresh Component.

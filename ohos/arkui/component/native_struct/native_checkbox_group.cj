@@ -17,7 +17,7 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 @!APILevel[

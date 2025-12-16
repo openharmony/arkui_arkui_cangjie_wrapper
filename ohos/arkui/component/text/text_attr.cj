@@ -16,7 +16,7 @@
 package ohos.arkui.component.text
 
 import ohos.arkui.component.common.{TextDecorationStyle, TextCase, CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
@@ -80,7 +80,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font color is set.
      *
-     * @param { ?ResourceColor } value - The font color. The default value is 0xe6182431. The default value on wearable devices is 0xc5ffffff.
+     * @param { ?ResourceColor } value - The font color.
      * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
@@ -92,7 +92,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the font style of a font is set.
      *
-     * @param { ?FontStyle } value - The font style. The default value is FontStyle.Normal.
+     * @param { ?FontStyle } value - The font style.
+     * @default FontStyle.Normal
      * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
@@ -128,7 +129,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @param { ?TextAlign } value - The text alignment. The default value is TextAlign.Start.
+     * @param { ?TextAlign } value - The text alignment.
+     * @default TextAlign.Start
      * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
@@ -140,7 +142,7 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @param { ?TextOverflow } value - Text overflow options.
+     * @param { ?TextOverflow } options - Text overflow options.
      * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[
@@ -208,7 +210,8 @@ sealed interface TextAttribute <: CommonMethod<TextAttribute> {
     /**
      * Called when the type of letter in the text font is set.
      *
-     * @param { ?TextCase } value - The text case. The default value is TextCase.Normal.
+     * @param { ?TextCase } value - The text case. 
+     * @default TextCase.Normal.
      * @returns { TextAttribute } Returns the text attribute.
      */
     @!APILevel[

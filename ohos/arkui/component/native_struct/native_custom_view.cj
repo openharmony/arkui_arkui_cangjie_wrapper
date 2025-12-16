@@ -20,7 +20,7 @@ protected package ohos.arkui.component.native_struct
 import ohos.arkui.component.custom_view.{RemoteView}
 import ohos.base.{ReuseParams, throwNativeError}
 import ohos.ffi.{FFIDataManager}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 @C

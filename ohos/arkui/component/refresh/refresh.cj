@@ -20,7 +20,7 @@ package ohos.arkui.component.refresh
 import ohos.arkui.component.common.{CommonMethodComponent, Bindable, RefreshStatus}
 import ohos.base.{Length, LengthProp}
 import ohos.ffi.{Callback1Param, Callback0Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkRefreshCreate(refreshing: Bool, offset: Float64, offsetUnit: Int32, friction: Int32): Unit
@@ -109,8 +109,8 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
     /**
      * Defines Refresh Component.
      *
-     * @param { ?RefreshOptions } value - Refresh options.
-     * @param { () -> Unit } child - Content of the refresh component.
+     * @param { ?RefreshOptions } value
+     * @param { () -> Unit } content
      */
     @!APILevel[
         since: "22",

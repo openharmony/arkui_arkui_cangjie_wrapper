@@ -23,7 +23,7 @@ import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.base.{ResourceStr, ResourceColor, Length, LengthProp, Color}
 import ohos.resource.{AppResource, getResourceString}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 foreign {
@@ -97,9 +97,9 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
     /**
      * The TextArea constructor.
      *
-     * @param { ?ResourceStr } [placeholder] - The place holder text string. Text displayed when there is no input.
-     * @param { ?ResourceStr } [text] - Sets the current value of TextArea.
-     * @param { ?TextAreaController } [controller] - Called when the position of the insertion cursor is set.
+     * @param { ?ResourceStr } placeholder - The place holder text string. Text displayed when there is no input.
+     * @param { ?ResourceStr } text - Sets the current value of TextArea.
+     * @param { ?TextAreaController } controller - Called when the position of the insertion cursor is set.
      */
     @!APILevel[
         since: "22",
@@ -148,9 +148,9 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * The 'HarmonyOS Sans' font and registered custom fonts are supported.
      *
      * @param { ?Length } size - Font size of the placeholder text.
-     * @param { ?FontWeight } [weight] - Font weight of the placeholder text.
-     * @param { ?String } [family] - Font family of the placeholder text.
-     * @param { ?FontStyle } [style] - Font style of the placeholder text.
+     * @param { ?FontWeight } weight - Font weight of the placeholder text.
+     * @param { ?String } family - Font family of the placeholder text.
+     * @param { ?FontStyle } style - Font style of the placeholder text.
      * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[
@@ -288,7 +288,7 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
      * Set input filter.
      *
      * @param { ?ResourceStr } value - Regular expression pattern for input filtering.
-     * @param { ?(String) -> Unit } [error] - Callback function executed when input doesn't match the pattern.
+     * @param { ?(String) -> Unit } error - Callback function executed when input doesn't match the pattern.
      * @returns { This } - Returns the component instance itself for method chaining.
      */
     @!APILevel[

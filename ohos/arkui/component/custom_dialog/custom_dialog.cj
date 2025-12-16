@@ -24,7 +24,7 @@ import ohos.arkui.component.native_struct.{NativeShadowOptions, NativeOptionEdge
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{NativeOptionInt32, NativeOptionUInt32, NativeOptionBool, NativeOptionLength, NativeOffset, NativeLength, NativeOptionCallBack, VoidCallback, ResourceColor, Length, Callback, LengthProp, Color}
 import ohos.ffi.{Callback0Param, FFIDataManager, RemoteDataLite, FFIData, Callback1Param}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 struct NativeOptionShadow {
@@ -255,7 +255,6 @@ public class CustomDialogControllerOptions {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public var backgroundBlurStyle: ?BlurStyle
-
     /**
      * Defines the options of CustomDialogController.
      *
@@ -309,7 +308,7 @@ public class CustomDialogControllerOptions {
         borderColor!: ?ResourceColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
-        backgroundBlurStyle!: ?BlurStyle = None
+        backgroundBlurStyle!: ?BlurStyle = Option.None
     ) {
         this(
             cancel: cancel, 
@@ -389,7 +388,7 @@ public class CustomDialogControllerOptions {
         borderColor!: ?ResourceColor = None,
         borderStyle!: ?EdgeStyles = None,
         shadow!: ?ShadowOptions = None,
-        backgroundBlurStyle!: ?BlurStyle = None
+        backgroundBlurStyle!: ?BlurStyle = Option.None
     ) {
         this.cancel = cancel ?? {=>}
         this.autoCancel = autoCancel ?? true
@@ -402,7 +401,7 @@ public class CustomDialogControllerOptions {
         this.openAnimation = openAnimation
         this.closeAnimation = closeAnimation
         this.showInSubWindow = showInSubWindow ?? false
-        this.backgroundColor = backgroundColor ?? Color.White
+        this.backgroundColor = backgroundColor ?? Color.Transparent
         this.cornerRadius = cornerRadius ?? 32.vp
         this.isModal = isModal ?? true
         this.onWillDismiss = onWillDismiss
@@ -454,7 +453,7 @@ public class CustomDialogController <: RemoteDataLite {
             case None => NativeOptionInt32(false, 0)
         }
 
-        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor ?? Color.White))
+        let nativeBackgroundColor = NativeOptionUInt32(true, transAppResourceToResourceColor(options.backgroundColor ?? Color.Transparent))
 
         let openAnimation = match (options.openAnimation) {
             case Some(value) => NativeOptionAnimateParam(true, parseAnimateParam(value))

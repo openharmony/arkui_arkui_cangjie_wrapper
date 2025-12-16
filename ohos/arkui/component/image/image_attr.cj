@@ -17,7 +17,7 @@ package ohos.arkui.component.image
 
 import ohos.arkui.component.common.{CommonMethod, ImageFit, ImageRepeat, ImageInterpolation, ImageRenderMode}
 import ohos.business_exception.BusinessException
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceStr, Length, ResourceColor}
 import ohos.multimedia.image.PixelMap
 
@@ -36,7 +36,7 @@ sealed interface ImageAttribute <: CommonMethod<ImageAttribute> {
      * <br>This attribute does not take effect when the parameter type of the component is AnimatedDrawableDescriptor.
      * </p>
      * 
-     * @param { ?ResourceStr } src - Placeholder image displayed during loading. Default value is null.
+     * @param { ?ResourceStr } value - Placeholder image displayed during loading. Default value is null.
      * @returns { ImageAttribute }
      */
     @!APILevel[

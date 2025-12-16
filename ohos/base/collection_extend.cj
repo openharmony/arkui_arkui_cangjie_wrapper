@@ -18,7 +18,7 @@
 package ohos.base
 
 import std.collection.{ArrayList}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 /**
  * Defines interface CollectionEx.

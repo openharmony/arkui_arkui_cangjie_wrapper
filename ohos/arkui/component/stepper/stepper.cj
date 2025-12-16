@@ -20,7 +20,7 @@ package ohos.arkui.component.stepper
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.ffi.{Callback0Param, Callback2Param}
 import ohos.base.{ResourceStr}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkStepperCreate(index: UInt32): Unit
@@ -47,8 +47,8 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Initializes a Stepper component with optional initial index and child content.
      *
-     * @param { ?UInt32 } [index] - Initial step index.
-     * @param { () -> Unit } [child] - Builder function for Stepper content.
+     * @param { ?UInt32 } index - Initial step index.
+     * @param { () -> Unit } child - Builder function for Stepper content.
      */
     @!APILevel[
         since: "22",

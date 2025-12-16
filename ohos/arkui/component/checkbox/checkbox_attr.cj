@@ -16,7 +16,7 @@
 package ohos.arkui.component.checkbox
 
 import ohos.arkui.component.common.{CommonMethod, CheckBoxShape}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor}
 
 /**
@@ -31,7 +31,7 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
      * Set whether checkbox is selected.
      *
      * @param { ?Bool } value - Whether the checkbox is selected.
-     * @default True
+     * @default true
      * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
@@ -43,7 +43,8 @@ sealed interface CheckboxAttribute <: CommonMethod<CheckboxAttribute> {
     /**
      * Set the display color of checkbox.
      *
-     * @param { ?ResourceColor } value - The display color of checkbox.
+     * @param { ?ResourceColor } value - Whether is selected. 
+     * @default true
      * @returns { CheckboxAttribute } - The attribute of the component.
      */
     @!APILevel[
