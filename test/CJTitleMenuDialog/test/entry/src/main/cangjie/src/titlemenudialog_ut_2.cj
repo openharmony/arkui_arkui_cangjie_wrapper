@@ -90,8 +90,6 @@ class TitleMenuDialogUT2 {
         setTimeout_string = getContentFromText("timer_1")
         @Expect(setTimeout_string,"\"Nothing happen\"")
         driver.delayMs(1000)
-        setTimeout_string = getContentFromText("timer_1")
-        @Expect(setTimeout_string,"\"do after 1s delay\"")
 
         clickButton("Timer setInterval")
         driver.delayMs(200)
@@ -103,6 +101,9 @@ class TitleMenuDialogUT2 {
         driver.delayMs(3000)
         setInterval_string = getContentFromText("timer_2")
         @Expect(setInterval_string,"\"Timer value：4 s\"")
+
+        setTimeout_string = getContentFromText("timer_1")
+        @Expect(setTimeout_string,"\"do after 1s delay\"")
 
         clickButton("cancelTimer")
         driver.delayMs(200)
