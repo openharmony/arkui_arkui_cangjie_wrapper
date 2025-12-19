@@ -17,7 +17,7 @@
 
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
-import ohos.base.{Callback, ResourceStr, LengthProp}
+import ohos.base.{Callback, ResourceStr, LengthProp, ResourceColor, Color}
 import ohos.ffi.{Callback0Param, RemoteDataManager, Callback1Param}
 import ohos.labels.{APILevel, Hide}
 
@@ -30,6 +30,7 @@ foreign {
     func FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(value: Bool): Unit
     func FfiOHOSAceFrameworkNavdestinationSetTitleWithString(value: CString): Unit
     func FfiOHOSAceFrameworkNavdestinationSetTitleWithStringOptions(value: CString, options: CJNavigationTitleOptions): Unit
+    func FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(color: UInt32): Unit
 }
 
 @C
@@ -240,6 +241,13 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
     public func hideTitleBar(value: ?Bool): This {
         unsafe {
             FfiOHOSAceFrameworkNavdestinationSetHideTitleBar(value ?? false)
+        }
+        this
+    }
+
+    protected override func backgroundColorInner(value: ?ResourceColor): This {
+        unsafe {
+            FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
         }
         this
     }
