@@ -298,6 +298,8 @@ class ScrollSplitUT2 {
             @Expect(rect_yoffset, "YOFFSET: 15.000000")
         }
 
+        let scrollState: Component = driver.findComponent(On().id("scrollState")).getOrThrow()
+        @Expect(scrollState.getText(), "0.0")
         driver.findComponent(On().id("ScrollSelf")).getOrThrow().scrollToBottom()
         driver.delayMs(1000)
 
@@ -310,9 +312,7 @@ class ScrollSplitUT2 {
         let rect_frameBegin = frameBegin.getText()
         @Expect(rect_frameBegin == "0.000000", false)
 
-        let scrollState: Component = driver.findComponent(On().id("scrollState")).getOrThrow()
-        let rect_scrollState = scrollState.getText()
-        @Expect(rect_scrollState, "Fling")
+        @Expect(scrollState.getText() == "0.0", false)
 
         //scrollTo,有动画效果需要人工观察
         driver.findComponent(On().id("scrollTop")).getOrThrow().click()
