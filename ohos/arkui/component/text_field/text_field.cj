@@ -510,7 +510,7 @@ protected class TextField {
 
     protected static func inputFilter(value!: String, error!: (String) -> Unit = {_ =>}): Unit {
         let lambdaData = Callback1Param<CString, Unit>({
-            value: CString => error(value.toString())
+            value: CString => error(value.safeToString())
         })
         unsafe {
             var valueCString = LibC.mallocCString(value)
@@ -725,7 +725,7 @@ protected class TextField {
 
     protected static func onChange(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => callback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -735,7 +735,7 @@ protected class TextField {
 
     protected static func onCopy(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => callback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -745,7 +745,7 @@ protected class TextField {
 
     protected static func onCut(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => callback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -755,7 +755,7 @@ protected class TextField {
 
     protected static func onPaste(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.toString())
+            value: CString => callback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -794,7 +794,7 @@ protected class TextField {
             deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
                 deleteOffset,
                 direction,
-                deleteValue.toString()
+                deleteValue.safeToString()
             )
         }
         unsafe {
@@ -807,7 +807,7 @@ protected class TextField {
             deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
                 deleteOffset,
                 direction,
-                deleteValue.toString()
+                deleteValue.safeToString()
             )
         }
         unsafe {
@@ -817,7 +817,7 @@ protected class TextField {
 
     protected static func onDidInsert(callback: (Float64, String) -> Unit): Unit {
         let wrapper = {
-            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
+            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.safeToString())
         }
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnDidInsert(Callback2Param<Float64, CString, Unit>(wrapper).getID())
@@ -826,7 +826,7 @@ protected class TextField {
 
     protected static func onWillInsert(callback: (Float64, String) -> Bool): Unit {
         let wrapper = {
-            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
+            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.safeToString())
         }
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnWillInsert(Callback2Param<Float64, CString, Bool>(wrapper).getID())

@@ -18,6 +18,7 @@
 package ohos.base
 
 import ohos.labels.{APILevel, Hide}
+import ohos.hilog.{Hilog}
 
 foreign func free(src: CString): Unit
 
@@ -45,6 +46,18 @@ protected struct ExternalString {
     protected unsafe func free(): Unit {
         if (!value_.isNull()) {
             free_(value_)
+        }
+    }
+
+    protected func safeToString(): String {
+        if (value_.isNull()) {
+            return ""
+        }
+        try {
+            return value_.toString()
+        } catch (_) {
+            Hilog.error(0XD003F03, "Cangjie-Ace", "Internal error, cangjie only supporrt uft-8 string")
+            return ""
         }
     }
 }
