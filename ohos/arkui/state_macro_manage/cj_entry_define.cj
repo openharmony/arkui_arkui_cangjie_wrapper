@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, Token, Decl, FuncDecl, CallExpr, MemberAccess, RefExpr, parseDecl, TokenKind, ToTokens}
+import std.ast.{Tokens, ClassDecl, Token, Decl, FuncDecl, CallExpr, MemberAccess, RefExpr, parseDecl, TokenKind, ToTokens, MacroExpandDecl, diagReport, DiagReportLevel}
 import std.collection.ArrayList
 
 public macro Entry(input: Tokens): Tokens {
@@ -33,7 +33,17 @@ public macro Preview(input: Tokens): Tokens {
 }
 
 func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens = None): Tokens {
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
+    let decl = parseDecl(input)
+    let classDecl = match(decl) {
+        case cd: ClassDecl => cd
+        case macroExpandDecl: MacroExpandDecl =>
+            diagReport(DiagReportLevel.ERROR, Tokens().append(macroExpandDecl.identifier), "undeclared indentifier '${macroExpandDecl.identifier.value}'.", "")
+            return input
+        case _ =>
+            diagReport(DiagReportLevel.ERROR, Tokens().append(decl.keyword), "@Entry decorator must be used with a class declaration, other declarations are not supported.", "")
+            return input
+    }
+    
     let entryClassIdent = classDecl.identifier
     if (needCheckEntry) {
         checkEntry(entryClassIdent)
