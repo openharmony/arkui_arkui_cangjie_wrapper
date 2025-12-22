@@ -19,6 +19,7 @@ package ohos.arkui.state_management
 
 import std.collection.ArrayList
 import ohos.labels.{APILevel, Hide}
+import ohos.base.isInMainThread
 
 /**
  * Defines class Observable.
@@ -65,6 +66,9 @@ public open class Observable {
     }
 
     protected func notifyChangesInner(info: String, dependentElmtIds: ArrayList<Int64>) {
+        if (!isInMainThread()) {
+            throw Exception("State updates are not performed on the main thread. stateInfo: ${info}")
+        }
         for (observer in observers) {
             observer.onStateUpdate(info, dependentElmtIds)
         }
