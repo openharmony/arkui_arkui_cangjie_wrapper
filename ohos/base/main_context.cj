@@ -20,6 +20,10 @@ package ohos.base
 import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
+foreign func getpid(): Int64
+foreign func syscall(id: Int64): Int64
+
+const SYS_GETTID = 178
 
 /**
  * Defines class MainThreadContext.
@@ -78,3 +82,19 @@ public class MainThreadContext <: ThreadContext {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public let UIThread: MainThreadContext = MainThreadContext.INSTANCE_
+
+var currentPid: ?Int64 = None
+
+protected func isInMainThread(): Bool {
+    let pid = match (currentPid) {
+        case Some(v) => v
+        case _ =>
+            let value = unsafe { getpid() }
+            currentPid = value
+            value
+    }
+    let tid = unsafe {
+        syscall(SYS_GETTID)
+    }
+    return pid == tid
+}
