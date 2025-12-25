@@ -21,9 +21,7 @@ import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 foreign func getpid(): Int64
-foreign func syscall(id: Int64): Int64
-
-const SYS_GETTID = 178
+foreign func gettid(): Int64
 
 /**
  * Defines class MainThreadContext.
@@ -93,8 +91,6 @@ protected func isInMainThread(): Bool {
             currentPid = value
             value
     }
-    let tid = unsafe {
-        syscall(SYS_GETTID)
-    }
+    let tid = unsafe { gettid() }
     return pid == tid
 }
