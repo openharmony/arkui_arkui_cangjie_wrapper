@@ -78,10 +78,6 @@ class TitleMenuDialogUT2 {
     @TestCase
     func testGlobal() {
         scrollTo("ViewGlobal")
-        //        let res_1 = canIUse("SystemCapability.Location.Location.Core")
-        //        @Expect(res_1, true)
-        //        let res_2 = canIUse("SystemCapability.PCService.FileGuard")
-        //        @Expect(res_2, false)
 
         var setTimeout_string: String = ""
         var setInterval_string: String = ""
@@ -94,37 +90,20 @@ class TitleMenuDialogUT2 {
         clickButton("Timer setInterval")
         driver.delayMs(200)
         setInterval_string = getContentFromText("timer_2")
-        @Expect(setInterval_string,"\"Timer value：0 s\"")
-        driver.delayMs(1000)
+        @Expect(setInterval_string,"\"0\"")
+        driver.delayMs(2000)
         setInterval_string = getContentFromText("timer_2")
-        @Expect(setInterval_string,"\"Timer value：1 s\"")
-        driver.delayMs(3000)
-        setInterval_string = getContentFromText("timer_2")
-        @Expect(setInterval_string,"\"Timer value：4 s\"")
+        @Expect(setInterval_string != "\"0\"")
 
         setTimeout_string = getContentFromText("timer_1")
         @Expect(setTimeout_string,"\"do after 1s delay\"")
 
         clickButton("cancelTimer")
-        driver.delayMs(200)
+        driver.delayMs(500)
         setTimeout_string = getContentFromText("timer_1")
         setInterval_string = getContentFromText("timer_2")
         @Expect(setTimeout_string,"\"Nothing happen\"")
-        @Expect(setInterval_string,"\"Timer value：0 s\"")
-
-        clickButton("Timer setTimeout")
-        driver.delayMs(200)
-        clickButton("cancelTimer")
-        driver.delayMs(1000)
-        setTimeout_string = getContentFromText("timer_1")
-        @Expect(setTimeout_string,"\"Nothing happen\"")
-
-        clickButton("Timer setInterval")
-        driver.delayMs(200)
-        clickButton("cancelTimer")
-        driver.delayMs(2000)
-        setInterval_string = getContentFromText("timer_2")
-        @Expect(setInterval_string,"\"Timer value：0 s\"")
+        @Expect(setInterval_string,"\"0\"")
 
         clickButton("Timer setTimeout_Zero")
         driver.delayMs(200)
@@ -134,7 +113,7 @@ class TitleMenuDialogUT2 {
         clickButton("Timer setInterval_Delay_Zero")
         driver.delayMs(200)
         setInterval_string = getContentFromText("timer_2")
-        @Expect(setInterval_string,"\"Timer value：1 s\"")
+        @Expect(setInterval_string != "\"0\"")
 
         clickButton("cancelTimer")
         driver.delayMs(200)

@@ -583,13 +583,23 @@ class BasicCommonUTHello {
         Hilog.info(1, "Cangjie-Test", "test_Observable start")
         var message = "test_Observable success"
         try {
-            var observable = PersonObservable()
-            observable.testDt()
+            launch {
+               var observable = PersonObservable()
+               observable.testDt()
+            }
+        } catch (e: Exception) {
+           Hilog.info(1, "Cangjie-Test", "test_Observable: ${e.toString()}")
+           message = e.toString()
+        }
+        @Expect(message, "test_Observable success")
+        try {
+            var observable2 = PersonObservable()
+            observable2.testDt()
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_Observable: ${e.toString()}")
             message = e.toString()
         }
-        @Expect(message, "test_Observable success")
+        @Expect(message, "Exception: State updates are not performed on the main thread. stateInfo: Name")
         Hilog.info(1, "Cangjie-Test", "test_Observable end")
     }
 
@@ -645,6 +655,16 @@ class BasicCommonUTHello {
     func testObservedProperty() {
         Hilog.info(1, "Cangjie-Test", "test_observedProperty start")
         var message = "test_observedProperty success"
+       try {
+            launch {
+               var color = ObservedProperty<PersonObservedObject>("info2", PersonObservedObject())
+               color.set(PersonObservedObject())
+            }
+       } catch (e: Exception) {
+           Hilog.info(1, "Cangjie-Test", "test_hitrace: ${e.toString()}")
+           message = e.toString()
+       }
+        @Expect(message, "test_observedProperty success")
         try {
            var color = ObservedProperty<PersonObservedObject>("info", PersonObservedObject())
             color.set(PersonObservedObject())
@@ -652,7 +672,7 @@ class BasicCommonUTHello {
             Hilog.info(1, "Cangjie-Test", "test_hitrace: ${e.toString()}")
             message = e.toString()
         }
-        @Expect(message, "test_observedProperty success")
+        @Expect(message, "Exception: State updates are not performed on the main thread. stateInfo: info")
         Hilog.info(1, "Cangjie-Test", "test_observedProperty end")
     }
 

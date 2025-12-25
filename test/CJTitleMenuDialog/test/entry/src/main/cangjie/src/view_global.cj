@@ -34,29 +34,8 @@ class ViewGlobal {
 
     func build() {
         Column() {
-            Button("SysCap_exist").onClick(
-                {
-                    etv =>
-                    //                    if(canIUse("SystemCapability.Location.Location.Core")){
-                    //                        Hilog.info(0, "SysCap", "支持系统能力SystemCapability.Location.Location.Core")
-                    //                    }
-                    //                    else{
-                    Hilog.info(0, "SysCap", "不支持系统能力SystemCapability.Location.Location.Core")
-                //                    }
-                })
-            Button("SysCap_not_exist").onClick(
-                {
-                    etv =>
-                    //                    if(canIUse("SystemCapability.PCService.FileGuard")){
-                    //                        Hilog.info(0, "SysCap", "支持系统能力SystemCapability.PCService.FileGuard")
-                    //                    }
-                    //                    else{
-                    Hilog.info(0, "SysCap", "不支持系统能力SystemCapability.PCService.FileGuard")
-                //                    }
-                })
-
             Text(this.timeSring).id("timer_1")
-            Text("Timer value：${this.time} s").id("timer_2")
+            Text("${this.time}").id("timer_2")
             Column() {
                 Button("Timer setTimeout")
                     .id("Timer setTimeout")
@@ -64,7 +43,7 @@ class ViewGlobal {
                         {
                             etv => this.timer_1 = Timer.once(1000 * Duration.millisecond,
                                 {
-                                    => this.timeSring = "do after 1s delay"
+                                    => launch { this.timeSring = "do after 1s delay" }
                                 })
                         })
                 Button("Timer setInterval")
@@ -73,7 +52,7 @@ class ViewGlobal {
                         {
                             etv => this.timer_2 = Timer.repeat(1000 * Duration.millisecond, 1000 * Duration.millisecond,
                                 {
-                                    => this.time++
+                                    => launch { this.time++ }
                                 })
                         })
                 Button("cancelTimer")
@@ -94,7 +73,7 @@ class ViewGlobal {
                     .onClick(
                         {
                             etv => this.timer_1 = Timer.once(Duration.Zero, {
-                                => this.timeSring = "do after 1s delay"
+                                => launch { this.timeSring = "do after 1s delay" }
                             })
                         })
                 Button("Timer setTimeout_Max")
@@ -104,7 +83,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_1 = Timer.once(Duration.Max + Duration.second,
                                     {
-                                        => this.timeSring = "do after 1s delay"
+                                        => launch { this.timeSring = "do after 1s delay" }
                                     })
                             } catch (e: Exception) {
                                 logger("setTimeout_Max " + e.toString())
@@ -117,7 +96,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_1 = Timer.once(Duration.Min - Duration.second,
                                     {
-                                        => this.timeSring = "do after 1s delay"
+                                        => launch { this.timeSring = "do after 1s delay" }
                                     })
                             } catch (e: Exception) {
                                 logger("setTimeout_Min " + e.toString())
@@ -131,7 +110,7 @@ class ViewGlobal {
                         {
                             etv => this.timer_2 = Timer.repeat(Duration.Zero, 1000 * Duration.millisecond,
                                 {
-                                    => this.time++
+                                    => launch { this.time++ }
                                 })
                         })
                 Button("Timer setInterval_Delay_Max")
@@ -141,7 +120,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_2 = Timer.repeat(Duration.Max + Duration.second, 1000 * Duration.millisecond,
                                     {
-                                        => this.time++
+                                        => launch { this.time++ }
                                     })
                             } catch (e: Exception) {
                                 logger("setInterval_Delay_Max " + e.toString())
@@ -154,7 +133,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_2 = Timer.repeat(Duration.Min - Duration.second, 1000 * Duration.millisecond,
                                     {
-                                        => this.time++
+                                        => launch { this.time++ }
                                     })
                             } catch (e: Exception) {
                                 logger("setInterval_Delay_Min " + e.toString())
@@ -168,7 +147,7 @@ class ViewGlobal {
                         {
                             etv => try {
                                 this.timer_2 = Timer.repeat(Duration.Zero, Duration.Zero, {
-                                    => this.time++
+                                    => launch { this.time++ }
                                 })
                             } catch (e: Exception) {
                                 logger("setInterval_Interval_Zero " + e.toString())
@@ -181,7 +160,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_2 = Timer.repeat(Duration.Zero, Duration.Max + Duration.second,
                                     {
-                                        => this.time++
+                                        => launch { this.time++ }
                                     })
                             } catch (e: Exception) {
                                 logger("setInterval_Interval_Max " + e.toString())
@@ -194,7 +173,7 @@ class ViewGlobal {
                             etv => try {
                                 this.timer_2 = Timer.repeat(Duration.Zero, Duration.Min - Duration.second,
                                     {
-                                        => this.time++
+                                        => launch { this.time++ }
                                     })
                             } catch (e: Exception) {
                                 logger("setInterval_Interval_Min " + e.toString())
