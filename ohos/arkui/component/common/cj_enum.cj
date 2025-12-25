@@ -59,7 +59,7 @@ public enum IndexerAlign {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Start
     |
     /**
@@ -70,7 +70,7 @@ public enum IndexerAlign {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     End
     | ...
 
@@ -163,7 +163,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     NumberPassword
     |
     /**
@@ -173,7 +173,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     ScreenLockPassword
     |
     /**
@@ -183,7 +183,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     UserName
     |
     /**
@@ -193,7 +193,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     NewPassword
     |
     /**
@@ -203,7 +203,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     NumberDecimal
     |
     /**
@@ -213,7 +213,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Url
     |
     /**
@@ -223,7 +223,7 @@ public enum InputType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     OneTimeCode
     | ...
 
@@ -1385,7 +1385,7 @@ public enum TextAlign {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Justify
     | ...
 
@@ -1455,7 +1455,7 @@ public enum TextOverflow {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Marquee
     | ...
 
@@ -1517,7 +1517,7 @@ public enum WordBreak {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Hyphenation
     | ...
 
@@ -1649,7 +1649,7 @@ public enum ImageSize {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Fill
     | ...
 
@@ -1926,7 +1926,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     TopStart
     |
     /**
@@ -1936,7 +1936,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Top
     |
     /**
@@ -1946,7 +1946,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     TopEnd
     |
     /**
@@ -1956,7 +1956,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Start
     |
     /**
@@ -1966,7 +1966,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Center
     |
     /**
@@ -1976,7 +1976,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     End
     |
     /**
@@ -1986,7 +1986,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     BottomStart
     |
     /**
@@ -1996,7 +1996,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Bottom
     |
     /**
@@ -2006,7 +2006,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     BottomEnd
     |
     /**
@@ -2016,7 +2016,7 @@ public enum ImageFit {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Matrix
     | ...
 
@@ -2133,7 +2133,7 @@ public enum ScrollDirection {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     None
     |
     /**
@@ -2143,7 +2143,7 @@ public enum ScrollDirection {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Free
     | ...
 
@@ -2308,7 +2308,7 @@ public enum SliderStyle {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     None
     | ...
 
@@ -2727,7 +2727,7 @@ public enum SwiperDisplayMode {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     AutoLinear
     | ...
 
@@ -3008,7 +3008,7 @@ public enum Edge {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Center
     |
     /**
@@ -3018,7 +3018,7 @@ public enum Edge {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Baseline
     |
     /**
@@ -3029,7 +3029,7 @@ public enum Edge {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Middle
     | ...
 
@@ -4034,7 +4034,7 @@ public enum CopyOptions {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     CrossDevice
     | ...
 
@@ -4114,7 +4114,7 @@ public enum TouchType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     HoverEnter
     |
     /**
@@ -4124,7 +4124,7 @@ public enum TouchType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     HoverMove
     |
     /**
@@ -4134,7 +4134,7 @@ public enum TouchType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     HoverExit
     |
     /**
@@ -4144,7 +4144,7 @@ public enum TouchType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     HoverCancel
     | ...
 
@@ -4328,7 +4328,7 @@ public enum SourceType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Key
     |
     /**
@@ -4338,7 +4338,7 @@ public enum SourceType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Joystick
     | ...
 
@@ -4523,7 +4523,7 @@ public enum MouseAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     EnterWindow
     |
     /**
@@ -4533,7 +4533,7 @@ public enum MouseAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     LeaveWindow
     |
     /**
@@ -4543,7 +4543,7 @@ public enum MouseAction {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Cancel
     | ...
 
@@ -4606,7 +4606,7 @@ public enum KeySource {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Joystick
     | ...
 
@@ -4893,7 +4893,7 @@ public enum FunctionKey {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     DpadUp
     |
     /**
@@ -4903,7 +4903,7 @@ public enum FunctionKey {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     DpadDown
     |
     /**
@@ -4914,7 +4914,7 @@ public enum FunctionKey {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     DpadLeft
     |
     /**
@@ -4924,7 +4924,7 @@ public enum FunctionKey {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     DpadRight
     | ...
 
@@ -5264,7 +5264,7 @@ public enum PlaybackSpeed {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SpeedForward050X
     |
     /**
@@ -5274,7 +5274,7 @@ public enum PlaybackSpeed {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SpeedForward150X
     |
     /**
@@ -5284,7 +5284,7 @@ public enum PlaybackSpeed {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SpeedForward300X
     |
     /**
@@ -5294,7 +5294,7 @@ public enum PlaybackSpeed {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SpeedForward025X
     |
     /**
@@ -5304,7 +5304,7 @@ public enum PlaybackSpeed {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SpeedForward0125X
     | ...
 
@@ -5747,7 +5747,7 @@ public enum StickyStyle {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Both
     | ...
 
@@ -5808,7 +5808,7 @@ public enum RichEditorSpanType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Builder
     |
     /**
@@ -5818,7 +5818,7 @@ public enum RichEditorSpanType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Default
     | ...
 
@@ -5889,7 +5889,7 @@ public enum ImageSpanAlignment {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     FollowParagraph
     | ...
 
@@ -6736,7 +6736,7 @@ public enum ColoringStrategy {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Average
     |
     /**
@@ -6746,7 +6746,7 @@ public enum ColoringStrategy {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Primary
     | ...
 
@@ -7683,7 +7683,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     PassportNumber
     |
     /**
@@ -7695,7 +7695,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Validity
     |
     /**
@@ -7707,7 +7707,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     IssueAt
     |
     /**
@@ -7719,7 +7719,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Organization
     |
     /**
@@ -7731,7 +7731,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     TaxId
     |
     /**
@@ -7743,7 +7743,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     AddressCityAndState
     |
     /**
@@ -7754,7 +7754,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     FlightNumber
     |
     /**
@@ -7765,7 +7765,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     LicenseNumber
     |
     /**
@@ -7776,7 +7776,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     LicenseFileNumber
     |
     /**
@@ -7788,7 +7788,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     LicensePlate
     |
     /**
@@ -7799,7 +7799,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     EngineNumber
     |
     /**
@@ -7810,7 +7810,7 @@ public enum ContentType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     LicenseChassisNumber
     | ...
 
@@ -8737,7 +8737,7 @@ public enum DismissReason {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Slide
     | ...
 
@@ -8899,7 +8899,7 @@ public enum TextAreaType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     OneTimeCode
     | ...
 

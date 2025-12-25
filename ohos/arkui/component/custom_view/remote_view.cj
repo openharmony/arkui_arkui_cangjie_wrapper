@@ -149,6 +149,7 @@ public abstract class RemoteView <: FFIData {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public open func forceCompleteRerender(deep: Bool): Unit {}
     /**
      * The callback method after the custom component is built and it is migrated from class CustomComponent.
@@ -160,6 +161,7 @@ public abstract class RemoteView <: FFIData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func onDidBuild(): Unit {}
+    @!Hide
     protected open func aboutToReuseInternal(_: ReuseParams): Unit {}
     protected open func aboutToRecycleInternal(): Unit {}
     protected open func recycleSelf(_: String): Unit {}

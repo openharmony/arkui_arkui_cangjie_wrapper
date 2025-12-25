@@ -32,6 +32,7 @@ let MIN_ANGLE: Float64 = 0.0
 protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
     protected var child: ?() -> Unit = None
 
+    @!Hide
     protected open func pop(): Unit {
         unsafe {
             if (child.isNone()) {

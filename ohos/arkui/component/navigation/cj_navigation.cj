@@ -411,7 +411,7 @@ public enum BarStyle {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     SafeAreaPadding
     |
     ...

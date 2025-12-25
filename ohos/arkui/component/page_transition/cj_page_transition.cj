@@ -181,7 +181,7 @@ public enum SlideEffect {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Start
     |
     /**
@@ -191,7 +191,7 @@ public enum SlideEffect {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     End
     | ...
 

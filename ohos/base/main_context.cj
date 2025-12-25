@@ -56,7 +56,6 @@ public class MainThreadContext <: ThreadContext {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
     public func end(): Unit {}
 
     /**
@@ -68,7 +67,6 @@ public class MainThreadContext <: ThreadContext {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
     public func hasEnded(): Bool {
         hasEnded_
     }
