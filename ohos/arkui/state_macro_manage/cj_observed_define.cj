@@ -20,6 +20,7 @@ macro package ohos.arkui.state_macro_manage
 import std.ast.{Tokens, ClassDecl, VarDecl, parseDecl, ToTokens, Token}
 import std.collection.{ArrayList, HashSet}
 
+
 /**
  * example:
  * @Observed
@@ -47,50 +48,42 @@ import std.collection.{ArrayList, HashSet}
  * let with initializer (compile-time constant) is excluded since it cannot be reassigned.
  */
 public macro Observed(input: Tokens): Tokens {
-    checkObserved(input)
-    let decl = parseDecl(input)
-    let observedClass = (decl as ClassDecl).getOrThrow()
-    let classModifier = observedClass.modifiers
-    let classIdent = observedClass.identifier
-    let classBody = observedClass.body.decls
+    let finalResult = UISyntaxChecker.expectClassDecl(input, UIMacroKind.Observed)
+        .andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoInheritance(input, classDecl, UIMacroKind.Observed)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoOpenModifier(input, classDecl, UIMacroKind.Observed)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoConstructor(input, classDecl, UIMacroKind.Observed)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoDuplicateMemberNames(input, classDecl, UIMacroKind.Observed)
+        }
 
-    STATE_MANAGE_HANDLER.observedWithPublishInfo.add(classIdent.value, STATE_MANAGE_HANDLER.publishInformation)
+    return match(finalResult) {
+        case Success(classDecl) =>
+            STATE_MANAGE_HANDLER.observedWithPublishInfo.add(classDecl.identifier.value, STATE_MANAGE_HANDLER.publishInformation)
+            // generate set function, it will assign new value to all properties including @Publish, var and let.
+            let memberSetFunc = generateSetFunc(quote($(classDecl.identifier)), classDecl)
+            // generate init function
+            let initFunc = generateObservedInitFunc(classDecl)
 
-    // generate set function, it will assign new value to all properties including @Publish, var and let.
-    let memberSetFunc = generateSetFunc(quote($classIdent), observedClass)
+            // reset global var declaration in macro
+            STATE_MANAGE_HANDLER.publishInformation.clear()
+            let classModifier = classDecl.modifiers
+            let classIdent = classDecl.identifier
+            let classBody = classDecl.body.decls
 
-    // generate init function
-    let initFunc = generateObservedInitFunc(observedClass)
-
-    // reset global var declaration in macro
-    STATE_MANAGE_HANDLER.publishInformation.clear()
-
-    // emit all error in macro
-    DIAG.emit()
-
-    createClassDeclaration(
-        modifiers: quote($classModifier),
-        identifier: quote($classIdent),
-        superTypes: quote($OBSERVED_OBJECT),
-        body: quote(
-            $classBody
-            $initFunc
-            $memberSetFunc
-        )
-    )
-}
-
-func checkObserved(input: Tokens) {
-    let decl = parseDecl(input)
-    if (!(decl is ClassDecl)) {
-        DIAG.fatal(input, "Only class is supported in @Observed.")
-    }
-    let classDecl = (decl as ClassDecl).getOrThrow()
-    checkInitFunc(classDecl)
-    var superTypes = classDecl.superTypes
-
-    if (superTypes.size > 0) {
-        DIAG.error(input, "Observed class should not inherit other class or interface.")
+            createClassDeclaration(
+                modifiers: quote($classModifier),
+                identifier: quote($classIdent),
+                superTypes: quote($OBSERVED_OBJECT),
+                body: quote(
+                    $classBody
+                    $initFunc
+                    $memberSetFunc
+                )
+            )
+        case Err(tokens) => tokens
     }
 }
 

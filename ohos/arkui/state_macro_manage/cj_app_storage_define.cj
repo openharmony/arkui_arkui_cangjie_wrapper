@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{parseExpr, parseDecl, Tokens, LitConstExpr, VarDecl, Token}
+import std.ast.{Tokens, VarDecl, Token, setItem}
 import std.unicode.{UnicodeStringExtension}
 
 /**
@@ -26,23 +26,37 @@ import std.unicode.{UnicodeStringExtension}
  * @StorageLink["name"] var a: Int64 = 20
  */
 public macro StorageLink(attr: Tokens, input: Tokens): Tokens {
-    checkStateKindAndInit(input, StateKind.AppStorageLinkTy)
-    let attrExpr = parseExpr(attr)
-    checkStorageAttr(attrExpr)
-    let attrStr = match (attrExpr as LitConstExpr) {
-        case Some(lce) => lce.literal.value
-        case None => throw IllegalArgumentException("Invaild param from StorageLink")
+    let attrResult = UISyntaxChecker.checkStorageAttr(attr, UIMacroKind.StorageLink)
+    let attrStr = match (attrResult) {
+        case Success(s) => s
+        case Err(_) => return input
     }
 
-    let varDecl = match (parseDecl(input) as VarDecl) {
-        case Some(v) => v
-        case None => throw IllegalArgumentException("Invaild decl after StorageLink")
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.StorageLink)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.StorageLink)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkStorageLinkNoLet(input, varDecl, UIMacroKind.StorageLink)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.StorageLink)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.StorageLink)
+        }
+
+    match (finalResult) {
+        case Success(varDecl) =>
+            let identTok: Token = varDecl.identifier
+            if (!checkAppStorageTypeConflict(attrStr, varDecl, UIMacroKind.StorageLink)) {
+                setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                return input
+            }
+            STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStorageLinkTy, varDecl))
+            STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+            return genPropDeclNode(varDecl, StateKind.AppStorageLinkTy)
+        case Err(_) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            return input
     }
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStorageLinkTy, varDecl))
-    checkAppStorageTypeConflict(attrStr, varDecl)
-    STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-    return genProp(varDecl, StateKind.AppStorageLinkTy)
 }
 
 /**
@@ -51,23 +65,37 @@ public macro StorageLink(attr: Tokens, input: Tokens): Tokens {
  * @StorageProp["name"] let a: Int64 = 20
  */
 public macro StorageProp(attr: Tokens, input: Tokens): Tokens {
-    checkStateKindAndInit(input, StateKind.AppStoragePropTy)
-    let attrExpr = parseExpr(attr)
-    checkStorageAttr(attrExpr)
-    let attrStr = match (attrExpr as LitConstExpr) {
-        case Some(v) => v.literal.value
-        case None => throw IllegalArgumentException("Invaild param from StorageLink")
+    let attrResult = UISyntaxChecker.checkStorageAttr(attr, UIMacroKind.StorageProp)
+    let attrStr = match (attrResult) {
+        case Success(s) => s
+        case Err(_) => return input
     }
 
-    let varDecl = match (parseDecl(input) as VarDecl) {
-        case Some(v) => v
-        case None => throw IllegalArgumentException("Invaild decl after StorageLink")
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.StorageProp)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.StorageProp)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkStoragePropNoVar(input, varDecl, UIMacroKind.StorageProp)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.StorageProp)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.StorageProp)
+        }
+
+    match (finalResult) {
+        case Success(varDecl) =>
+            let identTok: Token = varDecl.identifier
+            if (!checkAppStorageTypeConflict(attrStr, varDecl, UIMacroKind.StorageProp)) {
+                setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                return input
+            }
+            STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStoragePropTy, varDecl))
+            STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+            return genPropDeclNode(varDecl, StateKind.AppStoragePropTy)
+        case Err(_) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            return input
     }
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStoragePropTy, varDecl))
-    checkAppStorageTypeConflict(attrStr, varDecl)
-    STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-    return genProp(varDecl, StateKind.AppStoragePropTy)
 }
 
 /**
@@ -75,8 +103,9 @@ public macro StorageProp(attr: Tokens, input: Tokens): Tokens {
  * conflict example:
  * @StorageLink["test"] var str: String = "test"
  * @StorageLink["test"] var int: Int64 = 0
+ * @return true if no conflict, false if type conflict (error reported)
  */
-func checkAppStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
+func checkAppStorageTypeConflict(attrStr: String, varDecl: VarDecl, macroCall: UIMacroKind): Bool {
     let varType = varDecl.declType
     let newTypeStr = varType.toTokens().toString().trim()
     let typeOption = STATE_MANAGE_HANDLER.appStorageAttrTypeInfo.get(attrStr)
@@ -84,8 +113,13 @@ func checkAppStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
         case Some(v) =>
             let originTypeStr = v.trim()
             if (originTypeStr != newTypeStr) {
-                DIAG.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
+                reportError(varDecl.toTokens(), MacroErrorCode.TypeConflict, macroCall,
+                    detail: "storage key '${attrStr}' has a type conflict: ${originTypeStr} vs ${newTypeStr}")
+                return false
             }
-        case _ => STATE_MANAGE_HANDLER.appStorageAttrTypeInfo.add(attrStr, newTypeStr)
+            true
+        case _ =>
+            STATE_MANAGE_HANDLER.appStorageAttrTypeInfo.add(attrStr, newTypeStr)
+            true
     }
 }

@@ -257,7 +257,7 @@ func generateProvideInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
 }
 
 func addInitConsume(identifier: String, ty: Tokens): Tokens {
-    var identTokenAssociated: Token = generateAssociatedToken(identifier)
+    var identTokenAssociated: Token = generateMangledToken(identifier)
     let consumeIdentifier = match (STATE_MANAGE_HANDLER.consumeVarDeclsMap.get(identifier)) {
         case Some(v) => v
         case _ => identifier

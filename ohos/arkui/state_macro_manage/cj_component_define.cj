@@ -17,50 +17,75 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
-import std.collection.{ArrayList}
+import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess,
+    Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl,
+    getChildMessages, Argument, DiagReportLevel, diagReport, Modifier, setItem}
+import std.collection.{ArrayList, HashSet}
 import std.unicode.{UnicodeStringExtension}
 
 public macro Component(input: Tokens): Tokens {
-    let classDecl = checkComponentSyntax(input)
-    let classModifier = classDecl.modifiers
-    let classIdent = classDecl.identifier
-    let classBody = classDecl.body
+    if (!checkInnerMacroExpandResult()) {
+        return input
+    }
+    let finalResult = UISyntaxChecker.expectClassDecl(input, UIMacroKind.Component)
+        .andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoInheritance(input, classDecl, UIMacroKind.Component)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoConstructor(input, classDecl, UIMacroKind.Component)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoDuplicateMemberNames(input, classDecl, UIMacroKind.Component)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkComponentNameNotBuiltIn(input, classDecl, UIMacroKind.Component,
+                MACRO_EXPAND_COMPONENTS)
+        }
 
-    checkChildMessage(classBody.decls, classDecl.identifier.value)
-    let classBodyAfterExpand = handleClassBody(classBody.decls)
-    let initFunc = generateInitFunc(classDecl)
-    let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
-    let updateParamFunc = generateUpdateParam(classDecl)
-    let rerenderFunc = handleRerender()
-    let forceRerendFunc = handleForceRerender()
-    let purgeVariableFunc = handlePurgeVariable(classDecl)
+    match(finalResult) {
+        case Success(classDecl) =>
+            if (!parseClassDeclMemberNodes(classDecl)) {
+                return input
+            }
+            let classModifier = classDecl.modifiers
+            let classIdent = classDecl.identifier
+            let classBody = classDecl.body
 
-    // record state with component and state kind
-    STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
+            checkChildMessage(classBody.decls, classDecl.identifier.value)
+            let classBodyAfterExpand = handleClassBody(classBody.decls)
+            let initFunc = generateInitFunc(classDecl)
+            let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
+            let updateParamFunc = generateUpdateParam(classDecl)
+            let rerenderFunc = handleRerender()
+            let forceRerendFunc = handleForceRerender()
+            let purgeVariableFunc = handlePurgeVariable(classDecl)
 
-    // reset global var declaration in macro
-    STATE_MANAGE_HANDLER.clearGlobalInComponent()
+            // record state with component and state kind
+            STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
 
-    // emit all error in component
-    DIAG.emit()
+            // reset global var declaration in macro
+            STATE_MANAGE_HANDLER.clearGlobalInComponent()
 
-    // generate class after expand.
-    createClassDeclaration(
-        modifiers: quote($classModifier),
-        identifier: quote($classIdent),
-        superTypes: quote($CUSTOM_VIEW),
-        body: quote(
-            $classBodyAfterExpand
-            $initFunc
-            $aboutTbDeleteFunc
-            $updateParamFunc
-            $rerenderFunc
-            $purgeVariableFunc
-            $forceRerendFunc
-        )
-    )
+            // emit all error in component
+            DIAG.emit()
+            setItem(MACRO_MSG_EXPANDED_COMPONENT, "")
+            // generate class after expand.
+            createClassDeclaration(
+                modifiers: quote($classModifier),
+                identifier: quote($classIdent),
+                superTypes: quote($CUSTOM_VIEW),
+                body: quote(
+                    $classBodyAfterExpand
+                    $initFunc
+                    $aboutTbDeleteFunc
+                    $updateParamFunc
+                    $rerenderFunc
+                    $purgeVariableFunc
+                    $forceRerendFunc
+                )
+            )
+        case Err(tokens) => 
+            return tokens
+    }
 }
+
 
 func isForEach(refExpr: RefExpr) {
     return COMPONENT_TYPE_FOREACH_LIST.contains(refExpr.identifier.value)
@@ -928,8 +953,13 @@ func handleCustomRender(input: Expr, thisView: Tokens): Tokens {
     handleReuseRender(funcName, input, callExpr, thisView)
 }
 
-enum ComponentType {
-    BuiltInComponent | CustomComponent | IfComponent | BuilderComponent | MethodCall
+/**
+ * Check if the direct member of MemberAccess is a component (not a method like onClick).
+ * Used to distinguish: xx.Text("") vs Text("").onClick({ => xxx })
+ */
+func isDirectMemberComponent(memAccess: MemberAccess): Bool {
+    let field = memAccess.field.value
+    return MACRO_EXPAND_COMPONENTS.contains(field)
 }
 
 func getComponentType(input: Expr): ComponentType {
@@ -990,6 +1020,7 @@ func generateFuncBody(funcBody: ArrayList<Node>, thisView: Tokens): Tokens {
                 case MethodCall => renderFunc = renderFunc
                     .append(Token(TokenKind.NL))
                     .append(handleMethodCallRender(value, thisView))
+                case _ => printUISyntaxError(each)
             }
             case _ => printUISyntaxError(each)
         }
@@ -1152,12 +1183,28 @@ func generateUpdateAssignment(value: (VariableKind, VarDecl)) {
 
 func generateWatchDecls(): Tokens {
     var watchDecls = Tokens()
-    for ((declType, variable, funcInfo) in STATE_MANAGE_HANDLER.watchDeclare) {
-        watchDecls = watchDecls + quote(
+    for ((declType, variable, funcInfo, originalTokens) in STATE_MANAGE_HANDLER.watchDeclare) {
+        let identStr = extractFirstIdentifierFromTokens(variable)
+        if (identStr.size > 0 && !STATE_MANAGE_HANDLER.stateInformation.contains(identStr)) {
+            reportError(originalTokens, MacroErrorCode.WatchMustDecorateStateVar, UIMacroKind.Watch)
+            return watchDecls
+        }
+        watchDecls = watchDecls.append(quote(
             this.declareWatch<$declType>($variable, $funcInfo)
-        )
+        ))
     }
     return watchDecls
+}
+
+func extractFirstIdentifierFromTokens(tokens: Tokens): String {
+    var i: Int64 = 0
+    while (i < tokens.size) {
+        if (tokens[i].kind == TokenKind.IDENTIFIER) {
+            return tokens[i].value
+        }
+        i += 1
+    }
+    return ""
 }
 
 func generateCustomDialogBindDecls(): Tokens {
@@ -1233,7 +1280,6 @@ func generateInitFunc(classDecl: ClassDecl) {
 
 func generateBuildFunc(funcDecl: FuncDecl) {
     var funcBody = funcDecl.block.nodes
-    checkBuildFunc(funcBody, funcDecl)
     funcBody = bindBuilderCtx(funcBody, quote(this))
 
     createMethodDeclaration(
@@ -1291,14 +1337,29 @@ func checkBinderValue(classBody: ArrayList<Decl>, binderValue: String): Bool {
 func checkChildMessage(classBody: ArrayList<Decl>, className: String) {
     let messages = getChildMessages("Binder")
     for (m in messages) {
-        if (!m.hasItem("IDENTIFIER")) {
+        if (!m.hasItem(MACRO_MSG_IDENTIFIER)) {
             continue
         }
-        let value1 = m.getString("IDENTIFIER")
+        let value1 = m.getString(MACRO_MSG_IDENTIFIER)
         if (!checkBinderValue(classBody, value1)) {
             DIAG.error(quote($value1), "${value1} is not a member of class ${className}")
         }
     }
+}
+
+func checkInnerMacroExpandResult(): Bool {
+    var macroDefines: HashSet<String> = HashSet([
+        "State", "Prop", "Link", "Watch","StorageProp", "StorageLink", "LocalStorageLink", "LocalStorageProp",
+        "Consume", "Provide"
+    ])
+    for (macroCall in macroDefines) {
+        for(message in getChildMessages(macroCall)) {
+            if (message.hasItem(MACRO_MSG_EXPANDED_FAILED)) {
+                return false
+            }
+        }
+    }
+    return true
 }
 
 func handleClassBody(classBody: ArrayList<Decl>) {
@@ -1390,54 +1451,46 @@ func handlePurgeVariable(classDecl: ClassDecl) {
     )
 }
 
+/**
+ * Register CustomDialogController var for code generation (bindView, setBuilder, releaseSelf).
+ * Syntax validation is done in diag_parser via UISyntaxChecker.checkCustomDialogControllerVarDecl.
+ */
 func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
+    if (!isNeeadGenerateCustomDialog(varDecl)) {
+        return
+    }
     var hasInitializer = false
     try {
         varDecl.expr
         hasInitializer = true
     } catch (e: Exception) {
-        hasInitializer = false
-    }
-    if (!hasInitializer) {
         return
     }
-
-    let expr = varDecl.expr
-    match (expr as CallExpr) {
-        case None => DIAG.fatal(quote($varDecl),
-            "${quote($varDecl)}, CustomDialogController can only create by CustomDialogController Constructer")
-        case _ => ()
+    match (varDecl.expr as CallExpr) {
+        case None => return
+        case Some(callExpr) =>
+            if (!isCustomdialogController(callExpr.callFunc.toTokens().toString().trim())) {
+                return
+            }
+            let params = callExpr.arguments
+            if (params.size != 1) {
+                return
+            }
+            match (params[0].expr as CallExpr) {
+                case None => return
+                case Some(optionsCallExpr) =>
+                    let optionsParams = optionsCallExpr.arguments
+                    if (optionsParams.size == 0) {
+                        return
+                    }
+                    match (optionsParams[0].expr as CallExpr) {
+                        case None => return
+                        case Some(optionsBuilder) =>
+                            STATE_MANAGE_HANDLER.customDialogInfo.add((varDecl.identifier, optionsBuilder))
+                            optionsParams.remove(at: 0)
+                    }
+            }
     }
-
-    let callExpr = (expr as CallExpr).getOrThrow()
-    let callfunc = callExpr.callFunc
-    if (!isCustomdialogController(callfunc.toTokens().toString().trim())) {
-        DIAG.fatal(quote($varDecl),
-            "${quote($varDecl)}, CustomDialogController can only create by CustomDialogController Constructer")
-    }
-    let params = callExpr.arguments
-    if (params.size != 1) {
-        return
-    }
-
-    let options = params[0].expr
-    match (options as CallExpr) {
-        case None => DIAG.fatal(quote($varDecl),
-            "${quote($varDecl)}, CustomDialogController can only create with CustomDialogControllerOptions")
-        case _ => ()
-    }
-    let optionsCallExpr = (options as CallExpr).getOrThrow()
-    let optionsParams = optionsCallExpr.arguments
-    let optionsBuilder = optionsParams[0].expr
-
-    match (optionsBuilder as CallExpr) {
-        case None => DIAG.fatal(quote($varDecl),
-            "${quote($varDecl)}, CustomDialogControllerOptions must contain a CustomDialog Builder")
-        case _ => ()
-    }
-
-    STATE_MANAGE_HANDLER.customDialogInfo.add((varDecl.identifier, (optionsBuilder as CallExpr).getOrThrow()))
-    optionsParams.remove(at: 0)
 }
 
 func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView: Tokens): Tokens {

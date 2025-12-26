@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, Argument, Token, ASTException, VarDecl, Expr, LitConstExpr, ClassDecl, PrimaryCtorDecl, FuncDecl, TokenKind, ToTokens, parseDecl, Visitor, parseExprFragment}
+import std.ast.{Tokens, Argument, Token, ASTException, VarDecl, Expr, LitConstExpr, ClassDecl, PrimaryCtorDecl, FuncDecl, TokenKind, ToTokens, parseDecl, Visitor}
 import std.collection.{ArrayList}
 
 /**
@@ -146,7 +146,7 @@ func genProp(varDecl: VarDecl, stateKind: StateKind): Tokens {
 
     let identTok: Token = varDecl.identifier
     let identTokStr: String = identTok.value
-    let identTokenAssociated: Token = generateAssociatedToken(identTokStr)
+    let identTokenAssociated: Token = generateMangledToken(identTokStr)
     let valType = varDecl.getTypeByInitializer()
 
     let propDecl = genPropDecl(varDecl, stateKind)
@@ -206,7 +206,7 @@ func getLocalStorageAttrByIdent(identTok: String) {
 func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
     var identTok: Token = varDecl.identifier
     var identTokStr: String = identTok.value
-    var identTokenAssociated: Token = generateAssociatedToken(identTokStr)
+    var identTokenAssociated: Token = generateMangledToken(identTokStr)
     var valType = varDecl.getTypeByInitializer()
 
     var setBody = Tokens()
@@ -262,7 +262,7 @@ func mangle(name: String): String {
     "stateVarDecl_" + name + "_"
 }
 
-func generateAssociatedToken(identTokStr: String): Token {
+func generateMangledToken(identTokStr: String): Token {
     Token(TokenKind.IDENTIFIER, mangle(identTokStr))
 }
 
@@ -355,17 +355,4 @@ func joinListToTokens(buffer: ArrayList<Tokens>, gap: Tokens): Tokens {
     }
     ret = ret + buffer[size]
     return ret
-}
-
-func isLocalStorageInterOp(attr: Tokens): Bool {
-    return !(attr.size == 1)
-}
-
-func checkLocalStorageInterOpAttr(attr: Tokens): Unit {
-    var e: Expr
-    var p: Int64
-    (e, p) = parseExprFragment(attr)
-    if (!isLiteral(e) || !isStringType(e) || attr[p].kind != TokenKind.COMMA || attr[p + 1].value != "InterOp") {
-        DIAG.fatal(quote($attr), "attribute invalid, must be like [\"name\", \"InterOp\"].")
-    }
 }

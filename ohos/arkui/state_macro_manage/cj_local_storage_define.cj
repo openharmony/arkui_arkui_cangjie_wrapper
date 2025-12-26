@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Token, Tokens, LitConstExpr, VarDecl, parseExpr, parseDecl}
+import std.ast.{Token, Tokens, LitConstExpr, VarDecl, parseExpr, parseDecl, setItem}
 import std.unicode.{UnicodeStringExtension}
 
 /**
@@ -27,29 +27,39 @@ import std.unicode.{UnicodeStringExtension}
  * @LocalStorageLink["name", "InterOp"] var a: Int64 = 20
  */
 public macro LocalStorageLink(attr: Tokens, input: Tokens): Tokens {
-    if (!isLocalStorageInterOp(attr)) {
-        checkStateKindAndInit(input, StateKind.LocalStorageLinkTy)
-        let attrExpr = parseExpr(attr)
-        checkStorageAttr(attrExpr)
-        let attrStr = match (attrExpr as LitConstExpr) {
-            case Some(lce) => lce.literal.value
-            case None => throw IllegalArgumentException("Invaild param from StorageLink")
-        }
-
-        let varDecl = match (parseDecl(input) as VarDecl) {
-            case Some(v) => v
-            case None => throw IllegalArgumentException(
-                "LocalStorageLink should be used to decorate the decl of variable")
-        }
-        let identTok: Token = varDecl.identifier
-        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStorageLinkTy, varDecl))
-        checkLocalStorageTypeConflict(attrStr, varDecl)
-        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-        return genProp(varDecl, StateKind.LocalStorageLinkTy)
-    } else {
-        checkStateKindAndInit(input, StateKind.LocalStorageLinkInterOpTy)
-        checkLocalStorageInterOpAttr(attr)
-        return genLocalStorage(attr, input, StateKind.LocalStorageLinkInterOpTy, VariableKind.LocalStorageLinkInterOpTy)
+    let attrResult = UISyntaxChecker.checkLocalStorageAttr(attr, UIMacroKind.LocalStorageLink)
+    match (attrResult) {
+        case Err(_) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            return input
+        case Success((isInterOp, attrStr)) =>
+            let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.LocalStorageLink)
+                    .andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.LocalStorageLink)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkStorageLinkNoLet(input, varDecl, UIMacroKind.LocalStorageLink)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.LocalStorageLink)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.LocalStorageLink)
+                    }
+            if (!isInterOp) {
+                return match (finalResult) {
+                    case Success(varDecl) =>
+                        let identTok: Token = varDecl.identifier
+                        if (!checkLocalStorageTypeConflict(attrStr, varDecl, UIMacroKind.LocalStorageLink)) {
+                            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                            return input
+                        }
+                        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStorageLinkTy, varDecl))
+                        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+                        setItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE, true)
+                        genPropDeclNode(varDecl, StateKind.LocalStorageLinkTy)
+                    case Err(_) => input
+                }
+            } else {
+                return genLocalStorage(attr, input, StateKind.LocalStorageLinkInterOpTy, VariableKind.LocalStorageLinkInterOpTy)
+            }
     }
 }
 
@@ -60,29 +70,41 @@ public macro LocalStorageLink(attr: Tokens, input: Tokens): Tokens {
  * @LocalStorageProp["name", "InterOp"] let a: Int64 = 20
  */
 public macro LocalStorageProp(attr: Tokens, input: Tokens): Tokens {
-    if (!isLocalStorageInterOp(attr)) {
-        checkStateKindAndInit(input, StateKind.LocalStoragePropTy)
-        let attrExpr = parseExpr(attr)
-        checkStorageAttr(attrExpr)
-        let attrStr = match (attrExpr as LitConstExpr) {
-            case Some(v) => v.literal.value
-            case None => throw IllegalArgumentException("Invaild param from LocalStorageProp")
-        }
-
-        let varDecl = match (parseDecl(input) as VarDecl) {
-            case Some(v) => v
-            case None => throw IllegalArgumentException(
-                "LocalStorageProp should be used to decorate the decl of variable")
-        }
-        let identTok: Token = varDecl.identifier
-        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStoragePropTy, varDecl))
-        checkLocalStorageTypeConflict(attrStr, varDecl)
-        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-        return genProp(varDecl, StateKind.LocalStoragePropTy)
-    } else {
-        checkStateKindAndInit(input, StateKind.LocalStoragePropInterOpTy)
-        checkLocalStorageInterOpAttr(attr)
-        return genLocalStorage(attr, input, StateKind.LocalStoragePropInterOpTy, VariableKind.LocalStoragePropInterOpTy)
+    let attrResult = UISyntaxChecker.checkLocalStorageAttr(attr, UIMacroKind.LocalStorageProp)
+    match (attrResult) {
+        case Err(_) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            return input
+        case Success((isInterOp, attrStr)) =>
+            let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.LocalStorageProp)
+                    .andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.LocalStorageProp)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkStoragePropNoVar(input, varDecl, UIMacroKind.LocalStorageProp)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.LocalStorageProp)
+                    }.andThen {
+                        varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.LocalStorageProp)
+                    }
+            if (!isInterOp) {
+                return match (finalResult) {
+                    case Success(varDecl) =>
+                        let identTok: Token = varDecl.identifier
+                        if (!checkLocalStorageTypeConflict(attrStr, varDecl, UIMacroKind.LocalStorageProp)) {
+                            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                            return input
+                        }
+                        STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStoragePropTy, varDecl))
+                        STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
+                        setItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE, true)
+                        genPropDeclNode(varDecl, StateKind.LocalStoragePropTy)
+                    case Err(_) =>
+                        setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                        input
+                }
+            } else {
+                return genLocalStorage(attr, input, StateKind.LocalStoragePropInterOpTy, VariableKind.LocalStoragePropInterOpTy)
+            }
     }
 }
 
@@ -91,8 +113,9 @@ public macro LocalStorageProp(attr: Tokens, input: Tokens): Tokens {
  * conflict example:
  * @StorageLink["test"] var str: String = "test"
  * @StorageLink["test"] var int: Int64 = 0
+ * @return true if no conflict, false if type conflict (error reported)
  */
-func checkLocalStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
+func checkLocalStorageTypeConflict(attrStr: String, varDecl: VarDecl, macroCall: UIMacroKind): Bool {
     let varType = varDecl.declType
     let newTypeStr = varType.toTokens().toString().trim()
     let typeOption = STATE_MANAGE_HANDLER.localStorageAttrTypeInfo.get(attrStr)
@@ -100,9 +123,14 @@ func checkLocalStorageTypeConflict(attrStr: String, varDecl: VarDecl): Unit {
         case Some(v) =>
             let originTypeStr = v.trim()
             if (originTypeStr != newTypeStr) {
-                DIAG.error(quote($varDecl), "error: ${attrStr} type conflicts!\n${originTypeStr} => ${newTypeStr}.")
+                reportError(varDecl.toTokens(), MacroErrorCode.TypeConflict, macroCall,
+                    detail: "storage key '${attrStr}' has a type conflict between '${originTypeStr}' and '${newTypeStr}'")
+                return false
             }
-        case _ => STATE_MANAGE_HANDLER.localStorageAttrTypeInfo.add(attrStr, newTypeStr)
+            true
+        case _ =>
+            STATE_MANAGE_HANDLER.localStorageAttrTypeInfo.add(attrStr, newTypeStr)
+            true
     }
 }
 

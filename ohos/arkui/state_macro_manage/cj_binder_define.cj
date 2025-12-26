@@ -17,24 +17,31 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{assertParentContext, parseExpr, Token, Tokens, MemberAccess, RefExpr, setItem}
+import std.ast.{Tokens, MemberAccess, RefExpr, setItem}
 
 public macro Binder(input: Tokens): Tokens {
-    assertParentContext("Component")
-    let expr = parseExpr(input)
-    match (expr) {
-        case memberAccess: MemberAccess =>
-            if (memberAccess.baseExpr is RefExpr) {
-                let refExpr = (memberAccess.baseExpr as RefExpr).getOrThrow()
-                if (refExpr.identifier.value == "this") {
-                    setItem("IDENTIFIER", memberAccess.field.value)
-                }
-            }
-        case refExpr: RefExpr => setItem("IDENTIFIER", refExpr.identifier.value)
-        case _ => throw IllegalArgumentException("Only MemberAccess or RefExpr is supported in @Binder.")
-    }
+    let finalResult = UISyntaxChecker.checkMustBeInComponent(input, UIMacroKind.Binder)
+        .andThen { _ => UISyntaxChecker.checkBinderExpr(input, UIMacroKind.Binder) }
 
-    return quote(
-        Bindable($input, { newValue => $input = newValue })
-    )
+    return match (finalResult) {
+        case Success(expr) =>
+            match (expr) {
+                case memberAccess: MemberAccess =>
+                    match (memberAccess.baseExpr as RefExpr) {
+                        case Some(baseRef) =>
+                            if (baseRef.identifier.value == "this") {
+                                setItem(MACRO_MSG_IDENTIFIER, memberAccess.field.value)
+                            }
+                        case None => ()
+                    }
+                case refExpr: RefExpr =>
+                    setItem(MACRO_MSG_IDENTIFIER, refExpr.identifier.value)
+                case _ => ()
+            }
+            quote(
+                Bindable($input, { newValue => $input = newValue })
+            )
+        case Err(tokens) =>
+            tokens
+    }
 }
