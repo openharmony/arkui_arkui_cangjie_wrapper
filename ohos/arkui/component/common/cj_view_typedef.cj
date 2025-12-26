@@ -168,7 +168,7 @@ public enum SheetType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     Side |
     /**
      * Defines content cover type.
@@ -177,7 +177,7 @@ public enum SheetType {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
-    @!Hide
+    @!Hide[isChecked: true]
     ContentCover
     | ...
 
