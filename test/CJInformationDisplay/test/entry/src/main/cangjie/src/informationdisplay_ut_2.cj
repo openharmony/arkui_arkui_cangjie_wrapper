@@ -70,7 +70,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testProgressCommonAttrs() {
         scrollTo("ViewProgress")
 
@@ -164,7 +164,7 @@ class InformationDisplayUT2 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testQrcode() {
         scrollTo("ViewQRCode")
 
@@ -209,7 +209,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRelativeContainer() {
         scrollTo("ViewRelativeContainer")
 
@@ -257,7 +257,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRelativeContainer3() {
         scrollTo("ViewRelativeContainer3")
 
@@ -272,7 +272,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testStackCommonAttrs() {
         scrollTo("ViewStack")
 
@@ -290,7 +290,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerCtor() {
         scrollTo("ViewTextTimer2")
         let TextTimer_1 = driver
@@ -300,7 +300,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerAttr() {
         scrollTo("ViewTextTimer2")
 
@@ -357,7 +357,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerAttr2() {
         scrollTo("ViewTextTimer2")
 
@@ -378,7 +378,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerAttr3() {
         scrollTo("ViewTextTimer2")
 
@@ -399,7 +399,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerAttr4() {
         scrollTo("ViewTextTimer2")
 
@@ -420,7 +420,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimerEvent() {
         scrollTo("ViewTextTimer2")
 
@@ -433,7 +433,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTimer() {
         scrollTo("ViewTextTimer")
         let inspector4 = getInspectorByKey("textTimer")
@@ -474,7 +474,7 @@ class InformationDisplayUT2 {
         driver.delayMs(200)
     }
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testVideo() {
         scrollTo("ViewVideo")
         var msgText = getContentFromText("msgText")
@@ -503,7 +503,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testVideoCtor2() {
         scrollTo("ViewVideo2")
 
@@ -521,7 +521,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testVideoAttrs() {
         scrollTo("ViewVideo2")
         let muted = driver.findComponent(On().id("muted")).getOrThrow()
@@ -543,7 +543,7 @@ class InformationDisplayUT2 {
         @Expect(enableAnalyzer.getText(), "false")
     }
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testVideoEvent() {
         scrollTo("ViewVideo2")
 
@@ -576,7 +576,7 @@ class InformationDisplayUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWebCommonAttrs() {
         scrollTo("ViewWeb")
         driver.delayMs(600)

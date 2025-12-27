@@ -65,7 +65,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAccessibility() {
         scrollTo("ViewAccessibility")
 
@@ -86,7 +86,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAnimation() {
         scrollTo("ViewAnimation")
 
@@ -101,7 +101,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAppStorage() {
         scrollTo("ViewAppstorage")
 
@@ -177,7 +177,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBackground() {
         scrollTo("ViewBackground")
 
@@ -209,7 +209,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBackgroundSetting2(){
 
         scrollTo("ViewBackground2")
@@ -235,14 +235,14 @@ class BasicCommonUT1 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBackgroundSetting3() {
         scrollTo("ViewBackground3")
     }
 
     // ViewBase
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBase() {
         scrollTo("ViewBase")
         driver.delayMs(600)
@@ -256,7 +256,7 @@ class BasicCommonUT1 {
 
     // BindContentCover
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBindContentcover() {
         scrollTo("ViewBindContentCover")
 
@@ -278,7 +278,7 @@ class BasicCommonUT1 {
 
     // border
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRender() {
         scrollTo("ViewBorder")
 
@@ -291,7 +291,7 @@ class BasicCommonUT1 {
     }
 
 //    @TestCase
-//    @Tag[APILevel19, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testBorderImage1() {
 //        scrollTo("ViewBorderImage")
 //        driver.delayMs(500)
@@ -339,7 +339,7 @@ class BasicCommonUT1 {
 //    }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAnimator() {
         scrollTo("ViewAnimator")
         let Create = driver.findComponent(On().id("CreateButton")).getOrThrow()
@@ -411,7 +411,7 @@ class BasicCommonUT1 {
 
     // test clickEffect
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testClickEffect() {
         scrollTo("ViewClickEffect")
 
@@ -434,7 +434,7 @@ class BasicCommonUT1 {
 
     // component snapshot unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testComponentSnapshotGet() {
         scrollTo("ViewComponentSnapshot")
         var button = driver.waitForComponent(On().id("generate_UI_snapshot"),500).getOrThrow()
@@ -448,7 +448,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testComponentSnapshotCreate() {
         scrollTo("ViewComponentSnapshot")
         driver.delayMs(500)
@@ -470,7 +470,7 @@ class BasicCommonUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testComponentSnapshotGetsync() {
         scrollTo("ViewComponentSnapshot")
         var button = driver.waitForComponent(On().id("generate_UI_snapshot_synchronously"),500).getOrThrow()

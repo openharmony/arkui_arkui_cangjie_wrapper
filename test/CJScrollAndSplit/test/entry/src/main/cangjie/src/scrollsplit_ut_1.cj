@@ -102,7 +102,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testColumnCommonAttrs() {
         scrollTo("ViewColumn")
 
@@ -191,7 +191,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFlexCommonAttrs() {
         scrollTo("ViewFlex")
 
@@ -227,7 +227,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testForeach() {
         scrollTo("ViewForeach")
 
@@ -269,7 +269,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridEvent() {
         scrollTo("ViewGrid")
         var pointers: PointerMatrix = PointerMatrix.create(1, 800)
@@ -298,7 +298,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGrid2Drag() {
         scrollTo("ViewGrid2")
         var pointers: PointerMatrix = PointerMatrix.create(1, 400)
@@ -316,7 +316,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testList2Drag() {
         scrollTo("ViewList2")
         var pointers: PointerMatrix = PointerMatrix.create(1, 800)
@@ -359,7 +359,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridCommonAttrs() {
         scrollTo("ViewGrid")
         let inspector_grid04 = getInspectorByKey("grid_case_04")
@@ -492,7 +492,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridColCtor() {
         scrollTo("ViewGridCol")
 
@@ -508,7 +508,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridColAttr() {
         scrollTo("ViewGridCol")
 
@@ -547,7 +547,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridColAttr2() {
         scrollTo("ViewGridCol")
 
@@ -586,7 +586,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridItemCommonAttrs() {
         scrollTo("ViewGridItem")
         let text1 = driver.findComponent(On().id("text1")).getOrThrow().getText()
@@ -649,7 +649,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridRowCtor() {
         scrollTo("ViewGridRow")
 
@@ -700,7 +700,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridRowAttr() {
         scrollTo("ViewGridRow")
 
@@ -727,7 +727,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridRowEvent() {
         scrollTo("ViewGridRow")
 
@@ -736,7 +736,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testIfelse() {
         scrollTo("ViewIfelse")
 
@@ -774,7 +774,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testListCommonAttrs() {
         scrollTo("ViewList")
 
@@ -816,7 +816,7 @@ class ScrollSplitUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testListControllerBottom() {
         scrollTo("ViewList")
 
@@ -835,7 +835,7 @@ class ScrollSplitUT1 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testListitemgroupCommonAttrs() {
         scrollTo("ViewListItemGroup")
         let inspector = getInspectorByKey("list_item_group")

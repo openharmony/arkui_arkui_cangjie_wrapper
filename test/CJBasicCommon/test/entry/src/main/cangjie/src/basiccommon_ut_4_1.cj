@@ -78,7 +78,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testUiContext() {
         scrollTo("ViewUiContext")
 
@@ -89,7 +89,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnum() {
         scrollTo("ViewEnum")
 
@@ -116,7 +116,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnum2() {
         scrollTo("ViewEnum2")
 
@@ -139,7 +139,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPopup003() {
         scrollTo("ViewPopup")
 
@@ -210,7 +210,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPopup004() {
         scrollTo("ViewPopup")
 
@@ -234,7 +234,7 @@ class BasicCommonUT41 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWindowEnhance2() {
         scrollTo("ViewWindowEnhance")
         var prop1: String = getContentFromText("message")

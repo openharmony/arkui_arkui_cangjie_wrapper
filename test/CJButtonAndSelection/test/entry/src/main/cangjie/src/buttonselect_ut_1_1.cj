@@ -69,7 +69,7 @@ class ButtonSelectUT11 {
 //
     // Button unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton001() {
         scrollTo("ViewButton")
 
@@ -89,7 +89,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton002() {
         scrollTo("ViewButton")
 
@@ -115,7 +115,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton003() {
         scrollTo("ViewButton")
 
@@ -142,7 +142,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton004() {
         scrollTo("ViewButton")
 
@@ -173,7 +173,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton005() {
         scrollTo("ViewButton")
 
@@ -206,7 +206,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton006() {
         scrollTo("ViewButton")
 
@@ -229,7 +229,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton007() {
         scrollTo("ViewButton")
 
@@ -249,7 +249,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton008() {
         scrollTo("ViewButton")
 
@@ -269,7 +269,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testButton009() {
         scrollTo("ViewButton")
 
@@ -293,7 +293,7 @@ class ButtonSelectUT11 {
 
     // checkbox unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCheckboxCommonAttrs() {
         scrollTo("ViewCheckbox")
 
@@ -316,7 +316,7 @@ class ButtonSelectUT11 {
 
     // Radio
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRadio() {
         scrollTo("ViewRadio")
 
@@ -334,7 +334,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRadio2() {
 
         // test radio: radioStyle,padding,
@@ -371,7 +371,7 @@ class ButtonSelectUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSelect2() {
         scrollTo("ViewSelect")
 
@@ -394,7 +394,7 @@ class ButtonSelectUT11 {
 
     // select unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSelect() {
         scrollTo("ViewSelect")
 

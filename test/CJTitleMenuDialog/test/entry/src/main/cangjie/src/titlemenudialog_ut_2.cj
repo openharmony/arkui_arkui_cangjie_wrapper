@@ -76,6 +76,7 @@ class TitleMenuDialogUT2 {
     }
 
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testGlobal() {
         scrollTo("ViewGlobal")
 

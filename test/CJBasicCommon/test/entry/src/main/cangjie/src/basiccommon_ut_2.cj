@@ -65,7 +65,7 @@ class BasicCommonUT2 {
 
     // ComponentUtils
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testComponentUtils() {
         scrollTo("ViewComponentUtils")
         let button = driver.findComponent(On().id("getRectangleById")).getOrThrow()
@@ -75,7 +75,7 @@ class BasicCommonUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLaunchHasContainer() {
         scrollTo("ViewConcurrency")
 
@@ -114,7 +114,7 @@ class BasicCommonUT2 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomView() {
         scrollTo("ViewCustomView")
         let click = driver.findComponent(On().id("click")).getOrThrow()
@@ -125,7 +125,7 @@ class BasicCommonUT2 {
 
     // Enablded
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnabledAttrs1() {
         scrollTo("ViewEnablded")
 
@@ -144,7 +144,7 @@ class BasicCommonUT2 {
 
     // flex lay out
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFlexLayout1() {
         scrollTo("ViewFlexLayout")
 
@@ -171,7 +171,7 @@ class BasicCommonUT2 {
 
     // GeometryTransition
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGeometrytransition() {
         scrollTo("ViewGeometryTransition")
 
@@ -188,7 +188,7 @@ class BasicCommonUT2 {
 
     // ViewInteractable
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMouse() {
         scrollTo("ViewInteractable")
 
@@ -210,7 +210,7 @@ class BasicCommonUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOtherInteractable() {
         scrollTo("ViewInteractable")
         // Drag
@@ -248,7 +248,7 @@ class BasicCommonUT2 {
 
     // layout constraints
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLayoutConstraints() {
         scrollTo("ViewLayoutConstraints")
 
@@ -263,7 +263,7 @@ class BasicCommonUT2 {
     }
 
    @TestCase
-   @Tag[APILevel16, TestLevel0]
+   @Tag[APILevel22, TestLevel0]
    func testLocalStorage() {
        scrollTo("ViewLocalStorage")
 

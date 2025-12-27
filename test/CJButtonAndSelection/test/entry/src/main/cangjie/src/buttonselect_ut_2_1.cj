@@ -64,7 +64,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSliderCommonAttrs() {
         scrollTo("ViewSlider")
 
@@ -214,7 +214,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerModifiedColor(){
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("modified_color")).getOrThrow()
@@ -233,7 +233,7 @@ class ButtonSelectUT21 {
         @Expect(picker2, "TextPicker")
     }
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerDividerEffect(){
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("divider_effect")).getOrThrow()
@@ -255,7 +255,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerWithNoDividerEffect(){
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("no_divider_effect")).getOrThrow()
@@ -272,7 +272,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerFadingEffect(){
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("fading_effect")).getOrThrow()
@@ -292,7 +292,7 @@ class ButtonSelectUT21 {
 
     // toggle unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testToggleCommonAttrs() {
         scrollTo("ViewToggle")
 
@@ -378,7 +378,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAnimationModeSetEdgeEffectSetTabsExample1() {
         scrollTo("ViewTab")
         clickTabsExample("ButtonTabsExample1")
@@ -396,7 +396,7 @@ class ButtonSelectUT21 {
 
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarBackgroundColorSetBarBackgroundBlurStyleSetBarBackgroundEffectSetTabsExample11() {
         clickTabsExample("ButtonTabsExample11")
 
@@ -416,7 +416,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarGridAlignSetOnTabBarClickTabsExample5() {
         clickTabsExample("ButtonTabsExample5")
 
@@ -454,7 +454,7 @@ class ButtonSelectUT21 {
 
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDefaultValueCustomContentTransitionTabsExample7() {
         clickTabsExample("ButtonTabsExample7")
 
@@ -504,7 +504,7 @@ class ButtonSelectUT21 {
     }
 
 //    @TestCase
-//    @Tag[APILevel19, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testOnAnimationStartOnAnimationEndOnGestureSwipeTabsExample9() {
 //        scrollTo("ViewTab")
 //        clickTabsExample("ButtonTabsExample9")
@@ -524,7 +524,7 @@ class ButtonSelectUT21 {
 
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOnContentWillChangeTabsExample13() {
         clickTabsExample("ButtonTabsExample13")
         driver.findComponent(On().id("buttonTabsExample13")).getOrThrow().click()
@@ -532,7 +532,7 @@ class ButtonSelectUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarModeSetTabsExample6() {
         driver.delayMs(500)
         clickTabsExample("ButtonTabsExample6")

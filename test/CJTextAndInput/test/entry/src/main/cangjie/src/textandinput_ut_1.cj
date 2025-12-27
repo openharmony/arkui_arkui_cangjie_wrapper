@@ -119,7 +119,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFont() {
         scrollTo("ViewFont")
 
@@ -175,7 +175,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanInit() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imagespaninit started")
@@ -203,7 +203,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanColorfilter() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imageSpanColorfilter started")
@@ -229,7 +229,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanAlt() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imageSpanAlt started")
@@ -252,7 +252,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanObjectFit() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imageSpanObjectfit started")
@@ -274,7 +274,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanVerticalAlign() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imageSpanVerticalAlign started")
@@ -296,7 +296,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSpanEvent() {
         scrollTo("ViewImageSpan")
         Hilog.error(1, "Cangjie-Test", "test_imageSpanEvent started")
@@ -311,7 +311,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSearch() {
         scrollTo("ViewSearch")
 
@@ -396,7 +396,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRicheditor() {
         scrollTo("ViewRichEditor")
         driver.delayMs(800)
@@ -426,7 +426,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRicheditor2() {
         scrollTo("ViewRichEditor")
         driver.delayMs(800)
@@ -480,7 +480,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRichText1() {
         scrollTo("ViewRichText")
         driver.delayMs(800)
@@ -499,7 +499,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRichText2() {
         driver.delayMs(1000)
         scrollTo("ViewRichText")
@@ -512,7 +512,7 @@ class TextAndInputUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSpanCommonAttrs() {
         scrollTo("ViewSpan")
 

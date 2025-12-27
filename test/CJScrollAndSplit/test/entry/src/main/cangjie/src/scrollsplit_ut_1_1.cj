@@ -78,7 +78,7 @@ class ScrollSplitUT11 {
 
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLazyforeach() {
         scrollTo("ViewLazyforeach")
 
@@ -94,7 +94,7 @@ class ScrollSplitUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLazyforeachDataoptions(){
         scrollTo("ViewLazyforeachDataOptions")
 
@@ -111,7 +111,7 @@ class ScrollSplitUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testListitemCommonAttrs() {
         scrollTo("ViewListItem")
 
@@ -153,7 +153,7 @@ class ScrollSplitUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGridItem() {
         scrollTo("ViewGridItem")
 
