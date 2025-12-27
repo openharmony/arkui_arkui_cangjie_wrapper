@@ -247,7 +247,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
 
     protected override func backgroundColorInner(value: ?ResourceColor): This {
         unsafe {
-            FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
+            FfiOHOSAceFrameworkNavdestinationSetBackgroundColor(transAppResourceToResourceColor(value ?? Color.White))
         }
         this
     }
