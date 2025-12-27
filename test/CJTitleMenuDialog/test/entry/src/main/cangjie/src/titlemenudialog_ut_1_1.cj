@@ -64,7 +64,7 @@ class TitleMenuDialogUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testActionSheet() {
         scrollTo("ViewActionSheet")
         var button = driver.findComponent(On().id("action_sheet_button1")).getOrThrow()
@@ -167,7 +167,7 @@ class TitleMenuDialogUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMenu() {
         scrollTo("ViewMenu")
         let inspector = getInspectorByKey("menuComponent")
@@ -192,7 +192,7 @@ class TitleMenuDialogUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMenuBindMenuComponent() {
         scrollTo("ViewMenuBindMenu")
         driver.findComponent(On().id("Test_Button_04")).getOrThrow().click()
@@ -225,7 +225,7 @@ class TitleMenuDialogUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMenucontrolComponent() {
         scrollTo("ViewMenucontrol")
 
@@ -250,7 +250,7 @@ class TitleMenuDialogUT1 {
         Hilog.info(0, "0", "CangjieTest", "end ViewMenucontrol")
     }
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMenuitem() {
         Hilog.info(0, "0", "CangjieTest", "run ViewMenuItem")
         scrollTo("ViewMenuItem")

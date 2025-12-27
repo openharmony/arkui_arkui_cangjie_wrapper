@@ -58,7 +58,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testText() {
         Hilog.info(1, "Cangjie-Test", "test_text start")
         let firstButton = driver.findComponent(On().id("textController")).getOrThrow()
@@ -74,7 +74,7 @@ class BasicCommonUTHello {
 
      //add1
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testViewArray() {
         Hilog.info(1, "Cangjie-Test", "test_viewArray start")
         let helloCangjie = driver.findComponent(On().id("helloCangjie")).getOrThrow()
@@ -88,7 +88,7 @@ class BasicCommonUTHello {
     }
 
 //    @TestCase
-//    @Tag[APILevel12, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testBigint() {
 //        Hilog.info(1, "Cangjie-Test", "test_bigint start")
 //        var vectorFloat64: FFIVectorFloat64 = FFIVectorFloat64(10)
@@ -169,7 +169,7 @@ class BasicCommonUTHello {
 //    }
 
 //    @TestCase
-//    @Tag[APILevel16, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testFFIVectorNavigationItem() {
 //        Hilog.info(1, "Cangjie-Test", "test_FFIVectorNavigationItem start")
 //        try {
@@ -188,7 +188,7 @@ class BasicCommonUTHello {
 
      //add1
 //    @TestCase
-//    @Tag[APILevel16, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testNavigationItemFFI() {
 //        Hilog.info(1, "Cangjie-Test", "test_NavigationItemFFI start")
 //        try {
@@ -211,7 +211,7 @@ class BasicCommonUTHello {
     //
 
 //    @TestCase
-//    @Tag[APILevel16, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testGetOrThrow() {
 //        Hilog.info(1, "Cangjie-Test", "test_getOrThrow start")
 //        var msg = "msg"
@@ -227,7 +227,7 @@ class BasicCommonUTHello {
 //    }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLengthProp() {
         Hilog.info(1, "Cangjie-Test", "test_lengthProp start")
         var float_a: Float64 = 30.0
@@ -259,7 +259,7 @@ class BasicCommonUTHello {
     }
 
 //    @TestCase
-//    @Tag[APILevel16, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testForEach() {
 //        Hilog.info(1, "Cangjie-Test", "test_forEach start")
 //        try {
@@ -280,7 +280,7 @@ class BasicCommonUTHello {
 //    }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomview() {
         Hilog.info(1, "Cangjie-Test", "test_customview start")
         var message = "test_ObservedObject success"
@@ -342,7 +342,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-     @Tag[APILevel16, TestLevel0]
+     @Tag[APILevel22, TestLevel0]
     func testCustomview2() {
         Hilog.info(1, "Cangjie-Test", "test_customview2 start")
         var message = "test_customview2 success"
@@ -360,7 +360,7 @@ class BasicCommonUTHello {
     }
 
 //    @TestCase
-//    @Tag[APILevel16, TestLevel0]
+//    @Tag[APILevel22, TestLevel0]
 //    func testView() {
 //        Hilog.info(1, "Cangjie-Test", "test_view start")
 //        var message = ""
@@ -379,7 +379,7 @@ class BasicCommonUTHello {
 //    }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testView2() {
         Hilog.info(1, "Cangjie-Test", "test_view2 start")
 //        try {
@@ -399,7 +399,7 @@ class BasicCommonUTHello {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLazyforEach() {
         Hilog.info(1, "Cangjie-Test", "test_lazyforEach start")
 //        try {
@@ -412,7 +412,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-     @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel22, TestLevel0]
     func testViewbuild() {
         Hilog.info(1, "Cangjie-Test", "test_viewbuild start")
         var message = "Invalid args or ret"
@@ -424,7 +424,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testResourceToUInt() {
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt start")
         var message = "Valid args or ret"
@@ -440,7 +440,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLengthValue() {
         Hilog.info(1, "Cangjie-Test", "test_length_value start")
         var message1 = "get value success"
@@ -466,7 +466,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-     @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel22, TestLevel0]
     func testRecycle() {
         Hilog.info(1, "Cangjie-Test", "test_Recycle start")
         var message = "test_Recycle success"
@@ -482,7 +482,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOpenView() {
         Hilog.info(1, "Cangjie-Test", "test_openView start")
         var message = "test_openView success"
@@ -497,7 +497,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGetLastWindow03() {
         Hilog.info(1, "Cangjie-Test", "test_getLastWindow_03 start")
         let displayClass = getDefaultDisplaySync()
@@ -544,7 +544,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGetLastWindow02() {
         Hilog.info(1, "Cangjie-Test", "test_getLastWindow_02 start")
             var mainWindow = Global.getMainWindow()
@@ -562,7 +562,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRemoteView() {
         Hilog.info(1, "Cangjie-Test", "test_remoteView start")
         var message = "test_remoteView success"
@@ -578,7 +578,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testObservable() {
         Hilog.info(1, "Cangjie-Test", "test_Observable start")
         var message = "test_Observable success"
@@ -604,7 +604,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testObservedObject() {
         Hilog.info(1, "Cangjie-Test", "test_ObservedObject start")
         var message = "test_ObservedObject success"
@@ -620,7 +620,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnvironment() {
         Hilog.info(1, "Cangjie-Test", "test_Environment start")
         var message = "test_Environment success"
@@ -651,7 +651,7 @@ class BasicCommonUTHello {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testObservedProperty() {
         Hilog.info(1, "Cangjie-Test", "test_observedProperty start")
         var message = "test_observedProperty success"
@@ -677,7 +677,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnum() {
         Hilog.info(1, "Cangjie-Test", "test_enum start")
         var panDirection = PanDirection.None | PanDirection.Left
@@ -687,7 +687,7 @@ class BasicCommonUTHello {
 
      //add1
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEmptyComponent() {
         Hilog.info(1, "Cangjie-Test", "test_emptyComponent start")
         var emptyComponent = EmptyComponent()
@@ -741,7 +741,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRicheditor() {
         Hilog.info(1, "Cangjie-Test", "test_richeditor start")
         var gridColOption = GridColOptions(33)
@@ -759,7 +759,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDisplay() {
         Hilog.info(1, "Cangjie-Test", "test_display start")
         try {
@@ -809,7 +809,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLength() {
         Hilog.info(1, "Cangjie-Test", "test_length start")
         var px1 = LengthUnit.Px.getValue()
@@ -825,7 +825,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPageTransitionEnter() {
         Hilog.info(1, "Cangjie-Test", "test_PageTransitionEnter start")
         var pageTransitionEnter1: PageTransitionEnter = PageTransitionEnter()
@@ -852,7 +852,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPromptAction() {
         Hilog.info(1, "Cangjie-Test", "test_prompt_action start")
         var baseDialogOptions = BaseDialogOptions(maskRect: Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent))
@@ -866,7 +866,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWindow() {
         Hilog.info(1, "Cangjie-Test", "test_window start")
         var rectA: WindowRect = WindowRect(left: 3, top: 3, width: 3, height: 3)
@@ -911,7 +911,7 @@ class BasicCommonUTHello {
     }
 
     @TestCase
-    @Tag[APILevel16, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWindow2() {
         Hilog.info(1, "Cangjie-Test", "test_window2 start")
         let mainWindow: Window = Global.getMainWindow()

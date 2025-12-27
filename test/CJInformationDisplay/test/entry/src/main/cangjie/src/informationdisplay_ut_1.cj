@@ -71,7 +71,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlphabetIndexerCommonAttrs() {
         scrollTo("ViewAlphabetIndexer")
 
@@ -104,7 +104,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlphabetIndexerOnselectA() {
         scrollTo("ViewAlphabetIndexer")
         let indexer = driver.findComponent(On().id("my_alphabet_indexer")).getOrThrow()
@@ -135,7 +135,7 @@ class InformationDisplayUT1 {
         @Expect(textC, "Chu Cai Chen ")
     }
 @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlphabetIndexer1OnselectA() {
         scrollTo("ViewAlphabetIndexer")
         let indexer = driver.findComponent(On().id("my_alphabet_indexer_1")).getOrThrow()
@@ -166,7 +166,7 @@ class InformationDisplayUT1 {
         @Expect(textC, "Chu Cai Chen ")
     }
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBadgeCommonAttrs() {
         scrollTo("ViewBadge")
         let inspector1 = getInspectorByKey("my_badge1")
@@ -247,7 +247,7 @@ class InformationDisplayUT1 {
 
     // Counter
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCounter() {
         scrollTo("ViewCounter")
         let count = driver.findComponent(On().id("counter1")).getOrThrow()
@@ -304,7 +304,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatapanelCommonAttrs() {
         scrollTo("ViewDataPanel")
 
@@ -369,7 +369,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBlankCommonAttrs() {
         scrollTo("ViewBlank")
 
@@ -390,7 +390,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDivider() {
         scrollTo("ViewDivider")
 
@@ -414,7 +414,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGauge() {
         scrollTo("ViewGauge")
 
@@ -447,7 +447,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGauge5() {
         scrollTo("ViewGauge")
 
@@ -476,7 +476,7 @@ class InformationDisplayUT1 {
         @Expect(indicator.contains("SystemStyle"))
     }
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGauge7() {
         scrollTo("ViewGauge")
 
@@ -507,7 +507,7 @@ class InformationDisplayUT1 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPatternlock2() {
         scrollTo("ViewPatternLock2")
 
@@ -552,7 +552,7 @@ class InformationDisplayUT1 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLoadingprogressCommonAttrs001() {
         scrollTo("ViewLoadingProgress")
 

@@ -62,7 +62,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAccessibility() {
         scrollTo("ViewAccessibility")
 
@@ -80,7 +80,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlertDialog() {
         scrollTo("ViewAlertDialog")
 
@@ -94,7 +94,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlertDialogButtons() {
         scrollTo("ViewAlertDialog")
 
@@ -184,7 +184,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testContextMenu() {
         scrollTo("ViewContextMenu")
         let inspector = getInspectorByKey("my_menu")
@@ -200,7 +200,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomDialog() {
         scrollTo("ViewCustomDialog")
         driver.delayMs(1000)
@@ -211,7 +211,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOpenDialog() {
         scrollTo("ViewCustomDialog")
 
@@ -227,7 +227,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomdialog2() {
         scrollTo("ViewCustomDialog2")
         var button = driver.findComponent(On().id("open_button1")).getOrThrow()
@@ -284,7 +284,7 @@ class TitleMenuDialogUT11 {
 
     // data picker unittest
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerCommonAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -304,7 +304,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerClickAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -323,7 +323,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerSwpieAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -342,7 +342,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerDefaultAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -365,7 +365,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerdialog() {
         scrollTo("ViewDatePickerDialog")
         let show_datePickerDialog = driver.findComponent(On().id("show_datePickerDialog1")).getOrThrow()

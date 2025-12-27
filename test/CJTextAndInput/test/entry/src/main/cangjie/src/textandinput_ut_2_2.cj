@@ -67,7 +67,7 @@ class TextAndInputUT22 {
 
     // text unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextCommonAttrs() {
         scrollTo("ViewText")
 
@@ -89,7 +89,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextFontAttrs() {
         scrollTo("ViewText")
 
@@ -115,7 +115,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextAlignAttrs() {
         scrollTo("ViewText")
 
@@ -134,7 +134,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextDecorationAttrs() {
         scrollTo("ViewText")
 
@@ -150,7 +150,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextFontSizeAttrs() {
         scrollTo("ViewText")
 
@@ -173,7 +173,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextOverFlowAttrs() {
         scrollTo("ViewText")
 
@@ -188,7 +188,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextTextCaseAttrs() {
         scrollTo("ViewText")
 
@@ -203,7 +203,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextForegroundColorAttrs() {
         scrollTo("ViewText")
 
@@ -219,7 +219,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextFont() {
         scrollTo("ViewText")
 
@@ -242,7 +242,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextDefaultValue() {
         scrollTo("ViewText")
 
@@ -323,7 +323,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextGivenSettingValue() {
         scrollTo("ViewText")
 
@@ -409,7 +409,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextResource() {
         scrollTo("ViewText")
 
@@ -444,7 +444,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextDetectConfig() {
         scrollTo("ViewText")
 
@@ -470,7 +470,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue1() {
         scrollTo("ViewText")
 
@@ -488,7 +488,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue2() {
         scrollTo("ViewText")
 
@@ -512,7 +512,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue3() {
         scrollTo("ViewText")
 
@@ -533,7 +533,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue4() {
         scrollTo("ViewText")
 
@@ -548,7 +548,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue5() {
         scrollTo("ViewText")
 
@@ -566,7 +566,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue6() {
         scrollTo("ViewText")
 
@@ -584,7 +584,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue11() {
         scrollTo("ViewText")
 
@@ -608,7 +608,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextBoundaryValue12() {
         scrollTo("ViewText")
 
@@ -626,7 +626,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextCombine1() {
         scrollTo("ViewText")
 
@@ -647,7 +647,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextHeightAdaptivePolicy() {
         scrollTo("ViewText")
 
@@ -680,7 +680,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextCombine2() {
         scrollTo("ViewText")
         let inspector = getInspectorByKey("TextCombine5")
@@ -690,7 +690,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextCombine7() {
         scrollTo("ViewText")
 
@@ -723,7 +723,7 @@ class TextAndInputUT22 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextEditMenuOptions() {
         scrollTo("ViewText")
 

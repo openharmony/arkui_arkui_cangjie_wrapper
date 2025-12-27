@@ -63,7 +63,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testStepper() {
         scrollTo("ViewStepper")
         // OnNext
@@ -117,7 +117,7 @@ class ButtonSelectUT2 {
 
     // ViewStepper
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testStepperItemCommonAttrs() {
         scrollTo("ViewStepper")
 
@@ -133,7 +133,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTabContent() {
         scrollTo("ViewTabContent")
 
@@ -384,7 +384,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTabContentOnWillShowAndWillHide() {
         scrollTo("ViewTabContent")
 
@@ -396,7 +396,7 @@ class ButtonSelectUT2 {
 
     // ViewTextPicker
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextPicker() {
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("TextPicker1")).getOrThrow()
@@ -408,7 +408,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerHeightLength() {
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("height_length")).getOrThrow()
@@ -428,7 +428,7 @@ class ButtonSelectUT2 {
     // toggle unittest
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarPositionSetFadingEdgeSetTabsExample3() {
         scrollTo("ViewTab")
 
@@ -453,7 +453,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarOverlapSetTabsExample4() {
         clickTabsExample("ButtonTabsExample4")
 
@@ -473,7 +473,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDividerSetTabsExample2() {
         clickTabsExample("ButtonTabsExample2")
 
@@ -495,7 +495,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOnContentWillChangeTabsExample8() {
         clickTabsExample("ButtonTabsExample8")
         driver.findComponent(On().text("首页")).getOrThrow().click()
@@ -503,10 +503,13 @@ class ButtonSelectUT2 {
 
         driver.waitForComponent(On().text("推荐"), 1000).getOrThrow().click()
         @Expect(driver.waitForComponent(On().id("currentIndex"),1000).getOrThrow().getText(), "2")
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBackgroundColorForNavDestination() {
         scrollTo("ViewNavigation")
         driver.findComponent(On().id("pageHomeButton")).getOrThrow().click()
