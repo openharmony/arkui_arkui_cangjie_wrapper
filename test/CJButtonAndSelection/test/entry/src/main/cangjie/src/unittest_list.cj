@@ -44,5 +44,6 @@ let UT2 = [
     "ViewTab",
     "ViewTabContent",
     "ViewTextPicker",
-    "ViewToggle"
+    "ViewToggle",
+    "ViewNavigation"
 ]

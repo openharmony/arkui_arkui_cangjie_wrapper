@@ -504,4 +504,39 @@ class ButtonSelectUT2 {
         driver.waitForComponent(On().text("推荐"), 1000).getOrThrow().click()
         @Expect(driver.waitForComponent(On().id("currentIndex"),1000).getOrThrow().getText(), "2")
     }
+
+    @TestCase
+    @Tag[APILevel12, TestLevel0]
+    func testBackgroundColorForNavDestination() {
+        scrollTo("ViewNavigation")
+        driver.findComponent(On().id("pageHomeButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // Set backgroundColor
+        var inspector = getInspectorByKey("navDestinationOne")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        var backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
+        @Expect(backgroundColor, "\"#FFFF0000\"")
+
+        driver.findComponent(On().id("pageOneButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // Default value
+        inspector = getInspectorByKey("navDestinationTwo")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
+        @Expect(backgroundColor, "\"#FFFFFFFF\"")
+
+        driver.findComponent(On().id("pageTwoButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // Set Option.None
+        inspector = getInspectorByKey("navDestinationThree")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
+        @Expect(backgroundColor, "\"#FFFFFFFF\"")
+    }
 }
