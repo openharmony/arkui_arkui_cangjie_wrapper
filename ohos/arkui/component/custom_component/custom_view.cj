@@ -249,8 +249,7 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public func updateDirtyElements(): Unit {
         do {
-            let deletedElmtIds = nativeView_inner__.getDeletedElemtIds()
-            this.purgeDeletedElmtIds(deletedElmtIds)
+            this.purgeDeletedElmtIds()
             let arr = dirtDescendantElementIds_inner__.toArray()
             arr.sortBy(
                 comparator: {
@@ -277,22 +276,20 @@ public abstract class CustomView <: RemoteView & Observer {
         } while (this.dirtDescendantElementIds_inner__.size > 0)
     }
 
-    protected func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
-        if (rmElmtIds.size == 0) {
-            return
+    protected func purgeDeleteElmtId(rmElmtId: Int64): Bool {
+        match (updateFuncByElmtId_inner__.remove(rmElmtId)) {
+            case None => false
+            case _ =>
+                purgeVariableDependenciesOnElmtId(rmElmtId)
+                // Remove element ID from ElementIdToOwningViewPU_ mapping
+                uiNodeRegisterProxy.unregisterElementId(rmElmtId)
+                true
         }
+    }
 
-        let removedElmtIds: ArrayList<Int64> = ArrayList<Int64>()
-
-        for (elmtId in rmElmtIds) {
-            match (updateFuncByElmtId_inner__.remove(elmtId)) {
-                case None => ()
-                case _ =>
-                    purgeVariableDependenciesOnElmtId(elmtId)
-                    removedElmtIds.add(elmtId)
-            }
-        }
-        nativeView_inner__.deletedElmtIdsHaveBeenPurged(removedElmtIds);
+    protected func purgeDeletedElmtIds() {
+        uiNodeRegisterProxy.obtainDeletedElmtIds()
+        uiNodeRegisterProxy.unregisterElmtIdsFromIViews()
     }
 
     /**
@@ -330,7 +327,8 @@ public abstract class CustomView <: RemoteView & Observer {
             itemGenFunc(arr[idx], idx)
             ForEach<T>.createNewChildFinish(id)
         }
-        this.purgeDeletedElmtIds(setIdResult.removedChildElmtIds)
+        uiNodeRegisterProxy.unregisterRemovedElmtsFromViewPUs(setIdResult.removedChildElmtIds)
+        this.purgeDeletedElmtIds()
     }
 
     /**
@@ -349,6 +347,8 @@ public abstract class CustomView <: RemoteView & Observer {
         compilerAssignedUpdateFunc(elmtId, true).initial()
         ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
+        // Register element ID to owning view mapping
+        uiNodeRegisterProxy.registerElementId(elmtId, this)
         return
     }
 
@@ -693,6 +693,16 @@ public abstract class CustomView <: RemoteView & Observer {
     public func aboutToBeDeleted(): Unit
 
     protected func aboutToBeDeletedInternal(): Unit {
+        this.purgeDeletedElmtIds()
+
+        this.updateFuncByElmtId_inner__.clear()
+        this.provideVars_inner__.clear()
+        this.watchedProps_inner__.clear()
+        this.dirtDescendantElementIds_inner__.clear()
+        this.propsUsedForRender_inner__.clear()
+        this.lazyChildren_inner__.clear()
+        this.lazyGroups_inner__.clear()
+
         if (let Some(parent) <- parent_inner__) {
             parent.removeChildById(id())
         }

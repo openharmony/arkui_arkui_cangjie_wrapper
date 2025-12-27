@@ -18,6 +18,8 @@
 package ohos.arkui.state_management
 
 import ohos.labels.{APILevel, Hide}
+import ohos.arkui.component.native_struct.{VectorToCFFIArray}
+import std.collection.ArrayList
 
 foreign func FfiOHOSAceFrameworkAllocateNewElmetIdForNextComponent(): Int32
 
@@ -28,6 +30,8 @@ foreign func FfiOHOSAceFrameworkGetElmtIdToAccountFor(): Int32
 foreign func FfiOHOSAceFrameworkStopGetAccessRecording(): Unit
 
 foreign func FfiOHOSAceFrameworkImplicitPopBeforeContinue(): Unit
+
+foreign func FfiOHOSAceFrameworkViewStackProcessorMoveDeletedElmtIds(): VectorToCFFIArray
 
 /**
  * ViewStackProcessor declaration.
@@ -129,5 +133,24 @@ public class ViewStackProcessor {
         unsafe {
             FfiOHOSAceFrameworkImplicitPopBeforeContinue()
         }
+    }
+
+    protected static func moveDeletedElmtIds(): ArrayList<Int64> {
+        let vecFFi = unsafe { FfiOHOSAceFrameworkViewStackProcessorMoveDeletedElmtIds() }
+        let size = vecFFi.size
+        var result = ArrayList<Int64>(Int64(size))
+        for (idx in 0..size) {
+            unsafe {
+                let buf = CPointer<Int64>(vecFFi.buffer)
+                result.add(buf.read(Int64(idx)))
+            }
+        }
+
+        unsafe {
+            if (!vecFFi.buffer.isNull()) {
+                vecFFi.free(vecFFi.buffer)
+            }
+        }
+        return result
     }
 }
