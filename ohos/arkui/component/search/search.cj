@@ -19,7 +19,7 @@ package ohos.arkui.component.search
 
 import ohos.arkui.component.common.{CommonMethodComponent, TextContentControllerBase, FontWeight, FontStyle, CopyOptions, BorderStyle}
 import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT, transAppResourceToResourceColor, LENGTH_FP, lessNotEqual}
-import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
+import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp, CStringExtend}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.{APILevel, Hide}
@@ -436,7 +436,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     public func onSubmit(callback: ?(String) -> Unit): This {
         let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            value: CString => tmpCallback(value.toString())
+            value: CString => tmpCallback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -460,7 +460,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     public func onChange(callback: ?(String) -> Unit): This {
         let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            value: CString => tmpCallback(value.toString())
+            value: CString => tmpCallback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -482,7 +482,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     public func onCopy(callback: ?(String) -> Unit): This {
         let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            value: CString => tmpCallback(value.toString())
+            value: CString => tmpCallback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -504,7 +504,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     public func onCut(callback: ?(String) -> Unit): This {
         let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            value: CString => tmpCallback(value.toString())
+            value: CString => tmpCallback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -526,7 +526,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
     public func onPaste(callback: ?(String) -> Unit): This {
         let tmpCallback = callback ?? { _ => }
         let wrapper = {
-            value: CString => tmpCallback(value.toString())
+            value: CString => tmpCallback(value.safeToString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
