@@ -81,6 +81,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         this.internalValue
     }
 
+    @!Hide
     protected func getInner(): T {
         this.internalValue
     }

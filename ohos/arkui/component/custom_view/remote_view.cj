@@ -58,6 +58,7 @@ public abstract class RemoteView <: FFIData {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public open func rerender(): Unit {}
 
     /**
@@ -69,6 +70,7 @@ public abstract class RemoteView <: FFIData {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit {}
     /**
      * Invoked after a new instance of the custom component is created
@@ -116,6 +118,7 @@ public abstract class RemoteView <: FFIData {
     protected open func onBackPress(): Bool {
         false
     }
+    @!Hide
     protected open func updateWithJson(_: String): Unit {}
     /**
      * PageTransition Method and it is migrated from class CustomComponent.
@@ -126,7 +129,9 @@ public abstract class RemoteView <: FFIData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func pageTransition(): Unit {}
+    @!Hide
     protected open func onAboutToRender(): Unit {}
+    @!Hide
     protected open func onAfterRender(): Unit {}
     /**
      * Invoked when this component is about to disappear.
@@ -138,6 +143,7 @@ public abstract class RemoteView <: FFIData {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     protected open func aboutToDisappear(): Unit {}
+    @!Hide
     protected open func onAboutToBeDeleted(): Unit {}
 
     /**
@@ -163,6 +169,8 @@ public abstract class RemoteView <: FFIData {
     protected open func onDidBuild(): Unit {}
     @!Hide
     protected open func aboutToReuseInternal(_: ReuseParams): Unit {}
+    @!Hide
     protected open func aboutToRecycleInternal(): Unit {}
+    @!Hide
     protected open func recycleSelf(_: String): Unit {}
 }

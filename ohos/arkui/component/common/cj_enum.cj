@@ -3206,6 +3206,7 @@ public enum Placement {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide[isChecked: true]
     None
     | ...
 
