@@ -281,15 +281,15 @@ public abstract class CustomView <: RemoteView & Observer {
             case None => false
             case _ =>
                 purgeVariableDependenciesOnElmtId(rmElmtId)
-                // Remove element ID from ElementIdToOwningViewPU_ mapping
-                uiNodeRegisterProxy.unregisterElementId(rmElmtId)
+                // Remove element ID from ELEMENT_ID_TO_OWNING_VIEW_PU_ mapping
+                UINodeRegisterProxy.unregisterElementId(rmElmtId)
                 true
         }
     }
 
     protected func purgeDeletedElmtIds() {
-        uiNodeRegisterProxy.obtainDeletedElmtIds()
-        uiNodeRegisterProxy.unregisterElmtIdsFromIViews()
+        UINodeRegisterProxy.obtainDeletedElmtIds()
+        UINodeRegisterProxy.unregisterElmtIdsFromIViews()
     }
 
     /**
@@ -327,7 +327,7 @@ public abstract class CustomView <: RemoteView & Observer {
             itemGenFunc(arr[idx], idx)
             ForEach<T>.createNewChildFinish(id)
         }
-        uiNodeRegisterProxy.unregisterRemovedElmtsFromViewPUs(setIdResult.removedChildElmtIds)
+        UINodeRegisterProxy.unregisterRemovedElmtsFromViewPUs(setIdResult.removedChildElmtIds)
         this.purgeDeletedElmtIds()
     }
 
@@ -348,7 +348,7 @@ public abstract class CustomView <: RemoteView & Observer {
         ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
         // Register element ID to owning view mapping
-        uiNodeRegisterProxy.registerElementId(elmtId, this)
+        UINodeRegisterProxy.registerElementId(elmtId, this)
         return
     }
 
