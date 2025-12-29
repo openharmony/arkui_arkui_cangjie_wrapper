@@ -161,6 +161,16 @@ public class GridColOptions {
         NativeGridColColumnOption(this.xs ?? 12, this.sm ?? 12, this.md ?? 12,
             this.lg ?? 12, this.xl ?? 12, this.xxl ?? 12)
     }
+
+    func validateInput(value: Int32): GridColOptions {
+        // 12 represents the default total number of columns in the grid system.
+        // When a breakpoint value (xs, sm, md, lg, xl, xxl) is not set, it defaults to 12.
+        if ((this.xs ?? 12) < 0 || (this.sm ?? 12) < 0 || (this.md ?? 12) < 0
+            || (this.lg ?? 12) < 0 || (this.xl ?? 12) < 0 || (this.xxl ?? 12) < 0) {
+            return GridColOptions(value)
+        }
+        return this
+    }
 }
 
 foreign {
@@ -234,9 +244,9 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
         child!: () -> Unit = {=>}
     ) {
         unsafe {
-            let nativeSpan = (span ?? GridColOptions(1)).parseToNative()
-            let nativeOffset = (offset ?? GridColOptions(0)).parseToNative()
-            let nativeOrder = (order ?? GridColOptions(0)).parseToNative()
+            let nativeSpan = (span ?? GridColOptions(1)).validateInput(1).parseToNative()
+            let nativeOffset = (offset ?? GridColOptions(0)).validateInput(0).parseToNative()
+            let nativeOrder = (order ?? GridColOptions(0)).validateInput(0).parseToNative()
             FfiOHOSAceFrameworkGridColCreateWithOption(nativeSpan, nativeOffset, nativeOrder)
         }
         this.child = child
@@ -273,7 +283,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     ]
     public func span(value: ?GridColOptions): This {
         unsafe {
-            let nativeValue = (value ?? GridColOptions()).parseToNative()
+            let nativeValue = (value ?? GridColOptions()).validateInput(1).parseToNative()
             FfiOHOSAceFrameworkGridColSetSpanWithOption(nativeValue)
         }
         this
@@ -310,7 +320,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     ]
     public func gridColOffset(value: ?GridColOptions): This {
         unsafe {
-            let nativeValue = (value ?? GridColOptions()).parseToNative()
+            let nativeValue = (value ?? GridColOptions()).validateInput(0).parseToNative()
             FfiOHOSAceFrameworkGridColSetOffsetWithOption(nativeValue)
         }
         this
@@ -347,7 +357,7 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     ]
     public func order(value: ?GridColOptions): This {
         unsafe {
-            let nativeValue = (value ?? GridColOptions()).parseToNative()
+            let nativeValue = (value ?? GridColOptions()).validateInput(0).parseToNative()
             FfiOHOSAceFrameworkGridColSetOrderWithOption(nativeValue)
         }
         this
