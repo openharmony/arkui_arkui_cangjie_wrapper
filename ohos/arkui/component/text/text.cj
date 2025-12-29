@@ -19,7 +19,7 @@ package ohos.arkui.component.text
 
 import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
-import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
+import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
 import ohos.labels.{APILevel, Hide}
@@ -372,6 +372,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineSpacing(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.vp)
+        if (v.value < 0.0) {
+            v = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkTextSetLineSpacing(v.value, v.unitType.getValue())
         }
@@ -392,7 +395,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     public func fontSize(value: ?Length): This {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
-            if (v_.value < 0.0) {
+            if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
                 unsafe {
                     FfiOHOSAceFrameworkTextResetFontSize()
                 }
@@ -423,7 +426,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
+                if (v_.value < 0.0) {
+                    FfiOHOSAceFrameworkTextResetMaxFontSize()
+                } else {
+                    FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
+                }
             }
         } else {
             unsafe {
@@ -447,7 +454,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
+                if (v_.value < 0.0) {
+                    FfiOHOSAceFrameworkTextResetMinFontSize()
+                } else {
+                    FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
+                }
             }
         } else {
             unsafe {
@@ -611,6 +622,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineHeight(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.px)
+        if (v.value < 0.0) {
+            v = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkTextSetLineHeight(v.value, v.unitType.getValue())
         }
