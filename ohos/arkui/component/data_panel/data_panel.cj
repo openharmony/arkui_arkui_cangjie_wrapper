@@ -18,7 +18,7 @@
 package ohos.arkui.component.data_panel
 
 import ohos.arkui.component.common.{CommonMethodComponent, MultiShadowOptions, DataPanelType}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{VectorFloat64Handle, ResourceColor, Length, FFIVectorFloat64, LengthProp}
 import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
@@ -327,6 +327,9 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
     ]
     public func strokeWidth(value: ?Length): This {
         var value_ = transAppResourceToLength(value ?? 24.0.vp)
+        if (value_.value < 0.0 || value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 24.00.vp
+        }
         unsafe {
             FfiOHOSAceFrameworkDataPanelSetStrokeWidth(value_.value, value_.unitType.getValue())
         }

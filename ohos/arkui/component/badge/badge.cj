@@ -18,7 +18,7 @@
 package ohos.arkui.component.badge
 
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{ResourceColor, Length, Color, LengthProp}
 import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
@@ -187,12 +187,23 @@ public class BadgeStyle {
         badgeColor!: ?ResourceColor = None, borderColor!: ?ResourceColor = None,
         borderWidth!: ?Length = None, fontWeight!: ?FontWeight = None) {
         this.color = color ?? Color.White
-        this.fontSize = transAppResourceToLength(fontSize ?? 10.fp)
-        this.badgeSize = transAppResourceToLength(badgeSize ?? 16.vp)
+        var fontSize_ = transAppResourceToLength(fontSize ?? 10.fp)
+        if (fontSize_.value < 0.0 || fontSize_.unitType.getValue() == LENGTH_PERCENT) {
+            fontSize_ = 10.00.vp
+        }
+        this.fontSize = fontSize_
+        var badgeSize_ = transAppResourceToLength(badgeSize ?? 16.vp)
+        if (badgeSize_.value < 0.0 || badgeSize_.unitType.getValue() == LENGTH_PERCENT) {
+            badgeSize_ = 16.00.vp
+        }
+        this.badgeSize = badgeSize_
         this.badgeColor = badgeColor ?? Color.Red
         this.fontWeight = fontWeight ?? FontWeight.Normal
         this.borderColor = borderColor ?? Color.Red
         var borderWidth_ = transAppResourceToLength(borderWidth ?? 1.vp)
+        if (borderWidth_.value < 0.0 || borderWidth_.unitType.getValue() == LENGTH_PERCENT) {
+            borderWidth_ = 1.00.vp
+        }
         this.borderWidth = borderWidth_
     }
 }
