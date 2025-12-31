@@ -20,8 +20,8 @@ import ohos.labels.{APILevel, Hide}
 import std.collection.{HashMap, ArrayList}
 
 func uiNodeCleanUpIdleTask(maxTimeInMs: Int64): Unit {
-    uiNodeRegisterProxy.obtainDeletedElmtIds()
-    uiNodeRegisterProxy.unregisterElmtIdsFromIViews()
+    UINodeRegisterProxy.obtainDeletedElmtIds()
+    UINodeRegisterProxy.unregisterElmtIdsFromIViews()
 }
 
 @!APILevel[
@@ -30,7 +30,7 @@ func uiNodeCleanUpIdleTask(maxTimeInMs: Int64): Unit {
 ]
 @!Hide
 public func uiNodeCleanUpByElmtId(elmtId: Int64): Unit {
-    uiNodeRegisterProxy.unregisterElmtIdsFromIViewsById(elmtId)
+    UINodeRegisterProxy.unregisterElmtIdsFromIViewsById(elmtId)
 }
 
 
@@ -40,19 +40,19 @@ public func uiNodeCleanUpByElmtId(elmtId: Int64): Unit {
 ]
 @!Hide
 public func dumpElementIdToOwningViewPUSize(): Int64 {
-    uiNodeRegisterProxy.elementIdToOwningViewPUSize()
+    UINodeRegisterProxy.elementIdToOwningViewPUSize()
 }
 
 /**
- * uiNodeRegisterProxy singleton class
+ * UINodeRegisterProxy singleton class
  *
  * Acts on behalf of ElementRegister to hold elmtIds of deleted UINodes
  * until these get unregistered from a CustomView.
  */
-protected class uiNodeRegisterProxy {
-    private static let instance_ = uiNodeRegisterProxy()
+protected class UINodeRegisterProxy {
+    private static let INSTANCE_ = UINodeRegisterProxy()
     private var removeElementsInfo_ = ArrayList<Int64>()
-    private static let elementIdToOwningViewPU_ = HashMap<Int64, CustomView>()
+    private static let ELEMENT_ID_TO_OWNING_VIEW_PU_ = HashMap<Int64, CustomView>()
 
     protected init() {
     }
@@ -60,58 +60,58 @@ protected class uiNodeRegisterProxy {
     /**
      * Get the singleton instance.
      */
-    protected static func getInstance(): uiNodeRegisterProxy {
-        return instance_
+    protected static func getInstance(): UINodeRegisterProxy {
+        return INSTANCE_
     }
 
     /**
      * Register element ID to owning view mapping.
      */
     protected static func registerElementId(elmtId: Int64, view: CustomView): Unit {
-        elementIdToOwningViewPU_.add(elmtId, view)
+        ELEMENT_ID_TO_OWNING_VIEW_PU_.add(elmtId, view)
     }
 
     /**
      * Unregister element ID from owning view mapping.
      */
     protected static func unregisterElementId(elmtId: Int64): Unit {
-        elementIdToOwningViewPU_.remove(elmtId)
+        ELEMENT_ID_TO_OWNING_VIEW_PU_.remove(elmtId)
     }
 
     /**
      * Static method to obtain deleted element IDs from native side.
      */
     protected static func obtainDeletedElmtIds(): Unit {
-        instance_.obtainDeletedElmtIdsInner()
+        INSTANCE_.obtainDeletedElmtIdsInner()
     }
 
     /**
      * Static method to unregister element IDs from all views.
      */
     protected static func unregisterElmtIdsFromIViews(): Unit {
-        instance_.unregisterElmtIdsFromIViewsInner()
+        INSTANCE_.unregisterElmtIdsFromIViewsInner()
     }
 
     /**
      * Static method to unregister element IDs from views by ID.
      */
     protected static func unregisterElmtIdsFromIViewsById(elmtId: Int64): Unit {
-        instance_.unregisterElmtIdsFromIViewsByIdInner(elmtId)
+        INSTANCE_.unregisterElmtIdsFromIViewsByIdInner(elmtId)
     }
 
     /**
      * Unregisters all the received removedElements in func parameter.
      */
     protected static func unregisterRemovedElmtsFromViewPUs(removedElements: ArrayList<Int64>): Unit {
-        instance_.populateRemoveElementInfo(removedElements)
-        instance_.unregisterElmtIdsFromIViewsInner()
+        INSTANCE_.populateRemoveElementInfo(removedElements)
+        INSTANCE_.unregisterElmtIdsFromIViewsInner()
     }
 
     /**
      * Obtain elementIdToOwningViewPU size.
      */
     protected static func elementIdToOwningViewPUSize(): Int64 {
-        elementIdToOwningViewPU_.size
+        ELEMENT_ID_TO_OWNING_VIEW_PU_.size
     }
 
     /**
@@ -138,7 +138,7 @@ protected class uiNodeRegisterProxy {
             return
         }
         for (elmtId in this.removeElementsInfo_) {
-            match (elementIdToOwningViewPU_.remove(elmtId)) {
+            match (ELEMENT_ID_TO_OWNING_VIEW_PU_.remove(elmtId)) {
                 case Some(owningView) =>
                     owningView.purgeDeleteElmtId(elmtId)
                 case None => ()
@@ -151,7 +151,7 @@ protected class uiNodeRegisterProxy {
      * Unregister element ID.
      */
     private func unregisterElmtIdsFromIViewsByIdInner(removeId: Int64): Unit {
-        match (elementIdToOwningViewPU_.remove(removeId)) {
+        match (ELEMENT_ID_TO_OWNING_VIEW_PU_.remove(removeId)) {
             case Some(owningView) =>
                 owningView.purgeDeleteElmtId(removeId)
             case None => ()
