@@ -49,11 +49,13 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         }
     }
 
+    @!Hide
     protected open func initial(): Unit {
         genChild()
         pop()
     }
 
+    @!Hide
     protected open func update(): Unit {
         pop()
     }

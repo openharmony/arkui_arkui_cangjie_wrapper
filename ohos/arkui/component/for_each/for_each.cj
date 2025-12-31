@@ -104,6 +104,7 @@ public class ForEach<T> <: UINodeBase {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func pop(): Unit {
         unsafe { FfiOHOSAceFrameworkForEachPop() }
     }

@@ -29,6 +29,7 @@ import ohos.labels.{APILevel, Hide}
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
+@!Hide
 public class CJPageEntry {
     init() {}
     private static let INSTANCE_ = CJPageEntry()
@@ -41,6 +42,7 @@ public class CJPageEntry {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public static func getInstance(): CJPageEntry {
         return INSTANCE_
     }
@@ -57,6 +59,7 @@ public class CJPageEntry {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func registerHybridPage(name: String, cjPage: CustomView): Unit {
         entries_.add(name, cjPage)
     }
@@ -70,6 +73,7 @@ public class CJPageEntry {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func removeHybridPage(name: String): Unit {
         entries_.remove(name)
     }
