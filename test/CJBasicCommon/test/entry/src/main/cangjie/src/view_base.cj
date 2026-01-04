@@ -102,7 +102,7 @@ class ViewBase {
 
                 Text("add image usages").backgroundImage(@r(app.media.icon), ImageRepeat.Y).
                     backgroundImageSize(width: 10.0, height: 10.0).backgroundImagePosition(x: 0.0, y: 2.0).bindPopup(
-                    false, CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.None)).keyboardShortcut(
+                    false, CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.Bottom)).keyboardShortcut(
                     FunctionKey.F9, [ModifierKey.Alt])
 
                 Text("add image usages").backgroundImage(@r(app.media.icon), ImageRepeat.XY).
