@@ -18,7 +18,7 @@
 package ohos.arkui.component.alphabet_indexer
 
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle, IndexerAlign}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT}
 import ohos.base.{FFIVectorString, Length, ResourceStr, VectorStringHandle, ResourceColor, LengthProp, Color}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.{APILevel, Hide}
@@ -268,6 +268,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         let tmpWeight = weight ?? FontWeight.Normal
         let tmpStyle = style ?? FontStyle.Normal
         var size_ = transAppResourceToLength(size ?? 10.vp)
+        if (size_.value < 0.0 || size_.unitType.getValue() == LENGTH_PERCENT) {
+            size_ = 10.00.vp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
                 fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
@@ -305,6 +308,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         let tmpWeight = weight ?? FontWeight.Normal
         let tmpStyle = style ?? FontStyle.Normal
         var size_ = transAppResourceToLength(size ?? 24.vp)
+        if (size_.value < 0.0 || size_.unitType.getValue() == LENGTH_PERCENT) {
+            size_ = 24.00.vp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
                 fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
@@ -342,6 +348,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         let tmpWeight = weight ?? FontWeight.Normal
         let tmpStyle = style ?? FontStyle.Normal
         var size_ = transAppResourceToLength(size ?? 10.vp)
+        if (size_.value < 0.0 || size_.unitType.getValue() == LENGTH_PERCENT) {
+            size_ = 10.00.vp
+        }
         unsafe {
             try (weightCString = LibC.mallocCString(tmpWeight.getValue()).asResource(),
                 fontFamilyCString = LibC.mallocCString(transResourceStrToString(family ?? "HarmonyOS Sans")).asResource()) {
@@ -370,6 +379,9 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     public func itemSize(size: ?Length): This {
         let tmpSize = size ?? 16.vp
         var size_ = transAppResourceToLength(tmpSize)
+        if (size_.value <= 0.0 || size_.unitType.getValue() == LENGTH_PERCENT) {
+            size_ = 16.00.vp
+        }
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerItemSize(size_.value, size_.unitType.getValue())
         }
