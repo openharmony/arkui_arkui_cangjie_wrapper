@@ -2231,12 +2231,16 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
         nativeOnWillDismiss: NativeOptionCallBack, nativeTransition: NativeOptionInt64, nativePopupColor: UInt32,
         nativeMask: UInt32, show: Bool): Unit {
         unsafe {
+            var builderId = INVALID_CALLBACK_ID
+            if (show) {
+                builderId = Callback0Param<Unit>(popup.builder).getID()
+            }
             let nativeArrowPointPosition = match (popup.arrowPointPosition) {
                 case Some(value) => LibC.mallocCString(value.getValue())
                 case None => LibC.mallocCString("")
             }
             FfiOHOSAceFrameworkViewAbstractBindCustomPopupV2(
-                CJBindCustomPopupV2(show, Callback0Param<Unit>(popup.builder).getID(), (popup.placement ?? Placement.Bottom).getValue(),
+                CJBindCustomPopupV2(show, builderId, (popup.placement ?? Placement.Bottom).getValue(),
                     Color(0x1000000).toUInt32(), (popup.backgroundColor ?? Color(0x1000000)).toUInt32(), popup.enableArrow ?? true, popup.autoCancel ?? true,
                     onStateChangeId, nativePopupColor, (popup.arrowOffset ?? 0.vp).value, (popup.arrowOffset ?? 0.vp).unitType.getValue(),
                     popup.showInSubWindow ?? false, nativeMask, (popup.targetSpace ?? 0.vp).value, (popup.targetSpace ?? 0.vp).unitType.getValue(),
