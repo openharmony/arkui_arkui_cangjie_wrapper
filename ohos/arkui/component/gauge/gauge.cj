@@ -19,7 +19,7 @@ package ohos.arkui.component.gauge
 
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.data_panel.{LinearGradient}
-import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{VectorUInt32Handle, VectorFloat64Handle, ResourceColor, Length, LengthProp, ResourceStr, FFIVectorUInt32, FFIVectorFloat32}
 import ohos.ffi.{Callback0Param}
 import ohos.labels.{APILevel, Hide}
@@ -378,7 +378,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     ]
     public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
         let icon_ = transResourceStrToString(icon ?? "default")
-        let space_ = transAppResourceToLength(space ?? 8.0.vp)
+        var space_ = transAppResourceToLength(space ?? 8.0.vp)
+        if (space_.value < 0.0 || space_.unitType.getValue() == LENGTH_PERCENT) {
+            space_ = 8.00.vp
+        }
         unsafe {
             try (iconCString = LibC.mallocCString(icon_).asResource()) {
                 FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
