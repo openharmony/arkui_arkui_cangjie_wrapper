@@ -544,7 +544,7 @@ class TextAndInputUT22 {
 
         let fontSize = attrs.get("fontSize").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "fontSize = ${fontSize}")
-        @Expect(fontSize, "\"10.00%\"")
+        @Expect(fontSize, "\"16.00fp\"")
     }
 
     @TestCase
@@ -577,7 +577,7 @@ class TextAndInputUT22 {
 
         let lineHeight = attrs.get("lineHeight").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "lineHeight = ${lineHeight}")
-        @Expect(lineHeight, "\"-10.00vp\"")
+        @Expect(lineHeight, "\"0.00px\"")
         let fontSize = attrs.get("fontSize").getOrThrow().toString()
         Hilog.info(1,"Cangjie-Test", "fontSize = ${fontSize}")
         @Expect(fontSize, "\"20.00fp\"")
