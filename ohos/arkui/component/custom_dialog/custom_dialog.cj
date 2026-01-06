@@ -311,11 +311,11 @@ public class CustomDialogControllerOptions {
         backgroundBlurStyle!: ?BlurStyle = Option.None
     ) {
         this(
-            cancel: cancel, 
-            autoCancel: autoCancel, 
-            alignment: alignment, 
-            offset: offset, 
-            customStyle: customStyle, 
+            cancel: cancel,
+            autoCancel: autoCancel,
+            alignment: alignment,
+            offset: offset,
+            customStyle: customStyle,
             gridCount: gridCount,
             maskColor: maskColor,
             maskRect: maskRect,
@@ -554,6 +554,7 @@ public class CustomDialogController <: RemoteDataLite {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func setBuilder(builder: () -> Unit): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerSetBuilder(this.getID(), Callback0Param<Unit>(builder).getID())
@@ -569,6 +570,7 @@ public class CustomDialogController <: RemoteDataLite {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func bindView(view: CustomView): Unit {
         unsafe {
             FfiOHOSAceFrameworkCustomDialogControllerBindView(this.getID(), view.getView().getID())
