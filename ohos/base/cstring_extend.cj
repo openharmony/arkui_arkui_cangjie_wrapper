@@ -74,7 +74,6 @@ extend CString <: CStringExtend {
         this.toString()
     }
 
-    @!Hide
     public func safeToString(): String {
         try {
             return this.toString()
