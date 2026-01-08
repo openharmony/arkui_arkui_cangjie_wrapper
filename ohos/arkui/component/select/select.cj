@@ -19,8 +19,8 @@ package ohos.arkui.component.select
 
 import ohos.arkui.component.common.{Direction, FontStyle, FontWeight, ArrowPosition, MenuAlignType, Offset, OptionWidthMode, BlurStyle, CommonMethodComponent}
 import ohos.arkui.component.native_struct.{DividerParams}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
-import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, lessOrEqual}
+import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp, LengthUnit}
 import ohos.ffi.{Callback2Param}
 import ohos.resource.{AppResource, getResourceString, getResourceMedia}
 import ohos.labels.{APILevel, Hide}
@@ -619,14 +619,21 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func optionWidth(value: ?Length): This {
-        if (let Some(v) <- value) {
-            var value_ = transAppResourceToLength(v)
-            unsafe {
-                FfiOHOSAceFrameworkSelectSetOptionWidth(value_.value, value_.unitType.getValue())
-            }
-        } else {
+        if (value.isNone()) {
             unsafe {
                 FfiOHOSAceFrameworkSelectResetOptionWidth()
+            }
+            return this
+        }
+        let value_ = transAppResourceToLength(value.getOrThrow())
+        if (value_.unitType == LengthUnit.Percent) {
+            return this
+        }
+        unsafe {
+            if (lessNotEqual(value_.value, 0.0)) {
+                FfiOHOSAceFrameworkSelectResetOptionWidth()
+            } else {
+                FfiOHOSAceFrameworkSelectSetOptionWidth(value_.value, value_.unitType.getValue())
             }
         }
         this
@@ -645,6 +652,9 @@ public class Select <: CommonMethodComponent<Select> & SelectAttribute {
     public func optionHeight(value: ?Length): This {
         if (let Some(v) <- value) {
             let value_ = transAppResourceToLength(v)
+            if (value_.unitType == LengthUnit.Percent || lessOrEqual(value_.value, 0.0)) {
+                return this
+            }
             unsafe {
                 FfiOHOSAceFrameworkSelectSetOptionHeight(value_.value, value_.unitType.getValue())
             }
