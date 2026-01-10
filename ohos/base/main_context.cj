@@ -20,7 +20,13 @@ package ohos.base
 import ohos.labels.{APILevel, Hide}
 
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
+@When[os == "Windows"]
+foreign func GetCurrentProcessId(): Int64
+@When[os == "Windows"]
+foreign func GetCurrentThreadId(): Int64
+@When[os != "Windows"]
 foreign func getpid(): Int64
+@When[os != "Windows"]
 foreign func gettid(): Int64
 
 /**
@@ -81,6 +87,20 @@ public let UIThread: MainThreadContext = MainThreadContext.INSTANCE_
 
 var currentPid: ?Int64 = None
 
+@When[os == "Windows"]
+protected func isInMainThread(): Bool {
+    let pid = match (currentPid) {
+        case Some(v) => v
+        case _ =>
+            let value = unsafe { GetCurrentProcessId() }
+            currentPid = value
+            value
+    }
+    let tid = unsafe { GetCurrentThreadId() }
+    return pid == tid
+}
+
+@When[os != "Windows"]
 protected func isInMainThread(): Bool {
     let pid = match (currentPid) {
         case Some(v) => v
