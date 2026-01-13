@@ -110,10 +110,6 @@ foreign {
 
     func FFICJCreateVectorFfiTextMenuItem(size: Int64): VectorTextMenuItemHandle
 
-    func FFICJVectorFfiTextMenuItemSetElement(vec: VectorTextMenuItemHandle, index: Int64, textMenuItem: FfiTextMenuItem): Unit
-
-    func FFICJVectorFfiTextMenuItemGetElement(vec: VectorTextMenuItemHandle, index: Int64): FfiTextMenuItem
-
     func FFICJVectorFfiTextMenuItemDelete(vec: VectorTextMenuItemHandle): Unit
 
     func FFICJVectorFfiTextMenuItemGetSize(vec: VectorTextMenuItemHandle): Int64
@@ -159,73 +155,6 @@ foreign {
     func FfiOHOSAceFrameworkTextResetMinFontSize(): Unit
 
     func FfiOHOSAceFrameworkTextResetFontColor(): Unit
-}
-
-class FFIVectorNativeShadowOptions {
-    private let vecHandle: VectorNativeShadowOptionsHandle
-
-    init(vec: VectorNativeShadowOptionsHandle) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorNativeShadowOptions(size) }
-    }
-
-    func setElement(index: Int64, value: NativeShadowOptions): Unit {
-        unsafe { FFICJVectorNativeShadowOptionsSetElement(vecHandle, index, value) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorNativeShadowOptionsDelete(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorNativeShadowOptionsHandle {
-        vecHandle
-    }
-}
-
-@C
-struct FfiTextMenuItem {
-    FfiTextMenuItem(
-        var content: ExternalString,
-        var icon: ExternalString,
-        var id: ExternalString
-    ) {}
-}
-
-class FFIVectorFfiTextMenuItem {
-    private let vecHandle: VectorTextMenuItemHandle
-
-    init(vec: VectorTextMenuItemHandle) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorFfiTextMenuItem(size) }
-    }
-
-    func setElement(index: Int64, value: FfiTextMenuItem): Unit {
-        unsafe { FFICJVectorFfiTextMenuItemSetElement(vecHandle, index, value) }
-    }
-
-    func getElement(index: Int64): FfiTextMenuItem {
-        unsafe { FFICJVectorFfiTextMenuItemGetElement(vecHandle, index) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorFfiTextMenuItemDelete(vecHandle) }
-    }
-
-    func getSize(): Int64 {
-        unsafe { FFICJVectorFfiTextMenuItemGetSize(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorTextMenuItemHandle {
-        vecHandle
-    }
 }
 
 /**

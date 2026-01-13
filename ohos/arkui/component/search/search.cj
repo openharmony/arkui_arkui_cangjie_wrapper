@@ -26,18 +26,6 @@ import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 @C
-struct SearchCreateParam {
-    SearchCreateParam(
-        let value: CString,
-        let placeholder: CString,
-        let iconID: Int64,
-        let iconType: UInt32,
-        let iconSrc: CString,
-        let controllerID: Int64
-    ) {}
-}
-
-@C
 struct SearchSetBorder {
     SearchSetBorder(
         let width: Float64,
@@ -50,8 +38,6 @@ struct SearchSetBorder {
 }
 
 foreign {
-    func FfiOHOSAceFrameworkSearchCreateByIconID(value: SearchCreateParam): Unit
-
     func FfiOHOSAceFrameworkSearchSetSearchButton(text: CString): Unit
 
     func FfiOHOSAceFrameworkSearchSetPlaceholderColor(color: UInt32): Unit

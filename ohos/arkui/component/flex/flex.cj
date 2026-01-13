@@ -31,21 +31,6 @@ struct CJFlexParams {
     ) {}
 }
 
-@C
-struct CJFlexOptions {
-    CJFlexOptions(
-        let direction: Int32,
-        let wrap: Int32,
-        let justifyContent: Int32,
-        let alignItems: Int32,
-        let alignContent: Int32,
-        let mainSpace: Float64,
-        let mainSpaceUnit: Int32,
-        let crossSpace: Float64,
-        let crossSpaceUnit: Int32
-    ) {}
-}
-
 foreign {
     func FfiOHOSAceFrameworkFlexCreate(): Unit
 
@@ -56,8 +41,6 @@ foreign {
     func FfiOHOSAceFrameworkFlexSetFlexHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkFlexSetFlexSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkFlexCreateByOptions(options: CJFlexOptions): Unit
 
     func FFISetWidthWithEmpty(): Unit
 
