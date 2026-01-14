@@ -717,11 +717,10 @@ class ScrollSplitUT2 {
             hidden = "resource:///16777286.png"
          }
         var switching: String = ""
-        if ([2,5].contains(i)){
+        if ([5].contains(i)){
             switching = "resource:///16777286.png"
          }
         }
-        clickButton("AppResource")
     }
 
     @TestCase
