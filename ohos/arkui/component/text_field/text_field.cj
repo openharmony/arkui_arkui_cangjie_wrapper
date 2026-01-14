@@ -465,8 +465,14 @@ protected class TextField {
     protected static func fontSize(value: ?Length): Unit {
         if (let Some(v) <- value) {
             var value_ = transAppResourceToLength(v)
-            unsafe {
-                FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+            if (v.value < 0.0 || v.unitType.getValue() == LENGTH_PERCENT) {
+                unsafe {
+                    FfiOHOSAceFrameworkTextFieldResetFontSize()
+                }
+            } else {
+                unsafe {
+                    FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+                }
             }
         } else {
             unsafe {
