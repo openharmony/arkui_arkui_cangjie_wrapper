@@ -16,7 +16,7 @@
 package ohos.arkui.component.scroll_bar
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines the ScrollBar attribute functions.

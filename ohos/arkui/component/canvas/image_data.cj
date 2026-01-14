@@ -19,8 +19,8 @@ package ohos.arkui.component.canvas
 
 import ohos.arkui.component.common.{LengthMetricsUnit}
 import ohos.base.{FFIVectorUInt8, VectorUInt8Handle}
-import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.ffi.{RemoteDataLite, releaseFFIData}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkCanvasImageDataCtor(width: Float64, height: Float64, handle: VectorUInt8Handle, unit: Int32): Int64

@@ -21,8 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, SideBarContainerType,
 import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 @C
 struct CJSideBarIconStyle {

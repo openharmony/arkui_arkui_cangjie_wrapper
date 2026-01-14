@@ -19,7 +19,7 @@ package ohos.arkui.component.scroll_bar
 
 import ohos.arkui.component.common.{CommonMethodComponent, ScrollBarDirection, BarState}
 import ohos.arkui.component.scroll.{Scroller}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkScrollBarCreate(scroller: Int64, direction: Int32, state: Int32): Unit

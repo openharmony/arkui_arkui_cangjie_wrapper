@@ -23,7 +23,7 @@ import ohos.arkui.component.native_struct.{NativeOptionRadius, NativeOptionRecta
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, LengthProp, Callback, ResourceStr, VoidCallback, Color, NativeOptionBool, NativeOptionCallBack, NativeOptionInt32, NativeOptionUInt32, NativeOptionLength, NativeOptionCString, NativeOptionInt64, NativeLength}
 import ohos.ffi.{Callback0Param, Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

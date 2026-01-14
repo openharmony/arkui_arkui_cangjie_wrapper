@@ -16,7 +16,7 @@
 package ohos.arkui.component.scroll
 
 import ohos.arkui.component.common.{CommonMethod, BarState, ScrollState, ScrollSource}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length}
 import ohos.resource.{AppResource}
 import ohos.arkui.shape.{RectShape}

@@ -18,7 +18,6 @@
 package ohos.arkui.component.common
 
 import ohos.labels.{APILevel, Hide}
-import ohos.ffi.{RemoteData}
 
 /**
  * Defines the base type of Component.

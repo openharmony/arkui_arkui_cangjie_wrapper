@@ -19,7 +19,7 @@ package ohos.arkui.shape
 
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
 import ohos.base.{Length, ResourceStr, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkPathInsCreate(commands: CString): Int64

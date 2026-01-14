@@ -20,7 +20,7 @@ package ohos.arkui.component.list_item
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder, SwipeEdgeEffect}
 import ohos.arkui.state_management.{ViewStackProcessor}
 import ohos.ffi.{Callback1Param, Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkListItemCreate(): Unit
@@ -139,7 +139,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
             case Some(callback) =>
                 { value: Int32 => callback(Float64(value)) }
             case None =>
-                { value: Int32 => () }
+                { _: Int32 => () }
         }
 
         let onOffsetLambda = Callback1Param<Int32, Unit>(onOffsetWrapper)
@@ -162,7 +162,7 @@ public class ListItem <: CommonMethodComponent<ListItem> & ListItemAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onSelect(event: ?(Bool) -> Unit): This {
-        let tmpEvent = event ?? { res: Bool => }
+        let tmpEvent = event ?? { _: Bool => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpEvent)
         unsafe {
             FfiOHOSAceFrameworkListItemSetOnSelect(lambdaData.getID())

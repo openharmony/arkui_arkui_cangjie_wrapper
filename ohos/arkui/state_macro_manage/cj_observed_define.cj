@@ -55,7 +55,6 @@ public macro Observed(input: Tokens): Tokens {
     let decl = parseDecl(input)
     let observedClass = (decl as ClassDecl).getOrThrow()
     let classModifier = observedClass.modifiers
-    let classKeyWord = observedClass.keyword
     let classIdent = observedClass.identifier
     let classBody = observedClass.body.decls
 

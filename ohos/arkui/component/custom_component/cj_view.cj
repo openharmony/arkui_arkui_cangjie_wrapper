@@ -15,11 +15,9 @@
 
 package ohos.arkui.component.custom_component
 
-import ohos.arkui.component.common.{CommonMethod, CommonMethodComponent}
 import ohos.arkui.component.native_struct.{VectorToCFFIArray}
 import ohos.base.{FFIVectorInt64}
 import ohos.ffi.{Callback0Param, RemoteData}
-import ohos.labels.{APILevel, Hide}
 import std.collection.ArrayList
 
 type VectorCJInt64Handle = CPointer<Unit>

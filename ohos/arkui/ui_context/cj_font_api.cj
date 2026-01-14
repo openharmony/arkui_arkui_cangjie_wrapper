@@ -16,7 +16,6 @@
 package ohos.arkui.ui_context
 
 import ohos.base.{ExternalString}
-import ohos.labels.APILevel
 
 protected type VectorUIFontAliasInfoHandle = CPointer<Unit>
 

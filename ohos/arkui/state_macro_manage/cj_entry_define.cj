@@ -209,7 +209,6 @@ func generateHybridComponentEntryFunc(input: Tokens, hybridCompIdentLoad: Token,
     let entryClassIdentStr = entryClassIdent.value
     let instanceIdent = Token(TokenKind.IDENTIFIER, "${entryClassIdentStr}_instance")
     let entryId = generateNewEntryId()
-    let h_c_ident = Token(TokenKind.IDENTIFIER, "hybrid_comp_${entryId}")
     quote(
         public func $hybridCompIdentLoad(): CPointer<Unit> {
             let elemId = ViewStackProcessor.allocateNewElmetIdForNextComponent()

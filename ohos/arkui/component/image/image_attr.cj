@@ -16,10 +16,8 @@
 package ohos.arkui.component.image
 
 import ohos.arkui.component.common.{CommonMethod, ImageFit, ImageRepeat, ImageInterpolation, ImageRenderMode}
-import ohos.business_exception.BusinessException
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, Length, ResourceColor}
-import ohos.multimedia.image.PixelMap
 
 /**
  * Defines the Image attribute functions.

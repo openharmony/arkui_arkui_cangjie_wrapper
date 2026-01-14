@@ -18,7 +18,7 @@
 package ohos.base
 
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign func FfiOHOSAceFrameworkPostTaskToMainThread(taskId: Int64): Unit
 

@@ -19,7 +19,7 @@ package ohos.arkui.component.canvas
 
 import ohos.arkui.component.common.{Repetition}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkRenderingContextCreateCanvasPattern(reder: Int64, imageId: Int64, repetition: CString): Int64

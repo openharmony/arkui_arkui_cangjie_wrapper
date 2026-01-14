@@ -17,6 +17,4 @@
 
 protected package ohos.arkui.component.native_struct
 
-import ohos.base.{CStringExtend}
-
 protected type VectorNavigationItemHandle = CPointer<Unit>

@@ -23,7 +23,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToRe
 import ohos.arkui.ui_context.Font as FontApi
 import ohos.base.{FFIVectorFloat64, Length, LengthProp, nativeLog, CStringExtend, VectorFloat64Handle, Color, ResourceColor, LengthUnit}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.multimedia.image.{PixelMap}
 
 foreign {

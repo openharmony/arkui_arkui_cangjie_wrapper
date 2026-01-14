@@ -16,7 +16,7 @@
 package ohos.arkui.component.list_item_group
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines the ListItemGroup attribute functions.

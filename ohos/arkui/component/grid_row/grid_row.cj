@@ -22,7 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp, VectorFloat64Handle}
 import ohos.ffi.{Callback1Param}
 import ohos.business_exception.BusinessException
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 import std.deriving.Derive
 
@@ -770,7 +770,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onBreakpointChange(callback: ?(String) -> Unit): This {
-        let tmpCallback = callback ?? { res: String => }
+        let tmpCallback = callback ?? { _: String => }
         let wrapper = {
             value: CString => tmpCallback(value.toString())
         }

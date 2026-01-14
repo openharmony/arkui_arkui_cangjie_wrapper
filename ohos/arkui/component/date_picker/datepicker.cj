@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, PickerTextStyle, Font
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, LENGTH_PERCENT}
 import ohos.base.{Callback, Length, LengthProp}
 import ohos.ffi.{Callback3Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import std.time.{DateTime, Month}
 
 /**

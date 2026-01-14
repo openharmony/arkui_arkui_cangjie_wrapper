@@ -20,7 +20,7 @@ package ohos.arkui.shape
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{RemoteDataLite}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
 

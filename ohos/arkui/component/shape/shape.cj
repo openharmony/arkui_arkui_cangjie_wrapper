@@ -19,9 +19,8 @@ package ohos.arkui.component.shape
 
 import ohos.arkui.component.common.{ColoringStrategy}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
-import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, LengthProp, Color}
+import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, LengthProp}
 import ohos.labels.APILevel
-import ohos.business_exception.BusinessException
 
 import ohos.multimedia.image.PixelMap
 

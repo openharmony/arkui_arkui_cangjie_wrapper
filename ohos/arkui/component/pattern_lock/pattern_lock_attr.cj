@@ -16,7 +16,7 @@
 package ohos.arkui.component.pattern_lock
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length}
 
 /**

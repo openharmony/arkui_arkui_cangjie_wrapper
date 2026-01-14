@@ -16,7 +16,7 @@
 package ohos.arkui.component.list_item
 
 import ohos.arkui.component.common.{CommonMethod, CustomBuilder, SwipeEdgeEffect}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines the ListItem attribute functions.

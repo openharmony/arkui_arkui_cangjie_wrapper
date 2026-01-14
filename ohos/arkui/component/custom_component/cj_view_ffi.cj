@@ -16,7 +16,6 @@
 package ohos.arkui.component.custom_component
 
 import ohos.base.{Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
 
 @C
 struct CJMultiShadowOptions {

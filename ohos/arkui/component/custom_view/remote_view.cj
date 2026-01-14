@@ -20,8 +20,6 @@ package ohos.arkui.component.custom_view
 import ohos.ffi.{FFIData}
 import ohos.labels.{APILevel, Hide}
 import ohos.base.ReuseParams
-import std.collection.HashMap
-import std.collection.ArrayList
 
 /**
  * Definition of RemoteView class.

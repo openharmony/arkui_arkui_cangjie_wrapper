@@ -20,8 +20,8 @@ package ohos.arkui.component.rating
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.base.{ResourceStr}
-import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.ffi.{Callback1Param}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkRatingCreate(rating: Float64, indicator: Bool): Unit

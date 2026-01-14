@@ -18,8 +18,7 @@
 package ohos.arkui.component.canvas
 
 import ohos.ffi.{RemoteData, RemoteDataManager}
-import ohos.labels.{APILevel, Hide}
-import ohos.multimedia.image.PixelMap
+import ohos.labels.{APILevel}
 
 @C
 struct ImageBitMapParams {

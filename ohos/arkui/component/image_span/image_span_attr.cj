@@ -17,8 +17,7 @@ package ohos.arkui.component.image_span
 
 import ohos.arkui.component.common.{CommonMethod, ImageSpanAlignment, ImageFit}
 import ohos.arkui.component.image.{ColorFilter, ImageCompleteCallback, ImageErrorCallback}
-import ohos.labels.{APILevel, Hide}
-import ohos.multimedia.image.PixelMap
+import ohos.labels.{APILevel}
 
 /**
  * Defines ImageSpan Component instance.

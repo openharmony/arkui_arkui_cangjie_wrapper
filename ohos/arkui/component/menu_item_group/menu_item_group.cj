@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.base.{ResourceStr}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkMenuItemGroupCreateByBuilder(header: Int64, footer: Int64): Unit

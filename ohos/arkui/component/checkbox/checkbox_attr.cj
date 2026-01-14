@@ -16,7 +16,7 @@
 package ohos.arkui.component.checkbox
 
 import ohos.arkui.component.common.{CommonMethod, CheckBoxShape}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor}
 
 /**

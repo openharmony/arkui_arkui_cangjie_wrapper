@@ -19,7 +19,7 @@ package ohos.arkui.component.path_2d
 
 import ohos.arkui.component.native_struct.{TransformParams, ArcParams, QuadraticCurveToParams, BezierCurveToParams, EllipseParams, RectParams, ArcToParams}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkCanvasPathCtor(): Int64

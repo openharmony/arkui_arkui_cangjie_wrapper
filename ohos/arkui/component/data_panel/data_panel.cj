@@ -20,8 +20,7 @@ package ohos.arkui.component.data_panel
 import ohos.arkui.component.common.{CommonMethodComponent, MultiShadowOptions, DataPanelType}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{VectorFloat64Handle, ResourceColor, Length, FFIVectorFloat64, LengthProp}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeLinearGradientHandle = CPointer<Unit>
 

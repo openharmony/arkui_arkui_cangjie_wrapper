@@ -19,11 +19,10 @@ import ohos.arkui.component.common.{CallbackCJWebResourceRequest, CommonMethodCo
 import ohos.arkui.component.native_struct.{FfiMapToCFFIArray, FfiWebResourceRequest, CJSetRotate}
 import ohos.arkui.component.util.{transResourceMediaToString, transAppResourceToResourceColor, transAppResourceToLength}
 import ohos.base.{APP_LOG, VectorStringHandle, ExternalString, FFIVectorString, FFIVectorInt64, VectorInt64Handle, ResourceStr, Callback, ResourceColor, Color, Length, LengthProp}
-import ohos.ffi.{CArrString, Callback1Param, BaseCallBack}
-import ohos.labels.{APILevel, Hide}
+import ohos.ffi.{CArrString, Callback1Param}
+import ohos.labels.{APILevel}
 import ohos.web.webview.{WebviewController}
 import std.collection.ArrayList
-import ohos.business_exception.BusinessException
 
 type VectorScriptItemHandle = CPointer<Unit>
 
@@ -755,7 +754,6 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func mixedMode(mixedMode: ?MixedMode): This {
-        let tmpMixedMode =
         unsafe {
             FfiOHOSAceFrameworkWebMixedMode((mixedMode ?? MixedMode.None).getValue())
         }

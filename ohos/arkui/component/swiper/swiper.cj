@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{CJClickEvent}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, ResourceColor, VoidCallback, LengthProp, Color, CStringExtend}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param, Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 const DEFAULT_CACHED_COUNT: Int32 = 1
 
@@ -1230,7 +1230,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(event: ?(Int32) -> Unit): This {
-        let tmpEvent = event ?? { res: Int32 => }
+        let tmpEvent = event ?? { _: Int32 => }
         unsafe {
             FfiOHOSAceFrameworkSwiperSetOnChange(Callback1Param<Int32, Unit>(tmpEvent).getID())
         }

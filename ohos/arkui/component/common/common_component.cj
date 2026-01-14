@@ -23,7 +23,6 @@ import ohos.resource.{AppResource, getResourceMedia}
 import ohos.labels.{APILevel, Hide}
 import ohos.arkui.shape.{BaseShape}
 import ohos.business_exception.BusinessException
-import ohos.multimedia.image.PixelMap
 import std.math.{clamp, trunc}
 
 let MAX_ANGLE: Float64 = 360.0

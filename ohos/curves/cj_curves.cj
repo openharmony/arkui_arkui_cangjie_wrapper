@@ -19,7 +19,7 @@ package ohos.curves
 
 import ohos.arkui.component.{Curve}
 import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 foreign func FfiOHOSAceFrameworkCurvesCreateStepsCurve(count: Int32, end: Bool): Int64

@@ -20,9 +20,8 @@ package ohos.arkui.component.button
 import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeight, FontStyle, BorderStyle}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
-import ohos.base.{Length, LengthProp, ResourceStr, ResourceColor, Color, LengthProp}
-import ohos.labels.{APILevel, Hide}
-import ohos.resource.{AppResource}
+import ohos.base.{Length, ResourceStr, ResourceColor, Color, LengthProp}
+import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

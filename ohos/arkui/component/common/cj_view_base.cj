@@ -19,7 +19,6 @@ package ohos.arkui.component.common
 
 import ohos.arkui.component.native_struct.{NativeOptionAnimateParam, CJResponseRegion, VectorNativeRectangleHandle, CJConstraintSize, CJPixelRoundPolicy, CJMotionBlurOptions, CJBorder, CJEdge, CJBorderRadius, CJForegroundBlurStyleOptions, CJSetScale, CJTranslate, CJChainInfo, CJOutline, CJMotionPathOptions, CJBackgroundBlurStyleOptions, CJBackgroundEffectOptions, CJBindPopupParamsV2, CArrNativeMenuElement, CJMenuOptions, CJContextMenuOptions, LinearGradientParam, SweepGradientParam, RadialGradientParam, CJFocusBoxStyle, CSheetOptionsV2, CJSharedTransitionOptions, CBorderImageOption, CJSetRotate, CJBindCustomPopupV2}
 import ohos.base.{VectorFloat64Handle, VectorStringHandle}
-import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkViewContextAnimation(option: NativeOptionAnimateParam): Unit

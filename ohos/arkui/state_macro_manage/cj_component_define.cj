@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, ToTokens, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
+import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
 import std.collection.{ArrayList}
 import std.unicode.{UnicodeStringExtension}
 
@@ -25,7 +25,6 @@ public macro Component(input: Tokens): Tokens {
     checkComponentSyntax(input)
     let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
     let classModifier = classDecl.modifiers
-    let classKeyWord = classDecl.keyword
     let classIdent = classDecl.identifier
     let classBody = classDecl.body
 
@@ -175,7 +174,6 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     var res = quote($baseExpr<$paramType>().create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
-        let paraExpr = para.expr
 
         match (idx) {
             case 1 =>
@@ -618,7 +616,6 @@ func changeTrailingExpr(input: Expr, tokens: Tokens): Unit {
         case callExpr: CallExpr => return changeTrailingExpr(callExpr.callFunc, tokens)
         case trailingClosureExpr: TrailingClosureExpr =>
             let expr = trailingClosureExpr.expr
-            let lambdaExpr = trailingClosureExpr.lambdaExpr
             if (isComponent(expr)) {
                 let arrNode = ArrayList<Node>()
                 var (e, p) = parseExprFragment(tokens, startFrom: 0)
@@ -650,7 +647,6 @@ func getCompName(input: Expr): Tokens {
         case trailingClosureExpr: TrailingClosureExpr =>
             // only inside TrailingClosureExpr may have other LambdaBody, can get the complete LambdaBody for judgment
             let expr = trailingClosureExpr.expr
-            let componentName = getTrailingClosureExprValue(expr)
             return getCompName(expr)
         case memAccess: MemberAccess =>
             let field = memAccess.field
@@ -713,7 +709,6 @@ func parseChildInParams(input: Expr): Unit {
     let nodes = lambda.nodes
     checkChildInBody(nodes, getTrailingClosureExprValue(input))
     let childComps = generateFuncBody(nodes, quote(this))
-    let baseExpr = callExpr.callFunc
 
     let funcParams = lambda.funcParams
     lastArgument.expr = LambdaExpr(quote({ $funcParams => $childComps }))
@@ -1056,7 +1051,6 @@ func generateUpdateParam(classDecl: ClassDecl) {
         if (varDecl.keyword.value == "let") {
             continue
         }
-        var varDeclKind = VariableKind.CommonTy
         let rawVarDecl = match (STATE_MANAGE_HANDLER.stateInformation.get(varDecl.identifier.value)) {
             // v is VariableKind*VarDecl, v[1] get the variable declaration before expanded by macro
             case Some(v) =>

@@ -16,7 +16,7 @@
 package ohos.arkui.component.tab
 
 import ohos.arkui.component.common.{CommonMethod, BarMode, CustomBuilder}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{Length, Callback, ResourceStr}
 
 /**

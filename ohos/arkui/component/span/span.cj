@@ -21,8 +21,7 @@ import ohos.arkui.component.common.{UINodeBase, FontStyle, FontWeight, TextDecor
 import ohos.arkui.component.native_struct.{VectorNativeTextShadow, CBorderRadiuses, CJClickEvent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp, Color}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeTextShadows = CPointer<Unit>
 

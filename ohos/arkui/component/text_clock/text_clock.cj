@@ -22,8 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeTextShadow, NativeTextSha
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
 import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
 import ohos.base.{ResourceStr, Length, ResourceColor, Color, LengthProp}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 foreign {
     func FFICJCreateVectorNativeTextShadowV2(size: Int64): VectorNativeTextShadow

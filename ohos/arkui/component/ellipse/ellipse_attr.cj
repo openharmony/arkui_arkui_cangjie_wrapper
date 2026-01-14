@@ -16,7 +16,7 @@
 package ohos.arkui.component.ellipse
 
 import ohos.arkui.component.shape.{CommonShapeMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines Ellipse attributes.
