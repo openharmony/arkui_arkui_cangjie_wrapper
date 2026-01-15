@@ -731,6 +731,10 @@ class BasicCommonUTHello {
         var noneTest = reuseParams.get<Int64>("c")
         @Expect(aaa, 3)
 
+        // 测试类型转换失败的分支：存储 Int64，但尝试获取 String
+        var wrongTypeTest = reuseParams.get<String>("a")  // 类型不匹配，应返回 None
+        @Expect(wrongTypeTest.isNone(), true)
+
         // var testCollectionEx: TestCollectionEx = TestCollectionEx(5)
         // var ttt = testCollectionEx.size
         // @Expect(ttt, 5)

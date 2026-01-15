@@ -120,6 +120,37 @@ class ViewCustomDialog2 {
     var dialogController13: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(builder: MyDialog1(message: message), isModal: false, borderWidth: 0.vp,
             borderColor: Color.Black, borderStyle: EdgeStyles(), backgroundBlurStyle: BlurStyle.ComponentUltraThick))
+
+    // 覆盖 cancel/alignment/offset/customStyle/maskColor/maskRect/showInSubWindow 的 Some 分支
+    var dialogController14: CustomDialogController = CustomDialogController(
+        CustomDialogControllerOptions(
+            builder: MyDialog1(message: message),
+            cancel: {=> Hilog.info(1, "1", "1", "dialog14 cancel callback")},
+            alignment: DialogAlignment.Center,
+            offset: Offset(10.vp, 10.vp),
+            customStyle: true,
+            maskColor: Color.Red,
+            maskRect: Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+            showInSubWindow: false
+        )
+    )
+
+    // 覆盖 ShadowOptions 的 None 分支 (radius/color/offsetX/offsetY)
+    var dialogController15: CustomDialogController = CustomDialogController(
+        CustomDialogControllerOptions(
+            builder: MyDialog1(message: message),
+            shadow: ShadowOptions(radius: Option<Float64>.None)
+        )
+    )
+
+    // 覆盖 shadowType Some 分支 和 fill Some 分支
+    var dialogController16: CustomDialogController = CustomDialogController(
+        CustomDialogControllerOptions(
+            builder: MyDialog1(message: message),
+            shadow: ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, fill: true)
+        )
+    )
+
     func build() {
         Column {
             Text(this.message).width(100.percent).id("text")
@@ -222,6 +253,39 @@ class ViewCustomDialog2 {
                     }
                 )
                 .id("open_button10")
+
+            // 覆盖 cancel/alignment/offset/customStyle/maskColor/maskRect/showInSubWindow Some 分支
+            Button("open dialog with cancel/alignment/offset/customStyle")
+                .onClick(
+                    {
+                        evt =>
+                        message = "open dialog14"
+                        dialogController14.openDialog()
+                    }
+                )
+                .id("open_button11")
+
+            // 覆盖 ShadowOptions None 分支
+            Button("open dialog with shadow None fields")
+                .onClick(
+                    {
+                        evt =>
+                        message = "open dialog15"
+                        dialogController15.openDialog()
+                    }
+                )
+                .id("open_button12")
+
+            // 覆盖 shadowType/fill Some 分支
+            Button("open dialog with shadowType/fill")
+                .onClick(
+                    {
+                        evt =>
+                        message = "open dialog16"
+                        dialogController16.openDialog()
+                    }
+                )
+                .id("open_button13")
         }.id("my_dialog").height(100.percent)
     }
 }

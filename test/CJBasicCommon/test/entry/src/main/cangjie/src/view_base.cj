@@ -215,6 +215,20 @@ class ViewBase {
                 types: [SafeAreaType.System, SafeAreaType.Keyboard, SafeAreaType.Cutout],
                 edges: [SafeAreaEdge.Top, SafeAreaEdge.Bottom, SafeAreaEdge.Start, SafeAreaEdge.End]
             )
+
+            // 覆盖 canIUse 函数 (common_types.cj 第 182-190 行)
+            Text(if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) { "canIUse:true" } else { "canIUse:false" })
+                .id("canIUseTest")
+
+            // 覆盖 Color(red, green, blue, alpha) 构造函数的各种分支
+            // 1. 不传 alpha (alpha=None，走 ?? 的 None 分支)
+            Row().backgroundColor(Color(255, 128, 64)).width(10).height(10).id("colorNoAlpha")
+            // 2. alpha > 1.0 (走第 166 行分支)
+            Row().backgroundColor(Color(255, 128, 64, alpha: 1.5)).width(10).height(10).id("colorAlphaGt1")
+            // 3. alpha < 0.0 (走第 167 行分支)
+            Row().backgroundColor(Color(255, 128, 64, alpha: -0.5)).width(10).height(10).id("colorAlphaLt0")
+            // 4. 0 < alpha < 1 (走第 168 行默认分支)
+            Row().backgroundColor(Color(255, 128, 64, alpha: 0.5)).width(10).height(10).id("colorAlpha05")
         }
     }
 }

@@ -607,11 +607,173 @@ class ViewAlertDialog {
                             primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
                             secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
                         let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
+                        // 覆盖 freeButtonsArr 中 size == 0 分支
+                        getUIContext().showAlertDialog(dialog4)
                     }
                 )
                 .fontSize(12)
                 .height(30)
                 .id("button_12")
+
+            // 覆盖 AlertDialogButtonBaseOptions.toNative() 基类方法
+            Button("AlertDialogButtonBaseOptions_toNative")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button13"
+                        // 使用 AlertDialogButtonBaseOptions 基类（不是 AlertDialogButtonOptions 子类）
+                        let baseConfirm = AlertDialogButtonBaseOptions(
+                            value: "base_confirm",
+                            fontColor: Color.Red,
+                            backgroundColor: Color.Blue,
+                            action: {=>}
+                        )
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test base toNative",
+                            confirm: baseConfirm
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_13")
+
+            // 覆盖 BorderColor color=None 分支 (第 163 行)
+            Button("BorderColor_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button14"
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test BorderColor None",
+                            borderColor: BorderColor(color: Option<ResourceColor>.None)  // 显式传 None 覆盖 ?? 默认分支
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_14")
+
+            // 覆盖 primaryButton/secondaryButton None 分支 (第 1075-1076 行)
+            Button("AlertDialogParamWithButtons_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button15"
+                        let dialog = AlertDialogParamWithButtons(
+                            message: "test buttons None",
+                            primaryButton: Option<AlertDialogButtonBaseOptions>.None,
+                            secondaryButton: Option<AlertDialogButtonBaseOptions>.None
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_15")
+
+            // 覆盖 buttons/buttonDirection None 分支 (第 1192-1193 行)
+            Button("AlertDialogParamWithOptions_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button16"
+                        let dialog = AlertDialogParamWithOptions(
+                            message: "test options None",
+                            buttons: Option<Array<AlertDialogButtonOptions>>.None,
+                            buttonDirection: Option<DialogButtonDirection>.None
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_16")
+
+            // 覆盖 AlertDialogButtonBaseOptions value/action None 分支 (第 320, 323 行)
+            Button("AlertDialogButtonBaseOptions_ValueAction_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button17"
+                        let baseConfirm = AlertDialogButtonBaseOptions(
+                            value: Option<ResourceStr>.None,
+                            action: Option<VoidCallback>.None
+                        )
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test value/action None",
+                            confirm: baseConfirm
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_17")
+
+            // 覆盖 shadow Some 分支 (第 782 行)
+            Button("AlertDialogParam_Shadow_Some")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button18"
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test shadow Some",
+                            shadow: ShadowOptions(radius: 10.0, color: Color.Gray)
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_18")
+
+            // 覆盖 AlertDialogButtonOptions value/action None 分支 (第 429, 432 行)
+            Button("AlertDialogButtonOptions_ValueAction_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button19"
+                        let button1 = AlertDialogButtonOptions(
+                            value: Option<ResourceStr>.None,
+                            action: Option<VoidCallback>.None
+                        )
+                        let dialog = AlertDialogParamWithOptions(
+                            message: "test button value/action None",
+                            buttons: [button1]
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_19")
+
+            // 覆盖 confirm/primary/secondary 手动设为 None 的分支
+            Button("AlertDialogParam_ManualNone")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button20"
+                        let dialogConfirm = AlertDialogParamWithConfirm(message: "manual none confirm")
+                        dialogConfirm.confirm = Option<AlertDialogButtonBaseOptions>.None
+                        getUIContext().showAlertDialog(dialogConfirm)
+
+                        let dialogButtons = AlertDialogParamWithButtons(
+                            message: "manual none buttons",
+                            primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
+                            secondaryButton: AlertDialogButtonOptions(value: "", action: {=>})
+                        )
+                        dialogButtons.primaryButton = Option<AlertDialogButtonBaseOptions>.None
+                        dialogButtons.secondaryButton = Option<AlertDialogButtonBaseOptions>.None
+                        getUIContext().showAlertDialog(dialogButtons)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_20")
 
             Row {
                 Text(this.msg).id("text")

@@ -181,6 +181,66 @@ class TitleMenuDialogUT11 {
         let button_12 = driver.findComponent(On().id("button_12"))
         button_12?.click()
         driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 AlertDialogButtonBaseOptions.toNative() 基类方法
+        let button_13 = driver.findComponent(On().id("button_13"))
+        button_13?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 BorderColor color=None 分支
+        let button_14 = driver.findComponent(On().id("button_14"))
+        button_14?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 primaryButton/secondaryButton None 分支
+        let button_15 = driver.findComponent(On().id("button_15"))
+        button_15?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 buttons/buttonDirection None 分支
+        let button_16 = driver.findComponent(On().id("button_16"))
+        button_16?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 AlertDialogButtonBaseOptions value/action None 分支
+        let button_17 = driver.findComponent(On().id("button_17"))
+        button_17?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 shadow Some 分支
+        let button_18 = driver.findComponent(On().id("button_18"))
+        button_18?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 AlertDialogButtonOptions value/action None 分支
+        let button_19 = driver.findComponent(On().id("button_19"))
+        button_19?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 confirm/primary/secondary 手动设为 None 的分支
+        let button_20 = driver.findComponent(On().id("button_20"))
+        button_20?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
@@ -276,6 +336,27 @@ class TitleMenuDialogUT11 {
         driver.pressBack()
         driver.delayMs(500)
         button = driver.findComponent(On().id("open_button10")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 cancel/alignment/offset/customStyle/maskColor/maskRect/showInSubWindow Some 分支
+        button = driver.findComponent(On().id("open_button11")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 ShadowOptions None 分支
+        button = driver.findComponent(On().id("open_button12")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        // 覆盖 shadowType/fill Some 分支
+        button = driver.findComponent(On().id("open_button13")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
