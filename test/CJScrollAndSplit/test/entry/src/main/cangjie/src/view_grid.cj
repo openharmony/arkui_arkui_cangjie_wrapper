@@ -629,6 +629,38 @@ class ViewGrid {
                     .backgroundColor(0xFAEEE0)
                     .height(200)
                     .id("grid_case_305")
+                    
+                /*
+                 * -@TestCaseID: grid_case_306
+                 * -@TestCaseName: grid_case_306
+                 * -@Expect: 1、 friction使用资源，属性都设置为Option.None;
+                 */
+                Text("grid_case_306: friction使用资源，其他属性都设置为Option.None")
+                Grid(child: { =>
+                    ForEach(
+                        value2,
+                        itemGeneratorFunc: {
+                            day: String, idx: Int64 => GridItem() {
+                                Text(day)
+                                    .fontSize(16)
+                                    .backgroundColor(0xF9CF93)
+                                    .width(30.vp)
+                                    .height(30.vp)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                })
+                    .columnsTemplate(Option.None)
+                    .rowsTemplate(Option.None)
+                    .columnsGap(Option.None)
+                    .rowsGap(Option.None)
+                    .nestedScroll(Option.None)
+                    .friction(@r(app.float.testFriction))
+                    .width(90.percent)
+                    .backgroundColor(0xFAEEE0)
+                    .height(200)
+                    .id("grid_case_306")
             }
         }
     }

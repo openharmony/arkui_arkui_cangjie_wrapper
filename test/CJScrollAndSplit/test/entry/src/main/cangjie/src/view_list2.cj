@@ -117,6 +117,34 @@ class ViewList2 {
                     .backgroundColor(0xFAEEE0)
                     .height(300)
                     .lanes(3)
+                    
+                List(space: 20, initialIndex: 0, scroller: Scroller()) {
+                    ForEach(
+                        this.numbers,
+                        itemGeneratorFunc: {
+                            day: String, idx: Int64 => ListItem() {
+                                Text(day)
+                                    .fontSize(16)
+                                    .backgroundColor(0xF9CF93)
+                                    .width(80)
+                                    .height(80)
+                                    .textAlign(TextAlign.Center)
+                            }
+                                .swipeAction()
+                        }
+                    )
+                }
+                .width(Option.None)
+                .height(Option.None)
+                .divider(Option.None)
+                .lanes(Option.None)
+                .friction(Option<Float64>.None)
+                .enableScrollInteraction(Option.None)
+                .onScrollFrameBegin(Option.None)
+                .backgroundColor(0xFAEEE0)
+                .height(300)
+                .lanes(3)
+                .id("listNone")
             }
         }
     }

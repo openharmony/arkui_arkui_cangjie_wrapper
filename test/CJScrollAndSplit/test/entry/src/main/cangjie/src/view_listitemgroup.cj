@@ -141,7 +141,14 @@ class ViewListItemGroup {
                         ListItem() {
                             Text("item 5-2")
                         }.width(90.percent).margin(5.percent)
-                    }
+                    }.divider(
+                        ListDividerOptions(
+                            strokeWidth: Option.None, 
+                            color: Option.None,
+                            startMargin: Option.None, 
+                            endMargin: Option.None
+                        )
+                    )
                 }.listDirection(Axis.Vertical)
             }.height(25.percent)
 
@@ -155,7 +162,7 @@ class ViewListItemGroup {
                         ListItem() {
                             Text("item 6-2")
                         }.width(90.percent).margin(5.percent).swipeAction()
-                    }
+                    }.divider(Option.None)
                 }.listDirection(Axis.Horizontal).chainAnimation(false).cachedCount(1)
             }.height(25.percent)
 

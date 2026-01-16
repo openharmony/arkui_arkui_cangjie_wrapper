@@ -110,6 +110,20 @@ class ScrollSplitUT2 {
 
         let pullDownRatio = attrs.get("pullDownRatio").getOrThrow().toString()
         @Expect(pullDownRatio, "\"\"")
+        
+        let refresh_component2 = getInspectorByKey("refresh_none_attr")
+        let jsonObject2 = JsonValue.fromStr(refresh_component2).asObject()
+        let attrs2 = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1, "info", "aaaa: ${attrs.getFields()}")
+
+        let offset2 = attrs2.get("refreshOffset").getOrThrow().toString()
+        @Expect(offset2, "\"0.00vp\"")
+
+        let pullToRefresh2 = attrs2.get("pullToRefresh").getOrThrow().toString()
+        @Expect(pullToRefresh2, "true")
+
+        let pullDownRatio2 = attrs2.get("pullDownRatio").getOrThrow().toString()
+        @Expect(pullDownRatio2, "\"\"")
     }
 
     @TestCase

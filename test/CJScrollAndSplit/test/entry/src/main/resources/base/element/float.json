@@ -3,6 +3,10 @@
     {
       "name": "minFontScale",
       "value": "0.5"
+    },
+      {
+      "name": "testFriction",
+      "value": "0.5"
     }
   ]
 }

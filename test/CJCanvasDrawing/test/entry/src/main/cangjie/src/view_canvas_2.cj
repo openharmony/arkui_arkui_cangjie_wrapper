@@ -43,14 +43,18 @@ class ViewCanvas2 {
     var context6: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     var context7: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     var context8: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
+    var context9: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     private var img: ImageBitmap = ImageBitmap("resource://RAWFILE/icon.png")
     private var img2: ImageBitmap = ImageBitmap("resource://RAWFILE/icon.png")
     private var img3: ImageBitmap = ImageBitmap("resource://RAWFILE/icon.png")
     var matrix: Matrix2D = Matrix2D()
     var matrix2: Matrix2D = Matrix2D()
     var matrix3: Matrix2D = Matrix2D()
+    var matrix4: Matrix2D = Matrix2D()
+    var matrix5: Matrix2D = Matrix2D()
     var path: Path2D = Path2D("M250 150 L150 350 L350 350 Z")
     var path2: Path2D = Path2D()
+    var path3: Path2D = Path2D(Option.None)
     var pattern: CanvasPattern = this.context.createPattern(this.img3, Repetition.NoRepeat).getOrThrow()
 
     @State
@@ -73,6 +77,19 @@ class ViewCanvas2 {
     var size5: String = ""
     @State
     var offscreenSize: String = ""
+
+    @State
+    var scaleY: String = ""
+    @State
+    var scaleX: String = ""
+    @State
+    var translateX: String = ""
+    @State
+    var translateY: String = ""
+    @State
+    var rotateX: String = ""
+    @State
+    var rotateY: String = ""
 
     func build() {
         Scroll() {
@@ -134,6 +151,7 @@ class ViewCanvas2 {
                           let data = ImageData(100.0, 100.0, data: s)
                           this.height_color = data.width.toString() + " " +data.data[0].toString()
                           let heig = data.height.toString()
+                          this.context4.putImageData(data, 10.0, 10.0)
                           this.context4.putImageData(data, 10.0, 10.0)
                           let data_white = ImageData(100.0, 100.0)
                           this.context4.putImageData(data_white, 150.0, 10.0, 0.0, 0.0, 50.0, 50.0)
@@ -221,11 +239,64 @@ class ViewCanvas2 {
                         this.matrix3.translateX = 50.0
                         this.matrix3.translateY = 50.0
                         this.context7.fillStyle = pattern
+                        this.pattern.setTransform(Option<Matrix2D>.None)
                         this.pattern.setTransform(this.matrix3)
                         this.context7.fillRect(0.0, 0.0, 480.0, 720.0)
                     }
                 )
+                Canvas(Option<CanvasRenderingContext2D>.None)
+                .width(100.percent)
+                .height(60.percent)
+                .backgroundColor(0xffffff)
 
+                Row() {
+                    Text(this.scaleX).id("scaleX")
+                    Text(this.scaleY).id("scaleY")
+                    Text(this.translateX).id("translateX")
+                    Text(this.translateY).id("translateY")
+                    Text(this.rotateX).id("rotateX")
+                    Text(this.rotateY).id("rotateY")
+                }
+                Canvas(this.context8)
+                .width(100.percent)
+                .height(60.percent)
+                .backgroundColor(0xffffff)
+                .onReady(
+                    {
+                        =>
+                        this.context8.fillRect(40.0, 20.0, 50.0, 50.0)
+                        this.matrix4.scaleY = 0.5
+                        this.scaleY = this.matrix4.scaleY.toString()
+                        this.matrix4.scaleX = 0.5
+                        this.scaleX = this.matrix4.scaleX.toString()
+                        this.matrix4.translateX = 50.0
+                        this.translateX = this.matrix4.translateX.toString()
+                        this.matrix4.translateY = 50.0
+                        this.translateY = this.matrix4.translateY.toString()
+                        this.matrix4.rotateX = -0.5
+                        this.rotateX = this.matrix4.rotateX.toString()
+                        this.matrix4.rotateY = 0.5
+                        this.rotateY = this.matrix4.rotateY.toString()
+                        this.context8.setTransform(this.matrix4)
+                        this.context8.fillRect(40.0, 20.0, 50.0, 50.0)
+                    }
+                )
+                
+                Canvas(this.context9)
+                .width(100.percent)
+                .height(60.percent)
+                .backgroundColor(0xffffff)
+                .onReady(
+                    {
+                        =>
+                        this.context9.fillRect(40.0, 20.0, 50.0, 50.0)
+                        this.matrix5.rotate(Option.None, rx: Option.None, ry: Option.None)
+                        this.matrix5.translate(tx: Option.None, ty: Option.None)
+                        this.matrix5.scale(sx: Option.None, sy: Option.None)
+                        this.context9.setTransform(this.matrix5)
+                        this.context9.fillRect(40.0, 20.0, 50.0, 50.0)
+                    }
+                )
             }
         }
     }
