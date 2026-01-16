@@ -31,27 +31,6 @@ foreign {
     func FFICJVectorNativeTextShadowsDelete(vec: VectorNativeTextShadows): Unit
 }
 
-class CJVectorNativeTextShadows {
-    let vecHandle: VectorNativeTextShadows
-
-    init(vec: VectorNativeTextShadows) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorNativeTextShadows(size) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorNativeTextShadowsDelete(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorNativeTextShadows {
-        vecHandle
-    }
-}
-
 foreign {
     func FfiOHOSAceFrameworkSpanCreate(content: CString): Unit
     func FfiOHOSAceFrameworkSpanSetOnClick(callback: Int64): Unit

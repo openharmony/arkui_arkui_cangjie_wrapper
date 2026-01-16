@@ -29,8 +29,6 @@ import std.deriving.Derive
 foreign {
     func FfiOHOSAceFrameworkGridRowCreate(): Unit
 
-    func FfiOHOSAceFrameworkGridRowCreateWithFloat64Int32(createOption: GridRowCreateWithFloat64Int32): Unit
-
     func FfiOHOSAceFrameworkGridRowCreateWithFloat64ColumnOption(createOption: GridRowCreateWithFloat64ColumnOption): Unit
 
     func FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionColumnOption(
@@ -38,10 +36,6 @@ foreign {
 
     func FfiOHOSAceFrameworkGridRowCreateWithSizeOptionColumnOption(
         createOption: GridRowCreateWithSizeOptionColumnOption): Unit
-
-    func FfiOHOSAceFrameworkGridRowCreateWithFloat64OptionInt32(createOption: GridRowCreateWithFloat64OptionInt32): Unit
-
-    func FfiOHOSAceFrameworkGridRowCreateWithSizeOptionInt32(createOption: GridRowCreateWithSizeOptionInt32): Unit
 
     func FfiOHOSAceFrameworkGridRowSetHeight(height: Float64, heightUnit: Int32): Unit
 
@@ -516,19 +510,6 @@ public class BreakPoints {
 }
 
 @C
-struct GridRowCreateWithFloat64Int32 {
-    GridRowCreateWithFloat64Int32(
-        let gutterValue: Float64,
-        let gutterUnit: Int32,
-        let columns: Int32,
-        let breakpointVals: VectorFloat64Handle,
-        let breakpointUnits: VectorInt32Handle,
-        let breakpointReference: Int32,
-        let direction: Int32
-    ) {}
-}
-
-@C
 struct GridRowCreateWithFloat64ColumnOption {
     GridRowCreateWithFloat64ColumnOption(
         let gutterValue: Float64,
@@ -562,34 +543,6 @@ struct GridRowCreateWithSizeOptionColumnOption {
         let x: AtCGridRowSizeOption,
         let Y: AtCGridRowSizeOption,
         let columns: NativeGridRowColumnOption,
-        let breakpointVals: VectorFloat64Handle,
-        let breakpointUnits: VectorInt32Handle,
-        let breakpointReference: Int32,
-        let direction: Int32
-    ) {}
-}
-
-@C
-struct GridRowCreateWithFloat64OptionInt32 {
-    GridRowCreateWithFloat64OptionInt32(
-        let x: Float64,
-        let xUnit: Int32,
-        let Y: Float64,
-        let yUnit: Int32,
-        let columns: Int32,
-        let breakpointVals: VectorFloat64Handle,
-        let breakpointUnits: VectorInt32Handle,
-        let breakpointReference: Int32,
-        let direction: Int32
-    ) {}
-}
-
-@C
-struct GridRowCreateWithSizeOptionInt32 {
-    GridRowCreateWithSizeOptionInt32(
-        let x: AtCGridRowSizeOption,
-        let Y: AtCGridRowSizeOption,
-        let columns: Int32,
         let breakpointVals: VectorFloat64Handle,
         let breakpointUnits: VectorInt32Handle,
         let breakpointReference: Int32,

@@ -23,6 +23,7 @@ func testsuites(): Unit {
     registerTestSuite("ScrollSplitUT1") {ScrollSplitUT1()}
     registerTestSuite("ScrollSplitUT11") {ScrollSplitUT11()}
     registerTestSuite("ScrollSplitUT2") {ScrollSplitUT2()}
+    registerTestSuite("ScrollSplitUTForCov") {ScrollSplitUTForCov()}
 }
 let UT_views = [
     "ScrollSplitIndex1",
@@ -58,5 +59,6 @@ let UT2 = [
     "ViewSideBarDefault",
     "ViewSideBarEnhance",
     "ViewSideBarInit",
-    "ViewSwiper"
+    "ViewSwiper",
+    "ViewAddCov"
 ]

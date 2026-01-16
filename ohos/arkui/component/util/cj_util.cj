@@ -39,14 +39,6 @@ protected func normalizeValue(value: Length, targetValue: Float64) {
     return value_
 }
 
-protected func transValueToTarget(value: Length, compareValue: Float64, targetValue: Float64) {
-    var value_ = value.value
-    if (value_ < compareValue) {
-        return targetValue
-    }
-    return value_
-}
-
 protected func transAppResourceToLength(value: Length): Length {
     if (let Some(v) <- (value as AppResource)) {
         return getResourceLength(v)
