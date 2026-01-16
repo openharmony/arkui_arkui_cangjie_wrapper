@@ -34,7 +34,8 @@ let tabs_views = [
     "TabsExample10",
     "TabsExample11",
     "TabsExample12",
-    "TabsExample13"
+    "TabsExample13",
+    "TabsExample14"
 ]
 
 @Entry

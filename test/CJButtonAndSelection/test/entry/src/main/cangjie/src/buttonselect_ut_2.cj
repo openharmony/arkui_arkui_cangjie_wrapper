@@ -542,4 +542,96 @@ class ButtonSelectUT2 {
         backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor, "\"#FFFFFFFF\"")
     }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testTitleAndHideTitleBarForNavDestination() {
+        scrollTo("ViewNavigation")
+        driver.findComponent(On().id("pageHomeButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageOne] test title: set normal value
+        var inspector = getInspectorByKey("navDestinationOne")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        var title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"PageOne\"")
+
+        // [PageOne] test hideTitleBar: set Option.None
+        var hideTitleBar = driver.findComponent(On().text("PageOne")).isNone()
+        @Expect(hideTitleBar, false)
+
+        driver.findComponent(On().id("pageOneButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageTwo] test title: set Option<ResourceStr>.None
+        inspector = getInspectorByKey("navDestinationTwo")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+
+        driver.findComponent(On().id("pageTwoButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageThree] test hideTitleBar: Set true
+        hideTitleBar = driver.findComponent(On().text("PageThree")).isNone()
+        @Expect(hideTitleBar, true)
+
+        driver.findComponent(On().id("pageThreePushFourButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageFour] 1.test hideTitleBar: set false 2.test title: set CustomBuilder
+        hideTitleBar = driver.findComponent(On().text("PageFour")).isNone()
+        @Expect(hideTitleBar, false)
+
+        driver.findComponent(On().id("pageThreePushFiveButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageFive] test title: set Option<CustomBuilder>.None
+        inspector = getInspectorByKey("navDestinationFive")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testTitleAndHideTitleBarForNavigation() {
+        scrollTo("ViewNavigation")
+
+        var inspector = getInspectorByKey("parentNavigation")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        var title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"PageHome\"")
+        var hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+
+        inspector = getInspectorByKey("childNavigation1")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(driver.findComponent(On().text("ChildNavigation1")).isSome(), true)
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+
+        inspector = getInspectorByKey("childNavigation2")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "true")
+
+        inspector = getInspectorByKey("childNavigation3")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+    }
+
 }

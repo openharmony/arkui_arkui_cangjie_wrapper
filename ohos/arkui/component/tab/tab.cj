@@ -23,119 +23,6 @@ import ohos.ffi.{Callback1Param, releaseFFIData, Callback0Param, RemoteDataLite}
 import ohos.base.{Callback, ResourceStr, VectorFloat32Handle, VectorInt32Handle, Length, LengthProp}
 import ohos.labels.{APILevel, Hide}
 
-@C
-struct CJTabsScrollableBarModeOptions {
-    CJTabsScrollableBarModeOptions(
-        let margin: Float64,
-        let marginUnit: Int32,
-        let nonScrollableLayoutStyle: Int32
-    ) {}
-}
-
-@C
-struct CJTabsDividerStyle {
-    CJTabsDividerStyle(
-        let strokeWidth: Float64,
-        let strokeWidthUnit: Int32,
-        let color: UInt32,
-        let startMargin: Float64,
-        let startMarginUnit: Int32,
-        let endMargin: Float64,
-        let endMarginUnit: Int32
-    ) {}
-}
-
-@C
-struct CJTabsBlurOptions {
-    CJTabsBlurOptions(let grayscale: VectorFloat32Handle) {}
-}
-
-@C
-struct CJTabsBarBackgroundBlurStyleOptions {
-    CJTabsBarBackgroundBlurStyleOptions(
-        let colorMode: Int32,
-        let adaptiveColor: Int32,
-        let blurOptions: CJTabsBlurOptions,
-        let scale: Float32,
-        let policy: Int32,
-        let inactiveColor: UInt32
-    ) {}
-}
-
-@C
-struct CJTabsBarGridColumnOptions {
-    CJTabsBarGridColumnOptions(
-        let margin: Float64,
-        let marginUnit: Int32,
-        let gutter: Float64,
-        let gutterUnit: Int32,
-        let sm: Int32,
-        let md: Int32,
-        let lg: Int32
-    ) {}
-}
-
-@C
-struct CJTabsBackgroundEffectOptions {
-    CJTabsBackgroundEffectOptions(
-        let radius: Float64,
-        let saturation: Float64,
-        let brightness: Float64,
-        let color: UInt32,
-        let adaptiveColor: Int32,
-        let blurOptions: CJTabsBlurOptions,
-        let policy: Int32,
-        let inactiveColor: UInt32
-    ) {}
-}
-
-@C
-struct CJTabsAnimationEvent {
-    CJTabsAnimationEvent(
-        let currentOffset: Float32,
-        let targetOffset: Float32,
-        let velocity: Float32
-    ) {}
-}
-
-@C
-struct CJTabContentAnimatedTransition {
-    CJTabContentAnimatedTransition(
-        let timeout: Int32,
-        let transition: Int64,
-        let isUndefined: Bool
-    ) {}
-
-    init() {
-        timeout = 1000
-        transition = -1
-        isUndefined = true
-    }
-}
-
-@C
-struct CJTabContentIndicatorStyle {
-    CJTabContentIndicatorStyle(
-        let color: UInt32,
-        let height: Float64,
-        let heightUnit: Int32,
-        let width: Float64,
-        let widthUnit: Int32,
-        let borderRadius: Float64,
-        let borderRadiusUnit: Int32,
-        let marginTop: Float64,
-        let marginTopUnit: Int32
-    ) {}
-}
-
-@C
-struct CJBoardStyle {
-    CJBoardStyle(
-        let borderRadius: Float64,
-        let borderRadiusUnit: Int32
-    ) {}
-}
-
 foreign {
     func FfiOHOSAceFrameworkTabsCreate(barVal: Int32, controller: Int64, index: Int32): Unit
 
@@ -146,8 +33,6 @@ foreign {
     func FfiOHOSAceFrameworkTabsSetBarHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkTabsSetBarMode(barMode: Int32): Unit
-
-    func FfiOHOSAceFrameworkTabsSetBarModeWithOptions(barMode: Int32, options: CJTabsScrollableBarModeOptions): Unit
 
     func FfiOHOSAceFrameworkTabsSetIndex(index: Int32): Unit
 
@@ -161,8 +46,6 @@ foreign {
 
     func FfiOHOSAceFrameworkTabsSetBarPosition(barPosition: Int32): Unit
 
-    func FfiOHOSAceFrameworkTabsSetDivider(dividerStyle: CJTabsDividerStyle): Unit
-
     func FfiOHOSAceFrameworkTabsSetFadingEdge(fadingEdge: Bool): Unit
 
     func FfiOHOSAceFrameworkTabsSetBarOverlap(barOverlap: Bool): Unit
@@ -171,16 +54,7 @@ foreign {
 
     func FfiOHOSAceFrameworkTabsSetBarBackgroundBlurStyle(blurStyle: Int32): Unit
 
-    func FfiOHOSAceFrameworkTabsSetBarBackgroundBlurStyleWithOptions(
-        blurStyle: Int32,
-        options: CJTabsBarBackgroundBlurStyleOptions
-    ): Unit
-
-    func FfiOHOSAceFrameworkTabsSetBarGridAlign(blurStyle: CJTabsBarGridColumnOptions): Unit
-
     func FfiOHOSAceFrameworkTabsSetEdgeEffect(edgeEffect: Int32): Unit
-
-    func FfiOHOSAceFrameworkTabsSetBarBackgroundEffect(options: CJTabsBackgroundEffectOptions): Unit
 
     func FfiOHOSAceFrameworkTabsOnChange(callback: Int64): Unit
 

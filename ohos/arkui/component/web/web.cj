@@ -132,12 +132,6 @@ foreign {
 
     func FfiWebCursiveFont(family: CString): Unit
 
-    func FfiVectorScriptItemCreate(size: Int64): VectorScriptItemHandle
-
-    func FfiVectorScriptItemSetElement(vec: VectorScriptItemHandle, index: Int64, item: FfiScriptItem): Unit
-
-    func FfiVectorScriptItemDelete(vec: VectorScriptItemHandle): Unit
-
     func FfiWebPinchSmooth(isEnabled: Bool): Unit
 
     func FfiWebAllowWindowOpenMethod(flag: Bool): Unit
@@ -159,13 +153,6 @@ foreign {
     func FfiWebMetaViewport(enabled: Bool): Unit
 
     func FfiWebTextAutosizing(textAutosizing: Bool): Unit
-
-    func FfiVectorExpandedMenuItemOptionsCreate(size: Int64): VectorExpandedMenuItemOptionsHandle
-
-    func FfiVectorExpandedMenuItemOptionsSetElement(vec: VectorExpandedMenuItemOptionsHandle, index: Int64,
-        item: FfiExpandedMenuItemOptions): Unit
-
-    func FfiVectorExpandedMenuItemOptionsDelete(vec: VectorExpandedMenuItemOptionsHandle): Unit
 
     func FfiWebSelectionMenuOptions(value: VectorExpandedMenuItemOptionsHandle): Unit
 
@@ -203,14 +190,6 @@ foreign {
 
     func FfiWebFreeResourceError(ptr: CPointer<Unit>): Unit
 
-    func FfiVectorHeaderCreate(size: Int64): VectorHeaderHandle
-
-    func FfiVectorHeaderGet(index: Int64, vec: VectorHeaderHandle): FfiHeader
-
-    func FfiVectorHeaderSize(vec: VectorHeaderHandle): Int64
-
-    func FfiVectorHeaderDelete(vec: VectorHeaderHandle): Unit
-
     func FfiWebGetRequestHeader(ptr: CPointer<Unit>): VectorHeaderHandle
 
     func FfiWebGetRequestUrl(ptr: CPointer<Unit>): ExternalString
@@ -240,25 +219,6 @@ foreign {
     func FfiOHOSAceFrameworkWebSetRotate(value: CJSetRotate): Unit
 }
 
-class FfiVectorScriptItem {
-    private let vecHandle: VectorScriptItemHandle
-    init(vec: VectorScriptItemHandle) {
-        vecHandle = vec
-    }
-    init(size: Int64) {
-        vecHandle = unsafe { FfiVectorScriptItemCreate(size) }
-    }
-    func setElement(index: Int64, value: FfiScriptItem): Unit {
-        unsafe { FfiVectorScriptItemSetElement(vecHandle, index, value) }
-    }
-    func free(): Unit {
-        unsafe { FfiVectorScriptItemDelete(vecHandle) }
-    }
-    func getNativeHandle(): VectorScriptItemHandle {
-        vecHandle
-    }
-}
-
 enum WebType {
     Surface
     | Texture
@@ -273,91 +233,14 @@ enum WebType {
     }
 }
 
-class FfiVectorExpandedMenuItemOptions {
-    private let vecHandle: VectorExpandedMenuItemOptionsHandle
-    init(vec: VectorExpandedMenuItemOptionsHandle) {
-        vecHandle = vec
-    }
-    init(size: Int64) {
-        vecHandle = unsafe { FfiVectorExpandedMenuItemOptionsCreate(size) }
-    }
-    func setElement(index: Int64, value: FfiExpandedMenuItemOptions): Unit {
-        unsafe { FfiVectorExpandedMenuItemOptionsSetElement(vecHandle, index, value) }
-    }
-    func free(): Unit {
-        unsafe { FfiVectorExpandedMenuItemOptionsDelete(vecHandle) }
-    }
-    func getNativeHandle(): VectorExpandedMenuItemOptionsHandle {
-        vecHandle
-    }
-}
-
-@C
-struct FfiAdsBlockedDetails {
-    FfiAdsBlockedDetails(
-        let url: CString,
-        let adsBlocked: VectorStringHandle
-    ) {}
-}
-
-@C
-struct FfiExpandedMenuItemOptions {
-    FfiExpandedMenuItemOptions(
-        let content: CString,
-        let startIcon: CString,
-        let hasStartIcon: Bool,
-        let action: Int64
-    ) {}
-}
-
-@C
-struct FfiScriptItem {
-    FfiScriptItem(
-        let script: CString,
-        let scriptRules: VectorStringHandle
-    ) {}
-}
-
 @C
 func FfiOHOSAbilityAccessCtrlRequestPermissionsFromUserCallBack(context: CPointer<Unit>, cPermissionList: CArrString,
     callbackPtr: CPointer<Unit>): Unit {
     unsafe { FfiOHOSAbilityAccessCtrlRequestPermissionsFromUserByStdFunc(context, cPermissionList, callbackPtr) }
 }
 
-@C
-struct FfiWebEvent {
-    FfiWebEvent(
-        let url: CString,
-        let message: CString,
-        let value: CString,
-        let result: Int64
-    ) {}
-}
-
 const RAWFILE_TYPE: Int32 = 30000
 
-class CallbackCJWebEvent <: BaseCallBack {
-    CallbackCJWebEvent(let closure: (FfiWebEvent) -> Bool) {
-        registerSelf()
-    }
-
-    protected func invoke(argc: Int32, argv: CPointer<CPointer<Unit>>, _: CPointer<Unit>): Unit {
-        if (argc != 1) {
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        if (argv.isNull()) {
-            APP_LOG.error("Invalid argument, failed to invoke CallbackCJWebEvent")
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        let ptrArg0 = unsafe { CPointer<FfiWebEvent>(argv.read()) }
-        if (ptrArg0.isNull()) {
-            APP_LOG.error("Invalid argument, failed to invoke CallbackCJWebEvent")
-            throw BusinessException(190002, "The callback function is invalid.")
-        }
-        let arg0 = unsafe { ptrArg0.read() }
-        closure(arg0)
-    }
-}
 /**
  * Defines the triggered function at the begin of web page loading.
  *
@@ -488,46 +371,6 @@ public class Header {
     }
 }
 
-@C
-struct FfiHeader {
-    FfiHeader(
-        let headerKey: ExternalString,
-        let headerValue: ExternalString
-    ) {}
-}
-
-struct FfiVectorHeader {
-    private let vecHandle: VectorHeaderHandle
-    init(vec: VectorHeaderHandle) {
-        vecHandle = vec
-    }
-    init(size: Int64) {
-        vecHandle = unsafe { FfiVectorHeaderCreate(size) }
-    }
-    func getElement(index: Int64): FfiHeader {
-        unsafe { FfiVectorHeaderGet(index, vecHandle) }
-    }
-    func getSize(): Int64 {
-        unsafe { FfiVectorHeaderSize(vecHandle) }
-    }
-    func getNativeHandle(): VectorHeaderHandle {
-        vecHandle
-    }
-    func free(): Unit {
-        unsafe { FfiVectorHeaderDelete(vecHandle) }
-    }
-}
-
-@C
-struct FfiOnDownloadStartEvent {
-    FfiOnDownloadStartEvent(
-        let url: CString,
-        let userAgent: CString,
-        let contentDisposition: CString,
-        let mimetype: CString,
-        let contentLength: Int64
-    ) {}
-}
 /**
  * Defines the Web resource request.
  *
