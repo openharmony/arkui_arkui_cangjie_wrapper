@@ -814,6 +814,36 @@ class ScrollSplitUT1 {
         let divider = attrs.get("divider").getOrThrow().toString()
          @Expect(divider , "{\"strokeWidth\":\"2.00px\",\"startMargin\":\"0.00vp\",\"endMargin\":\"0.00vp\",\"color\":\"#08000000\"}")
     }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testListCommonAttrsNone() {
+        scrollTo("ViewList2")
+
+        let inspector = getInspectorByKey("listNone")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1, "info", "aaaa: ${jsonObject.toString()}")
+
+        let width = attrs.get("width").getOrThrow().toString()
+
+        @Expect(width, "\"387.69vp\"")
+
+        let height = attrs.get("height").getOrThrow().toString()
+        @Expect(height, "\"300.vp\"")
+
+        let divider = attrs.get("divider").getOrThrow().toString()
+        @Expect(divider, "{}")
+
+        let lanes = attrs.get("lanes").getOrThrow().toString()
+        @Expect(lanes, "\"1\"")
+
+        let friction = attrs.get("friction").getOrThrow().toString()
+        @Expect(friction, "0.750000")
+
+        let enableScrollInteraction = attrs.get("enableScrollInteraction").getOrThrow().toString()
+        @Expect(enableScrollInteraction, "true")
+    }
 
     @TestCase
     @Tag[APILevel22, TestLevel0]

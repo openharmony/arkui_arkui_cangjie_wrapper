@@ -39,6 +39,8 @@ class ViewPath {
             Path(width: 600, height: 40, commands: "M0 0 L600 0").stroke(Color.Black).strokeWidth(4).id("path_8")
 
             Path(width: 600.vp, height: 20.vp).commands("M0 0 L600 0").stroke(Color.Black).strokeWidth(2).id("path_9")
+            Path().commands(Option.None).stroke(Color.Black).strokeWidth(2).id("path_10")
+            Path(width: Option.None, height: Option.None, commands: Option.None).strokeWidth(2).id("path_11")
         }
     }
 }

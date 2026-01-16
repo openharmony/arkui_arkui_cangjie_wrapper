@@ -138,7 +138,7 @@ class ViewListItem {
                                     .borderRadius(10.5)
                                     .backgroundColor(0xFFFFFF)
                             }
-                                .swipeAction(end: bind(this.itemEnd, this))
+                                .swipeAction(end: bind(this.itemEnd, this), edgeEffect: SwipeEdgeEffect.None)
                                 .selectable(true)
                                 .onSelect({select: Bool => this.selected = select})
                         }

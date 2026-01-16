@@ -171,6 +171,11 @@ class ViewRefresh {
                 .width(100.percent)
                 .height(100.percent)
                 .id("refresh_set_attr")
-            }
+                
+            Refresh(Option.None) {}
+                .width(100.percent)
+                .height(100.percent)
+                .id("refresh_none_attr")
+        }
     }
 }
