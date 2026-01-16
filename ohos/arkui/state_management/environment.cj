@@ -65,14 +65,6 @@ public enum ColorMode {
     Dark
     | ...
 
-    func getValue(): Int32 {
-        match (this) {
-            case Light => 0
-            case Dark => 1
-            case _ => throw BusinessException(100001, "Internal error.")
-        }
-    }
-
     static func parse(val: Int32): ColorMode {
         if (val == 1) {
             return Dark

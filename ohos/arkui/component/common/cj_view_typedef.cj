@@ -1178,10 +1178,6 @@ public class EdgeWidths {
         this.bottom = transAppResourceToLength(bottom ?? 0.vp)
         this.left = transAppResourceToLength(left ?? 0.vp)
     }
-
-    func toCJEdge(): CJEdge {
-        return CJEdge(top ?? 0.vp, right ?? 0.vp, bottom ?? 0.vp, left ?? 0.vp)
-    }
 }
 
 /**
