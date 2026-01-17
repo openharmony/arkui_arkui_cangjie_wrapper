@@ -541,6 +541,12 @@ class ButtonSelectUT2 {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor, "\"#FFFFFFFF\"")
+
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
@@ -594,6 +600,14 @@ class ButtonSelectUT2 {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         title = attrs.get("title").getOrThrow().toString()
         @Expect(title, "\"\"")
+
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
