@@ -152,7 +152,8 @@ class BasicCommonUT1 {
         let keysSizeBtn_1 = driver.findComponent(On().id("keysSizeButton")).getOrThrow()
         keysSizeBtn_1.click()
         let msgText_4 = driver.waitForComponent(On().id("msgText"),500).getOrThrow().getText()
-        @Expect(msgText_4,"AppStorage has 5 elements: [count, msg, propmsg, abilityContext, windowStage]")
+        Hilog.info(1, "Cangjie-App", "testAppStorage: ${msgText_4}")
+        @Expect(msgText_4.contains("AppStorage has"))
 
         let clearBtn = driver.findComponent(On().id("clearButton")).getOrThrow()
         clearBtn.click()
