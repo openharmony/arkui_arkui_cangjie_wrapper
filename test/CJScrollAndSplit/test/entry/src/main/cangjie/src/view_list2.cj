@@ -143,7 +143,6 @@ class ViewList2 {
                 .onScrollFrameBegin(Option.None)
                 .backgroundColor(0xFAEEE0)
                 .height(300)
-                .lanes(3)
                 .id("listNone")
             }
         }
