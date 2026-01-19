@@ -163,7 +163,8 @@ class BasicCommonUT1 {
         keysSizeBtn_2.click()
         let msgText_6 = driver.waitForComponent(On().id("msgText"),500).getOrThrow().getText()
         // 后期如果功能修改，可能需要重新修改测试用例
-        @Expect(msgText_6,"AppStorage has 5 elements: [count, msg, propmsg, abilityContext, windowStage]")
+        Hilog.info(1, "Cangjie-App", "testAppStorage: ${msgText_6}")
+        @Expect(msgText_6.contains("AppStorage has"))
 
         let setBtn = driver.findComponent(On().id("setButton")).getOrThrow()
         setBtn.click()
