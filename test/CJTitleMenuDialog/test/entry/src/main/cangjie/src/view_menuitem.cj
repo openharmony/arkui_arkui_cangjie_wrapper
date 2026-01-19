@@ -24,7 +24,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class ViewMenuItem {
     @State
-    var isMenuOpen: Bool = true // 添加一个状态变量用于控制菜单显示
+    var isMenuOpen: Bool = true
 
     @Builder
     func myMenu() {
@@ -41,7 +41,7 @@ class ViewMenuItem {
         }
     }
 
-    // 覆盖 MenuItem 构造函数的 None 分支 (第 99-102 行)
+
     @Builder
     func myMenuItemNone() {
         Menu() {
@@ -50,7 +50,7 @@ class ViewMenuItem {
         }
     }
 
-    // 覆盖 selected/selectIcon/contentFontColor/labelFontColor/onChange 的 None 分支
+
     @Builder
     func myMenuItemMethodsNone() {
         Menu() {
@@ -77,7 +77,7 @@ class ViewMenuItem {
                 .width(50.percent)
 
             this.myMenu()
-            // 覆盖 MenuItem ?? 的 None 分支
+
             Column() {
                 this.myMenuItemNone()
                 this.myMenuItemMethodsNone()

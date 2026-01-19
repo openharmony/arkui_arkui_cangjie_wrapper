@@ -607,7 +607,7 @@ class ViewAlertDialog {
                             primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
                             secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
                         let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
-                        // 覆盖 freeButtonsArr 中 size == 0 分支
+
                         getUIContext().showAlertDialog(dialog4)
                     }
                 )
@@ -615,13 +615,13 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_12")
 
-            // 覆盖 AlertDialogButtonBaseOptions.toNative() 基类方法
+
             Button("AlertDialogButtonBaseOptions_toNative")
                 .onClick(
                     {
                         e =>
                         this.msg1 = "button13"
-                        // 使用 AlertDialogButtonBaseOptions 基类（不是 AlertDialogButtonOptions 子类）
+
                         let baseConfirm = AlertDialogButtonBaseOptions(
                             value: "base_confirm",
                             fontColor: Color.Red,
@@ -639,7 +639,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_13")
 
-            // 覆盖 BorderColor color=None 分支 (第 163 行)
+
             Button("BorderColor_None")
                 .onClick(
                     {
@@ -647,7 +647,7 @@ class ViewAlertDialog {
                         this.msg1 = "button14"
                         let dialog = AlertDialogParamWithConfirm(
                             message: "test BorderColor None",
-                            borderColor: BorderColor(color: Option<ResourceColor>.None)  // 显式传 None 覆盖 ?? 默认分支
+                            borderColor: BorderColor(color: Option<ResourceColor>.None)
                         )
                         getUIContext().showAlertDialog(dialog)
                     }
@@ -656,7 +656,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_14")
 
-            // 覆盖 primaryButton/secondaryButton None 分支 (第 1075-1076 行)
+
             Button("AlertDialogParamWithButtons_None")
                 .onClick(
                     {
@@ -674,7 +674,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_15")
 
-            // 覆盖 buttons/buttonDirection None 分支 (第 1192-1193 行)
+
             Button("AlertDialogParamWithOptions_None")
                 .onClick(
                     {
@@ -692,7 +692,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_16")
 
-            // 覆盖 AlertDialogButtonBaseOptions value/action None 分支 (第 320, 323 行)
+
             Button("AlertDialogButtonBaseOptions_ValueAction_None")
                 .onClick(
                     {
@@ -713,7 +713,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_17")
 
-            // 覆盖 shadow Some 分支 (第 782 行)
+
             Button("AlertDialogParam_Shadow_Some")
                 .onClick(
                     {
@@ -730,7 +730,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_18")
 
-            // 覆盖 AlertDialogButtonOptions value/action None 分支 (第 429, 432 行)
+
             Button("AlertDialogButtonOptions_ValueAction_None")
                 .onClick(
                     {
@@ -751,7 +751,7 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_19")
 
-            // 覆盖 confirm/primary/secondary 手动设为 None 的分支
+
             Button("AlertDialogParam_ManualNone")
                 .onClick(
                     {

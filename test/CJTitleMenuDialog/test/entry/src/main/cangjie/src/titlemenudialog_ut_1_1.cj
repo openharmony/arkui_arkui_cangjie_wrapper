@@ -167,31 +167,31 @@ class TitleMenuDialogUT1 {
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
-        // 覆盖 SheetInfo None 分支
+
         button = driver.findComponent(On().id("action_sheet_button_sheetinfo_none")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
-        // 覆盖 ActionSheetOptions title/message/sheets None 分支
+
         button = driver.findComponent(On().id("action_sheet_button_options_none")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
-        // 覆盖 ActionSheetButtonOptions None 分支
+
         button = driver.findComponent(On().id("action_sheet_button_confirm_none")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
-        // 覆盖 ActionSheetButtonOptions enabled 显式传值分支
+
         button = driver.findComponent(On().id("action_sheet_button_confirm_enabled")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
-        // 覆盖 ActionSheetOffset None 分支
+
         button = driver.findComponent(On().id("action_sheet_button_offset_none")).getOrThrow()
         button.click()
         driver.delayMs(1000)

@@ -26,7 +26,7 @@ class ViewMenu {
     @State
     var select: Bool = true
     @State
-    var isMenuOpen: Bool = true // 添加一个状态变量用于控制菜单显示
+    var isMenuOpen: Bool = true
     let float_offset = OffsetResult(0.0, 100.0)
     @Builder
     func myMenu() {
@@ -36,7 +36,7 @@ class ViewMenu {
         }.fontColor(0xFF7F50).width(140).font(size: 1.0, weight: W400, style: FontStyle.Normal).id("menuComponent").radius(3.vp)
     }
 
-    // 覆盖 font 方法的 None 分支 (weight/size/style 都不传)
+
     @Builder
     func myMenuFontNone() {
         Menu() {
@@ -44,7 +44,7 @@ class ViewMenu {
         }.font().id("menuFontNone")
     }
 
-    // 覆盖 font 方法的 family Some 分支
+
     @Builder
     func myMenuFontFamily() {
         Menu() {
@@ -52,7 +52,7 @@ class ViewMenu {
         }.font(family: "Arial").id("menuFontFamily")
     }
 
-    // 覆盖 fontColor 方法的 None 分支
+
     @Builder
     func myMenuFontColorNone() {
         Menu() {
@@ -60,7 +60,7 @@ class ViewMenu {
         }.fontColor(Option<ResourceColor>.None).id("menuFontColorNone")
     }
 
-    // 覆盖 radius(value: ?Length) 的 None 分支 (第 152-155 行)
+
     @Builder
     func myMenuRadiusNone() {
         Menu() {
@@ -68,7 +68,7 @@ class ViewMenu {
         }.radius(Option<Length>.None).id("menuRadiusNone")
     }
 
-    // 覆盖 radius(value: ?Length) 的 Some 且值 <= 0 分支 (第 143-147 行)
+
     @Builder
     func myMenuRadiusZero() {
         Menu() {
@@ -76,7 +76,7 @@ class ViewMenu {
         }.radius(0.vp).id("menuRadiusZero")
     }
 
-    // 覆盖 widthInner 的 None 分支 (第 196 行)
+
     @Builder
     func myMenuWidthNone() {
         Menu() {
@@ -84,7 +84,7 @@ class ViewMenu {
         }.width(Option<Length>.None).id("menuWidthNone")
     }
 
-    // 覆盖 widthInner 的 Some 且值 <= 0 分支 (第 190-191 行)
+
     @Builder
     func myMenuWidthZero() {
         Menu() {
@@ -145,7 +145,7 @@ class ViewMenu {
                 this.myMenu1()
                 this.myMenu2()
             }
-            // 覆盖 font/fontColor/radius/width 的未覆盖分支
+
             Column() {
                 this.myMenuFontNone()
                 this.myMenuFontFamily()

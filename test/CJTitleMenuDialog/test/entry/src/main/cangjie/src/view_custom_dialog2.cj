@@ -121,7 +121,7 @@ class ViewCustomDialog2 {
         CustomDialogControllerOptions(builder: MyDialog1(message: message), isModal: false, borderWidth: 0.vp,
             borderColor: Color.Black, borderStyle: EdgeStyles(), backgroundBlurStyle: BlurStyle.ComponentUltraThick))
 
-    // 覆盖 cancel/alignment/offset/customStyle/maskColor/maskRect/showInSubWindow 的 Some 分支
+
     var dialogController14: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(
             builder: MyDialog1(message: message),
@@ -135,7 +135,7 @@ class ViewCustomDialog2 {
         )
     )
 
-    // 覆盖 ShadowOptions 的 None 分支 (radius/color/offsetX/offsetY)
+
     var dialogController15: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(
             builder: MyDialog1(message: message),
@@ -143,7 +143,7 @@ class ViewCustomDialog2 {
         )
     )
 
-    // 覆盖 shadowType Some 分支 和 fill Some 分支
+
     var dialogController16: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(
             builder: MyDialog1(message: message),
@@ -254,7 +254,7 @@ class ViewCustomDialog2 {
                 )
                 .id("open_button10")
 
-            // 覆盖 cancel/alignment/offset/customStyle/maskColor/maskRect/showInSubWindow Some 分支
+
             Button("open dialog with cancel/alignment/offset/customStyle")
                 .onClick(
                     {
@@ -265,7 +265,7 @@ class ViewCustomDialog2 {
                 )
                 .id("open_button11")
 
-            // 覆盖 ShadowOptions None 分支
+
             Button("open dialog with shadow None fields")
                 .onClick(
                     {
@@ -276,7 +276,7 @@ class ViewCustomDialog2 {
                 )
                 .id("open_button12")
 
-            // 覆盖 shadowType/fill Some 分支
+
             Button("open dialog with shadowType/fill")
                 .onClick(
                     {

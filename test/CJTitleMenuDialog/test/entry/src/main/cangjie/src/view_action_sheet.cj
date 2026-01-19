@@ -15,15 +15,15 @@ import ohos.arkui.state_macro_manage.r
 class ViewActionSheet {
     var sheets: Array<SheetInfo> = [SheetInfo(title: "apple", action: {=> Hilog.info(1, "1", "1", "apple sheet")},
         icon: @r(app.media.app_icon)), SheetInfo(title: "banana", action: {=> Hilog.info(1, "1", "1", "banana sheet")})]
-    // 覆盖 SheetInfo 的 None 分支
+
     var sheetsWithNone: Array<SheetInfo> = [SheetInfo(title: Option<ResourceStr>.None, action: Option<VoidCallback>.None, icon: Option<ResourceStr>.None)]
     var confirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Confirm button",
         action: {=> Hilog.info(1, "1", "1", "Confirm")}, defaultFocus: true, style: DialogButtonStyle.Default)
     var defaultConfirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "default ActionSheetButtonOptions",
         action: {=> Hilog.info(1, "1", "1", "Default ActionSheetButtonOptions")})
-    // 覆盖 ActionSheetButtonOptions 的 None 分支
+
     var confirmWithNone: ActionSheetButtonOptions = ActionSheetButtonOptions(value: Option<ResourceStr>.None, action: Option<VoidCallback>.None)
-    // 覆盖 ActionSheetButtonOptions 的 enabled 显式传值分支
+
     var confirmWithEnabled: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Enabled button",
         action: {=> Hilog.info(1, "1", "1", "Enabled")}, enabled: true, defaultFocus: false, style: DialogButtonStyle.Highlight)
     func build() {
@@ -278,7 +278,7 @@ class ViewActionSheet {
                         }
                     )
                     .id("action_sheet_button19")
-                // 覆盖 SheetInfo None 分支
+
                 Button("ActionSheet with SheetInfo None values")
                     .onClick(
                         {
@@ -290,7 +290,7 @@ class ViewActionSheet {
                     .fontSize(12)
                     .height(15)
                     .id("action_sheet_button_sheetinfo_none")
-                // 覆盖 ActionSheetOptions title/message/sheets None 分支
+
                 Button("ActionSheet with None title/message/sheets")
                     .onClick(
                         {
@@ -302,7 +302,7 @@ class ViewActionSheet {
                     .fontSize(12)
                     .height(15)
                     .id("action_sheet_button_options_none")
-                // 覆盖 ActionSheetButtonOptions None 分支
+
                 Button("ActionSheet with confirm None values")
                     .onClick(
                         {
@@ -315,7 +315,7 @@ class ViewActionSheet {
                     .fontSize(12)
                     .height(15)
                     .id("action_sheet_button_confirm_none")
-                // 覆盖 ActionSheetButtonOptions enabled 显式传值分支
+
                 Button("ActionSheet with confirm enabled explicit")
                     .onClick(
                         {
@@ -328,7 +328,7 @@ class ViewActionSheet {
                     .fontSize(12)
                     .height(15)
                     .id("action_sheet_button_confirm_enabled")
-                // 覆盖 ActionSheetOffset None 分支 (dx/dy 不传)
+
                 Button("ActionSheet with offset None values")
                     .onClick(
                         {

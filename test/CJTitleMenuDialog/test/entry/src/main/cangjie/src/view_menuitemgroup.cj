@@ -174,49 +174,49 @@ class ViewMenuItemGroup {
             }.id("MenuItemGroup1")
         }
 
-        // 覆盖 MenuItemGroup 构造函数 (ResourceStr 版本) 的 header=None, footer=None 分支
+
         Menu() {
             MenuItemGroup() {
                 MenuItem(startIcon: "", content: "NoneHeader", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupNone")
         }
 
-        // 覆盖 MenuItemGroup 构造函数 (ResourceStr 版本) 的 header=Some, footer=None 分支
+
         Menu() {
             MenuItemGroup(header: "HeaderOnly") {
                 MenuItem(startIcon: "", content: "HeaderOnly", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupHeaderOnly")
         }
 
-        // 覆盖 MenuItemGroup 构造函数 (ResourceStr 版本) 的 header=None, footer=Some 分支
+
         Menu() {
             MenuItemGroup(footer: "FooterOnly") {
                 MenuItem(startIcon: "", content: "FooterOnly", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupFooterOnly")
         }
 
-        // 覆盖 MenuItemGroup 构造函数 (CustomBuilder 版本) 的 header=None, footer=None 分支
+
         Menu() {
             MenuItemGroup(header: Option<CustomBuilder>.None, footer: Option<CustomBuilder>.None) {
                 => MenuItem(startIcon: "", content: "BuilderNone", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupBuilderNone")
         }
 
-        // 覆盖 CustomBuilder 版本的 header=Some, footer=None 分支
+
         Menu() {
             MenuItemGroup(header: {=>}, footer: Option<CustomBuilder>.None) {
                 => MenuItem(startIcon: "", content: "BuilderHeaderOnly", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupBuilderHeaderOnly")
         }
 
-        // 覆盖 CustomBuilder 版本的 header=None, footer=Some 分支
+
         Menu() {
             MenuItemGroup(header: Option<CustomBuilder>.None, footer: {=>}) {
                 => MenuItem(startIcon: "", content: "BuilderFooterOnly", endIcon: "", labelInfo: "")
             }.id("MenuItemGroupBuilderFooterOnly")
         }
 
-        // 覆盖 transResourceStrToString 的 AppResource 分支组合
+
         // header=AppResource, footer=None
         Menu() {
             MenuItemGroup(header: @r(app.string.menuItemGroup_header)) {

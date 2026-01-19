@@ -39,7 +39,7 @@ class ViewBase {
     func build() {
         Column() {
             Row() {
-                // 宽度80 ,高度80 ,外边距20（蓝色区域），内边距10（白色区域）
+
                 Row() {
                     Row().size(width: 100.percent, height: 100.percent).backgroundColor(Color.Green)
                 }.width(80).height(80).padding(@r(app.integer.test_cjResource)).margin(@r(app.integer.test_cjResource)).
@@ -53,12 +53,12 @@ class ViewBase {
 
             Row {
                 Text("flexBasis(100.0)").flexBasis(100.0).saturate(2.0).keyboardShortcut(FunctionKey.Esc,
-                    [ModifierKey.Alt]).renderFit(RenderFit.BottomRight) // 这里表示宽度为100vp
+                    [ModifierKey.Alt]).renderFit(RenderFit.BottomRight)
                 Text("flexBasis(100 cjresource").flexBasis(@r(app.integer.test_cjResource)).shadow(radius: 2.0).
                     grayscale(2.0).invert(2.0).keyboardShortcut(FunctionKey.F12, [ModifierKey.Alt]).renderFit(
                     RenderFit.ResizeFill)
                 Text("flexGrow(2)").flexGrow(2.0).colorBlend(0xAFEEEE).shadow(radius: 2.0).renderFit(
-                    RenderFit.ResizeContain) // 父容器分配给该Text的宽度为剩余宽度的2/3
+                    RenderFit.ResizeContain)
                 Text("flexShrink(0)").flexShrink(0.0).borderRadius(@r(app.integer.test_cjResource)).colorBlend(
                     @r(app.color.blue_color)).renderFit(RenderFit.ResizeContainTopLeft)
                     .renderFit(RenderFit.Center)
@@ -71,7 +71,7 @@ class ViewBase {
                     .renderFit(RenderFit.BottomLeft)
 
                 // add  usage for cjResources
-                //TODO: 将其修改为 Cjresources 类型的
+
                 Text("dotted").border(width: 5.px, color: @r(app.color.blue_color), style: BorderStyle.Dotted).contrast(
                     2.0).invert(2.0).backgroundImageSize(ImageSize.Cover).bindPopup(false,
                     CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.LeftBottom)).renderFit(
@@ -83,7 +83,7 @@ class ViewBase {
                     CustomPopupOptions(builder: {=>}, showInSubWindow: false, placement: Placement.RightTop)).renderFit(
                     RenderFit.ResizeCover)
 
-                // add borderWidth and borderColor usages  添加默认的值
+
                 Text("dashed2").borderStyle(BorderStyle.Dashed).borderWidth(EdgeWidths()).borderColor(
                     @r(app.color.blue_color)).borderRadius().width(120).height(120).textAlign(TextAlign.Center).fontSize(
                     16).sepia(2.0).bindPopup(false,
@@ -111,7 +111,7 @@ class ViewBase {
                 // TODO :  foregroundBlurStyle
 
                 Text("rotate").width(90.percent).fontColor(0xCCCCCC).padding(15).fontSize(14).rotate(x: 1.0, y: 1.0,
-                    z: 1.0, angle: 300.0) // 组件以矢量(1,1,1)为旋转轴，绕中心点顺时针旋转300度
+                    z: 1.0, angle: 300.0)
                         .width(100).height(100).backgroundColor(0xAFEEEE).transition(TransitionEffect.OPACITY)
             }
             Button("button4")
@@ -216,18 +216,18 @@ class ViewBase {
                 edges: [SafeAreaEdge.Top, SafeAreaEdge.Bottom, SafeAreaEdge.Start, SafeAreaEdge.End]
             )
 
-            // 覆盖 canIUse 函数 (common_types.cj 第 182-190 行)
+
             Text(if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) { "canIUse:true" } else { "canIUse:false" })
                 .id("canIUseTest")
 
-            // 覆盖 Color(red, green, blue, alpha) 构造函数的各种分支
-            // 1. 不传 alpha (alpha=None，走 ?? 的 None 分支)
+
+
             Row().backgroundColor(Color(255, 128, 64)).width(10).height(10).id("colorNoAlpha")
-            // 2. alpha > 1.0 (走第 166 行分支)
+
             Row().backgroundColor(Color(255, 128, 64, alpha: 1.5)).width(10).height(10).id("colorAlphaGt1")
-            // 3. alpha < 0.0 (走第 167 行分支)
+
             Row().backgroundColor(Color(255, 128, 64, alpha: -0.5)).width(10).height(10).id("colorAlphaLt0")
-            // 4. 0 < alpha < 1 (走第 168 行默认分支)
+
             Row().backgroundColor(Color(255, 128, 64, alpha: 0.5)).width(10).height(10).id("colorAlpha05")
         }
     }
