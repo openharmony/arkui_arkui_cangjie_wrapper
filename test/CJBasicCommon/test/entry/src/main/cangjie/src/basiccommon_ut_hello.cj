@@ -633,7 +633,7 @@ class BasicCommonUTHello {
     let d5 = AppStorage.delete("layoutDirection")
     let d6 = AppStorage.delete("languageCode")
 
-    // 都是 true
+
     let SysAccessibilityEnabled = Environment.envProp<Bool>("accessibilityEnabled", false)
     let SysAccessibilityEnabled1 = Environment.envProp<Bool>("accessibilityEnabled", false)
     let SysColorMode = Environment.envProp<ColorMode>("colorMode", ColorMode.Light)
@@ -730,6 +730,10 @@ class BasicCommonUTHello {
         var aaa = reuseParams.get<Int64>("a")
         var noneTest = reuseParams.get<Int64>("c")
         @Expect(aaa, 3)
+
+
+        var wrongTypeTest = reuseParams.get<String>("a")
+        @Expect(wrongTypeTest.isNone(), true)
 
         // var testCollectionEx: TestCollectionEx = TestCollectionEx(5)
         // var ttt = testCollectionEx.size

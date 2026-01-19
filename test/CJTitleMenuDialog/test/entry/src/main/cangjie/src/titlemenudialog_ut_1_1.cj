@@ -67,7 +67,12 @@ class TitleMenuDialogUT1 {
     @Tag[APILevel22, TestLevel0]
     func testActionSheet() {
         scrollTo("ViewActionSheet")
-        var button = driver.findComponent(On().id("action_sheet_button1")).getOrThrow()
+        var button = driver.findComponent(On().id("action_sheet_button_empty")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+        button = driver.findComponent(On().id("action_sheet_button1")).getOrThrow()
         button.click()
         driver.delayMs(1000)
         driver.pressBack()
@@ -160,7 +165,40 @@ class TitleMenuDialogUT1 {
         button = driver.findComponent(On().id("action_sheet_button19")).getOrThrow()
         button.click()
         driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        button = driver.findComponent(On().id("action_sheet_button_sheetinfo_none")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        button = driver.findComponent(On().id("action_sheet_button_options_none")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        button = driver.findComponent(On().id("action_sheet_button_confirm_none")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        button = driver.findComponent(On().id("action_sheet_button_confirm_enabled")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+        button = driver.findComponent(On().id("action_sheet_button_offset_none")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
     }
+
 
     private func formatCurrentDate(): String {
         return DateTime.now().format("yyyy-M-d")
