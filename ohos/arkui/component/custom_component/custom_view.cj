@@ -302,6 +302,25 @@ public abstract class CustomView <: RemoteView & Observer {
         UINodeRegisterProxy.unregisterElmtIdsFromIViews()
     }
 
+    @!Hide
+    protected func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
+        if (rmElmtIds.size == 0) {
+            return
+        }
+
+        let removedElmtIds: ArrayList<Int64> = ArrayList<Int64>()
+
+        for (elmtId in rmElmtIds) {
+            match (updateFuncByElmtId_inner__.remove(elmtId)) {
+                case None => ()
+                case _ =>
+                    purgeVariableDependenciesOnElmtId(elmtId)
+                    removedElmtIds.add(elmtId)
+            }
+        }
+        nativeView_inner__.deletedElmtIdsHaveBeenPurged(removedElmtIds);
+    }
+
     /**
      * update function for ForEach.
      *
