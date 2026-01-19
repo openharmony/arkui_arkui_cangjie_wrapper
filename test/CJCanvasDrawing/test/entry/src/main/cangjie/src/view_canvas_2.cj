@@ -244,10 +244,6 @@ class ViewCanvas2 {
                         this.context7.fillRect(0.0, 0.0, 480.0, 720.0)
                     }
                 )
-                Canvas(Option<CanvasRenderingContext2D>.None)
-                .width(100.percent)
-                .height(60.percent)
-                .backgroundColor(0xffffff)
 
                 Row() {
                     Text(this.scaleX).id("scaleX")

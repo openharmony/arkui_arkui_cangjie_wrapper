@@ -826,11 +826,10 @@ class ScrollSplitUT1 {
         Hilog.info(1, "info", "aaaa: ${jsonObject.toString()}")
 
         let width = attrs.get("width").getOrThrow().toString()
-
         @Expect(width, "\"387.69vp\"")
 
         let height = attrs.get("height").getOrThrow().toString()
-        @Expect(height, "\"300.vp\"")
+        @Expect(height, "\"300.00vp\"")
 
         let divider = attrs.get("divider").getOrThrow().toString()
         @Expect(divider, "{}")
