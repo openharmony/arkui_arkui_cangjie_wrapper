@@ -504,7 +504,7 @@ protected class TextField {
 
     protected static func inputFilter(value!: String, error!: (String) -> Unit = {_ =>}): Unit {
         let lambdaData = Callback1Param<CString, Unit>({
-            value: CString => error(value.safeToString())
+            value: CString => error(value.toString())
         })
         unsafe {
             var valueCString = LibC.mallocCString(value)
@@ -576,7 +576,7 @@ protected class TextField {
 
     protected static func onChange(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.safeToString())
+            value: CString => callback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -586,7 +586,7 @@ protected class TextField {
 
     protected static func onCopy(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.safeToString())
+            value: CString => callback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -596,7 +596,7 @@ protected class TextField {
 
     protected static func onCut(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.safeToString())
+            value: CString => callback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
@@ -606,7 +606,7 @@ protected class TextField {
 
     protected static func onPaste(callback: (String) -> Unit): Unit {
         let wrapper = {
-            value: CString => callback(value.safeToString())
+            value: CString => callback(value.toString())
         }
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {

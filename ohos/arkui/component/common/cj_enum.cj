@@ -20,7 +20,6 @@ package ohos.arkui.component.common
 import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
-import ohos.hilog.{Hilog}
 
 /**
  * indexer align property.
@@ -699,8 +698,7 @@ public enum FontStyle {
         match (value) {
             case 0 => Normal
             case 1 => Italic
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error: FontStyle is not support value${value}")
-                      Normal
+            case _ => Normal
         }
     }
 
@@ -1142,8 +1140,7 @@ public enum FontWeight {
             case 12 => Lighter
             case 13 => Medium
             case 14 => Regular
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error: FontWeight is not support value${value}")
-                      Normal
+            case _ => Normal
         }
     }
 }
@@ -1336,8 +1333,7 @@ public enum TextDecorationType {
             case 1 => Underline
             case 2 => Overline
             case 3 => LineThrough
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:TextDecorationType is not support value${value}")
-                      None
+            case _ => None
         }
     }
 }
@@ -1407,8 +1403,7 @@ public enum TextAlign {
             case 0 => Start
             case 1 => Center
             case 2 => End
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:TextAlign is not support value${value}")
-                      Start
+            case _ => Start
         }
     }
 }
@@ -1540,8 +1535,7 @@ public enum WordBreak {
             case 0 => Normal
             case 1 => BreakAll
             case 2 => BreakWord
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:WordBreak is not support value${value}")
-                      Normal
+            case _ => Normal
         }
     }
 }
@@ -2046,8 +2040,7 @@ public enum ImageFit {
             case 3 => Auto
             case 5 => None
             case 6 => ScaleDown
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:ImageFit is not support value${value}")
-                      Auto
+            case _ => Auto
         }
     }
 }
@@ -2273,9 +2266,7 @@ public enum SliderChangeMode {
             case 0 => SliderChangeMode.Begin
             case 1 => SliderChangeMode.Moving
             case 2 => SliderChangeMode.End
-            case 3 => SliderChangeMode.Click
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:SliderChangeMode is not support value${value}")
-                      SliderChangeMode.Click
+            case _ => SliderChangeMode.Click
         }
     }
 }
@@ -3058,8 +3049,7 @@ public enum Edge {
             case 1 => Edge.Start
             case 2 => Edge.Bottom
             case 3 => Edge.End
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:Edge is not support value${value}")
-                      Edge.Top
+            case _ => Edge.Top
         }
     }
 }
@@ -4457,14 +4447,12 @@ public enum MouseButton {
 
     protected static func parseValue(value: Int32): MouseButton {
         match (value) {
-            case 0 => None
             case 1 => Left
             case 2 => Right
             case 4 => Middle
             case 8 => Back
             case 16 => Forward
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:MouseButton is not support value${value}")
-                      None
+            case _ => None
         }
     }
 
@@ -4573,13 +4561,11 @@ public enum MouseAction {
 
     protected static func parseValue(value: Int32): MouseAction {
         match (value) {
-            case 0 => None
             case 1 => Press
             case 2 => Release
             case 3 => Move
             case 6 => Hover
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:MouseAction is not support value${value}")
-                      None
+            case _ => None
         }
     }
 }
@@ -5145,8 +5131,7 @@ public enum RefreshStatus {
             case 2 => OverDrag
             case 3 => Refresh
             case 4 => Done
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:RefreshStatus is not support value${value}")
-                      Inactive
+            case _ => Inactive
         }
     }
 }
@@ -5391,8 +5376,7 @@ public enum SelectStatus {
             case 0 => All
             case 1 => Part
             case 2 => None
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:SelectStatus is not support value${value}")
-                      None
+            case _ => None
         }
     }
 }
@@ -5657,8 +5641,7 @@ public enum ScrollState {
             case 0 => Idle
             case 1 => Scroll
             case 2 => Fling
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:ScrollState is not support value${value}")
-                      Idle
+            case _ => Idle
         }
     }
 }
@@ -5927,8 +5910,7 @@ public enum ImageSpanAlignment {
             case 2 => Center
             case 3 => Bottom
             case 4 => Baseline
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:ImageSpanAlignment is not support value${value}")
-                      Baseline
+            case _ => Baseline
         }
     }
 }
@@ -5976,8 +5958,7 @@ public enum RichEditorDeleteDirection {
         match (value) {
             case 0 => Backward
             case 1 => Forward
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:RichEditorDeleteDirection is not support value${value}")
-                      Backward
+            case _ => Backward
         }
     }
 }
@@ -7430,8 +7411,7 @@ public enum ScrollSource {
             case 5 => ScrollBarFling
             case 6 => Scroller
             case 7 => ScrollerAnimation
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:ScrollSource is not support value${value}")
-                      Drag
+            case _ => Drag
         }
     }
 }
@@ -8045,8 +8025,7 @@ public enum LineBreakStrategy {
             case 0 => Greedy
             case 1 => HighQuality
             case 2 => Balanced
-            case _ => Hilog.error(0xD003F03, "Cangjie-Ace", "Internal error:LineBreakStrategy is not support value${value}")
-                      Greedy
+            case _ => Greedy
         }
     }
 }

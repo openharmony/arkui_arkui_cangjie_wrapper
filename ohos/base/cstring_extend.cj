@@ -57,7 +57,6 @@ protected func getOrThrow<T>(optData: Option<T>, msg!: String = ""): T {
 protected interface CStringExtend {
     func free(): Unit
     func toStringOption(): ?String
-    func safeToString(): String
 }
 
 extend CString <: CStringExtend {
@@ -72,14 +71,5 @@ extend CString <: CStringExtend {
             return Option<String>.None
         }
         this.toString()
-    }
-
-    public func safeToString(): String {
-        try {
-            return this.toString()
-        } catch (_) {
-            Hilog.error(0XD003F03, "Cangjie-Ace", "Internal error, cangjie only supporrt uft-8 string")
-            return ""
-        }
     }
 }
