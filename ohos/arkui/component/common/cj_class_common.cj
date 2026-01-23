@@ -613,8 +613,8 @@ public class Bias {
     /**
      * Defines the constructor of Bias.
      *
-     * @param { ?Float64 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
-     * @param { ?Float64 } vertical - Vertical ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } vertical - Vertical ratio of the Bias, it must be >= 0.
      */
     @!APILevel[
         since: "22",
