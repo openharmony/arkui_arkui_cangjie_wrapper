@@ -218,7 +218,7 @@ public class RichEditorInsertValue {
 
     init(origin: NativeRichEditorInsertValue) {
         this.insertOffset = origin.insertOffset
-        this.insertValue = origin.insertValue.safeToString()
+        this.insertValue = origin.insertValue.toString()
     }
 }
 
@@ -710,7 +710,7 @@ func parseNativeRichEditorTextSpanResult(value: NativeRichEditorTextSpanResult):
 
     let result = RichEditorTextSpanResult(
         spanPosition,
-        value.value.safeToString(),
+        value.value.toString(),
         textStyle,
         (value.offsetInSpanStart, value.offsetInSpanEnd)
     )
