@@ -621,6 +621,128 @@ protected class TextField {
         }
     }
 
+    protected static func onContentScroll(callback: (Float32, Float32) -> Unit): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnContentScroll(Callback2Param<Float32, Float32, Unit>(callback).getID())
+        }
+    }
+
+    protected static func onTextSelectionChange(callback: (Int32, Int32) -> Unit): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnTextSelectionChange(Callback2Param<Int32, Int32, Unit>(callback).getID())
+        }
+    }
+
+    protected static func onDidDelete(callback: (Float64, Int32, String) -> Unit): Unit {
+        let wrapper = {
+            deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
+                deleteOffset,
+                direction,
+                deleteValue.toString()
+            )
+        }
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnDidDelete(Callback3Param<Float64, Int32, CString, Unit>(wrapper).getID())
+        }
+    }
+
+    protected static func onWillDelete(callback: (Float64, Int32, String) -> Bool): Unit {
+        let wrapper = {
+            deleteOffset: Float64, direction: Int32, deleteValue: CString => callback(
+                deleteOffset,
+                direction,
+                deleteValue.toString()
+            )
+        }
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnWillDelete(Callback3Param<Float64, Int32, CString, Bool>(wrapper).getID())
+        }
+    }
+
+    protected static func onDidInsert(callback: (Float64, String) -> Unit): Unit {
+        let wrapper = {
+            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
+        }
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnDidInsert(Callback2Param<Float64, CString, Unit>(wrapper).getID())
+        }
+    }
+
+    protected static func onWillInsert(callback: (Float64, String) -> Bool): Unit {
+        let wrapper = {
+            insertOffset: Float64, insertValue: CString => callback(insertOffset, insertValue.toString())
+        }
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnWillInsert(Callback2Param<Float64, CString, Bool>(wrapper).getID())
+        }
+    }
+
+    protected static func onSecurityStateChange(callback: (Bool) -> Unit): Unit {
+        let lambdaData = Callback1Param<Bool, Unit>(callback)
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldOnSecurityStateChange(lambdaData.getID())
+        }
+    }
+
+    protected static func showUnit(builder: () -> Unit): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldShowUnit(Callback0Param<Unit>(builder).getID())
+        }
+    }
+
+    protected static func passwordRules(value: String): Unit {
+        unsafe {
+            var rules = LibC.mallocCString(value)
+            FfiOHOSAceFrameworkTextFieldSetPasswordRules(rules)
+            rules.free()
+        }
+    }
+
+    protected static func showError(value: String): Unit {
+        unsafe {
+            var errorText = LibC.mallocCString(value)
+            FfiOHOSAceFrameworkTextFieldSetShowError(errorText)
+            errorText.free()
+        }
+    }
+
+    protected static func showPasswordIcon(value: Bool): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldSetShowPasswordIcon(value)
+        }
+    }
+
+    protected static func showPassword(value: Bool): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldShowPasswordText(value)
+        }
+    }
+
+    protected static func passwordIcon(onIconSrc: String, offIconSrc: String): Unit {
+        unsafe {
+            var onSrc: ?CString = None
+            var offSrc: ?CString = None
+            try {
+                onSrc = LibC.mallocCString(onIconSrc)
+                offSrc = LibC.mallocCString(offIconSrc)
+                FfiOHOSAceFrameworkTextFieldSetPasswordIcon(onSrc.getOrThrow(), offSrc.getOrThrow())
+            } finally {
+                onSrc?.free()
+                offSrc?.free()
+            }
+        }
+    }
+
+    protected static func caretPosition(position: Int32): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldSetCaretPosition(position)
+        }
+    }
+    protected static func selectAll(value: Bool): Unit {
+        unsafe {
+            FfiOHOSAceFrameworkTextFieldSetSelectAllValue(value)
+        }
+    }
     protected static func showUnderline(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetShowUnderline(value)
