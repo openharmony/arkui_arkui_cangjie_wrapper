@@ -243,4 +243,11 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
         }
         this
     }
+
+    protected override func opacityInner(opacityValue: ?Float64): This {
+        unsafe {
+            FfiOHOSAceFrameworkTextPickerSetOpacity(opacityValue ?? 1.0)
+        }
+        this
+    }
 }
