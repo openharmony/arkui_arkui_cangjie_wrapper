@@ -530,7 +530,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
                 SearchSetBorder(
                     w.value,
                     w.unitType.getValue(),
-                    c.toUInt32(),
+                    c,
                     r.value,
                     r.unitType.getValue(),
                     (style ?? BorderStyle.Solid).getValue()
