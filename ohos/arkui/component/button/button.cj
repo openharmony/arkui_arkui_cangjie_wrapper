@@ -25,6 +25,9 @@ import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
+const DEFAULT_PADDING_HORIZONTAL: Float64 = 16.0
+const DEFAULT_PADDING_VERTICAL: Float64 = 0.0
+
 foreign {
     func FfiOHOSAceFrameworkButtonCreateWithChild(): Unit
 
@@ -568,7 +571,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     ]
     protected override func heightInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     if (lessNotEqual(value_.value, 0.0)) {
@@ -596,12 +599,12 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     ]
     protected override func widthInner(value: ?Length): This {
         match (value) {
-            case Some(v) => 
+            case Some(v) =>
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     if (lessNotEqual(value_.value, 0.0)) {
                         FFISetWidthWithEmpty()
-                    } else { 
+                    } else {
                         FfiOHOSAceFrameworkButtonSetWidth(normalizeValue(value_.value, 0.0), value_.unitType.getValue())
                     }
                 }
@@ -652,7 +655,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Describes the button style.
      *
-     * @param { ?ButtonType } value - The button shape style. 
+     * @param { ?ButtonType } value - The button shape style.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
@@ -669,7 +672,16 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
 
     protected override func paddingInner(value: ?Length): This {
         let content = transAppResourceToLength(value ?? 0.0.vp)
-        let value_: Float64 = content.value
+        var value_: Float64 = content.value
+        if (lessNotEqual(value_, 0.0)) {
+            FfiOHOSAceFrameworkButtonSetPadding(
+                DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
+                DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue(), 
+                DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
+                DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue()
+            )
+            return this
+        }
         let unitValue_: Int32 = content.unitType.getValue()
         unsafe {
             FfiOHOSAceFrameworkButtonSetPadding(value_, unitValue_, value_, unitValue_, value_, unitValue_, value_, unitValue_)
@@ -703,7 +715,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     /**
      * Indicates whether to enable the switchover effect when the button is pressed. When the status is set to false, the switchover effect is disabled.
      *
-     * @param { ?Bool } value - Whether to enable button interactive effect. 
+     * @param { ?Bool } value - Whether to enable button interactive effect.
      * @returns { This } - The instance of the component.
      */
     @!APILevel[
