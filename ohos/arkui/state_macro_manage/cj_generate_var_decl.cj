@@ -102,9 +102,8 @@ func generateCommonVarDecl(varDecl: VarDecl): MacroExpandInitInfo {
 
     let initBody = match (hasInitializer) {
         case true => quote(
-                match ($commonVarDeclIdent) {
-                    case Some(v) => this.$commonVarDeclIdent = v.get()
-                    case _ => ()
+                if (let Some(v) <- $commonVarDeclIdent) {
+                    this.$commonVarDeclIdent = v.get()
                 }
             )
         case _ => quote(
@@ -177,15 +176,13 @@ func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType)
     }
     match (initType) {
         case StateType => return quote(
-                match ($identifier) {
-                    case Some(v) => this.$identifierAssociated = $valTypeExpand($info, v.get())
-                    case _ => ()
+                if (let Some(v) <- $identifier) {
+                    this.$identifierAssociated = $valTypeExpand($info, v.get())
                 }
             )
         case PropType => return quote(
-                match ($identifier) {
-                    case Some(v) => this.$identifierAssociated = v.createProp($info)
-                    case _ => ()
+                if (let Some(v) <- $identifier) {
+                    this.$identifierAssociated = v.createProp($info)
                 }
             )
     }

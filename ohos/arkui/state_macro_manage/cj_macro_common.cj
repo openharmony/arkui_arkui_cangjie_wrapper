@@ -241,7 +241,7 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
             $modifier mut prop $identTok: $valType
             {
                 get() {
-                    return this.$identTokenAssociated.get()
+                    this.$identTokenAssociated.get()
                 }
                 $setFunc
             }
@@ -251,7 +251,7 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
             $modifier prop $identTok: $valType
             {
                 get() {
-                    return this.$identTokenAssociated.get()
+                    this.$identTokenAssociated.get()
                 }
                 $setFunc
             }

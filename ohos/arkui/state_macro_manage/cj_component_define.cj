@@ -1083,9 +1083,8 @@ func generateUpdateAssignment(value: (VariableKind, VarDecl)) {
     match (variableKind) {
         case LinkTy => Tokens()
         case _ => quote(
-                match ($identifier) {
-                    case Some(v) => this.$identifier = v
-                    case _ => ()
+                if (let Some(v) <- $identifier) {
+                    this.$identifier = v
                 }
             )
     }
