@@ -19,7 +19,7 @@ package ohos.arkui.component.text_clock
 
 import ohos.arkui.component.common.{CommonMethodComponent, FontStyle, FontWeight, ShadowOptions, ShadowType}
 import ohos.arkui.component.native_struct.{VectorNativeTextShadow, NativeTextShadowV2}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp}
+import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.ffi.{RemoteDataLite, Callback1Param, releaseFFIData}
 import ohos.base.{ResourceStr, Length, ResourceColor, Color, LengthProp}
 import ohos.labels.{APILevel, Hide}
@@ -502,6 +502,9 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     ]
     public func fontSize(value: ?Length): This {
         var value_ = transAppResourceToLength(value ?? 16.0.fp)
+        if (lessNotEqual(value_.value, 0.0) || value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 16.0.fp
+        }
         unsafe {
             FfiOHOSAceFrameworkTextClockFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }
