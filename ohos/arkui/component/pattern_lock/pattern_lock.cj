@@ -18,7 +18,7 @@
 package ohos.arkui.component.pattern_lock
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessOrEqual, LENGTH_PERCENT}
 import ohos.base.{ResourceColor, Length, VectorInt32Handle, FFIVectorInt32, LengthProp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param}
 import ohos.labels.{APILevel, Hide}
@@ -235,9 +235,12 @@ public class PatternLock <: CommonMethodComponent<PatternLock> & PatternLockAttr
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func circleRadius(value: ?Length): This {
+        var value_ = transAppResourceToLength(value ?? 6.0.vp)
+        if (lessOrEqual(value_.value, 0.0) || value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 6.0.vp
+        }
         unsafe {
-            FfiOHOSAceFrameworkPatternLockCircleRadius(transAppResourceToLength(value ?? 6.0.vp).value,
-                transAppResourceToLength(value ?? 6.0.vp).unitType.getValue())
+            FfiOHOSAceFrameworkPatternLockCircleRadius(value_.value, value_.unitType.getValue())
         }
         this
     }
