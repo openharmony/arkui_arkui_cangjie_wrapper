@@ -20,7 +20,7 @@ package ohos.arkui.component.rect
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp, FFIVectorFloat64, FFIVectorInt32, VectorFloat64Handle, VectorInt32Handle}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkRectCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit

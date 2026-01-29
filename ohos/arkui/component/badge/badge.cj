@@ -20,7 +20,7 @@ package ohos.arkui.component.badge
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{ResourceColor, Length, Color, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

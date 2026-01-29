@@ -20,11 +20,11 @@ package ohos.arkui.component.list
 import ohos.arkui.component.common.{Axis, EdgeEffect, ListItemAlign, StickyStyle, BarState, ScrollState, NestedScrollMode}
 import ohos.arkui.component.list_item_group.{ListDividerOptions}
 import ohos.arkui.component.native_struct.{DividerParams, RectResultParams}
-import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions, ContentClipMode}
+import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, Scroller, NestedScrollOptions, ContentClipMode}
 import ohos.arkui.component.util.{LENGTH_VP, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, EMPTY_FUNCTION}
 import ohos.base.{Length, LengthProp, ResourceColor, BASE_LOG}
 import ohos.ffi.{Callback3Param, Callback2Param, Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.resource.{AppResource, getResourceString}
 import std.convert.{Parsable}
 
@@ -404,7 +404,6 @@ public class List <: ScrollableCommonMethodComponent<List> & ListAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func lanes(minLength!: ?Length, maxLength!: ?Length): This {
-        var flag = false
         if (minLength.isNone() || maxLength.isNone()) {
             unsafe {
                 FfiOHOSAceFrameworkListSetLanes(1)

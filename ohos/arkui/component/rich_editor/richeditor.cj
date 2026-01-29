@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.rich_editor
 
-import ohos.arkui.component.common.{FontStyle, FontWeight, CommonMethodComponent, TextDecorationType, ImageSpanAlignment, ImageFit, RichEditorDeleteDirection, CustomBuilder, ResponseType, CopyOptions, RichEditorSpanType}
-import ohos.base.{ExternalString, Color, VectorStringHandle, CStringExtend, ResourceColor,VoidCallback, Callback}
+import ohos.arkui.component.common.{FontStyle, CommonMethodComponent, TextDecorationType, ImageSpanAlignment, ImageFit, RichEditorDeleteDirection, CustomBuilder, ResponseType, CopyOptions, RichEditorSpanType}
+import ohos.base.{ExternalString, Color, ResourceColor,VoidCallback, Callback}
 import ohos.ffi.{releaseFFIData, Callback0Param, Callback1Param, Callback2Param, RemoteDataLite}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.multimedia.image.PixelMap
 import std.collection.ArrayList
 import std.convert.{Parsable}
@@ -1234,7 +1234,7 @@ public class RichEditor <: CommonMethodComponent<RichEditor> & RichEditorAttribu
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onDidChange(callback: ?OnDidChangeCallback): This {
-        let tmpCallback = callback ?? { rangeBefore: TextRange, rangeAfter: TextRange => }
+        let tmpCallback = callback ?? { _: TextRange, _: TextRange => }
         let wrapper = {
             before: NativeTextRange, after: NativeTextRange => tmpCallback(
                 TextRange(before.start, before.end),

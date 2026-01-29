@@ -16,7 +16,7 @@
 package ohos.arkui.component.text
 
 import ohos.arkui.component.common.{TextDecorationStyle, TextCase, CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**

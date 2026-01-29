@@ -149,7 +149,6 @@ func genProp(varDecl: VarDecl, stateKind: StateKind): Tokens {
     let identTokenAssociated: Token = generateAssociatedToken(identTokStr)
     let valType = varDecl.getTypeByInitializer()
 
-    var res = Tokens()
     let propDecl = genPropDecl(varDecl, stateKind)
     let info = mangle(identTokStr)
     var initValue = Tokens()
@@ -315,8 +314,8 @@ func checkStateKindAndInit(input: Tokens, stateKind: StateKind): Unit {
 
 func unSupportedException(): Unit {
     throw IllegalArgumentException(
-        "State type only support `String`, numeral type, `Bool`, `Char`, `Array<T>` and class type."
-            + "If it is a class type, the class should be modified by @Observed when defined.")
+        "State type only support `String`, numeral type, `Bool`, `Char`, `Array<T>` and class type." +
+            "If it is a class type, the class should be modified by @Observed when defined.")
 }
 
 class ComponentVarDeclVisitor <: Visitor {

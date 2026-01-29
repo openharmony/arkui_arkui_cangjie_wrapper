@@ -20,7 +20,7 @@ package ohos.arkui.component.refresh
 import ohos.arkui.component.common.{CommonMethodComponent, Bindable, RefreshStatus}
 import ohos.base.{Length, LengthProp}
 import ohos.ffi.{Callback1Param, Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkRefreshCreate(refreshing: Bool, offset: Float64, offsetUnit: Int32, friction: Int32): Unit
@@ -146,7 +146,7 @@ public class Refresh <: CommonMethodComponent<Refresh> & RefreshAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onStateChange(callback: ?(RefreshStatus) -> Unit): This {
-        let tmpCallback = callback ?? {res: RefreshStatus =>}
+        let tmpCallback = callback ?? {_: RefreshStatus =>}
         let wrapper = {
             value: Int32 => tmpCallback(RefreshStatus.parseValue(value))
         }

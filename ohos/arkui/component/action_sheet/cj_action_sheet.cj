@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{NativeActionSheetShadowOptions, Nativ
 import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transResourceMediaToString, transAppResourceToResourceColor}
 import ohos.base.{NativeOptionLength, NativeOptionUInt32, NativeOffset, NativeOptionInt64, ResourceStr, VoidCallback, Length, NativeOptionCString, NativeOptionBool, NativeOptionCallBack, NativeOptionInt32, ResourceColor, Callback, NativeLength, Color, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 foreign {

@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, FuncDecl, Node, Expr, IfExpr, Block, TrailingClosureExpr, CallExpr, LambdaExpr, RefExpr, Decl, PrimaryCtorDecl, ForInExpr, parseDecl, Visitor, diagReport, getChildMessages, TokenKind, DiagReportLevel, ToTokens}
+import std.ast.{Tokens, ClassDecl, FuncDecl, Node, Expr, IfExpr, Block, TrailingClosureExpr, CallExpr, LambdaExpr, RefExpr, Decl, PrimaryCtorDecl, ForInExpr, parseDecl, Visitor, diagReport, DiagReportLevel, ToTokens}
 import std.collection.{ArrayList, HashSet, HashMap}
 
 func checkComponentSyntax(input: Tokens) {
@@ -97,7 +97,7 @@ func checkMonadicContainer(input: Expr, name: String): Unit {
                 } catch (e: Exception) {
                     continue
                 }
-            case _ => 0
+            case _ => ()
         }
     }
     if (index > 1) {
@@ -306,7 +306,7 @@ func checkMonadicIfBody(input: ArrayList<Node>, name: String): Unit {
                 } catch (e: Exception) {
                     continue
                 }
-            case _ => 0
+            case _ => ()
         }
     }
     if (index > 1) {

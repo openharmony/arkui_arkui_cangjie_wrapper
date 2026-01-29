@@ -20,7 +20,7 @@ package ohos.arkui.component.counter
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.base.{VoidCallback}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkCounterCreate(): Unit

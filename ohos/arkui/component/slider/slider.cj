@@ -21,8 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, SliderStyle, Axis, Sl
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback2Param}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 @C
 struct CJSliderCreate {

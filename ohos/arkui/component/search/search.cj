@@ -22,8 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToSt
 import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.resource.{AppResource, getResourceMedia}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 @C
 struct SearchSetBorder {

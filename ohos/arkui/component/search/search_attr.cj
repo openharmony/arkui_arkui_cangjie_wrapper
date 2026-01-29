@@ -16,7 +16,7 @@
 package ohos.arkui.component.search
 
 import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle, CopyOptions}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, ResourceColor, Length}
 
 /**

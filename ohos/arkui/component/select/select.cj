@@ -23,7 +23,7 @@ import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLe
 import ohos.base.{ResourceStr, CStringExtend, Length, ResourceColor, Color, LengthProp, LengthUnit}
 import ohos.ffi.{Callback2Param}
 import ohos.resource.{AppResource, getResourceString, getResourceMedia}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 type VectorNativeSelectOptionHandle = CPointer<Unit>

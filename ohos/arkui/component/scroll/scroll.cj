@@ -20,10 +20,10 @@ package ohos.arkui.component.scroll
 import ohos.arkui.component.common.{ScrollState, Edge, Curve, NestedScrollMode, ScrollDirection, BarState, ScrollSource}
 import ohos.arkui.component.native_struct.{RectResultParams}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, EMPTY_FUNCTION}
-import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, APP_LOG, LengthProp, BASE_LOG}
-import ohos.ffi.{BaseCallBack, RemoteDataLite, Callback0Param, Callback4Param, Callback3Param, Callback2Param, Callback1Param, releaseFFIData}
+import ohos.base.{VectorFloat32Handle, VectorInt32Handle, Length, ResourceColor, LengthProp, BASE_LOG}
+import ohos.ffi.{RemoteDataLite, Callback0Param, Callback4Param, Callback3Param, Callback2Param, Callback1Param, releaseFFIData}
 import ohos.resource.{AppResource, getResourceString}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 import std.convert.{Parsable}
 import std.deriving.Derive

@@ -17,7 +17,7 @@ package ohos.arkui.component.gauge
 
 import ohos.arkui.component.common.{CommonMethod}
 import ohos.arkui.component.data_panel.{LinearGradient}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**

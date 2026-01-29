@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 import std.deriving.Derive
 

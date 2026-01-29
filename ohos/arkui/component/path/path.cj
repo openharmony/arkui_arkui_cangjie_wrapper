@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.path
 
-import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
+import ohos.arkui.component.shape.{CommonShapeMethodComponent}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
 import ohos.base.{ResourceStr, Length}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkPathCreate(commands: CString): Unit

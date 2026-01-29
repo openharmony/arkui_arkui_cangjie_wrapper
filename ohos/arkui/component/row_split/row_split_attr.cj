@@ -16,7 +16,7 @@
 package ohos.arkui.component.row_split
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Provides methods for configuring the appearance and behavior of the RowSplit component.

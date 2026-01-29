@@ -23,7 +23,6 @@ import ohos.resource.{AppResource}
 import ohos.labels.{APILevel, Hide}
 import ohos.arkui.shape.{RectShape}
 import ohos.business_exception.BusinessException
-import std.deriving.Derive
 
 /**
  * Provides functions for scroll able Base.

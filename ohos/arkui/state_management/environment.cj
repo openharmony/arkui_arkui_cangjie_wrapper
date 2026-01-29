@@ -19,7 +19,7 @@ package ohos.arkui.state_management
 
 import ohos.base.{BASE_LOG, NativeOptionCString, NativeOptionBool, NativeOptionFloat32, NativeOptionInt32}
 import ohos.labels.{APILevel, Hide}
-import std.collection.{HashMap, EquatableCollection, ArrayList}
+import std.collection.{HashMap, EquatableCollection}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

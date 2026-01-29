@@ -16,7 +16,7 @@
 package ohos.arkui.component.sidebar
 
 import ohos.arkui.component.common.{CommonMethod, SideBarPosition}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{Length}
 
 /**

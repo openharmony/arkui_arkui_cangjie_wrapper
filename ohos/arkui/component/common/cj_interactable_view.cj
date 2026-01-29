@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.common
 
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.multimedia.image.PixelMap
 
 /**

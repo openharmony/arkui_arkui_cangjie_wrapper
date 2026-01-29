@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{DividerParams}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor}
 import ohos.base.{Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 

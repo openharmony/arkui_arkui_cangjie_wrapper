@@ -22,7 +22,7 @@ import ohos.arkui.component.util.{transResourceMediaToString, transResourceStrTo
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkMenuItemCreateByBuilder(builder: Int64): Unit
@@ -292,7 +292,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func onChange(callback: ?(Bool) -> Unit): This {
-        let tmpCallback = callback ?? { res: Bool => }
+        let tmpCallback = callback ?? { _: Bool => }
         let lambdaData = Callback1Param<Bool, Unit>(tmpCallback)
         unsafe {
             FfiOHOSAceFrameworkMenuItemOnChange(lambdaData.getID())

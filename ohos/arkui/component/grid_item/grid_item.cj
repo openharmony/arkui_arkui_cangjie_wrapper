@@ -18,7 +18,7 @@
 package ohos.arkui.component.grid_item
 
 import ohos.arkui.component.common.{CommonMethodComponent}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkGridItemCreate(): Unit

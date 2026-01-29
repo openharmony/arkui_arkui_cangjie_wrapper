@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.rich_editor
 
-import ohos.arkui.component.common.{Margin, BorderRadiuses, ImageSpanAlignment, ImageFit,ImageSpanAlignment, TextAlign, FontStyle, FontWeight, TextDecorationType}
+import ohos.arkui.component.common.{Margin, BorderRadiuses, ImageSpanAlignment, ImageFit, TextAlign, FontStyle, FontWeight, TextDecorationType}
 import ohos.arkui.component.native_struct.{NativeMargin}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor, transAppResourceToLength, transResourceMediaToString}
 import ohos.base.{ResourceStr, Length, ExternalString, ResourceColor, LengthProp, VoidCallback, Color, CStringExtend}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.multimedia.image.PixelMap
 import std.collection.ArrayList
 import ohos.business_exception.BusinessException

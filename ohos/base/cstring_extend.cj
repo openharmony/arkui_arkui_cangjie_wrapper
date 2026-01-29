@@ -17,8 +17,7 @@
 
 package ohos.base
 
-import ohos.hilog.HilogChannel
-import ohos.labels.{APILevel, Hide}
+import ohos.hilog.{HilogChannel}
 import ohos.business_exception.BusinessException
 
 foreign {

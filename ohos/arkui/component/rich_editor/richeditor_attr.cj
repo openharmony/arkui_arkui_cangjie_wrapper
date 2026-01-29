@@ -16,7 +16,7 @@
 package ohos.arkui.component.rich_editor
 
 import ohos.arkui.component.common.{CommonMethod, CustomBuilder, ResponseType, CopyOptions, RichEditorSpanType}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{VoidCallback, Callback}
 
 /**

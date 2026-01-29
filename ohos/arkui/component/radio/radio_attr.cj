@@ -16,7 +16,7 @@
 package ohos.arkui.component.radio
 
 import ohos.arkui.component.common.{CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines Radio Component.

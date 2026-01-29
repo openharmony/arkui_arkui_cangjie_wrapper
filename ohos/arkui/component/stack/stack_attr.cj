@@ -16,7 +16,7 @@
 package ohos.arkui.component.stack
 
 import ohos.arkui.component.common.{CommonMethod, Alignment}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 /**
  * Defines the Stack attribute functions.

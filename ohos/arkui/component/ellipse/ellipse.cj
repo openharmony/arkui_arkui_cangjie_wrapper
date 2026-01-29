@@ -17,10 +17,10 @@
 
 package ohos.arkui.component.ellipse
 
-import ohos.arkui.component.shape.{CommonShapeMethodComponent, CommonShapeMethod}
+import ohos.arkui.component.shape.{CommonShapeMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
 

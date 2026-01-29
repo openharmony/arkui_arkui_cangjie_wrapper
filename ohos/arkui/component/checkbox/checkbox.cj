@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJRespon
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback0Param, Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 const INVALID_UNIT: Int32 = -1
 

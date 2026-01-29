@@ -21,8 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle
 import ohos.arkui.component.native_struct.{CBorderRadiuses, DividerParams}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceStr, ResourceColor, LengthProp}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkMenuCreate(): Unit

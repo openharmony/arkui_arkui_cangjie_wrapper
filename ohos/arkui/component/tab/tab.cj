@@ -20,8 +20,8 @@ package ohos.arkui.component.tab
 import ohos.arkui.component.common.{CustomBuilder, CommonMethodComponent, CTranslateOptions, BarPosition, BarMode}
 import ohos.arkui.component.util.{transAppResourceToLength, normalizeValue, transResourceStrToString, transResourceMediaToString}
 import ohos.ffi.{Callback1Param, releaseFFIData, Callback0Param, RemoteDataLite}
-import ohos.base.{Callback, ResourceStr, VectorFloat32Handle, VectorInt32Handle, Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.base.{Callback, ResourceStr, VectorInt32Handle, Length, LengthProp}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkTabsCreate(barVal: Int32, controller: Int64, index: Int32): Unit

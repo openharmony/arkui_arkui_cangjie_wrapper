@@ -17,9 +17,9 @@
 
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToResourceColor}
-import ohos.base.{Callback, ResourceStr, LengthProp, ResourceColor, Color}
+import ohos.base.{Callback, ResourceStr, ResourceColor, Color}
 import ohos.ffi.{Callback0Param, RemoteDataManager, Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkNavdestinationCreate(): Unit
@@ -155,7 +155,7 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
                 )
                 var id = ctx.navDestinationId.toString()
                 let pathStack = RemoteDataManager.getInstance().getOrCreate<NavPathStack>(
-                    ctx.pathStack, {id => NavPathStack()}
+                    ctx.pathStack, {_ => NavPathStack()}
                 )
                 tmpCallback(NavDestinationContext(pathInfo, pathStack, id))
                 if (!ctx.pathInfo.param.isNull()) {

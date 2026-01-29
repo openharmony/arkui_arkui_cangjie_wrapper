@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessOrEqual, LENGTH_PERCENT}
 import ohos.base.{ResourceColor, Length, VectorInt32Handle, FFIVectorInt32, LengthProp}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 @C
 struct CJCircleStyleOptions {

@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT}
 import ohos.base.{FFIVectorString, Length, ResourceStr, VectorStringHandle, ResourceColor, LengthProp, Color}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkAlphabetIndexerCreate(handle: VectorStringHandle, selected: UInt32): Unit

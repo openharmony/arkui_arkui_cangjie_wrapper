@@ -16,9 +16,8 @@
 package ohos.arkui.component.text_clock
 
 import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, ShadowOptions}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, Length, ResourceColor}
-import ohos.business_exception.BusinessException
 
 /**
  * Defines TextClock Component.

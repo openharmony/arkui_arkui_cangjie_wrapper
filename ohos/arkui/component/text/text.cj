@@ -17,13 +17,12 @@
 
 package ohos.arkui.component.text
 
-import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
+import ohos.arkui.component.common.{FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
 import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, LENGTH_PERCENT}
-import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
+import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeShadowOptionsHandle = CPointer<Unit>
 
