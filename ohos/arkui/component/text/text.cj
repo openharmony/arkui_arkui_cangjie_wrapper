@@ -301,7 +301,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineSpacing(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.vp)
-        if (v.value < 0.0) {
+        if (v.value < 0.0 || v.unitType.getValue() == LENGTH_PERCENT) {
             v = 0.0.px
         }
         unsafe {
@@ -355,7 +355,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                if (v_.value < 0.0) {
+                if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
                     FfiOHOSAceFrameworkTextResetMaxFontSize()
                 } else {
                     FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
@@ -383,7 +383,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                if (v_.value < 0.0) {
+                if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
                     FfiOHOSAceFrameworkTextResetMinFontSize()
                 } else {
                     FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
@@ -551,7 +551,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineHeight(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.px)
-        if (v.value < 0.0) {
+        if (v.value < 0.0 || v.unitType.getValue() == LENGTH_PERCENT) {
             v = 0.0.px
         }
         unsafe {
