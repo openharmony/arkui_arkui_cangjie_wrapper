@@ -239,6 +239,9 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
 
     protected override func paddingInner(value: ?Length): This {
         var value_ = transAppResourceToLength(value ?? 0.0.vp)
+        if (lessNotEqual(value_.value, 0.0)) {
+            value_ = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetPadding(value_.value, value_.unitType.getValue())
         }
