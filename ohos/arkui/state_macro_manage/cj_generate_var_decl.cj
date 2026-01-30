@@ -137,7 +137,7 @@ func generateStateVarDecl(kind: VariableKind, varDecl: VarDecl, varExpand: VarDe
 }
 
 func generateStorageInit(
-    varDecl: VarDecl,
+    _: VarDecl,
     varExpand: VarDecl,
     _: Bool
 ): MacroExpandInitInfo {
