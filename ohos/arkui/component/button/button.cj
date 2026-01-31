@@ -20,7 +20,7 @@ package ohos.arkui.component.button
 import ohos.arkui.component.common.{CommonMethodComponent, ControlSize, FontWeight, FontStyle, BorderStyle}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJBorder}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transResourceStrToString, transAppResourceToLength, normalizeValue, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
-import ohos.base.{Length, ResourceStr, ResourceColor, Color, LengthProp}
+import ohos.base.{Length, ResourceStr, ResourceColor, Color, LengthProp, LengthUnit}
 import ohos.labels.{APILevel}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
@@ -674,12 +674,14 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         let content = transAppResourceToLength(value ?? 0.0.vp)
         var value_: Float64 = content.value
         if (lessNotEqual(value_, 0.0)) {
-            FfiOHOSAceFrameworkButtonSetPadding(
-                DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
-                DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue(), 
-                DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
-                DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue()
-            )
+            unsafe {
+                FfiOHOSAceFrameworkButtonSetPadding(
+                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
+                    DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue(), 
+                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
+                    DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue()
+                )
+            }
             return this
         }
         let unitValue_: Int32 = content.unitType.getValue()
