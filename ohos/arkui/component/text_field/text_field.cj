@@ -457,7 +457,7 @@ protected class TextField {
     protected static func fontSize(value: ?Length): Unit {
         if (let Some(v) <- value) {
             var value_ = transAppResourceToLength(v)
-            if (value_.value < 0.0 || value_.unitType.getValue() == LENGTH_PERCENT) {
+            if (value_.unitType.getValue() == LENGTH_PERCENT) {
                 unsafe {
                     FfiOHOSAceFrameworkTextFieldResetFontSize()
                 }
