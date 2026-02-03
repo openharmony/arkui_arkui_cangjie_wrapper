@@ -22,8 +22,7 @@ import std.collection.{ArrayList}
 import std.unicode.{UnicodeStringExtension}
 
 public macro Component(input: Tokens): Tokens {
-    checkComponentSyntax(input)
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
+    let classDecl = checkComponentSyntax(input)
     let classModifier = classDecl.modifiers
     let classIdent = classDecl.identifier
     let classBody = classDecl.body
@@ -269,11 +268,6 @@ func validateComponentChildConstraints(parentExpr: CallExpr, componentName: Stri
         }
     }
     
-    // Check no child constraint
-    if (isComponent(parentExpr) && COMPONENT_NO_CHILD_CONSTRAINT_LIST.contains(componentName)) {
-        diagReport(DiagReportLevel.ERROR, parentExpr.callFunc.toTokens(), "The component ${componentName} cannot have any child.", "")
-    }
-    
     // Check child type constraints
     if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
         checkChildInBody(childNodes, componentName)
@@ -307,13 +301,16 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             // - If input is CallExpr, it matches this branch
             // - A single expression cannot be both at the same time (syntax-level mutual exclusion)
             let arguments = callExpr.arguments
+            let componentName = getTrailingClosureExprValue(callExpr)
             if (arguments.size > 0) {
+                if (componentName == "MenuItem" && arguments.size != 1) {
+                    return generateCompCreate(callExpr)
+                }
                 let lastArgument = arguments[arguments.size - 1]
                 let lastExpr = lastArgument.expr
                 match (lastExpr as LambdaExpr) {
                     case Some(lambda) =>
                         // Extract component name and validate child constraints
-                        let componentName = getTrailingClosureExprValue(callExpr)
                         validateComponentChildConstraints(callExpr, componentName, lambda.nodes)
                     case None => ()
                 }
