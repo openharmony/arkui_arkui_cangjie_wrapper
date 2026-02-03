@@ -47,6 +47,8 @@ foreign {
 
     func FfiOHOSAceFrameworkGaugeSetIndicator(icon: CString, size: Float64): Unit
 
+    func FfiOHOSAceFrameworkGaugeSetIndicatorV2(icon: CString, size: Float64, sizeUnit: Int32): Unit
+
     func FfiOHOSAceFrameworkGaugeSetDescription(builder: Int64): Unit
 
     func FFICJCreateVectorColorStop(size: Int64): VectorColorStops
@@ -339,6 +341,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     ]
     public func strokeWidth(length: ?Length): This {
         var value_ = transAppResourceToLength(length ?? 4.0.vp)
+        if (value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -383,7 +388,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
         }
         unsafe {
             try (iconCString = LibC.mallocCString(icon_).asResource()) {
-                FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
+                FfiOHOSAceFrameworkGaugeSetIndicatorV2(iconCString.value, space_.value, space_.unitType.getValue())
             }
         }
         this
