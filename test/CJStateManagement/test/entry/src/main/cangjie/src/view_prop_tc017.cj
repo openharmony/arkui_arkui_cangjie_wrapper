@@ -1,0 +1,96 @@
+/*
+ * Copyright (c) 2026 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos_app_cangjie_entry
+
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
+import ohos.arkui.state_macro_manage.*
+
+/**
+ * TC_017: @Prop Receives Data from Parent Component (Custom Type)
+ * Test Scenario: Parent component passes @Observed class instance to child component
+ * Expected Result: Child component correctly receives and displays object properties
+ */
+
+@Component
+class ChildComponentTC017 {
+    @Prop var customObject: CustomModel
+
+    func build(): Unit {
+        Column() {
+            Text("Child Component")
+                .fontSize(18)
+                .fontWeight(FontWeight.Bold)
+                .id("child_title")
+            Text("Name: ${this.customObject.name}")
+                .id("child_name_text")
+            Text("Value: ${this.customObject.value}")
+                .id("child_value_text")
+        }
+        .padding(10)
+        .backgroundColor(0xE0E0E0)
+    }
+}
+
+@Entry
+@Component
+class ViewPropTC017 {
+    @State var parentObject: CustomModel = CustomModel(name: "Initial Name", value: 100, count: 0)
+
+    func build(): Unit {
+        Column() {
+            Text("TC_017: @Prop Receives Data from Parent Component (Custom Type)")
+                .fontSize(20)
+                .fontWeight(FontWeight.Bold)
+                .margin(top: 10, bottom: 10)
+                .id("test_title")
+
+            Text("Parent Object")
+                .fontSize(18)
+                .fontWeight(FontWeight.Bold)
+                .id("parent_title")
+            Text("Name: ${this.parentObject.name}")
+                .id("parent_name_text")
+            Text("Value: ${this.parentObject.value}")
+                .id("parent_value_text")
+
+            Button("Update Parent Object Name")
+                .id("update_name_button")
+                .onClick({ e => this.parentObject.name = "Updated Name" })
+
+            Button("Update Parent Object Value")
+                .id("update_value_button")
+                .onClick({ e => this.parentObject.value = this.parentObject.value + 10 })
+
+            Button("Replace Parent Object")
+                .id("replace_object_button")
+                .onClick({ e => this.parentObject = CustomModel(name: "New Object", value: 200, count: 0) })
+
+            // Note: Cannot call .id() directly after custom component constructor
+            // Wrap it in a container and set id on the container
+            Column() {
+                ChildComponentTC017(customObject: this.parentObject)
+            }
+            .id("child_component")
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .padding(10)
+        .backgroundColor(0xF1F3F5)
+    }
+}
+

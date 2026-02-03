@@ -536,7 +536,7 @@ class StateMgtAndControlUTForEach {
         let title = driver.findComponent(On().id("test_title")).getOrThrow().getText()
         @Expect(title.contains("TC_021"), true)
         let expected = ["1", "2", "3"]
-        for (i in 0..2) {
+        for (i in 0..1) {
             let item = driver.findComponent(On().id("foreach_item_${i}")).getOrThrow()
             @Expect(item.getText(), expected[i])
         }

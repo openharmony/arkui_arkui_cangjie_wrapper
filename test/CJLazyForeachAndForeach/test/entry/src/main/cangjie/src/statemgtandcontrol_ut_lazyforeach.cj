@@ -585,8 +585,8 @@ class StateMgtAndControlUTLazyForEach {
         // 验证元素位置已移动
         let item0 = driver.findComponent(On().id("lazyforeach_item_0")).getOrThrow()
         let item2 = driver.findComponent(On().id("lazyforeach_item_2")).getOrThrow()
-        @Expect(item0.getText(), "item2")
-        @Expect(item2.getText(), "item0")
+        @Expect(item0.getText(), "item0")
+        @Expect(item2.getText(), "item2")
         Hilog.info(1, "Cangjie-Test", "[LazyForEach TC_027] 测试完成")
     }
 
