@@ -74,6 +74,7 @@ class StateManagementUTLink {
      * Test: Verify @Link enables two-way binding between parent and child
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC025() {
         scrollTo("ViewLinkTC025")
         driver.delayMs(500)
@@ -126,6 +127,7 @@ class StateManagementUTLink {
      * Test: Verify @Link enables two-way binding for collections
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC026() {
         scrollTo("ViewLinkTC026")
         driver.delayMs(500)
@@ -178,6 +180,7 @@ class StateManagementUTLink {
      * Test: Verify @Link enables two-way binding for custom @Observed types
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC027() {
         scrollTo("ViewLinkTC027")
         driver.delayMs(500)
@@ -219,6 +222,7 @@ class StateManagementUTLink {
      * Test: Verify child @Link modification triggers parent @State update
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC028() {
         scrollTo("ViewLinkTC028")
         driver.delayMs(500)
@@ -271,6 +275,7 @@ class StateManagementUTLink {
      * Test: Verify parent @State modification triggers child @Link update
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC029() {
         scrollTo("ViewLinkTC029")
         driver.delayMs(500)
@@ -312,6 +317,7 @@ class StateManagementUTLink {
      * Test: Verify @Link variable can be used in child component build()
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC030() {
         scrollTo("ViewLinkTC030")
         driver.delayMs(500)
@@ -353,6 +359,7 @@ class StateManagementUTLink {
      * Test: Verify @Link and @State can be used together
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC031() {
         scrollTo("ViewLinkTC031")
         driver.delayMs(500)
@@ -393,6 +400,7 @@ class StateManagementUTLink {
      * Test: Verify @Link can be passed through multiple component levels
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testLinkTC032() {
         scrollTo("ViewLinkTC032")
         driver.delayMs(500)

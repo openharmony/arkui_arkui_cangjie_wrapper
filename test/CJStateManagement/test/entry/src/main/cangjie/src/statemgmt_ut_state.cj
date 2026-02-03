@@ -74,6 +74,7 @@ class StateManagementUTState {
      * Test: Verify @State variables with primitive types are correctly initialized and displayed
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC001() {
         scrollTo("ViewStateTC001")
         driver.delayMs(500)
@@ -126,6 +127,7 @@ class StateManagementUTState {
      * Test: Verify @State variables with collection types are correctly initialized and updated
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC002() {
         scrollTo("ViewStateTC002")
         driver.delayMs(500)
@@ -202,6 +204,7 @@ class StateManagementUTState {
      * Test: Verify @State variable with custom @Observed type is correctly initialized
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC003() {
         scrollTo("ViewStateTC003")
         driver.delayMs(500)
@@ -245,6 +248,7 @@ class StateManagementUTState {
      * Test: Verify @State variable with complex nested types is correctly initialized
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC004() {
         scrollTo("ViewStateTC004")
         driver.delayMs(500)
@@ -278,6 +282,7 @@ class StateManagementUTState {
      * Test: Verify @State variable can be used in build() method
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC005() {
         scrollTo("ViewStateTC005")
         driver.delayMs(500)
@@ -310,6 +315,7 @@ class StateManagementUTState {
      * Test: Verify @State variable works correctly in conditional rendering
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC006() {
         scrollTo("ViewStateTC006")
         driver.delayMs(500)
@@ -343,6 +349,7 @@ class StateManagementUTState {
      * Test: Verify @State variable works correctly in ForEach loop
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC007() {
         scrollTo("ViewStateTC007")
         driver.delayMs(500)
@@ -383,6 +390,7 @@ class StateManagementUTState {
      * Test: Verify @State variable can be updated in event handlers
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC008() {
         scrollTo("ViewStateTC008")
         driver.delayMs(500)
@@ -424,6 +432,7 @@ class StateManagementUTState {
      * Test: Verify direct assignment updates @State variable correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC009() {
         scrollTo("ViewStateTC009")
         driver.delayMs(500)
@@ -457,6 +466,7 @@ class StateManagementUTState {
      * Test: Verify event-triggered updates work correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC010() {
         scrollTo("ViewStateTC010")
         driver.delayMs(500)
@@ -499,6 +509,7 @@ class StateManagementUTState {
      * Test: Verify async operation can update @State variable
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC011() {
         scrollTo("ViewStateTC011")
         driver.delayMs(500)
@@ -522,6 +533,7 @@ class StateManagementUTState {
      * Test: Verify collection operations update @State variable correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC012() {
         scrollTo("ViewStateTC012")
         driver.delayMs(500)
@@ -567,6 +579,7 @@ class StateManagementUTState {
      * Test: Verify @State variables with boundary initial values work correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC013() {
         scrollTo("ViewStateTC013")
         driver.delayMs(500)
@@ -601,6 +614,7 @@ class StateManagementUTState {
      * Test: Verify @State variable type conversion works correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testStateTC014() {
         scrollTo("ViewStateTC014")
         driver.delayMs(500)

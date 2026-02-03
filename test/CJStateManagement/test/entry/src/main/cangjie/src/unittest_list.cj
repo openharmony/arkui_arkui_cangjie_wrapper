@@ -24,10 +24,12 @@ func testsuite(): Unit {
     registerTestSuite("StateManagementUTState") {StateManagementUTState()}
     registerTestSuite("StateManagementUTProp") {StateManagementUTProp()}
     registerTestSuite("StateManagementUTLink") {StateManagementUTLink()}
-    // registerTestSuite("StateManagementUTProvideConsume") {StateManagementUTProvideConsume()}
-    // registerTestSuite("StateManagementUTWatch") {StateManagementUTWatch()}
-    // registerTestSuite("StateManagementUTObservedPublish") {StateManagementUTObservedPublish()}
-    // registerTestSuite("StateManagementUTBuilder") {StateManagementUTBuilder()}
+    registerTestSuite("StateManagementUTStorage") {StateManagementUTStorage()}
+    registerTestSuite("StateManagementUTLocalStorage") {StateManagementUTLocalStorage()}
+    registerTestSuite("StateManagementUTProvideConsume") {StateManagementUTProvideConsume()}
+    registerTestSuite("StateManagementUTWatch") {StateManagementUTWatch()}
+    registerTestSuite("StateManagementUTObservedPublish") {StateManagementUTObservedPublish()}
+    registerTestSuite("StateManagementUTBuilder") {StateManagementUTBuilder()}
 }
 
 // Index pages for different macro categories
@@ -35,6 +37,8 @@ let UT_views = [
     "StateManagementIndexState",      // @State index
     "StateManagementIndexProp",       // @Prop index
     "StateManagementIndexLink",       // @Link index
+    "StateManagementIndexStorage",    // @StorageLink/@StorageProp index
+    "StateManagementIndexLocalStorage",  // @LocalStorageLink/@LocalStorageProp index
     "StateManagementIndexProvideConsume",  // @Provide/@Consume index
     "StateManagementIndexWatch",       // @Watch index
     "StateManagementIndexObservedPublish",  // @Observed/@Publish index
@@ -122,6 +126,29 @@ let UT6 = [
     "ViewObservedPublishTC055",
     "ViewObservedPublishTC056",
     "ViewObservedPublishTC057"
+]
+
+// @StorageLink/@StorageProp test pages (TC_069-TC_077)
+let UT8 = [
+    "ViewStorageTC069",
+    "ViewStorageTC070",
+    "ViewStorageTC071",
+    "ViewStorageTC072",
+    "ViewStorageTC073",
+    "ViewStorageTC074",
+    "ViewStorageTC075",
+    "ViewStorageTC076",
+    "ViewStorageTC077"
+]
+
+// @LocalStorageLink/@LocalStorageProp test pages (TC_078-TC_083)
+let UT9 = [
+    "ViewLocalStorageTC078",
+    "ViewLocalStorageTC079",
+    "ViewLocalStorageTC080",
+    "ViewLocalStorageTC081",
+    "ViewLocalStorageTC082",
+    "ViewLocalStorageTC083"
 ]
 
 // @Builder/@BuilderParam test pages (TC_058-TC_077)

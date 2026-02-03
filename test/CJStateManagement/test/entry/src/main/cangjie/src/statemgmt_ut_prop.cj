@@ -74,6 +74,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop receives primitive types from parent and displays correctly
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC015() {
         scrollTo("ViewPropTC015")
         driver.delayMs(500)
@@ -114,6 +115,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop receives collection types from parent
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC016() {
         scrollTo("ViewPropTC016")
         driver.delayMs(500)
@@ -151,6 +153,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop receives custom @Observed types from parent
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC017() {
         scrollTo("ViewPropTC017")
         driver.delayMs(500)
@@ -185,6 +188,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop receives complex nested types from parent
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC018() {
         scrollTo("ViewPropTC018")
         driver.delayMs(500)
@@ -219,6 +223,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop only flows from parent to child, child cannot modify parent
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC019() {
         scrollTo("ViewPropTC019")
         driver.delayMs(500)
@@ -260,6 +265,7 @@ class StateManagementUTProp {
      * Test: Verify parent @State update triggers child component rebuild
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC020() {
         scrollTo("ViewPropTC020")
         driver.delayMs(500)
@@ -296,6 +302,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop variable can be used in child component build()
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC021() {
         scrollTo("ViewPropTC021")
         driver.delayMs(500)
@@ -325,6 +332,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop variable works in child component conditional rendering
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC022() {
         scrollTo("ViewPropTC022")
         driver.delayMs(500)
@@ -356,6 +364,7 @@ class StateManagementUTProp {
      * Test: Verify multiple @Prop variables work correctly together
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC023() {
         scrollTo("ViewPropTC023")
         driver.delayMs(500)
@@ -397,6 +406,7 @@ class StateManagementUTProp {
      * Test: Verify @Prop and @State can be used together in child component
      */
     @TestCase
+    @Tag[APILevel22, TestLevel0]
     func testPropTC024() {
         scrollTo("ViewPropTC024")
         driver.delayMs(500)
