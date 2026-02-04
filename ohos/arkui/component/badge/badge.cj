@@ -25,9 +25,9 @@ import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
 foreign {
-    func FfiOHOSAceFrameworkBadgeCreateV2(count: Int32, style: CJBadgeStyleV2, position: Int32, maxCount: Int32): Unit
+    func FfiOHOSAceFrameworkBadgeCreateV3(count: Int32, style: CJBadgeStyleV3, position: Int32, maxCount: Int32): Unit
 
-    func FfiOHOSAceFrameworkBadgeCreateTextV2(value: CString, style: CJBadgeStyleV2, position: Int32): Unit
+    func FfiOHOSAceFrameworkBadgeCreateTextV3(value: CString, style: CJBadgeStyleV3, position: Int32): Unit
 }
 
 /**
@@ -134,8 +134,8 @@ public class BadgeStyle {
     public var badgeColor: ?ResourceColor
     /**
      * Font weight of the text.
-     * For the number type, the value ranges from 100 to 900, at an interval of 100. 
-     * A larger value indicates a heavier font weight.  
+     * For the number type, the value ranges from 100 to 900, at an interval of 100.
+     * A larger value indicates a heavier font weight.
      * For the string type, only strings that represent a number.
      * @default 400 or FontWeight.Normal
      *
@@ -209,16 +209,22 @@ public class BadgeStyle {
 }
 
 @C
-struct CJBadgeStyleV2 {
-    CJBadgeStyleV2(
+struct CJBadgeStyleV3 {
+    CJBadgeStyleV3(
         let color: UInt32,
         let fontSize: Float64,
+        let fontSizeUnit: Int32,
         let badgeSize: Float64,
+        let badgeSizeUnit: Int32,
         let badgeColor: UInt32,
-        let fontWeight: UInt32,
+        let fontWeight: CString,
         let borderColor: UInt32,
         let borderWidth: Float64,
-        let borderWidthUnit: Int32
+        let borderWidthUnit: Int32,
+        let outerBorderColor: UInt32,
+        let outerBorderWidth: Float64,
+        let outerBorderWidthUnit: Int32,
+        let enableAutoAvoidance: Bool
     ) {}
 }
 
@@ -251,16 +257,40 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
         maxCount!: ?Int32 = None, child!: () -> Unit) {
         let tmpStyle = style ?? BadgeStyle()
         let tmpPosition = position ?? BadgePosition.RightTop
-        unsafe {
-            FfiOHOSAceFrameworkBadgeCreateV2(
-                count,
-                CJBadgeStyleV2(transAppResourceToResourceColor(tmpStyle.color ?? Color.White), Float64((tmpStyle.fontSize ?? 10.fp).value), Float64((tmpStyle.badgeSize ?? 16.vp).value),
-                    transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red), (tmpStyle.fontWeight ?? FontWeight.Normal).getValueInt(), transAppResourceToResourceColor((tmpStyle.borderColor ?? Color.Red)),
-                    (tmpStyle.borderWidth ?? 1.vp).value, (tmpStyle.borderWidth ?? 1.vp).unitType.getValue()),
-                tmpPosition.getValue(),
-                maxCount ?? 99
+
+        let defaultOuterBorderColor = Color.White
+        let defaultOuterBorderWidth = 0.vp
+        let defaultEnableAutoAvoidance = false
+
+        let fontSize = (tmpStyle.fontSize ?? 10.fp)
+        let badgeSize = (tmpStyle.badgeSize ?? 16.vp)
+        try (fontWeight = unsafe { LibC.mallocCString((tmpStyle.fontWeight ?? FontWeight.Normal).getValue()).asResource()}) {
+            let nativeBadge = CJBadgeStyleV3(
+                transAppResourceToResourceColor(tmpStyle.color ?? Color.White),
+                fontSize.value,
+                fontSize.unitType.getValue(),
+                badgeSize.value,
+                badgeSize.unitType.getValue(),
+                transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red),
+                fontWeight.value,
+                transAppResourceToResourceColor(tmpStyle.borderColor ?? Color.Red),
+                (tmpStyle.borderWidth ?? 1.vp).value,
+                (tmpStyle.borderWidth ?? 1.vp).unitType.getValue(),
+                transAppResourceToResourceColor(defaultOuterBorderColor),
+                defaultOuterBorderWidth.value,
+                defaultOuterBorderWidth.unitType.getValue(),
+                defaultEnableAutoAvoidance
             )
+            unsafe {
+                FfiOHOSAceFrameworkBadgeCreateV3(
+                    count,
+                    nativeBadge,
+                    tmpPosition.getValue(),
+                    maxCount ?? 99
+                )
+            }
         }
+
         this.child = child
     }
 
@@ -283,16 +313,41 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
         let tmpValue = value
         let tmpStyle = style ?? BadgeStyle()
         let tmpPosition = position ?? BadgePosition.RightTop
-        
-        unsafe {
-            try (textValue = LibC.mallocCString(tmpValue).asResource()) {
-                FfiOHOSAceFrameworkBadgeCreateTextV2(
-                    textValue.value,
-                    CJBadgeStyleV2(transAppResourceToResourceColor(tmpStyle.color ?? Color.White), Float64((tmpStyle.fontSize ?? 10.fp).value), Float64((tmpStyle.badgeSize ?? 16.vp).value),
-                        transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red), (tmpStyle.fontWeight ?? FontWeight.Normal).getValueInt(), transAppResourceToResourceColor(tmpStyle.borderColor ?? Color.Red),
-                        (tmpStyle.borderWidth ?? 1.vp).value, (tmpStyle.borderWidth ?? 1.vp).unitType.getValue()),
-                    tmpPosition.getValue()
-                )
+
+        // not support in api.
+        let defaultOuterBorderColor = Color.White
+        let defaultOuterBorderWidth = 0.vp
+        let defaultEnableAutoAvoidance = false
+
+        let fontSize = (tmpStyle.fontSize ?? 10.fp)
+        let badgeSize = (tmpStyle.badgeSize ?? 16.vp)
+
+        try (fontWeight = unsafe { LibC.mallocCString((tmpStyle.fontWeight ?? FontWeight.Normal).getValue()).asResource()}) {
+            let nativeBadge = CJBadgeStyleV3(
+                transAppResourceToResourceColor(tmpStyle.color ?? Color.White),
+                fontSize.value,
+                fontSize.unitType.getValue(),
+                badgeSize.value,
+                badgeSize.unitType.getValue(),
+                transAppResourceToResourceColor(tmpStyle.badgeColor ?? Color.Red),
+                fontWeight.value,
+                transAppResourceToResourceColor(tmpStyle.borderColor ?? Color.Red),
+                (tmpStyle.borderWidth ?? 1.vp).value,
+                (tmpStyle.borderWidth ?? 1.vp).unitType.getValue(),
+                transAppResourceToResourceColor(defaultOuterBorderColor),
+                defaultOuterBorderWidth.value,
+                defaultOuterBorderWidth.unitType.getValue(),
+                defaultEnableAutoAvoidance
+            )
+
+            unsafe {
+                try (textValue = LibC.mallocCString(tmpValue).asResource()) {
+                    FfiOHOSAceFrameworkBadgeCreateTextV3(
+                        textValue.value,
+                        nativeBadge,
+                        tmpPosition.getValue()
+                    )
+                }
             }
         }
         this.child = child
