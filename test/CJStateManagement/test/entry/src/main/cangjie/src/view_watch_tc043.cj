@@ -29,7 +29,7 @@ import std.collection.*
 @Entry
 @Component
 class ViewWatchTC043 {
-    // @Watch[onListChanged] TODO: bugfix
+    @Watch[onListChanged]
     @State var dataList: ObservedArrayList<String> = ObservedArrayList<String>(["Item1", "Item2", "Item3"])
     @State var watchTriggered: Bool = false
     @State var watchCount: Int64 = 0
