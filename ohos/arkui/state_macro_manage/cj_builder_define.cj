@@ -17,7 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl, ASTException, FuncParam, ToTokens, RefType}
+import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl,
+    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr}
 import std.collection.{HashMap, ArrayList}
 
 public macro Builder(input: Tokens): Tokens {
@@ -148,11 +149,72 @@ func generateInnerFuncIdent(name: String): Token {
 }
 
 /**
- * Supporting @Builder function as parameters in some common properties
+ * Get the base type name from a MemberAccess expression.
+ * Recursively traverses the expression chain to find the root type.
+ * Returns the type name if found, or empty string if not a type reference.
  */
-let BIND_FUNCTIONS: HashMap<String, Int64> = HashMap<String, Int64>(
-    [("bindContentCover", 1), ("bindSheet", 1), ("description", 0)])
-let BIND_FUNCTION_NAMED_PARAM: HashMap<String, Int64> = HashMap<String, Int64>([("bindMenu", 0), ("bindContextMenu", 0)])
+func getBaseTypeName(expr: Expr): String {
+    match (expr) {
+        case refExpr: RefExpr => 
+            return refExpr.identifier.value
+        case memberAccess: MemberAccess => 
+            return getBaseTypeName(memberAccess.baseExpr)
+        case callExpr: CallExpr => 
+            return getBaseTypeName(callExpr.callFunc)
+        case trailingClosureExpr: TrailingClosureExpr =>
+            return getBaseTypeName(trailingClosureExpr.expr)
+        case _ => 
+            return ""
+    }
+}
+
+/**
+ * Check if an argument should be skipped (not processed)
+ * Skip only for:
+ * 1. LitConstExpr (literal constants, e.g., "string")
+ * 2. CallExpr with __GenerateResource__() (e.g., __GenerateResource__())
+ * All other cases should be processed (RefExpr, LambdaExpr, etc.)
+ */
+func shouldSkipArgument(expr: Expr): Bool {
+    match (expr) {
+        case litConst: LitConstExpr => 
+            return true  // Skip literal constants like "string"
+        case callExpr: CallExpr => 
+            // Check if it's __GenerateResource__()
+            if (callExpr.callFunc is RefExpr) {
+                let refExpr = (callExpr.callFunc as RefExpr).getOrThrow()
+                if (refExpr.identifier.value == "__GenerateResource__") {
+                    return true  // Skip __GenerateResource__() calls
+                }
+            }
+            return false  // Other CallExpr should be processed
+        case _ => 
+            return false  // All other types (RefExpr, LambdaExpr, etc.) should be processed
+    }
+}
+
+/**
+ * Check if a function call should be processed based on its type.
+ * This provides type safety by ensuring we only transform methods from the correct types.
+ */
+func isAllowedType(functionName: String, baseTypeName: String): Bool {
+    let allowedTypesMap = buildAllowedTypes()
+    match (allowedTypesMap.get(functionName)) {
+        case Some(allowedTypes) => 
+            // Empty list means allow any type (common methods)
+            if (allowedTypes.isEmpty()) {
+                return true
+            }
+            // For component-specific methods, require valid type name
+            if (baseTypeName == "") {
+                return false
+            }
+            return allowedTypes.contains(baseTypeName)
+        case None => 
+            // Not in map - backward compatibility, allow it
+            return true
+    }
+}
 
 class VisitBuilder <: Visitor {
     var ident: ArrayList<String> = ArrayList<String>()
@@ -162,22 +224,238 @@ class VisitBuilder <: Visitor {
         this.thisView = thisView
     }
 
-    protected override func visit(curNode: CallExpr) {
+    /**
+     * Check if an expression already contains a bind(...) call
+     * This is used for backward compatibility to avoid processing already-bound expressions
+     * Examples:
+     * - bind(this.myMenu, this) -> true
+     * - { => bind(this.tabBuilder, this)(3, 'pink') } -> true
+     */
+    func isAlreadyBound(expr: Expr): Bool {
+        match (expr) {
+            case callExpr: CallExpr => 
+                // Check if callFunc is a bind call
+                match (callExpr.callFunc) {
+                    case refExpr: RefExpr => 
+                        // Direct bind call: bind(...)
+                        if (refExpr.identifier.value == "bind") {
+                            return true
+                        }
+                    case _ => 
+                        // Recursively check nested callFunc (e.g., MemberAccess, nested CallExpr)
+                        return isAlreadyBound(callExpr.callFunc)
+                }
+                return false
+            case lambdaExpr: LambdaExpr => return true
+                // Check if lambda body contains bind calls
+                // Traverse lambda body nodes to find bind calls
+            case _ => 
+                return false
+        }
+    }
+
+    /**
+     * Check if an expression is Option.None or Option<T>.None
+     * Returns true if it is, false otherwise
+     */
+    func isOptionNone(expr: Expr): Bool {
+        match (expr) {
+            case memberAccess: MemberAccess => 
+                if (memberAccess.field.value == "None") {
+                    if (getBaseTypeName(memberAccess.baseExpr) == "Option") {
+                        return true
+                    }
+                }
+            case _ => ()
+        }
+        return false
+    }
+
+    /**
+     * Check if an expression is Option.Some(...) or Option<CustomBuilder>.Some(...)
+     * Returns the inner expression if it is, None otherwise
+     */
+    func extractOptionSome(expr: Expr): Option<Expr> {
+        match (expr) {
+            case callExpr: CallExpr => 
+                match (callExpr.callFunc) {
+                    case memberAccess: MemberAccess => 
+                        if (memberAccess.field.value == "Some") {
+                            let baseTypeName = getBaseTypeName(memberAccess.baseExpr)
+                            if (baseTypeName == "Option") {
+                                if (callExpr.arguments.size == 1) {
+                                    return Some(callExpr.arguments[0].expr)
+                                }
+                            }
+                        }
+                    case _ => ()
+                }
+            case _ => ()
+        }
+        return None
+    }
+
+    /**
+     * Bind a CustomBuilder argument to thisView
+     * Supports:
+     * 1. Simple references (e.g., this.myMenu)
+     * 2. Function calls with parameters (e.g., this.myMenu("A", "B"))
+     * 3. Option.Some(...) or Option<CustomBuilder>.Some(...) (e.g., Option.Some(this.myMenu))
+     * Maximum 3 parameters are supported for function calls
+     */
+    func bindArgument(argument: Argument): Unit {
+        var expr = argument.expr
+        
+        // COMPATIBILITY CHECK: Skip if already bound to avoid duplicate processing
+        if (isAlreadyBound(expr)) {
+            return
+        }
+        
+        // Skip Option.None or Option<T>.None
+        if (isOptionNone(expr)) {
+            return
+        }
+        
+        // Check if it's Option.Some(...) or Option<CustomBuilder>.Some(...)
+        match (extractOptionSome(expr)) {
+            case Some(innerExpr) => 
+                // It's Option.Some(...), bind the inner expression
+                // Create a temporary argument for recursive processing
+                var tempArg = Argument()
+                tempArg.expr = innerExpr
+                bindArgument(tempArg)
+                argument.expr = tempArg.expr
+                return
+            case _ => ()
+        }
+        
+        // Check if the argument is a CallExpr (function call with parameters)
+        match (expr) {
+            case callExpr: CallExpr => 
+                // Limit to maximum 3 parameters
+                if (callExpr.arguments.size > 3) {
+                    return  // Skip if more than 3 parameters
+                }
+                let originalCallFunc = callExpr.callFunc
+                let originalArgs = callExpr.arguments
+                argument.expr = LambdaExpr(quote({ => bind($originalCallFunc, $thisView)($originalArgs) }))
+            case _ => 
+                // Simple reference case: bind(this.myMenu, thisView)
+                argument.expr = CallExpr(quote(bind($expr, $thisView)))
+        }
+        return
+    }
+
+    /**
+     * Handle constructor calls with CustomBuilder parameters
+     */
+    func handleConstructorCall(curNode: CallExpr) {
+        if (!(curNode.callFunc is RefExpr)) {
+            return
+        }
+        
+        let refExpr = (curNode.callFunc as RefExpr).getOrThrow()
+        let typeName = refExpr.identifier.value
+        
+        let constructorParams = buildConstructorParams()
+        if (let Some(paramList) <- constructorParams.get(typeName)) {
+            // Check all arguments: if parameter name matches, bind it; otherwise check by index
+            for (i in 0..curNode.arguments.size) {
+                let argName = getArgumentIdentifier(curNode.arguments[i]).value
+                var matched = false
+                
+                // First, try to match by parameter name (for named arguments)
+                if (argName != "") {
+                    for ((_, expectedName) in paramList) {
+                        if (argName == expectedName) {
+                            // For MenuItemGroup, skip only LitConstExpr and __GenerateResource__()
+                            if (typeName != "MenuItemGroup" || !shouldSkipArgument(curNode.arguments[i].expr)) {
+                                bindArgument(curNode.arguments[i])
+                            }
+                            matched = true
+                            break
+                        }
+                    }
+                }
+                
+                // If not matched and it's a positional argument, check by index
+                if (!matched && argName == "") {
+                    for ((index, expectedName) in paramList) {
+                        if (index == i) {
+                            bindArgument(curNode.arguments[i])
+                            break
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Handle method calls with CustomBuilder parameters
+     */
+    func handleMethodCall(curNode: CallExpr) {
         if (!(curNode.callFunc is MemberAccess)) {
             return
         }
         var ma = (curNode.callFunc as MemberAccess).getOrThrow()
-        if (let Some(index) <- BIND_FUNCTIONS.get(ma.field.value)) {
-            var builder = curNode.arguments[index].expr
-            var callBind = CallExpr(quote(bind($builder, $thisView)))
-            curNode.arguments[index].expr = callBind
-        } else if (let Some(index) <- BIND_FUNCTION_NAMED_PARAM.get(ma.field.value)) {
-            if (getArgumentIdentifier(curNode.arguments[index]).value == "builder") {
-                var builder = curNode.arguments[index].expr
-                var callBind = CallExpr(quote(bind($builder, $thisView)))
-                curNode.arguments[index].expr = callBind
+        let fieldName = ma.field.value
+        
+        // SECURITY CHECK: Get the base type name and verify it's allowed
+        let baseTypeName = getBaseTypeName(ma.baseExpr)
+        if (!isAllowedType(fieldName, baseTypeName)) {
+            return
+        }
+        
+        // Handle functions with CustomBuilder as named parameter (check parameter name first)
+        // This must be checked before positional parameters to handle cases like RichEditor.customKeyboard
+        let namedParams = buildNamedParam()
+        if (namedParams.contains(fieldName)) {
+            let paramNames = buildParamNames()
+            let expectedName = paramNames.get(fieldName) ?? ""
+            for (i in 0..curNode.arguments.size) {
+                let paramName = getArgumentIdentifier(curNode.arguments[i]).value
+                if (paramName == expectedName) {
+                    bindArgument(curNode.arguments[i])
+                    break
+                }
+            }
+            return
+        }
+        
+        // Handle functions with CustomBuilder at fixed position (no parameter name check)
+        // This handles TextInput.customKeyboard and other positional parameter cases
+        let functions = buildFunctions()
+        if (let Some(index) <- functions.get(fieldName)) {
+            if (index < curNode.arguments.size) {
+                let argExpr = curNode.arguments[index].expr
+                // For title and tabBar, skip only LitConstExpr and __GenerateResource__()
+                // All other cases (RefExpr, LambdaExpr, etc.) should be processed
+                if (fieldName != "title" && fieldName != "tabBar" || !shouldSkipArgument(argExpr)) {
+                    bindArgument(curNode.arguments[index])
+                }
+            }
+            return
+        }
+        
+        // Handle functions with multiple CustomBuilder parameters
+        let multiParams = buildMultiParam()
+        if (let Some(paramList) <- multiParams.get(fieldName)) {
+            for (i in 0..curNode.arguments.size) {
+                let argName = getArgumentIdentifier(curNode.arguments[i]).value
+                for ((_, expectedName) in paramList) {
+                    if (argName == expectedName) {
+                        bindArgument(curNode.arguments[i])
+                        break
+                    }
+                }
             }
         }
+    }
+
+    protected override func visit(curNode: CallExpr) {
+        handleConstructorCall(curNode)
+        handleMethodCall(curNode)
     }
 
     protected override func visit(curNode: VarDecl) {
