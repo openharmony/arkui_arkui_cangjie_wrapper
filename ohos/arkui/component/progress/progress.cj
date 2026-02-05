@@ -18,7 +18,7 @@
 package ohos.arkui.component.progress
 
 import ohos.arkui.component.common.{CommonMethodComponent, ProgressType}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessOrEqual, LENGTH_PERCENT}
 import ohos.base.{VectorFloat64Handle, VectorInt32Handle, Length, ResourceColor, VectorUInt32Handle, LengthProp}
 import ohos.labels.{APILevel}
 import std.deriving.Derive
@@ -325,10 +325,24 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func style(strokeWidth!: ?Length = None, scaleCount!: ?Int32 = None, scaleWidth!: ?Length = None): This {
-        var strokeWidth_ = transAppResourceToLength(strokeWidth ?? 10.vp)
+        var strokeWidth_ = transAppResourceToLength(strokeWidth ?? 4.vp)
+        if (lessOrEqual(strokeWidth_.value, 0.0) || strokeWidth_.unitType.getValue() == LENGTH_PERCENT || mProgressType == ProgressType.Capsule) {
+            strokeWidth_ = 4.vp
+        }
+        var scaleCount_ = scaleCount ?? 120
+        if (scaleCount_ <= 1) {
+            scaleCount_ = 120
+        }
         var scaleWidth_ = transAppResourceToLength(scaleWidth ?? 2.vp)
+        if (lessOrEqual(scaleWidth_.value, 0.0) || scaleWidth_.value > strokeWidth_.value || scaleWidth_.unitType.getValue() == LENGTH_PERCENT) {
+            scaleWidth_ = 2.vp
+        }
+        if (mProgressType != ProgressType.ScaleRing && mProgressType != ProgressType.Eclipse) {
+            scaleCount_ = 120
+            scaleWidth_ = 2.vp
+        }
         unsafe {
-            FfiOHOSAceFrameworkProgressSetStyle(strokeWidth_.value, strokeWidth_.unitType.getValue(), scaleCount ?? 120,
+            FfiOHOSAceFrameworkProgressSetStyle(strokeWidth_.value, strokeWidth_.unitType.getValue(), scaleCount_,
                 scaleWidth_.value, scaleWidth_.unitType.getValue())
         }
         this
