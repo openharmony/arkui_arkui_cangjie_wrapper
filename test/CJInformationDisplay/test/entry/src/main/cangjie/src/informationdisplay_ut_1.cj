@@ -443,7 +443,7 @@ class InformationDisplayUT1 {
         @Expect(trackShadow.contains("\"7.000000\""))
 
         let indicator = attrs.get("indicator").getOrThrow().toString()
-        @Expect(indicator.contains("SystemStyle"))
+        @Expect(indicator.contains("default"))
     }
 
     @TestCase
@@ -473,7 +473,7 @@ class InformationDisplayUT1 {
         @Expect(trackShadow.contains("\"7.000000\""))
 
         let indicator = attrs.get("indicator").getOrThrow().toString()
-        @Expect(indicator.contains("SystemStyle"))
+        @Expect(indicator.contains("default"))
     }
     @TestCase
     @Tag[APILevel22, TestLevel0]
@@ -502,7 +502,7 @@ class InformationDisplayUT1 {
         @Expect(trackShadow.contains("\"7.000000\""))
 
         let indicator = attrs.get("indicator").getOrThrow().toString()
-        @Expect(indicator.contains("SystemStyle"))
+        @Expect(indicator.contains("default"))
     }
 
 

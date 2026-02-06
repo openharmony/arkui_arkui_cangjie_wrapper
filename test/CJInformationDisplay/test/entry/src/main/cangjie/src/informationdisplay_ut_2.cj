@@ -152,7 +152,7 @@ class InformationDisplayUT2 {
         @Expect(`type13`, "\"ProgressStyle.Capsule\"")
 
         let style13 = attrs13.get("style").getOrThrow().toString()
-        @Expect(style13.contains("\\\"strokeWidth\\\":\\\"10.00vp\\\""))
+        @Expect(style13.contains("\\\"strokeWidth\\\":\\\"4.00vp\\\""))
 
         let style13_a = attrs13.get("style").getOrThrow().toString()
         @Expect(style13.contains("\\\"scaleCount\\\":\\\"120\\\""))
