@@ -30,6 +30,13 @@ func testsuite(): Unit {
     registerTestSuite("StateManagementUTWatch") {StateManagementUTWatch()}
     registerTestSuite("StateManagementUTObservedPublish") {StateManagementUTObservedPublish()}
     registerTestSuite("StateManagementUTBuilder") {StateManagementUTBuilder()}
+    registerTestSuite("StateManagementUTComplexTypes") {StateManagementUTComplexTypes()}
+    registerTestSuite("StateManagementUTStateDriven") {StateManagementUTStateDriven()}
+    registerTestSuite("StateManagementUTComponentUsage") {StateManagementUTComponentUsage()}
+    registerTestSuite("StateManagementUTMultiMacro") {StateManagementUTMultiMacro()}
+    registerTestSuite("StateManagementUTReusable") {StateManagementUTReusable()}
+    registerTestSuite("StateManagementUTResource") {StateManagementUTResource()}
+    registerTestSuite("StateManagementUTCustomDialog") {StateManagementUTCustomDialog()}
 }
 
 // Index pages for different macro categories
@@ -42,7 +49,15 @@ let UT_views = [
     "StateManagementIndexProvideConsume",  // @Provide/@Consume index
     "StateManagementIndexWatch",       // @Watch index
     "StateManagementIndexObservedPublish",  // @Observed/@Publish index
-    "StateManagementIndexBuilder"      // @Builder/@BuilderParam index
+    "StateManagementIndexBuilder",      // @Builder/@BuilderParam index
+    "StateManagementIndexComplexTypes",  // Complex types (TC_084-TC_092)
+    "StateManagementIndexComponentUsage",  // Component usage (TC_093-TC_102)
+    "StateManagementIndexStateDriven",  // State-driven updates (TC_103-TC_114)
+    "StateManagementIndexMultiMacro",  // Multi-macro combination (TC_115-TC_123)
+    "StateManagementIndexBoundary",  // Boundary scenarios (TC_124-TC_129, TC_142-TC_147)
+    "StateManagementIndexReusable",  // @Reusable (TC_133-TC_136)
+    "StateManagementIndexResource",  // Resource macros (TC_137-TC_139)
+    "StateManagementIndexCustomDialog"  // @CustomDialog (TC_145-TC_147)
 ]
 
 // @State test pages (TC_001-TC_014)
@@ -173,5 +188,99 @@ let UT7 = [
     "ViewBuilderTC075",
     "ViewBuilderTC076",
     "ViewBuilderTC077"
+]
+
+// Complex types and custom types test pages (TC_084-TC_092)
+let UT10 = [
+    "ViewComplexTC084",
+    "ViewComplexTC085",
+    "ViewComplexTC086",
+    "ViewComplexTC087",
+    "ViewComplexTC088",
+    "ViewComplexTC089",
+    "ViewComplexTC090",
+    "ViewComplexTC091",
+    "ViewComplexTC092"
+]
+
+// State variable usage in components test pages (TC_093-TC_102)
+let UT11 = [
+    "ViewComponentTC093",
+    "ViewComponentTC094",
+    "ViewComponentTC095",
+    "ViewComponentTC096",
+    "ViewComponentTC097",
+    "ViewComponentTC098",
+    "ViewComponentTC099",
+    "ViewComponentTC100",
+    "ViewComponentTC101",
+    "ViewComponentTC102"
+]
+
+// State-driven update scenarios test pages (TC_103-TC_114)
+let UT12 = [
+    "ViewDrivenTC103",
+    "ViewDrivenTC104",
+    "ViewDrivenTC105",
+    "ViewDrivenTC106",
+    "ViewDrivenTC107",
+    "ViewDrivenTC108",
+    "ViewDrivenTC109",
+    "ViewDrivenTC110",
+    "ViewDrivenTC111",
+    "ViewDrivenTC112",
+    "ViewDrivenTC113",
+    "ViewDrivenTC114"
+]
+
+// Multi-macro combination test pages (TC_115-TC_123)
+let UT13 = [
+    "ViewMultiTC115",
+    "ViewMultiTC116",
+    "ViewMultiTC117",
+    "ViewMultiTC118",
+    "ViewMultiTC119",
+    "ViewMultiTC120",
+    "ViewMultiTC121",
+    "ViewMultiTC122",
+    "ViewMultiTC123"
+]
+
+// Boundary and exception scenarios test pages (TC_124-TC_129, TC_142-TC_147)
+let UT14 = [
+    "ViewBoundaryTC124",
+    "ViewBoundaryTC125",
+    "ViewBoundaryTC126",
+    "ViewBoundaryTC127",
+    "ViewBoundaryTC128",
+    "ViewBoundaryTC129",
+    "ViewBoundaryTC142",
+    "ViewBoundaryTC143",
+    "ViewBoundaryTC144",
+    "ViewCustomDialogTC145",
+    "ViewCustomDialogTC146",
+    "ViewCustomDialogTC147"
+]
+
+// @Reusable test pages (TC_133-TC_136)
+let UT15 = [
+    "ViewReusableTC133",
+    "ViewReusableTC134",
+    "ViewReusableTC135",
+    "ViewReusableTC136"
+]
+
+// Resource macro test pages (TC_137-TC_139)
+let UT16 = [
+    "ViewResourceTC137",
+    "ViewResourceTC138",
+    "ViewResourceTC139"
+]
+
+// @CustomDialog test pages (TC_145-TC_147)
+let UT17 = [
+    "ViewCustomDialogTC145",
+    "ViewCustomDialogTC146",
+    "ViewCustomDialogTC147"
 ]
 
