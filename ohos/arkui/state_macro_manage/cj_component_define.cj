@@ -267,7 +267,7 @@ func validateComponentChildConstraints(parentExpr: CallExpr, componentName: Stri
                 "The component ${componentName} can only have a single child component.", "")
         }
     }
-    
+
     // Check child type constraints
     if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
         checkChildInBody(childNodes, componentName)
