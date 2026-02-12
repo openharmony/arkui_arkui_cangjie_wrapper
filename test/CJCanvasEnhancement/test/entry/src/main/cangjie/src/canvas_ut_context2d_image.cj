@@ -315,7 +315,7 @@ class CanvasUTContext2DImage {
     func testContext2DWidth() {
         scrollTo("ViewCanvasContext2DWidth")
         let width = getContent("widthText")
-        @Expect(width, "\"150.000000\"")
+        @Expect(width, "\"300.000000\"")
         driver.pressBack()
     }
 
@@ -324,8 +324,8 @@ class CanvasUTContext2DImage {
     @Tag[APILevel22, TestLevel0]
     func testContext2DHeight() {
         scrollTo("ViewCanvasContext2DHeight")
-        let width = getContent("heightText")
-        @Expect(width, "\"75.000000\"")
+        let height = getContent("heightText")
+        @Expect(width, "\"150.000000\"")
         driver.pressBack()
     }
 

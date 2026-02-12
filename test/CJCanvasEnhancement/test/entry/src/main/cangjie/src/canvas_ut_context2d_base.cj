@@ -419,8 +419,8 @@ class CanvasUTContext2DAttrs {
     }
     @TestCase
     @Tag[APILevel22, TestLevel0]
-    func testCanvasCanvasGlobalCompositeOperationMutPropBoundaryValue1() {
-        @Expect(hasComponent("canvasContext2DGlobalCompositeOperationBoundaryValue1"), true)
+    func testCanvasCanvasGlobalCompositeOperationMutPropExceptionValue1() {
+        @Expect(hasComponent("canvasContext2DGlobalCompositeOperationExceptionValue1"), true)
     }
     @TestCase
     @Tag[APILevel22, TestLevel0]
