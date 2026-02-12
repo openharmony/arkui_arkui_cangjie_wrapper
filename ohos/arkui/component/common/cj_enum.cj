@@ -3046,7 +3046,7 @@ public enum Edge {
     protected static func setValue(value: Int32): Edge {
         match (value) {
             case 0 => Edge.Top
-            case 2 => Edge.Bottom
+            case 2 => Edge.Bottom     
             case 4 => Edge.Start
             case 6 => Edge.End
             case _ => Edge.Top
