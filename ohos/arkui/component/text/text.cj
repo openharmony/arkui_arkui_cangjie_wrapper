@@ -300,7 +300,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineSpacing(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.vp)
-        if (v.value < 0.0 || v.unitType.getValue() == LENGTH_PERCENT) {
+        if (v.value < 0.0) {
             v = 0.0.px
         }
         unsafe {

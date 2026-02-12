@@ -1498,10 +1498,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextTransform(
                 this.getID(),
-                a,
-                b,
-                c,
-                d,
+                a,            // a for scaleX
+                d,            // d for skewX
+                b,            // b for skewY
+                c,            // c for scaleY
                 e,
                 f
             )
@@ -1533,10 +1533,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
         unsafe {
             FfiOHOSAceFrameworkRenderingContextSetTransform(
                 this.getID(),
-                a,
-                b,
-                c,
-                d,
+                a,            // a for scaleX
+                d,            // d for skewY
+                c,            // c for skewX
+                b,            // b for scaleY
                 e,
                 f
             )

@@ -18,7 +18,7 @@
 package ohos.arkui.component.text_timer
 
 import ohos.arkui.component.common.{CommonMethodComponent, ShadowOptions, FontStyle, FontWeight, ShadowType}
-import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
+import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.ffi.{RemoteDataLite, releaseFFIData, Callback2Param}
 import ohos.base.{Length, ResourceColor, ResourceStr, Color, LengthProp}
 import ohos.labels.{APILevel}
@@ -269,6 +269,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     ]
     public func fontSize(value: ?Length): This {
         var value_ = transAppResourceToLength(value ?? 16.0.fp)
+        if (lessNotEqual(value_.value, 0.0) || value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 16.0.fp
+        }
         unsafe {
             FfiOHOSAceFrameworkTextTimerSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
         }

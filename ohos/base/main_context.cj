@@ -22,9 +22,9 @@ import ohos.labels.{APILevel}
 foreign func FfiOHOSBaseGetUISchedulerHandle(): CPointer<Unit>
 
 @When[os == "Linux"]
-foreign func getpid(): Int64
+foreign func getpid(): IntNative
 @When[os == "Linux"]
-foreign func gettid(): Int64
+foreign func gettid(): IntNative
 
 /**
  * Defines class MainThreadContext.
@@ -82,7 +82,7 @@ public class MainThreadContext <: ThreadContext {
 ]
 public let UIThread: MainThreadContext = MainThreadContext.INSTANCE_
 
-var currentPid: ?Int64 = None
+var currentPid: ?IntNative = None
 
 @When[os != "Linux"]
 protected func isInMainThread(): Bool {
