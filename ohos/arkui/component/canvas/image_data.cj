@@ -42,6 +42,7 @@ foreign {
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class ImageData <: RemoteDataLite {
+    private var isValid_ = false
     /**
      * Width of the image.
      */
@@ -51,6 +52,9 @@ public class ImageData <: RemoteDataLite {
     ]
     public prop width: Int32 {
         get() {
+            if (!isValid_) {
+                return 0
+            }
             unsafe {
                 FfiOHOSAceFrameworkCanvasImageDataGetWidth(this.getID())
             }
@@ -66,6 +70,9 @@ public class ImageData <: RemoteDataLite {
     ]
     public prop height: Int32 {
         get() {
+            if (!isValid_) {
+                return 0
+            }
             unsafe {
                 FfiOHOSAceFrameworkCanvasImageDataGetHeight(this.getID())
             }
@@ -81,6 +88,9 @@ public class ImageData <: RemoteDataLite {
     ]
     public prop data: Array<UInt8> {
         get() {
+            if (!isValid_) {
+                return []
+            }
             unsafe {
                 let res = FFIVectorUInt8(FfiOHOSAceFrameworkCanvasImageDataGetData(this.getID()))
                 let list = Array<UInt8>(res.getSize(), {i => res.getElement(i)})
@@ -104,21 +114,24 @@ public class ImageData <: RemoteDataLite {
     ]
     public init(width: ?Float64, height: ?Float64, data!: ?Array<UInt8>,
         unit!: ?LengthMetricsUnit = None) {
-        super(
-            unsafe {
-                let tmpWidth = width ?? 0.0
-                let tmpHeight = height ?? 0.0
-                let tmpData = data ?? []
-                let tmpUnit = unit ?? LengthMetricsUnit.Default
-                var vecValueHandle = FFIVectorUInt8(tmpData.size)
-                for (i in 0..tmpData.size) {
-                    vecValueHandle.setElement(i, tmpData[i])
-                }
-                let id = FfiOHOSAceFrameworkCanvasImageDataCtor(tmpWidth, tmpHeight, vecValueHandle.getNativeHandle(),
-                    tmpUnit.getValue())
-                vecValueHandle.free()
-                id
-            })
+        let id = unsafe {
+            let tmpWidth = width ?? 0.0
+            let tmpHeight = height ?? 0.0
+            let tmpData = data ?? []
+            let tmpUnit = unit ?? LengthMetricsUnit.Default
+            var vecValueHandle = FFIVectorUInt8(tmpData.size)
+            for (i in 0..tmpData.size) {
+                vecValueHandle.setElement(i, tmpData[i])
+            }
+            let id = FfiOHOSAceFrameworkCanvasImageDataCtor(tmpWidth, tmpHeight, vecValueHandle.getNativeHandle(),
+                tmpUnit.getValue())
+            vecValueHandle.free()
+            id
+        }
+        if (id > 0) {
+            isValid_ = true
+            dataInit(id)
+        }
     }
 
     /**
@@ -133,19 +146,24 @@ public class ImageData <: RemoteDataLite {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width: ?Float64, height: ?Float64, unit!: ?LengthMetricsUnit = None) {
-        super(
-            unsafe {
-                let id = FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width ?? 0.0, height ?? 0.0,
-                    (unit ?? LengthMetricsUnit.Default).getValue())
-                id
-        })
+        let id = unsafe {
+            FfiOHOSAceFrameworkCanvasImageDataCtorWithNoData(width ?? 0.0, height ?? 0.0,
+                (unit ?? LengthMetricsUnit.Default).getValue())
+        }
+        if (id > 0) {
+            isValid_ = true
+            dataInit(id)
+        }
     }
 
     init(selfID: Int64) {
         super(selfID)
+        isValid_ = true
     }
 
     ~init() {
-        releaseFFIData(myDataId)
+        if (isValid_) {
+            releaseFFIData(myDataId)
+        }
     }
 }

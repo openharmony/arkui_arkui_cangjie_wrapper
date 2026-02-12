@@ -238,7 +238,7 @@ public abstract class CustomView <: RemoteView & Observer {
             return
         }
         match (updateFuncByElmtId_inner__.get(elmtId)) {
-            case None => BASE_LOG.error("update function of ElementId ${elmtId} not found, internal error!")
+            case None => BASE_LOG.debug("update function of ElementId ${elmtId} not found, internal error!")
             case Some(updateFunc) =>
                 ViewStackProcessor.startGetAccessRecordingFor(elmtId)
                 updateFunc(elmtId, false).update()

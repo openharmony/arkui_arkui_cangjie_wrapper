@@ -3036,9 +3036,9 @@ public enum Edge {
     protected func getValue(): Int32 {
         match (this) {
             case Top => 0
-            case Start => 1
             case Bottom => 2
-            case End => 3
+            case Start => 4
+            case End => 6
             case _ => throw BusinessException(100001, "Internal error.")
         }
     }
@@ -3046,9 +3046,9 @@ public enum Edge {
     protected static func setValue(value: Int32): Edge {
         match (value) {
             case 0 => Edge.Top
-            case 1 => Edge.Start
             case 2 => Edge.Bottom
-            case 3 => Edge.End
+            case 4 => Edge.Start
+            case 6 => Edge.End
             case _ => Edge.Top
         }
     }

@@ -20,7 +20,7 @@ macro package ohos.arkui.state_macro_manage
 import std.ast.{Tokens, ClassDecl, FuncDecl, Node, Expr, IfExpr, Block, TrailingClosureExpr, CallExpr, LambdaExpr, RefExpr, Decl, PrimaryCtorDecl, ForInExpr, parseDecl, Visitor, diagReport, DiagReportLevel, ToTokens}
 import std.collection.{ArrayList, HashSet, HashMap}
 
-func checkComponentSyntax(input: Tokens) {
+func checkComponentSyntax(input: Tokens): ClassDecl {
     let decl = parseDecl(input)
     let classDecl = match (decl as ClassDecl) {
         case Some(v) => v
@@ -30,6 +30,7 @@ func checkComponentSyntax(input: Tokens) {
     if (classDecl.superTypes.size > 0) {
         DIAG.error(input, "Component class should not inherit other class or interface.")
     }
+    return classDecl
 }
 
 /**
