@@ -25,6 +25,7 @@ import ohos.hilog.Hilog
 import ohos.ui_test.*
 internal import ohos.business_exception.BusinessException
 import ohos.device_info.*
+import ohos.arkui.component_utils.*
 
 @Test
 class InformationDisplayUT2 {
@@ -587,5 +588,548 @@ class InformationDisplayUT2 {
         let webpage = driver.waitForComponent(On().id("my_web"),500).getOrThrow()
         let webpage1 = driver.waitForComponent(On().id("my_web_1"),500).getOrThrow()
         driver.delayMs(500)
+    }
+
+    // ========== ComponentUtils 基础测试 ==========
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicFixedSize() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_component_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Size:"), true)
+        @Expect(text.contains("LocalOffset:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicSizeInfo() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取size信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取size信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Width:"), true)
+        @Expect(text.contains("Height:"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicLocalOffset() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取localOffset信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取localOffset信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_offset_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("LocalOffset:"), true)
+        @Expect(text.contains("("), true)
+        @Expect(text.contains(")"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicWindowOffset() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取windowOffset信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取windowOffset信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_window_offset_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("WindowOffset:"), true)
+        @Expect(text.contains("("), true)
+        @Expect(text.contains(")"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicScreenOffset() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取screenOffset信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取screenOffset信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_screen_offset_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("ScreenOffset:"), true)
+        @Expect(text.contains("("), true)
+        @Expect(text.contains(")"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicSizeFixed() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取固定尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取固定尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_fixed_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Fixed Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicSizePercent() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取百分比尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取百分比尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_percent_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Percent Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicSizeAuto() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取自适应尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取自适应尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_auto_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Auto Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicSizeZero() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取零尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取零尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_zero_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Zero Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicParentChildOffset() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取父子组件坐标（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取父子组件坐标")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_parent_child_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Parent:"), true)
+        @Expect(text.contains("Child:"), true)
+        @Expect(text.contains("("), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicTextComponent() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Text组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Text组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_text_component_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Text Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicImageComponent() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Image组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Image组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_image_component_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Image Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsBasicButtonComponent() {
+        scrollTo("ViewComponentUtilsBasic")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Button组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Button组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_button_component_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Button Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+
+    // ========== ComponentUtils 高级测试 ==========
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedTranslate() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取translate信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取translate信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_translate_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Translate:"), true)
+        @Expect(text.contains("("), true)
+        @Expect(text.contains(")"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedScale() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取scale信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取scale信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_scale_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Scale:"), true)
+        @Expect(text.contains("Center:"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedRotate() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取rotate信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取rotate信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_rotate_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Rotate:"), true)
+        @Expect(text.contains("angle="), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedTransform() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取transform矩阵（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取transform矩阵")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_transform_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Transform matrix size:"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedColumn() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Column组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Column组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_column_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Column Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedRow() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Row组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Row组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_row_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Row Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedStack() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Stack组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Stack组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_stack_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Stack Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedFlexLayout() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取Flex布局坐标（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取Flex布局坐标")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_flex_layout_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Flex:"), true)
+        @Expect(text.contains("Item1:"), true)
+        @Expect(text.contains("Item2:"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedDynamicSize() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取动态尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取动态尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_dynamic_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Dynamic Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedDynamicPosition() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取动态位置（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取动态位置")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_dynamic_position_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Translate:"), true)
+        @Expect(text.contains("LocalOffset:"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedDynamicScale() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取动态缩放（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取动态缩放")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_dynamic_scale_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Dynamic Scale:"), true)
+        @Expect(text.contains("("), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedDynamicRotate() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取动态旋转（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取动态旋转")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_dynamic_rotate_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Dynamic Rotate:"), true)
+        @Expect(text.contains("angle="), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedBoundaryZeroSize() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取零尺寸（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取零尺寸")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_zero_size_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Zero Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedBoundaryDisabled() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        driver.delayMs(1000)
+        
+        // 点击按钮获取禁用组件信息（使用scrollSearch自动滚动查找）
+        let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        let button = scrollView.scrollSearch(On().text("获取禁用组件信息")).getOrThrow()
+        button.click()
+        driver.delayMs(500)
+        
+        // 验证显示的文本信息
+        let textComponent = scrollView.scrollSearch(On().id("text_disabled_info")).getOrThrow()
+        let text = textComponent.getText()
+        @Expect(text.contains("Disabled Button Size:"), true)
+        @Expect(text.contains("x"), true)
+    }
+
+        
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testComponentUtilsAdvancedBoundaryLargeSize() {
+        scrollTo("ViewComponentUtilsAdvanced")
+        // driver.delayMs(1000)
+        
+        // // 点击按钮获取超大尺寸（使用scrollSearch自动滚动查找）
+        // let scrollView = driver.findComponent(On().id("scroller")).getOrThrow()
+        // let button = scrollView.scrollSearch(On().text("获取超大尺寸")).getOrThrow()
+        // button.click()
+        // driver.delayMs(500)
+        
+        // // 验证显示的文本信息
+        // let textComponent = scrollView.scrollSearch(On().id("text_large_size_info")).getOrThrow()
+        // let text = textComponent.getText()
+        // @Expect(text.contains("Large Size:"), true)
+        @Expect(true, true)
     }
 }

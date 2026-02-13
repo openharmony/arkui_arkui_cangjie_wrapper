@@ -26,6 +26,7 @@ func testsuite(): Unit{
     registerTestSuite("CanvasDrawingUT1") {CanvasDrawingUT1()}
     registerTestSuite("CanvasDrawingUT11") {CanvasDrawingUT11()}
     registerTestSuite("CanvasDrawingUT2") {CanvasDrawingUT2()}
+    registerTestSuite("CanvasDrawingUTShapeMaskClip") {CanvasDrawingUTShapeMaskClip()}
 }
 let UT_views = [
     "CanvasDrawingIndex1",
@@ -48,6 +49,8 @@ let UT2 = [
     "ViewPath",
     "ViewShape",
     "ViewShapeClip",
+    "ViewShapeMaskClipBasic",
+    "ViewShapeMaskClipAdvanced",
     "ViewCanvas2",
     "ViewCanvasRenderingContext2D"
 ]

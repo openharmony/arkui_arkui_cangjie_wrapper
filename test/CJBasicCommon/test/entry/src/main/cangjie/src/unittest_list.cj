@@ -32,6 +32,7 @@ func testsuite(): Unit{
     registerTestSuite("BasicCommonUT41") {BasicCommonUT41()}
     registerTestSuite("BasicCommonUTHello") {BasicCommonUTHello()}
     registerTestSuite("BasicCommonOnlyCov") {BasicCommonOnlyCov()}
+    registerTestSuite("BasicCommonUTRequestFocus") {BasicCommonUTRequestFocus()}
 }
 let UT_views = ObservedArrayList<String>([
     "BasicCommonIndex1",
@@ -39,7 +40,8 @@ let UT_views = ObservedArrayList<String>([
     "BasicCommonIndex3",
     "BasicCommonIndex4",
     "ViewHello",
-    "BasicCommonBranchCov"
+    "BasicCommonBranchCov",
+    "ViewRequestFocus"
 ])
 let UT1 = ObservedArrayList<String>([
     "ViewAccessibility",
