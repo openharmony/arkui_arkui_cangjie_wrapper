@@ -67,7 +67,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        backgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
+        backgroundColor(value ?? Color.Transparent)
         this
     }
 
