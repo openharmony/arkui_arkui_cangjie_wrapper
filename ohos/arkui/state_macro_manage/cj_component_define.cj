@@ -303,9 +303,6 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             let arguments = callExpr.arguments
             let componentName = getTrailingClosureExprValue(callExpr)
             if (arguments.size > 0) {
-                if (componentName == "MenuItem" && arguments.size != 1) {
-                    return generateCompCreate(callExpr)
-                }
                 let lastArgument = arguments[arguments.size - 1]
                 let lastExpr = lastArgument.expr
                 match (lastExpr as LambdaExpr) {
