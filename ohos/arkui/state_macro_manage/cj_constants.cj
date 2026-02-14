@@ -52,7 +52,7 @@ let CUSTOM_VIEW = quote(CustomView)
 let VIEW_BUILDER = quote(ViewBuilder)
 let COMPONENT_NUMBER_CONSTRAINT_LIST: HashSet<String> = HashSet<String>(
     ["Badge", "Button", "GridItem", "ListItem", "Navigator", "Refresh", "Scroll", "ScrollBar", "StepperItem",
-        "TabContent", "GridCol", "FlowItem", "MenuItem", "WithTheme", "FormLink", "Gauge"])
+        "TabContent", "GridCol", "FlowItem", "WithTheme", "FormLink", "Gauge"])
 let COMPONENT_CHILD_IN_SHAPE_LIST: HashSet<String> = HashSet<String>(
     ["Rect", "Path", "Circle", "Ellipse", "Shape", "Polyline", "Polygon", "Image", "Text", "Column", "Row"])
 let COMPONENT_TYPE_CONSTRAINT_LIST: HashSet<String> = HashSet<String>(
@@ -75,7 +75,7 @@ let CONTAINER_TO_SPECIFIC_CHILD_MAP: HashMap<String, Array<String>> = HashMap<St
         ("ListItemGroup", ["List"]), ("ContainerSpan", ["Text"])])
 let COMPONENT_NO_CHILD_CONSTRAINT_LIST: HashSet<String> = HashSet<String>(
     ["Blank", "Canvas", "Checkbox", "CheckboxGroup", "Circle", "Ellipse", "Divider", "Image", "Line", "LoadingProgress",
-        "Path", "Polygon", "Polyline", "Progress", "MenuItem", "QRCode", "Rect", "Span", "ImageSpan", "Search", "Slider",
+        "Path", "Polygon", "Polyline", "Progress", "QRCode", "Rect", "Span", "ImageSpan", "Search", "Slider",
         "TextInput", "TextPicker", "AlphabetIndexer", "PatternLock", "TextClock", "ImageAnimator", "TextArea", "Select",
         "DatePicker", "Piece", "Radio", "Marquee", "Calendar", "DataPanel", "Rating", "RichText", "Video", "Web",
         "LocationButton", "PasteButton", "SaveButton", "Component3D", "RichEditor", "CalendarPicker", "SymbolSpan",
