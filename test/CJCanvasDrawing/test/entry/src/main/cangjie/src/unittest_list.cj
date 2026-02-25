@@ -49,8 +49,15 @@ let UT2 = [
     "ViewPath",
     "ViewShape",
     "ViewShapeClip",
+    "ViewShapeMaskClipAttr",
     "ViewShapeMaskClipBasic",
-    "ViewShapeMaskClipAdvanced",
+    "ViewShapeMaskClipCricleShape",
+    "ViewShapeMaskClipComposed",
+    "ViewShapeMaskClipEllipseShape",
+    "ViewShapeMaskClipException",
+    "ViewShapeMaskClipMultyComponents",
+    "ViewShapeMaskClipPathShape",
+    "ViewShapeMaskClipRectShape",
     "ViewCanvas2",
     "ViewCanvasRenderingContext2D"
 ]
