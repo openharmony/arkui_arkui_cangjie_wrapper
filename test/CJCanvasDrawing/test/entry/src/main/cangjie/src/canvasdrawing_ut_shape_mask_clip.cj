@@ -167,7 +167,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testCircleShapeMask() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipCricleShape")
         driver.delayMs(300)
 
         // 测试 CircleShape 作为 maskShape（先滚动到组件位置确保可见）
@@ -190,7 +190,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testCircleShapeClip() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipCricleShape")
         driver.delayMs(300)
 
         // 测试 CircleShape 作为 clipShape（先滚动到组件位置确保可见）
@@ -213,7 +213,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testRectShapeMask() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipRectShape")
         driver.delayMs(300)
 
         // 测试 RectShape 作为 maskShape（先滚动到组件位置确保可见）
@@ -236,7 +236,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testRectShapeClip() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipRectShape")
         driver.delayMs(300)
 
         // 测试 RectShape 作为 clipShape（先滚动到组件位置确保可见）
@@ -259,7 +259,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testRectShapeRadius() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipRectShape")
         driver.delayMs(300)
 
         // 测试 RectShape 圆角遮罩（先滚动到组件位置确保可见）
@@ -282,7 +282,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testCircleShapeAttributes() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipCricleShape")
         driver.delayMs(300)
 
         // 测试 CircleShape 属性配置（先滚动到组件位置确保可见）
@@ -312,7 +312,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testRectShapeAttributes() {
-        scrollTo("ViewShapeMaskClipBasic")
+        scrollTo("ViewShapeMaskClipRectShape")
         driver.delayMs(300)
 
         // 测试 RectShape 属性配置（先滚动到组件位置确保可见）
@@ -344,7 +344,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testEllipseShapeMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipEllipseShape")
         driver.delayMs(300)
 
         // 测试 EllipseShape 作为 maskShape（先滚动到组件位置确保可见）
@@ -360,7 +360,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testEllipseShapeClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipEllipseShape")
         driver.delayMs(300)
 
         // 测试 EllipseShape 作为 clipShape（先滚动到组件位置确保可见）
@@ -376,7 +376,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPathShapeMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipPathShape")
         driver.delayMs(300)
 
         // 测试 PathShape 作为 maskShape（先滚动到组件位置确保可见）
@@ -392,7 +392,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPathShapeClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipPathShape")
         driver.delayMs(300)
 
         // 测试 PathShape 作为 clipShape（先滚动到组件位置确保可见）
@@ -408,7 +408,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComboClipMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipComposed")
         driver.delayMs(300)
 
         // 测试组合使用：先 clipShape 后 maskShape（先滚动到组件位置确保可见）
@@ -426,7 +426,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComboMaskClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipComposed")
         driver.delayMs(300)
 
         // 测试组合使用：先 maskShape 后 clipShape（先滚动到组件位置确保可见）
@@ -444,7 +444,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testMultiClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipComposed")
         driver.delayMs(300)
 
         // 测试多次调用 clipShape（覆盖）（先滚动到组件位置确保可见）
@@ -461,7 +461,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testMultiMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipComposed")
         driver.delayMs(300)
 
         // 测试多次调用 maskShape（覆盖）（先滚动到组件位置确保可见）
@@ -478,7 +478,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentImageMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Image 组件使用 maskShape（先滚动到组件位置确保可见）
@@ -494,7 +494,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentImageClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Image 组件使用 clipShape（先滚动到组件位置确保可见）
@@ -510,7 +510,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentImageCombo() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Image 组件组合使用 maskShape 和 clipShape（先滚动到组件位置确保可见）
@@ -528,7 +528,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentShapeMask() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Shape 组件使用 maskShape（先滚动到组件位置确保可见）
@@ -544,7 +544,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentShapeClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Shape 组件使用 clipShape（先滚动到组件位置确保可见）
@@ -560,7 +560,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testComponentTextClip() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipMultyComponents")
         driver.delayMs(300)
 
         // 测试 Text 组件使用 clipShape（先滚动到组件位置确保可见）
@@ -583,7 +583,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testBaseShapeAttributes() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipAttr")
         driver.delayMs(300)
 
         // 测试 BaseShape 通用属性（fill, size, offset）（先滚动到组件位置确保可见）
@@ -613,7 +613,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPathShapeComplex() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipPathShape")
         driver.delayMs(300)
 
         // 测试 PathShape 复杂路径（先滚动到组件位置确保可见）
@@ -636,7 +636,7 @@ class CanvasDrawingUTShapeMaskClip {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testExceptionClipNone() {
-        scrollTo("ViewShapeMaskClipAdvanced")
+        scrollTo("ViewShapeMaskClipException")
         driver.delayMs(300)
 
         // 测试 clipShape(None) 取消裁剪（先滚动到组件位置确保可见）
@@ -648,21 +648,6 @@ class CanvasDrawingUTShapeMaskClip {
         // clipShape(None) 后应该没有 clip 属性或为空
         let clip = attrs.get("clip").getOrDefault({ => JsonValue.fromStr("\"\"") }).toString()
         Hilog.info(1, "Cangjie-Test", "exception_clip_none clip: ${clip}")
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testScrollToBottom() {
-        scrollTo("ViewShapeMaskClipBasic")
-        driver.delayMs(300)
-        let scrollBar = driver.findComponent(On().id("scroller"))
-        scrollBar?.scrollToBottom(speed: 15000)
-        driver.delayMs(500)
-
-        scrollTo("ViewShapeMaskClipAdvanced")
-        driver.delayMs(300)
-        scrollBar?.scrollToBottom(speed: 15000)
-        driver.delayMs(500)
     }
 }
 
