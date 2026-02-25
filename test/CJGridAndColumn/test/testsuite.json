@@ -1,0 +1,37 @@
+{
+  "name": "testsuite_cj_common_test",
+  "test_list": [
+    {
+      "name": "GridColUTGridRowInit",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridRowInit2",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridRowProp",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridRowEvent",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridColInit",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridColInit2",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTGridColProp",
+      "timeout": 100
+    },
+    {
+      "name": "GridColUTRowSplit",
+      "timeout": 100
+    }
+  ]
+}
