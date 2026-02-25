@@ -1,0 +1,21 @@
+{
+  "name": "testsuite_cj_common_test",
+  "test_list": [
+    {
+      "name": "ButtonSelectUT1",
+      "timeout": 100
+    },
+    {
+      "name": "ButtonSelectUT11",
+      "timeout": 100
+    },
+    {
+      "name": "ButtonSelectUT2",
+      "timeout": 100
+    },
+    {
+      "name": "ButtonSelectUT21",
+      "timeout": 100
+    }
+  ]
+}
