@@ -343,7 +343,7 @@ class GridColUTGridColProp {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let offset = attrs.get("offset").getOrThrow().toString()
-        @Expect(offset, "\"0\"")  // Options类型，选择xs断点的值进行比较
+        @Expect(offset, "\"1\"")  // Options类型，选择sm断点的值进行比较
     }
 
     @TestCase
@@ -379,7 +379,7 @@ class GridColUTGridColProp {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let offset = attrs.get("offset").getOrThrow().toString()
-        @Expect(offset, "\"0\"")
+        @Expect(offset, "\"12\"")
     }
 
     @TestCase
@@ -487,7 +487,7 @@ class GridColUTGridColProp {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let order = attrs.get("order").getOrThrow().toString()
-        @Expect(order, "\"0\"")  // Options类型，选择xs断点的值进行比较
+        @Expect(order, "\"1\"")  // Options类型，选择sm断点的值进行比较
     }
 
     @TestCase
@@ -511,6 +511,6 @@ class GridColUTGridColProp {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let order = attrs.get("order").getOrThrow().toString()
-        @Expect(order, "\"0\"")
+        @Expect(order, "\"12\"")
     }
 }
