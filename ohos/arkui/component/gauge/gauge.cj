@@ -381,7 +381,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
-        let icon_ = transResourceStrToString(icon ?? "default")
+        let icon_ = transResourceStrToString(icon ?? "SystemStyle")
         var space_ = transAppResourceToLength(space ?? 8.0.vp)
         if (space_.value < 0.0 || space_.unitType.getValue() == LENGTH_PERCENT) {
             space_ = 8.00.vp
