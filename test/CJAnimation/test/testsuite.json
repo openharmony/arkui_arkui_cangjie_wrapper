@@ -1,0 +1,25 @@
+{
+  "name": "testsuite_cj_animation_test",
+  "test_list": [
+    {
+      "name": "AnimationUT",
+      "timeout": 100
+    },
+    {
+      "name": "GeometryTransitionUT",
+      "timeout": 100
+    },
+    {
+      "name": "PageTransitionUT",
+      "timeout": 100
+    },
+    {
+      "name": "SharedTransitionUT",
+      "timeout": 100
+    },
+    {
+      "name": "TransitionUT",
+      "timeout": 100
+    }
+  ]
+}
