@@ -996,7 +996,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
                 Callback1Param<Int32, Unit>(
                     {
                         value =>
-                        let edge = Edge.setValue(value)
+                        let edge = Edge.parseFromScrollEdge(value)
                         tmpEvent(edge)
                     }
                 ).getID())

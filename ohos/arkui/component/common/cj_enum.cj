@@ -3052,6 +3052,16 @@ public enum Edge {
             case _ => Edge.Top
         }
     }
+    
+    protected static func parseFromScrollEdge(value: Int32): Edge {
+        match (value) {
+            case 0 => Edge.Top
+            case 1 => Edge.Start
+            case 2 => Edge.Bottom
+            case 3 => Edge.End
+            case _ => Edge.Top
+        }
+    }
 }
 
 /**
