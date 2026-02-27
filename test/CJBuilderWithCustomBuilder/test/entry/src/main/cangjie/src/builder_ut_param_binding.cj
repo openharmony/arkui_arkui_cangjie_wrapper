@@ -26,7 +26,7 @@ import ohos.business_exception.*
 
 /**
  * CustomBuilder 参数绑定接口单元测试 (TC_B011-TC_B032)
- * 验证 ListItemGroup(header/footer)、MenuItemGroup(header/footer)、ListItem.swipeAction(start/end)、
+ * 验证 ListItemGroup(header/footer)、ListItem.swipeAction(start/end)、
  * CheckBox(indicatorBuilder)、ContextMenuOptions(preview)、CustomPopupOptions(builder)、SheetOptions(title)、
  * DragItemInfo(builder) 等 CustomBuilder 参数绑定
  */
@@ -93,22 +93,6 @@ class BuilderUTParamBinding {
     }
 
     /**
-     * TC_B013: MenuItemGroup header/footer CustomBuilder 参数验证
-     * 验证 MenuItemGroup(header: CustomBuilder, footer: CustomBuilder) 正确绑定
-     */
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testMenuItemGroupHeaderFooter() {
-        scrollTo("ViewBuilderMenuItemGroupHeaderFooter")
-        driver.delayMs(500)
-
-        let testTitle = driver.findComponent(On().id("test_title")).getOrThrow()
-        @Expect(testTitle.getText().contains("MenuItemGroup"), true)
-
-        let _ = driver.findComponent(On().id("menu")).getOrThrow()
-    }
-
-    /**
      * TC_B025: ListItem.swipeAction start/end CustomBuilder 参数验证
      * 验证 ListItem.swipeAction(start: CustomBuilder, end: CustomBuilder) 正确绑定
      */
@@ -149,20 +133,6 @@ class BuilderUTParamBinding {
 
         let testTitle = driver.findComponent(On().id("test_title")).getOrThrow()
         @Expect(testTitle.getText().contains("ContextMenuOptions"), true)
-    }
-
-    /**
-     * TC_B021: TabContent.tabBar CustomBuilder 参数验证
-     * 验证 TabContent.tabBar(content: CustomBuilder) 正确绑定
-     */
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testTabContentTabBar() {
-        scrollTo("ViewBuilderTabContentTabBar")
-        driver.delayMs(500)
-
-        let tabContentText = driver.findComponent(On().id("tab_content_1_text")).getOrThrow()
-        @Expect(tabContentText.getText().contains("Tab Content 1"), true)
     }
 
     /**

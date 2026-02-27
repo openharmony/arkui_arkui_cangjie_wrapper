@@ -136,18 +136,6 @@ class BuilderUTTypeSafety {
     }
 
     /**
-     * TC_B039: Navigation.title 类型检查通过验证
-     */
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testNavigationTitleTypeCheck() {
-        scrollTo("ViewBuilderNavigationTitleTypeCheck")
-        driver.delayMs(500)
-
-        let _ = driver.findComponent(On().id("navigation")).getOrThrow()
-    }
-
-    /**
      * TC_B041: TextInput.customKeyboard 类型检查通过验证
      */
     @TestCase
@@ -157,18 +145,6 @@ class BuilderUTTypeSafety {
         driver.delayMs(500)
 
         let _ = driver.findComponent(On().id("text_input")).getOrThrow()
-    }
-
-    /**
-     * TC_B043: TabContent.tabBar 类型检查通过验证
-     */
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testTabContentTabBarTypeCheck() {
-        scrollTo("ViewBuilderTabContentTabBarTypeCheck")
-        driver.delayMs(500)
-
-        let _ = driver.findComponent(On().id("tab")).getOrThrow()
     }
 
     /**

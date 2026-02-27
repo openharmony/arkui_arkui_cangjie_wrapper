@@ -146,7 +146,7 @@ func buildConstructorParams(): HashMap<String, ArrayList<(Int64, String)>> {
         ("ListItemGroup", ArrayList([(0, "header"), (1, "footer")])),
         
         // MenuItemGroup(header: ?CustomBuilder, footer: ?CustomBuilder, child: () -> Unit)
-        ("MenuItemGroup", ArrayList([(0, "header"), (1, "footer")])),
+        // ("MenuItemGroup", ArrayList([(0, "header"), (1, "footer")])),
         
         // DragItemInfo(value: String, builder: ?CustomBuilder)
         ("DragItemInfo", ArrayList([(1, "builder")])),

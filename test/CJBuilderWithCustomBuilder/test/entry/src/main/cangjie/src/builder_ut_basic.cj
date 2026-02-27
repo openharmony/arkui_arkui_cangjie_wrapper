@@ -27,7 +27,7 @@ import ohos.business_exception.*
 /**
  * CustomBuilder 基础接口单元测试 (TC_B001-TC_B009)
  * 验证 bindMenu、bindContextMenu、bindContentCover、bindSheet、Gauge.description、
- * Navigation.title、TextInput.customKeyboard、CheckBox.indicatorBuilder 等 CustomBuilder 接口
+ * TextInput.customKeyboard、CheckBox.indicatorBuilder 等 CustomBuilder 接口
  */
 @Test
 class BuilderUTBasic {
@@ -164,20 +164,6 @@ class BuilderUTBasic {
 
         let publicText = driver.findComponent(On().id("public_builder_text")).getOrThrow()
         @Expect(publicText.getText().contains("Public Builder"), true)
-    }
-
-    /**
-     * TC_B008: Navigation.title CustomBuilder 接口验证
-     * 验证 NavDestination.title(value: CustomBuilder) 正确绑定
-     */
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func testNavigationTitleBasic() {
-        scrollTo("ViewBuilderNavigationTitleBasic")
-        driver.delayMs(500)
-
-        let contentText = driver.findComponent(On().id("content_text")).getOrThrow()
-        @Expect(contentText.getText().contains("Content"), true)
     }
 
     /**

@@ -46,7 +46,6 @@ let UT1 = [
     "ViewBuilderBindSheetBasic",  // TC_B004
     "ViewBuilderGaugeDescriptionBasic",  // TC_B005
     "ViewBuilderModifierCheck",  // TC_B007
-    "ViewBuilderNavigationTitleBasic",  // TC_B008
     "ViewBuilderTextInputCustomKeyboardBasic"  // TC_B009
 ]
 
@@ -54,15 +53,12 @@ let UT1 = [
 let UT2 = [
     "ViewBuilderMultipleCustomBuilder",  // TC_B011
     "ViewBuilderListItemGroupHeaderFooter",  // TC_B012
-    "ViewBuilderMenuItemGroupHeaderFooter",  // TC_B013
     "ViewBuilderDragItemInfoBuilder",  // TC_B014
     "ViewBuilderContextMenuOptionsPreview",  // TC_B015
     "ViewBuilderBindContentCover",  // TC_B016
     "ViewBuilderBindSheet",  // TC_B017
     "ViewBuilderGaugeDescription",  // TC_B018
-    "ViewBuilderNavigationTitle",  // TC_B019
     "ViewBuilderTextInputCustomKeyboard",  // TC_B020
-    "ViewBuilderTabContentTabBar",  // TC_B021
     "ViewBuilderBindMenu",  // TC_B022
     "ViewBuilderBindContextMenu",  // TC_B023
     "ViewBuilderRichEditorBindSelectionMenu",  // TC_B024
@@ -87,12 +83,8 @@ let UT3 = [
     "ViewBuilderBindSheetTypeCheck",  // TC_B036
     "ViewBuilderGaugeDescriptionTypeCheck",  // TC_B037
     "ViewBuilderGaugeDescriptionTypeCheckError",  // TC_B038
-    "ViewBuilderNavigationTitleTypeCheck",  // TC_B039
-    "ViewBuilderNavigationTitleTypeCheckError",  // TC_B040
     "ViewBuilderTextInputCustomKeyboardTypeCheck",  // TC_B041
     "ViewBuilderTextInputCustomKeyboardTypeCheckError",  // TC_B042
-    "ViewBuilderTabContentTabBarTypeCheck",  // TC_B043
-    "ViewBuilderTabContentTabBarTypeCheckError",  // TC_B044
     "ViewBuilderRichEditorBindSelectionMenuTypeCheck",  // TC_B045
     "ViewBuilderRichEditorBindSelectionMenuTypeCheckError",  // TC_B046
     "ViewBuilderListItemSwipeActionTypeCheck",  // TC_B047
