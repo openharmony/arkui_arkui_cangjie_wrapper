@@ -35,7 +35,7 @@ class ViewSharedTransition {
                 .id("homePageImage")
 
                 Button("pushValidPage")
-                    .onClick({ e => getUIContext().getRouter().pushUrl(url: "ViewSharedTransitionVailid")})
+                    .onClick({ e => getUIContext().getRouter().pushUrl(url: "ViewSharedTransitionValid")})
                     .margin(top: 120)
                     .id("homePagePushValidButton")
                 Button("pushInvalidPage")

@@ -22,7 +22,7 @@ import ohos.resource.*
 
 @Entry
 @Component
-class ViewTransitionScale {
+class ViewTransitionIdentity {
     @State var flag = false
     @State var duration: Int64 = 0
     var lastTime: MonoTime = MonoTime.now()
@@ -48,17 +48,23 @@ class ViewTransitionScale {
                     .margin(left: 200.px)
                     .transition(
                         TransitionEffect
-                            .scale(ScaleOptions(x: 3.0, z: 4.0))
+                            .asymmetric(
+                                TransitionEffect.IDENTITY,
+                                TransitionEffect.rotate(RotateOptions(180.0, z: 1.0))
+                            )
                             .animation(AnimateParam(duration: 5000, curve: Curve.Ease))
                     )
-                    .id("scaleButton")
+                    .id("identityButton")
                 Button("Callback")
                     .width(800.px)
                     .height(400.px)
                     .margin(left: 200.px)
                     .transition(
                         TransitionEffect
-                            .scale(ScaleOptions(x: 3.0, z: 4.0))
+                            .asymmetric(
+                                TransitionEffect.IDENTITY,
+                                TransitionEffect.rotate(RotateOptions(180.0, z: 1.0))
+                            )
                             .animation(AnimateParam(duration: 5000, curve: Curve.Ease)),
                         {tr: Bool
                             =>
@@ -66,7 +72,7 @@ class ViewTransitionScale {
                             this.transitionIn = tr
                         }
                     )
-                    .id("scaleCallbackButton")
+                    .id("identityCallbackButton")
             }
             Text("${duration}").id("durationText")
             Text("${transitionIn}").id("transitionInText")

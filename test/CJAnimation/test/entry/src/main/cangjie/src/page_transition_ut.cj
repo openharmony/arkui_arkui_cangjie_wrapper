@@ -391,6 +391,7 @@ class PageTransitionUT {
     func testPageTransitionOnEnterNoCall () {
         var buttion = driver.findComponent(On().id("pushNoCallButton")).getOrThrow()
         buttion.click()
+        driver.delayMs(3000)
         var inspector = getInspectorByKey("noCallText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -422,7 +423,7 @@ class PageTransitionUT {
     func testPageTransitionCommonTransitionTranslateOptionNone () {
         var buttion = driver.findComponent(On().id("pushOptionNoneButton")).getOrThrow()
         buttion.click()
-        driver.delayMs(1100)
+        driver.delayMs(2500)
         var inspector = getInspectorByKey("optionNoneText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -438,6 +439,7 @@ class PageTransitionUT {
     func testPageTransitionCommonTransitionScaleOptionNone () {
         var buttion = driver.findComponent(On().id("pushOptionNoneButton")).getOrThrow()
         buttion.click()
+        driver.delayMs(2500)
         var inspector = getInspectorByKey("optionNoneText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -469,6 +471,7 @@ class PageTransitionUT {
     func testPageTransitionOnExitOptionNone () {
         var buttion = driver.findComponent(On().id("pushOptionNoneButton")).getOrThrow()
         buttion.click()
+        driver.delayMs(2500)
         var inspector = getInspectorByKey("optionNoneText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -500,6 +503,7 @@ class PageTransitionUT {
     func testPageTransitionExitInitOptionNone () {
         var buttion = driver.findComponent(On().id("pushOptionNoneButton")).getOrThrow()
         buttion.click()
+        driver.delayMs(2500)
         var inspector = getInspectorByKey("optionNoneText")
         var jsonObject = JsonValue.fromStr(inspector).asObject()
         var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
@@ -513,7 +517,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionEnterInitNoSet () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionNoSet")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushNoSetButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -526,11 +530,11 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionExitInitNoSet () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionNoSet")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushNoSetButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
-        buttion = driver.findComponent(On().id("noSetackButton")).getOrThrow()
+        buttion = driver.findComponent(On().id("noSetBackButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -540,7 +544,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionCommonTransitionTranslateNoSet () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionNoSet")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushNoSetButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -553,11 +557,11 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionCommonTransitionScaleNoSet () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionNoSet")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushNoSetButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
-        buttion = driver.findComponent(On().id("noSetackButton")).getOrThrow()
+        buttion = driver.findComponent(On().id("noSetBackButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -567,7 +571,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionCommonTransitionOpacityLessZero () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -580,7 +584,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionCommonTransitionOpacityGreaterOne () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(2000)
 
@@ -594,7 +598,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionEnterDurationLessZero () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(500)
 
@@ -607,7 +611,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionEnterDelayLessZero () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(500)
 
@@ -620,7 +624,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionExitDurationLessZero () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(500)
 
@@ -634,7 +638,7 @@ class PageTransitionUT {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testPageTransitionExitDelayLessZero () {
-        var buttion = driver.findComponent(On().id("ViewPageTransitionInvalid")).getOrThrow()
+        var buttion = driver.findComponent(On().id("pushInvalidButton")).getOrThrow()
         buttion.click()
         driver.delayMs(500)
 
