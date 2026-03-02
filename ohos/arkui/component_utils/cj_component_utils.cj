@@ -29,14 +29,14 @@ foreign func FFIOHOSAceFrameworkComponentUtilsGetById(id: CString): CComponentIn
 
 @C
 struct CSize {
-    let width: Float64
-    let height: Float64
-    init(width: Float64, height: Float64) {
+    let width: Float32
+    let height: Float32
+    init(width: Float32, height: Float32) {
         this.width = width
         this.height = height
     }
     func parseToCJ(): Size {
-        Size(this.width, this.height)
+        Size(Float64(this.width), Float64(this.height))
     }
 }
 
@@ -85,10 +85,10 @@ public class Size {
 
 @C
 struct COffset {
-    COffset(let x: Float64, let y: Float64) {}
+    COffset(let x: Float32, let y: Float32) {}
 
     func parseToCJ(): Offset {
-        Offset(this.x, this.y)
+        Offset(Float64(this.x), Float64(this.y))
     }
 }
 
@@ -140,13 +140,13 @@ public class Offset {
 @C
 struct CTranslateResult {
     CTranslateResult(
-        let x: Float64,
-        let y: Float64,
-        let z: Float64
+        let x: Float32,
+        let y: Float32,
+        let z: Float32
     ) {}
 
     func parseToCJ(): TranslateResult {
-        TranslateResult(this.x, this.y, this.z)
+        TranslateResult(Float64(this.x), Float64(this.y), Float64(this.z))
     }
 }
 
@@ -209,10 +209,10 @@ public class TranslateResult {
 
 @C
 struct CScaleResult {
-    CScaleResult(let x: Float64, let y: Float64, let z: Float64, let centerX: Float64, let centerY: Float64) {}
+    CScaleResult(let x: Float32, let y: Float32, let z: Float32, let centerX: Float32, let centerY: Float32) {}
 
     func parseToCJ(): ScaleResult {
-        ScaleResult(this.x, this.y, this.z, this.centerX, this.centerY)
+        ScaleResult(Float64(this.x), Float64(this.y), Float64(this.z), Float64(this.centerX), Float64(this.centerY))
     }
 }
 
@@ -300,16 +300,16 @@ public class ScaleResult {
 @C
 struct CRotateResult {
     CRotateResult(
-        let x: Float64,
-        let y: Float64,
-        let z: Float64,
-        let centerX: Float64,
-        let centerY: Float64,
-        let angle: Float64
+        let x: Float32,
+        let y: Float32,
+        let z: Float32,
+        let centerX: Float32,
+        let centerY: Float32,
+        let angle: Float32
     ) {}
 
     func parseToCJ(): RotateResult {
-        RotateResult(this.x, this.y, this.z, this.centerX, this.centerY, this.angle)
+        RotateResult(Float64(this.x), Float64(this.y), Float64(this.z), Float64(this.centerX), Float64(this.centerY), Float64(this.angle))
     }
 }
 
