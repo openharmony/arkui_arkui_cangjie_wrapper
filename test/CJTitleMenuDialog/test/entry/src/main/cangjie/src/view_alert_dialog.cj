@@ -607,11 +607,173 @@ class ViewAlertDialog {
                             primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
                             secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
                         let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
+
+                        getUIContext().showAlertDialog(dialog4)
                     }
                 )
                 .fontSize(12)
                 .height(30)
                 .id("button_12")
+
+
+            Button("AlertDialogButtonBaseOptions_toNative")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button13"
+
+                        let baseConfirm = AlertDialogButtonBaseOptions(
+                            value: "base_confirm",
+                            fontColor: Color.Red,
+                            backgroundColor: Color.Blue,
+                            action: {=>}
+                        )
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test base toNative",
+                            confirm: baseConfirm
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_13")
+
+
+            Button("BorderColor_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button14"
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test BorderColor None",
+                            borderColor: BorderColor(color: Option<ResourceColor>.None)
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_14")
+
+
+            Button("AlertDialogParamWithButtons_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button15"
+                        let dialog = AlertDialogParamWithButtons(
+                            message: "test buttons None",
+                            primaryButton: Option<AlertDialogButtonBaseOptions>.None,
+                            secondaryButton: Option<AlertDialogButtonBaseOptions>.None
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_15")
+
+
+            Button("AlertDialogParamWithOptions_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button16"
+                        let dialog = AlertDialogParamWithOptions(
+                            message: "test options None",
+                            buttons: Option<Array<AlertDialogButtonOptions>>.None,
+                            buttonDirection: Option<DialogButtonDirection>.None
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_16")
+
+
+            Button("AlertDialogButtonBaseOptions_ValueAction_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button17"
+                        let baseConfirm = AlertDialogButtonBaseOptions(
+                            value: Option<ResourceStr>.None,
+                            action: Option<VoidCallback>.None
+                        )
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test value/action None",
+                            confirm: baseConfirm
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_17")
+
+
+            Button("AlertDialogParam_Shadow_Some")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button18"
+                        let dialog = AlertDialogParamWithConfirm(
+                            message: "test shadow Some",
+                            shadow: ShadowOptions(radius: 10.0, color: Color.Gray)
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_18")
+
+
+            Button("AlertDialogButtonOptions_ValueAction_None")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button19"
+                        let button1 = AlertDialogButtonOptions(
+                            value: Option<ResourceStr>.None,
+                            action: Option<VoidCallback>.None
+                        )
+                        let dialog = AlertDialogParamWithOptions(
+                            message: "test button value/action None",
+                            buttons: [button1]
+                        )
+                        getUIContext().showAlertDialog(dialog)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_19")
+
+
+            Button("AlertDialogParam_ManualNone")
+                .onClick(
+                    {
+                        e =>
+                        this.msg1 = "button20"
+                        let dialogConfirm = AlertDialogParamWithConfirm(message: "manual none confirm")
+                        dialogConfirm.confirm = Option<AlertDialogButtonBaseOptions>.None
+                        getUIContext().showAlertDialog(dialogConfirm)
+
+                        let dialogButtons = AlertDialogParamWithButtons(
+                            message: "manual none buttons",
+                            primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
+                            secondaryButton: AlertDialogButtonOptions(value: "", action: {=>})
+                        )
+                        dialogButtons.primaryButton = Option<AlertDialogButtonBaseOptions>.None
+                        dialogButtons.secondaryButton = Option<AlertDialogButtonBaseOptions>.None
+                        getUIContext().showAlertDialog(dialogButtons)
+                    }
+                )
+                .fontSize(12)
+                .height(30)
+                .id("button_20")
 
             Row {
                 Text(this.msg).id("text")

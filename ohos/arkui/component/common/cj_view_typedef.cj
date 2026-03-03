@@ -17,7 +17,7 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.{CJEdge, CBindOptions, NativeShadow, CSheetOptionsV2, NativeRectangle, CJContextMenuOptions, CJContextMenuAnimationOptions, NativeOptionCJContextMenuAnimationOptions, NativeOptionRadius, NativeOptionMargin, NativeShadowOptions, NativeOptionEdgeStyle, NativePosition, NativeMargin, NativeEdgeStyles}
+import ohos.arkui.component.native_struct.{CBindOptions, NativeShadow, CSheetOptionsV2, NativeRectangle, CJContextMenuOptions, CJContextMenuAnimationOptions, NativeOptionCJContextMenuAnimationOptions, NativeOptionRadius, NativeOptionMargin, NativeShadowOptions, NativeOptionEdgeStyle, NativePosition, NativeMargin, NativeEdgeStyles}
 import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceColor, Color, ResourceStr, NativeOptionFloat64, NativeOptionInt32, NativeOptionCallBack, NativeOptionInt64, NativeOptionBool, NativeOptionUInt32, NativeOptionLength, throwNativeError, NativeOptionCArrInt32, CArrInt32, NativeLength, LengthProp, LengthUnit}
 import ohos.ffi.{FFIData, Callback0Param, Callback1Param}
@@ -1177,10 +1177,6 @@ public class EdgeWidths {
         this.right = transAppResourceToLength(right ?? 0.vp)
         this.bottom = transAppResourceToLength(bottom ?? 0.vp)
         this.left = transAppResourceToLength(left ?? 0.vp)
-    }
-
-    func toCJEdge(): CJEdge {
-        return CJEdge(top ?? 0.vp, right ?? 0.vp, bottom ?? 0.vp, left ?? 0.vp)
     }
 }
 

@@ -26,7 +26,7 @@ class ViewMenu {
     @State
     var select: Bool = true
     @State
-    var isMenuOpen: Bool = true // 添加一个状态变量用于控制菜单显示
+    var isMenuOpen: Bool = true
     let float_offset = OffsetResult(0.0, 100.0)
     @Builder
     func myMenu() {
@@ -34,6 +34,62 @@ class ViewMenu {
             MenuItem(startIcon: "", content: "CCCCCC", endIcon: "", labelInfo: "Ctrl+C")
             MenuItem(startIcon: "", content: "DDDDDD", endIcon: "", labelInfo: "Ctrl+C")
         }.fontColor(0xFF7F50).width(140).font(size: 1.0, weight: W400, style: FontStyle.Normal).id("menuComponent").radius(3.vp)
+    }
+
+
+    @Builder
+    func myMenuFontNone() {
+        Menu() {
+            MenuItem(startIcon: "", content: "FontNone", endIcon: "", labelInfo: "")
+        }.font().id("menuFontNone")
+    }
+
+
+    @Builder
+    func myMenuFontFamily() {
+        Menu() {
+            MenuItem(startIcon: "", content: "FontFamily", endIcon: "", labelInfo: "")
+        }.font(family: "Arial").id("menuFontFamily")
+    }
+
+
+    @Builder
+    func myMenuFontColorNone() {
+        Menu() {
+            MenuItem(startIcon: "", content: "FontColorNone", endIcon: "", labelInfo: "")
+        }.fontColor(Option<ResourceColor>.None).id("menuFontColorNone")
+    }
+
+
+    @Builder
+    func myMenuRadiusNone() {
+        Menu() {
+            MenuItem(startIcon: "", content: "RadiusNone", endIcon: "", labelInfo: "")
+        }.radius(Option<Length>.None).id("menuRadiusNone")
+    }
+
+
+    @Builder
+    func myMenuRadiusZero() {
+        Menu() {
+            MenuItem(startIcon: "", content: "RadiusZero", endIcon: "", labelInfo: "")
+        }.radius(0.vp).id("menuRadiusZero")
+    }
+
+
+    @Builder
+    func myMenuWidthNone() {
+        Menu() {
+            MenuItem(startIcon: "", content: "WidthNone", endIcon: "", labelInfo: "")
+        }.width(Option<Length>.None).id("menuWidthNone")
+    }
+
+
+    @Builder
+    func myMenuWidthZero() {
+        Menu() {
+            MenuItem(startIcon: "", content: "WidthZero", endIcon: "", labelInfo: "")
+        }.width(0.vp).id("menuWidthZero")
     }
 
     @Builder
@@ -88,6 +144,16 @@ class ViewMenu {
             Row() {
                 this.myMenu1()
                 this.myMenu2()
+            }
+
+            Column() {
+                this.myMenuFontNone()
+                this.myMenuFontFamily()
+                this.myMenuFontColorNone()
+                this.myMenuRadiusNone()
+                this.myMenuRadiusZero()
+                this.myMenuWidthNone()
+                this.myMenuWidthZero()
             }
         }.height(100.percent)
     }

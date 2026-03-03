@@ -17,15 +17,13 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, ToTokens, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
+import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess, Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl, getChildMessages, Argument, DiagReportLevel, diagReport}
 import std.collection.{ArrayList}
 import std.unicode.{UnicodeStringExtension}
 
 public macro Component(input: Tokens): Tokens {
-    checkComponentSyntax(input)
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
+    let classDecl = checkComponentSyntax(input)
     let classModifier = classDecl.modifiers
-    let classKeyWord = classDecl.keyword
     let classIdent = classDecl.identifier
     let classBody = classDecl.body
 
@@ -175,7 +173,6 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
     var res = quote($baseExpr<$paramType>().create\($compId, $thisView, )
     for (idx in 0..callExpr.arguments.size) {
         let para = callExpr.arguments[idx]
-        let paraExpr = para.expr
 
         match (idx) {
             case 1 =>
@@ -235,6 +232,52 @@ func generateCompCreate(callExpr: CallExpr) {
 }
 
 /**
+ * Validate component child constraints for child nodes in a lambda expression
+ * This is used when child components are passed as the last parameter (LambdaExpr)
+ * instead of as a trailing closure (TrailingClosureExpr)
+ */
+func validateComponentChildConstraints(parentExpr: CallExpr, componentName: String, childNodes: ArrayList<Node>): Unit {
+    // Check monadic container constraint (single child only)
+    if (COMPONENT_NUMBER_CONSTRAINT_LIST.contains(componentName)) {
+        let childComps = childNodes
+        var index = 0
+        for (childComp in childComps) {
+            let childCompExpr = match (childComp as Expr) {
+                case Some(v) => v
+                case None => continue
+            }
+            match (getComponentType(childCompExpr)) {
+                case BuiltInComponent | CustomComponent =>
+                    if (!ifForEach(childCompExpr, componentName)) {
+                        index += 1
+                    }
+                case IfComponent =>
+                    let ifExpr = (childCompExpr as IfExpr).getOrThrow()
+                    checkMonadicIfBody(ifExpr.ifBlock.nodes, componentName)
+                    try {
+                        checkMonadicIfBody((ifExpr.elseExpr as Block).getOrThrow().nodes, componentName)
+                    } catch (e: Exception) {
+                        continue
+                    }
+                case _ => 0
+            }
+        }
+        if (index > 1) {
+            diagReport(DiagReportLevel.ERROR, parentExpr.callFunc.toTokens(),
+                "The component ${componentName} can only have a single child component.", "")
+        }
+    }
+
+    // Check child type constraints
+    if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
+        checkChildInBody(childNodes, componentName)
+    }
+    
+    // Check parent constraints
+    checkParentInBody(childNodes, componentName)
+}
+
+/**
  *  generate `component.create(...)`
  */
 func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
@@ -250,9 +293,30 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             if (refExpr.identifier.value == "LazyForEach") {
                 return generateLazyForEachCreate(callExpr, thisView)
             }
+            
+            // Check if the last argument is a LambdaExpr (function type parameter)
+            // This handles cases like: Column({ => Text("hello") })
+            // Note: This is mutually exclusive with TrailingClosureExpr because:
+            // - If input is TrailingClosureExpr, it matches the TrailingClosureExpr branch below
+            // - If input is CallExpr, it matches this branch
+            // - A single expression cannot be both at the same time (syntax-level mutual exclusion)
+            let arguments = callExpr.arguments
+            let componentName = getTrailingClosureExprValue(callExpr)
+            if (arguments.size > 0) {
+                let lastArgument = arguments[arguments.size - 1]
+                let lastExpr = lastArgument.expr
+                match (lastExpr as LambdaExpr) {
+                    case Some(lambda) =>
+                        // Extract component name and validate child constraints
+                        validateComponentChildConstraints(callExpr, componentName, lambda.nodes)
+                    case None => ()
+                }
+            }
+            
             return generateCompCreate(callExpr)
         case v: TrailingClosureExpr =>
             // only inside TrailingClosureExpr may have other LambdaBody, can get the complete LambdaBody for judgment
+            // Note: This is mutually exclusive with CallExpr branch above (syntax-level mutual exclusion)
             let expr = v.expr
             let componentName = getTrailingClosureExprValue(expr)
             if (COMPONENT_NUMBER_CONSTRAINT_LIST.contains(componentName)) {
@@ -618,7 +682,6 @@ func changeTrailingExpr(input: Expr, tokens: Tokens): Unit {
         case callExpr: CallExpr => return changeTrailingExpr(callExpr.callFunc, tokens)
         case trailingClosureExpr: TrailingClosureExpr =>
             let expr = trailingClosureExpr.expr
-            let lambdaExpr = trailingClosureExpr.lambdaExpr
             if (isComponent(expr)) {
                 let arrNode = ArrayList<Node>()
                 var (e, p) = parseExprFragment(tokens, startFrom: 0)
@@ -650,7 +713,6 @@ func getCompName(input: Expr): Tokens {
         case trailingClosureExpr: TrailingClosureExpr =>
             // only inside TrailingClosureExpr may have other LambdaBody, can get the complete LambdaBody for judgment
             let expr = trailingClosureExpr.expr
-            let componentName = getTrailingClosureExprValue(expr)
             return getCompName(expr)
         case memAccess: MemberAccess =>
             let field = memAccess.field
@@ -713,7 +775,6 @@ func parseChildInParams(input: Expr): Unit {
     let nodes = lambda.nodes
     checkChildInBody(nodes, getTrailingClosureExprValue(input))
     let childComps = generateFuncBody(nodes, quote(this))
-    let baseExpr = callExpr.callFunc
 
     let funcParams = lambda.funcParams
     lastArgument.expr = LambdaExpr(quote({ $funcParams => $childComps }))
@@ -1056,7 +1117,6 @@ func generateUpdateParam(classDecl: ClassDecl) {
         if (varDecl.keyword.value == "let") {
             continue
         }
-        var varDeclKind = VariableKind.CommonTy
         let rawVarDecl = match (STATE_MANAGE_HANDLER.stateInformation.get(varDecl.identifier.value)) {
             // v is VariableKind*VarDecl, v[1] get the variable declaration before expanded by macro
             case Some(v) =>

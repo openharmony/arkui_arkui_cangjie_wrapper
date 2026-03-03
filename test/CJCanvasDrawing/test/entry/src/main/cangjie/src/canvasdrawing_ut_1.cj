@@ -69,7 +69,7 @@ class CanvasDrawingUT1 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCircleCommonAttrs() {
         scrollTo("ViewCircle")
 
@@ -107,7 +107,7 @@ class CanvasDrawingUT1 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testGradientColorAttrs1() {
         scrollTo("ViewGradientColor")
 
@@ -161,7 +161,7 @@ class CanvasDrawingUT1 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageAnimator() {
         scrollTo("ViewImageAnimator")
         let start = driver.findComponent(On().id("start"))

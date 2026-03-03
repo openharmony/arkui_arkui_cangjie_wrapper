@@ -17,11 +17,10 @@ package ohos.arkui.component.shape
 
 import ohos.arkui.component.common.{CommonMethodComponent, LineCapStyle, LineJoinStyle}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
-import ohos.base.{ResourceColor, Length, VectorFloat64Handle, VectorInt32Handle, FFIVectorFloat64, FFIVectorInt32, Color, LengthProp}
+import ohos.base.{ResourceColor, Length, FFIVectorFloat64, FFIVectorInt32, Color, LengthProp}
 import ohos.resource.{AppResource, getResourceLength}
 import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
-import ohos.multimedia.image.PixelMap
 
 /**
  * Defines CommonShapeMethodComponent.
@@ -33,10 +32,12 @@ import ohos.multimedia.image.PixelMap
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> & CommonShapeMethod<T> {
+    @!Hide
     protected open func initial(): Unit {
         super.initial()
     }
 
+    @!Hide
     protected open func update(): Unit {
         super.update()
     }

@@ -24,8 +24,12 @@ func pageMap(name: String, param: Any) {
         PageOne()
     } else if (name == "pageTwo") {
         PageTwo()
-    } else {
+    } else if (name == "pageThree"){
         PageThree()
+    } else if (name == "pageFour"){
+        PageFour()
+    } else {
+        PageFive()
     }
 }
 
@@ -34,6 +38,16 @@ func pageMap(name: String, param: Any) {
 class ViewNavigation {
     @Provide
     var stack: NavPathStack = NavPathStack()
+
+    @Builder
+    func childNavigationTitle() {
+        Text("ChildNavigation1")
+          .fontSize(20)
+          .height(30)
+          .fontWeight(FontWeight.Bold)
+          .width(100.percent)
+          .padding(left: 16, right: 16)
+    }
 
     func build() {
         Navigation(this.stack) {
@@ -48,9 +62,32 @@ class ViewNavigation {
             }
             .width(100.percent)
             .height(50.percent)
+            Navigation()
+                .title({=> bind(this.childNavigationTitle, this)()},
+                    options: NavigationTitleOptions(
+                        backgroundColor: Color.Green,
+                        backgroundBlurStyle: BlurStyle.ComponentThick,
+                        barStyle: BarStyle.Standard,
+                        paddingStart: 20,
+                        paddingEnd: 100))
+                .hideTitleBar(Option.None)
+                .id("childNavigation1")
+            Navigation()
+                .title(Option<CustomBuilder>.None, options: Option.None)
+                .hideTitleBar(true, animated: true)
+                .id("childNavigation2")
+            Navigation()
+                .title(Option<ResourceStr>.None)
+                .id("childNavigation3")
         }
-        .title("PageHome")
+        .title("PageHome", options: NavigationTitleOptions(
+                        backgroundColor: Color.Green,
+                        backgroundBlurStyle: BlurStyle.ComponentThick,
+                        barStyle: BarStyle.Standard,
+                        paddingStart: 20,
+                        paddingEnd: 100))
         .navDestination(bind(pageMap, this))
+        .id("parentNavigation")
     }
 }
 
@@ -66,14 +103,15 @@ class PageOne {
                 .width(80.percent)
                 .height(40)
                 .onClick({ evt =>
-                    this.stack.pushPathByName("pageTwo", "pageOne test")
+                    this.stack.pushPathByName("pageTwo", "pageTwo test")
                 })
                 .id("pageOneButton")
             }
             .width(100.percent)
             .height(50.percent)
         }
-        .title("PageOne")
+        .title("PageOne", options: NavigationTitleOptions(backgroundColor: Color.Blue, backgroundBlurStyle: BlurStyle.Thin, barStyle: BarStyle.Stack, paddingStart: 20.vp, paddingEnd: 90.vp))
+        .hideTitleBar(Option.None)
         .backgroundColor(Color.Red)
         .id("navDestinationOne")
     }
@@ -90,20 +128,20 @@ class PageTwo {
                 .width(80.percent)
                 .height(40)
                 .onClick({ evt =>
-                    this.pathStack.pushPathByName("pageThree", "pageTwo test")
+                    this.pathStack.pushPathByName("pageThree", "pageThree test")
                 })
                 .id("pageTwoButton")
             }
             .width(100.percent)
             .height(50.percent)
         }
-        .title("PageTwo")
+        .title(Option<ResourceStr>.None)
         .id("navDestinationTwo")
         .onReady({ context =>
             this.pathStack = context.pathStack
         })
         .onBackPressed({ =>
-            this.pathStack.pop()
+            this.pathStack.pop(animated: false)
             return true
         })
     }
@@ -115,20 +153,114 @@ class PageThree {
 
     func build() {
         NavDestination() {
-            Stack(alignContent: Alignment.Center) {
+            Column() {
                 Button("pop PageTwo", ButtonOptions(shape: ButtonType.Capsule))
+                .width(80.percent)
+                .height(40)
+                .margin(10)
+                .onClick({ evt =>
+                    this.pathStack.pop()
+                })
+                .id("pageThreePopTwoButton")
+                Button("push PageFour", ButtonOptions(shape: ButtonType.Capsule))
+                .width(80.percent)
+                .height(40)
+                .margin(10)
+                .onClick({ evt =>
+                    this.pathStack.pushPathByName("pageFour", "pageThree test")
+                })
+                .id("pageThreePushFourButton")
+            }
+            .justifyContent(FlexAlign.Center)
+            .width(100.percent)
+            .height(50.percent)
+        }
+        .title("PageThree")
+        .hideTitleBar(true)
+        .id("navDestinationThree")
+        .backgroundColor(Option<ResourceColor>.None)
+        .onReady({ context =>
+            this.pathStack = context.pathStack
+        })
+        .onBackPressed({ =>
+            this.pathStack.pop()
+            return true
+        })
+    }
+}
+
+@Component
+class PageFour {
+    private var pathStack: NavPathStack = NavPathStack()
+
+    @Builder
+    func pageFourTitle() {
+        Text("PageFour")
+          .fontSize(20)
+          .height(55)
+          .fontWeight(FontWeight.Bold)
+          .width(100.percent)
+          .padding(left: 16, right: 16)
+    }
+
+    func build() {
+        NavDestination() {
+            Column() {
+                Button("pop PageThree", ButtonOptions(shape: ButtonType.Capsule))
+                .width(80.percent)
+                .height(40)
+                .margin(10)
+                .onClick({ evt =>
+                    this.pathStack.pop()
+                })
+                .id("pageFourPopThreeButton")
+                Button("push PageFive", ButtonOptions(shape: ButtonType.Capsule))
+                .width(80.percent)
+                .height(40)
+                .margin(10)
+                .onClick({ evt =>
+                    this.pathStack.pushPathByName("pageFive", "pageFive test")
+                })
+                .id("pageThreePushFiveButton")
+            }
+            .justifyContent(FlexAlign.Center)
+            .width(100.percent)
+            .height(50.percent)
+        }
+        .title({=> bind(this.pageFourTitle, this)()}, options: NavigationTitleOptions(backgroundColor: Color.Green, backgroundBlurStyle: BlurStyle.Thick, barStyle: BarStyle.Standard, paddingStart: 20.vp, paddingEnd: 90.vp))
+        .id("navDestinationFour")
+        .hideTitleBar(false)
+        .backgroundColor(Option<ResourceColor>.None)
+        .onReady({ context =>
+            this.pathStack = context.pathStack
+        })
+        .onBackPressed({ =>
+            this.pathStack.pop()
+            return true
+        })
+    }
+}
+
+@Component
+class PageFive {
+    private var pathStack: NavPathStack = NavPathStack()
+
+    func build() {
+        NavDestination() {
+            Stack(alignContent: Alignment.Center) {
+                Button("pop PageFour", ButtonOptions(shape: ButtonType.Capsule))
                 .width(80.percent)
                 .height(40)
                 .onClick({ evt =>
                     this.pathStack.pop()
                 })
-                .id("pageThree")
+                .id("pageFivePopFourButton")
             }
             .width(100.percent)
             .height(50.percent)
         }
-        .title("PageThree")
-        .id("navDestinationThree")
+        .title(Option<CustomBuilder>.None)
+        .id("navDestinationFive")
         .backgroundColor(Option<ResourceColor>.None)
         .onReady({ context =>
             this.pathStack = context.pathStack

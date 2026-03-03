@@ -17,12 +17,12 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.{CBorderRadiuses, NativeActionSheetShadowOptions, NativeTextShadowV2, NativeEdgeStyles, CJBlurOptions, CJMotionPathOptions,NativeAnimateParam}
+import ohos.arkui.component.native_struct.{CBorderRadiuses, NativeActionSheetShadowOptions, NativeTextShadowV2, NativeEdgeStyles,NativeAnimateParam}
 import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor}
 import ohos.base.{Length, ResourceStr, ResourceColor, NativeOffset, Color, NativeOptionInt32, NativeOptionFloat32, NativeOptionCallBack, NativeOptionCString, NativeLength, LengthProp}
 import ohos.ffi.{Callback0Param}
 import ohos.business_exception.BusinessException
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import std.convert.{Parsable}
 
 /**
@@ -613,8 +613,8 @@ public class Bias {
     /**
      * Defines the constructor of Bias.
      *
-     * @param { ?Float64 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
-     * @param { ?Float64 } vertical - Vertical ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } horizontal - Horizontal ratio of the Bias, it must be >= 0.
+     * @param { ?Float32 } vertical - Vertical ratio of the Bias, it must be >= 0.
      */
     @!APILevel[
         since: "22",

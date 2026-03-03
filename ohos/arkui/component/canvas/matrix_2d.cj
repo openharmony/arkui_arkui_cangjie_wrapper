@@ -19,7 +19,7 @@ package ohos.arkui.component.canvas
 
 import ohos.arkui.component.common.{LengthMetricsUnit}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkCanvasMatrixCtor(unit: Int32): Int64

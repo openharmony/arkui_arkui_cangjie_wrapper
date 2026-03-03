@@ -1,0 +1,53 @@
+{
+  "name": "testsuite_cj_canvas_enhancement_test",
+  "test_list": [
+    {
+      "name": "CanvasUTContext2DAttrs",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DFill",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DPath",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DState",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DTransform",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DGradient",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTContext2DImage",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTPath2D",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTMatrix2D",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTImageData",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTImageBitmap",
+      "timeout": 100
+    },
+    {
+      "name": "CanvasUTCanvasPattern",
+      "timeout": 100
+    }
+  ]
+}

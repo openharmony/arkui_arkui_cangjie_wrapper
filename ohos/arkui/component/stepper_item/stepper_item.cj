@@ -18,7 +18,7 @@
 package ohos.arkui.component.stepper_item
 
 import ohos.arkui.component.common.{CommonMethodComponent, ItemState}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkStepperItemCreate(): Unit

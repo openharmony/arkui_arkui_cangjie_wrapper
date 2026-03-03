@@ -16,7 +16,7 @@
 package ohos.arkui.component.menu_item
 
 import ohos.arkui.component.common.{CommonMethod, FontWeight, FontStyle}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**

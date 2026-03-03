@@ -63,7 +63,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testStepper() {
         scrollTo("ViewStepper")
         // OnNext
@@ -117,7 +117,7 @@ class ButtonSelectUT2 {
 
     // ViewStepper
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testStepperItemCommonAttrs() {
         scrollTo("ViewStepper")
 
@@ -133,7 +133,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTabContent() {
         scrollTo("ViewTabContent")
 
@@ -384,7 +384,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTabContentOnWillShowAndWillHide() {
         scrollTo("ViewTabContent")
 
@@ -396,7 +396,7 @@ class ButtonSelectUT2 {
 
     // ViewTextPicker
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextPicker() {
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("TextPicker1")).getOrThrow()
@@ -408,7 +408,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextpickerHeightLength() {
         scrollTo("ViewTextPicker")
         let picker = driver.findComponent(On().id("height_length")).getOrThrow()
@@ -428,7 +428,7 @@ class ButtonSelectUT2 {
     // toggle unittest
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarPositionSetFadingEdgeSetTabsExample3() {
         scrollTo("ViewTab")
 
@@ -453,7 +453,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBarOverlapSetTabsExample4() {
         clickTabsExample("ButtonTabsExample4")
 
@@ -473,7 +473,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDividerSetTabsExample2() {
         clickTabsExample("ButtonTabsExample2")
 
@@ -495,7 +495,7 @@ class ButtonSelectUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOnContentWillChangeTabsExample8() {
         clickTabsExample("ButtonTabsExample8")
         driver.findComponent(On().text("首页")).getOrThrow().click()
@@ -503,10 +503,13 @@ class ButtonSelectUT2 {
 
         driver.waitForComponent(On().text("推荐"), 1000).getOrThrow().click()
         @Expect(driver.waitForComponent(On().id("currentIndex"),1000).getOrThrow().getText(), "2")
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testBackgroundColorForNavDestination() {
         scrollTo("ViewNavigation")
         driver.findComponent(On().id("pageHomeButton")).getOrThrow().click()
@@ -538,5 +541,111 @@ class ButtonSelectUT2 {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         backgroundColor = attrs.get("backgroundColor").getOrThrow().toString()
         @Expect(backgroundColor, "\"#FFFFFFFF\"")
+
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.delayMs(500)
     }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testTitleAndHideTitleBarForNavDestination() {
+        scrollTo("ViewNavigation")
+        driver.findComponent(On().id("pageHomeButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageOne] test title: set normal value
+        var inspector = getInspectorByKey("navDestinationOne")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        var title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"PageOne\"")
+
+        // [PageOne] test hideTitleBar: set Option.None
+        var hideTitleBar = driver.findComponent(On().text("PageOne")).isNone()
+        @Expect(hideTitleBar, false)
+
+        driver.findComponent(On().id("pageOneButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageTwo] test title: set Option<ResourceStr>.None
+        inspector = getInspectorByKey("navDestinationTwo")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+
+        driver.findComponent(On().id("pageTwoButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageThree] test hideTitleBar: Set true
+        hideTitleBar = driver.findComponent(On().text("PageThree")).isNone()
+        @Expect(hideTitleBar, true)
+
+        driver.findComponent(On().id("pageThreePushFourButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageFour] 1.test hideTitleBar: set false 2.test title: set CustomBuilder
+        hideTitleBar = driver.findComponent(On().text("PageFour")).isNone()
+        @Expect(hideTitleBar, false)
+
+        driver.findComponent(On().id("pageThreePushFiveButton")).getOrThrow().click()
+        driver.delayMs(1000)
+
+        // [PageFive] test title: set Option<CustomBuilder>.None
+        inspector = getInspectorByKey("navDestinationFive")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.pressBack()
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testTitleAndHideTitleBarForNavigation() {
+        scrollTo("ViewNavigation")
+
+        var inspector = getInspectorByKey("parentNavigation")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        var title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"PageHome\"")
+        var hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+
+        inspector = getInspectorByKey("childNavigation1")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(driver.findComponent(On().text("ChildNavigation1")).isSome(), true)
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+
+        inspector = getInspectorByKey("childNavigation2")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "true")
+
+        inspector = getInspectorByKey("childNavigation3")
+        jsonObject = JsonValue.fromStr(inspector).asObject()
+        attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        title = attrs.get("title").getOrThrow().toString()
+        @Expect(title, "\"\"")
+        hideTitleBar = attrs.get("hideTitleBar").getOrThrow().toString()
+        @Expect(hideTitleBar, "false")
+    }
+
 }

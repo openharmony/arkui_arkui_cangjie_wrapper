@@ -30,7 +30,6 @@ public macro Reusable(input: Tokens): Tokens {
     let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
     let decls = classDecl.body.decls
     var initFunc = FuncDecl()
-    var buildFunc = FuncDecl()
     for (item in decls) {
         if (item.identifier.value == "init") {
             initFunc = (item as FuncDecl).getOrThrow()

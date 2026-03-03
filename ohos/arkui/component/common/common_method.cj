@@ -16,7 +16,6 @@
 package ohos.arkui.component.common
 
 import ohos.arkui.shape.{BaseShape}
-import ohos.business_exception.BusinessException
 import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 

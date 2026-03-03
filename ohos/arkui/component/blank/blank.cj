@@ -20,7 +20,7 @@ package ohos.arkui.component.blank
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, normalizeValue}
 import ohos.base.{Length, ResourceColor, Color, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkBlankCreate(minSize: Float64, unit: Int32): Unit
@@ -67,7 +67,7 @@ public class Blank <: CommonMethodComponent<Blank> & BlankAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func color(value: ?ResourceColor): This {
-        backgroundColor(transAppResourceToResourceColor(value ?? Color.Transparent))
+        backgroundColor(value ?? Color.Transparent)
         this
     }
 

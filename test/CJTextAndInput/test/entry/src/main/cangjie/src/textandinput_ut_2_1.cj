@@ -64,7 +64,7 @@ class TextAndInputUT21 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextinputEnhance() {
         scrollTo("ViewTextInputEnhance")
         driver.delayMs(500)
@@ -168,7 +168,7 @@ class TextAndInputUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextinputEvent() {
         scrollTo("ViewTextInputEnhance")
 

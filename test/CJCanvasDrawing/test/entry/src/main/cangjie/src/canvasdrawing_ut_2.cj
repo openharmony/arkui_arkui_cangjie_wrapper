@@ -67,7 +67,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLine1() {
         scrollTo("ViewLine")
         let inspector = getInspectorByKey("line_1")
@@ -94,7 +94,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLine2() {
         scrollTo("ViewLine")
         let inspector = getInspectorByKey("line_2")
@@ -124,7 +124,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLine3() {
         scrollTo("ViewLine")
         let inspector = getInspectorByKey("line_3")
@@ -157,7 +157,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLine4() {
         scrollTo("ViewLine")
         let inspector = getInspectorByKey("line_4")
@@ -187,7 +187,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPath() {
         scrollTo("ViewPath")
 
@@ -307,7 +307,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testShape() {
         scrollTo("ViewShape")
         let ShapeView = driver.findComponent(On().id("RectTest"))
@@ -324,7 +324,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOffsetShape() {
         scrollTo("ViewShape")
         let GetSurfaceId = driver.findComponent(On().id("OffsetTest"))
@@ -340,7 +340,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMiterShape() {
         scrollTo("ViewShape")
         let GetSurfaceId = driver.findComponent(On().id("PathTest"))
@@ -358,7 +358,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-     @Tag[APILevel12, TestLevel0]
+     @Tag[APILevel22, TestLevel0]
     func testSizeLength() {
         scrollTo("ViewShape")
         let GetSurfaceId = driver.findComponent(On().id("SizeLengthTest"))
@@ -383,7 +383,7 @@ class CanvasDrawingUT2 {
 
     // shape clip
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testShapeClipAttrs1() {
         scrollTo("ViewShapeClip")
         driver.delayMs(1500)
@@ -425,7 +425,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCanvas3() {
         scrollTo("ViewCanvasRenderingContext2D")
         let scrollBar = driver.findComponent(On().id("scroller"))
@@ -434,7 +434,7 @@ class CanvasDrawingUT2 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCanvas2() {
         scrollTo("ViewCanvas2")
 

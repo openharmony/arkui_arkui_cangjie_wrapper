@@ -16,7 +16,6 @@
 package ohos.arkui.ui_context
 
 import ohos.base.{ExternalString}
-import ohos.hilog.HilogChannel
 import ohos.labels.APILevel
 import std.deriving.Derive
 import ohos.business_exception.BusinessException

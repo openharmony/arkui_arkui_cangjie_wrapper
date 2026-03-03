@@ -65,7 +65,7 @@ class BasicCommonUT4 {
 
     // size
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSize() {
         scrollTo("ViewSize")
 
@@ -92,7 +92,7 @@ class BasicCommonUT4 {
 
     // Transition
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTransition() {
         scrollTo("ViewTransition")
 
@@ -105,7 +105,7 @@ class BasicCommonUT4 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSubscriber() {
         scrollTo("ViewSubscriber")
 
@@ -121,7 +121,7 @@ class BasicCommonUT4 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testViewBase() {
         scrollTo("ViewViewBase")
         let button4 = driver.findComponent(On().id("button4")).getOrThrow()
@@ -130,7 +130,7 @@ class BasicCommonUT4 {
 
     // Visibility
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testVisibility() {
         scrollTo("ViewVisibility")
 
@@ -156,7 +156,7 @@ class BasicCommonUT4 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWindowListener() {
         scrollTo("ViewWindowListener")
 //        var message = "on_onScreenShot_success"
@@ -190,7 +190,7 @@ class BasicCommonUT4 {
 
     // zorder
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testZorder1() {
         scrollTo("ViewZOrder")
 
@@ -214,7 +214,7 @@ class BasicCommonUT4 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testWindowEnhance() {
         scrollTo("ViewWindowEnhance")
         var prop1: String = getContentFromText("message")

@@ -210,6 +210,11 @@ class ViewCanvas {
                 Canvas(this.context).width(50.00.vp).height(30.00.vp).backgroundColor(0xffff00).onReady(
                     {
                         =>
+                        var gradient = this.context.createLinearGradient(75.0, 50.0, 75.0, 50.0)
+                        gradient.addColorStop(0.0, 0xff0000)
+                        gradient.addColorStop(1.0, Option<ResourceColor>.None)
+                        this.context2.fillStyle = gradient
+                        
                         this.path2Db.addPath(this.path2Da)
                         this.path2Db.setTransform(1.0, -0.5, 0.5, 1.0, 10.0, 10.0)
                         this.context2.stroke(this.path2Db)
@@ -230,11 +235,13 @@ class ViewCanvas {
                         this.path2Db.quadraticCurveTo(100.0, 100.0, 200.0, 20.0)
                         this.context2.stroke(this.path2Db)
 
+                        this.path2Db.arc(100.0, 75.0, 50.0, 0.0, 1.0, counterclockwise: true)
                         this.path2Db.arc(100.0, 75.0, 50.0, 0.0, 6.0)
                         this.context2.stroke(this.path2Db)
                         this.path2Db.arcTo(150.0, 20.0, 150.0, 70.0, 50.0)
                         this.context2.stroke(this.path2Db)
 
+                        this.path2Db.ellipse(200.0, 200.0, 50.0, 100.0, 0.0, 1.0, 1.0, counterclockwise: true)
                         this.path2Db.ellipse(200.0, 200.0, 50.0, 100.0, 0.0, 1.0, 6.0)
                         this.context2.stroke(this.path2Db)
 

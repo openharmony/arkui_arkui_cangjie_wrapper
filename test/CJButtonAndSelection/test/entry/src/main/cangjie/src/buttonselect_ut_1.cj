@@ -67,7 +67,7 @@ class ButtonSelectUT1 {
 
     // checkboxgroup unittest
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCheckboxgroupCommonAttrs() {
         scrollTo("ViewCheckboxGroup")
 
@@ -137,7 +137,7 @@ class ButtonSelectUT1 {
 
     // rating unittest
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRating() {
         scrollTo("ViewRating")
 
@@ -166,7 +166,7 @@ class ButtonSelectUT1 {
     // select unittest
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSelect3() {
         scrollTo("ViewSelect")
 
@@ -179,7 +179,7 @@ class ButtonSelectUT1 {
 
     // Router
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRouter2() {
         scrollTo("ViewRouter1")
         let button_errpushurl_1 = driver.findComponent(On().id("err_pushurl")).getOrThrow()
@@ -195,7 +195,7 @@ class ButtonSelectUT1 {
 
     // Router
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRouter() {
         scrollTo("ViewRouter1")
 

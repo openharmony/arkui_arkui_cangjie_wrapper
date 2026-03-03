@@ -18,7 +18,7 @@
 package ohos.arkui.component.lazy_for_each
 
 import ohos.ffi.{RemoteData}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkDataChangeListenerOnDataReloaded(dataChangeListenId: Int64): Unit

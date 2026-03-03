@@ -19,8 +19,7 @@ package ohos.arkui.component.stepper
 
 import ohos.arkui.component.common.{CommonMethodComponent}
 import ohos.ffi.{Callback0Param, Callback2Param}
-import ohos.base.{ResourceStr}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkStepperCreate(index: UInt32): Unit

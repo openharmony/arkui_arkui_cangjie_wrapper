@@ -21,7 +21,7 @@ import ohos.arkui.component.common.{CommonMethodComponent, BarrierDirection, Axi
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{Length}
 import ohos.ffi.{CArrString}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 @C

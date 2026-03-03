@@ -22,7 +22,7 @@ import ohos.arkui.component.native_struct.{DividerParams}
 import ohos.arkui.component.util.{transAppResourceToLength}
 import ohos.base.{VectorStringHandle, VectorUInt32Handle, Length, APP_LOG, FFIVectorString}
 import ohos.ffi.{BaseCallBack}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 @C
@@ -240,6 +240,13 @@ public class TextPicker <: CommonMethodComponent<TextPicker> & TextPickerAttribu
         let lambdaData = CallbackTextPickerResult(wrapper);
         unsafe {
             FfiOHOSAceFrameworkTextPickerOnChange(lambdaData.getID())
+        }
+        this
+    }
+
+    protected override func opacityInner(opacityValue: ?Float64): This {
+        unsafe {
+            FfiOHOSAceFrameworkTextPickerSetOpacity(opacityValue ?? 1.0)
         }
         this
     }

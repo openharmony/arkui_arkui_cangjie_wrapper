@@ -20,7 +20,7 @@ package ohos.arkui.component.stack
 import ohos.arkui.component.common.{CommonMethodComponent, Alignment}
 import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkStackCreate(value: Int32): Unit

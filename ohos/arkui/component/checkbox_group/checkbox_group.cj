@@ -22,8 +22,7 @@ import ohos.arkui.component.native_struct.{CJEdge, VectorNativeRectangleHandle, 
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, lessNotEqual}
 import ohos.base.{ResourceColor, Length, APP_LOG, BASE_LOG, LengthProp}
 import ohos.ffi.{BaseCallBack}
-import ohos.labels.{APILevel, Hide}
-import std.collection.ArrayList
+import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
 foreign {
@@ -239,6 +238,9 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
 
     protected override func paddingInner(value: ?Length): This {
         var value_ = transAppResourceToLength(value ?? 0.0.vp)
+        if (lessNotEqual(value_.value, 0.0)) {
+            value_ = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkCheckBoxGroupSetPadding(value_.value, value_.unitType.getValue())
         }

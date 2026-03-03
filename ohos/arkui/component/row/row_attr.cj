@@ -16,8 +16,7 @@
 package ohos.arkui.component.row
 
 import ohos.arkui.component.common.{CommonMethod, VerticalAlign, FlexAlign}
-import ohos.labels.{APILevel, Hide}
-import ohos.base.{LengthProp}
+import ohos.labels.{APILevel}
 
 /**
  * Provides methods for configuring the appearance and behavior of the Row component.

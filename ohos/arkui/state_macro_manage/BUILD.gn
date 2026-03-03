@@ -19,6 +19,7 @@ ohos_cangjie_macro_library("ohos.arkui.state_macro_manage") {
     "cj_app_storage_define.cj",
     "cj_binder_define.cj",
     "cj_builder_define.cj",
+    "cj_builder_config.cj",
     "cj_builder_param_define.cj",
     "cj_check_component.cj",
     "cj_component_define.cj",

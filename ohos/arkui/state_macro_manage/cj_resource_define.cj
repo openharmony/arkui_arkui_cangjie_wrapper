@@ -18,7 +18,7 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.fs.{canonicalize, exists, File}
-import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, parseDecl, FuncDecl, AssignExpr, diagReport, DiagReportLevel}
+import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, diagReport, DiagReportLevel}
 import std.process.{Process}
 import std.convert.{Parsable}
 import std.collection.{HashMap, ArrayList}

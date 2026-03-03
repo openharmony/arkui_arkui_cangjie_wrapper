@@ -18,7 +18,6 @@
 protected package ohos.arkui.component.native_struct
 
 import ohos.base.{NativeOptionInt32, NativeOptionFloat32, NativeOptionCString, NativeOptionCallBack}
-import ohos.ffi.{Callback0Param}
 
 @C
 protected struct NativeAnimateParam {
@@ -43,7 +42,7 @@ protected struct NativeAnimateParam {
         this.delay = NativeOptionInt32(false, 0)
         this.iterations = NativeOptionInt32(false, 0)
         this.playMode = NativeOptionInt32(false, 0)
-        this.onFinish = NativeOptionCallBack(false, Callback0Param<Unit>({=>}).getID())
+        this.onFinish = NativeOptionCallBack(false, 0)
         this.finishCallbackType = NativeOptionInt32(false, 0)
         this.min = NativeOptionInt32(false, 0)
         this.max = NativeOptionInt32(false, 0)

@@ -17,8 +17,7 @@
 
 package ohos.arkui.component.common
 
-import ohos.arkui.component.native_struct.{NativeRectangle, CJEventTarget, CJPosition, CJClickEvent, CJArea, CJGestureEventV2, FfiWebResourceRequest}
-import ohos.labels.{APILevel, Hide}
+import ohos.arkui.component.native_struct.{NativeRectangle, CJEventTarget, CJPosition, CJClickEvent, CJArea}
 import ohos.base.{VectorStringHandle, VectorFloat64Handle}
 import std.collection.ArrayList
 import ohos.business_exception.BusinessException

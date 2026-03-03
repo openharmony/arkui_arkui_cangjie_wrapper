@@ -21,35 +21,13 @@ import ohos.arkui.component.common.{UINodeBase, FontStyle, FontWeight, TextDecor
 import ohos.arkui.component.native_struct.{VectorNativeTextShadow, CBorderRadiuses, CJClickEvent}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, transResourceStrToString, getLengthUnitOrFp}
 import ohos.base.{ResourceStr, Length, ResourceColor, LengthProp, Color}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeTextShadows = CPointer<Unit>
 
 foreign {
     func FFICJCreateVectorNativeTextShadows(size: Int64): VectorNativeTextShadows
     func FFICJVectorNativeTextShadowsDelete(vec: VectorNativeTextShadows): Unit
-}
-
-class CJVectorNativeTextShadows {
-    let vecHandle: VectorNativeTextShadows
-
-    init(vec: VectorNativeTextShadows) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorNativeTextShadows(size) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorNativeTextShadowsDelete(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorNativeTextShadows {
-        vecHandle
-    }
 }
 
 foreign {

@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, RefExpr, parseExpr, parseDecl, TokenKind}
+import std.ast.{Tokens, VarDecl, Token, RefExpr, parseExpr, parseDecl, TokenKind, RefType, TypeNode, diagReport, DiagReportLevel}
 import std.regex.{Regex}
 
 public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
@@ -28,7 +28,7 @@ public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
     let identifierValue = identifier.value
     if (isMangled(identifierValue)) {
         // @Watch @State var cnt: Int64 = 0
-        let originDeclType = generateOriginDeclType(declType.toTokens().toString())
+        let originDeclType = generateOriginDeclType(declType)
         STATE_MANAGE_HANDLER.watchDeclare.add((quote($originDeclType), quote($identifier), watcher))
     } else {
         // @State @Watch var cnt: Int64 = 0
@@ -38,18 +38,10 @@ public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
     return watched
 }
 
-func generateOriginDeclType(typeName: String): Token {
-    let regexString = "ObservedProperty < ([a-zA-Z0-9_]*) >"
-    let regex = Regex(regexString)
-    let matcher = regex.matcher(typeName)
-    match (matcher.find()) {
-        case Some(value) =>
-            if (value.groupNumber() > 0) {
-                return Token(TokenKind.IDENTIFIER, value.matchString(1))
-            } else {
-                return Token(TokenKind.IDENTIFIER, value.matchString())
-            }
-        case None => return Token(TokenKind.IDENTIFIER, typeName)
+func generateOriginDeclType(typeNode: TypeNode): TypeNode {
+    return match (typeNode as RefType) {
+        case Some(refType) => refType.typeArguments[0]
+        case None => typeNode
     }
 }
 

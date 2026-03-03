@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign func free(src: CString): Unit
 

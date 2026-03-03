@@ -48,5 +48,7 @@ let UT2 = ObservedArrayList<String>([
     "ViewTextTimer",
     "ViewVideo",
     "ViewVideo2",
-    "ViewWeb"
+    "ViewWeb",
+    "ViewComponentUtilsBasic",
+    "ViewComponentUtilsAdvanced"
 ])

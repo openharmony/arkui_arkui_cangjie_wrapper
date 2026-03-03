@@ -17,13 +17,12 @@
 
 package ohos.arkui.component.toggle
 
-import ohos.arkui.component.common.{CommonMethodComponent, CommonMethod, ToggleType, Rectangle}
+import ohos.arkui.component.common.{CommonMethodComponent, ToggleType, Rectangle}
 import ohos.arkui.component.native_struct.{VectorNativeRectangleHandle, CJResponseRegion, FFIVectorNativeRectangle}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
 import ohos.base.{Length, ResourceColor, BASE_LOG, LengthProp}
 import ohos.ffi.{Callback1Param}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkToggleCreate(toggleType: Int32, isOn: Bool): Unit

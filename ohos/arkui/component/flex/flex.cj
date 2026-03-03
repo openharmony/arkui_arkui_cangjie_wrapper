@@ -18,7 +18,7 @@ package ohos.arkui.component.flex
 import ohos.arkui.component.common.{CommonMethodComponent, FlexDirection, FlexWrap, FlexAlign, ItemAlign}
 import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 @C
 struct CJFlexParams {
@@ -28,21 +28,6 @@ struct CJFlexParams {
         let justifyContent: Int32,
         let alignItems: Int32,
         let alignContent: Int32
-    ) {}
-}
-
-@C
-struct CJFlexOptions {
-    CJFlexOptions(
-        let direction: Int32,
-        let wrap: Int32,
-        let justifyContent: Int32,
-        let alignItems: Int32,
-        let alignContent: Int32,
-        let mainSpace: Float64,
-        let mainSpaceUnit: Int32,
-        let crossSpace: Float64,
-        let crossSpaceUnit: Int32
     ) {}
 }
 
@@ -56,8 +41,6 @@ foreign {
     func FfiOHOSAceFrameworkFlexSetFlexHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkFlexSetFlexSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
-
-    func FfiOHOSAceFrameworkFlexCreateByOptions(options: CJFlexOptions): Unit
 
     func FFISetWidthWithEmpty(): Unit
 

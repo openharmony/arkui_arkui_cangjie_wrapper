@@ -67,7 +67,7 @@ class BasicCommonUT21 {
 
     // CursorControl
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCursorControl() {
         scrollTo("ViewCursorControl")
 
@@ -81,7 +81,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDragControl1() {
         scrollTo("ViewDragControl")
         driver.delayMs(500)
@@ -106,7 +106,7 @@ class BasicCommonUT21 {
 
     // Environment
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEnvironment() {
         scrollTo("ViewEnvironment")
         // 总计内置环境变量 和 对应的id tuple数组
@@ -178,7 +178,7 @@ class BasicCommonUT21 {
 
     // Focus
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocus001() {
         scrollTo("ViewFocus")
 
@@ -232,7 +232,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusGroupArrowStepOut012() {
         scrollTo("ViewFocus")
 
@@ -249,7 +249,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusGroupNotArrowStepOut013() {
         scrollTo("ViewFocus")
 
@@ -268,7 +268,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusGroupFirst014() {
         scrollTo("ViewFocus")
 
@@ -287,7 +287,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusNotGroupFirst015() {
         scrollTo("ViewFocus")
 
@@ -305,7 +305,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusGroupNotFirstPREVIOUS016() {
         scrollTo("ViewFocus")
 
@@ -321,7 +321,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusNotGroupNotFirst017() {
         scrollTo("ViewFocus")
 
@@ -337,7 +337,7 @@ class BasicCommonUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFocusGroupNotFirstNoPREVIOUS018() {
         scrollTo("ViewFocus")
 
@@ -353,7 +353,7 @@ class BasicCommonUT21 {
 
     // ViewFont
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testFont() {
         scrollTo("ViewFont")
 
@@ -365,7 +365,7 @@ class BasicCommonUT21 {
 
     // ForegroundColor
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testForegroundColor() {
         scrollTo("ViewForegroundColor")
 

@@ -20,7 +20,7 @@ package ohos.arkui.component.column
 import ohos.arkui.component.common.{CommonMethodComponent, HorizontalAlign, FlexAlign}
 import ohos.arkui.component.util.{transAppResourceToLength, lessNotEqual}
 import ohos.base.{Length, LengthProp}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkColumnCreate(): Unit

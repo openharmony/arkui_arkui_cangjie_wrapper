@@ -16,7 +16,7 @@
 package ohos.arkui.component.video
 
 import ohos.arkui.component.common.{CommonMethod, ImageFit}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{VoidCallback, Callback}
 
 /**

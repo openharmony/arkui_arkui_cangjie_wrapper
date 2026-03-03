@@ -17,13 +17,11 @@
 
 package ohos.arkui.component.text_field
 
-import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, InputType, FontWeight, FontStyle, TextDecorationType, TextDecorationStyle, LineBreakStrategy, WordBreak, TextHeightAdaptivePolicy, TextOverflow, TextContentStyle, TextInputStyle, BarState, ContentType, TextAreaType, CopyOptions, EnterKeyType, EdgeWidths}
+import ohos.arkui.component.common.{BorderStyle, EnterKeyType, TextAlign, FontWeight, FontStyle, TextInputStyle, EdgeWidths}
 import ohos.arkui.component.native_struct.{CJBorderRadius, CJEdge, CJBorder}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, getLengthUnitOrFp, lessNotEqual, LENGTH_PERCENT}
 import ohos.base.{Length, ResourceColor, CStringExtend, APP_LOG, Color, LengthProp}
-import ohos.business_exception.BusinessException
 import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
-import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiOHOSAceFrameworkTextFieldSetHeight(height: Float64, unit: Int32): Unit
@@ -403,12 +401,6 @@ protected class TextField {
         }
     }
 
-    protected static func setType(value: InputType): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetType(value.getValue())
-        }
-    }
-
     protected static func placeholderColor(value: ?ResourceColor): Unit {
         if (let Some(v) <- value) {
             unsafe {
@@ -465,8 +457,14 @@ protected class TextField {
     protected static func fontSize(value: ?Length): Unit {
         if (let Some(v) <- value) {
             var value_ = transAppResourceToLength(v)
-            unsafe {
-                FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+            if (value_.unitType.getValue() == LENGTH_PERCENT) {
+                unsafe {
+                    FfiOHOSAceFrameworkTextFieldResetFontSize()
+                }
+            } else {
+                unsafe {
+                    FfiOHOSAceFrameworkTextFieldSetFontSize(value_.value, getLengthUnitOrFp(value_).getValue())
+                }
             }
         } else {
             unsafe {
@@ -525,134 +523,15 @@ protected class TextField {
         }
     }
 
-    protected static func fontFeature(value: String): Unit {
-        unsafe {
-            var featureCString = LibC.mallocCString(value)
-            FfiOHOSAceFrameworkTextFieldSetFontFeature(featureCString)
-            LibC.free(featureCString)
-        }
-    }
-
-    protected static func lineHeight(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetLineHeight(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func lineSpacing(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetLineSpacing(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func letterSpacing(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetLetterSpacing(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func decoration(value: TextDecorationType, color: ResourceColor, style: TextDecorationStyle): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetDecoration(value.getValue(), transAppResourceToResourceColor(color),
-                style.getValue())
-        }
-    }
-
-    protected static func lineBreakStrategy(value: LineBreakStrategy): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetLineBreakStrategy(value.getValue())
-        }
-    }
-
-    protected static func wordBreak(value: WordBreak): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetWordBreak(value.getValue())
-        }
-    }
-
-    protected static func heightAdaptivePolicy(value: TextHeightAdaptivePolicy): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetHeightAdaptivePolicy(value.getValue())
-        }
-    }
-
-    protected static func maxFontSize(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetMaxFontSize(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func minFontSize(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetMinFontSize(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func selectedBackgroundColor(value: ResourceColor): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetSelectedBackgroundColor(transAppResourceToResourceColor(value))
-        }
-    }
-
-    protected static func caretStyle(value: Length, color: ResourceColor): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetCaretStyle(value_.value, value_.unitType.getValue(),
-                transAppResourceToResourceColor(color))
-        }
-    }
-
-    protected static func textIndent(value: Length): Unit {
-        var value_ = transAppResourceToLength(value)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetTextIndent(value_.value, value_.unitType.getValue())
-        }
-    }
-
-    protected static func textOverflow(value: TextOverflow): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetTextOverflow(value.getValue())
-        }
-    }
-
-    protected static func enablePreviewText(value: Bool): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetEnablePreviewText(value)
-        }
-    }
-
-    protected static func style(value: TextContentStyle): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetStyle(value.getValue())
-        }
-    }
-
     protected static func style(value: TextInputStyle): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetStyle(value.getValue())
         }
     }
 
-    protected static func barState(value: BarState): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetBarState(value.getValue())
-        }
-    }
-
     protected static func selectionMenuHidden(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetSelectionMenuHidden(value)
-        }
-    }
-
-    protected static func showCounter(value: Bool, thresholdPercentage: Float64, highlightBorder: Bool): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetShowCounter(value, Int32(thresholdPercentage), highlightBorder)
         }
     }
 
@@ -665,30 +544,6 @@ protected class TextField {
     protected static func enableKeyboardOnFocus(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetEnableKeyboardOnFocus(value)
-        }
-    }
-
-    protected static func contentType(value: ContentType): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetContentType(value.getValue())
-        }
-    }
-
-    protected static func enableAutoFill(value: Bool): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetEnableAutoFill(value)
-        }
-    }
-
-    protected static func setType(value: TextAreaType): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetTextAreaType(value.getValue())
-        }
-    }
-
-    protected static func copyOption(value: CopyOptions): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldSetCopyOption(value.getValue())
         }
     }
 
@@ -760,13 +615,6 @@ protected class TextField {
         let lambdaData = Callback1Param<CString, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkTextFieldOnPaste(lambdaData.getID())
-        }
-    }
-
-    protected static func onEditChanged(callback: (Bool) -> Unit): Unit {
-        let lambdaData = Callback1Param<Bool, Unit>(callback)
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldOnEditChanged(lambdaData.getID())
         }
     }
 
@@ -902,24 +750,6 @@ protected class TextField {
     protected static func showUnderline(value: Bool): Unit {
         unsafe {
             FfiOHOSAceFrameworkTextFieldSetShowUnderline(value)
-        }
-    }
-    protected static func normalUnderlineColor(color: UInt32): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldNormalUnderlineColor(color)
-        }
-    }
-    protected static func userUnderlineColor(typing: UInt32, normal: UInt32, error: UInt32, disable: UInt32): Unit {
-        unsafe {
-            FfiOHOSAceFrameworkTextFieldUserUnderlineColor(typing, normal, error, disable)
-        }
-    }
-
-    protected static func cancelButton(style: Int32, size: Float64, unit: Int32, color: UInt32, src: String): Unit {
-        unsafe {
-            var srcCstring = LibC.mallocCString(src)
-            FfiOHOSAceFrameworkTextFieldCancelButton(style, size, unit, color, srcCstring);
-            srcCstring.free()
         }
     }
 }

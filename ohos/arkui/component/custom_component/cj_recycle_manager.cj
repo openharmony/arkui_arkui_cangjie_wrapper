@@ -81,7 +81,6 @@ class BidirectionalMap {
         if (!fwdMap.contains(key)) {
             return
         }
-        let rev = fwdMap.get(key).getOrThrow()
         fwdMap.remove(key)
         revMap.remove(key)
         ()

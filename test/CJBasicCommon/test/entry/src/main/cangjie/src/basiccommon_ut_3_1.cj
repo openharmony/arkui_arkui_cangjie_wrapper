@@ -67,7 +67,7 @@ class BasicCommonUT31 {
 
     // MonopolizeEvents
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMonopolizeEvents() {
         scrollTo("ViewMonopolizeEvents")
 
@@ -84,7 +84,7 @@ class BasicCommonUT31 {
 
     // ViewMotionBlur
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMotionBlur() {
         scrollTo("ViewMotionBlur")
 
@@ -96,7 +96,7 @@ class BasicCommonUT31 {
 
     // ViewObservable
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testObservable() {
         scrollTo("ViewObservable")
         let text1 = driver.findComponent(On().id("text1")).getOrThrow()
@@ -148,7 +148,7 @@ class BasicCommonUT31 {
 
     // ViewObservableArrayList
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testObservableArraylist(){
         scrollTo("ViewObservableArrayList")
         let obs_arrlist_firbook = driver.findComponent(On().id("obs_arrlist_firbook")).getOrThrow()
@@ -257,7 +257,7 @@ class BasicCommonUT31 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOnChildTouchTest() {
         scrollTo("ViewOnChildTouchTest")
         let myList = driver.findComponent(On().id("MyList")).getOrThrow()
@@ -274,7 +274,7 @@ class BasicCommonUT31 {
    
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOutlineComponent001() {
         scrollTo("ViewOutline")
 
@@ -338,7 +338,7 @@ class BasicCommonUT31 {
 
     // ViewPopup
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPopup001() {
         scrollTo("ViewPopup")
         clickButton("button5")
@@ -354,7 +354,7 @@ class BasicCommonUT31 {
 
     // ViewPixelRound
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPixelRound() {
         scrollTo("ViewPixelRound")
 

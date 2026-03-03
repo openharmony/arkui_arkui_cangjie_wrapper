@@ -66,7 +66,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextContentControllerBase() {
         scrollTo("ViewTextContentControllerBase")
 
@@ -85,7 +85,7 @@ class TextAndInputUT2 {
 
     // TextArea
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSize() {
         scrollTo("ViewTextArea")
         let inspector = getInspectorByKey("component_2")
@@ -97,7 +97,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextAlign() {
         scrollTo("ViewTextArea")
         Hilog.error(1, "Cangjie-Test", "==========")
@@ -116,7 +116,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextArea() {
         scrollTo("ViewTextArea")
         let inspector = getInspectorByKey("component_3")
@@ -179,7 +179,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextAreaDefault() {
         scrollTo("ViewTextArea")
         let inspector = getInspectorByKey("component_default")
@@ -224,7 +224,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testTextclock() {
         scrollTo("ViewTextClock")
         let inspector = getInspectorByKey("Text_clock1")
@@ -360,7 +360,7 @@ class TextAndInputUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testComponent1() {
         scrollTo("ViewTextInput")
         let inspector = getInspectorByKey("component_1")

@@ -26,7 +26,6 @@ public macro CustomDialog(input: Tokens): Tokens {
     checkCustomDialogSyntax(input)
     let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
     let classModifier = classDecl.modifiers
-    let classKeyWord = classDecl.keyword
     let classIdent = classDecl.identifier
     let classBody = classDecl.body
 

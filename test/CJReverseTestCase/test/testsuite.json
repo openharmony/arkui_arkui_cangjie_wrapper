@@ -1,0 +1,9 @@
+{
+  "name": "testsuite_cj_common_test",
+  "test_list": [
+    {
+      "name": "HideUT",
+      "timeout": 100
+    }
+  ]
+}

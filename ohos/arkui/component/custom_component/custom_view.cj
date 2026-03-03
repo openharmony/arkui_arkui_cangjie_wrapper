@@ -63,6 +63,7 @@ type RecycleUpdateFunc = (Int64, Bool, ?CustomView) -> UINodeBase
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public abstract class CustomView <: RemoteView & Observer {
+    @!Hide
     protected let nativeView_inner__: View
 
     private let compId_inner__: Int64
@@ -70,9 +71,11 @@ public abstract class CustomView <: RemoteView & Observer {
     private var provideVars_inner__ = HashMap<String, ObservedPropertyAbstract>()
     private let watchedProps_inner__ = HashMap<String, () -> Unit>()
 
+    @!Hide
     protected var dirtDescendantElementIds_inner__ = HashSet<Int64>()
     private var propsUsedForRender_inner__ = HashSet<String>()
     private var isRenderingInProgress_inner__: Bool = false
+    @!Hide
     protected var updateFuncByElmtId_inner__ = HashMap<Int64, UpdateFuncNew>()
 
     private var children_inner__: HashMap<Int64, CustomView> = HashMap<Int64, CustomView>()
@@ -109,6 +112,7 @@ public abstract class CustomView <: RemoteView & Observer {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>) {
         super()
         nativeView_inner__ = View.create(id_)
@@ -174,15 +178,18 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public func build(): Unit
 
+    @!Hide
     protected func initialRenderView(): Unit {
         this.build()
     }
 
+    @!Hide
     protected override func onAboutToRender(): Unit {
         isRenderingInProgress_inner__ = true
         propsUsedForRender_inner__.clear()
     }
 
+    @!Hide
     protected override func onAfterRender(): Unit {
         isRenderingInProgress_inner__ = false
     }
@@ -225,12 +232,13 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    @!Hide
     protected func updateElement(elmtId: Int64): Unit {
         if (elmtId == id()) {
             return
         }
         match (updateFuncByElmtId_inner__.get(elmtId)) {
-            case None => BASE_LOG.error("update function of ElementId ${elmtId} not found, internal error!")
+            case None => BASE_LOG.debug("update function of ElementId ${elmtId} not found, internal error!")
             case Some(updateFunc) =>
                 ViewStackProcessor.startGetAccessRecordingFor(elmtId)
                 updateFunc(elmtId, false).update()
@@ -249,8 +257,7 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public func updateDirtyElements(): Unit {
         do {
-            let deletedElmtIds = nativeView_inner__.getDeletedElemtIds()
-            this.purgeDeletedElmtIds(deletedElmtIds)
+            this.purgeDeletedElmtIds()
             let arr = dirtDescendantElementIds_inner__.toArray()
             arr.sortBy(
                 comparator: {
@@ -277,6 +284,25 @@ public abstract class CustomView <: RemoteView & Observer {
         } while (this.dirtDescendantElementIds_inner__.size > 0)
     }
 
+    @!Hide
+    protected func purgeDeleteElmtId(rmElmtId: Int64): Bool {
+        match (updateFuncByElmtId_inner__.remove(rmElmtId)) {
+            case None => false
+            case _ =>
+                purgeVariableDependenciesOnElmtId(rmElmtId)
+                // Remove element ID from ELEMENT_ID_TO_OWNING_VIEW_PU_ mapping
+                UINodeRegisterProxy.unregisterElementId(rmElmtId)
+                true
+        }
+    }
+
+    @!Hide
+    protected func purgeDeletedElmtIds() {
+        UINodeRegisterProxy.obtainDeletedElmtIds()
+        UINodeRegisterProxy.unregisterElmtIdsFromIViews()
+    }
+
+    @!Hide
     protected func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>) {
         if (rmElmtIds.size == 0) {
             return
@@ -330,7 +356,8 @@ public abstract class CustomView <: RemoteView & Observer {
             itemGenFunc(arr[idx], idx)
             ForEach<T>.createNewChildFinish(id)
         }
-        this.purgeDeletedElmtIds(setIdResult.removedChildElmtIds)
+        UINodeRegisterProxy.unregisterRemovedElmtsFromViewPUs(setIdResult.removedChildElmtIds)
+        this.purgeDeletedElmtIds()
     }
 
     /**
@@ -349,6 +376,8 @@ public abstract class CustomView <: RemoteView & Observer {
         compilerAssignedUpdateFunc(elmtId, true).initial()
         ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
+        // Register element ID to owning view mapping
+        UINodeRegisterProxy.registerElementId(elmtId, this)
         return
     }
 
@@ -427,6 +456,7 @@ public abstract class CustomView <: RemoteView & Observer {
         runReuse_ = false
     }
 
+    @!Hide
     protected override func aboutToRecycleInternal(): Unit {
         runReuse_ = true
         aboutToRecycle()
@@ -434,6 +464,7 @@ public abstract class CustomView <: RemoteView & Observer {
         runReuse_ = false
     }
 
+    @!Hide
     protected func getOrCreateRecycleManager(): RecycleManager {
         if (let Some(v) <- recycleManager_) {
             return v
@@ -442,14 +473,17 @@ public abstract class CustomView <: RemoteView & Observer {
         recycleManager_.getOrThrow()
     }
 
+    @!Hide
     protected func getRecycleManager(): ?RecycleManager {
         recycleManager_
     }
 
+    @!Hide
     protected func hasRecycleManager(): Bool {
         return recycleManager_.isSome()
     }
 
+    @!Hide
     protected override func recycleSelf(name: String) {
         match (parent_inner__) {
             case Some(v) =>
@@ -459,10 +493,12 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    @!Hide
     protected func isRecycled(): Bool {
         hasBeenRecycled_
     }
 
+    @!Hide
     protected func traverseChildDoRecycleOrReuse(recycleOrReuse: Bool, param!: ReuseParams = ReuseParams([])): Unit {
         for (child in children_inner__.values()) {
             if (!child.hasBeenRecycled_) {
@@ -475,16 +511,19 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    @!Hide
     protected func delayCompleteRerender(deep: Bool) {
         this.delayRecycleNodeRerender_ = true
         this.delayRecycleNodeRerenderDeep_ = deep
     }
 
+    @!Hide
     protected func flushDelayCompleteRerender() {
         this.forceCompleteRerender(this.delayRecycleNodeRerenderDeep_);
         this.delayRecycleNodeRerender_ = false
     }
 
+    @!Hide
     protected func resetRecycleCustomNode() {
         nativeView_inner__.resetRecycleCustomNode()
     }
@@ -617,6 +656,7 @@ public abstract class CustomView <: RemoteView & Observer {
         return compId_inner__
     }
 
+    @!Hide
     protected func markLazyForEachProcess(groupId: String): Unit {
         isLazyForEachProcess_inner__ = true
         lazyGroupId_inner__ = groupId
@@ -625,10 +665,12 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    @!Hide
     protected func resetLazyForEachProcess(): Unit {
         isLazyForEachProcess_inner__ = false
     }
 
+    @!Hide
     protected func removeChildGroupById(groupId: String): Bool {
         let optGroup = lazyGroups_inner__.remove(groupId)
         match (optGroup) {
@@ -666,6 +708,7 @@ public abstract class CustomView <: RemoteView & Observer {
         children_inner__.add(id, child)
     }
 
+    @!Hide
     protected func removeChildById(id: Int64): Bool {
         let child = children_inner__.remove(id)
         let res = child.isSome()
@@ -675,10 +718,12 @@ public abstract class CustomView <: RemoteView & Observer {
         return res
     }
 
+    @!Hide
     protected func getView(): View {
         nativeView_inner__
     }
 
+    @!Hide
     protected func setParent(parent: Option<CustomView>): Unit {
         this.parent_inner__ = parent
     }
@@ -692,7 +737,18 @@ public abstract class CustomView <: RemoteView & Observer {
     ]
     public func aboutToBeDeleted(): Unit
 
+    @!Hide
     protected func aboutToBeDeletedInternal(): Unit {
+        this.purgeDeletedElmtIds()
+
+        this.updateFuncByElmtId_inner__.clear()
+        this.provideVars_inner__.clear()
+        this.watchedProps_inner__.clear()
+        this.dirtDescendantElementIds_inner__.clear()
+        this.propsUsedForRender_inner__.clear()
+        this.lazyChildren_inner__.clear()
+        this.lazyGroups_inner__.clear()
+
         if (let Some(parent) <- parent_inner__) {
             parent.removeChildById(id())
         }
@@ -701,6 +757,7 @@ public abstract class CustomView <: RemoteView & Observer {
         }
     }
 
+    @!Hide
     protected func onAboutToBeDeleted(): Unit {
         aboutToBeDeleted()
         children_inner__.clear()

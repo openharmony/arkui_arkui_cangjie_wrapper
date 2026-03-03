@@ -19,11 +19,10 @@ package ohos.arkui.component.gauge
 
 import ohos.arkui.component.common.{CommonMethodComponent, CustomBuilder}
 import ohos.arkui.component.data_panel.{LinearGradient}
-import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor}
+import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToString, transAppResourceToResourceColor, LENGTH_PERCENT}
 import ohos.base.{VectorUInt32Handle, VectorFloat64Handle, ResourceColor, Length, LengthProp, ResourceStr, FFIVectorUInt32, FFIVectorFloat32}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeGaugeLinearGradientHandle = CPointer<Unit>
 
@@ -47,6 +46,8 @@ foreign {
     func FfiOHOSAceFrameworkGaugeSetShadowOptions(radius: Float64, offsetX: Float64, offsetY: Float64): Unit
 
     func FfiOHOSAceFrameworkGaugeSetIndicator(icon: CString, size: Float64): Unit
+
+    func FfiOHOSAceFrameworkGaugeSetIndicatorV2(icon: CString, size: Float64, sizeUnit: Int32): Unit
 
     func FfiOHOSAceFrameworkGaugeSetDescription(builder: Int64): Unit
 
@@ -340,6 +341,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     ]
     public func strokeWidth(length: ?Length): This {
         var value_ = transAppResourceToLength(length ?? 4.0.vp)
+        if (value_.unitType.getValue() == LENGTH_PERCENT) {
+            value_ = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkGaugeSetStrokeWidth(value_.value, value_.unitType.getValue())
         }
@@ -377,11 +381,14 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public func indicator(icon!: ?ResourceStr = None, space!: ?Length = None): This {
-        let icon_ = transResourceStrToString(icon ?? "default")
-        let space_ = transAppResourceToLength(space ?? 8.0.vp)
+        let icon_ = transResourceStrToString(icon ?? "SystemStyle")
+        var space_ = transAppResourceToLength(space ?? 8.0.vp)
+        if (space_.value < 0.0 || space_.unitType.getValue() == LENGTH_PERCENT) {
+            space_ = 8.00.vp
+        }
         unsafe {
             try (iconCString = LibC.mallocCString(icon_).asResource()) {
-                FfiOHOSAceFrameworkGaugeSetIndicator(iconCString.value, space_.value)
+                FfiOHOSAceFrameworkGaugeSetIndicatorV2(iconCString.value, space_.value, space_.unitType.getValue())
             }
         }
         this

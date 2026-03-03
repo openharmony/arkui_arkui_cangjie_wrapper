@@ -192,7 +192,12 @@ class ViewStepper {
                         Text("Page A").fontSize(35).fontColor(0x182431).id("AText")
                     }
                 }.id("AStepperItem")
+                .prevLabel(Option.None)
+                .nextLabel(Option.None)
             }
+            .onChange(Option<(UInt32, UInt32) -> Unit>.None)
+            .onNext(Option<(UInt32, UInt32) -> Unit>.None)
+            .onPrevious(Option<(UInt32, UInt32) -> Unit>.None)
         }.width(100.percent).padding(top: 5)
     }
 }

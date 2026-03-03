@@ -17,13 +17,12 @@
 
 package ohos.arkui.component.text
 
-import ohos.arkui.component.common.{CommonMethod, FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
+import ohos.arkui.component.common.{FontStyle, FontWeight, TextAlign, TextOverflow, TextDecorationType, TextCase, Rectangle, CommonMethodComponent, TextDecorationStyle}
 import ohos.arkui.component.native_struct.{FFIVectorNativeRectangle, VectorNativeRectangleHandle, CJResponseRegion, NativeShadowOptions}
-import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual}
-import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, ExternalString, CStringExtend, Color, LengthProp}
+import ohos.arkui.component.util.{getLengthUnitOrFp, transResourceStrToString, transAppResourceToLength, transAppResourceToResourceColor, lessNotEqual, LENGTH_PERCENT}
+import ohos.base.{BASE_LOG, Length, ResourceColor, ResourceStr, VectorStringHandle, CStringExtend, Color, LengthProp}
 import ohos.ffi.{releaseFFIData, RemoteDataLite}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 type VectorNativeShadowOptionsHandle = CPointer<Unit>
 
@@ -110,10 +109,6 @@ foreign {
 
     func FFICJCreateVectorFfiTextMenuItem(size: Int64): VectorTextMenuItemHandle
 
-    func FFICJVectorFfiTextMenuItemSetElement(vec: VectorTextMenuItemHandle, index: Int64, textMenuItem: FfiTextMenuItem): Unit
-
-    func FFICJVectorFfiTextMenuItemGetElement(vec: VectorTextMenuItemHandle, index: Int64): FfiTextMenuItem
-
     func FFICJVectorFfiTextMenuItemDelete(vec: VectorTextMenuItemHandle): Unit
 
     func FFICJVectorFfiTextMenuItemGetSize(vec: VectorTextMenuItemHandle): Int64
@@ -159,73 +154,6 @@ foreign {
     func FfiOHOSAceFrameworkTextResetMinFontSize(): Unit
 
     func FfiOHOSAceFrameworkTextResetFontColor(): Unit
-}
-
-class FFIVectorNativeShadowOptions {
-    private let vecHandle: VectorNativeShadowOptionsHandle
-
-    init(vec: VectorNativeShadowOptionsHandle) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorNativeShadowOptions(size) }
-    }
-
-    func setElement(index: Int64, value: NativeShadowOptions): Unit {
-        unsafe { FFICJVectorNativeShadowOptionsSetElement(vecHandle, index, value) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorNativeShadowOptionsDelete(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorNativeShadowOptionsHandle {
-        vecHandle
-    }
-}
-
-@C
-struct FfiTextMenuItem {
-    FfiTextMenuItem(
-        var content: ExternalString,
-        var icon: ExternalString,
-        var id: ExternalString
-    ) {}
-}
-
-class FFIVectorFfiTextMenuItem {
-    private let vecHandle: VectorTextMenuItemHandle
-
-    init(vec: VectorTextMenuItemHandle) {
-        vecHandle = vec
-    }
-
-    init(size: Int64) {
-        vecHandle = unsafe { FFICJCreateVectorFfiTextMenuItem(size) }
-    }
-
-    func setElement(index: Int64, value: FfiTextMenuItem): Unit {
-        unsafe { FFICJVectorFfiTextMenuItemSetElement(vecHandle, index, value) }
-    }
-
-    func getElement(index: Int64): FfiTextMenuItem {
-        unsafe { FFICJVectorFfiTextMenuItemGetElement(vecHandle, index) }
-    }
-
-    // Using the free() on vecHandle deallocates its memory.
-    func free(): Unit {
-        unsafe { FFICJVectorFfiTextMenuItemDelete(vecHandle) }
-    }
-
-    func getSize(): Int64 {
-        unsafe { FFICJVectorFfiTextMenuItemGetSize(vecHandle) }
-    }
-
-    func getNativeHandle(): VectorTextMenuItemHandle {
-        vecHandle
-    }
 }
 
 /**
@@ -372,6 +300,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineSpacing(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.vp)
+        if (v.value < 0.0) {
+            v = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkTextSetLineSpacing(v.value, v.unitType.getValue())
         }
@@ -392,7 +323,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     public func fontSize(value: ?Length): This {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
-            if (v_.value < 0.0) {
+            if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
                 unsafe {
                     FfiOHOSAceFrameworkTextResetFontSize()
                 }
@@ -423,7 +354,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
+                if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
+                    FfiOHOSAceFrameworkTextResetMaxFontSize()
+                } else {
+                    FfiOHOSAceFrameworkTextSetMaxFontSize(v_.value, v_.unitType.getValue())
+                }
             }
         } else {
             unsafe {
@@ -447,7 +382,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
         if (let Some(v) <- value) {
             var v_ = transAppResourceToLength(v)
             unsafe {
-                FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
+                if (v_.value < 0.0 || v_.unitType.getValue() == LENGTH_PERCENT) {
+                    FfiOHOSAceFrameworkTextResetMinFontSize()
+                } else {
+                    FfiOHOSAceFrameworkTextSetMinFontSize(v_.value, v_.unitType.getValue())
+                }
             }
         } else {
             unsafe {
@@ -611,6 +550,9 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     ]
     public func lineHeight(value: ?Length): This {
         var v = transAppResourceToLength(value ?? 0.0.px)
+        if (v.value < 0.0 || v.unitType.getValue() == LENGTH_PERCENT) {
+            v = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkTextSetLineHeight(v.value, v.unitType.getValue())
         }

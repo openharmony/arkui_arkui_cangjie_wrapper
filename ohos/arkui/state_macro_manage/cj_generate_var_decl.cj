@@ -137,11 +137,10 @@ func generateStateVarDecl(kind: VariableKind, varDecl: VarDecl, varExpand: VarDe
 }
 
 func generateStorageInit(
-    varDecl: VarDecl,
+    _: VarDecl,
     varExpand: VarDecl,
     _: Bool
 ): MacroExpandInitInfo {
-    let initValue = varDecl.expr
     let identifierAssociated = varExpand.identifier
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
@@ -192,7 +191,6 @@ func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType)
 }
 
 func generateStateInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
-    let initValue = varDecl.expr
     let identifier = varDecl.identifier
     let valType = varExpand.getTypeByInitializer()
 

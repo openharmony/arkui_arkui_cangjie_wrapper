@@ -21,7 +21,6 @@ import ohos.arkui.component.native_struct.{VectorToCFFIArray}
 import ohos.arkui.component.common.{ItemGeneratorFunc, KeyGeneratorFunc, UINodeBase}
 import ohos.base.{VectorStringHandle, CollectionEx, FFIVectorString}
 import ohos.labels.{APILevel, Hide}
-import ohos.arkui.state_management.ObservedArrayList
 import std.collection.ArrayList
 
 @C
@@ -104,6 +103,7 @@ public class ForEach<T> <: UINodeBase {
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
+    @!Hide
     public func pop(): Unit {
         unsafe { FfiOHOSAceFrameworkForEachPop() }
     }

@@ -67,7 +67,7 @@ class BasicCommonUT3 {
 
     //location
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testLocation() {
         scrollTo("ViewLocation")
 
@@ -95,7 +95,7 @@ class BasicCommonUT3 {
 
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMotionPath() {
         scrollTo("ViewMotionPath")
         let button01 = driver.findComponent(On().id("motionPathButton_id")).getOrThrow()
@@ -105,7 +105,7 @@ class BasicCommonUT3 {
 
     // Opacity
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOpacity() {
         scrollTo("ViewOpacity")
         var inspector = getInspectorByKey("my_opacity")
@@ -119,7 +119,7 @@ class BasicCommonUT3 {
 
     // overlay
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOverlay() {
         scrollTo("ViewOverlay")
 
@@ -132,7 +132,7 @@ class BasicCommonUT3 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPersistentStorage() {
         scrollTo("ViewPersistentStorage")
 
@@ -162,7 +162,7 @@ class BasicCommonUT3 {
 
     // ViewPixelRound
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testProp() {
         scrollTo("ViewProp")
         let button1 = driver.findComponent(On().id("ParentComponent")).getOrThrow()
@@ -177,7 +177,7 @@ class BasicCommonUT3 {
 
     // ResponseRegion
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testResponseregion() {
         scrollTo("ViewResponseRegion")
         let inspector1 = getInspectorByKey("responseRegion1")
@@ -286,7 +286,7 @@ class BasicCommonUT3 {
 
     // Popup
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPopup001() {
         scrollTo("ViewPopup")
         driver.findComponent(On().id("button1")).getOrThrow().click()
@@ -312,7 +312,7 @@ class BasicCommonUT3 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPopup002() {
         scrollTo("ViewPopup")
         driver.findComponent(On().id("button2")).getOrThrow().click()

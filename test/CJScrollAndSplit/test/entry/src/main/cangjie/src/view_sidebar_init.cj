@@ -62,12 +62,12 @@ class ViewSideBarInit {
     var len_lpx: AppResource = @r(app.string.len_lpx)
     var text_pluralresource: AppResource = @r(app.plural.eat_apple, 10, 10)
     let dividerProp = DividerStyle(strokeWidth: 2.vp, startMargin: 3.vp, endMargin: 5.vp)
-    let dividerProp2 = DividerStyle(strokeWidth: 2.vp)
+    let dividerOptionNone = Option<DividerStyle>.None
     let ctrlButton1: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
-        icons: ButtonIconOptions(shown: "", hidden: "", switching: ""))
+        icons: Option.None)
     let ctrlButton2: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
-        icons: ButtonIconOptions(shown: "", hidden: "", switching: @r(app.media.startIcon)))
-    let ctrlButton3: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
+        icons: ButtonIconOptions(shown: Option.None, hidden: Option.None, switching: Option.None))
+    let ctrlButton3: ButtonStyle = ButtonStyle(left: Option.None, top: Option.None, width: Option.None, height: Option.None,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: "", switching: ""))
     let ctrlButton4: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
         icons: ButtonIconOptions(shown: "", hidden: @r(app.media.startIcon), switching: ""))
@@ -75,7 +75,7 @@ class ViewSideBarInit {
         icons: ButtonIconOptions(shown: "", hidden: @r(app.media.startIcon), switching: @r(app.media.startIcon)))
     let ctrlButton6: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: @r(app.media.startIcon), switching: ""))
-    let ctrlButton7: ButtonStyle = ButtonStyle()
+    let ctrlButton7: ?ButtonStyle = Option.None
     var init_Rect: rect = rect(left: 1, top: 1, width: 1, height: 1)
     var avoidArea: AvoidArea=AvoidArea(visible: true, leftRect: init_Rect, topRect: init_Rect, rightRect: init_Rect, bottomRect: init_Rect)
 
@@ -88,7 +88,7 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_1")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: 20.percent, height: 14.percent)
         .controlButton(this.ctrlButton1)
         .showSideBar(true)
         .autoHide(true)
@@ -103,7 +103,7 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_2")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: 20.percent, height: 14.percent)
         .controlButton(this.ctrlButton2)
         .showSideBar(true)
         .autoHide(true)
@@ -118,7 +118,7 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_3")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: 20.percent, height: 14.percent)
         .controlButton(this.ctrlButton3)
         .showSideBar(true)
         .autoHide(true)
@@ -133,7 +133,7 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_4")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: 20.percent, height: 14.percent)
         .controlButton(this.ctrlButton4)
         .showSideBar(true)
         .autoHide(true)
@@ -148,7 +148,7 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_5")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: 20.percent, height: 14.percent)
         .controlButton(this.ctrlButton5)
         .showSideBar(true)
         .autoHide(true)
@@ -163,34 +163,32 @@ class ViewSideBarInit {
         }
         .id("SideBarInit_6")
         .divider(this.dividerProp)
-        .size(width: 20.percent, height: 15.percent)
+        .size(width: -1, height: -1)
         .controlButton(this.ctrlButton6)
         .showSideBar(true)
         .autoHide(true)
         .minSideBarWidth(50.vp)
         .maxSideBarWidth(100.vp)
         .minContentWidth(150.vp)
+        .width(-1)
+        .height(-1)
 
-         Button("test").onClick({e =>
-//                var text1 = getResourceString(text_source)
-//                var text2 = getResourcePluralString(text_pluralresource)
-//                var text3 = getResourceLength(text_source)
-//                var text4 = getResourceColor(text_source)
-//                var text5 = getResourceMedia(text_media)
-//                var text6 = getResourceLength(len_px)
-//                var text7 = getResourceLength(len_fp)
-//                var text8 = getResourceLength(len_percent)
-//                var text9 = getResourceLength(len_llp)
-//                var text10 = getResourceLength(len_lpx)
-//                Hilog.info(1,"text_source", "getResourceString: " + text1)
-//                Hilog.info(1,"text_pluralresource", "getResourcePluralString: " + text2)
-//                Hilog.info(1,"text_source", "getResourceLength: " + text3.value.toString())
-//                Hilog.info(1,"text_source", "getResourceColor: " + text4.toUInt32().toString())
-//                Hilog.info(1,"text_media", "getResourceMedia: " + text5)
-                ViewStackProcessor.implicitPopBeforeContinue()
-                PersistentStorage.deleteProp("ikun")
-                PersistentStorage.keys()
-         }).id("AppResource")
+        SideBarContainer(sideBarType: SideBarContainerType.Auto) {
+            Column() {
+                Text("Index06")
+            }
+        }
+        .id("SideBarInit_7")
+        .divider(this.dividerOptionNone)
+        .size(width: Option<Length>.None, height: Option<Length>.None)
+        .controlButton(this.ctrlButton7)
+        .showSideBar(true)
+        .autoHide(true)
+        .minSideBarWidth(10.vp)
+        .maxSideBarWidth(10.vp)
+        .minContentWidth(10.vp)
+        .width(Option<Length>.None)
+        .height(Option<Length>.None)
 
     }
 

@@ -173,6 +173,77 @@ class ViewMenuItemGroup {
 
             }.id("MenuItemGroup1")
         }
+
+
+        Menu() {
+            MenuItemGroup() {
+                MenuItem(startIcon: "", content: "NoneHeader", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupNone")
+        }
+
+
+        Menu() {
+            MenuItemGroup(header: "HeaderOnly") {
+                MenuItem(startIcon: "", content: "HeaderOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupHeaderOnly")
+        }
+
+
+        Menu() {
+            MenuItemGroup(footer: "FooterOnly") {
+                MenuItem(startIcon: "", content: "FooterOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupFooterOnly")
+        }
+
+
+        Menu() {
+            MenuItemGroup(header: Option<CustomBuilder>.None, footer: Option<CustomBuilder>.None) {
+                => MenuItem(startIcon: "", content: "BuilderNone", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupBuilderNone")
+        }
+
+
+        Menu() {
+            MenuItemGroup(header: {=>}, footer: Option<CustomBuilder>.None) {
+                => MenuItem(startIcon: "", content: "BuilderHeaderOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupBuilderHeaderOnly")
+        }
+
+
+        Menu() {
+            MenuItemGroup(header: Option<CustomBuilder>.None, footer: {=>}) {
+                => MenuItem(startIcon: "", content: "BuilderFooterOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupBuilderFooterOnly")
+        }
+
+
+        // header=AppResource, footer=None
+        Menu() {
+            MenuItemGroup(header: @r(app.string.menuItemGroup_header)) {
+                MenuItem(startIcon: "", content: "AppResourceHeaderOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupAppResourceHeaderOnly")
+        }
+
+        // header=None, footer=AppResource
+        Menu() {
+            MenuItemGroup(footer: @r(app.string.menuItemGroup_footer)) {
+                MenuItem(startIcon: "", content: "AppResourceFooterOnly", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupAppResourceFooterOnly")
+        }
+
+        // header=AppResource, footer=String
+        Menu() {
+            MenuItemGroup(header: @r(app.string.menuItemGroup_header), footer: "StringFooter") {
+                MenuItem(startIcon: "", content: "AppResourceHeaderStringFooter", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupAppResourceHeaderStringFooter")
+        }
+
+        // header=String, footer=AppResource
+        Menu() {
+            MenuItemGroup(header: "StringHeader", footer: @r(app.string.menuItemGroup_footer)) {
+                MenuItem(startIcon: "", content: "StringHeaderAppResourceFooter", endIcon: "", labelInfo: "")
+            }.id("MenuItemGroupStringHeaderAppResourceFooter")
+        }
     }
 
     func build() {

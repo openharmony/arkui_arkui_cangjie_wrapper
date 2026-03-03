@@ -18,11 +18,11 @@
 package ohos.arkui.component.grid
 
 import ohos.arkui.component.common.{BarState, NestedScrollMode}
-import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, ScrollableCommonMethod, Scroller, NestedScrollOptions}
+import ohos.arkui.component.scroll.{ScrollableCommonMethodComponent, Scroller, NestedScrollOptions}
 import ohos.arkui.component.util.{transAppResourceToLength, transAppResourceToResourceColor, EMPTY_FUNCTION}
 import ohos.base.{Length, ResourceColor, LengthProp, BASE_LOG}
 import ohos.ffi.{Callback0Param}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.resource.{AppResource, getResourceString}
 import ohos.business_exception.BusinessException
 import std.convert.{Parsable}

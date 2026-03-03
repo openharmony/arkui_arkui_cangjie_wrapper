@@ -23,8 +23,7 @@ import ohos.arkui.component.util.{transResourceStrToString}
 import ohos.ffi.{RemoteDataLite, releaseFFIData}
 import ohos.base.{ResourceStr, ResourceColor, Length, LengthProp, Color}
 import ohos.resource.{AppResource, getResourceString}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
+import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkTextAreaCreate(placeholder: CString, text: CString, controllerId: Int64): Unit

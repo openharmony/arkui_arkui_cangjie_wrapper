@@ -19,7 +19,7 @@ package ohos.arkui.state_management
 
 import ohos.base.{BASE_LOG, NativeOptionCString, NativeOptionBool, NativeOptionFloat32, NativeOptionInt32}
 import ohos.labels.{APILevel, Hide}
-import std.collection.{HashMap, EquatableCollection, ArrayList}
+import std.collection.{HashMap, EquatableCollection}
 import std.deriving.Derive
 import ohos.business_exception.BusinessException
 
@@ -64,14 +64,6 @@ public enum ColorMode {
     ]
     Dark
     | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case Light => 0
-            case Dark => 1
-            case _ => throw BusinessException(100001, "Internal error.")
-        }
-    }
 
     static func parse(val: Int32): ColorMode {
         if (val == 1) {

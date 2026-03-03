@@ -22,20 +22,7 @@ import ohos.arkui.component.util.{transAppResourceToLength, transResourceStrToSt
 import ohos.base.{ResourceStr, ResourceColor, Length, Color, LengthProp}
 import ohos.ffi.{Callback1Param, RemoteDataLite, releaseFFIData}
 import ohos.resource.{AppResource, getResourceMedia}
-import ohos.labels.{APILevel, Hide}
-import ohos.business_exception.BusinessException
-
-@C
-struct SearchCreateParam {
-    SearchCreateParam(
-        let value: CString,
-        let placeholder: CString,
-        let iconID: Int64,
-        let iconType: UInt32,
-        let iconSrc: CString,
-        let controllerID: Int64
-    ) {}
-}
+import ohos.labels.{APILevel}
 
 @C
 struct SearchSetBorder {
@@ -50,8 +37,6 @@ struct SearchSetBorder {
 }
 
 foreign {
-    func FfiOHOSAceFrameworkSearchCreateByIconID(value: SearchCreateParam): Unit
-
     func FfiOHOSAceFrameworkSearchSetSearchButton(text: CString): Unit
 
     func FfiOHOSAceFrameworkSearchSetPlaceholderColor(color: UInt32): Unit
@@ -544,7 +529,7 @@ public class Search <: CommonMethodComponent<Search> & SearchAttribute {
                 SearchSetBorder(
                     w.value,
                     w.unitType.getValue(),
-                    c.toUInt32(),
+                    c,
                     r.value,
                     r.unitType.getValue(),
                     (style ?? BorderStyle.Solid).getValue()

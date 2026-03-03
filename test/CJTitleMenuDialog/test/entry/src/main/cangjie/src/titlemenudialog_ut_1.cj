@@ -62,17 +62,17 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAccessibility() {
         scrollTo("ViewAccessibility")
 
-        // 正常值测试
+
         let inspector = getInspectorByKey("accessibility_id")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         Hilog.info(1, "1", "1", "accessibility_id: ${attrs.toString()}")
 
-        // CjResource和异常值测试
+
         let inspector2 = getInspectorByKey("accessibility_id2")
         let jsonObject2 = JsonValue.fromStr(inspector2).asObject()
         let attrs2 = jsonObject2.get("$attrs").getOrThrow().asObject()
@@ -80,7 +80,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlertDialog() {
         scrollTo("ViewAlertDialog")
 
@@ -94,7 +94,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testAlertDialogButtons() {
         scrollTo("ViewAlertDialog")
 
@@ -181,10 +181,70 @@ class TitleMenuDialogUT11 {
         let button_12 = driver.findComponent(On().id("button_12"))
         button_12?.click()
         driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_13 = driver.findComponent(On().id("button_13"))
+        button_13?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_14 = driver.findComponent(On().id("button_14"))
+        button_14?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_15 = driver.findComponent(On().id("button_15"))
+        button_15?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_16 = driver.findComponent(On().id("button_16"))
+        button_16?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_17 = driver.findComponent(On().id("button_17"))
+        button_17?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_18 = driver.findComponent(On().id("button_18"))
+        button_18?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_19 = driver.findComponent(On().id("button_19"))
+        button_19?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        let button_20 = driver.findComponent(On().id("button_20"))
+        button_20?.click()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testContextMenu() {
         scrollTo("ViewContextMenu")
         let inspector = getInspectorByKey("my_menu")
@@ -200,7 +260,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomDialog() {
         scrollTo("ViewCustomDialog")
         driver.delayMs(1000)
@@ -211,7 +271,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testOpenDialog() {
         scrollTo("ViewCustomDialog")
 
@@ -227,7 +287,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCustomdialog2() {
         scrollTo("ViewCustomDialog2")
         var button = driver.findComponent(On().id("open_button1")).getOrThrow()
@@ -280,11 +340,32 @@ class TitleMenuDialogUT11 {
         driver.delayMs(1000)
         driver.pressBack()
         driver.delayMs(500)
+
+
+        button = driver.findComponent(On().id("open_button11")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        button = driver.findComponent(On().id("open_button12")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
+
+
+        button = driver.findComponent(On().id("open_button13")).getOrThrow()
+        button.click()
+        driver.delayMs(1000)
+        driver.pressBack()
+        driver.delayMs(500)
     }
 
     // data picker unittest
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerCommonAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -304,7 +385,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerClickAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -319,11 +400,11 @@ class TitleMenuDialogUT11 {
         let constructor = attrs.get("constructor").getOrThrow().asObject()
         let selected = constructor.get("selected").getOrThrow().toString()
         @Expect(lunar, "\"true\"")
-        @Expect(selected, '\"2025-10-24\"') // 是否正确转换为农历日期
+        @Expect(selected, '\"2025-10-24\"')
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerSwpieAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -338,11 +419,11 @@ class TitleMenuDialogUT11 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let constructor = attrs.get("constructor").getOrThrow().asObject()
         let selected = constructor.get("selected").getOrThrow().toString()
-        @Expect(selected.contains("2025-9-13") || selected.contains("2025-8-13")) // 是否滑到对应的日期
+        @Expect(selected.contains("2025-9-13") || selected.contains("2025-8-13"))
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerDefaultAttrs() {
         scrollTo("ViewDatePicker")
 
@@ -365,7 +446,7 @@ class TitleMenuDialogUT11 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testDatepickerdialog() {
         scrollTo("ViewDatePickerDialog")
         let show_datePickerDialog = driver.findComponent(On().id("show_datePickerDialog1")).getOrThrow()

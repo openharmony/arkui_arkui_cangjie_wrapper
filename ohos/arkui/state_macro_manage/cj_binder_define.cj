@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{assertParentContext, parseExpr, parseDecl, Token, Tokens, MemberAccess, RefExpr, FuncDecl, ASTException, FuncParam, setItem}
+import std.ast.{assertParentContext, parseExpr, Token, Tokens, MemberAccess, RefExpr, setItem}
 
 public macro Binder(input: Tokens): Tokens {
     assertParentContext("Component")

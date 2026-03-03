@@ -63,7 +63,7 @@ class TitleMenuDialogUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testMenuItemGroup() {
         scrollTo("ViewMenuItemGroup")
         let button = driver.findComponent(On().id("button")).getOrThrow()
@@ -74,7 +74,7 @@ class TitleMenuDialogUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPrompt() {
         scrollTo("ViewPrompt")
 
@@ -128,7 +128,7 @@ class TitleMenuDialogUT21 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPrompt2() {
         scrollTo("ViewPrompt")
 

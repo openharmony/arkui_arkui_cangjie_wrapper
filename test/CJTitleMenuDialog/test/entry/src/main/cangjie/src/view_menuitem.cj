@@ -24,7 +24,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class ViewMenuItem {
     @State
-    var isMenuOpen: Bool = true // 添加一个状态变量用于控制菜单显示
+    var isMenuOpen: Bool = true
 
     @Builder
     func myMenu() {
@@ -41,6 +41,30 @@ class ViewMenuItem {
         }
     }
 
+
+    @Builder
+    func myMenuItemNone() {
+        Menu() {
+            MenuItem(startIcon: Option<ResourceStr>.None, content: Option<ResourceStr>.None, endIcon: Option<ResourceStr>.None, labelInfo: Option<ResourceStr>.None)
+                .id("menuitemNone")
+        }
+    }
+
+
+    @Builder
+    func myMenuItemMethodsNone() {
+        Menu() {
+            MenuItem(startIcon: "", content: "MethodsNone", endIcon: "", labelInfo: "")
+                .selected(Option<Bool>.None)
+                .selectIcon(Option<Bool>.None)
+                .selectIcon(Option<ResourceStr>.None)
+                .contentFontColor(Option<ResourceColor>.None)
+                .labelFontColor(Option<ResourceColor>.None)
+                .onChange(Option<(Bool) -> Unit>.None)
+                .id("menuitemMethodsNone")
+        }
+    }
+
     func build() {
         Row() {
             Column() {
@@ -53,6 +77,11 @@ class ViewMenuItem {
                 .width(50.percent)
 
             this.myMenu()
+
+            Column() {
+                this.myMenuItemNone()
+                this.myMenuItemMethodsNone()
+            }
         }.height(100.percent)
     }
 }

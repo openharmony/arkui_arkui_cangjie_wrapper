@@ -1,0 +1,17 @@
+{
+  "name": "testsuite_cj_common_test",
+  "test_list": [
+    {
+      "name": "ScrollSplitUT1",
+      "timeout": 100
+    },
+    {
+      "name": "ScrollSplitUT11",
+      "timeout": 100
+    },
+    {
+      "name": "ScrollSplitUT2",
+      "timeout": 100
+    }
+  ]
+}

@@ -67,7 +67,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSearch() {
         scrollTo("ViewCanvas")
 
@@ -96,7 +96,7 @@ class CanvasDrawingUT11 {
 
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCurves1() {
         scrollTo("ViewCurves")
 
@@ -165,7 +165,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testEllipseCtor() {
         scrollTo("ViewEllipse")
         let ellipse_1 = driver.findComponent(On().id("ellipse_1")).getOrThrow().getType()
@@ -179,7 +179,7 @@ class CanvasDrawingUT11 {
 
     // image unittest
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageCustomAttrs() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageCustomAttrs started")
@@ -265,7 +265,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageCustomAttrs2() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageCustomAttrs started")
@@ -293,7 +293,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageInit() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageInit started")
@@ -330,7 +330,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageAlt() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageAlt started")
@@ -353,7 +353,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageSourceSize() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageSourceSize started")
@@ -398,7 +398,7 @@ class CanvasDrawingUT11 {
     }
 
      @TestCase
-     @Tag[APILevel19, TestLevel0]
+     @Tag[APILevel22, TestLevel0]
     func testImageFillColor() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageFillColor started")
@@ -428,7 +428,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageObjectFitFill() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageObjectFitFill started")
@@ -442,7 +442,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageEvent() {
         scrollTo("ViewImage")
         Hilog.error(1,"Cangjie-Test", "test_imageEvent started")
@@ -471,7 +471,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testImageEffectComponent001() {
         scrollTo("ViewImageEffect")
 
@@ -596,7 +596,7 @@ class CanvasDrawingUT11 {
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testViewImageEffect2001() {
         scrollTo("ViewImageEffect2")
 

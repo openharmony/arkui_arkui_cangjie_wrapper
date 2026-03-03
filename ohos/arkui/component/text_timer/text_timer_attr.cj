@@ -16,7 +16,7 @@
 package ohos.arkui.component.text_timer
 
 import ohos.arkui.component.common.{FontStyle, FontWeight, ShadowOptions, CommonMethod}
-import ohos.labels.{APILevel, Hide}
+import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**

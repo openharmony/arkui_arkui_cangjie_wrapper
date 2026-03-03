@@ -17,7 +17,7 @@ package ohos.arkui.component.navigation
 
 import ohos.arkui.component.common.{CommonMethodComponent, BlurStyle, CustomBuilder}
 import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString}
-import ohos.base.{ResourceColor, Length, Callback, ResourceStr, LengthProp}
+import ohos.base.{ResourceColor, Length, Callback, ResourceStr}
 import ohos.ffi.{FFIData, RemoteData, FFIDataManager, Callback1Param, RemoteDataManager, releaseFFIData, Callback0Param}
 import ohos.labels.{APILevel, Hide}
 import std.deriving.Derive

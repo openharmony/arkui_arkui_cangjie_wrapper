@@ -70,7 +70,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPagetransition() {
         scrollTo("ViewPageTransition")
 
@@ -94,7 +94,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRefreshDefaultAttr() {
         scrollTo("ViewRefresh")
         let refresh_component = getInspectorByKey("refresh_default_attr")
@@ -110,10 +110,24 @@ class ScrollSplitUT2 {
 
         let pullDownRatio = attrs.get("pullDownRatio").getOrThrow().toString()
         @Expect(pullDownRatio, "\"\"")
+        
+        let refresh_component2 = getInspectorByKey("refresh_none_attr")
+        let jsonObject2 = JsonValue.fromStr(refresh_component2).asObject()
+        let attrs2 = jsonObject.get("$attrs").getOrThrow().asObject()
+        Hilog.info(1, "info", "aaaa: ${attrs.getFields()}")
+
+        let offset2 = attrs2.get("refreshOffset").getOrThrow().toString()
+        @Expect(offset2, "\"0.00vp\"")
+
+        let pullToRefresh2 = attrs2.get("pullToRefresh").getOrThrow().toString()
+        @Expect(pullToRefresh2, "true")
+
+        let pullDownRatio2 = attrs2.get("pullDownRatio").getOrThrow().toString()
+        @Expect(pullDownRatio2, "\"\"")
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRefreshSetAttr() {
         scrollTo("ViewRefresh")
         let refresh_component = getInspectorByKey("refresh_set_attr")
@@ -132,7 +146,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRefreshControllerBottom() {
         scrollTo("ViewRefresh")
         let text_1 = driver.findComponent(On().text("1")).getOrThrow();
@@ -154,7 +168,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRow() {
         scrollTo("ViewRow")
         let inspector = getInspectorByKey("row")
@@ -167,7 +181,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testRowSplitCommonAttrs() {
         scrollTo("ViewRowSplit")
 
@@ -184,7 +198,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrs() {
         scrollTo("ViewScroll")
 
@@ -205,7 +219,7 @@ class ScrollSplitUT2 {
 
     // ViewScroll2
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrs2() {
         scrollTo("ViewScroll2")
 
@@ -243,7 +257,7 @@ class ScrollSplitUT2 {
 
     // ViewScroll3
     @TestCase
-    @Tag[APILevel14, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrs3() {
         scrollTo("ViewScroll2")
         driver.findComponent(On().id("scrollBottom")).getOrThrow().click()
@@ -362,7 +376,7 @@ class ScrollSplitUT2 {
 
     // ViewScrollDefault
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrsDefault() {
         scrollTo("ViewScroll2")
 
@@ -397,7 +411,7 @@ class ScrollSplitUT2 {
 
     //ViewScroll4
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrs4() {
         scrollTo("ViewScroll2")
 
@@ -480,7 +494,7 @@ class ScrollSplitUT2 {
 
     //ViewScroll5
     @TestCase
-    @Tag[APILevel14, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollCommonAttrs5() {
         scrollTo("ViewScroll2")
 
@@ -586,7 +600,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollBarDefaultAttrs() {
         scrollTo("ViewScrollbar")
         let inspector = getInspectorByKey("test_bar_1")
@@ -606,7 +620,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollBarCommonAttrs() {
         scrollTo("ViewScrollbar")
         let inspector = getInspectorByKey("test_bar_2")
@@ -626,7 +640,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testScrollBarSubcomponent() {
         scrollTo("ViewScrollbar")
         driver.delayMs(500)
@@ -636,7 +650,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSidebar() {
         scrollTo("ViewSideBar")
         var inspector = getInspectorByKey("SideBar")
@@ -657,7 +671,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSidebarDefault() {
         scrollTo("ViewSideBarDefault")
         var inspector = getInspectorByKey("SideBarDefault")
@@ -676,7 +690,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSidebarEnhance() {
         scrollTo("ViewSideBarEnhance")
         var inspector = getInspectorByKey("SideBarEnhance")
@@ -699,7 +713,7 @@ class ScrollSplitUT2 {
     }
 
     @TestCase
-    @Tag[APILevel12, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSidebarInit() {
         scrollTo("ViewSideBarInit")
         //在循环中依次测试6个SideBarContainer
@@ -717,15 +731,14 @@ class ScrollSplitUT2 {
             hidden = "resource:///16777286.png"
          }
         var switching: String = ""
-        if ([2,5].contains(i)){
+        if ([5].contains(i)){
             switching = "resource:///16777286.png"
          }
         }
-        clickButton("AppResource")
     }
 
     @TestCase
-    @Tag[APILevel19, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSwiperCommonAttrs() {
         scrollTo("ViewSwiper")
 
