@@ -350,8 +350,7 @@ class VisitBuilder <: Visitor {
      * Try to bind constructor arg by parameter name.
      * Returns true if matched by name (bound or skipped), false if no name match.
      */
-    func tryBindConstructorArgByName(curNode: CallExpr, typeName: String, paramList: ArrayList<(Int64, String)>, i: Int64): Bool {
-        let argName = getArgumentIdentifier(curNode.arguments[i]).value
+    func tryBindConstructorArgByName(curNode: CallExpr, argName: String, paramList: ArrayList<(Int64, String)>, i: Int64): Bool {
         if (argName == "") {
             return false
         }
@@ -389,8 +388,9 @@ class VisitBuilder <: Visitor {
                     case None => ()
                     case Some(paramList) =>
                         for (i in 0..curNode.arguments.size) {
-                            let matched = tryBindConstructorArgByName(curNode, typeName, paramList, i)
-                            if (!matched) {
+                            let argName = getArgumentIdentifier(curNode.arguments[i]).value
+                            let matched = tryBindConstructorArgByName(curNode, argName, paramList, i)
+                            if (!matched && argName == "") {
                                 tryBindConstructorArgByIndex(curNode, paramList, i)
                             }
                         }
