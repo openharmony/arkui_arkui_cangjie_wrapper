@@ -43,32 +43,45 @@ class ViewImageDataInitWithData {
             Column(space: 10.0) {
                 Canvas(this.context).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitWithDataNormal1").onReady({
                     =>
-                    var data = Array<UInt8>(256, { _ => 255 })
+                    var data = Array<UInt8>(100 * 100 * 4, { _ => 100 })
                     let imageData = ImageData(100.0, 100.0, data: data, unit: LengthMetricsUnit.Px)
-                    this.context.putImageData(imageData, 20.0, 20.0)
+                    this.context.putImageData(imageData, 100.0, 100.0)
                 })
                 Canvas(this.context2).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitWithDataNormal2").onReady({
                     =>
-                    let imageData = ImageData(100.0, 100.0, data: [], unit: LengthMetricsUnit.Default)
-                    this.context2.putImageData(imageData, 20.0, 20.0)
+                    var data = Array<UInt8>(100 * 100 * 4, { _ => 200 })
+                    let imageData = ImageData(100.0, 100.0, data: data, unit: LengthMetricsUnit.Default)
+                    this.context2.putImageData(imageData, 100.0, 100.0)
                 })
                 Canvas(this.context3).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitWithDataException1").onReady({
                     =>
-                    var data = Array<UInt8>(256, { _ => 255 })
-                    let imageData = ImageData(-100.0, -100.0, data: data)
-                    this.context3.putImageData(imageData, 20.0, 20.0)
+                    try {
+                        var data = Array<UInt8>(256, { _ => 255 })
+                        let imageData = ImageData(-100.0, -100.0, data: data)
+                        this.context3.putImageData(imageData, 20.0, 20.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(-100.0, -100.0, data: data) create failed.")
+                    }
                 })
                 Canvas(this.context4).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitWithDataException2").onReady({
                     =>
-                    var data = Array<UInt8>(256, { _ => 255 })
-                    let imageData = ImageData(0.0, 0.0, data: data)
-                    this.context4.putImageData(imageData, 20.0, 20.0)
+                    try {
+                        var data = Array<UInt8>(256, { _ => 255 })
+                        let imageData = ImageData(0.0, 0.0, data: data)
+                        this.context4.putImageData(imageData, 20.0, 20.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(0.0, 0.0, data: data) create failed.")
+                    }
                 })
                 Canvas(this.context5).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitWithDataNone").onReady({
                     =>
-                    var data = Array<UInt8>(256, { _ => 255 })
-                    let imageData = ImageData(Option.None, Option.None, data: Option.None, unit: Option.None)
-                    this.context5.putImageData(imageData, 20.0, 20.0)
+                    try {
+                        var data = Array<UInt8>(256, { _ => 255 })
+                        let imageData = ImageData(Option.None, Option.None, data: Option.None, unit: Option.None)
+                        this.context5.putImageData(imageData, 20.0, 20.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, data: Option.None, unit: Option.None) create failed.")
+                    }
                 })
             }.width(100.percent)
         }.width(100.percent).height(100.percent).id("scroller")

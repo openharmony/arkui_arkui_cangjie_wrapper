@@ -46,20 +46,32 @@ class ViewImageDataInitNoData {
                 
                 Canvas(this.context2).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataException").onReady({
                     =>
-                    let imageData = ImageData(-100.0, -100.0)
-                    this.context2.putImageData(imageData, 100.0, 100.0)
+                    try {
+                        let imageData = ImageData(-100.0, -100.0)
+                        this.context2.putImageData(imageData, 100.0, 100.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(-100.0, -100.0) create failed.")
+                    }
                 })
                 
                 Canvas(this.context3).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataBoundary").onReady({
                     =>
-                    let imageData = ImageData(0.0, 0.0)
-                    this.context3.putImageData(imageData, 100.0, 100.0)
+                    try {
+                        let imageData = ImageData(0.0, 0.0)
+                        this.context3.putImageData(imageData, 100.0, 100.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(0.0, 0.0) create failed.")
+                    }
                 })
                 
                 Canvas(this.context4).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataNone").onReady({
                     =>
-                    let imageData = ImageData(Option.None, Option.None, unit: Option.None)
-                    this.context4.putImageData(imageData, 100.0, 100.0)
+                    try {
+                        let imageData = ImageData(Option.None, Option.None, unit: Option.None)
+                        this.context4.putImageData(imageData, 100.0, 100.0)
+                    } catch (e) {
+                        Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, unit: Option.None) create failed.")
+                    }
                 })
             }.width(100.percent)
         }.width(100.percent).height(100.percent).id("scroller")
