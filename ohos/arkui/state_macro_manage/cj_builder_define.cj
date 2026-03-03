@@ -17,8 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl,
-    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr}
+import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl, MatchExpr,
+    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr, parseExpr}
 import std.collection.{HashMap, ArrayList}
 
 public macro Builder(input: Tokens): Tokens {
@@ -347,47 +347,108 @@ class VisitBuilder <: Visitor {
     }
 
     /**
+     * Try to bind constructor arg by parameter name.
+     * Returns true if matched by name (bound or skipped), false if no name match.
+     */
+    func tryBindConstructorArgByName(curNode: CallExpr, typeName: String, paramList: ArrayList<(Int64, String)>, i: Int64): Bool {
+        let argName = getArgumentIdentifier(curNode.arguments[i]).value
+        if (argName == "") {
+            return false
+        }
+        for ((_, expectedName) in paramList) {
+            if (argName == expectedName) {
+                bindArgument(curNode.arguments[i])
+                return true
+            }
+        }
+        false
+    }
+
+    /**
+     * Try to bind constructor arg by position index, return true if matched and bound
+     */
+    func tryBindConstructorArgByIndex(curNode: CallExpr, paramList: ArrayList<(Int64, String)>, i: Int64): Bool {
+        for ((index, _) in paramList) {
+            if (index == i) {
+                bindArgument(curNode.arguments[i])
+                return true
+            }
+        }
+        false
+    }
+
+    /**
      * Handle constructor calls with CustomBuilder parameters
      */
     func handleConstructorCall(curNode: CallExpr) {
-        if (!(curNode.callFunc is RefExpr)) {
-            return
-        }
-        
-        let refExpr = (curNode.callFunc as RefExpr).getOrThrow()
-        let typeName = refExpr.identifier.value
-        
-        let constructorParams = buildConstructorParams()
-        if (let Some(paramList) <- constructorParams.get(typeName)) {
-            // Check all arguments: if parameter name matches, bind it; otherwise check by index
-            for (i in 0..curNode.arguments.size) {
-                let argName = getArgumentIdentifier(curNode.arguments[i]).value
-                var matched = false
-                
-                // First, try to match by parameter name (for named arguments)
-                if (argName != "") {
-                    for ((_, expectedName) in paramList) {
-                        if (argName == expectedName) {
-                            // For MenuItemGroup, skip only LitConstExpr and __GenerateResource__()
-                            if (typeName != "MenuItemGroup" || !shouldSkipArgument(curNode.arguments[i].expr)) {
-                                bindArgument(curNode.arguments[i])
+        match (curNode.callFunc as RefExpr) {
+            case None => return
+            case Some(refExpr) =>
+                let typeName = refExpr.identifier.value
+                match (buildConstructorParams().get(typeName)) {
+                    case None => ()
+                    case Some(paramList) =>
+                        for (i in 0..curNode.arguments.size) {
+                            let matched = tryBindConstructorArgByName(curNode, typeName, paramList, i)
+                            if (!matched) {
+                                tryBindConstructorArgByIndex(curNode, paramList, i)
                             }
-                            matched = true
-                            break
                         }
+                }
+        }
+    }
+
+    /**
+     * Handle method with named CustomBuilder parameter (e.g., bindMenu(builder: ...))
+     */
+    func handleNamedParamMethod(curNode: CallExpr, fieldName: String): Bool {
+        if (!buildNamedParam().contains(fieldName)) {
+            return false
+        }
+        let expectedName = buildParamNames().get(fieldName) ?? ""
+        for (i in 0..curNode.arguments.size) {
+            if (getArgumentIdentifier(curNode.arguments[i]).value == expectedName) {
+                bindArgument(curNode.arguments[i])
+                return true
+            }
+        }
+        true
+    }
+
+    /**
+     * Handle method with positional CustomBuilder parameter (e.g., description(...))
+     */
+    func handlePositionalParamMethod(curNode: CallExpr, fieldName: String): Bool {
+        match (buildFunctions().get(fieldName)) {
+            case None => false
+            case Some(index) =>
+                if (index < curNode.arguments.size) {
+                    if (fieldName == "title" || fieldName == "tabBar") {
+                        return true
+                    } else {
+                        bindArgument(curNode.arguments[index])
                     }
                 }
-                
-                // If not matched and it's a positional argument, check by index
-                if (!matched && argName == "") {
-                    for ((index, expectedName) in paramList) {
-                        if (index == i) {
+                true
+        }
+    }
+
+    /**
+     * Handle method with multiple CustomBuilder parameters (e.g., swipeAction(start:, end:))
+     */
+    func handleMultiParamMethod(curNode: CallExpr, fieldName: String): Unit {
+        match (buildMultiParam().get(fieldName)) {
+            case None => ()
+            case Some(paramList) =>
+                for (i in 0..curNode.arguments.size) {
+                    let argName = getArgumentIdentifier(curNode.arguments[i]).value
+                    for ((_, expectedName) in paramList) {
+                        if (argName == expectedName) {
                             bindArgument(curNode.arguments[i])
                             break
                         }
                     }
                 }
-            }
         }
     }
 
@@ -395,61 +456,20 @@ class VisitBuilder <: Visitor {
      * Handle method calls with CustomBuilder parameters
      */
     func handleMethodCall(curNode: CallExpr) {
-        if (!(curNode.callFunc is MemberAccess)) {
-            return
-        }
-        var ma = (curNode.callFunc as MemberAccess).getOrThrow()
-        let fieldName = ma.field.value
-        
-        // SECURITY CHECK: Get the base type name and verify it's allowed
-        let baseTypeName = getBaseTypeName(ma.baseExpr)
-        if (!isAllowedType(fieldName, baseTypeName)) {
-            return
-        }
-        
-        // Handle functions with CustomBuilder as named parameter (check parameter name first)
-        // This must be checked before positional parameters to handle cases like RichEditor.customKeyboard
-        let namedParams = buildNamedParam()
-        if (namedParams.contains(fieldName)) {
-            let paramNames = buildParamNames()
-            let expectedName = paramNames.get(fieldName) ?? ""
-            for (i in 0..curNode.arguments.size) {
-                let paramName = getArgumentIdentifier(curNode.arguments[i]).value
-                if (paramName == expectedName) {
-                    bindArgument(curNode.arguments[i])
-                    break
+        match (curNode.callFunc as MemberAccess) {
+            case None => return
+            case Some(ma) =>
+                let fieldName = ma.field.value
+                if (!isAllowedType(fieldName, getBaseTypeName(ma.baseExpr))) {
+                    return
                 }
-            }
-            return
-        }
-        
-        // Handle functions with CustomBuilder at fixed position (no parameter name check)
-        // This handles TextInput.customKeyboard and other positional parameter cases
-        let functions = buildFunctions()
-        if (let Some(index) <- functions.get(fieldName)) {
-            if (index < curNode.arguments.size) {
-                let argExpr = curNode.arguments[index].expr
-                // For title and tabBar, skip only LitConstExpr and __GenerateResource__()
-                // All other cases (RefExpr, LambdaExpr, etc.) should be processed
-                if (fieldName != "title" && fieldName != "tabBar" || !shouldSkipArgument(argExpr)) {
-                    bindArgument(curNode.arguments[index])
+                if (handleNamedParamMethod(curNode, fieldName)) {
+                    return
                 }
-            }
-            return
-        }
-        
-        // Handle functions with multiple CustomBuilder parameters
-        let multiParams = buildMultiParam()
-        if (let Some(paramList) <- multiParams.get(fieldName)) {
-            for (i in 0..curNode.arguments.size) {
-                let argName = getArgumentIdentifier(curNode.arguments[i]).value
-                for ((_, expectedName) in paramList) {
-                    if (argName == expectedName) {
-                        bindArgument(curNode.arguments[i])
-                        break
-                    }
+                if (handlePositionalParamMethod(curNode, fieldName)) {
+                    return
                 }
-            }
+                handleMultiParamMethod(curNode, fieldName)
         }
     }
 
