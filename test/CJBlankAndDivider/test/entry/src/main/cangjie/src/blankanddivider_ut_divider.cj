@@ -466,7 +466,7 @@ class BlankAndDividerUTDivider {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let lineCap = attrs.get("lineCap").getOrThrow().toString()
-        @Expect(lineCap, "\"SQUARE\"")  // different from the doc
+        @Expect(lineCap, "\"BUTT\"")
     }
 
     @TestCase
