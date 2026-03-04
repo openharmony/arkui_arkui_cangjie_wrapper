@@ -65,12 +65,12 @@ func buildFunctions(): HashMap<String, Int64> {
         return cached
     }
     let config = HashMap<String, Int64>([
-        ("bindContentCover", 1),  // bindContentCover(isShow, builder)
-        ("bindSheet", 1),         // bindSheet(isShow, builder)
-        ("description", 0),       // description(builder)
-        ("title", 0),             // title(value) - CustomBuilder version
-        ("customKeyboard", 0),    // customKeyboard(value) - TextInput version
-        ("tabBar", 0)             // tabBar(content)
+        ("bindContentCover", 1),
+        ("bindSheet", 1),
+        ("description", 0),
+        ("title", 0),
+        ("customKeyboard", 0),
+        ("tabBar", 0)
     ])
     _bindFunctionsCache = Some(config)
     return config
@@ -86,9 +86,9 @@ func buildNamedParam(): HashMap<String, Int64> {
         return cached
     }
     let config = HashMap<String, Int64>([
-        ("bindMenu", 0),          // bindMenu(builder: ...)
-        ("bindContextMenu", 0),   // bindContextMenu(builder: ..., responseType: ...)
-        ("bindSelectionMenu", 1) // bindSelectionMenu(spanType: ..., content: ..., ...)
+        ("bindMenu", 0),
+        ("bindContextMenu", 0),
+        ("bindSelectionMenu", 1)
     ])
     _bindFunctionNamedParamCache = Some(config)
     return config
@@ -107,7 +107,7 @@ func buildParamNames(): HashMap<String, String> {
         ("bindMenu", "builder"),
         ("bindContextMenu", "builder"),
         ("bindSelectionMenu", "content"),
-        ("customKeyboard", "value")  // RichEditor.customKeyboard(value: ...)
+        ("customKeyboard", "value")
     ])
     _bindFunctionParamNamesCache = Some(config)
     return config
@@ -139,29 +139,11 @@ func buildConstructorParams(): HashMap<String, ArrayList<(Int64, String)>> {
         return cached
     }
     let config = HashMap<String, ArrayList<(Int64, String)>>([
-        // CheckBox(indicatorBuilder: ?CustomBuilder) - index 2
         ("CheckBox", ArrayList([(2, "indicatorBuilder")])),
-        
-        // ListItemGroup(header: ?CustomBuilder, footer: ?CustomBuilder, child: () -> Unit)
         ("ListItemGroup", ArrayList([(0, "header"), (1, "footer")])),
-        
-        // MenuItemGroup(header: ?CustomBuilder, footer: ?CustomBuilder, child: () -> Unit)
-        // ("MenuItemGroup", ArrayList([(0, "header"), (1, "footer")])),
-        
-        // DragItemInfo(value: String, builder: ?CustomBuilder)
         ("DragItemInfo", ArrayList([(1, "builder")])),
-        
-        // ContextMenuOptions(offset: ..., placement: ..., enableArrow: ..., arrowOffset: ..., preview: ...)
-        // preview is at index 4
         ("ContextMenuOptions", ArrayList([(4, "preview")])),
-        
-        // CustomPopupOptions(builder: () -> Unit, ...) - builder is at index 0, named parameter
         ("CustomPopupOptions", ArrayList([(0, "builder")])),
-        
-        // SheetOptions(backgroundColor: 0, onAppear: 1, onDisappear: 2, onWillAppear: 3, onWillDisappear: 4,
-        //              height: 5, detents: 6, preferType: 7, showClose: 8, dragBar: 9,
-        //              blurStyle: 10, maskColor: 11, title: 12, ...)
-        // title is at index 12
         ("SheetOptions", ArrayList([(12, "title")]))
     ])
     _bindConstructorParamsCache = Some(config)
