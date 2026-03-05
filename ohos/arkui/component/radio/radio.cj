@@ -125,6 +125,18 @@ public class Radio <: CommonMethodComponent<Radio> & RadioAttribute {
         var right_ = transAppResourceToLength(right ?? 0.vp)
         var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
         var left_ = transAppResourceToLength(left ?? 0.vp)
+        if (lessNotEqual(top_.value, 0.0)) {
+            top_ = 0.0.vp
+        }
+        if (lessNotEqual(right_.value, 0.0)) {
+            right_ = 0.0.vp
+        }
+        if (lessNotEqual(bottom_.value, 0.0)) {
+            bottom_ = 0.0.vp
+        }
+        if (lessNotEqual(left_.value, 0.0)) {
+            left_ = 0.0.vp
+        }
         unsafe {
             FfiOHOSAceFrameworkRadioSetPaddings(
                 CJEdge(

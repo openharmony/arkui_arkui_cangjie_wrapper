@@ -676,9 +676,9 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
         if (lessNotEqual(value_, 0.0)) {
             unsafe {
                 FfiOHOSAceFrameworkButtonSetPadding(
-                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
-                    DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue(), 
-                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(), 
+                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(),
+                    DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue(),
+                    DEFAULT_PADDING_VERTICAL, LengthUnit.Vp.getValue(),
                     DEFAULT_PADDING_HORIZONTAL, LengthUnit.Vp.getValue()
                 )
             }
@@ -756,10 +756,22 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
     }
 
     protected override func paddingInner(top: ?Length, right: ?Length, bottom: ?Length, left: ?Length): This {
-        let top_ = transAppResourceToLength(top ?? 0.vp)
-        let right_ = transAppResourceToLength(right ?? 0.vp)
-        let bottom_ = transAppResourceToLength(bottom ?? 0.vp)
-        let left_ = transAppResourceToLength(left ?? 0.vp)
+        var top_ = transAppResourceToLength(top ?? 0.vp)
+        var right_ = transAppResourceToLength(right ?? 0.vp)
+        var bottom_ = transAppResourceToLength(bottom ?? 0.vp)
+        var left_ = transAppResourceToLength(left ?? 0.vp)
+        if (lessNotEqual(top_.value, 0.0)) {
+            top_ = 0.0.px
+        }
+        if (lessNotEqual(right_.value, 0.0)) {
+            right_ = 0.0.px
+        }
+        if (lessNotEqual(bottom_.value, 0.0)) {
+            bottom_ = 0.0.px
+        }
+        if (lessNotEqual(left_.value, 0.0)) {
+            left_ = 0.0.px
+        }
         unsafe {
             FfiOHOSAceFrameworkButtonSetPadding(top_.value, top_.unitType.getValue(), right_.value,
                 right_.unitType.getValue(), bottom_.value, bottom_.unitType.getValue(), left_.value,
