@@ -271,26 +271,30 @@ class VisitBuilder <: Visitor {
         return false
     }
 
+
+    func getBaseExpr4MemberAccess(memberAccess: MemberAccess, callExpr: CallExpr): Option<Expr> {
+        if (memberAccess.field.value == "Some") {
+            let baseTypeName = getBaseTypeName(memberAccess.baseExpr)
+            if (baseTypeName == "Option") {
+                if (callExpr.arguments.size == 1) {
+                    return Some(callExpr.arguments[0].expr)
+                }
+            }
+        }
+        return None
+    }
+
     /**
      * Check if an expression is Option.Some(...) or Option<CustomBuilder>.Some(...)
      * Returns the inner expression if it is, None otherwise
      */
     func extractOptionSome(expr: Expr): Option<Expr> {
-        match (expr) {
-            case callExpr: CallExpr => 
-                match (callExpr.callFunc) {
-                    case memberAccess: MemberAccess => 
-                        if (memberAccess.field.value == "Some") {
-                            let baseTypeName = getBaseTypeName(memberAccess.baseExpr)
-                            if (baseTypeName == "Option") {
-                                if (callExpr.arguments.size == 1) {
-                                    return Some(callExpr.arguments[0].expr)
-                                }
-                            }
-                        }
-                    case _ => ()
-                }
-            case _ => ()
+        if (let Some(callExpr) <- (expr as CallExpr)) {
+            match (callExpr.callFunc) {
+                case memberAccess: MemberAccess => 
+                    return getBaseExpr4MemberAccess(memberAccess, callExpr)
+                case _ => ()
+            }
         }
         return None
     }
