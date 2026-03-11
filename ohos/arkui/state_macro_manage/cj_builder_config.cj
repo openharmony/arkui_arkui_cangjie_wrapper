@@ -139,7 +139,7 @@ func buildConstructorParams(): HashMap<String, ArrayList<(Int64, String)>> {
         return cached
     }
     let config = HashMap<String, ArrayList<(Int64, String)>>([
-        ("CheckBox", ArrayList([(2, "indicatorBuilder")])),
+        ("Checkbox", ArrayList([(2, "indicatorBuilder")])),
         ("ListItemGroup", ArrayList([(0, "header"), (1, "footer")])),
         ("DragItemInfo", ArrayList([(1, "builder")])),
         ("ContextMenuOptions", ArrayList([(4, "preview")])),
