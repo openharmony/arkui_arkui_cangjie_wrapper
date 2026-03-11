@@ -20,6 +20,13 @@ package ohos.base
 import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 
+var _transAppResourceToResourceColor: ?(ResourceColor) -> UInt32 = None
+
+// Register the function to convert AppResource to ResourceColor. And add register function to avoid dependency cycle.
+protected func registerTransAppResourceToResourceColor(fn: (ResourceColor) -> UInt32): Unit {
+    _transAppResourceToResourceColor = fn
+}
+
 /**
  * Defines the color which can use resource.
  */
@@ -38,7 +45,10 @@ public interface ResourceColor {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     func toUInt32(): UInt32 {
-        throw BusinessException(100001, "Internal error.")
+        match (_transAppResourceToResourceColor) {
+            case Some(fn) => fn(this)
+            case _ => throw BusinessException(100001, "Internal error.")
+        }
     }
 }
 
