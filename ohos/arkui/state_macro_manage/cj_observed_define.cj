@@ -18,37 +18,33 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, ClassDecl, VarDecl, parseDecl, ToTokens, Token}
-import std.collection.ArrayList
+import std.collection.{ArrayList, HashSet}
 
 /**
  * example:
  * @Observed
  * class Book {
  *     @Publish var title: String = "English"
+ *     var count: Int64 = 0
+ *     let id: String
  * }
  * will expand to
  * class Book <: ObservedObject {
  *     private var stateVarDecl_title_: ObservedProperty<String>
- *     prop var title: String {
- *         get() {
- *             return this.stateVarDecl_title_.get()
- *         }
- *         set(v) {
- *             this.stateVarDecl_title_.set(v)
- *         }
- *     }
- *     init(title!: String = "English") {
- *         this.stateVarDecl_title_ = ObservedProperty<String>("title", title)
- *         this.addPublishVar(this.stateVarDecl_title_)
- *     }
+ *     prop var title: String { ... }
+ *     var count: Int64 = 0
+ *     let id: String
+ *     init(...) { ... }
  *     func set(newValue: ObservedComplexAbstract) {
  *         let realValue = (newValue as Book).getOrThrow()
  *         this.title = realValue.title
+ *         this.count = realValue.count
+ *         this.id = realValue.id
  *     }
- *     func get(): Book {
- *         return this
- *     }
+ *     func get(): Book { return this }
  * }
+ * Note: set() updates all properties including @Publish, var (mutable) and let (immutable).
+ * let with initializer (compile-time constant) is excluded since it cannot be reassigned.
  */
 public macro Observed(input: Tokens): Tokens {
     checkObserved(input)
@@ -60,8 +56,8 @@ public macro Observed(input: Tokens): Tokens {
 
     STATE_MANAGE_HANDLER.observedWithPublishInfo.add(classIdent.value, STATE_MANAGE_HANDLER.publishInformation)
 
-    // generate set function, it will assign new value to all publish declarations.
-    let memberSetFunc = generateSetFunc(quote($classIdent))
+    // generate set function, it will assign new value to all properties including @Publish, var and let.
+    let memberSetFunc = generateSetFunc(quote($classIdent), observedClass)
 
     // generate init function
     let initFunc = generateObservedInitFunc(observedClass)
@@ -98,23 +94,51 @@ func checkObserved(input: Tokens) {
     }
 }
 
-func generateSetFunc(classIdent: Tokens): Tokens {
-    var body = quote(
-        let realValue = (newValue as $classIdent).getOrThrow()
-    )
+func generateSetFunc(classIdent: Tokens, classDecl: ClassDecl): Tokens {
+    var body = Tokens()
 
-    // Assign new values to publish declarations
     for (item in STATE_MANAGE_HANDLER.publishInformation.values()) {
         let memberItem = item.identifier
         body = body + quote(
-            this.$memberItem = realValue.$memberItem
+            this.$memberItem = newValue.$memberItem
+        )
+    }
+
+    var excludeIdents = HashSet<String>()
+    for (k in STATE_MANAGE_HANDLER.publishInformation.keys()) {
+        excludeIdents.add(k)
+    }
+    for (v in STATE_MANAGE_HANDLER.publishInformation.values()) {
+        excludeIdents.add(v.identifier.value)
+    }
+
+    // 3. Normal variables from getVarDecls: var (mutable) and let (immutable), exclude @Publish expanded
+    let varDecls = getVarDecls(classDecl)
+    for (item in varDecls) {
+        if (excludeIdents.contains(item.identifier.value)) {
+            continue
+        }
+        var hasInitializer = false
+        try {
+            item.expr
+            hasInitializer = true
+        } catch (e: Exception) {
+            hasInitializer = false
+        }
+        // Skip let with initializer: compile-time constant, cannot be reassigned
+        if (item.keyword.value == "let" && hasInitializer) {
+            continue
+        }
+        let memberItem = item.identifier
+        body = body + quote(
+            this.$memberItem = newValue.$memberItem
         )
     }
 
     createMethodDeclaration(
         modifiers: quote(public),
         identifier: quote(set),
-        params: quote((newValue: $OBSERVED_COMPLEX_ABSTRACT)),
+        params: quote((newValue: $classIdent)),
         body: body
     )
 }
