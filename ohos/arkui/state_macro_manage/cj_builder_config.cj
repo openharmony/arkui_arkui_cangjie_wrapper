@@ -144,7 +144,9 @@ func buildConstructorParams(): HashMap<String, ArrayList<(Int64, String)>> {
         ("DragItemInfo", ArrayList([(1, "builder")])),
         ("ContextMenuOptions", ArrayList([(4, "preview")])),
         ("CustomPopupOptions", ArrayList([(0, "builder")])),
-        ("SheetOptions", ArrayList([(12, "title")]))
+        ("SheetOptions", ArrayList([(12, "title")])),
+        ("MenuItem", ArrayList([(4, "builder")])),
+        ("CustomDialogOptions", ArrayList([(0, "builder")]))
     ])
     _bindConstructorParamsCache = Some(config)
     return config
