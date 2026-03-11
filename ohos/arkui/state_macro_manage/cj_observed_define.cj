@@ -95,12 +95,14 @@ func checkObserved(input: Tokens) {
 }
 
 func generateSetFunc(classIdent: Tokens, classDecl: ClassDecl): Tokens {
-    var body = Tokens()
+    var body = quote(
+        let realValue = (newValue as $classIdent).getOrThrow() 
+    )
 
     for (item in STATE_MANAGE_HANDLER.publishInformation.values()) {
         let memberItem = item.identifier
         body = body + quote(
-            this.$memberItem = newValue.$memberItem
+            this.$memberItem = realValue.$memberItem
         )
     }
 
@@ -112,7 +114,7 @@ func generateSetFunc(classIdent: Tokens, classDecl: ClassDecl): Tokens {
         excludeIdents.add(v.identifier.value)
     }
 
-    // 3. Normal variables from getVarDecls: var (mutable) and let (immutable), exclude @Publish expanded
+    // Normal variables from getVarDecls: var (mutable) and let (immutable), exclude @Publish expanded
     let varDecls = getVarDecls(classDecl)
     for (item in varDecls) {
         if (excludeIdents.contains(item.identifier.value)) {
@@ -131,14 +133,14 @@ func generateSetFunc(classIdent: Tokens, classDecl: ClassDecl): Tokens {
         }
         let memberItem = item.identifier
         body = body + quote(
-            this.$memberItem = newValue.$memberItem
+            this.$memberItem = realValue.$memberItem
         )
     }
 
     createMethodDeclaration(
         modifiers: quote(public),
         identifier: quote(set),
-        params: quote((newValue: $classIdent)),
+        params: quote((newValue: $OBSERVED_COMPLEX_ABSTRACT)),
         body: body
     )
 }
