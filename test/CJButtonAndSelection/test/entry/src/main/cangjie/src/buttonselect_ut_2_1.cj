@@ -268,7 +268,7 @@ class ButtonSelectUT21 {
         let jsonObject_nse = JsonValue.fromStr(inspector_nse).asObject()
         let attrs_nse = jsonObject_nse.get("$attrs").getOrThrow().asObject()
         let divider_style = attrs_nse.get('divider').getOrThrow().toString()
-        @Expect(divider_style, '{}')
+        @Expect(divider_style, '{"strokeWidth":"2.00px","startMargin":"0.00vp","endMargin":"0.00vp","color":"#33000000"}')
     }
 
     @TestCase

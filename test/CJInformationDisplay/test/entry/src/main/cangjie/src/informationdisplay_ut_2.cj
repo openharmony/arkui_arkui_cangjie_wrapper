@@ -192,7 +192,7 @@ class InformationDisplayUT2 {
         let testbgcl1 = attrs1.get("backgroundColor").getOrThrow().toString()
         @Expect(testbgcl1, "\"#FFFF0000\"")
 
-        let testco1 = attrs1.get("opacity").getOrThrow().toString()
+        let testco1 = attrs1.get("contentOpacity").getOrThrow().toString()
         @Expect(testco1, "0.100000")
 
         let inspector2 = getInspectorByKey("QRCode2")
@@ -205,7 +205,7 @@ class InformationDisplayUT2 {
         let testbgcl2 = attrs2.get("backgroundColor").getOrThrow().toString()
         @Expect(testbgcl2, "\"#FFFFFFFF\"")
 
-        let testco2 = attrs2.get("opacity").getOrThrow().toString()
+        let testco2 = attrs2.get("contentOpacity").getOrThrow().toString()
         @Expect(testco2, "0.500000")
     }
 
