@@ -39,7 +39,7 @@ public class FocusControl {
      * Request focus to the specific component by param: 'id/key'.
      *
      * @param { ?String } value - Component ID or key to receive focus.
-     * @returns { Bool } - Whether the focus is successfully requested.
+     * @returns { Bool } Whether the focus is successfully requested.
      */
     @!APILevel[
         since: "22",

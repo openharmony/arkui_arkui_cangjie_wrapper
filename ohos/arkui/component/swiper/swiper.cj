@@ -251,7 +251,7 @@ public open class Indicator {
     init() {}
 
     /**
-     * Creates and returns a DotIndicator instance.
+     * DotIndicator class object.
      *
      * @returns { DotIndicator } Returns a DotIndicator instance.
      */
@@ -264,7 +264,7 @@ public open class Indicator {
     }
 
     /**
-     * Creates and returns a DigitIndicator instance.
+     * DigitIndicator class object.
      *
      * @returns { DigitIndicator } Returns a DigitIndicator instance.
      */
@@ -279,7 +279,7 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the left edge of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the left edge of the Swiper component.
+     * @param { ?Length } value - the indicator to the left.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -294,7 +294,7 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the top edge of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the top edge of the Swiper component.
+     * @param { ?Length } value - the indicator to the top.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -309,7 +309,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the right edge of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the right edge of the Swiper component.
+     * @param { ?Length } value - Position of the navigation indicator relative to the right edge of
+     *     the Swiper component.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -324,7 +325,8 @@ public open class Indicator {
     /**
      * Sets the position of the navigation indicator relative to the bottom edge of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the bottom edge of the Swiper component.
+     * @param { ?Length } value - Position of the navigation indicator relative to the bottom edge of
+     *     the Swiper component.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -340,7 +342,8 @@ public open class Indicator {
      * Sets the distance between the navigation indicator and the right edge (in right-to-left scripts)
      * or the left edge (in left-to-right scripts) of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the start edge of the Swiper component.
+     * @param { ?Length } value - the indicator to the right in LTR, indicator to the left in RTL.
+     *     Default value: 0.Unit: vp.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -356,7 +359,8 @@ public open class Indicator {
      * Sets the distance between the navigation indicator and the left edge (in right-to-left scripts)
      * or the right edge (in left-to-right scripts) of the Swiper component.
      *
-     * @param { ?Length } value - Distance from the end edge of the Swiper component.
+     * @param { ?Length } value - the indicator to the left in RTL, Set the indicator to the right in LTR.
+     *     Default value: 0.Unit: vp.
      * @returns { This } Returns the Indicator instance.
      */
     @!APILevel[
@@ -402,7 +406,6 @@ public open class Indicator {
 
 /**
  * Define DotIndicator, the indicator type is dot.
- * A dot-style navigation indicator for Swiper component.
  */
 @!APILevel[
     since: "22",
@@ -439,8 +442,8 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the width of the dot-style navigation indicator.
      *
-     * @param { ?Length } value - Width of the dot-style navigation indicator. This parameter cannot be set in percentage.
-     * @default 6.vp
+     * @param { ?Length } value - Width of the dot-style navigation indicator. Default value is 6vp.
+     *     This parameter cannot be set in percentage.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -455,8 +458,8 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the height of the dot-style navigation indicator.
      *
-     * @param { ?Length } value - Height of the dot-style navigation indicator. This parameter cannot be set in percentage.
-     * @default 6.vp
+     * @param { ?Length } value - Height of the dot-style navigation indicator. Default value is 6vp.
+     *     This parameter cannot be set in percentage.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -471,8 +474,8 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the width of the selected dot in the dot-style navigation indicator.
      *
-     * @param { ?Length } value - Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.
-     * @default 12.vp
+     * @param { ?Length } value - Width of the selected dot in the dot-style navigation indicator.
+     *     Default value is 6vp. This parameter cannot be set in percentage.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -487,8 +490,8 @@ public class DotIndicator <: Indicator {
     /**
      * Sets the height of the selected dot in the dot-style navigation indicator.
      *
-     * @param { ?Length } value - Height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.
-     * @default 6.vp
+     * @param { ?Length } value - Height of the selected dot in the dot-style navigation indicator.
+     *     Default value is 6vp. This parameter cannot be set in percentage.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -504,7 +507,7 @@ public class DotIndicator <: Indicator {
      * Sets whether to enable the mask for the dot-style navigation indicator.
      *
      * @param { ?Bool } value - Whether to enable the mask for the dot-style navigation indicator.
-     * @default false
+     *     Default value is false.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -520,7 +523,7 @@ public class DotIndicator <: Indicator {
      * Sets the color of the dot-style navigation indicator.
      *
      * @param { ?ResourceColor } value - Color of the dot-style navigation indicator.
-     * @default 0x182431(10% opacity)
+     *     Default value is 0x182431(10% opacity).
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -537,7 +540,7 @@ public class DotIndicator <: Indicator {
      * Sets the color of the selected dot in the dot-style navigation indicator.
      *
      * @param { ?ResourceColor } value - Color of the selected dot in the dot-style navigation indicator.
-     * @default 0x007DFF
+     *     Default value is 0x007DFF.
      * @returns { This } Returns the DotIndicator instance.
      */
     @!APILevel[
@@ -554,7 +557,8 @@ public class DotIndicator <: Indicator {
      * Sets the maximum number of navigation dots in the dot-style navigation indicator.
      *
      * @param { ?UInt32 } value - Maximum number of navigation dots in the dot-style navigation indicator.
-     * @returns { This } Returns the DotIndicator instance.
+     *     Value range: [6, 9].
+     * @returns { This } return the DotIndicator.
      */
     @!APILevel[
         since: "22",
@@ -586,7 +590,7 @@ public class DotIndicator <: Indicator {
 
 /**
  * Define DigitIndicator, the indicator type is digit.
- * A digit-style navigation indicator for Swiper component.
+ * A digit-style indicator for Swiper component.
  */
 @!APILevel[
     since: "22",
@@ -617,8 +621,7 @@ public class DigitIndicator <: Indicator {
     /**
      * Sets the font color of the digit-style navigation indicator.
      *
-     * @param { ?ResourceColor } value - Font color of the digit-style navigation indicator.
-     * @default 0xff182431
+     * @param { ?ResourceColor } value - Font color of the digit-style navigation indicator. Default value is 0xff182431.
      * @returns { This } Returns the DigitIndicator instance.
      */
     @!APILevel[
@@ -634,7 +637,7 @@ public class DigitIndicator <: Indicator {
      * Sets the font color of the selected digit in the digit-style navigation indicator.
      *
      * @param { ?ResourceColor } value - Font color of the selected digit in the digit-style navigation indicator.
-     * @default 0xff182431
+     *     Default value is 0xff182431.
      * @returns { This } Returns the DigitIndicator instance.
      */
     @!APILevel[
@@ -649,13 +652,12 @@ public class DigitIndicator <: Indicator {
     /**
      * Sets the font style of the digit-style navigation indicator.
      *
-     * <p><strong>NOTE</strong>:
-     * <br>Only the size and weight parameters in Font are adjustable.
+     * NOTE:
+     * Only the size and weight parameters in Font are adjustable.
      * <brSetting family and style has no effect.
-     * </p>
      *
      * @param { ?Font } value - Font style of the digit-style navigation indicator.
-     * @default Font(size: 14.vp, weight: FontWeight.Normal)
+     *     Default value is { size: 14, weight: FontWeight.Normal }.
      * @returns { This } Returns the DigitIndicator instance.
      */
     @!APILevel[
@@ -671,7 +673,7 @@ public class DigitIndicator <: Indicator {
      * Sets the font style of the selected digit in the digit-style navigation indicator.
      *
      * @param { ?Font } value - Font style of the selected digit in the digit-style navigation indicator.
-     * @default Font(size: 14.vp, weight: FontWeight.Normal)
+     *     Default value is { size: 14, weight: FontWeight.Normal }.
      * @returns { This } Returns the DigitIndicator instance.
      */
     @!APILevel[
@@ -736,7 +738,6 @@ public class SwiperController <: RemoteDataLite {
 
     /**
      * Called when the next child component is displayed.
-     * Shows the next page in the Swiper component.
      *
      * @returns { Unit }
      */
@@ -752,7 +753,6 @@ public class SwiperController <: RemoteDataLite {
 
     /**
      * Called when the previous subcomponent is displayed.
-     * Shows the previous page in the Swiper component.
      *
      * @returns { Unit }
      */
@@ -784,7 +784,6 @@ public class SwiperController <: RemoteDataLite {
 
     /**
      * Called when need to stop the swiper animation.
-     * Stops the current Swiper animation and executes the callback.
      *
      * @param { ?VoidCallback } callback - Callback function to execute after animation stops.
      * @returns { Unit }
@@ -817,7 +816,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
      * Create a Swiper with controller and child component.
      * Initializes a Swiper component with optional controller and child content.
      *
-     * @param { ?SwiperController } controller - Controller for managing Swiper operations.
+     * @param { ?SwiperController } [controller] - Controller for managing Swiper operations.
      * @param { () -> Unit } child - Builder function for Swiper content.
      */
     @!APILevel[
@@ -841,14 +840,13 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets whether to enable automatic playback for child component switching.
      *
-     * <p><strong>NOTE</strong>:
-     * <br>If loop is set to false, the playback stops when the last page is reached.
-     * <br>The playback continues when the page is not the last page after a swipe gesture.
-     * <br>If the Swiper component becomes invisible, the playback stops.
-     * </p>
+     * NOTE:
+     * If loop is set to false, the playback stops when the last page is reached.
+     * The playback continues when the page is not the last page after a swipe gesture.
+     * If the Swiper component becomes invisible, the playback stops.
      *
      * @param { ?Bool } value - Whether to enable automatic playback for child component switching.
-     * @default false
+     *     Default value is false.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -865,8 +863,8 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the duration of the animation for child component switching.
      *
-     * @param { ?UInt32 } value - Duration of the autoplay for child component switching in milliseconds.
-     * @default 400
+     * @param { ?UInt32 } value - Duration of the autoplay for child component switching. Default value is 400,
+     *     the unit is ms. Minimum value is 0ms. If a value less than 0 is set, the default value is used.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -883,8 +881,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the index of the child component currently displayed in the container.
      *
-     * @param { ?UInt32 } value - Index of the child component currently displayed in the container.
-     * @default 0
+     * @param { ?UInt32 } value - Index of the child component currently displayed in the container. Default value is 0.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -901,8 +898,8 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the interval for automatic playback.
      *
-     * @param { ?UInt32 } value - Interval for automatic playback in milliseconds.
-     * @default 3000
+     * @param { ?UInt32 } value - Interval for automatic playback. Default value is 3000, the unit is ms.
+     *     Minimum value is 0ms. If a value less than 0 is set, the default value is used.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -919,8 +916,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets whether to enable loop playback.
      *
-     * @param { ?Bool } value - Whether to enable loop playback.
-     * @default true
+     * @param { ?Bool } value - Whether to enable loop playback. Default value is true.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -935,10 +931,9 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     }
 
     /**
-     * Sets whether vertical swiping is used.
+     * Sets whether vertical swiping is used
      *
-     * @param { ?Bool } value - Whether vertical swiping is used.
-     * @default false
+     * @param { ?Bool } value - Whether vertical swiping is used. Default value is false.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -973,7 +968,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the style of the navigation indicator.
      *
-     * @param { ?DotIndicator } value - Dot-style navigation indicator.
+     * @param { ?DotIndicator } indicator - Dot-style indicator.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1010,15 +1005,10 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     }
 
     /**
-     * Sets the space between child components.
+     * Sets the space between child components. NOTE: If the type is number, the default unit is vp. If the type is string, the pixel unit must be explicitly specified, for example, '10px'; if the unit is not specified, for example, '10', the default unit vp is used
      *
-     * <p><strong>NOTE</strong>:
-     * <br>If the type is Length, the default unit is vp.
-     * if the unit is not specified, for example, '10', the default unit vp is used.
-     * </p>
-     *
-     * @param { ?Length } value - Space between child components. Minimum value is 0. If a value less than 0 is set, the default value is used.
-     * @default 0
+     * @param { ?Length } value - Space between child components. Default value is 0,
+     *     Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1038,7 +1028,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
      * This API takes effect only when displayCount is not set.
      *
      * @param { ?SwiperDisplayMode } value - Mode in which elements are displayed along the main axis.
-     * @default SwiperDisplayMode.Stretch
+     *     Default value is SwiperDisplayMode.STRETCH.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1055,12 +1045,10 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the effect used when the component is at one of the edges.
      *
-     * <p><strong>NOTE</strong>:
-     * <br>This attribute takes effect when loop is set to false.
-     * </p>
+     * NOTE:
+     * This attribute takes effect when loop is set to false.
      *
-     * @param { ?EdgeEffect } value - Effect used when the component is at one of the edges.
-     * @default EdgeEffect.Spring
+     * @param { ?EdgeEffect } value - Effect used when the component is at one of the edges. Default value is EdgeEffect.Spring.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1075,17 +1063,10 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     }
 
     /**
-     * Sets the number of elements to display per page.
-     *
-     * If swipeByGroup is set to true:
-     * 1. All sub-items are grouped from index 0.
-     * 2. The number of sub-items in each group is the value of displayCount.
-     * 3. If the number of sub-items in the last group is less than displayCount, placeholder items are added to supplement the number of last group.
-     * 4. Placeholder items do not display any content and are only used as placeholders.
-     * 5. When turning pages, turn pages by group.
+     * Sets the number of elements to display per page. If swipeByGroup is set to true: 1、All sub-items are grouped from index 0. 2、The number of sub-items in each group is the value of displayCount. 3、If the number of sub-items in the last group is less than displayCount, placeholder items are added to supplement the number of last group. 4、Placeholder items do not display any content and are only used as placeholders. 5、When turning pages, turn pages by group
      *
      * @param { ?Int32 } value - Number of elements to display per page. Default value is 1.
-     * @param { ?Bool } swipeByGroup - Whether to turn pages by group. Default value is false.
+     * @param { ?Bool } [swipeByGroup] - Whether to turn pages by group. Default value is false.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1102,13 +1083,13 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets the number of child components to be preloaded(cached).
      *
-     * <p><strong>NOTE</strong>:
-     * <br>Which are needed for the specific number of pages immediately before and after the current page.
-     * <br>If swipeByGroup in displayCount is set to true, child components are cached by group.
-     * </p>
+     * NOTE:
+     * Which are needed for the specific number of pages immediately before and after the current page.
+     * If swipeByGroup in displayCount is set to true, child components are cached by group.
+     * Default value is 1.
      *
-     * @param { ?Int32 } value - Number of child components to be preloaded (cached). Minimum value is 0. If a value less than 0 is set, the default value is used.
-     * @default 1
+     * @param { ?Int32 } value - Number of child components to be preloaded (cached). Default value is 1.
+     *     Minimum value is 0. If a value less than 0 is set, the default value is used.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1129,8 +1110,7 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
     /**
      * Sets whether to disable the swipe feature.
      *
-     * @param { ?Bool } value - Whether to disable the swipe feature.
-     * @default false
+     * @param { ?Bool } value - Whether to disable the swipe feature. Default value is false.
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[
@@ -1146,9 +1126,11 @@ public class Swiper <: CommonMethodComponent<Swiper> & SwiperAttribute {
 
     /**
      * Sets the animation curve.
+     * Curve is an enumeration type for common curves
+     * ICurve is a curve object
      *
      * @param { ?Curve } value - Animation curve.
-     * @default Curve.Linear
+     *     Default value is interpolatingSpring(-1, 1, 328, 34).
      * @returns { This } Returns the Swiper instance.
      */
     @!APILevel[

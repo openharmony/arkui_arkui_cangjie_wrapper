@@ -46,8 +46,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * Called when the fill color is set.
      *
      * @param { ?ResourceColor } value - The shape fill color.
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -79,10 +78,12 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
      /**
      * Sets the opacity of the fill area.
+     * The value range is [0.0, 1.0].
+     * A value less than 0.0 evaluates to the value 0.0. A value greater than 1.0 evaluates to the value 1.0.
+     * Any other value evaluates to the value 1.0.
      *
-     * @param { ?AppResource } value - The shape fill opacity id source.
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?AppResource } value - Opacity of the fill area. Default value: 1
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -98,11 +99,12 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Called when the border color is set.
+     * Sets the stroke color.
+     * If this attribute is not set, the component does not have any stroke.
+     * If the value is invalid, no stroke will be drawn.
      *
-     * @param { ?ResourceColor } value - The stroke color.
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?ResourceColor } value - Stroke color.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -116,12 +118,13 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Sets the offset of the start point for drawing the stroke.
+     * Sets stroke dashes.
+     * The value must be greater than or equal to 0. Invalid values are treated as the default value.
      *
-     * @param { ?Array<Length> } value - Offset of the start point for drawing the stroke.
-     * @default [0.vp]
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Array<Length> } value - Stroke dashes.
+     *     Default value: []
+     *     Default unit: vp
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -148,12 +151,13 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Called when the offset of the starting point of border drawing is set.
+     * Sets the offset of the start point for drawing the stroke.
+     * An invalid value is handled as the default value.
      *
-     * @param { ?Length } value - The stroke dash offset.
-     * @default 0.vp
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Offset of the start point for drawing the stroke.
+     *     Default value: 0
+     *     Default unit: vp
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -171,9 +175,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * Called when the path endpoint drawing style is set.
      *
      * @param { ?LineCapStyle } value - Cap style of the stroke.
-     * @default LineCapStyle.Butt
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -190,10 +192,8 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
      * Sets the join style of the stroke.
      * This attribute does not work for the Circle component, which does not have corners.
      *
-     * @param { ?LineJoinStyle } value - Join style of the stroke.
-     * @default LineJoinStyle.Miter
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?LineJoinStyle } value - Join style of the stroke. Default value: LineJoinStyle.Miter
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -207,11 +207,10 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Limits for drawing acute angles as bevels.
+     * Limits for drawing acute angles as bevels
      *
      * @param { ?Float64 } miterLimit - The stroke miter limit.
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -225,15 +224,13 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Sets the stroke opacity
+     * Sets the stroke opacity.
      * The value range is [0.0, 1.0].
      * A value less than 0.0 evaluates to the value 0.0. A value greater than 1.0 evaluates to the value 1.0.
      * Any other value evaluates to the value 1.0.
      *
-     * @param { ?Float64 } value - The stroke opacity id source.
-     * @default 1.0
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Float64 } value - Stroke opacity. Default value: 1.0.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -269,13 +266,15 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Called when the width of the border is set.
+     * Sets the stroke width.
      * If this attribute is of the string type, percentage values are not supported and will be treated as 1.px.
      *
-     * @param { ?Length } value - The stroke width. The value must be greater than or equal to 0.
-     * @default 1.vp
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Stroke width.
+     *     The value must be greater than or equal to 0.
+     *     Default value: 1.
+     *     Default unit: vp.
+     *     An invalid value is handled as the default value.
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",
@@ -290,12 +289,13 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
     }
 
     /**
-     * Called when setting whether anti aliasing is on.
+     * Specifies whether anti-aliasing is enabled.
      *
-     * @param { ?Bool } value - Whether enable anti-alias.
-     * @default true
-     * @returns { T } - Returns the component instance itself for method chaining.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Bool } value - Whether anti-aliasing is enabled.
+     *     true: Anti-aliasing is enabled.
+     *     false: Anti-aliasing is disabled.
+     *     Default value: true
+     * @returns { T } Returns the component instance itself for method chaining.
      */
     @!APILevel[
         since: "22",

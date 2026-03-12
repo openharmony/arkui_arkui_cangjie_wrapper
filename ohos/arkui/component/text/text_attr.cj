@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
- * Defines the Text attribute functions.
+ * Provides attribute for TextClock.
  */
 @!APILevel[
     since: "22",

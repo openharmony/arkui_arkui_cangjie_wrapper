@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length}
 
 /**
- * Defines DataPanel attributes.
+ * Defines the DataPanel attribute functions.
  */
 @!APILevel[
     since: "22",

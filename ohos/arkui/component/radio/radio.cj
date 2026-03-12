@@ -51,7 +51,7 @@ foreign {
 }
 
 /**
- * Defines Radio Component.
+ * Provides methods for radio method component.
  */
 @!APILevel[
     since: "22",

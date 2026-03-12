@@ -71,7 +71,7 @@ foreign {
 }
 
 /**
- * Defines ImageSpan Component instance.
+ * Defines ImageSpan Component.
  */
 @!APILevel[
     since: "22",

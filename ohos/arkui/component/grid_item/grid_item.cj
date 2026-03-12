@@ -84,7 +84,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * This parameter specifies the start column number of the current element.
      *
      * @param { ?Int32 } value - The start column index, must be a non-negative integer.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -101,7 +101,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * This parameter specifies the end column number of the current element.
      *
      * @param { ?Int32 } value - The end column index, must be a non-negative integer greater than or equal to columnStart.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -118,7 +118,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * This parameter specifies the start line number of the current element.
      *
      * @param { ?Int32 } value - Start line number of the element.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -135,7 +135,7 @@ public class GridItem <: CommonMethodComponent<GridItem> & GridItemAttribute {
      * Specifies the end line number of the current element.
      *
      * @param { ?Int32 } value - End line number of the element.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

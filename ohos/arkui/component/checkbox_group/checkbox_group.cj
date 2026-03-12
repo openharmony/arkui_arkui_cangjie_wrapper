@@ -64,9 +64,8 @@ foreign {
 
 /**
  * Defines a CheckboxGroup callback when onChange.
- * Anonymous Object Rectification.
  *
- * @param { CheckboxGroupResult } value - checkbox group result
+ * @param { CheckboxGroupResult } value - checkbox group result.
  */
 public type OnCheckboxGroupChangeCallback = (CheckboxGroupResult) -> Unit
 
@@ -120,7 +119,6 @@ public class CheckboxGroupResult {
 
     /**
      * CheckboxGroupResult constructor.
-     *
      * @param { SelectStatus } status - The selection status of the checkbox group.
      * @param { Array<String> } name - The names of the selected checkboxes.
      */
@@ -182,10 +180,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     }
 
     /**
-     * Set whether all checkbox is selected.
+     * setting whether all checkbox is selected
      *
      * @param { ?Bool } value - Whether to select all checkboxes.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -199,10 +197,10 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
     }
 
     /**
-     * Set the display color of checkbox.
+     * setting the display color of checkbox
      *
      * @param { ?ResourceColor } value - The color to display when checkboxes are selected.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -320,8 +318,7 @@ public class CheckboxGroup <: CommonMethodComponent<CheckboxGroup> & CheckboxGro
      * Called when the selection status changes.
      *
      * @param { ?OnCheckboxGroupChangeCallback } callback - The callback function triggered when the selection status changes, with the new selection result as parameter.
-     * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 190002 - The callback function is invalid.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

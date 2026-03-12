@@ -404,7 +404,7 @@ public class TextClockController <: RemoteDataLite {
 }
 
 /**
- * A component that displays the current date and time, automatically updating at regular intervals.
+ * Defines TextClock Component.
  */
 @!APILevel[
     since: "22",
@@ -417,8 +417,8 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
      * The valid value is an integer ranging from -14 to 12,
      * where a negative value indicates the western time zone and a positive value indicates the eastern time zone.
      *
-     * @param { ?Float32 } timeZoneOffset - The time zone offset in hours.
-     * @param { ?TextClockController } controller - The controller for the text clock.
+     * @param { ?Float32 } [timeZoneOffset] - The time zone offset in hours.
+     * @param { ?TextClockController } [controller] - The controller for the text clock.
      */
     @!APILevel[
         since: "22",
@@ -463,13 +463,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Set display time format, such as "yyyy/mm/dd","yyyy-mm-dd".
-     * Supports time format: yyyy,mm,mmm(English month abbreviation),mmmm(Full name of the month in English),
-     * dd,ddd(English Week abbreviation),dddd(Full name of the week in English),
-     * HH/hh(24-hour clock/12-hour clock),MM/mm(minute),SS/ss(second).
-     * The default value is "hh:mm:ss" when TextClock is not in a form.
-     * The default value is "hh:mm" when TextClock is in a form.
-     * If the value has second or millisecond, the value will be set to the default value.
+     * Set display time format,such as yyyy/MM/dd,yyyy-MM-dd. support time format：yyyy,MM,MMM(English month abbreviation),MMMM(Full name of the month in English), dd,ddd(English Week abbreviation),dddd(Full name of the week in English), HH/hh(24-hour clock/12-hour clock),mm(minute),ss(second). The default value is hh:mm:ss when TextClock is not in a form. The default value is hh:mm when TextClock is in a form. If the value has second or millisecond, the value will be set to the default value
      *
      * @param { ?ResourceStr } value - The time format string.
      * @returns { This } Returns the TextClock instance.
@@ -490,7 +484,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Configures the font size of the text displayed in the TextClock.
+     * Called when the value of TextClock fontSize is set
      *
      * @param { ?Length } value - The font size.
      * @returns { This } Returns the TextClock instance.
@@ -511,7 +505,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Configures the font color of the text displayed in the TextClock.
+     * Called when the value of TextClock fontColor is set
      *
      * @param { ?ResourceColor } value - The font color resource.
      * @returns { This } Returns the TextClock instance.
@@ -534,7 +528,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Configures the font style of the text displayed in the TextClock.
+     * Called when the value of TextClock fontStyle is set
      *
      * @param { ?FontStyle } value - The font style.
      * @returns { This } Returns the TextClock instance.
@@ -552,7 +546,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Configures the font weight of the text displayed in the TextClock.
+     * Called when the value of TextClock fontWeight is set
      *
      * @param { ?FontWeight } value - The font weight.
      * @returns { This } Returns the TextClock instance.
@@ -572,7 +566,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Configures the font family of the text displayed in the TextClock.
+     * Called when the value of TextClock fontFamily is set
      *
      * @param { ?ResourceStr } value - The font family.
      * @returns { This } Returns the TextClock instance.
@@ -592,7 +586,7 @@ public class TextClock <: CommonMethodComponent<TextClock> & TextClockAttribute 
     }
 
     /**
-     * Applies a shadow effect to the text displayed in the TextClock.
+     * Called when the text shadow is set
      *
      * @param { ?Array<ShadowOptions> } values - The shadow options.
      * @returns { This } Returns the TextClock instance.

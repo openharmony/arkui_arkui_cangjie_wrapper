@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length}
 
 /**
- * Defines Progress Component.
+ * Defines the progress attribute functions.
  */
 @!APILevel[
     since: "22",

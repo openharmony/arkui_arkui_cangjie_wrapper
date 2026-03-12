@@ -72,7 +72,7 @@ public enum ListItemGroupStyle {
 }
 
 /**
- * Defines the item group attribute functions.
+ * Defines the divider style of the list or list item group.
  */
 @!APILevel[
     since: "22",
@@ -80,7 +80,9 @@ public enum ListItemGroupStyle {
 ]
 public class ListDividerOptions {
     /**
-     * Set the line width of the dividing line.
+     * Width of the divider. It cannot be set in percentage.
+     *
+     * @default 0.vp
      */
     @!APILevel[
         since: "22",
@@ -89,8 +91,9 @@ public class ListDividerOptions {
     public var strokeWidth: ?Length
 
     /**
-     * Set the color of the dividing line.
-     * The default value is 0x08000000.
+     * Color of the divider.
+     *
+     * @default 0x08000000
      */
     @!APILevel[
         since: "22",
@@ -99,8 +102,9 @@ public class ListDividerOptions {
     public var color: ?ResourceColor
 
     /**
-     * Set the distance between the dividing line and the starting end of the side of the list.
-     * The default value is 0.vp.
+     * Distance between the divider and the start edge of the list.
+     *
+     * @default 0.vp
      */
     @!APILevel[
         since: "22",
@@ -109,8 +113,9 @@ public class ListDividerOptions {
     public var startMargin: ?Length
 
     /**
-     * Set the distance between the dividing line and the end of the side of the list.
-     * The default value is 0.vp.
+     * Distance between the divider and the end edge of the list.
+     *
+     * @default 0.vp
      */
     @!APILevel[
         since: "22",
@@ -155,10 +160,10 @@ public class ListItemGroup <: CommonMethodComponent<ListItemGroup> & ListItemGro
     /**
      * Defines the constructor of ListItemGroup.
      *
-     * @param { ?CustomBuilder } header - Describes the ListItemGroup header.
-     * @param { ?CustomBuilder } footer - Describes the ListItemGroup footer.
-     * @param { ?Length } space - Describes the ListItemGroup space.
-     * @param { ?ListItemGroupStyle } style - Describes the ListItemGroup style.
+     * @param { ?CustomBuilder } [header] - Describes the ListItemGroup header.
+     * @param { ?CustomBuilder } [footer] - Describes the ListItemGroup footer.
+     * @param { ?Length } [space] - Describes the ListItemGroup space.
+     * @param { ?ListItemGroupStyle } [style] - Describes the ListItemGroup style.
      * @param { () -> Unit } child - The child component.
      */
     @!APILevel[

@@ -20,8 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
- * Defines the TextArea attribute functions.
- * This interface provides the attribute methods for the TextArea component.
+ * Defines the attribute functions of TextArea.
  */
 @!APILevel[
     since: "22",

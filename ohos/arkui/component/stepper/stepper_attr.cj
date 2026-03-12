@@ -19,8 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines the Stepper attribute functions.
- * Provides methods for configuring the behavior of the Stepper component.
+ * Defines the stepper attribute functions
  */
 @!APILevel[
     since: "22",

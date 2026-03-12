@@ -344,7 +344,7 @@ public class GuideLineStyle {
 }
 
 /**
- * RelativeContainer
+ * Defines RelativeContainer Component.
  */
 @!APILevel[
     since: "22",
@@ -366,12 +366,11 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     }
 
     /**
-    * Specifies guideLines of relativeContainer
-    *
-    * @param { ?Array<GuideLineStyle> } value
-    * @returns { This }
-    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
-    */
+     * Specifies guideLines of relativeContainer
+     *
+     * @param { ?Array<GuideLineStyle> } value - Array of guide line styles.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -384,12 +383,11 @@ public class RelativeContainer <: CommonMethodComponent<RelativeContainer> & Rel
     }
 
     /**
-    * Specifies barriers of relativeContainer
-    *
-    * @param { ?Array<BarrierStyle> } value
-    * @returns { This }
-    * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
-    */
+     * Specifies barriers of relativeContainer
+     *
+     * @param { ?Array<BarrierStyle> } value - Array of barrier styles.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

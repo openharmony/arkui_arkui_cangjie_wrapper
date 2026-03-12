@@ -92,7 +92,7 @@ public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
  * Defines an AlphabetIndexer callback when onRequestPopupData.
  *
  * @param { Int64 } index - selected index.
- * @returns { Array<String> } - string array corresponding to the index.
+ * @returns { Array<String> } string array corresponding to the index.
  */
 public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
 
@@ -192,7 +192,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     }
 
     /**
-     * Select the text background color.
+     * Select the text background color
      *
      * @param { ?ResourceColor } value - The selected background color.
      * @returns { This } Returns the current AlphabetIndexer instance.
@@ -231,7 +231,6 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Whether to use pop-up index hints.
      *
      * @param { ?Bool } value - Whether using popup index hints.
-     * @default  true
      * @returns { This }
      */
     @!APILevel[
@@ -249,10 +248,10 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Select the text text style.
      *
-     * @param { ?Length } size - The selected item font size.
-     * @param { ?FontWeight } weight - The selected item font weight.
-     * @param { ?ResourceStr } family - The selected item font family.
-     * @param { ?FontStyle } style - The selected item font style.
+     * @param { ?Length } [size] - The selected item font size.
+     * @param { ?FontWeight } [weight] - The selected item font weight.
+     * @param { ?ResourceStr } [family] - The selected item font family.
+     * @param { ?FontStyle } [style] - The selected item font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -286,13 +285,13 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         this
     }
  
-    /**	
-     * Select the text background color.	
-     *	
-     * @param { ?Length } size - The popup font size.
-     * @param { ?FontWeight } weight - The popup font weight.
-     * @param { ?ResourceStr } family - The popup font family.
-     * @param { ?FontStyle } style - The popup font style.
+    /**
+     * Select the text background color.
+     *
+     * @param { ?Length } [size] - The popup font size.
+     * @param { ?FontWeight } [weight] - The popup font weight.
+     * @param { ?ResourceStr } [family] - The popup font family.
+     * @param { ?FontStyle } [style] - The popup font style.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -326,13 +325,13 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         this
     }
 
-    /**	
-     * Definitions fonts.	
-     *	
-     * @param { ?Length } size - The normal item font size.
-     * @param { ?FontWeight } weight - The normal item font weight.
-     * @param { ?ResourceStr } family - The normal item font weight.
-     * @param { ?FontStyle } style - The normal item font weight.
+    /**
+     * Definitions fonts.
+     *
+     * @param { ?Length } [size] - The normal item font size.
+     * @param { ?FontWeight } [weight] - The normal item font weight.
+     * @param { ?ResourceStr } [family] - The normal item font weight.
+     * @param { ?FontStyle } [style] - The normal item font weight.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -392,7 +391,7 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
      * Alphabet index bar alignment style. The left and right alignment styles are supported,
      * which affects the pop-up position of the pop-up window.
      *
-     * @param { ?IndexerAlign } value - Indicates the alignment style of Alphabet index.
+     * @param { ?IndexerAlign } value - indicates the alignment style of Alphabet index.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[
@@ -429,8 +428,8 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
     /**
      * Position of the pop-up windows, relative to the midpoint of the top border of the indexer bar.
      *
-     * @param { ?Length } x - Coordinate x of the Position.
-     * @param { ?Length } y - Coordinate y of the Position.
+     * @param { ?Length } [x] - Coordinate x of the Position.
+     * @param { ?Length } [y] - Coordinate y of the Position.
      * @returns { This } Returns the current AlphabetIndexer instance.
      */
     @!APILevel[

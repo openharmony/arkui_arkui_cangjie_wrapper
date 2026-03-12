@@ -59,7 +59,6 @@ public class Size {
 
     /**
      * Defines the height property.
-     *
      */
     @!APILevel[
         since: "22",
@@ -94,7 +93,6 @@ struct COffset {
 
 /**
  * Defines the offset property.
- *
  */
 @!APILevel[
     since: "22",
@@ -151,8 +149,7 @@ struct CTranslateResult {
 }
 
 /**
- * Translation Result
- *
+ * Translation Result.
  */
 @!APILevel[
     since: "22",
@@ -161,7 +158,6 @@ struct CTranslateResult {
 public class TranslateResult {
     /**
      * Indicates the translation distance of the x-axis, in vp.
-     *
      */
     @!APILevel[
         since: "22",
@@ -171,7 +167,6 @@ public class TranslateResult {
 
     /**
      * Indicates the translation distance of the y-axis, in vp.
-     *
      */
     @!APILevel[
         since: "22",
@@ -181,7 +176,6 @@ public class TranslateResult {
 
     /**
      * Indicates the translation distance of the z-axis, in vp.
-     *
      */
     @!APILevel[
         since: "22",
@@ -217,8 +211,7 @@ struct CScaleResult {
 }
 
 /**
- * Scale Result
- *
+ * Scale Result.
  */
 @!APILevel[
     since: "22",
@@ -257,7 +250,6 @@ public class ScaleResult {
 
     /**
      * Transform the x-axis coordinate of the center point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -267,7 +259,6 @@ public class ScaleResult {
 
     /**
      * Transform the y-axis coordinate of the center point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -315,7 +306,6 @@ struct CRotateResult {
 
 /**
  * Rotation Result.
- *
  */
 @!APILevel[
     since: "22",
@@ -374,7 +364,6 @@ public class RotateResult {
 
     /**
      * Rotation angle.
-     *
      */
     @!APILevel[
         since: "22",
@@ -440,7 +429,6 @@ struct CComponentInfo {
 
 /**
  * Component information.
- *
  */
 @!APILevel[
     since: "22",
@@ -449,7 +437,6 @@ struct CComponentInfo {
 public class ComponentInfo {
     /**
      * component size.
-     *
      */
     @!APILevel[
         since: "22",
@@ -459,7 +446,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information relative to the local.
-     *
      */
     @!APILevel[
         since: "22",
@@ -469,7 +455,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information relative to the window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -479,7 +464,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information relative to the screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -489,7 +473,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information for translation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -499,7 +482,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information for scale.
-     *
      */
     @!APILevel[
         since: "22",
@@ -509,7 +491,6 @@ public class ComponentInfo {
 
     /**
      * Obtain attribute information for rotate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -557,7 +538,6 @@ public class ComponentInfo {
 
 /**
  * This module provides functionality for component coordinates and sizes.
- *
  */
 @!APILevel[
     since: "22",
@@ -567,8 +547,8 @@ public class ComponentUtils {
     /**
      * Provide the ability to obtain the coordinates and size of component drawing areas.
      *
-     * @param { String } id - Component id.
-     * @returns { ComponentInfo } Returns the component information including size and position.
+     * @param { String } id - component id.
+     * @returns { ComponentInfo } the object of ComponentInfo.
      */
     @!APILevel[
         since: "22",

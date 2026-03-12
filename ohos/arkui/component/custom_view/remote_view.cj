@@ -41,7 +41,7 @@ public abstract class RemoteView <: FFIData {
     }
 
     /**
-     * Define declarative UI descriptions for custom component.
+     * Customize the pop-up content constructor and it is migrated from class CustomComponent.
      */
     @!APILevel[
         since: "22",
@@ -106,7 +106,7 @@ public abstract class RemoteView <: FFIData {
      * Invoked when the user clicks the Back button.
      * It works only for the custom components decorated by @Entry.
      * The value **true** means that the page executes its own return logic.
-     * And **false** (default) means that the default return logic is used.
+     * And false (default) means that the default return logic is used.
      * @returns { Bool }
      */
     @!APILevel[

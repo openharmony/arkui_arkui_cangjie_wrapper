@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod, HorizontalAlign, FlexAlign}
 import ohos.labels.{APILevel}
 
 /**
- * Defines the Column attribute functions.
+ * Defines the Column component attribute functions.
  */
 @!APILevel[
     since: "22",

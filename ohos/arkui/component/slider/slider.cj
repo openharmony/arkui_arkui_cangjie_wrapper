@@ -88,7 +88,7 @@ foreign {
     func FfiOHOSAceFrameworkSliderResetSelectedColor(): Unit
 }
 /**
- * A component that provides a slider for selecting values within a range.
+ * Defines Slider Component.
  */
 @!APILevel[
     since: "22",
@@ -151,11 +151,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         }
     }
     /**
-    * Called when the slider color of the slider bar is set.
-    *
-    * @param { ?ResourceColor } value
-    * @returns { This }
-    */
+     * Called when the slider color of the slider bar is set.
+     *
+     * @param { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -173,11 +173,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when the track color of the slider is set.
-    *
-    * @param { ?ResourceColor } value
-    * @returns { This }
-    */
+     * Called when the track color of the slider is set.
+     *
+     * @param { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -195,11 +195,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when the slider of the slider bar is set to slide over the area color.
-    *
-    * @param { ?ResourceColor } value
-    * @returns { This }
-    */
+     * Called when the slider of the slider bar is set to slide over the area color.
+     *
+     * @param { ?ResourceColor } value
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -217,12 +217,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when setting whether to display step size.
-    *
-    * @param { ?Bool } value - Called when setting whether to display step size.
-    * @returns { This }
-    * @default false
-    */
+     * Called when setting whether to display step size.
+     *
+     * @param { ?Bool } value - Called when setting whether to display step size.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -234,13 +233,13 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when the percentage of bubble prompt is set when sliding.
-    *
-    * @param { ?Bool } value - Whether to display the bubble.
-    * @param { ?ResourceStr } content - Text content in the bubble.If the content is not specified,
-    *     the current percentage is displayed by default.
-    * @returns { This }
-    */
+     * Called when the percentage of bubble prompt is set when sliding.
+     *
+     * @param { ?Bool } value - Whether to display the bubble.
+     * @param { ?ResourceStr } [content] - Text content in the bubble.
+     *      If the content is not specified, the current percentage is displayed by default.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -260,11 +259,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when the thickness of track is set.
-    *
-    * @param { ?Length } value
-    * @returns { This }
-    */
+     * Called when the thickness of track is set.
+     *
+     * @param { ?Length } value
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -277,11 +276,14 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Triggered when the slider is dragged or clicked.
-    *
-    * @param { ?(Float64, SliderChangeMode) -> Unit } callback
-    * @returns { This }
-    */
+     * Triggered when the slider is dragged or clicked.
+     * NOTE: The Begin and End states are triggered when the slider is clicked with a gesture.
+     * The Moving and Click states are triggered when the value of value changes.
+     * If the coherent action is a drag action, the Click state will not be triggered.
+     *
+     * @param { ?(Float64, SliderChangeMode) -> Unit } callback
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -301,11 +303,11 @@ public class Slider <: CommonMethodComponent<Slider> & SliderAttribute {
         this
     }
     /**
-    * Called when the border color of block is set.
-    *
-    * @param { ?ResourceColor } value - The border color of block.
-    * @returns { This }
-    */
+     * Called when the border color of block is set.
+     *
+     * @param { ?ResourceColor } value - the border color of block.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

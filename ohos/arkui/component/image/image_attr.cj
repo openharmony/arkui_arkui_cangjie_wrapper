@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, Length, ResourceColor}
 
 /**
- * Defines the Image attribute functions.
+ * Define the ImageSpan attribute functions.
  */
 @!APILevel[
     since: "22",

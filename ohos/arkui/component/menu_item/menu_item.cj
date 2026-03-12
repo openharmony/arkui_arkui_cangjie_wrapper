@@ -52,7 +52,7 @@ let DEFAULT_MENU_ITEM_FONT_COLOR = 0x99000000
 let DEFAULT_MENU_ITEM_CONTENT_FONT_COLOR = 0xE5000000
 
 /**
- * A component that represents a single item within a Menu component, typically with text, icons, and optional submenus.
+ * Defines MenuItem Component.
  */
 @!APILevel[
     since: "22",
@@ -82,7 +82,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
      * @param { ?ResourceStr } content - Defines the content string display info.
      * @param { ?ResourceStr } endIcon - Defines the end display image info.
      * @param { ?ResourceStr } labelInfo - Defines the end label info like shortcut.
-     * @param { Option<() -> Unit> } builder - Create the submenu.
+     * @param { Option<() -> Unit> } [builder] - Create the submenu.
      */
     @!APILevel[
         since: "22",
@@ -132,9 +132,12 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Whether the relevant check icon is displayed when a menu item is selected.
-     * Controls the visibility of the check icon when the menu item is selected.
+     * Use type ResourceStr or SymbolGlyphModifier to specify icon instead of the default check mark.
      *
-     * @param { ?Bool } value - Indicates whether to display the check icon when selected.
+     * @param { ?Bool } value - Indicates whether to display icon when selected.
+     *     true: displays the default check mark when selected.
+     *     false: does not displays icon when selected.
+     *     ResourceStr or SymbolGlyphModifier: displays the specified icon when selected.
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
@@ -171,12 +174,13 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     }
 
     /**
-     * Configures the font properties of the menu item content text.
+     * Sets the content font style.
+     * Family and style are not supported currently and will be fixed in future.
      *
-     * @param { ?Length } size - Indicates the font size of content text.
-     * @param { ?FontWeight } weight - Indicates the font weight of content text.
-     * @param { ?ResourceStr } family - Indicates the font family of content text.
-     * @param { ?FontStyle } style - Indicates the font style of content text.
+     * @param { ?Length } [size] - Indicates the font size of content text.
+     * @param { ?FontWeight } [weight] - Indicates the font weight of content text.
+     * @param { ?ResourceStr } [family] - Indicates the font family of content text.
+     * @param { ?FontStyle } [style] - Indicates the font style of content text.
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
@@ -207,8 +211,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     }
 
     /**
-     * Sets the font color of content text.
-     * Configures the font color of the menu item content text.
+     * Sets the font color of content text
      *
      * @param { ?ResourceColor } value - Indicates the font color of content text.
      * @returns { This } Returns the MenuItem instance.
@@ -227,12 +230,12 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
 
     /**
      * Sets the label info font style.
-     * Configures the font properties of the menu item label text.
+     * Family and style are not supported currently and will be fixed in future.
      *
-     * @param { ?Length } size - Indicates the font size of label info text.
-     * @param { ?FontWeight } weight - Indicates the font weight of label info text.
-     * @param { ?ResourceStr } family - Indicates the font family of label info text.
-     * @param { ?FontStyle } style - Indicates the font style of label info text.
+     * @param { ?Length } [size] - Indicates the font size of label info text.
+     * @param { ?FontWeight } [weight] - Indicates the font weight of label info text.
+     * @param { ?ResourceStr } [family] - Indicates the font family of label info text.
+     * @param { ?FontStyle } [style] - Indicates the font style of label info text.
      * @returns { This } Returns the MenuItem instance.
      */
     @!APILevel[
@@ -261,8 +264,7 @@ public class MenuItem <: CommonMethodComponent<MenuItem> & MenuItemAttribute {
     }
 
     /**
-     * Sets the font color of label info text.
-     * Configures the font color of the menu item label text.
+     * Sets the font color of label info text
      *
      * @param { ?ResourceColor } value - Indicates the font color of label info text.
      * @returns { This } Returns the MenuItem instance.

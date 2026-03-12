@@ -256,7 +256,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Disable the special effect of the data ratio chart.
      *
      * @param { ?Bool } value - Whether to disable the special effect.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -273,7 +273,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the value colors of the data ratio chart.
      *
      * @param { ?Array<LinearGradient> } value - the value colors of the data ratio chart.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -301,7 +301,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set track background color of the data ratio chart.
      *
      * @param { ?ResourceColor } value - track background color of the data ratio chart.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -318,7 +318,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the stroke width of the data ratio chart.
      *
      * @param { ?Length } value - the stroke width of the data ratio chart.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -339,7 +339,7 @@ public class DataPanel <: CommonMethodComponent<DataPanel> & DataPanelAttribute 
      * Set the shadow width of the data ratio chart.
      *
      * @param { ?DataPanelShadowOptions } value - the track shadow width of the data ratio chart.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

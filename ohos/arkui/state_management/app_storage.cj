@@ -46,11 +46,11 @@ public class AppStorage {
     }
 
     /**
-     * Establishes a bidirectional synchronization between a component variable and an AppStorage property.
+     * Create and return a two-way sync ("link") to named property
+     * Same as @see LocalStorage.link()
      *
      * @param { String } propName - name of source property in AppStorage
-     * @returns { ?ObservedProperty<T> } The instance of ObservedProperty<T>, return 'None' if named property does not already exist in AppStorage.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T> return None if named property does not already exist in AppStorage.
      */
     @!APILevel[
         since: "22",
@@ -68,7 +68,6 @@ public class AppStorage {
      * @param { T } defaultValue - value to be used for initializing new property in AppStorage,
      * default value must be of type T, can be None.
      * @returns { ObservedProperty<T> } The instance of ObservedProperty<T>.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -84,7 +83,6 @@ public class AppStorage {
      *
      * @param { String } propName - name of source property in AppStorage.
      * @returns { ?ObservedProperty<T> } instance of ObservedProperty<T>, return None if named property does not already exist in AppStorage.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -100,8 +98,7 @@ public class AppStorage {
      *
      * @param { String } propName - name of source property in AppStorage.
      * @param { T } defaultValue - value to be used for initializing new property in AppStorage.
-     * @returns { ObservedProperty<T> } The instance of  ObservedProperty<T>.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { ObservedProperty<T> } instance of ObservedProperty<T>.
      */
     @!APILevel[
         since: "22",
@@ -112,14 +109,12 @@ public class AppStorage {
     }
 
     /**
-     * Checks if AppStorage has a property with given name.
-     * Returns true if property with given name exists.
-     * Same as ES6 Map.prototype.has().
-     * Same as see LocalStorage.has().
+     * Checks if AppStorage has a property with given name
+     * returns true if property with given name exists
+     * Same as see LocalStorage.has()
      *
      * @param { String } propName - searched property
      * @returns { Bool } true if property with such name exists in AppStorage.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -130,12 +125,11 @@ public class AppStorage {
     }
 
     /**
-     * Same as see LocalStorage.get().
-     * Obtain the value of property with given name, returns undefined if the property does not exist in AppStorage.
+     * Same as see LocalStorage.get()
+     * Obtain the value of property with given name, returns None if the property does not exist in AppStorage.
      *
      * @param { String } propName - name of the property to retrieve
      * @returns { ?T } property value of type T if found or None.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -153,7 +147,6 @@ public class AppStorage {
      * @param { String } propName - name of the property to set
      * @param { T } newValue - must be of type T
      * @returns { Bool } true on success, i.e. when above conditions are satisfied, otherwise false.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -166,13 +159,12 @@ public class AppStorage {
     /**
      * Set value of given property, if it exists, see set() .
      * Add property if no property with given name in AppStorage, and initialize with given value.
-     * newValue can be undefined or null from API 12.
-     * see LocalStorage.setOrCreate().
+     * newValue can be None or null from API 12
+     * see LocalStorage.setOrCreate()
      *
      * @param { String } propName - name of the property to set or create
      * @param { T } newValue - must be of type T.
      * @returns { Unit }
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -183,23 +175,21 @@ public class AppStorage {
     }
 
     /**
-     * Delete property with given name from AppStorage.
+     * Delete property from StorageBase
      * Use with caution:
-     * Before deleting a prop from AppStorage all its subscribers need to
+     * Before deleting a prop from LocalStorage all its subscribers need to
      * unsubscribe from the property.
-     * This method fails and returns false if given property still has subscribers.
-     * Another reason for failing is unknown property name.
+     * This method fails and returns false if given property still has subscribers
+     * Another reason for failing is unknown property.
      * Developer advise:
-     * Subscribers to a property in AppStorage are created with see link(), see prop()
-     * and also via @StorageLink and @StorageProp state variable decorators.
+     * Subscribers are created with see link(), see prop()
+     * and also via @LocalStorageLink and @LocalStorageProp state variable decorators.
      * That means as long as their is a @Component instance that uses such decorated variable
-     * or a sync relationship with a SubscribedAbstractProperty variable the property can not
-     * (and also should not!) be deleted from AppStorage.
-     * Same as see LocalStorage.delete()
+     * or a sync relationship with a SubscribedAbstractProperty variable the property can nit
+     * (and also should not!) be deleted from LocalStorage.
      *
      * @param { String } propName - name of the property to delete
      * @returns { Bool } false if method failed.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -226,10 +216,10 @@ public class AppStorage {
     }
 
     /**
-     * Method returns the number of properties currently in AppStorage.
+     * Returns number of properties in LocalStorage
+     * same as Map.prototype.size()
      *
      * @returns { Int64 } Returns the number of properties currently in AppStorage.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -240,11 +230,9 @@ public class AppStorage {
     }
 
     /**
-     * Delete all properties from the AppStorage.
-     * Precondition is that there are no subscribers, see Delete().
+     * Called when data is cleared.
      *
-     * @returns { boolean } false and deletes no properties if there is any property that still has subscribers.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { Bool } false and deletes no properties if there is any property that still has subscribers.
      */
     @!APILevel[
         since: "22",

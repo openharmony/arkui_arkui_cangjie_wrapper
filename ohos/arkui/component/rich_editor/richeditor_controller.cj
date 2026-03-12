@@ -39,7 +39,7 @@ struct NativeTextDecoration {
 }
 
 /**
- * Defines the type of leading margin.
+ * Leading margin.
  */
 @!APILevel[
     since: "22",
@@ -85,7 +85,7 @@ public enum LeadingMarginType {
 }
 
 /**
- * Text decoration.
+ * Defines the options of decoration.
  */
 @!APILevel[
     since: "22",
@@ -253,7 +253,7 @@ public class RichEditorTextStyle {
     public var fontFamily: ?ResourceStr
 
     /**
-     * font decoration.
+     * Font decoration.
      */
     @!APILevel[
         since: "22",
@@ -438,7 +438,7 @@ public class RichEditorLayoutStyle {
     public var margin: ?Margin
 
     /**
-     * Border Radius.
+     * Border radius
      */
     @!APILevel[
         since: "22",
@@ -933,7 +933,8 @@ public open class RichEditorBaseController <: RemoteDataLite {
     /**
      * Set caret offset.
      *
-     * @param { ?Int32 } offset
+     * @param { ?Int32 } offset - caret offset.
+     * @returns { Bool }
      */
     @!APILevel[
         since: "22",
@@ -975,10 +976,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a text span.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?RichEditorTextSpanOptions } options
+     * @param { ?ResourceStr } content - text value.
+     * @param { ?RichEditorTextSpanOptions } [options] - span info.
      * @returns { Int32 }
-     * @throws { BusinessException } - 100001 - Internal error. Possible causes: Failed to allocate memory.
      */
     @!APILevel[
         since: "22",
@@ -1001,8 +1001,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Add a image span.
      *
-     * @param { ?ResourceStr } value
-     * @param { ?RichEditorImageSpanOptions } options
+     * @param { ?ResourceStr } value - image value.
+     * @param { ?RichEditorImageSpanOptions } [options] - image span info.
      * @returns { Int32 }
      */
     @!APILevel[
@@ -1044,9 +1044,10 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @param { ?Int32 } start
-     * @param { ?Int32 } end
-     * @param { ?RichEditorImageSpanStyle } imageStyle
+     * @param { ?Int32 } [start] - The start of updating the span style.
+     * @param { ?Int32 } [end] - The end of updating the span style.
+     * @param { ?RichEditorImageSpanStyle } imageStyle - Image style
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -1064,8 +1065,9 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Delete span.
      *
-     * @param { ?Int32 } start
-     * @param { ?Int32 } end
+     * @param { ?Int32 } [start] - The start of deleting.
+     * @param { ?Int32 } [end] - The end of deleting.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -1079,6 +1081,7 @@ public class RichEditorController <: RichEditorBaseController {
 
     /**
      * close the select menu when menu is on.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -1093,9 +1096,10 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Modify span style.
      *
-     * @param { ?Int32 } start
-     * @param { ?Int32 } end
-     * @param { ?RichEditorParagraphStyle } style
+     * @param { ?Int32 } [start] - The start of updating the paragraph style.
+     * @param { ?Int32 } [end] - The end of updating the paragraph style.
+     * @param { ?RichEditorParagraphStyle } style - Paragraph style.
+     * @returns { Unit }
      */
     @!APILevel[
         since: "22",
@@ -1112,8 +1116,8 @@ public class RichEditorController <: RichEditorBaseController {
     /**
      * Get span content.
      *
-     * @param { ?Int32 } start
-     * @param { ?Int32 } end
+     * @param { ?Int32 } [start] - The start of getting span info.
+     * @param { ?Int32 } [end] - The end of getting span info.
      * @returns { ArrayList<RichEditorSpanResult> }
      */
     @!APILevel[

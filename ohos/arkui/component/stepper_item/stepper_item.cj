@@ -31,7 +31,7 @@ foreign {
 }
 
 /**
- * A component that represents a single step in a Stepper component.
+ * Defines StepperItem Component.
  */
 @!APILevel[
     since: "22",
@@ -56,7 +56,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     }
 
     /**
-     * The description text for the fallback text button at the bottom of the step navigator.
+     * Called when the value of stepperItem prevLabel is set
      *
      * @param { ?String } value - Text displayed on the previous step button.
      * @returns { This } Returns the StepperItem instance.
@@ -75,7 +75,7 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     }
 
     /**
-     * The description text for the next step text button at the bottom of the step navigator.
+     * Called when the value of stepperItem nextLabel is set
      *
      * @param { ?String } value - Text displayed on the next step button.
      * @returns { This } Returns the StepperItem instance.
@@ -94,10 +94,9 @@ public class StepperItem <: CommonMethodComponent<StepperItem> & StepperItemAttr
     }
 
     /**
-     * Sets the display state of the Step Navigator nextLabel.
-     * Configures the status of the step item, which affects its appearance and behavior.
+     * Called when the value of stepperItem status is set
      *
-     * @param { ?ItemState } status - Display state of the step item.
+     * @param { ?ItemState } [status] - Display state of the step item.
      * @returns { This } Returns the StepperItem instance.
      */
     @!APILevel[

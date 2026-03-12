@@ -22,7 +22,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length}
 
 /**
- * Defines List Component.
+ * Defines the List attribute functions.
  */
 @!APILevel[
     since: "22",

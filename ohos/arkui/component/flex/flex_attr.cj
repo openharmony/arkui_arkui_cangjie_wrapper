@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines Flex attributes.
+ * Defines the Flex attribute functions.
  */
 @!APILevel[
     since: "22",

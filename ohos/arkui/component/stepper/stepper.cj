@@ -46,8 +46,8 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     /**
      * Initializes a Stepper component with optional initial index and child content.
      *
-     * @param { ?UInt32 } index - Initial step index.
-     * @param { () -> Unit } child - Builder function for Stepper content.
+     * @param { ?UInt32 } [index] - Initial step index.
+     * @param { () -> Unit } [child] - Builder function for Stepper content.
      */
     @!APILevel[
         since: "22",
@@ -61,8 +61,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     }
 
     /**
-     * Callback when the finish label is clicked.
-     * Triggered when the user clicks the finish button to complete all steps.
+     * Callback when the finish label is clicked
      *
      * @param { ?() -> Unit } callback - Callback function triggered when finish is clicked.
      * @returns { This } Returns the Stepper instance.
@@ -81,7 +80,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     }
 
     /**
-     * Triggered when the user clicks the skip button to bypass the current step.
+     * Callback when the skip label is clicked
      *
      * @param { ?() -> Unit } callback - Callback function triggered when skip is clicked.
      * @returns { This } Returns the Stepper instance.
@@ -100,7 +99,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     }
 
      /**
-     * Triggered when the step changes, either forward or backward.
+     * Triggered when the slider is dragged or clicked. NOTE: The Begin and End states are triggered when the slider is clicked with a gesture. The Moving and Click states are triggered when the value of value changes. If the coherent action is a drag action, the Click state will not be triggered
      *
      * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when step changes.
      * The first parameter is the index of previous step, and the second parameter is the index of current step.
@@ -123,7 +122,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     }
 
      /**
-     * Triggered when the user clicks the next button to proceed to the next step.
+     * Callback when the next label is clicked
      *
      * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when next is clicked.
      * The first parameter is the index of current step, and the second parameter is the index of next step.
@@ -146,7 +145,7 @@ public class Stepper <: CommonMethodComponent<Stepper> & StepperAttribute {
     }
 
      /**
-     * Triggered when the user clicks the previous button to go back to the previous step.
+     * Callback when the previous label is clicked
      *
      * @param { ?(UInt32, UInt32) -> Unit } callback - Callback function triggered when previous is clicked.
      * The first parameter is the index of current step, and the second parameter is the index of previous step.

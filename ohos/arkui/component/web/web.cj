@@ -242,7 +242,6 @@ const RAWFILE_TYPE: Int32 = 30000
 
 /**
  * Defines the triggered function at the begin of web page loading.
- *
  */
 @!APILevel[
     since: "22",
@@ -250,8 +249,7 @@ const RAWFILE_TYPE: Int32 = 30000
 ]
 public class OnPageBeginEvent {
     /**
-     * The URL of the page.
-     *
+     * The url of page.
      */
     @!APILevel[
         since: "22",
@@ -273,7 +271,6 @@ public class OnPageBeginEvent {
 }
 /**
  * Defines the triggered function at the end of web page loading.
- *
  */
 @!APILevel[
     since: "22",
@@ -304,21 +301,19 @@ public class OnPageEndEvent {
 }
 /**
  * Defines the triggered callback when the resources loading is intercepted.
- *
  */
 @!APILevel[
     since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OnLoadInterceptEvent {
     /**
      * The information of request.
-     *
      */
     @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
+    since: "22",
+    syscap: "SystemCapability.Web.Webview.Core"
+]
     public var data: WebResourceRequest
     /**
      * Defines OnLoadInterceptEvent Component instance.
@@ -327,7 +322,7 @@ public class OnLoadInterceptEvent {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     public init(data: WebResourceRequest) {
         this.data = data
@@ -335,7 +330,6 @@ public class OnLoadInterceptEvent {
 }
 /**
  * Defines the Web's request/response header.
- *
  */
 @!APILevel[
     since: "22",
@@ -344,7 +338,6 @@ public class OnLoadInterceptEvent {
 public class Header {
     /**
      * Gets the key of the request/response header.
-     *
      */
     @!APILevel[
         since: "22",
@@ -353,7 +346,6 @@ public class Header {
     public var headerKey: ?String
     /**
      * Gets the value of the request/response header.
-     *
      */
     @!APILevel[
         since: "22",
@@ -372,7 +364,6 @@ public class Header {
 
 /**
  * Defines the Web resource request.
- *
  */
 @!APILevel[
     since: "22",
@@ -479,7 +470,6 @@ public class WebResourceRequest {
 /**
  * Defines the triggered callback when the host application that web content from the specified origin is
  * attempting to access the resources.
- *
  */
 @!APILevel[
     since: "22",
@@ -488,7 +478,6 @@ public class WebResourceRequest {
 public class OnPermissionRequestEvent {
     /**
      * Defines the onPermissionRequest callback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -509,8 +498,7 @@ public class OnPermissionRequestEvent {
     }
 }
 /**
- * Defines the onPermissionRequest callback, related to {@link onPermissionRequest} method.
- *
+ * Implements the PermissionRequest object, related to onPermissionRequest method.
  */
 @!APILevel[
     since: "22",
@@ -525,7 +513,6 @@ public class PermissionRequest {
     let cFree: CFunc<(CPointer<Unit>) -> Unit>
     /**
      * Reject the request.
-     *
      */
     @!APILevel[
         since: "22",
@@ -575,7 +562,7 @@ public class PermissionRequest {
     /**
      * Grant origin access to a given resource.
      *
-     * @param { Array<string> } resources - An array of resources to grant access to.
+     * @param { Array<String> } resources - An array of resources to grant access to.
      */
     @!APILevel[
         since: "22",
@@ -680,7 +667,8 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Sets whether to enable access to the file system in the application.
      *
-     * @param { ?Bool } fileAccess - Whether to enable file system access. True to enable, false to disable.
+     * @param { ?Bool } fileAccess - true means enable local file system access in Web; false otherwise.
+     *     The default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -696,7 +684,9 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Sets whether to enable the DOM Storage API. By default, this feature is disabled.
      *
-     * @param { ?Bool } domStorageAccess - Whether to enable DOM Storage API. True to enable, false to disable.
+     * @param { ?Bool } domStorageAccess - Whether to enable the DOM Storage API. true means to enable
+     *     the DOM Storage API; false means to disable the DOM Storage API.
+     *     The default value is false.
      * @returns { This }
      */
     @!APILevel[
@@ -712,7 +702,9 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Sets whether to enable automatic image loading.
      *
-     * @param { ?Bool } imageAccess - Whether to enable automatic image loading. True to enable, false to disable.
+     * @param { ?Bool } imageAccess - Sets whether to enable automatic image loading.
+     *     true means the Web can automatically load image resources, false otherwise.
+     *     Default value: true.
      * @returns { This }
      */
     @!APILevel[
@@ -728,7 +720,9 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Sets whether to enable access to online images through HTTP and HTTPS.
      *
-     * @param { ?Bool } onlineImageAccess - Whether to allow image resources to be loaded from the network. True to enable, false to disable.
+     * @param { ?Bool } onlineImageAccess - Sets whether to enable access to online images.
+     *     true means means setting to allow loading image resources from the network, false otherwise.
+     *     Default value: true.
      * @returns { This }
      */
     @!APILevel[
@@ -745,8 +739,8 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
      * Sets the behavior when a secure origin attempts to load a resource from an insecure origin.
      * The default is MixedMode.None, meaning not allow a secure origin to load content from an insecure origin.
      *
-     * @param { ?MixedMode } mixedMode - The mixed content mode to apply.
-     * @default MixedMode.None
+     * @param { ?MixedMode } mixedMode - The mixed mode, which can be MixedMode.
+     *     Default value: MixedMode.None, which means that secure origin is not allowed to load content from insecure origin.
      * @returns { This }
      */
     @!APILevel[
@@ -762,7 +756,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Sets whether the Web supports zooming using gestures.
      *
-     * @param { ?Bool } zoomAccess - Whether to enable zoom gestures. True to enable, false to disable.
+     * @param { ?Bool } zoomAccess - true means the Web supports zooming using gestures; false otherwise. The default value is true
      * @returns { This }
      */
     @!APILevel[
@@ -779,7 +773,9 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
      * Set whether to enable geolocation access. By default, this feature is enabled.
      * For details, see Managing Location Permissions.
      *
-     * @param { ?Bool } geolocationAccess - Whether to enable geolocation access. True to enable, false to disable.
+     * @param { ?Bool } geolocationAccess - Whether to enable geolocation access. true means the Web
+     *     allows access to geographical locations; false means the
+     *     Web disallows access to geographical locations. The default value is true.
      * @returns { This }
      */
     @!APILevel[
@@ -795,7 +791,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Set whether paint vertical scroll bar, including the system default scrollbar and user-defined scrollbar.
      *
-     * @param { ?Bool } verticalScrollBar - Whether to display the vertical scroll bar. True to display, false to hide.
+     * @param { ?Bool } verticalScrollBar - True if it needs to paint vertical scroll bar. The default value is true
      * @returns { This }
      */
     @!APILevel[
@@ -833,7 +829,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Triggered when the resources loading is intercepted.
      *
-     * @param { ?Callback<OnLoadInterceptEvent, Bool> } callback - The callback function triggered when resource loading is intercepted.
+     * @param { ?Callback<OnLoadInterceptEvent, Bool> } callback - The triggered callback when the resources loading is intercepted
      * @returns { This }
      */
     @!APILevel[
@@ -863,7 +859,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Called when the web page starts to be loaded.
      *
-     * @param { ?Callback<OnPageBeginEvent, Unit> } callback - The callback function triggered when page loading begins.
+     * @param { ?Callback<OnPageBeginEvent, Unit> } callback - The triggered function at the begin of web page loading
      * @returns { This }
      */
     @!APILevel[
@@ -888,7 +884,7 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
     /**
      * Triggered at the end of web page loading.
      *
-     * @param { ?Callback<OnPageEndEvent, Unit> } callback - The callback function triggered when page loading completes.
+     * @param { ?Callback<OnPageEndEvent, Unit> } callback - The triggered function at the end of web page loading
      * @returns { This }
      */
     @!APILevel[
@@ -971,7 +967,8 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
      * if the theme has been defined in prefers-color-scheme of a media query,
      * and remains unchanged otherwise. To enable the forcible dark mode, use this API with forceDarkAccess.
      *
-     * @param { ?WebDarkMode } mode - The dark mode setting to apply.
+     * @param { ?WebDarkMode } mode - Web dark mode to set.
+     *     Default value: WebDarkMode.Off.
      * @returns { This }
      */
     @!APILevel[
@@ -985,10 +982,12 @@ public class Web <: CommonMethodComponent<Web> & WebAttribute {
         this
     }
     /**
-     * Sets whether to enable forcible dark mode for the web page.
-     * This API is applicable only when dark mode is enabled in {@link darkMode}.
+     * Sets whether to enable forcible dark mode for the web page. This API is applicable only when dark mode is enabled in {
      *
-     * @param { ?Bool } access - Whether to enable forcible dark mode. True to enable, false to disable.
+     * @param { ?Bool } access - Sets whether to enable forcible dark mode for the web page.
+     *      true means enable forcible dark mode for the web page.
+     *      false means not enable forcible dark mode for the web page.
+     *      The default value is false.
      * @returns { This }
      */
     @!APILevel[

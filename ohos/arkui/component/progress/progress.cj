@@ -279,7 +279,7 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the progress bar foreground is set.
      *
-     * @param { ?ResourceColor } value - Indicates the color of the progress.
+     * @param { ?ResourceColor } value - indicates the color of the progress.
      * @returns { This }
      */
     @!APILevel[
@@ -315,9 +315,9 @@ public class Progress <: CommonMethodComponent<Progress> & ProgressAttribute {
     /**
      * Called when the style of progress bar is set.
      *
-     * @param { ?Length } strokeWidth - Stroke width of the progress bar. The default value is 4.0vp.
-     * @param { ?Int32 } scaleCount - Number of scale intervals. The default value is 120.
-     * @param { ?Length } scaleWidth - Width of each scale. The default value is 2.0vp.
+     * @param { ?Length } [strokeWidth] - Stroke width of the progress bar. The default value is 4.0vp.
+     * @param { ?Int32 } [scaleCount] - Number of scale intervals. The default value is 120.
+     * @param { ?Length } [scaleWidth] - Width of each scale. The default value is 2.0vp.
      * @returns { This }
      */
     @!APILevel[

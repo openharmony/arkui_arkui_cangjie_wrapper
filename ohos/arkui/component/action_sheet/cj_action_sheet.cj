@@ -170,8 +170,8 @@ public class SheetInfo {
      * Constructor of SheetInfo.
      *
      * @param { ?ResourceStr } title - Sheet text.
+     * @param { ?ResourceStr } [icon] - Sheet icon. By default, no icon is displayed.
      * @param { ?VoidCallback } action - Callback when the sheet is selected.
-     * @param { ?ResourceStr } icon - Sheet icon. By default, no icon is displayed.
      */
     @!APILevel[
         since: "22",
@@ -231,7 +231,7 @@ public class ActionSheetButtonOptions {
     /**
      * Whether to respond when the button is clicked. The value true means to respond when the button is clicked,
      * and false means the opposite.
-     * The default value is true.
+     * @default true
      */
     @!APILevel[
         since: "22",
@@ -241,7 +241,7 @@ public class ActionSheetButtonOptions {
     /**
      * Whether the button is the default focus. The value true means that the button is the default focus,
      * and false means the opposite.
-     * The default value is false.
+     * @default false
      */
     @!APILevel[
         since: "22",
@@ -250,7 +250,7 @@ public class ActionSheetButtonOptions {
     public var defaultFocus: ?Bool
     /**
      * Button style.
-     * The default value is DialogButtonStyle.Default.
+     * @default DialogButtonStyle.Default
      */
     @!APILevel[
         since: "22",
@@ -399,7 +399,7 @@ public class ActionSheetOptions {
     public var confirm: ?ActionSheetButtonOptions
     /**
      * Whether to close the dialog box when the overlay is clicked.
-     * The default value is true.
+     * @default true - The value true means to close the dialog box when the overlay is clicked, and false means
      */
     @!APILevel[
         since: "22",
@@ -416,11 +416,9 @@ public class ActionSheetOptions {
     public var cancel: ?VoidCallback
     /**
      * Alignment mode of the dialog box in the vertical direction.
-     * <p><strong>NOTE</strong>:
-     * <br>If showInSubWindow is set to true in UIExtension, the dialog box is aligned with the host window based
-     * on UIExtension.
-     * </p>
-     * The default value is DialogAlignment.Bottom
+     * NOTE: If showInSubWindow is set to true in UIExtension, the dialog box is aligned with the host window based on UIExtension.
+     *
+     * @default DialogAlignment.Bottom
      */
     @!APILevel[
         since: "22",
@@ -429,8 +427,8 @@ public class ActionSheetOptions {
     public var alignment: ?DialogAlignment
     /**
      * Offset of the dialog box relative to the alignment position.
-     * <br>When alignment is set to Top, TopStart, or TopEnd: dx: 0, dy: 40.vp
-     * <br>When alignment is set to any other value: dx: 0,dy: -40.vp
+     * When alignment is set to Top, TopStart, or TopEnd: {dx: 0,dy: "40vp"}
+     * When alignment is set to any other value: {dx: 0,dy: "-40vp"}
      */
     @!APILevel[
         since: "22",
@@ -438,12 +436,10 @@ public class ActionSheetOptions {
     ]
     public var offset: ?ActionSheetOffset
     /**
-     * Mask area of the dialog box. Events outside the mask area are transparently transmitted,
-     * and events within the mask area are not.
-     * <p><strong>NOTE</strong>:
-     * <br>maskRect does not take effect when showInSubWindow is set to true.
-     * </p>
-     * The default value: x is 0, y is 0, width is 100.percent, height is 100.percent.
+     * Mask area of the dialog box. Events outside the mask area are transparently transmitted, and events within the mask area are not.
+     * NOTE: maskRect does not take effect when showInSubWindow is set to true.
+     *
+     * @default - Rectangle(x:0, y:0, width:100.percent, height:100.percent)
      */
     @!APILevel[
         since: "22",
@@ -452,11 +448,8 @@ public class ActionSheetOptions {
     public var maskRect: ?Rectangle
     /**
      * Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
-     * <p><strong>NOTE</strong>:
-     * <br>A dialog box whose showInSubWindow attribute is true cannot trigger the display of another dialog box whose
-     * showInSubWindow attribute is also true.
-     * The default value is false.
-     * </p>
+     * NOTE: A dialog box whose showInSubWindow attribute is true cannot trigger the display of another dialog box whose showInSubWindow attribute is also true.
+     * @default false
      */
     @!APILevel[
         since: "22",
@@ -465,7 +458,7 @@ public class ActionSheetOptions {
     public var showInSubWindow: ?Bool
     /**
      * Whether the dialog box is a modal. A modal dialog box has a mask applied, while a non-modal dialog box does not.
-     * The default value is true.
+     * @default true
      */
     @!APILevel[
         since: "22",
@@ -474,11 +467,11 @@ public class ActionSheetOptions {
     public var isModal: ?Bool
     /**
      * Background color of the dialog box.
-     * <p><strong>NOTE</strong>:
-     * <br>When backgroundColor is set to a non-transparent color, backgroundBlurStyle must be set to BlurStyle.NONE;
+     * NOTE:
+     * When backgroundColor is set to a non-transparent color, backgroundBlurStyle must be set to BlurStyle.NONE;
      * otherwise, the color display may not meet the expected effect.
-     * </p>
-     * The default value is Color.Transparent
+     *
+     * @default Color.Transparent
      */
     @!APILevel[
         since: "22",
@@ -487,12 +480,12 @@ public class ActionSheetOptions {
     public var backgroundColor: ?ResourceColor
     /**
      * Background blur style of the dialog box.
-     * <p><strong>NOTE</strong>:
-     * <br>Setting this parameter to BlurStyle.NONE disables the background blur. When backgroundBlurStyle is set to a
+     * NOTE:
+     * Setting this parameter to BlurStyle.NONE disables the background blur. When backgroundBlurStyle is set to a
      * value other than NONE, do not set backgroundColor. If you do, the color display may not produce the expected
      * visual effect.
-     * </p>
-     * The default value is BlurStyle.ComponentUltraThick
+     *
+     * @default BlurStyle.ComponentUltraThick
      */
     @!APILevel[
         since: "22",
@@ -501,13 +494,12 @@ public class ActionSheetOptions {
     public var backgroundBlurStyle: ?BlurStyle
     /**
      * Callback for interactive closure of the dialog box.
-     * <p><strong>NOTE</strong>:
+     * NOTE:
      * 1. If this callback is registered, the dialog box will not be closed immediately after the user touches the
      * mask or the Back button, presses the Esc key, or swipes left or right on the screen. The reason parameter in
      * the callback is used to determine whether the dialog box can be closed. The reason returned by the component
      * does not support the value CLOSE_BUTTON.
      * 2. In the onWillDismiss callback, another onWillDismiss callback is not allowed.
-     * </p>
      */
     @!APILevel[
         since: "22",
@@ -516,10 +508,10 @@ public class ActionSheetOptions {
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
      * Corner radius of the background. You can set the radius for each of the four corners individually.
-     * The value is a multiple of vp or a percentage. The value is multiplied by the component size, with the maximum
-     * value being half of the component width or height. If the value is negative, the default value is used.
-     * When set to a percentage, the value defines the radius as a percentage of the parent component's width or height.
-     * In the default values, topLeft is 32.vp, topRight is 32.vp, bottomLeft is 32.vp, bottomRight is 32.vp.
+     * @default - topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp.
+     * The corner radius is subject to the component size, with the maximum value being half of the component width or height.
+     * If the value is negative, the default value is used. When set to a percentage,
+     * the value defines the radius as a percentage of the parent component's width or height.
      */
     @!APILevel[
         since: "22",
@@ -527,12 +519,10 @@ public class ActionSheetOptions {
     ]
     public var cornerRadius: ?BorderRadiuses
     /**
-     * Border width of the dialog box.
-     * You can set the width for all four sides or set separate widths for individual sides.
-     * The value is a multiple of vp or a percentage. The value is multiplied by the dialog
-     * box's width. If the left and right borders are greater than its width, or the top and bottom borders are greater
+     * Border width of the dialog box. You can set the width for all four sides or set separate widths for individual sides.
+     * @default 0 - When set to a percentage, the value defines the border width as a percentage of the parent dialog box's width.
+     * If the left and right borders are greater than its width, or the top and bottom borders are greater
      * than its height, the dialog box may not display as expected.
-     * The default value is 0, When set to a percentage, the value defines the border width as a percentage of the parent dialog.
      */
     @!APILevel[
         since: "22",
@@ -540,12 +530,9 @@ public class ActionSheetOptions {
     ]
     public var borderWidth: ?Length
     /**
-     * Border color of the dialog box.
-     * <p><strong>NOTE</strong>:
-     * <br>When borderColor is of type LocalizedEdgeColors, the layout order can be dynamically adjusted based on the
-     * user's language settings.
-     * </p>
-     * The default value is Color.Black - borderColor must be used with borderWidth in pairs.
+     * Defines the custom dialog's border color.
+     *
+     * @default Color.Black, borderColor must be used with borderWidth in pairs.
      */
     @!APILevel[
         since: "22",
@@ -554,7 +541,7 @@ public class ActionSheetOptions {
     public var borderColor: ?ResourceColor
     /**
      * Border style of the dialog box.
-     * The default value is BorderStyle.Solid - borderStyle must be used with borderWidth in pairs.
+     * @default BorderStyle.Solid, borderStyle must be used with borderWidth in pairs.
      */
     @!APILevel[
         since: "22",
@@ -564,9 +551,9 @@ public class ActionSheetOptions {
     /**
      * Width of the dialog box.
      *
+     * @default - Default maximum width of the dialog box: 400.vp,
      * When this parameter is set to a percentage, the reference width of the dialog box is the width of the window
      * where the dialog box is located. You can decrease or increase the width as needed.
-     * Default maximum width of the dialog box: 400.vp
      */
     @!APILevel[
         since: "22",
@@ -576,9 +563,9 @@ public class ActionSheetOptions {
     /**
      * Height of the dialog box.
      *
+     * @default - Default maximum height of the dialog box: 0.9 x (Window height – Safe area)
      * When this parameter is set to a percentage, the reference height of the dialog box is the height of the
      * window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.
-     * Default maximum height of the dialog box: 0.9 x (Window height – Safe area)
      */
     @!APILevel[
         since: "22",
@@ -587,7 +574,7 @@ public class ActionSheetOptions {
     public var height: ?Length
     /**
      * Shadow of the dialog box.
-     * Default value on 2-in-1 devices: ShadowStyle.OuterFloatingSM when the dialog box is focused and ShadowStyle.OuterFloatingSM otherwise.
+     * @default Default value on 2-in-1 devices: ShadowStyle.OuterFloatingSM when the dialog box is focused and ShadowStyle.OuterFloatingSM otherwise.
      */
     @!APILevel[
         since: "22",
@@ -603,7 +590,6 @@ public class ActionSheetOptions {
      * animation. The final effect is one obtained after the curves of the entrance and exit animations are combined.
      * 3. Touching the Back button during the exit animation does not affect the animation playback. Touching the
      * Back button again closes the application.
-     * </p>
      */
     @!APILevel[
         since: "22",

@@ -21,7 +21,7 @@ import ohos.base.{Callback}
 import std.time.{DateTime}
 
 /**
- * Defines DatePicker attributes.
+ * Defines the DatePicker attribute functions.
  */
 @!APILevel[
     since: "22",

@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
- * Defines the Button attribute functions.
+ * Defines the button attribute functions.
  */
 @!APILevel[
     since: "22",

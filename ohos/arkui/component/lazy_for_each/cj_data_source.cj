@@ -34,7 +34,6 @@ foreign {
 
 /**
  * Developers need to implement this interface to provide data to LazyForEach component.
- * This interface defines the methods required for LazyForEach to access and monitor data.
  */
 @!APILevel[
     since: "22",
@@ -89,7 +88,7 @@ public interface IDataSource<T> {
 }
 
 /**
- * Data change listener.
+ * Listener for data changes.
  */
 @!APILevel[
     since: "22",

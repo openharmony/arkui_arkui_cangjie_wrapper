@@ -130,8 +130,7 @@ public enum DialogButtonDirection {
 }
 
 /**
- * Defines the border color for dialog components.
- * Provides a wrapper class for specifying border colors with a default value.
+ * Defines the custom dialog's border color.
  */
 @!APILevel[
     since: "22",
@@ -139,8 +138,7 @@ public enum DialogButtonDirection {
 ]
 public class BorderColor {
     /**
-     * The color resource used for the border.
-     * Defines the visual color of the border around a component.
+     * Defines the color which can use resource.
      */
     @!APILevel[
         since: "22",
@@ -152,8 +150,7 @@ public class BorderColor {
      * BorderColor constructor.
      * Creates a new BorderColor instance with the specified color or defaults to black.
      *
-     * @param { ?ResourceColor } color - The color to use for the border
-     * @default Color.Black
+     * @param { ?ResourceColor } [color] - The color to use for the border. The default is black.
      */
     @!APILevel[
         since: "22",
@@ -233,7 +230,6 @@ public open class AlertDialogButtonBaseOptions {
     /**
      * Enable switch of button
      * @default true
-     *
      */
     @!APILevel[
         since: "22",
@@ -251,6 +247,7 @@ public open class AlertDialogButtonBaseOptions {
     public var defaultFocus: ?Bool
     /**
      * Style of button.
+     * @default DialogButtonStyle.Default
      */
     @!APILevel[
         since: "22",
@@ -266,7 +263,7 @@ public open class AlertDialogButtonBaseOptions {
     ]
     public var value: ?ResourceStr
     /**
-     * Text color of button.
+     * Describes the button text color.
      */
     @!APILevel[
         since: "22",
@@ -387,8 +384,8 @@ public open class AlertDialogButtonBaseOptions {
 ]
 public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
    /**
-    * Define whether the button responds to Enter/Space key by default.
-    */
+     * Define whether the button default to responding to the Enter key
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -491,8 +488,6 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 
 /**
  * Base param used for AlertDialog.show method.
- * Defines the configuration parameters for displaying an AlertDialog component.
- * Provides comprehensive control over dialog appearance, behavior, and positioning.
  */
 @!APILevel[
     since: "22",
@@ -518,7 +513,7 @@ public open class AlertDialogParam {
     ]
     public var subtitle: ?ResourceStr
     /**
-     * The main content message displayed in the body of the alert dialog.
+     * The message of alert dialog.
      */
     @!APILevel[
         since: "22",
@@ -528,6 +523,7 @@ public open class AlertDialogParam {
     /**
      * Allows users to click the mask layer to exit.
      * When enabled, users can dismiss the dialog by clicking on the semi-transparent overlay outside the dialog.
+     * @default true - The value true means to close the dialog box when the overlay is clicked, and false means
      */
     @!APILevel[
         since: "22",
@@ -535,7 +531,7 @@ public open class AlertDialogParam {
     ]
     public var autoCancel: ?Bool
     /**
-     * Callback function that is executed when the dialog is canceled, either by clicking the mask or pressing the back button.
+     * Execute Cancel Function.
      */
     @!APILevel[
         since: "22",
@@ -543,8 +539,9 @@ public open class AlertDialogParam {
     ]
     public var cancel: ?VoidCallback
     /**
-     * Alignment in the vertical direction.
-     * Controls the positioning of the dialog on the screen using predefined alignment options.
+     * Defines the dialog alignment of the screen.
+     *
+     * @default DialogAlignment.Bottom
      */
     @!APILevel[
         since: "22",
@@ -561,7 +558,7 @@ public open class AlertDialogParam {
     ]
     public var offset: ?Offset
     /**
-     * Specifies the grid layout count for the dialog, affecting its sizing and positioning in grid-based layouts.
+     * Grid count of dialog.
      */
     @!APILevel[
         since: "22",
@@ -571,6 +568,7 @@ public open class AlertDialogParam {
     /**
      * Mask Region of dialog. The size cannot exceed the main window.
      * Defines the rectangular area where the dialog mask (overlay) is displayed.
+     * @default Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent)
      */
     @!APILevel[
         since: "22",
@@ -578,8 +576,11 @@ public open class AlertDialogParam {
     ]
     public var maskRect: ?Rectangle
     /**
-     * Whether to display in the sub window
-     * Controls whether the dialog is displayed in a separate sub-window or as an overlay in the main window.
+     * Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window.
+     * NOTE:
+     * A dialog box whose showInSubWindow attribute is true cannot trigger the display of another dialog box whose
+     * showInSubWindow attribute is also true.
+     *
      * @default false
      */
     @!APILevel[
@@ -588,7 +589,7 @@ public open class AlertDialogParam {
     ]
     public var showInSubWindow: ?Bool
     /**
-     * Whether it is a modal dialog
+     * Whether it is a modal dialog.
      * Determines if the dialog blocks interaction with the underlying content when displayed.
      * @default true
      */
@@ -598,7 +599,7 @@ public open class AlertDialogParam {
     ]
     public var isModal: ?Bool
     /**
-     * Defines the alertDialog's background color
+     * Defines the alertDialog's background color.
      * Sets the background color of the dialog, supporting both solid colors and transparent backgrounds.
      * @default Transparent
      */
@@ -608,7 +609,7 @@ public open class AlertDialogParam {
     ]
     public var backgroundColor: ?ResourceColor
     /**
-     * Defines the alertDialog's background blur Style
+     * Defines the alertDialog's background blur Style.
      * Applies a blur effect to the dialog background for a frosted glass appearance.
      * @default BlurStyle.ComponentUltraThick
      */
@@ -627,7 +628,9 @@ public open class AlertDialogParam {
     ]
     public var onWillDismiss: ?Callback<DismissDialogAction, Unit>
     /**
-     * Controls the roundness of the dialog corners, creating rounded or sharp corner effects.
+     * Defines the alertDialog's corner radius.
+     *
+     * @default BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)
      */
     @!APILevel[
         since: "22",
@@ -636,7 +639,6 @@ public open class AlertDialogParam {
     public var cornerRadius: ?BorderRadiuses
     /**
      * Transition parameters of opening/closing AlertDialog.
-     * Defines the animation effects used when the dialog is shown or hidden.
      */
     @!APILevel[
         since: "22",
@@ -644,7 +646,7 @@ public open class AlertDialogParam {
     ]
     public var transition: ?TransitionEffect
     /**
-     * Sets the width of the dialog, supporting various length units and percentage-based sizing.
+     * Defines the alertDialog's width.
      */
     @!APILevel[
         since: "22",
@@ -652,7 +654,7 @@ public open class AlertDialogParam {
     ]
     public var width: ?Length
     /**
-     * Sets the height of the dialog, supporting various length units and percentage-based sizing.
+     * Defines the alertDialog's height.
      */
     @!APILevel[
         since: "22",
@@ -660,7 +662,7 @@ public open class AlertDialogParam {
     ]
     public var height: ?Length
     /**
-     * Controls the thickness of the dialog border, creating visual separation from the background.
+     * Defines the alertDialog's border width.
      */
     @!APILevel[
         since: "22",
@@ -668,7 +670,7 @@ public open class AlertDialogParam {
     ]
     public var borderWidth: ?Length
     /**
-     * Sets the color of the dialog border for visual customization.
+     * Defines the alertDialog's border color.
      */
     @!APILevel[
         since: "22",
@@ -676,7 +678,7 @@ public open class AlertDialogParam {
     ]
     public var borderColor: ?BorderColor
     /**
-     * Controls the visual style of the dialog border, such as solid, dashed, or dotted lines.
+     * Defines the alertDialog's border style.
      */
     @!APILevel[
         since: "22",
@@ -684,7 +686,7 @@ public open class AlertDialogParam {
     ]
     public var borderStyle: ?EdgeStyles
     /**
-     * Applies shadow effects to the dialog for depth and visual emphasis.
+     * Defines the alertDialog's shadow.
      */
     @!APILevel[
         since: "22",
@@ -692,7 +694,7 @@ public open class AlertDialogParam {
     ]
     public var shadow: ?ShadowOptions
     /**
-     * Controls how text within the dialog is broken across lines, affecting readability and layout.
+     * Set the alertDialog's textStyle.
      */
     @!APILevel[
         since: "22",

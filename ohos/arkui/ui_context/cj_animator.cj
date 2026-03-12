@@ -69,7 +69,6 @@ protected class Animator {
 
 /**
  * Whether to resume to the initial state after the animation is executed.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -78,11 +77,12 @@ protected class Animator {
 ]
 public enum AnimatorFill {
     /**
-     * The initial state is restored after the animation is executed.
+     * None Type, the layout is not adjusted to avoid the keyboard.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+    throwexception: true
     ]
     None
     /**
@@ -90,12 +90,14 @@ public enum AnimatorFill {
      */
     | @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+    workerthread: true
     ]
     Forwards
     | @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.ArkUI.ArkUI.Full",
+    workerthread: true
     ]
     Backwards
     | @!APILevel[
@@ -118,8 +120,6 @@ public enum AnimatorFill {
 
 /**
  * The animation playback mode.
- * @default "normal"
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -129,7 +129,6 @@ public enum AnimatorFill {
 public enum AnimatorDirection {
     /**
      * The animation plays normally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -139,7 +138,6 @@ public enum AnimatorDirection {
     |
     /**
      * The animation plays backwards.
-     *
      */
     @!APILevel[
         since: "22",
@@ -149,7 +147,6 @@ public enum AnimatorDirection {
     |
     /**
      * The animation plays forward on odd numbers (1, 3, 7...) and backward on even numbers (2, 4, 6...).
-     *
      */
     @!APILevel[
         since: "22",
@@ -159,7 +156,6 @@ public enum AnimatorDirection {
     |
     /**
      * The animation plays backwards on odd numbers (1, 3, 7...) and forwards on even numbers (2, 4, 6...).
-     *
      */
     @!APILevel[
         since: "22",
@@ -181,7 +177,6 @@ public enum AnimatorDirection {
 
 /**
  * Defines the animator options.
- *
  */
 @!APILevel[
     since: "22",
@@ -237,7 +232,6 @@ public class AnimatorOptions {
     public var delay: Int32
     /**
      * Whether to resume to the initial state after the animation is executed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -246,7 +240,6 @@ public class AnimatorOptions {
     public var fill: AnimatorFill
     /**
      * The animation playback mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -327,7 +320,6 @@ public class AnimatorOptions {
 
 /**
  * Defines the Animator result class.
- *
  */
 @!APILevel[
     since: "22",
@@ -474,7 +466,7 @@ public class AnimatorResult <: RemoteDataLite {
      *
      * @param { AnimatorOptions } options
      * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
+     *  The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -503,9 +495,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Start the animation.
-     *
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -522,9 +511,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Ends the animation.
-     *
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -541,9 +527,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Pauses the animation.
-     *
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -560,9 +543,6 @@ public class AnimatorResult <: RemoteDataLite {
 
     /**
      * Cancels the animation.
-     *
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -580,9 +560,6 @@ public class AnimatorResult <: RemoteDataLite {
     /**
      * Plays the animation in reverse direction.
      * Invalid when using interpolating-spring curve.
-     *
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",
@@ -617,11 +594,9 @@ public class AnimatorResult <: RemoteDataLite {
     }
 
     /**
-     * The expected frame rate of dynamical of rate range.
+     * Sets the FrameRateRange of the DynamicSyncScene.
      *
      * @param { ExpectedFrameRateRange } rateRange - The expected frame rate range.
-     * @throws { BusinessException } 100001 - Internal error. Possible causes:
-     * <br> The specified page is not found or the object property list is not obtained.
      */
     @!APILevel[
         since: "22",

@@ -39,10 +39,10 @@ foreign {
 ]
 public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     /**
-    * Initializes a RowSplit component with child content.
-    *
-    * @param { () -> Unit } child - The child component builder function.
-    */
+     * Initializes a RowSplit component with child content.
+     *
+     * @param { () -> Unit } child - The child component builder function.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -55,12 +55,11 @@ public class RowSplit <: CommonMethodComponent<RowSplit> & RowSplitAttribute {
     }
 
     /**
-    * Enable or disable resizeable.
-    * Controls whether the dividers between child components can be dragged to resize the components.
-    *
-    * @param { ?Bool } value - Whether enable resizeable.
-    * @returns { This } Returns the RowSplit instance.
-    */
+     * Indicates whether the split line can be dragged. The default value is false
+     *
+     * @param { ?Bool } value - Whether enable resizeable.
+     * @returns { This } Returns the RowSplit instance.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -22,7 +22,7 @@ import ohos.resource.{AppResource}
 import ohos.arkui.shape.{RectShape}
 
 /**
- * Provides functions for scroll able Base.
+ * CommonScrollableMethod
  */
 @!APILevel[
     since: "22",

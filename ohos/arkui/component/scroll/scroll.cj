@@ -689,7 +689,7 @@ foreign {
 }
 
 /**
- * A component that provides a scrollable container for its child components.
+ * Defines Scroll Component.
  */
 @!APILevel[
     since: "22",
@@ -781,8 +781,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Sets the scrolling direction.
      *
-     * @param { ?ScrollDirection } scrollDirection - The direction to apply setting.
-     * @default ScrollDirection.Vertical
+     * @param { ?ScrollDirection } scrollDirection - Scrolling direction. Default value: ScrollDirection.Vertical
      * @returns { This }
      */
     @!APILevel[
@@ -952,7 +951,7 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
     /**
      * Triggered when each frame scrolling starts.
      *
-     * @param { ?OnScrollFrameBeginCallback } event - Callback triggered at first frame of scroll.
+     * @param { ?OnScrollFrameBeginCallback } event - Callback triggered when each frame scrolling starts.
      * @returns { This }
      */
     @!APILevel[
@@ -973,16 +972,16 @@ public class Scroll <: ScrollableCommonMethodComponent<Scroll> & ScrollAttribute
 
     /**
      * Triggered when scrolling reaches the edge.
-     * Anonymous Object Rectification.
      *
-     * <p><strong>NOTE</strong>
-     * <br>1. This event is triggered when scrolling reaches the edge after being started by the <em>Scroll</em> component or other input settings,
+     *
+     * NOTE
+     * 1. This event is triggered when scrolling reaches the edge after being started by the Scroll component or other input settings,
      * such as keyboard and mouse operations.
-     * <br>2. This event is triggered when the controller API is called.
-     * <br>3. This event supports the out-of-bounds bounce effect.
-     * </p>
+     * 2. This event is triggered when the controller API is called.
+     * 3. This event supports the out-of-bounds bounce effect.
      *
-     * @param { ?OnScrollEdgeCallback } event - Callback triggered when scrolling reaches the edge.
+     *
+     * @param { ?OnScrollEdgeCallback } event - Edge position to scroll to.
      * @returns { This }
      */
     @!APILevel[

@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr}
 
 /**
- * Defines Path Component.
+ * Provides methods for attribute path component.
  */
 @!APILevel[
     since: "22",

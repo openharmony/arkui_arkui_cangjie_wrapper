@@ -118,8 +118,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Grid is returned when the parameter is transferred.
      *
-     * @param { ?Scroller } scroller - Scroller controller bound to the grid for controlling scrolling.
-     * @param { ()->Unit } child - The child component to be displayed in the grid, typically LazyForEach or Repeat.
+     * @param { ?Scroller } [scroller] - Scroller controller bound to the grid for controlling scrolling.
+     * @param { ()->Unit } [child] - The child component to be displayed in the grid, typically LazyForEach or Repeat.
      */
     @!APILevel[
         since: "22",
@@ -144,7 +144,7 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
      *
      * @param { ?String } value - String specifying the number of columns and their proportional distribution,
      * for example "1fr 1fr" means two columns of equal width.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -160,11 +160,11 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     }
 
     /**
-     * Lets you set the number of rows in the current grid layout.
+     * Lets you set the number of rows in the current grid layout,.
      *
      * @param { ?String } value - String specifying the number of rows and their proportional distribution,
      * for example "1fr 1fr" means two rows of equal height.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -182,9 +182,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Allows you to set the spacing between columns.
      *
-     * @param { ?Length } value - Spacing between adjacent columns.
-     * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Spacing between columns.Default value: 0 Unit: vp
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -212,9 +211,8 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     /**
      * Lets you set the spacing between rows.
      *
-     * @param { ?Length } value - Spacing between adjacent rows.
-     * @returns { This } - The instance of the component.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @param { ?Length } value - Spacing between rows. Default value: 0 Unit: vp
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -240,10 +238,13 @@ public class Grid <: ScrollableCommonMethodComponent<Grid> & GridAttribute {
     }
 
     /**
-     * Sets the number of grid items to be preloaded and cached for performance optimization.
+     * Set number of rows of GridItems to be preloaded (cached) in LazyForEach / Repeat
      *
-     * @param { ?Int32 } value - Number of grid items to preload beyond the visible area.
-     * @returns { This } - The instance of the component.
+     * @param { ?Int32 } value - number of rows of GridItems to be preloaded (cached).
+     *     Default value: number of nodes visible on the screen, with the maximum value of 16
+     *     Value range: [0, +∞).
+     *     Values less than 0 are treated as 1.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
