@@ -427,15 +427,14 @@ class BasicCommonUTHello {
     @Tag[APILevel22, TestLevel0]
     func testResourceToUInt() {
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt start")
-        var message = "Valid args or ret"
+        var uint32_color: Uint32 = 0
         try {
             var color: ResourceColor = @r(app.color.blue_23C452)
-            color.toUInt32()
+            uint32_color = color.toUInt32()
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_resource_toUInt: ${e.toString()}")
-            message = e.toString()
         }
-        @Expect(message.contains("BusinessException"))
+        @Expect(uint32_color, 0xFF23C452)
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt end")
     }
 
