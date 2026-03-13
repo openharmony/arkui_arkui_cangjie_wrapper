@@ -20,7 +20,7 @@ import ohos.arkui.component.image.{ColorFilter, ImageCompleteCallback, ImageErro
 import ohos.labels.{APILevel}
 
 /**
- * Defines ImageSpan Component instance.
+ * Define the ImageSpan attribute functions.
  */
 @!APILevel[
     since: "22",

@@ -56,7 +56,7 @@ extend Int64 <: ResourceColor {
     /**
      * The hexadecimal value of the color.
      *
-     * @returns { UInt32 } - The rgba value of color
+     * @returns { UInt32 } The rgba value of color.
      */
     @!APILevel[
         since: "22",

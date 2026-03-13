@@ -51,8 +51,8 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
     /**
      * Column constructor.
      *
-     * @param { ?Length } space - The spacing between child elements in the vertical layout.
-     * @param { () -> Unit } child - The child component of the column.
+     * @param { ?Length } [space] - The spacing between child elements in the vertical layout.
+     * @param { () -> Unit } [child] - The child component of the column.
      */
     @!APILevel[
         since: "22",
@@ -70,7 +70,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
      * Sets the alignment format of the subassembly in the horizontal direction.
      *
      * @param { ?HorizontalAlign } value - The horizontal alignment mode for child elements.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -87,7 +87,7 @@ public class Column <: CommonMethodComponent<Column> & ColumnAttribute {
      * Sets the alignment format of the subassembly in the vertical direction.
      *
      * @param { ?FlexAlign } value - The vertical alignment mode for child elements.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

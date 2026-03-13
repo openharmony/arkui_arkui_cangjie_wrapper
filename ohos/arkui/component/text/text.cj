@@ -200,7 +200,6 @@ public class TextController <: RemoteDataLite {
 
 /**
  * Provides a class for writing texts.
- *
  */
 @!APILevel[
     since: "22",
@@ -231,7 +230,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when writing text.
      *
-     * @param { ?TextController } controller - The text controller.
+     * @param { ?TextController } [controller] - The text controller.
      * @param { () -> Unit } child - The child component builder.
      */
     @!APILevel[
@@ -290,8 +289,10 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Set font line spacing.
      *
-     * @param { ?Length } value - The line spacing value.
-     * @default 0
+     * NOTE:
+     * If the value specified is less than or equal to 0, the default value 0 is used.
+     *
+     * @param { ?Length } value - Default value is 0.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -310,10 +311,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     }
 
     /**
-     * Called when the font size is set.
+     * Sets the font size
      *
-     * @param { ?Length } value - The font size.
-     * @default 16.fp (wearable devices is 15.fp)
+     * @param { ?Length } value - Font size.The default font size is 16 fp.
+     *     If fontSize is of the number type, the unit fp is used.
+     *     The value cannot be a percentage.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -343,7 +345,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the maximum font size of the font is set.
      *
-     * @param { ?Length } value - The maximum font size.
+     * @param { ?Length } value - The unit is fp.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -371,7 +373,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the minimum font size of the font is set.
      *
-     * @param { ?Length } value - The minimum font size.
+     * @param { ?Length } value - The unit is fp.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -399,7 +401,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font color is set.
      *
-     * @param { ?ResourceColor } value - The font color.
+     * @param { ?ResourceColor } value - Default value is 0xe6182431.The default value on wearable devices is 0xc5ffffff.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -422,8 +424,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the font style of a font is set.
      *
-     * @param { ?FontStyle } value - The font style.
-     * @default FontStyle.Normal
+     * @param { ?FontStyle } value - Default value is FontStyle.Normal.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -482,8 +483,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the horizontal center mode of the font is set.
      *
-     * @param { ?TextAlign } value - The text alignment.
-     * @defalut TextAlign.Start
+     * @param { ?TextAlign } value - Default value is TextAlign.Start.The default value on wearable devices is TextAlign.Center.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -501,7 +501,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the overflow mode of the font is set.
      *
-     * @param { ?TextOverflow } options - Text overflow options.
+     * @param { ?TextOverflow } value - Default value is TextOverflow.Clip.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -517,9 +517,11 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
 
     /**
      * Called when the maximum number of lines of text is set.
-     * <br>By default, text is automatically folded.
-     * <br>If this attribute is specified, the text will not exceed the specified number of lines.
-     * <br>If there is extra text, you can use textOverflow to specify how it is displayed.
+     *
+     * NOTE:
+     * By default, text is automatically folded.
+     * If this attribute is specified, the text will not exceed the specified number of lines.
+     * If there is extra text, you can use textOverflow to specify how it is displayed.
      *
      * @param { ?Int32 } value - The maximum number of lines.
      * @returns { This } Returns itself to allow method chaining.
@@ -536,10 +538,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     }
 
     /**
-     * Called when the vertical center mode of the font is set.
-     * <br>If the value is less than or equal to 0, the line height is not limited and the font size is adaptive.
-     * <br>If the value is of the number type, the unit fp is used.
-     * <br>For the string type, numeric string values with optional units.
+     * Called when the vertical center mode of the font is set. NOTE: If the value is less than or equal to 0, the line height is not limited and the font size is adaptive. If the value is of the number type, the unit fp is used. For the string type, numeric string values with optional units, for example, 10 or 10fp, are supported
      *
      * @param { ?Length } value - The line height.
      * @returns { This } Returns itself to allow method chaining.
@@ -562,9 +561,12 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the text decoration of the text is set.
      *
+     * NOTE:
+     * The style parameter cannot be used in widgets.
+     *
      * @param { ?TextDecorationType } decorationType - The type value of the decoration property object.
      * @param { ?ResourceColor } color - The color value of the decoration property object.
-     * @param { ?TextDecorationStyle } decorationStyle - The style value of the decoration property object.
+     * @param { ?TextDecorationStyle } [decorationStyle] - The style value of the decoration property object.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -605,8 +607,7 @@ public class Text <: CommonMethodComponent<Text> & TextAttribute {
     /**
      * Called when the type of letter in the text font is set.
      *
-     * @param { ?TextCase } value - The text case.
-     * @default TextCase.Normal
+     * @param { ?TextCase } value - Default value is TextCase.Normal.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[

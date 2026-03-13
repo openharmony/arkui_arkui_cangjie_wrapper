@@ -1069,7 +1069,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { String } text - Text string to be stroked.
      * @param { Float64 } x - The x-axis coordinate of the start point of the text.
      * @param { Float64 } y - The y-axis-axis coordinate of the start point of the text.
-     * @param { ?Float64 } maxWidth - Maximum width of the stroke.
+     * @param { Option<Float64> } [maxWidth] - Maximum width of the stroke.
      */
     @!APILevel[
         since: "22",
@@ -1096,7 +1096,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Measure the size of a specified text.
      *
      * @param { ?String } text - Text string to be measured.
-     * @returns { TextMetrics } - The metrics of the text.
+     * @returns { TextMetrics } The metrics of the text.
      */
     @!APILevel[
         since: "22",
@@ -1155,11 +1155,11 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-   * Moves the start point of a new sub-path to the (x, y) coordinate.
-   *
-   * @param { Float64 } x - The x-axis coordinate of the point.
-   * @param { Float64 } y - The y-axis coordinate of the point.
-   */
+     * Moves the start point of a new sub-path to the (x, y) coordinate.
+     *
+     * @param { Float64 } x - The x-axis coordinate of the point.
+     * @param { Float64 } y - The y-axis coordinate of the point.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -1202,9 +1202,15 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Creates a template object using the specified image.
      *
-     * @param { ?ImageBitmap } image - Objects as duplicate image sources.
-     * @param { ?Repetition } repetition - Specifies how to repeat images.
-     * @returns { Option<CanvasPattern> } - The created canvas pattern.
+     * @param { ?ImageBitmap } image - Objects as duplicate image sources
+     * @param { ?Repetition } repetition - Specifies how to repeat images. The following four modes are supported:
+     *     Repeat: Repeated images in both X and Y directions
+     *     RepeatX: Repeated images in the X-axis direction but not in the Y-axis direction
+     *     RepeatY: The image is repeated in the Y axis direction, and the image is not repeated in the X axis direction.
+     *     NoRepeat: Non-repeating images in both X and Y directions
+     *     Clamp: Replicate the edge color if the shader draws outside of its original bounds.
+     *     Mirror: Repeat the shader's image horizontally and vertically, alternating mirror images so that adjacent images always seam.
+     * @returns { Option<CanvasPattern> } The created canvas pattern.
      */
     @!APILevel[
         since: "22",
@@ -1264,8 +1270,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } radius - Radius of the arc.
      * @param { Float64 } startAngle - Start point of an arc, which starts to be calculated in the x-axis direction. The unit is radian.
      * @param { Float64 } endAngle - The end point of the arc, in radians.
-     * @param { ?Bool } counterclockwise - If the value is true, the arc is drawn counterclockwise. Otherwise,
-     *    the arc is drawn clockwise. The default value is false.
+     * @param { ?Bool } [counterclockwise] - If the value is true, the arc is drawn counterclockwise. Otherwise,
+     * the arc is drawn clockwise. The default value is false.
      */
     @!APILevel[
         since: "22",
@@ -1312,10 +1318,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } radiusY - Radius of the minor axis of the ellipse.
      * @param { Float64 } rotation - The rotation angle of the ellipse, in radians (not angular degrees).
      * @param { Float64 } startAngle - The angle of the starting point to be drawn, measured from the x-axis in radians
-     *    (not angular degrees).
+     * (not angular degrees).
      * @param { Float64 } endAngle - The angle, in radians, at which the ellipse is to be drawn (not angular degrees).
      * @param { Bool } counterclockwise - If the value is true, the ellipse is drawn counterclockwise. Otherwise,
-     *    the ellipse is drawn clockwise. The default value is false.
+     * the ellipse is drawn clockwise. The default value is false.
      */
     @!APILevel[
         since: "22",
@@ -1351,8 +1357,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *
      * @param { Float64 } x - The x-axis coordinate of the start point of the rectangle.
      * @param { Float64 } y - The y-axis coordinate of the start point of the rectangle.
-     * @param { Float64 } w - Width of the rectangle.
-     * @param { Float64 } h - Height of the rectangle.
+     * @param { Float64 } width - Width of the rectangle.
+     * @param { Float64 } height - Height of the rectangle.
      */
     @!APILevel[
         since: "22",
@@ -1367,7 +1373,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Fills existing paths according to the current fill style.
      *
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule. For details, see CanvasFillRule.
      */
     @!APILevel[
         since: "22",
@@ -1424,7 +1430,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * Tailoring according to the specified path.
      *
      * @param { ?Path2D } path - Path to be cut.
-     * @param { ?CanvasFillRule } fillRule - Algorithm rule.
+     * @param { ?CanvasFillRule } [fillRule] - Algorithm rule. For details, see CanvasFillRule.
      */
     @!APILevel[
         since: "22",
@@ -1473,8 +1479,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     }
 
     /**
-     * Adds the 2D transformation effect, including rotation, translation, and scaling,
-     *    and overwrites the current transformation matrix.
+     * Adds 2D transformation effects, including rotation, translation, and scaling.
+     * The current transformation matrix will not be overwritten. Multiple transformations will be superimposed.
      *
      * @param { Float64 } a - Horizontal Zoom.
      * @param { Float64 } b - Vertical Tilt.
@@ -1612,7 +1618,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } y0 - The y-axis coordinate of the start point.
      * @param { Float64 } x1 - x-axis coordinate of the end point.
      * @param { Float64 } y1 - y-axis coordinate of the end point.
-     * @returns { CanvasGradient } - The created linear gradient.
+     * @returns { CanvasGradient } The created linear gradient.
      */
     @!APILevel[
         since: "22",
@@ -1631,7 +1637,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { Float64 } x1 - The x-axis coordinate of the end circle.
      * @param { Float64 } y1 - The y-axis coordinate of the end circle.
      * @param { Float64 } r1 - Radius of the end circle.
-     * @returns { CanvasGradient } - The created radial gradient.
+     * @returns { CanvasGradient } The created radial gradient.
      */
     @!APILevel[
         since: "22",
@@ -1648,7 +1654,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      *   Angle measurements start horizontally the right of the center and move around clockwise.
      * @param { ?Float64 } x - The x-axis coordinate of the center of the gradient.
      * @param { ?Float64 } y - The y-axis coordinate of the center of the gradient.
-     * @returns { CanvasGradient } - A CanvasGradient object that draws a conic gradient around the given coordinates.
+     * @returns { CanvasGradient } A CanvasGradient object that draws a conic gradient around the given coordinates.
      */
     @!APILevel[
         since: "22",
@@ -1851,7 +1857,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the PixelMap to be extracted.
      * @param { ?Float64 } sw - The width of the rectangular area of the PixelMap to be extracted.
      * @param { ?Float64 } sh - The height of the rectangular area of the PixelMap to be extracted.
-     * @returns { PixelMap } - The pixel map of the specified area.
+     * @returns { PixelMap } The pixel map of the specified area.
      */
     @!APILevel[
         since: "22",
@@ -1925,7 +1931,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Obtains the currently applied transformation matrix.
      *
-     * @returns { Matrix2D } - The current transformation matrix.
+     * @returns { Matrix2D } The current transformation matrix.
      */
     @!APILevel[
         since: "22",
@@ -2011,7 +2017,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Gets the current segment style.
      *
-     * @returns { Array<Float64> } - The current line dash pattern array.
+     * @returns { Array<Float64> } The current line dash pattern array.
      */
     @!APILevel[
         since: "22",
@@ -2029,10 +2035,10 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
     /**
      * Generate a character string in the data url format.
      *
-     * @param { ?String } type - Image format. The default value is image/png.
-     * @param { ?Float64 } quality - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
-     *    If the value is out of the range, the default value 0.92 is used.
-     * @returns { String } - The data URL string of the canvas.
+     * @param { ?String } [imageType] - Image format. The default value is image/png.
+     * @param { ?Float64 } [quality] - If the image format is image/jpeg or image/webp, you can select the image quality from 0 to 1.
+     * If the value is out of the range, the default value 0.92 is used.
+     * @returns { String } The data URL string of the canvas.
      */
     @!APILevel[
         since: "22",
@@ -2090,8 +2096,8 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * From an existing ImageData object, copy an object with the same width and height as the image.
      *    The image content is not copied.
      *
-     * @param { ?ImageData } imagedata - ImageData object to be copied.
-     * @returns { ImageData } - The created ImageData object with the same dimensions.
+     * @param { ?ImageData } imageData - ImageData object to be copied.
+     * @returns { ImageData } The created ImageData object with the same dimensions.
      */
     @!APILevel[
         since: "22",
@@ -2113,7 +2119,7 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?Float64 } sy - y coordinate of the upper left corner of the rectangular area of the image data to be extracted.
      * @param { ?Float64 } sw - The width of the rectangular area of the image data to be extracted.
      * @param { ?Float64 } sh - The height of the rectangular area of the image data to be extracted.
-     * @returns { ImageData } - The pixel data of the specified area.
+     * @returns { ImageData } The pixel data of the specified area.
      */
     @!APILevel[
         since: "22",
@@ -2154,13 +2160,13 @@ public class CanvasRenderingContext2D <: RemoteDataLite {
      * @param { ?Length } dx - Position offset of the source image data in the target canvas (the offset in the x-axis direction).
      * @param { ?Length } dy - Position offset of the source image data in the target canvas (the offset in the y-axis direction).
      * @param { ?Length } dirtyX - Position of the upper left corner of the rectangular area in the source image data.
-     *    The default is the upper left corner (x coordinate) of the entire image data.
+     * The default is the upper left corner (x coordinate) of the entire image data.
      * @param { ?Length } dirtyY - Position of the upper left corner of the rectangular area in the source image data.
-     *    The default is the upper left corner (y coordinate) of the entire image data.
+     * The default is the upper left corner (y coordinate) of the entire image data.
      * @param { ?Length } dirtyWidth - Width of the rectangular area in the source image data.
-     *    The default is the width of the image data.
+     * The default is the width of the image data.
      * @param { ?Length } dirtyHeight - Height of the rectangular area in the source image data.
-     *    The default is the height of the image data.
+     * The default is the height of the image data.
      */
     @!APILevel[
         since: "22",

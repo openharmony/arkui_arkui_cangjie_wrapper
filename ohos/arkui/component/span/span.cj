@@ -52,8 +52,7 @@ foreign {
 }
 
 /**
- * Defines the base class of Span.
- * Contains common methods and properties for span components.
+ * Define the BaseSpan class, contains the common methods of span.
  */
 @!APILevel[
     since: "22",
@@ -93,7 +92,9 @@ public class Span <: BaseSpan {
      * Called when the font size is set.
      * Sets the font size for the text in the span.
      *
-     * @param { ?Length } value - The font size.
+     * @param { ?Length } value - Default value is 16fp.The default value on wearable devices is 18fp.
+     *     If fontSize is of the number type, the unit fp is used.
+     *     This parameter cannot be set in percentage.
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
@@ -205,9 +206,9 @@ public class Span <: BaseSpan {
     /**
      * Called when the text decoration of the text is set.
      * Sets the text decoration (e.g., underline, strikethrough) for the text in the span.
-     * 
+     *
      * @param { ?TextDecorationType } decorationType - The type of text decoration.
-     * @param { ?ResourceColor } color - The color of the text decoration.
+     * @param { ?ResourceColor } [color] - The color of the text decoration.
      * @returns { This } Returns Span component instance itself.
      */
     @!APILevel[
@@ -263,7 +264,10 @@ public class Span <: BaseSpan {
 
     /**
      * Called when a click event occurs.
-     * Sets the click event handler for the span.
+     *
+     * NOTE:
+     * Click events cannot be triggered if the finger is pressed for more than 800 ms.
+     * Click events cannot be triggered if the finger moves more than 20.px after pressing down.
      *
      * @param { ?(ClickEvent) -> Unit } event - The click event handler.
      * @returns { This } Returns Span component instance itself.

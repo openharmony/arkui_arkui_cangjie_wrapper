@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines the MenuItemGroup attribute functions.
+ * Defines the MenuItemGroup component attribute functions.
  */
 @!APILevel[
     since: "22",

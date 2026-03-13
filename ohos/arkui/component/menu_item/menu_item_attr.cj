@@ -20,8 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length, ResourceColor, ResourceStr}
 
 /**
- * Defines the MenuItem attribute functions.
- * Provides methods for configuring the appearance and behavior of the MenuItem component.
+ * Defines the MenuItem component attribute functions.
  */
 @!APILevel[
     since: "22",

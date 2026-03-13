@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, ResourceColor, Length}
 
 /**
- * Provides methods for configuring the appearance and behavior of the Search component.
+ * The attribute function of search.
  */
 @!APILevel[
     since: "22",

@@ -20,8 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length, Callback, ResourceStr}
 
 /**
- * Defines the Tabs attribute functions.
- * Provides methods for configuring the appearance and behavior of the Tabs component.
+ * Defines the tabs attribute functions.
  */
 @!APILevel[
     since: "22",
@@ -133,8 +132,7 @@ sealed interface TabsAttribute <: CommonMethod<TabsAttribute> {
 }
 
 /**
- * Defines the TabContent attribute functions.
- * Provides methods for configuring the appearance and behavior of the TabContent component.
+ * Defines the attribute functions of TabContent.
  */
 @!APILevel[
     since: "22",

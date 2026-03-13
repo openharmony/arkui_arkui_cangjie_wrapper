@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceColor}
 
 /**
- * Defines the Toggle attribute functions.
+ * Defines the toggle attribute functions
  */
 @!APILevel[
     since: "22",

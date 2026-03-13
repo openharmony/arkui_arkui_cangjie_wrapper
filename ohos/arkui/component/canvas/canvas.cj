@@ -184,7 +184,7 @@ public class Canvas <: CommonMethodComponent<Canvas> & CanvasAttribute {
      * Event notification after the canvas component is constructed. You can draw the canvas at this time.
      *
      * @param { ?() -> Unit } callback - The callback on canvas ready to draw.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

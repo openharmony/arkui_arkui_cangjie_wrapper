@@ -109,11 +109,11 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
         this.child = child
     }
     /**
-    * Defines Shape Component instance.
-    *
-    * @param { ?PixelMap } value - The shape background image.
-    * @returns { This } - Returns the component instance itself for method chaining.
-    */
+     * Defines Shape Component instance.
+     *
+     * @param { ?PixelMap } value - The shape background image.
+     * @returns { This } Returns the component instance itself for method chaining.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -128,14 +128,14 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
         }
     }
     /**
-    * Viewport of shape.
-    *
-    * @param { ?Length } x - X coordinate of the viewport.
-    * @param { ?Length } y - Y coordinate of the viewport.
-    * @param { ?Length } width - Width of the viewport.
-    * @param { ?Length } height - Height of the viewport.
-    * @returns { This } - Returns the component instance itself for method chaining.
-    */
+     * Viewport of shape.
+     *
+     * @param { ?Length } [x] - X coordinate of the viewport.
+     * @param { ?Length } [y] - Y coordinate of the viewport.
+     * @param { ?Length } [width] - Width of the viewport.
+     * @param { ?Length } [height] - Height of the viewport.
+     * @returns { This } Returns the component instance itself for method chaining.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -167,13 +167,13 @@ public class Shape <: CommonShapeMethodComponent<Shape> & ShapeAttribute {
         this
     }
     /**
-    * Called when shape mesh.
-    *
-    * @param { ?Array<Float64> } value - The mesh points array[x1, y1, x2, y2, ...].
-    * @param { ?UInt32 } column - The column count of mesh.
-    * @param { ?UInt32 } row - The row count of mesh.
-    * @returns { This } - Returns the component instance itself for method chaining.
-    */
+     * Called when shape mesh.
+     *
+     * @param { ?Array<Float64> } value - The mesh points array[x1, y1, x2, y2, ...].
+     * @param { ?UInt32 } column - The column count of mesh.
+     * @param { ?UInt32 } row - The row count of mesh.
+     * @returns { This } Returns the component instance itself for method chaining.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"

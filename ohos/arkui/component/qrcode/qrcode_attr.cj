@@ -21,7 +21,7 @@ import ohos.base.{ResourceColor}
 import ohos.resource.{AppResource}
 
 /**
- * Defines QRCode Component.
+ * Defines the qrcode attribute functions.
  */
 @!APILevel[
     since: "22",

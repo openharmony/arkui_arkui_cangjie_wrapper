@@ -234,7 +234,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Creates a shallow copy of the observed array list. This function also record the dependency elements that need to be updated.
+     * Creates a shallow copy of the observed array list.
+     * This function also record the dependency elements that need to be updated.
      *
      * @returns { ObservedArrayList<T> } A new ObservedArrayList instance with the same elements.
      */
@@ -271,7 +272,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Adds an element to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Adds an element to the end of the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { T } element - The element to append to the array list.
      * @returns { Unit }
@@ -287,7 +289,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Adds all elements from a collection to the end of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Adds all elements from a collection to the end of the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Collection<T> } elements - The collection of elements to append.
      * @returns { Unit }
@@ -308,7 +311,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Inserts an element at the specified position in the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Inserts an element at the specified position in the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Int64 } index - The zero-based index at which to insert the element.
      * @param { T } element - The element to insert.
@@ -325,7 +329,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Inserts all elements from a collection at the specified position in the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Inserts all elements from a collection at the specified position in the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Int64 } index - The zero-based index at which to insert the elements.
      * @param { Collection<T> } elements - The collection of elements to insert.
@@ -347,7 +352,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Adds an element to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Adds an element to the beginning of the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { T } element - The element to prepend to the array list.
      * @returns { Unit }
@@ -363,7 +369,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Adds all elements from a collection to the beginning of the observed array list. This function can enable observers to receive updated information whenever state variables change.
+     * Adds all elements from a collection to the beginning of the observed array list.
+     * This function can enable observers to receive updated information whenever state variables change.
      *
      * @param { Collection<T> } elements - The collection of elements to prepend.
      * @returns { Unit }
@@ -384,7 +391,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     }
 
     /**
-     * Removes and returns the element at the specified index. Enable observers to receive updated information whenever state variables change.
+     * Removes and returns the element at the specified index.
+     * Enable observers to receive updated information whenever state variables change.
      *
      * @param { Int64 } index - The zero-based index of the element to remove.
      * @returns { T } The removed element.
@@ -417,7 +425,8 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract & CollectionEx<T> {
     /**
      * Removes all elements that satisfy the provided predicate.
      *
-     * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed. Enable observers to receive updated information whenever state variables change.
+     * @param { (T) -> Bool } predicate - A function that returns true for elements to be removed.
+     * Enable observers to receive updated information whenever state variables change.
      * @returns { Unit }
      */
     @!APILevel[

@@ -89,24 +89,24 @@ public type PageTransitionCallback = (RouteType, Float64) -> Unit
 ]
 public enum RouteType {
     /**
-    * The page is not redirected.
-    */
+     * There is no thumb.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     None
     /**
-    * Go to the next page.
-    */
+     * Go to the next page.
+     */
     | @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Push
     /**
-    * Redirect to a specified page.
-    */
+     * Redirect to a specified page.
+     */
     | @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -142,32 +142,32 @@ public enum RouteType {
 ]
 public enum SlideEffect {
     /**
-    * Swipe left.
-    */
+     * Swipe left.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Left
     /**
-    * Swipe right.
-    */
+     * Swipe right.
+     */
     | @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Right
     /**
-    * Swipe top.
-    */
+     * Swipe top.
+     */
     | @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Top
     /**
-    * Swipe bottom.
-    */
+     * Swipe bottom.
+     */
     | @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -215,11 +215,11 @@ public enum SlideEffect {
 ]
 sealed abstract class CommonTransition {
     /**
-    * Called when the slide in effect of the transition is set.
-    *
-    * @param { SlideEffect } value - Page transition slide effect.
-    * @returns { This }
-    */
+     * Called when the slide in effect of the transition is set.
+     *
+     * @param { SlideEffect } value - Page transition slide effect.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -231,13 +231,13 @@ sealed abstract class CommonTransition {
         this
     }
     /**
-    * Called when the translation effect of page transition is set.
-    * 
-    * @param { ?Length } x - X coordinate to translate to.
-    * @param { ?Length } y - Y coordinate to translate to.
-    * @param { ?Length } z - Z coordinate to translate to.
-    * @returns { This } 
-    */
+     * Called when the translation effect of page transition is set.
+     *
+     * @param { ?Length } [x] - X coordinate to translate to.
+     * @param { ?Length } [y] - Y coordinate to translate to.
+     * @param { ?Length } [z] - Z coordinate to translate to.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -252,15 +252,15 @@ sealed abstract class CommonTransition {
         this
     }
     /**
-    * Called when setting the zoom effect of page transition.
-    *
-    * @param { ?Float32 } x - The degree of scaling along the X-axis, 1 is original scale.
-    * @param { ?Float32 } y - The degree of scaling along the Y-axis, 1 is original scale.
-    * @param { ?Float32 } z - The degree of scaling along the Z-axis, 1 is original scale.
-    * @param { ?Length } centerX - X coordinate of the scale center.
-    * @param { ?Length } centerY - Y coordinate of the scale center.
-    * @returns { This }
-    */
+     * Called when setting the zoom effect of page transition.
+     *
+     * @param { ?Float32 } x - The degree of scaling along the X-axis, 1 is original scale.
+     * @param { ?Float32 } y - The degree of scaling along the Y-axis, 1 is original scale.
+     * @param { ?Float32 } z - The degree of scaling along the Z-axis, 1 is original scale.
+     * @param { ?Length } centerX - X coordinate of the scale center.
+     * @param { ?Length } centerY - Y coordinate of the scale center.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -279,11 +279,11 @@ sealed abstract class CommonTransition {
         this
     }
     /**
-    * Called when the transparency value of the starting point of entry or the ending point of exit is set.
-    *
-    * @param { Float64 } value - The opacity to transition to. The value ranges from 0 to 1.
-    * @returns { This }
-    */
+     * Called when the transparency value of the starting point of entry or the ending point of exit is set.
+     *
+     * @param { Float64 } value - The opacity to transition to. The value ranges from 0 to 1.
+     * @returns { This }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -296,22 +296,22 @@ sealed abstract class CommonTransition {
     }
 }
 /**
-* Defines PageTransitionEnter Component.
-*
-*/
+ * Provides a class to set transition style when a page enters.
+ */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"
 ]
 public class PageTransitionEnter <: CommonTransition {
     /**
-    * Called when page Jump animation is used.
-    *
-    * @param { ?RouteType } routeType - The transition route type. The default value is RouteType.None.
-    * @param { ?Int32 } duration - The transition duration, in milliseconds. The default value is 1000.
-    * @param { ?Curve } curve - The transition curve. The default value is Curve.Linear.
-    * @param { ?Int32 } delay - The transition delay, in milliseconds. The default value is 0.
-    */
+     * Called when page Jump animation is used.
+     *
+     * @param { ?RouteType } routeType - The transition route type. The default value is RouteType.None.
+     * @param { ?Int32 } duration - The transition duration, in milliseconds. The default value is 1000.
+     * @param { ?Curve } curve - The transition curve. The default value is Curve.Linear.
+     * @param { ?Int32 } delay - The transition delay, in milliseconds. The default value is 0.
+     * @returns { PageTransitionEnter }
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -355,8 +355,8 @@ public class PageTransitionEnter <: CommonTransition {
     }
 }
 /**
-* Provide a class to set transition style when a page exits.
-*/
+ * Defines PageTransitionExit Component.
+ */
 @!APILevel[
     since: "22",
     syscap: "SystemCapability.ArkUI.ArkUI.Full"

@@ -493,7 +493,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Text size.
      *
      * @param { ?Length } value - The font size of button.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -523,7 +523,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Font weight.
      *
      * @param { ?FontWeight } value - The font weight of button.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -543,7 +543,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Text color.
      *
      * @param { ?ResourceColor } color - The font color of button.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -617,7 +617,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Font style.
      *
      * @param { ?FontStyle } value - The font style of button.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -635,7 +635,7 @@ public class Button <: CommonMethodComponent<Button> & ButtonAttribute {
      * Font family.
      *
      * @param { ?ResourceStr } value - The font family of button.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

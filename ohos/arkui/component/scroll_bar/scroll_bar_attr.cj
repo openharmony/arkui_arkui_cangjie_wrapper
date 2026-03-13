@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines the ScrollBar attribute functions.
+ * Defines the scrollbar attribute functions.
  */
 @!APILevel[
     since: "22",

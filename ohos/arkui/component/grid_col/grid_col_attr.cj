@@ -19,8 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines the GridCol attribute functions.
- * This interface provides the attribute methods for the GridCol component.
+ * Defines the GridContainer attribute functions.
  */
 @!APILevel[
     since: "22",

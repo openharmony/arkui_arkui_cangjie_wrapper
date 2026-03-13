@@ -82,9 +82,9 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Construct the Checkbox component.
      * Called when the Checkbox component is used.
      *
-     * @param { ?String } name - The initial name of current checkbox.
-     * @param { ?String } group - The initial group name of current checkbox.
-     * @param { ?CustomBuilder } indicatorBuilder - The builder of current checkbox.
+     * @param { ?String } [name] - The initial name of current checkbox.
+     * @param { ?String } [group] - The initial group name of current checkbox.
+     * @param { ?CustomBuilder } [indicatorBuilder] - The builder of current checkbox.
      */
     @!APILevel[
         since: "22",
@@ -104,11 +104,10 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * Set whether checkbox is selected.
+     * setting whether checkbox is selected
      *
      * @param { ?Bool } value - Whether the checkbox is selected.
-     * @default true
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -123,10 +122,10 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * Set the display color of checkbox.
+     * setting the display color of checkbox
      *
      * @param { ?ResourceColor } value - The color to display.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -237,7 +236,7 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
      * Called when the selection status changes.
      *
      * @param { ?OnCheckboxChangeCallback } callback - The callback on selected status change.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -253,10 +252,10 @@ public class Checkbox <: CommonMethodComponent<Checkbox> & CheckboxAttribute {
     }
 
     /**
-     * Setting the shape of checkbox.
+     * setting the shape of checkbox
      *
      * @param { ?CheckBoxShape } value - The configuration of checkbox shape.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

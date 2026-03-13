@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length}
 
 /**
- * Defines the TextPicker attribute functions.
+ * Style the text selector.
  */
 @!APILevel[
     since: "22",

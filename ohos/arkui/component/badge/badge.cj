@@ -98,9 +98,9 @@ public class BadgeStyle {
      * The value must be greater than or equal to 0. If the value is less than 0, the default value is used.
      * Unit: fp
      *
-     * <p><strong>NOTE</strong>:
-     * <br>This parameter cannot be set in percentage.
-     * </p>
+     * NOTE:
+     * This parameter cannot be set in percentage.
+     * @default 10
      */
     @!APILevel[
         since: "22",
@@ -113,10 +113,10 @@ public class BadgeStyle {
      * The value must be greater than or equal to 0. If the value is less than 0, the default value is used.
      * Unit: vp
      *
-     * <p><strong>NOTE</strong>:
-     * <br>This parameter cannot be set in percentage.
-     * <br>If it is set to an invalid value, the default value is used.
-     * </p>
+     * NOTE:
+     * This parameter cannot be set in percentage.
+     * If it is set to an invalid value, the default value is used.
+     * @default 16
      */
     @!APILevel[
         since: "22",
@@ -134,14 +134,16 @@ public class BadgeStyle {
     public var badgeColor: ?ResourceColor
     /**
      * Font weight of the text.
-     * For the number type, the value ranges from 100 to 900, at an interval of 100.
+     * For the number type, the value ranges from 100 to 900, at an interval of 100. Default value: 400
      * A larger value indicates a heavier font weight.
-     * For the string type, only strings that represent a number.
+     * For the string type, only strings that represent a number. Default value: FontWeight.Normal
+     * NOTE:
+     * This parameter cannot be set in percentage.
+     *
      * @default 400 or FontWeight.Normal
      *
-     * <p><strong>NOTE</strong>:
-     * <br>This parameter cannot be set in percentage.
-     * </p>
+     * NOTE:
+     * This parameter cannot be set in percentage.
      */
     @!APILevel[
         since: "22",
@@ -160,7 +162,8 @@ public class BadgeStyle {
     /**
      * Border width of the background.
      * This parameter cannot be set in percentage.
-     * @default 1.vp
+     * Unit: vp
+     * @default 1
      */
     @!APILevel[
         since: "22",
@@ -245,8 +248,8 @@ public class Badge <: CommonMethodComponent<Badge> & BadgeAttribute {
      *
      * @param { Int32 } count - Number of notifications.
      * @param { ?BadgeStyle } style - Style of the badge, including the font color, font size, badge color, and badge size.
-     * @param { ?BadgePosition } position - Position to display the badge relative to the parent component.
-     * @param { ?Int32 } maxCount - Maximum number of notifications.
+     * @param { ?BadgePosition } [position] - Position to display the badge relative to the parent component.
+     * @param { ?Int32 } [maxCount] - Maximum number of notifications.
      * @param { () -> Unit } child - The child component to be wrapped.
      */
     @!APILevel[

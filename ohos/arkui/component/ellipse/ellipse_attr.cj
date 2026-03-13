@@ -19,7 +19,7 @@ import ohos.arkui.component.shape.{CommonShapeMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines Ellipse attributes.
+ * Provides attribute for Ellipse.
  */
 @!APILevel[
     since: "22",

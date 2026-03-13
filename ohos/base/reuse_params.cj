@@ -55,7 +55,7 @@ public class ReuseParams {
      * Gets the value of the specified key.
      *
      * @param { String } key - The key to get value
-     * @returns { ?T } - The value associated with the key, or null if not found
+     * @returns { ?T } The value associated with the key, or null if not found.
      */
     @!APILevel[
         since: "22",

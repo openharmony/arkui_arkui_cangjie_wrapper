@@ -32,7 +32,7 @@ foreign {
 }
 
 /**
- * A shape component that renders rectangular graphic elements with optional rounded corners.
+ * Defines a rect drawing class.
  */
 @!APILevel[
     since: "22",

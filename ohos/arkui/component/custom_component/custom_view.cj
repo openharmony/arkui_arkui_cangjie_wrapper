@@ -125,7 +125,7 @@ public abstract class CustomView <: RemoteView & Observer {
     /**
      * Get the LocalStorage instance of current page.
      *
-     * @returns { LocalStorage } - The LocalStorage instance of the current page.
+     * @returns { LocalStorage } The LocalStorage instance of the current page.
      */
     @!APILevel[
         since: "22",
@@ -170,7 +170,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     /**
-     * Define declarative UI descriptions for custom component.
+     * Customize the pop-up content constructor and it is migrated from class CustomComponent.
      */
     @!APILevel[
         since: "22",
@@ -729,7 +729,7 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     /**
-     * Called when component is about to be deleted.
+     * Called when processing information about to be deleted.
      */
     @!APILevel[
         since: "22",
@@ -788,9 +788,9 @@ public abstract class CustomView <: RemoteView & Observer {
     }
 
     /**
-     * get UIContext from current environment.
+     * Get current UIContext and it is migrated from class CustomComponent.
      *
-     * @returns { UIContext } - The UIContext instance for the current component.
+     * @returns { UIContext } The UIContext that the custom component belongs to.
      */
     @!APILevel[
         since: "22",

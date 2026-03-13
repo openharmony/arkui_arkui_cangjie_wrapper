@@ -190,9 +190,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * A constructor used to create a TextTimer object.
      *
-     * @param { ?Bool } isCountDown - Whether to count down.
-     * @param { ?Int64 } count - The initial count value.
-     * @param { ?TextTimerController } controller - The controller for the text timer.
+     * @param { ?Bool } [isCountDown] - Whether to count down.
+     * @param { ?Int64 } [count] - The initial count value.
+     * @param { ?TextTimerController } [controller] - The controller for the text timer.
      */
     @!APILevel[
         since: "22",
@@ -210,12 +210,10 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
      * Sets the custom format.
      * The value must contain at least one of the following keywords: HH, mm, ss, and SS.
      *
-     * <p><strong>NOTE</strong>:
-     * <br>If the specified date format is yy, MM, or dd, the default value is used instead.
-     * </p>
+     * NOTE:
+     * If the specified date format is yy, MM, or dd, the default value is used instead.
      *
-     * @param { ?String } value - Custom format.
-     * @default 'HH:mm:ss.SS'
+     * @param { ?String } value - Custom format.Default value: 'HH:mm:ss.SS'
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -257,10 +255,9 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font size.
      *
-     * @param { ?Length } value - Font size. The default font size is 16.fp.
-     * <br>If fontSize is of the number type, the unit fp is used.
-     * <br>The value cannot be a percentage.
-     * @default 16.fp
+     * @param { ?Length } value - Font size.The default font size is 16 fp.
+     *     If fontSize is of the number type, the unit fp is used.
+     *     The value cannot be a percentage.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -304,8 +301,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font style.
      *
-     * @param { ?FontStyle } value - Font style.
-     * @default FontStyle.Normal.
+     * @param { ?FontStyle } value - Font style.Default value: FontStyle.Normal
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -323,15 +319,13 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font weight.
      *
-     * <p><strong>NOTE</strong>:
-     * <br>If the value is too large, the text may be clipped depending on the font.
-     * </p>
+     * NOTE:
+     * If the value is too large, the text may be clipped depending on the font.
      *
      * @param { ?FontWeight } value - Font weight.
-     * <br>For the number type, Value range: [100, 900], at an interval of 100.
-     * <br>A larger value indicates a heavier font weight.
-     * <br>For the string type, only strings that represent a number.
-     * @default 400
+     *     For the number type, Value range: [100, 900], at an interval of 100.The default value is 400.
+     *     A larger value indicates a heavier font weight.
+     *     For the string type, only strings that represent a number.
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -351,8 +345,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
     /**
      * Sets the font family.
      *
-     * @param { ?ResourceStr } value - Font family.
-     * @default 'HarmonyOS Sans'.
+     * @param { ?ResourceStr } value - Font family. Default font: 'HarmonyOS Sans'
      * @returns { This } Returns itself to allow method chaining.
      */
     @!APILevel[
@@ -371,6 +364,7 @@ public class TextTimer <: CommonMethodComponent<TextTimer> & TextTimerAttribute 
 
     /**
      * Sets the text shadow.
+     * It supports input parameters in an array to implement multiple text shadows.
      * This API does not work with the fill attribute or coloring strategy.
      *
      * @param { ?Array<ShadowOptions> } value - The shadow options.

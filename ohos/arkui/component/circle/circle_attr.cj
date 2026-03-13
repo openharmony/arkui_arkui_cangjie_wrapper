@@ -19,7 +19,7 @@ import ohos.arkui.component.shape.{CommonShapeMethod}
 import ohos.labels.{APILevel}
 
 /**
- * Defines Circle attributes.
+ * Circle drawing component attribute functions.
  */
 @!APILevel[
     since: "22",

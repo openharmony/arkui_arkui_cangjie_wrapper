@@ -304,7 +304,7 @@ struct NativeGridRowColumnOption {
 }
 
 /**
- * Defines the option in number unit of grid-row component.
+ * Defines the options of grid-row component.
  */
 @!APILevel[
     since: "22",
@@ -330,7 +330,7 @@ public class GridRowOptions {
     public var sm: ?Int32
 
     /**
-     * Grid Row Column Option md, select md column num based on gridRow current breakpoint.
+     * Grid Row Size Option md, select md gutter size based on gridRow current breakpoint.
      */
     @!APILevel[
         since: "22",
@@ -438,11 +438,11 @@ public class GridRowOptions {
 public class GutterOption {
     let data: GridRowGutter
     /**
-    * Defines the constructor of GutterOption.
-    *
-    * @param { ?Length } [x] - Horizontal spacing between grid items.
-    * @param { ?Length } [y] - Vertical spacing between grid items.
-    */
+     * Defines the constructor of GutterOption.
+     *
+     * @param { ?Length } [x] - Horizontal spacing between grid items.
+     * @param { ?Length } [y] - Vertical spacing between grid items.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -475,8 +475,8 @@ public class GutterOption {
 ]
 public class BreakPoints {
     /**
-    * Breakpoint array.
-    */
+     * Breakpoint array.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -484,8 +484,8 @@ public class BreakPoints {
     public var value: ?Array<Length>
 
     /**
-    * Set breakpoint reference.
-    */
+     * Set breakpoint reference.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -745,7 +745,7 @@ public class GridRow <: CommonMethodComponent<GridRow> & GridRowAttribute {
     /**
      * Cross axis alignment of each line in GridRow.
      *
-     * @param { ?ItemAlign } value - Element alignment.
+     * @param { ?ItemAlign } value - element alignment
      * @returns { This }
      */
     @!APILevel[

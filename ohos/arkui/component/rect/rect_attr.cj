@@ -20,8 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length}
 
 /**
- * Defines Rect Component.
- * Provides methods for configuring the appearance and behavior of the Rect component.
+ * rect attribute declaration.
  */
 @!APILevel[
     since: "22",

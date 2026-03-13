@@ -38,7 +38,7 @@ foreign {
 }
 
 /**
- * Represents the color mode (theme) of the device.
+ * Defines the ColorMode of device.
  */
 @Derive[Equatable]
 @!APILevel[
@@ -47,7 +47,7 @@ foreign {
 ]
 public enum ColorMode {
     /**
-     * Represents the light color theme of the device.
+     * Light mode.
      */
     @!APILevel[
         since: "22",
@@ -56,7 +56,7 @@ public enum ColorMode {
     Light
     |
     /**
-     * Represents the dark color theme of the device.
+     * Dark mode.
      */
     @!APILevel[
         since: "22",
@@ -85,7 +85,7 @@ public enum ColorMode {
 ]
 public enum LayoutDirection {
     /**
-     * Represents left-to-right layout direction.
+     * Elements are laid out from left to right.
      */
     @!APILevel[
         since: "22",
@@ -94,7 +94,7 @@ public enum LayoutDirection {
     Ltr
     |
     /**
-     * Represents right-to-left layout direction.
+     * Elements are laid out from right to left.
      */
     @!APILevel[
         since: "22",
@@ -103,7 +103,7 @@ public enum LayoutDirection {
     Rtl
     |
     /**
-     * Represents automatic layout direction based on locale.
+     * Elements are laid out from auto.
      */
     @!APILevel[
         since: "22",
@@ -170,11 +170,9 @@ public class Environment {
     }
 
     /**
-     * Returns an Array<string> of all environment property keys.
-     * Lists all available environment property keys.
+     * Return the array of all keys.
      *
-     * @returns { Array<string> } all environment property keys.
-     * @throws { BusinessException } 100001 - Internal error.
+     * @returns { Array<String> } the array of all keys.
      */
     @!APILevel[
         since: "22",
@@ -193,7 +191,6 @@ public class Environment {
      * @param { String } key - environment property name
      * @param { T } defaultValue - is the default value if cannot get the environment property value
      * @returns { Bool } false if method failed.
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",

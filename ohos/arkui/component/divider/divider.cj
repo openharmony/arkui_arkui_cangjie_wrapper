@@ -37,7 +37,7 @@ foreign {
 let DEFAULT_DIVIDER_COLOR = 0x33182431
 
 /**
- * Divider component used to separate different content blocks or elements.
+ * Defines Divider Component.
  */
 @!APILevel[
     since: "22",
@@ -45,8 +45,8 @@ let DEFAULT_DIVIDER_COLOR = 0x33182431
 ]
 public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     /**
-    * Divider constructor.
-    */
+     * Divider constructor.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
@@ -62,8 +62,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * The options are as follows: false: horizontal splitter; true: vertical splitter.
      *
      * @param { ?Bool } value - Whether to use a vertical divider.
-     * @default false
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -77,10 +76,10 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-     * Sets the color of the divider line.
+     * Sets the color of the dividing line
      *
      * @param { ?ResourceColor } value - The color of the divider line.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -97,7 +96,7 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
      * Sets the width of the dividing line.
      *
      * @param { ?Length } value - The width of the dividing line.
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",
@@ -112,11 +111,10 @@ public class Divider <: CommonMethodComponent<Divider> & DividerAttribute {
     }
 
     /**
-     * Sets the end style of the split line.
+     * Sets the end style of the dividing line. The default value is Butt
      *
      * @param { ?LineCapStyle } value - The end style of the split line.
-     * @default LineCapStyle.Butt
-     * @returns { This } - The instance of the component.
+     * @returns { This } The instance of the component.
      */
     @!APILevel[
         since: "22",

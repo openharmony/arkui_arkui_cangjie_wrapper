@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod, ItemState}
 import ohos.labels.{APILevel}
 
 /**
- * Provides methods for configuring the appearance and behavior of the StepperItem component.
+ * Defines the stepper item attribute functions.
  */
 @!APILevel[
     since: "22",

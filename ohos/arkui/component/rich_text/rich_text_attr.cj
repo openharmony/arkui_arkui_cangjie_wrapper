@@ -20,7 +20,6 @@ import ohos.labels.{APILevel}
 
 /**
  * Defines the RichText attribute functions.
- * Provides methods for configuring the behavior of the RichText component.
  */
 @!APILevel[
     since: "22",

@@ -88,7 +88,7 @@ func notifyCallbackBool(key: CString, value: Bool): Unit {
 }
 
 /**
- * Provides mechanisms for persisting AppStorage properties across application sessions.
+ * Defines the PersistentStorage interface.
  */
 @!APILevel[
     since: "22",
@@ -181,12 +181,14 @@ public class PersistentStorage <: Observer {
     }
 
     /**
-     * Makes an AppStorage property persistent across application sessions.
+     * Add property 'key' to AppStorage properties whose current value will be
+     * persistent.
+     * If AppStorage does not include this property it will be added and initializes
+     * with given value
      *
      * @param { String } key - name of the property to persist
      * @param { T } defaultValue - default value for the property if not already present
      * @returns { Unit }
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -203,7 +205,6 @@ public class PersistentStorage <: Observer {
      *
      * @param { Array<(String, T)> } props - array of property name-value pairs to persist
      * @returns { Unit }
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",
@@ -218,7 +219,6 @@ public class PersistentStorage <: Observer {
      *
      * @param { String } key - no longer persist the property named key
      * @returns { Unit }
-     * @throws { BusinessException } 100001 - Internal error.
      */
     @!APILevel[
         since: "22",

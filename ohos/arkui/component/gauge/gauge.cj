@@ -128,7 +128,7 @@ class FFIVectorColorStops {
 }
 
 /**
- * Defines the Gauge component.
+ * Defines Gauge Component.
  */
 @!APILevel[
     since: "22",
@@ -159,7 +159,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * Sets the value for the current profile.
      *
      * @param { ?Float32 } value - Set current data value.
-     * @returns { This } - The instance of the component.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -176,7 +176,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * Set the start angle. Clock 0 is 0 degrees and clockwise is positive.
      *
      * @param { ?Float32 } angle - The start angle value, measured in degrees.
-     * @returns { This } - The instance of the component.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -193,7 +193,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * Sets the end angle position. Clock 0 is 0 degrees and clockwise is positive.
      *
      * @param { ?Float32 } angle - The end angle value, measured in degrees.
-     * @returns { This } - The instance of the component.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -312,8 +312,8 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Set the color of the chart. You can set the solid color and segmented gradient color.
      *
-     * @param { ?LinearGradient } value - The linear gradient value.
-     * @returns { This } - The instance of the component.
+     * @param { ?LinearGradient } value - section colors of gauge drawing.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -333,7 +333,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * Sets the thickness of the ring chart.
      *
      * @param { ?Length } length - The stroke width value.
-     * @returns { This } - The instance of the component.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -356,7 +356,7 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
      * @param { ?Float32 } [radius] - The shadow radius.
      * @param { ?Float32 } [offsetX] - The shadow horizontal offset.
      * @param { ?Float32 } [offsetY] - The shadow vertical offset.
-     * @returns { This } - The instance of the component.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -372,9 +372,9 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     /**
      * Sets indicator options of the ring chart.
      *
-     * @param { ?ResourceStr } icon - The indicator icon.
-     * @param { ?Length } space - The space between indicator and chart.
-     * @returns { This } - The instance of the component.
+     * @param { ?ResourceStr } [icon] - The indicator icon.
+     * @param { ?Length } [space] - The space between indicator and chart.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",
@@ -395,10 +395,10 @@ public class Gauge <: CommonMethodComponent<Gauge> & GaugeAttribute {
     }
 
     /**
-     * Set the description content of the ring chart.
+     * Sets description content of the ring chart.
      *
-     * @param { ?CustomBuilder } builder - The custom description builder.
-     * @returns { This } - The instance of the component.
+     * @param { ?CustomBuilder } builder - description content builder of the gauge drawing.
+     * @returns { This } returns the instance of the Gauge.
      */
     @!APILevel[
         since: "22",

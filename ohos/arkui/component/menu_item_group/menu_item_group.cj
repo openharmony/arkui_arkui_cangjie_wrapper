@@ -41,9 +41,9 @@ public class MenuItemGroup <: CommonMethodComponent<MenuItemGroup> & MenuItemGro
     /**
      * Creates the MenuItemGroup component.
      *
-     * @param { ?ResourceStr } header - Defines the header display info.
-     * @param { ?ResourceStr } footer - Defines the footer display info.
-     * @param { () -> Unit } child - The child component of menu item group.
+     * @param { ?ResourceStr } [header] - Defines the header display info.
+     * @param { ?ResourceStr } [footer] - Defines the footer display info.
+     * @param { () -> Unit } [child] - The child component of menu item group.
      */
     @!APILevel[
         since: "22",

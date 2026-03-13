@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{ResourceStr, Length, ResourceColor}
 
 /**
- * Defines the Select attribute functions.
+ * The commonMethod of select.
  */
 @!APILevel[
     since: "22",

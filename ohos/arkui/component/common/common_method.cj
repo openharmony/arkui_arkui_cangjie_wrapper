@@ -20,7 +20,10 @@ import ohos.labels.{APILevel, Hide}
 import ohos.base.{ResourceColor, Length, ResourceStr}
 
 /**
- * CommonMethod.
+ * CommonMethod interface.
+ * This interface defines common methods that can be applied to UI components.
+ * It provides a generic type T that represents the return type of the methods,
+ * allowing for method chaining in fluent APIs.
  */
 @!APILevel[
     since: "22",

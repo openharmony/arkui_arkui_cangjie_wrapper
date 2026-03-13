@@ -20,7 +20,7 @@ import ohos.labels.{APILevel}
 import ohos.base.{Length}
 
 /**
- * Defines the SideBarContainer attribute functions.
+ * The attribute function of sidebar.
  * Provides methods for configuring the appearance and behavior of the SideBarContainer component.
  */
 @!APILevel[
@@ -29,10 +29,10 @@ import ohos.base.{Length}
 ]
 sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttribute> {
     /**
-     * Callback showControlButton function when setting the status of sidebar
+     * Callback showControlButton function when setting the status of sidebar.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to show the sidebar.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -41,10 +41,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func showSideBar(value: ?Bool): SideBarContainerAttribute
 
     /**
-     * Callback controlButton function when setting the style of button
+     * Callback controlButton function when setting the style of button.
      *
-     * @param { ?ButtonStyle } value
-     * @returns { This }
+     * @param { ?ButtonStyle } value - The button style.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -53,10 +53,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func controlButton(value: ?ButtonStyle): SideBarContainerAttribute
 
     /**
-     * Callback showControlButton function when setting the status of button
+     * Callback showControlButton function when setting the status of button.
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to show the control button.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -67,8 +67,9 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Trigger callback when sidebar style of showing change finished.
      *
-     * @param { ?(Bool) -> Unit } callback
-     * @returns { This }
+     * @param { ?(Bool) -> Unit } callback - The callback function triggered when sidebar style changes.
+     * The parameter indicates whether the sidebar is currently shown (true) or hidden (false).
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -77,10 +78,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func onChange(callback: ?(Bool) -> Unit): SideBarContainerAttribute
 
     /**
-     * Sets the length of sidebar.
+     * Sets the length of sidebar. default value is 240vp
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The width of the sidebar. The default value is 240.vp.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -89,10 +90,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func sideBarWidth(value: ?Length): SideBarContainerAttribute
 
     /**
-     * Sets the min length of sidebar.
+     * Sets the min length of sidebar. default value is 200vp
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The minimum width of the sidebar.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -101,10 +102,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func minSideBarWidth(value: ?Length): SideBarContainerAttribute
 
     /**
-     * Sets the max length of sidebar.
+     * Sets the max length of sidebar. default value is 280vp
      *
-     * @param { ?Length } value
-     * @returns { This }
+     * @param { ?Length } value - The maximum width of the sidebar.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -113,10 +114,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func maxSideBarWidth(value: ?Length): SideBarContainerAttribute
 
     /**
-     * Sets whether to automatically hide when drag sidebar width is less than the minimum width.
+     * Sets whether to automatically hide when drag sidebar width is less than the minimum width. default value is true
      *
-     * @param { ?Bool } value
-     * @returns { This }
+     * @param { ?Bool } value - Whether to automatically hide.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -125,10 +126,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func autoHide(value: ?Bool): SideBarContainerAttribute
 
     /**
-     * Called when determining the location of the sidebar.
+     * Called when determining the location of the sidebar. default value is Start
      *
-     * @param { ?SideBarPosition } value
-     * @returns { This }
+     * @param { ?SideBarPosition } value - The position of the sidebar.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -139,8 +140,8 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     /**
      * Set divider style for sideBarContainer
      *
-     * @param { ?DividerStyle } value
-     * @returns { This }
+     * @param { ?DividerStyle } value - indicates the style of the divider or whether to show the divider.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",
@@ -149,10 +150,10 @@ sealed interface SideBarContainerAttribute <: CommonMethod<SideBarContainerAttri
     func divider(value: ?DividerStyle): SideBarContainerAttribute
 
     /**
-     * Sets the min length of content.
-     * 
-     * @param { ?Length } value
-     * @returns { This }
+     * Sets the min length of content. default value is 360vp
+     *
+     * @param { ?Length } value - min length of content.
+     * @returns { This } Returns the SideBarContainer instance.
      */
     @!APILevel[
         since: "22",

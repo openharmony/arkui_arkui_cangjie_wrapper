@@ -271,11 +271,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     }
 
     /**
-     * Sets the span of current grid-container item.
-     * Defines how many columns the grid item should span on different screen sizes.
+     * Sets the span of current gird-container item.
      *
      * @param { ?GridColOptions } value - The GridColOptions to set as span. This defines how many columns the grid item will occupy on different screen sizes.
-     * @returns { This } - Returns the component itself for chaining.
+     * @returns { This } Returns the component itself for chaining.
      */
     @!APILevel[
         since: "22",
@@ -308,11 +307,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     }
 
     /**
-     * Sets the offset of current grid-container item.
-     * Defines how many columns to offset the grid item from its normal position on different screen sizes.
+     * Sets the offset of current gird-container item.
      *
      * @param { ?GridColOptions } value - The GridColOptions to set as offset. This defines how many columns the grid item will be offset from its normal position on different screen sizes.
-     * @returns { This } - Returns the component itself for chaining.
+     * @returns { This } Returns the component itself for chaining.
      */
     @!APILevel[
         since: "22",
@@ -327,11 +325,10 @@ public class GridCol <: CommonMethodComponent<GridCol> & GridColAttribute {
     }
 
     /**
-     * Sets the order of current grid-container item.
-     * Defines the display order of the grid item in the grid layout.
+     * Sets the order of current gird-container item
      *
      * @param { ?Int32 } value - The order value to set. Items with a lower order value are displayed before items with a higher order value.
-     * @returns { This } - Returns the component itself for chaining.
+     * @returns { This } Returns the component itself for chaining.
      */
     @!APILevel[
         since: "22",

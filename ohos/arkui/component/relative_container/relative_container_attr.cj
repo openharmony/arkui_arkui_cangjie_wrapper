@@ -19,7 +19,7 @@ import ohos.arkui.component.common.{CommonMethod}
 import ohos.labels.{APILevel}
 
 /**
- * RelativeContainer
+ * Defines the RelativeContainer attribute functions.
  */
 @!APILevel[
     since: "22",

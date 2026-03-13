@@ -68,7 +68,6 @@ foreign {
 
 /**
  * Defines Toggle Component.
- *
  */
 @!APILevel[
     since: "22",
@@ -80,7 +79,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
      * Set parameters to obtain the toggle.
      *
      * @param { ?ToggleType } toggleType - Type of the toggle button.
-     * @param { ?Bool } isOn - Initial selected state of the toggle button.
+     * @param { ?Bool } [isOn] - Initial selected state of the toggle button.
      */
     @!APILevel[
         since: "22",
@@ -176,7 +175,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     }
 
     /**
-     * Set the color of the selected button.
+     * Called when the color of the selected button is set
      *
      * @param { ?ResourceColor } value - Color of the selected button.
      * @returns { This }
@@ -200,7 +199,7 @@ public class Toggle <: CommonMethodComponent<Toggle> & ToggleAttribute {
     }
 
     /**
-     * Set the color of the switch point.
+     * Called when the color of the selected button is set
      *
      * @param { ?ResourceColor } color - Color of the switch point.
      * @returns { This }
