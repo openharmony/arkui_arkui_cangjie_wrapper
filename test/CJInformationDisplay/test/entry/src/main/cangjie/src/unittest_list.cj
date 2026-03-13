@@ -22,12 +22,14 @@ let _ = testsuites()
 func testsuites(): Unit {
     registerTestSuite("InformationDisplayUT1") {InformationDisplayUT1()}
     registerTestSuite("InformationDisplayUT2") {InformationDisplayUT2()}
+    registerTestSuite("InformationDisplayUT3") {InformationDisplayUT3()}
 }
 let UT_views = ObservedArrayList<String>([
     "InformationDisplayIndex1",
     "InformationDisplayIndex2"
 ])
 let UT1 = ObservedArrayList<String>([
+    "ViewCovEnumEquatable",
     "ViewAlphabetIndexer",
     "ViewBadge",
     "ViewBlank",

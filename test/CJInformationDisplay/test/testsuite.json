@@ -8,6 +8,10 @@
     {
       "name": "InformationDisplayUT2",
       "timeout": 100
+    },
+    {
+      "name": "InformationDisplayUT3",
+      "timeout": 100
     }
   ]
 }
