@@ -427,7 +427,7 @@ class BasicCommonUTHello {
     @Tag[APILevel22, TestLevel0]
     func testResourceToUInt() {
         Hilog.info(1, "Cangjie-Test", "test_resource_toUInt start")
-        var uint32_color: Uint32 = 0
+        var uint32_color: UInt32 = 0
         try {
             var color: ResourceColor = @r(app.color.blue_23C452)
             uint32_color = color.toUInt32()
