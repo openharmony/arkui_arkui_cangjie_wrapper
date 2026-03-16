@@ -17,7 +17,7 @@
 
 protected package ohos.arkui.component.util
 
-import ohos.base.{Length, ResourceColor, LengthUnit, ResourceStr, registerTransAppResourceToResourceColor}
+import ohos.base.{Length, ResourceColor, LengthUnit, ResourceStr, registerTransAppResourceToResourceColor, registerTransAppResourceToLength}
 import ohos.resource.{AppResource, getResourceLength, getResourceColor, getResourceString, getResourceMedia}
 
 // !! Do not use the following variables as match-case conditions
@@ -45,6 +45,8 @@ protected func transAppResourceToLength(value: Length): Length {
     }
     return value
 }
+
+let _ = registerTransAppResourceToLength(transAppResourceToLength)
 
 protected func transAppResourceToResourceColor(value: ResourceColor): UInt32 {
     if (let Some(v) <- (value as AppResource)) {
