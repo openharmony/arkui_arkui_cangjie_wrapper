@@ -21,6 +21,13 @@ import ohos.labels.{APILevel}
 import ohos.business_exception.BusinessException
 import std.deriving.Derive
 
+var _transAppResourceToLength: ?(Length) -> Length = None
+
+// Register the function to convert AppResource to Length. And add register function to avoid dependency cycle.
+protected func registerTransAppResourceToLength(fn: (Length) -> Length): Unit {
+    _transAppResourceToLength = fn
+}
+
 /**
  * Defines the length property.
  */
@@ -40,7 +47,10 @@ public interface Length {
     ]
     prop value: Float64 {
         get() {
-            throw BusinessException(100001, "Internal error.")
+            match (_transAppResourceToLength) {
+                case Some(fn) => fn(this).value
+                case _ => throw BusinessException(100001, "Internal error.")
+            }
         }
     }
 
@@ -55,7 +65,10 @@ public interface Length {
     ]
     prop unitType: LengthUnit {
         get() {
-            throw BusinessException(100001, "Internal error.")
+            match (_transAppResourceToLength) {
+                case Some(fn) => fn(this).unitType
+                case _ => throw BusinessException(100001, "Internal error.")
+            }
         }
     }
 }
