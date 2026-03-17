@@ -158,7 +158,6 @@ foreign {
 
 /**
  * Defines the controller of Text.
- *
  */
 @!APILevel[
     since: "22",

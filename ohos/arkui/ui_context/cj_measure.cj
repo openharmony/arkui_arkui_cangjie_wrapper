@@ -57,7 +57,6 @@ foreign {
 
 /**
  * Defines the options of MeasureText.
- *
  */
 @!APILevel[
     since: "22",
@@ -192,7 +191,6 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
 
 /**
  * Defines the size options.
- *
  */
 @!APILevel[
     since: "22",
@@ -201,7 +199,6 @@ func parseCJMeasureContext(context: MeasureOptions): CJMeasureContextToC {
 public class SizeOptions {
     /**
      * Defines the width.
-     *
      */
     @!APILevel[
         since: "22",
@@ -210,7 +207,6 @@ public class SizeOptions {
     public var width: Length = 0
     /**
      * Defines the height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -258,7 +254,6 @@ protected func measureTextSizeInner(options: MeasureOptions): SizeOptions {
 
 /**
  * Defines the Measure class.
- *
  */
  @!APILevel[
     since: "22",

@@ -51,7 +51,6 @@ struct NativeOptionFontInfo {
 
 /**
  * Provides a font component.
- *
  */
 @!APILevel[
     since: "22",
@@ -60,7 +59,6 @@ struct NativeOptionFontInfo {
 public class FontInfo {
     /**
      * The path of the font file.
-     *
      */
     @!APILevel[
         since: "22",
@@ -70,7 +68,6 @@ public class FontInfo {
 
     /**
      * The name of postscript.
-     *
      */
     @!APILevel[
         since: "22",
@@ -80,7 +77,6 @@ public class FontInfo {
 
     /**
      * The font name.
-     *
      */
     @!APILevel[
         since: "22",
@@ -90,7 +86,6 @@ public class FontInfo {
 
     /**
      * A set of fonts with a common design.
-     *
      */
     @!APILevel[
         since: "22",
@@ -100,7 +95,6 @@ public class FontInfo {
 
     /**
      * A subset of the font family.
-     *
      */
     @!APILevel[
         since: "22",
@@ -110,7 +104,6 @@ public class FontInfo {
 
     /**
      * The weight of the font.
-     *
      */
     @!APILevel[
         since: "22",
@@ -120,7 +113,6 @@ public class FontInfo {
 
     /**
      * The width of the font style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -130,7 +122,6 @@ public class FontInfo {
 
     /**
      * Whether it is italic.
-     *
      */
     @!APILevel[
         since: "22",
@@ -140,7 +131,6 @@ public class FontInfo {
 
     /**
      * Whether it is compact.
-     *
      */
     @!APILevel[
         since: "22",
@@ -150,7 +140,6 @@ public class FontInfo {
 
     /**
      * Whether symbol fonts are supported.
-     *
      */
     @!APILevel[
         since: "22",

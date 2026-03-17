@@ -33,7 +33,6 @@ foreign {
 
 /**
  * Defines class UIContext.
- *
  */
 @!APILevel[
     since: "22",
@@ -306,7 +305,6 @@ public class UIContext {
 
 /**
  * Defines class ContextMenuController.
- *
  */
 @!APILevel[
     since: "22",

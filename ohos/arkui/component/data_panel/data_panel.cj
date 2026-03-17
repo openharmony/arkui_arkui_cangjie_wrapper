@@ -69,7 +69,6 @@ foreign {
 
 /**
  * ColorStop type
- *
  */
 @!APILevel[
     since: "22",
@@ -112,7 +111,6 @@ public class ColorStop {
 
 /**
  * LinearGradient class
- *
  */
 @!APILevel[
     since: "22",
@@ -185,7 +183,6 @@ class FFIVectorNativeLinearGradient {
 
 /**
  * Defines the options of Shadow.
- *
  */
 @!APILevel[
     since: "22",
@@ -194,7 +191,6 @@ class FFIVectorNativeLinearGradient {
 public class DataPanelShadowOptions <: MultiShadowOptions {
     /**
      * Current shadow colors.
-     *
      */
     @!APILevel[
         since: "22",

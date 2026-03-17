@@ -101,7 +101,6 @@ struct COffset {
 public class Offset {
     /**
      * Coordinate x of the Position.
-     *
      */
     @!APILevel[
         since: "22",
@@ -111,7 +110,6 @@ public class Offset {
 
     /**
      * Coordinate y of the Position.
-     *
      */
     @!APILevel[
         since: "22",
@@ -220,7 +218,6 @@ struct CScaleResult {
 public class ScaleResult {
     /**
      * Zoom factor of the x-axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -230,7 +227,6 @@ public class ScaleResult {
 
     /**
      * Zoom factor of the y-axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -240,7 +236,6 @@ public class ScaleResult {
 
     /**
      * Zoom factor of the z-axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -314,7 +309,6 @@ struct CRotateResult {
 public class RotateResult {
     /**
      * Axis of rotation vector x coordinate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -324,7 +318,6 @@ public class RotateResult {
 
     /**
      * Axis of rotation vector y coordinate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -334,7 +327,6 @@ public class RotateResult {
 
     /**
      * Axis of rotation vector z coordinate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -344,7 +336,6 @@ public class RotateResult {
 
     /**
      * Transform the x-axis coordinate of the center point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -354,7 +345,6 @@ public class RotateResult {
 
     /**
      * Transform the y-axis coordinate of the center point.
-     *
      */
     @!APILevel[
         since: "22",

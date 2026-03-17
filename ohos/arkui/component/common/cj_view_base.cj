@@ -191,13 +191,11 @@ foreign {
 
 /**
  * Defines the CustomBuilder Type.
- *
  */
 public type CustomBuilder = () -> Unit
 
 /**
  * Defines the finish callback type used in transition.
- *
  */
 public type TransitionFinishCallback = (Bool) -> Unit
 

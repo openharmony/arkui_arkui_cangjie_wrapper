@@ -117,7 +117,6 @@ public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
 
 /**
  * Creates a text picker based on the selection range specified by range.
- *
  */
 @!APILevel[
     since: "22",

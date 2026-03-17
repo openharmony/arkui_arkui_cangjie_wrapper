@@ -31,7 +31,6 @@ protected const INVALID_CALLBACK_ID = 0
 
 /**
  * Defines modal transition type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -41,7 +40,6 @@ protected const INVALID_CALLBACK_ID = 0
 public enum ModalTransition {
     /**
      * Use default animation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -50,7 +48,6 @@ public enum ModalTransition {
     Default |
     /**
      * No transition animation for the modal.
-     *
      */
     @!APILevel[
         since: "22",
@@ -59,7 +56,6 @@ public enum ModalTransition {
     None |
     /**
      * Use alpha animation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -79,7 +75,6 @@ public enum ModalTransition {
 
 /**
  * Defines sheet size type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -89,7 +84,6 @@ public enum ModalTransition {
 public enum SheetSize {
     /**
      * The sheet height is half of the screen height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -98,7 +92,6 @@ public enum SheetSize {
     Medium |
     /**
      * The sheet height is half of the screen height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -107,7 +100,6 @@ public enum SheetSize {
     Large |
     /**
      * The sheet height is half of the screen height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -127,7 +119,6 @@ public enum SheetSize {
 
 /**
  * Defines the sheet type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -137,7 +128,6 @@ public enum SheetSize {
 public enum SheetType {
     /**
      * Bottom sheet.
-     *
      */
     @!APILevel[
         since: "22",
@@ -146,7 +136,6 @@ public enum SheetType {
     Bottom |
     /**
      * Center sheet.
-     *
      */
     @!APILevel[
         since: "22",
@@ -192,7 +181,6 @@ public enum SheetType {
 
 /**
  * Defines the options of blur
- *
  */
 @!APILevel[
     since: "22",
@@ -201,7 +189,6 @@ public enum SheetType {
 public class BlurOptions {
     /**
      * Fuzzy gray scale parameter
-     *
      */
     @!APILevel[
         since: "22",
@@ -225,7 +212,6 @@ public class BlurOptions {
 
 /**
  * Defines the options of ForegroundBlurStyle.
- *
  */
 @!APILevel[
     since: "22",
@@ -235,7 +221,6 @@ public class ForegroundBlurStyleOptions {
     /**
      * Color mode used for the foreground blur.
      * <br>Default value: **ThemeColorMode.System**.
-     *
      */
     @!APILevel[
         since: "22",
@@ -246,7 +231,6 @@ public class ForegroundBlurStyleOptions {
     /**
      * Adaptive color mode.
      * <br>Default value: **AdaptiveColor.Default**.
-     *
      */
     @!APILevel[
         since: "22",
@@ -256,7 +240,6 @@ public class ForegroundBlurStyleOptions {
 
     /**
      * Defines the options of blur.
-     *
      */
     @!APILevel[
         since: "22",
@@ -268,7 +251,6 @@ public class ForegroundBlurStyleOptions {
      * Foreground blur scale.
      * <br>Default value: **1.0**.
      * <br>Value range: [0.0, 1.0].
-     *
      */
     @!APILevel[
         since: "22",
@@ -303,7 +285,6 @@ public class ForegroundBlurStyleOptions {
 
 /**
  * Defines the popup options.
- *
  */
 @!APILevel[
     since: "22",
@@ -331,7 +312,6 @@ public class PopupButton {
 
 /**
  * Popup state change param.
- *
  */
 @!APILevel[
     since: "22",
@@ -341,7 +321,6 @@ public class PopupStateChangeParam {
     /**
      * is Visible.
      * Anonymous Object Rectification.
-     *
      */
     @!APILevel[
         since: "22",
@@ -474,7 +453,6 @@ public class PopupOptions {
 
     /**
      * whether show arrow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -676,7 +654,6 @@ public class PopupOptions {
 
 /**
  * Defines the menu element.
- *
  */
 @!APILevel[
     since: "22",
@@ -706,7 +683,6 @@ public class MenuElement {
 
 /**
  * Defines the custom popup options.
- *
  */
 @!APILevel[
     since: "22",
@@ -721,7 +697,6 @@ public class CustomPopupOptions {
      * <br>If a custom component is used in the builder, the aboutToAppear and aboutToDisappear lifecycle callbacks
      * of the custom component are irrelevant to the visibility of the popup. As such, the lifecycle of the
      * custom component cannot be used to determine whether the popup is displayed or not.
-     *
      */
     @!APILevel[
         since: "22",
@@ -732,7 +707,6 @@ public class CustomPopupOptions {
     /**
      * Preferred position of the popup. If the set position is insufficient for holding the popup,
      * it will be automatically adjusted.
-     *
      */
     @!APILevel[
         since: "22",
@@ -742,7 +716,6 @@ public class CustomPopupOptions {
 
     /**
      * backgroundColor of popup.
-     *
      */
     @!APILevel[
         since: "22",
@@ -752,7 +725,6 @@ public class CustomPopupOptions {
 
     /**
      * Whether show arrow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -765,7 +737,6 @@ public class CustomPopupOptions {
      * <br>To enable the popup to disappear upon a click on it, place a layout component in the builder place the
      * <Popup> component in the layout component, and modify the value of the bindPopup variable (show: boolean)
      * in the onClick event of the layout component.
-     *
      */
     @!APILevel[
         since: "22",
@@ -774,7 +745,6 @@ public class CustomPopupOptions {
     public var autoCancel: ?Bool
     /**
      * on State Change.
-     *
      */
     @!APILevel[
         since: "22",
@@ -783,7 +753,6 @@ public class CustomPopupOptions {
     public var onStateChange: Option<(PopupStateChangeParam) -> Unit>
     /**
      * Color of the popup. To remove the background blur, set backgroundBlurStyle to BlurStyle.NONE.
-     *
      */
     @!APILevel[
         since: "22",
@@ -799,7 +768,6 @@ public class CustomPopupOptions {
      * side of the popup: The value indicates the distance from the arrow to the top; the arrow is centered by
      * default. When the popup is displayed on either edge of the screen, it will automatically deviate leftward
      * or rightward to stay within the safe area. When the value is 0, the arrow always points to the bound component.
-     *
      */
     @!APILevel[
         since: "22",
@@ -809,7 +777,6 @@ public class CustomPopupOptions {
 
     /**
      * Whether to display in the sub window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -818,7 +785,6 @@ public class CustomPopupOptions {
     public var showInSubWindow: ?Bool
     /**
      * Whether to apply a mask to the popup.
-     *
      */
     @!APILevel[
         since: "22",
@@ -827,7 +793,6 @@ public class CustomPopupOptions {
     public var mask: ?Color
     /**
      * Sets the space of between the popup and target.
-     *
      */
     @!APILevel[
         since: "22",
@@ -836,7 +801,6 @@ public class CustomPopupOptions {
     public var targetSpace: ?Length
     /**
      * Sets the position offset of the popup.
-     *
      */
     @!APILevel[
         since: "22",
@@ -845,7 +809,6 @@ public class CustomPopupOptions {
     public var offset: ?Position
     /**
      * Set the width of the popup.
-     *
      */
     @!APILevel[
         since: "22",
@@ -855,7 +818,6 @@ public class CustomPopupOptions {
     /**
      * Position of the popup arrow relative to its parent component. Available positions are Start, Center, and End,
      * in both vertical and horizontal directions. All these positions are within the parent component area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -865,7 +827,6 @@ public class CustomPopupOptions {
     /**
      * Arrow thickness. If the arrow thickness exceeds the length of the edge minus twice the size of the popup
      * rounded corner, the arrow is not drawn.
-     *
      */
     @!APILevel[
         since: "22",
@@ -874,7 +835,6 @@ public class CustomPopupOptions {
     public var arrowWidth: ?Length
     /**
      * The height of the arrow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -883,7 +843,6 @@ public class CustomPopupOptions {
     public var arrowHeight: ?Length
     /**
      * The round corners of the popup.
-     *
      */
     @!APILevel[
         since: "22",
@@ -916,7 +875,6 @@ public class CustomPopupOptions {
     public var focusable: ?Bool
     /**
      * Defines the transition effect of popup opening and closing.
-     *
      */
     @!APILevel[
         since: "22",
@@ -939,7 +897,6 @@ public class CustomPopupOptions {
     public var onWillDismiss: Option<(DismissPopupAction) -> Unit>
     /**
      * Determine if popup can follow the target node when it has rotation or scale.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1030,7 +987,6 @@ public class CustomPopupOptions {
 
 /**
  * Defines the options of popup message.
- *
  */
 @!APILevel[
     since: "22",
@@ -1039,7 +995,6 @@ public class CustomPopupOptions {
 public class PopupMessageOptions {
     /**
      * Sets the color of popup text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1048,7 +1003,6 @@ public class PopupMessageOptions {
     public var textColor: ?ResourceColor
     /**
      * Sets the color of popup text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1073,7 +1027,6 @@ public class PopupMessageOptions {
 
 /**
  * Defines the OverlayOffset.
- *
  */
 @!APILevel[
     since: "22",
@@ -1082,7 +1035,6 @@ public class PopupMessageOptions {
 public class OverlayOffset {
     /**
      * Defines x.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1091,7 +1043,6 @@ public class OverlayOffset {
     public var x: ?Float64
     /**
      * Defines y.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1117,7 +1068,6 @@ public class OverlayOffset {
 
 /**
  * Defines the border width property.
- *
  */
 @!APILevel[
     since: "22",
@@ -1126,7 +1076,6 @@ public class OverlayOffset {
 public class EdgeWidths {
     /**
      * top property.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1135,7 +1084,6 @@ public class EdgeWidths {
     public var top: ?Length
     /**
      * right property.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1144,7 +1092,6 @@ public class EdgeWidths {
     public var right: ?Length
     /**
      * bottom property.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1153,7 +1100,6 @@ public class EdgeWidths {
     public var bottom: ?Length
     /**
      * left property.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1182,7 +1128,6 @@ public class EdgeWidths {
 
 /**
  * Overlay module options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1242,7 +1187,6 @@ public open class BindOptions {
 
 /**
  * Component content cover options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1325,7 +1269,6 @@ public class ContentCoverOptions <: BindOptions {
 
 /**
  * Component sheet dismiss.
- *
  */
 @!APILevel[
     since: "22",
@@ -1336,7 +1279,6 @@ public class SheetDismiss {
 
     /**
      * Defines sheet dismiss function.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1351,7 +1293,6 @@ public class SheetDismiss {
 
 /**
  * Defines sheet spring back action.
- *
  */
 @!APILevel[
     since: "22",
@@ -1362,7 +1303,6 @@ public class SpringBackAction {
 
     /**
      * Defines spring back function.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1377,7 +1317,6 @@ public class SpringBackAction {
 
 /**
  * Define the display mode of the sheet.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1388,7 +1327,6 @@ public enum SheetMode {
     /**
      * The sheet is displayed at the top of the window corresponding to the current **UIContext** instance,
      * above all pages. It is displayed at the same level as dialog boxes.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1398,7 +1336,6 @@ public enum SheetMode {
     |
     /**
      * The sheet is displayed at the top of the current page.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1428,7 +1365,6 @@ public enum SheetMode {
 
 /**
  * Define the scroll size mode of the sheet.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1438,7 +1374,6 @@ public enum SheetMode {
 public enum ScrollSizeMode {
     /**
      * Sheet change scroll size after the slide ends.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1448,7 +1383,6 @@ public enum ScrollSizeMode {
     |
     /**
      * Sheet change scroll size during the sliding process.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1496,7 +1430,6 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
 
 /**
  * Component sheet options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1783,7 +1716,6 @@ public class SheetOptions <: BindOptions {
 
 /**
  * Defines the data type of the interface restriction.
- *
  */
 @!APILevel[
     since: "22",
@@ -1792,7 +1724,6 @@ public class SheetOptions <: BindOptions {
 public class Rectangle {
     /**
      * x:Horizontal coordinate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1802,7 +1733,6 @@ public class Rectangle {
 
     /**
      * y:Vertical axis coordinate.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1812,7 +1742,6 @@ public class Rectangle {
 
     /**
      * Sets the width of the current touchRect.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1822,7 +1751,6 @@ public class Rectangle {
 
     /**
      * Sets the height of the current touchRect.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1896,7 +1824,6 @@ class MenuActionData <: FFIData {
 
 /**
  * Component popup dismiss
- *
  */
 @!APILevel[
     since: "22",
@@ -1931,7 +1858,6 @@ public class DismissPopupAction {
 
 /**
  * Defines the context menu options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1940,7 +1866,6 @@ public class DismissPopupAction {
 public class ContextMenuOptions {
     /**
      * Sets the position offset of the context menu window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1951,7 +1876,6 @@ public class ContextMenuOptions {
     /**
      * Preferred position of the context menu. If the set position is insufficient for holding the component, it will be
      * automatically adjusted.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1961,7 +1885,6 @@ public class ContextMenuOptions {
 
     /**
      * whether show arrow belong to the menu.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1971,7 +1894,6 @@ public class ContextMenuOptions {
 
     /**
      * The horizontal offset to the left of menu or vertical offset to the top of menu.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1981,7 +1903,6 @@ public class ContextMenuOptions {
 
     /**
     * The preview content of context menu.
-    *
     */
     @!APILevel[
         since: "22",
@@ -1991,7 +1912,6 @@ public class ContextMenuOptions {
 
     /**
      * The preview animator options.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2001,7 +1921,6 @@ public class ContextMenuOptions {
 
     /**
      * Callback triggered when the menu is displayed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2011,7 +1930,6 @@ public class ContextMenuOptions {
 
     /**
      * Callback function when the context menu disappear.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2021,7 +1939,6 @@ public class ContextMenuOptions {
 
     /**
      * Callback triggered when the menu is about to appear.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2031,7 +1948,6 @@ public class ContextMenuOptions {
 
     /**
      * Callback triggered when the menu is about to disappear.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2041,7 +1957,6 @@ public class ContextMenuOptions {
 
     /**
      * Background color of the menu.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2051,7 +1966,6 @@ public class ContextMenuOptions {
 
     /**
      * Background blur style of the menu.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2061,7 +1975,6 @@ public class ContextMenuOptions {
 
     /**
      * Defines the transition effect of menu opening and closing.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2153,7 +2066,6 @@ public class ContextMenuOptions {
 
 /**
  * Component content cover dismiss.
- *
  */
 @!APILevel[
     since: "22",
@@ -2162,7 +2074,6 @@ public class ContextMenuOptions {
 public class DismissContentCoverAction {
     /**
      * Defines content cover dismiss reason.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2193,7 +2104,6 @@ public class DismissContentCoverAction {
 
 /**
  * Defines the ContextMenu's preview animator options.
- *
  */
 @!APILevel[
     since: "22",
@@ -2202,7 +2112,6 @@ public class DismissContentCoverAction {
 public class ContextMenuAnimationOptions {
     /**
      * Sets the start animator scale and end animator scale.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2211,7 +2120,6 @@ public class ContextMenuAnimationOptions {
     public var scale: ?VArray<Float64, $2>
     /**
      * Defines the transition effect of menu preview opening and closing.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2220,7 +2128,6 @@ public class ContextMenuAnimationOptions {
     public var transition: ?TransitionEffect
     /**
      * Sets the scale start and end animator of the image displayed before the custom builder preview is displayed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2283,7 +2190,6 @@ public class ContextMenuAnimationOptions {
 
 /**
  * Component sheet dismiss.
- *
  */
 @!APILevel[
     since: "22",
@@ -2292,7 +2198,6 @@ public class ContextMenuAnimationOptions {
 public class DismissSheetAction {
     /**
      * Dismiss reason type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2306,7 +2211,6 @@ public class DismissSheetAction {
 
     /**
      *  Defines sheet dismiss function.
-     *
      */
     @!APILevel[
         since: "22",
