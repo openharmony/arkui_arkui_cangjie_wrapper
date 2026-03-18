@@ -284,7 +284,6 @@ unsafe func destoryCButtons(pButtons: CPointer<CButtonInfo>, size: Int64) {
 
 /**
  * Enum for the toast showMode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -332,7 +331,6 @@ public class EdgeColors {
 
     /**
      * The top of the EdgeColor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -342,7 +340,6 @@ public class EdgeColors {
 
     /**
      * The right of the EdgeColor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -352,7 +349,6 @@ public class EdgeColors {
 
     /**
      * The bottom of the EdgeColor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -362,7 +358,6 @@ public class EdgeColors {
 
     /**
      * The left of the EdgeColor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -406,7 +401,6 @@ public class EdgeColors {
 
 /**
  * Provides a EdgeColor component.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -445,7 +439,6 @@ public enum HoverModeAreaType {
 
 /**
  * Provides a KeyboardAvoidMode component.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -483,7 +476,6 @@ public enum KeyboardAvoidMode {
 
 /**
  * Dialog base options
- *
  */
 @!APILevel[
     since: "22",
@@ -493,7 +485,6 @@ public open class BaseDialogOptions {
 
     /**
      * Mask Region of dialog. The size can't exceed the main window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -503,7 +494,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines the dialog alignment of the screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -513,7 +503,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines the dialog offset.
-     *
      */
     @!APILevel[
         since: "22",
@@ -531,7 +520,6 @@ public open class BaseDialogOptions {
     public var isModal: Bool
     /**
      * Whether to display in the sub window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -541,7 +529,6 @@ public open class BaseDialogOptions {
 
     /**
      * Allows users to click the mask layer to exit.
-     *
      */
     @!APILevel[
         since: "22",
@@ -551,7 +538,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines custom dialog maskColor
-     *
      */
     @!APILevel[
         since: "22",
@@ -561,7 +547,6 @@ public open class BaseDialogOptions {
 
     /**
      * Transition parameters of opening/closing custom dialog.
-     *
      */
     @!APILevel[
         since: "22",
@@ -571,7 +556,6 @@ public open class BaseDialogOptions {
 
     /**
      * Callback function when the dialog appears.
-     *
      */
     @!APILevel[
         since: "22",
@@ -581,7 +565,6 @@ public open class BaseDialogOptions {
 
     /**
      * Callback function when the dialog disappears.
-     *
      */
     @!APILevel[
         since: "22",
@@ -591,7 +574,6 @@ public open class BaseDialogOptions {
 
     /**
      * Callback function before the dialog openAnimation starts.
-     *
      */
     @!APILevel[
         since: "22",
@@ -601,7 +583,6 @@ public open class BaseDialogOptions {
 
     /**
      * Callback function before the dialog closeAnimation starts.
-     *
      */
     @!APILevel[
         since: "22",
@@ -611,7 +592,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines the customDialog's keyboard avoid mode
-     *
      */
     @!APILevel[
         since: "22",
@@ -621,7 +601,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines whether to respond to the hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -631,7 +610,6 @@ public open class BaseDialogOptions {
 
     /**
      * Defines the dialog's display area in hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -699,7 +677,6 @@ public open class BaseDialogOptions {
 
 /**
  * Dialog's custom content options.
- *
  */
 @!APILevel[
     since: "22",
@@ -709,7 +686,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Allow developer custom dialog's content.
-     *
      */
     @!APILevel[
         since: "22",
@@ -719,7 +695,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the custom dialog's background color.
-     *
      */
     @!APILevel[
         since: "22",
@@ -729,7 +704,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the custom dialog's corner radius.
-     *
      */
     @!APILevel[
         since: "22",
@@ -739,7 +713,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the custom dialog's border width.
-     *
      */
     @!APILevel[
         since: "22",
@@ -749,7 +722,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the custom dialog's border color.
-     *
      */
     @!APILevel[
         since: "22",
@@ -759,7 +731,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the custom dialog's border style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -769,7 +740,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the dialog's width.
-     *
      */
     @!APILevel[
         since: "22",
@@ -779,7 +749,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the dialog's height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -789,7 +758,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the dialog's shadow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -799,7 +767,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
     /**
      * Defines the dialog's background blur Style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -900,7 +867,6 @@ public class CustomDialogOptions <: BaseDialogOptions {
 
 /**
  * Dialog's show options.
- *
  */
 @!APILevel[
     since: "22",
@@ -911,7 +877,6 @@ public open class ShowDialogOptions {
 
     /**
      * Title of the text to display.
-     *
      */
     @!APILevel[
         since: "22",
@@ -921,7 +886,6 @@ public open class ShowDialogOptions {
 
     /**
      * Text body.
-     *
      */
     @!APILevel[
         since: "22",
@@ -941,7 +905,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog alignment of the screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -951,7 +914,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog offset.
-     *
      */
     @!APILevel[
         since: "22",
@@ -961,7 +923,6 @@ public open class ShowDialogOptions {
 
     /**
      * Mask Region of dialog. The size can't exceed the main window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -971,7 +932,6 @@ public open class ShowDialogOptions {
 
     /**
      * Whether to display in the sub window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -990,7 +950,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog's background color.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1000,7 +959,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog's background blur Style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1010,7 +968,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog's shadow option.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1020,7 +977,6 @@ public open class ShowDialogOptions {
 
    /**
      * Defines whether to respond to the hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1030,7 +986,6 @@ public open class ShowDialogOptions {
 
     /**
      * Defines the dialog's display area in hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1093,7 +1048,6 @@ public open class ShowDialogOptions {
 
 /**
  * Menu's Action options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1104,7 +1058,6 @@ public open class ActionMenuOptions {
 
     /**
      * Title of the text to display.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1115,7 +1068,6 @@ public open class ActionMenuOptions {
     /**
      * Array of buttons in the dialog box.
      * One to six buttons are supported.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1125,7 +1077,6 @@ public open class ActionMenuOptions {
 
     /**
      * Whether to display in the sub window.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1170,7 +1121,6 @@ public open class ActionMenuOptions {
 
 /**
  * Toast's show options.
- *
  */
 @!APILevel[
     since: "22",
@@ -1180,7 +1130,6 @@ public class ShowToastOptions {
 
     /**
      * Text to display.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1199,7 +1148,6 @@ public class ShowToastOptions {
 
     /**
      * The distance between toast dialog box and the bottom of screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1209,7 +1157,6 @@ public class ShowToastOptions {
 
     /**
      * Determine the show mode of the toast.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1219,7 +1166,6 @@ public class ShowToastOptions {
 
     /**
      * Defines the toast alignment of the screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1229,7 +1175,6 @@ public class ShowToastOptions {
 
     /**
      * Defines the toast offset.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1239,7 +1184,6 @@ public class ShowToastOptions {
 
     /**
      * Background color of toast.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1249,7 +1193,6 @@ public class ShowToastOptions {
 
     /**
      * Text color of toast.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1259,7 +1202,6 @@ public class ShowToastOptions {
 
     /**
      * Background blur Style of toast.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1269,7 +1211,6 @@ public class ShowToastOptions {
 
     /**
      * Shadow of toast's option.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1279,7 +1220,6 @@ public class ShowToastOptions {
 
     /**
      * Define whether to respond to the hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1289,7 +1229,6 @@ public class ShowToastOptions {
 
     /**
      * Defines the toast's display area in hover mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1553,7 +1492,6 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
 
 /**
  * class PromptAction.
- *
  */
 @!APILevel[
     since: "22",

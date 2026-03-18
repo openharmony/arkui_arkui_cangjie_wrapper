@@ -50,7 +50,6 @@ foreign {
 
 /**
  * Router Mode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -61,7 +60,6 @@ public enum RouterMode {
     /**
      * Default route mode.
      * The page will be added to the top of the page stack.
-     *
      */
     @!APILevel[
         since: "22",
@@ -74,7 +72,6 @@ public enum RouterMode {
      * If the target page already has the same url page in the page stack,
      * the same url page closest to the top of the stack will be moved to the top of the stack.
      * If the target page url does not exist in the page stack, route will use default route mode.
-     *
      */
     | @!APILevel[
         since: "22",
@@ -94,7 +91,6 @@ public enum RouterMode {
 
 /**
  * Router State.
- *
  */
 @!APILevel[
     since: "22",
@@ -198,7 +194,6 @@ struct RouterStateList {
 
 /**
  * class Router.
- *
  */
  @!APILevel[
     since: "22",

@@ -23,7 +23,6 @@ import ohos.business_exception.BusinessException
 
 /**
  * indexer align property.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -33,7 +32,6 @@ import ohos.business_exception.BusinessException
 public enum IndexerAlign {
     /**
      * A dialog box is displayed on the right of the index bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -43,7 +41,6 @@ public enum IndexerAlign {
     |
     /**
      * A dialog box is displayed on the left of the index bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -53,7 +50,6 @@ public enum IndexerAlign {
     |
     /**
      * A dialog box is displayed on the start of the index bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -64,7 +60,6 @@ public enum IndexerAlign {
     |
     /**
      * A dialog box is displayed on the end of the index bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -85,7 +80,6 @@ public enum IndexerAlign {
 
 /**
  * Declare the type of input box
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -95,7 +89,6 @@ public enum IndexerAlign {
 public enum InputType {
     /**
      * Basic input mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -105,7 +98,6 @@ public enum InputType {
     |
     /**
      * Pure digital input mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -120,7 +112,6 @@ public enum InputType {
      * <br>This mode accepts only digits, letters, underscores (_), dots (.),
      * and the following special characters: ! # $ % & ' " * + - / = ? ^ ` { | } ~ @ (which can only appear once)
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -138,7 +129,6 @@ public enum InputType {
      * <br>The password input mode does not support underlines.
      * <br>If Password Vault is enabled, autofill is available for the username and password.
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -148,7 +138,6 @@ public enum InputType {
     |
     /**
      * Phone number entry mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -241,7 +230,6 @@ public enum InputType {
 
 /**
  * Declare the type of soft keyboard.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -251,7 +239,6 @@ public enum InputType {
 public enum EnterKeyType {
     /**
      * Go.
-     *
      */
     @!APILevel[
         since: "22",
@@ -260,7 +247,6 @@ public enum EnterKeyType {
     Go |
     /**
      * Search.
-     *
      */
     @!APILevel[
         since: "22",
@@ -269,7 +255,6 @@ public enum EnterKeyType {
     Search |
     /**
      * Send.
-     *
      */
     @!APILevel[
         since: "22",
@@ -278,7 +263,6 @@ public enum EnterKeyType {
     Send |
     /**
      * Next.
-     *
      */
     @!APILevel[
         since: "22",
@@ -287,7 +271,6 @@ public enum EnterKeyType {
     Next |
     /**
      * Done.
-     *
      */
     @!APILevel[
         since: "22",
@@ -296,7 +279,6 @@ public enum EnterKeyType {
     Done |
     /**
      * Showed as 'previous' pattern.
-     *
      */
     @!APILevel[
         since: "22",
@@ -305,7 +287,6 @@ public enum EnterKeyType {
     Previous |
     /**
      * Showed as 'new line' pattern.
-     *
      */
     @!APILevel[
         since: "22",
@@ -329,7 +310,6 @@ public enum EnterKeyType {
 
 /**
  * FlexDirection enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -339,7 +319,6 @@ public enum EnterKeyType {
 public enum FlexDirection {
     /**
      * The main axis is consistent with the row direction as the layout mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -348,7 +327,6 @@ public enum FlexDirection {
     Row |
     /**
      * The main axis is consistent with the column direction as the layout mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -357,7 +335,6 @@ public enum FlexDirection {
     Column |
     /**
      * The layout is in the opposite direction to the Row direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -366,7 +343,6 @@ public enum FlexDirection {
     RowReverse |
     /**
      * Layout in the opposite direction to the column.
-     *
      */
     @!APILevel[
         since: "22",
@@ -388,7 +364,6 @@ public enum FlexDirection {
 
 /**
  * FlexDirection enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -398,7 +373,6 @@ public enum FlexDirection {
 public enum FlexWrap {
     /**
      * The Flex container has a single row/column layout of elements, and children are allowed to go beyond the container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -407,7 +381,6 @@ public enum FlexWrap {
     NoWrap |
     /**
      * The elements of the Flex container are arranged in multiple rows or columns, and the sub-items are allowed to exceed the container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -416,7 +389,6 @@ public enum FlexWrap {
     Wrap |
     /**
      * The elements of the Flex container are arranged in reverse multiple rows/columns, and children are allowed to exceed the container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -437,7 +409,6 @@ public enum FlexWrap {
 
 /**
  * FlexAlign enumeration description.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -448,7 +419,6 @@ public enum FlexAlign {
     /**
      * The element is aligned at the head of the principal axis,
      * the first element is aligned with the head of the row, and subsequent elements are aligned with the previous one.
-     *
      */
     @!APILevel[
         since: "22",
@@ -458,7 +428,6 @@ public enum FlexAlign {
     /**
      * The elements are centered in the direction of the principal axis,
      * and the first element is the same distance from the beginning of the row as the last element is from the end of the row.
-     *
      */
     @!APILevel[
         since: "22",
@@ -468,7 +437,6 @@ public enum FlexAlign {
     /**
      * The element is aligned at the tail of the principal axis,
      * the last element is aligned at the end of the row, and the other elements are aligned with the next.
-     *
      */
     @!APILevel[
         since: "22",
@@ -479,7 +447,6 @@ public enum FlexAlign {
      * Elastic elements are evenly distributed in the direction of the Flex principal axis,
      * with the same distance between adjacent elements.
      * The first element aligns with the beginning of the line, and the last element aligns with the end of the line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -490,7 +457,6 @@ public enum FlexAlign {
      * Elastic elements are evenly distributed in the direction of the Flex principal axis,
      *  with the same distance between adjacent elements. Half the distance between adjacent elements as the distance between
      * the first element and the distance between the last element and the end of the row.
-     *
      */
     @!APILevel[
         since: "22",
@@ -501,7 +467,6 @@ public enum FlexAlign {
      * Elements in the Flex axis direction are evenly spaced.
      * The spacing between adjacent elements, the spacing between the first element and the beginning of the row,
      * and the spacing between the last element and the end of the row are the same.
-     *
      */
     @!APILevel[
         since: "22",
@@ -524,7 +489,6 @@ public enum FlexAlign {
 
 /**
  * ItemAlign enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -534,7 +498,6 @@ public enum FlexAlign {
 public enum ItemAlign {
     /**
      * Use the default configuration in the Flex container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -544,7 +507,6 @@ public enum ItemAlign {
     |
     /**
      * The element is in the Flex container with the cross-axis direction head aligned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -554,7 +516,6 @@ public enum ItemAlign {
     |
     /**
      * The element is centered in the Flex container with the cross axis direction aligned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -564,7 +525,6 @@ public enum ItemAlign {
     |
     /**
      * The element is bottom aligned in the Flex container with the cross axis direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -574,7 +534,6 @@ public enum ItemAlign {
     |
     /**
      * Element In the Flex container, the cross-axis direction text baseline is aligned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -584,7 +543,6 @@ public enum ItemAlign {
     |
     /**
      * Element In a Flex container, the fill is stretched across the axis and, when no dimension is set, to the container size.
-     *
      */
     @!APILevel[
         since: "22",
@@ -608,7 +566,6 @@ public enum ItemAlign {
 
 /**
  * Declare the type of status button
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -618,7 +575,6 @@ public enum ItemAlign {
 public enum ToggleType {
     /**
      * Checkbox
-     *
      */
     @!APILevel[
         since: "22",
@@ -627,7 +583,6 @@ public enum ToggleType {
     Checkbox |
     /**
      * Switch
-     *
      */
     @!APILevel[
         since: "22",
@@ -636,7 +591,6 @@ public enum ToggleType {
     Switch |
     /**
      * Button
-     *
      */
     @!APILevel[
         since: "22",
@@ -657,7 +611,6 @@ public enum ToggleType {
 
 /**
  * Text style
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -667,7 +620,6 @@ public enum ToggleType {
 public enum FontStyle {
     /**
      * Default style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -677,7 +629,6 @@ public enum FontStyle {
     |
     /**
      * Italic style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -713,7 +664,6 @@ public enum FontStyle {
 
 /**
  * Alignment enumeration description.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -723,7 +673,6 @@ public enum FontStyle {
 public enum Alignment {
     /**
      * Top Start.
-     *
      */
     @!APILevel[
         since: "22",
@@ -733,7 +682,6 @@ public enum Alignment {
     |
     /**
      * The top is centered horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -743,7 +691,6 @@ public enum Alignment {
     |
     /**
      * Top tail end.
-     *
      */
     @!APILevel[
         since: "22",
@@ -753,7 +700,6 @@ public enum Alignment {
     |
     /**
      * The starting end is centered longitudinally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -763,7 +709,6 @@ public enum Alignment {
     |
     /**
      * Center horizontal and vertical.
-     *
      */
     @!APILevel[
         since: "22",
@@ -773,7 +718,6 @@ public enum Alignment {
     |
     /**
      * The tail end is centered longitudinally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -783,7 +727,6 @@ public enum Alignment {
     |
     /**
      * Bottom starting end.
-     *
      */
     @!APILevel[
         since: "22",
@@ -793,7 +736,6 @@ public enum Alignment {
     |
     /**
      * The bottom is centered horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -803,7 +745,6 @@ public enum Alignment {
     |
     /**
      * Bottom end.
-     *
      */
     @!APILevel[
         since: "22",
@@ -830,7 +771,6 @@ public enum Alignment {
 
 /**
  * HorizontalAlign enumeration description.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -840,7 +780,6 @@ public enum Alignment {
 public enum HorizontalAlign {
     /**
      * Aligns the start end in the language direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -850,7 +789,6 @@ public enum HorizontalAlign {
     |
     /**
      * Center alignment. The default alignment mode is used.
-     *
      */
     @!APILevel[
         since: "22",
@@ -860,7 +798,6 @@ public enum HorizontalAlign {
     |
     /**
      * Aligns the ends in the language direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -881,7 +818,6 @@ public enum HorizontalAlign {
 
 /**
  * VerticalAlign enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -891,7 +827,6 @@ public enum HorizontalAlign {
 public enum VerticalAlign {
     /**
      * Top alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -901,7 +836,6 @@ public enum VerticalAlign {
     |
     /**
      * Center alignment. The default alignment mode is used.
-     *
      */
     @!APILevel[
         since: "22",
@@ -911,7 +845,6 @@ public enum VerticalAlign {
     |
     /**
      * Bottom alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -932,7 +865,6 @@ public enum VerticalAlign {
 
 /**
  * The font weight of the text
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -942,7 +874,6 @@ public enum VerticalAlign {
 public enum FontWeight {
     /**
      * Normal font. Equivalent to a digital value of 400.
-     *
      */
     @!APILevel[
         since: "22",
@@ -952,7 +883,6 @@ public enum FontWeight {
     |
     /**
      * Bold. Equivalent to a numeric value of 700.
-     *
      */
     @!APILevel[
         since: "22",
@@ -962,7 +892,6 @@ public enum FontWeight {
     |
     /**
      * Defines a value that is heavier than [Inherited Value].
-     *
      */
     @!APILevel[
         since: "22",
@@ -972,7 +901,6 @@ public enum FontWeight {
     |
     /**
      * Defines a lighter value than [Inherited Value]..
-     *
      */
     @!APILevel[
         since: "22",
@@ -982,7 +910,6 @@ public enum FontWeight {
     |
     /**
      * Defines a value that is more centered than [Inherited Value].
-     *
      */
     @!APILevel[
         since: "22",
@@ -992,7 +919,6 @@ public enum FontWeight {
     |
     /**
      * Defines a more general value than [Inherited Value].
-     *
      */
     @!APILevel[
         since: "22",
@@ -1147,7 +1073,6 @@ public enum FontWeight {
 
 /**
  * Declare the location of the bar chart.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1157,7 +1082,6 @@ public enum FontWeight {
 public enum BarPosition {
     /**
      * When the vertical attribute method is set to true, the tab is on the left of the container. When the vertical property method is set to false, the tab is at the top of the container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1166,7 +1090,6 @@ public enum BarPosition {
     Start |
     /**
      * When the vertical attribute method is set to true, the tab is located on the right of the container. When the vertical property method is set to false, the tab is at the bottom of the container.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1186,7 +1109,6 @@ public enum BarPosition {
 
 /**
  * Declare the graphic format of the bar chart.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1197,7 +1119,6 @@ public enum BarMode {
     /**
      * The width of each tab is determined by equally dividing the number of tabs by the bar width
      * (or bar height in the vertical layout).
-     *
      */
     @!APILevel[
         since: "22",
@@ -1209,7 +1130,6 @@ public enum BarMode {
      * The width of each tab is determined by the actual layout. The tabs are scrollable in the following case:
      * In horizontal layout, the total width exceeds the tab bar width; in vertical layout,
      * the total height exceeds the tab bar height.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1229,7 +1149,6 @@ public enum BarMode {
 
 /**
  * Define the type of shadow
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1239,7 +1158,6 @@ public enum BarMode {
 public enum ShadowType {
     /**
      * Color.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1248,7 +1166,6 @@ public enum ShadowType {
     Color |
     /**
      * Blur.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1268,7 +1185,6 @@ public enum ShadowType {
 
 /**
  * Type of text modifier.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1278,7 +1194,6 @@ public enum ShadowType {
 public enum TextDecorationType {
     /**
      * Do not use text decorative lines.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1288,7 +1203,6 @@ public enum TextDecorationType {
     |
     /**
      * Underline the words.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1298,7 +1212,6 @@ public enum TextDecorationType {
     |
     /**
      * Text is in all uppercase.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1308,7 +1221,6 @@ public enum TextDecorationType {
     |
     /**
      * A modifier line that passes through the text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1340,7 +1252,6 @@ public enum TextDecorationType {
 
 /**
  * Alignment of text.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1350,7 +1261,6 @@ public enum TextDecorationType {
 public enum TextAlign {
     /**
      * The text is aligned in the same direction as the writing
-     *
      */
     @!APILevel[
         since: "22",
@@ -1360,7 +1270,6 @@ public enum TextAlign {
     |
     /**
      * Center the text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1370,7 +1279,6 @@ public enum TextAlign {
     |
     /**
      * The text is aligned in the opposite direction of writing
-     *
      */
     @!APILevel[
         since: "22",
@@ -1410,7 +1318,6 @@ public enum TextAlign {
 
 /**
  * Declare how text overflows.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1420,7 +1327,6 @@ public enum TextAlign {
 public enum TextOverflow {
     /**
      * When the text overflows its dimensions, the text will not be cropped.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1430,7 +1336,6 @@ public enum TextOverflow {
     |
     /**
      * If the text overflows its dimensions, the text that cannot be displayed shall be replaced by ellipsis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1440,7 +1345,6 @@ public enum TextOverflow {
     |
     /**
      * When the text overflows its dimensions, the text will not be cropped.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1471,7 +1375,6 @@ public enum TextOverflow {
 
 /**
  * Enum of word break
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1481,7 +1384,6 @@ public enum TextOverflow {
 public enum WordBreak {
     /**
      * By default, CJK text can be wrapped between any 2 characters, and non-CJK text can only be wrapped in spaces.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1491,7 +1393,6 @@ public enum WordBreak {
     |
     /**
      * Non-CJK text be wrapped at any character
-     *
      */
     @!APILevel[
         since: "22",
@@ -1502,7 +1403,6 @@ public enum WordBreak {
     /**
      * Non-CJK text can be wrapped at any character
      * and if a complete word can be preserved in space breaks, the word must be kept on the line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1542,7 +1442,6 @@ public enum WordBreak {
 
 /**
  * ImageRepeat enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1552,7 +1451,6 @@ public enum WordBreak {
 public enum ImageRepeat {
     /**
      * Do not draw the picture again.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1562,7 +1460,6 @@ public enum ImageRepeat {
     |
     /**
      * Repeat the drawing only on the horizontal axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1572,7 +1469,6 @@ public enum ImageRepeat {
     |
     /**
      * Repeat the drawing only on the vertical axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1582,7 +1478,6 @@ public enum ImageRepeat {
     |
     /**
      * Draw the picture repeatedly on both axes.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1604,7 +1499,6 @@ public enum ImageRepeat {
 
 /**
  * ImageSize enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1614,7 +1508,6 @@ public enum ImageRepeat {
 public enum ImageSize {
     /**
      * Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1624,7 +1517,6 @@ public enum ImageSize {
     |
     /**
      * Keep the aspect ratio to zoom in or out the image so that both sides of the image are greater than or equal to the display boundary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1634,7 +1526,6 @@ public enum ImageSize {
     |
     /**
      * Keep the scale of the original image unchanged.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1665,7 +1556,6 @@ public enum ImageSize {
 
 /**
  * enum Shadow style
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1675,7 +1565,6 @@ public enum ImageSize {
 public enum ShadowStyle {
     /**
      * Defines the super small default shadow style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1685,7 +1574,6 @@ public enum ShadowStyle {
     |
     /**
      * Defines the small default shadow style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1695,7 +1583,6 @@ public enum ShadowStyle {
     |
     /**
      * Medium shadow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1705,7 +1592,6 @@ public enum ShadowStyle {
     |
     /**
      * Large shadow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1715,7 +1601,6 @@ public enum ShadowStyle {
     |
     /**
      * Floating medium shadow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1725,7 +1610,6 @@ public enum ShadowStyle {
     |
     /**
      * Floating medium shadow.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1749,7 +1633,6 @@ public enum ShadowStyle {
 
 /**
  * Letter type in text
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1759,7 +1642,6 @@ public enum ShadowStyle {
 public enum TextCase {
     /**
      * The default is normal.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1769,7 +1651,6 @@ public enum TextCase {
     |
     /**
      * The text is all lowercase.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1779,7 +1660,6 @@ public enum TextCase {
     |
     /**
      * The text is all uppercase.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1800,7 +1680,6 @@ public enum TextCase {
 
 /**
  * Border Style
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1810,7 +1689,6 @@ public enum TextCase {
 public enum BorderStyle {
     /**
      * Shows as a solid line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1820,7 +1698,6 @@ public enum BorderStyle {
     |
     /**
      * Shows as a series of short square dashed lines.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1830,7 +1707,6 @@ public enum BorderStyle {
     |
     /**
      * Displays as a series of dots with a radius of half the borderWidth.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1851,7 +1727,6 @@ public enum BorderStyle {
 
 /**
  * Image display mode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -1861,7 +1736,6 @@ public enum BorderStyle {
 public enum ImageFit {
     /**
      * Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1871,7 +1745,6 @@ public enum ImageFit {
     |
     /**
      * Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1881,7 +1754,6 @@ public enum ImageFit {
     |
     /**
      * Keep the aspect ratio to zoom out or zoom in so that both sides of the image are greater than or equal to the display boundary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1891,7 +1763,6 @@ public enum ImageFit {
     |
     /**
      * Adaptive display
-     *
      */
     @!APILevel[
         since: "22",
@@ -1901,7 +1772,6 @@ public enum ImageFit {
     |
     /**
      * Keep the original size and display it in the center.
-     *
      */
     @!APILevel[
         since: "22",
@@ -1911,7 +1781,6 @@ public enum ImageFit {
     |
     /**
      * Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2047,7 +1916,6 @@ public enum ImageFit {
 
 /**
  * Sets the horizontal layout of elements.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2057,7 +1925,6 @@ public enum ImageFit {
 public enum Direction {
     /**
      * Elements are laid out from left to right.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2067,7 +1934,6 @@ public enum Direction {
     |
     /**
      * Elements are laid out from right to left.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2077,7 +1943,6 @@ public enum Direction {
     |
     /**
      * Use the default layout direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2098,7 +1963,6 @@ public enum Direction {
 
 /**
  * Enumerates the scrolling directions.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2108,7 +1972,6 @@ public enum Direction {
 public enum ScrollDirection {
     /**
      * Only vertical scrolling is supported.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2118,7 +1981,6 @@ public enum ScrollDirection {
     |
     /**
      * Only horizontal scrolling is supported.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2158,7 +2020,6 @@ public enum ScrollDirection {
 
 /**
  * Content scroll direction.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2168,7 +2029,6 @@ public enum ScrollDirection {
 public enum ScrollBarDirection {
     /**
      * Vertical scrolling is supported.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2178,7 +2038,6 @@ public enum ScrollBarDirection {
     |
     /**
      * Horizontal scrolling is supported.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2198,7 +2057,6 @@ public enum ScrollBarDirection {
 
 /**
  * State triggered by the event.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2208,7 +2066,6 @@ public enum ScrollBarDirection {
 public enum SliderChangeMode {
     /**
      * The user touches or clicks the thumb.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2218,7 +2075,6 @@ public enum SliderChangeMode {
     |
     /**
      * The user is dragging the slider.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2232,7 +2088,6 @@ public enum SliderChangeMode {
      * <br>The trigger occurs when an invalid value is restored to the default value, that is, when the value is set to
      * less than min or greater than max.
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -2242,7 +2097,6 @@ public enum SliderChangeMode {
     |
     /**
      * The user moves the thumb by touching or clicking the track.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2273,7 +2127,6 @@ public enum SliderChangeMode {
 
 /**
  * Style of the slider thumb and track.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2283,7 +2136,6 @@ public enum SliderChangeMode {
 public enum SliderStyle {
     /**
      * The thumb is on the track.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2293,7 +2145,6 @@ public enum SliderStyle {
     |
     /**
      * The thumb is in the track.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2323,7 +2174,6 @@ public enum SliderStyle {
 
 /**
  * The interpolation effect of the image.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2333,7 +2183,6 @@ public enum SliderStyle {
 public enum ImageInterpolation {
     /**
      * Do not use interpolated image data.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2343,7 +2192,6 @@ public enum ImageInterpolation {
     |
     /**
      * High usage of interpolated image data may affect the speed of image rendering.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2353,7 +2201,6 @@ public enum ImageInterpolation {
     |
     /**
      * Interpolated image data is used moderately.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2363,7 +2210,6 @@ public enum ImageInterpolation {
     |
     /**
      * Low usage of interpolated image data.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2385,7 +2231,6 @@ public enum ImageInterpolation {
 
 /**
  * Used to set the status of the scroll bar.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2395,7 +2240,6 @@ public enum ImageInterpolation {
 public enum BarState {
     /**
      * Not displayed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2405,7 +2249,6 @@ public enum BarState {
     |
     /**
      * On-demand display (displayed when you touch it and disappears after 2 seconds).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2415,7 +2258,6 @@ public enum BarState {
     |
     /**
      * Resident display.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2436,7 +2278,6 @@ public enum BarState {
 
 /**
  * Controls the display or hide of the current component
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2446,7 +2287,6 @@ public enum BarState {
 public enum Visibility {
     /**
      * Resident display.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2456,7 +2296,6 @@ public enum Visibility {
     |
     /**
      * Hide, but participate in layout for placeholder.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2466,7 +2305,6 @@ public enum Visibility {
     |
     /**
      * Hides but does not participate in layout and does not take place.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2487,7 +2325,6 @@ public enum Visibility {
 
 /**
  * LineCapStyle enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2497,7 +2334,6 @@ public enum Visibility {
 public enum LineCapStyle {
     /**
      * The two ends of the dividing line are parallel lines.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2507,7 +2343,6 @@ public enum LineCapStyle {
     |
     /**
      * The two ends of the dividing line are semicircles.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2517,7 +2352,6 @@ public enum LineCapStyle {
     |
     /**
      * Extends half a circle at the end of the path with a width equal to half the line width and a height equal to the line width.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2538,7 +2372,6 @@ public enum LineCapStyle {
 
 /**
  * Type of progress bar
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2548,7 +2381,6 @@ public enum LineCapStyle {
 public enum ProgressType {
     /**
      * Linear progress bar style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2558,7 +2390,6 @@ public enum ProgressType {
     |
     /**
      * Ring progress bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2568,7 +2399,6 @@ public enum ProgressType {
     |
     /**
      * Eclipse progress bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2578,7 +2408,6 @@ public enum ProgressType {
     |
     /**
      * ScaleRing progress bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2588,7 +2417,6 @@ public enum ProgressType {
     |
     /**
      * Capsule progress bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2611,7 +2439,6 @@ public enum ProgressType {
 
 /**
  * Image Rendering Mode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2621,7 +2448,6 @@ public enum ProgressType {
 public enum ImageRenderMode {
     /**
      * Render according to the original image, including colors.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2631,7 +2457,6 @@ public enum ImageRenderMode {
     |
     /**
      * Render the image as a template image, ignoring the color information of the image.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2651,7 +2476,6 @@ public enum ImageRenderMode {
 
 /**
  * Route jump.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2661,7 +2485,6 @@ public enum ImageRenderMode {
 public enum NavigationType {
     /**
      * Jump to the next page.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2671,7 +2494,6 @@ public enum NavigationType {
     |
     /**
      * Replace page.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2681,7 +2503,6 @@ public enum NavigationType {
     |
     /**
      * Return to the previous page.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2702,7 +2523,6 @@ public enum NavigationType {
 
 /**
  * Declare the size of the swiper on the spindle.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2712,7 +2532,6 @@ public enum NavigationType {
 public enum SwiperDisplayMode {
     /**
      * Carousel map extension.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2741,7 +2560,6 @@ public enum SwiperDisplayMode {
 
 /**
  * Sets the animation playback mode. By default, the animation starts to play again after the playback is complete.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2751,7 +2569,6 @@ public enum SwiperDisplayMode {
 public enum Curve {
     /**
      * Indicates that the speed of the animation is the same from start to finish.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2761,7 +2578,6 @@ public enum Curve {
     |
     /**
      * Indicates that the animation starts at a low speed, then accelerates, and then slows down before it ends, CubicBezier(0.25, 0.1, 0.25, 1.0).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2771,7 +2587,6 @@ public enum Curve {
     |
     /**
      * Indicates that the animation starts at a low speed, CubicBezier(0.42, 0.0, 1.0, 1.0).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2781,7 +2596,6 @@ public enum Curve {
     |
     /**
      * Indicates that the animation ends at a low speed, CubicBezier(0.0, 0.0, 0.78, 1.0).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2791,7 +2605,6 @@ public enum Curve {
     |
     /**
      * Indicates that the animation starts and ends at a slow speed, CubicBezier(0.42, 0.0, 0.78, 1.0).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2801,7 +2614,6 @@ public enum Curve {
     |
     /**
      * Slow-in, fast-out
-     *
      */
     @!APILevel[
         since: "22",
@@ -2811,7 +2623,6 @@ public enum Curve {
     |
     /**
      * Linear Out Slow In
-     *
      */
     @!APILevel[
         since: "22",
@@ -2821,7 +2632,6 @@ public enum Curve {
     |
     /**
      * Fast Out Linear In.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2831,7 +2641,6 @@ public enum Curve {
     |
     /**
      * Extreme Deceleration.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2841,7 +2650,6 @@ public enum Curve {
     |
     /**
      * Sharp.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2851,7 +2659,6 @@ public enum Curve {
     |
     /**
      * Rhythm.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2861,7 +2668,6 @@ public enum Curve {
     |
     /**
      * Smooth.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2871,7 +2677,6 @@ public enum Curve {
     |
     /**
      * Damping curve, CubicBezier(0.2, 0.0, 0.2, 1.0).
-     *
      */
     @!APILevel[
         since: "22",
@@ -2902,7 +2707,6 @@ public enum Curve {
 
 /**
  * Sliding effect
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2912,7 +2716,6 @@ public enum Curve {
 public enum EdgeEffect {
     /**
      * Elastic physical action, sliding to the edge can continue to slide for a distance based on the initial speed or touch event, and spring back when released.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2922,7 +2725,6 @@ public enum EdgeEffect {
     |
     /**
      * Fade.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2932,7 +2734,6 @@ public enum EdgeEffect {
     |
     /**
      * Sliding to the edge has no effect.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2953,7 +2754,6 @@ public enum EdgeEffect {
 
 /**
  * Edge.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -2963,7 +2763,6 @@ public enum EdgeEffect {
 public enum Edge {
     /**
      * The top is centered horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2973,7 +2772,6 @@ public enum Edge {
     |
     /**
      * Align the head of the cross axis direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2983,7 +2781,6 @@ public enum Edge {
     |
     /**
      * The bottom is centered horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -2993,7 +2790,6 @@ public enum Edge {
     |
     /**
      * Align the head of the cross axis direction.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3023,7 +2819,6 @@ public enum Edge {
     |
     /**
      * Middle
-     *
      */
     @!APILevel[
         since: "22",
@@ -3071,7 +2866,6 @@ public enum Edge {
  */
 /**
  * Placement enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3081,7 +2875,6 @@ public enum Edge {
 public enum Placement {
     /**
      * Left placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3091,7 +2884,6 @@ public enum Placement {
     |
     /**
      * Right placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3101,7 +2893,6 @@ public enum Placement {
     |
     /**
      * Top placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3111,7 +2902,6 @@ public enum Placement {
     |
     /**
      * Bottom placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3121,7 +2911,6 @@ public enum Placement {
     |
     /**
      * TopLeft placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3131,7 +2920,6 @@ public enum Placement {
     |
     /**
      * TopRight placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3141,7 +2929,6 @@ public enum Placement {
     |
     /**
      * BottomLeft placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3151,7 +2938,6 @@ public enum Placement {
     |
     /**
      * BottomRight placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3161,7 +2947,6 @@ public enum Placement {
     |
     /**
      * LeftTop placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3171,7 +2956,6 @@ public enum Placement {
     |
     /**
      * LeftBottom placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3181,7 +2965,6 @@ public enum Placement {
     |
     /**
      * RightTop placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3191,7 +2974,6 @@ public enum Placement {
     |
     /**
      * RightBottom placement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3237,7 +3019,6 @@ public enum Placement {
  */
 /**
  * Line Join Style
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3247,7 +3028,6 @@ public enum Placement {
 public enum LineJoinStyle {
     /**
      * Connect path segments using bevels.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3257,7 +3037,6 @@ public enum LineJoinStyle {
     |
     /**
      * Connect path segments using sharp corners.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3267,7 +3046,6 @@ public enum LineJoinStyle {
     |
     /**
      * Connect path segments using fillets.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3293,13 +3071,11 @@ public enum LineJoinStyle {
  */
 /**
  * Describes the alignment mode for drawing text.
- *
  */
 @Derive[Equatable]
 protected enum CanvasTextAlign {
     /**
      * (Default) The text is left-aligned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3309,7 +3085,6 @@ protected enum CanvasTextAlign {
     |
     /**
      * The text is right-aligned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3319,7 +3094,6 @@ protected enum CanvasTextAlign {
     |
     /**
      * The text is centered.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3330,7 +3104,6 @@ protected enum CanvasTextAlign {
     /**
      * Where the text snap line begins (Left alignment refers to the local from left to right,
      * and right alignment refers to the local from right to left)
-     *
      */
     @!APILevel[
         since: "22",
@@ -3341,7 +3114,6 @@ protected enum CanvasTextAlign {
     /**
      * Where text aligns lines end (Left alignment refers to the local from left to right,
      * and right alignment refers to the local from right to left)
-     *
      */
     @!APILevel[
         since: "22",
@@ -3369,13 +3141,11 @@ protected enum CanvasTextAlign {
  */
 /**
  * Text baseline.
- *
  */
 @Derive[Equatable]
 protected enum CanvasTextBaseline {
     /**
      * (Default) The text baseline is the standard letter baseline.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3386,7 +3156,6 @@ protected enum CanvasTextBaseline {
     /**
      * The text baseline is the ideographic baseline; If the character itself exceeds the alphabetic
      *    baseline, the ideographic baseline is at the bottom of the character itself.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3396,7 +3165,6 @@ protected enum CanvasTextBaseline {
     |
     /**
      * The text baseline is at the top of the text block.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3407,7 +3175,6 @@ protected enum CanvasTextBaseline {
     /**
      * The text baseline is at the bottom of the text block. The difference between the ideographic baseline
      *    and the ideographic baseline is that the ideographic baseline does not need to consider downlink letters.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3417,7 +3184,6 @@ protected enum CanvasTextBaseline {
     |
     /**
      * The text baseline is in the middle of the text block.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3427,7 +3193,6 @@ protected enum CanvasTextBaseline {
     |
     /**
      * The text baseline is a hanging baseline.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3456,7 +3221,6 @@ protected enum CanvasTextBaseline {
  */
 /**
  * Type of composition operation applied when drawing a new shape.
- *
  */
 @Derive[Equatable]
 protected enum GlobalCompositeOperation {
@@ -3471,7 +3235,6 @@ protected enum GlobalCompositeOperation {
     |
     /**
      * The new drawing is drawn only where it overlaps the content of the existing canvas.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3583,7 +3346,6 @@ protected enum GlobalCompositeOperation {
 
 /**
  * Sets the image smoothness attribute.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3593,7 +3355,6 @@ protected enum GlobalCompositeOperation {
 public enum ImageSmoothingQuality {
     /**
      * (default)low
-     *
      */
     @!APILevel[
         since: "22",
@@ -3603,7 +3364,6 @@ public enum ImageSmoothingQuality {
     |
     /**
      * Medium
-     *
      */
     @!APILevel[
         since: "22",
@@ -3613,7 +3373,6 @@ public enum ImageSmoothingQuality {
     |
     /**
      * height
-     *
      */
     @!APILevel[
         since: "22",
@@ -3634,7 +3393,6 @@ public enum ImageSmoothingQuality {
 
 /**
  * Creating an Object
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3644,7 +3402,6 @@ public enum ImageSmoothingQuality {
 public enum GestureMask {
     /**
      * High-priority response to the current gesture.When the current gesture fails to be recognized, other gesture responses are triggered.For gestures with the same priority, responses are performed based on the recognition sequence.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3654,7 +3411,6 @@ public enum GestureMask {
     |
     /**
      * Ignore internal gestures and recognize the current gesture first.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3674,7 +3430,6 @@ public enum GestureMask {
 
 /**
  * Creating an Object
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3684,7 +3439,6 @@ public enum GestureMask {
 public enum SwipeDirection {
     /**
      * Sliding horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3694,7 +3448,6 @@ public enum SwipeDirection {
     |
     /**
      * Sliding Vertical
-     *
      */
     @!APILevel[
         since: "22",
@@ -3704,7 +3457,6 @@ public enum SwipeDirection {
     |
     /**
      * Sliding in all directions.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3725,7 +3477,6 @@ public enum SwipeDirection {
 
 /**
  * Creating an Object
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3735,7 +3486,6 @@ public enum SwipeDirection {
 public enum PanDirection {
     /**
      * Default.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3745,7 +3495,6 @@ public enum PanDirection {
     |
     /**
      * Sliding left.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3755,7 +3504,6 @@ public enum PanDirection {
     |
     /**
      * Sliding right.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3765,7 +3513,6 @@ public enum PanDirection {
     |
     /**
      * Sliding horizontally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3775,7 +3522,6 @@ public enum PanDirection {
     |
     /**
      * Sliding up.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3785,7 +3531,6 @@ public enum PanDirection {
     |
     /**
      * Sliding Down.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3795,7 +3540,6 @@ public enum PanDirection {
     |
     /**
      * Sliding Vertical
-     *
      */
     @!APILevel[
         since: "22",
@@ -3805,7 +3549,6 @@ public enum PanDirection {
     |
     /**
      * Sliding in all directions.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3863,7 +3606,6 @@ public enum PanDirection {
 
 /**
  * Creating an Object
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3873,7 +3615,6 @@ public enum PanDirection {
 public enum GestureMode {
     /**
      * Sequential gesture recognition is performed in sequence according to the gesture registration sequence.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3883,7 +3624,6 @@ public enum GestureMode {
     |
     /**
      * Simultaneous recognition. Registration gestures participate in recognition. Everything can be triggered.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3893,7 +3633,6 @@ public enum GestureMode {
     |
     /**
      * Mutually exclusive recognition. Only one gesture is successfully recognized.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3919,7 +3658,6 @@ public enum GestureMode {
  */
 /**
  * Axis enumeration description.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3929,7 +3667,6 @@ public enum GestureMode {
 public enum Axis {
     /**
      * Longitudinal arrangement
-     *
      */
     @!APILevel[
         since: "22",
@@ -3939,7 +3676,6 @@ public enum Axis {
     |
     /**
      * Horizontal arrangement.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3959,7 +3695,6 @@ public enum Axis {
 
 /**
  * ResponseType for contextMenu
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -3969,7 +3704,6 @@ public enum Axis {
 public enum ResponseType {
     /**
      * Right click.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3979,7 +3713,6 @@ public enum ResponseType {
     |
     /**
      * Long press.
-     *
      */
     @!APILevel[
         since: "22",
@@ -3999,7 +3732,6 @@ public enum ResponseType {
 
 /**
  * Indicates the share option.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4009,7 +3741,6 @@ public enum ResponseType {
 public enum CopyOptions {
     /**
      * Not allow share.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4019,7 +3750,6 @@ public enum CopyOptions {
     |
     /**
      * Share in app.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4029,7 +3759,6 @@ public enum CopyOptions {
     |
     /**
      * Share in local device.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4039,7 +3768,6 @@ public enum CopyOptions {
     |
     /**
      * Share in cross Device
-     *
      */
     @!APILevel[
         since: "22",
@@ -4061,7 +3789,6 @@ public enum CopyOptions {
 
 /**
  * Function Called by Touch
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4071,7 +3798,6 @@ public enum CopyOptions {
 public enum TouchType {
     /**
      * Triggered when the finger is pressed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4081,7 +3807,6 @@ public enum TouchType {
     |
     /**
      * Triggered when the finger is raised.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4091,7 +3816,6 @@ public enum TouchType {
     |
     /**
      * Triggered when the finger presses on the screen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4101,7 +3825,6 @@ public enum TouchType {
     |
     /**
      * Triggers when the touch event cancels.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4203,7 +3926,6 @@ enum DragComponent {
 
 /**
  * Sets the sidebar style of showing
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4213,7 +3935,6 @@ enum DragComponent {
 public enum SideBarContainerType {
     /**
      * The sidebar invisible
-     *
      */
     @!APILevel[
         since: "22",
@@ -4223,7 +3944,6 @@ public enum SideBarContainerType {
     |
     /**
      * The sidebar visible
-     *
      */
     @!APILevel[
         since: "22",
@@ -4233,7 +3953,6 @@ public enum SideBarContainerType {
     |
     /**
      * The sidebar AUTO
-     *
      */
     @!APILevel[
         since: "22",
@@ -4254,7 +3973,6 @@ public enum SideBarContainerType {
 
 /**
  * Sets the sidebar position of showing
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4264,7 +3982,6 @@ public enum SideBarContainerType {
 public enum SideBarPosition {
     /**
      * The sidebar is on the Start of the container
-     *
      */
     @!APILevel[
         since: "22",
@@ -4274,7 +3991,6 @@ public enum SideBarPosition {
     |
     /**
      * The sidebar is on the End of the container
-     *
      */
     @!APILevel[
         since: "22",
@@ -4294,7 +4010,6 @@ public enum SideBarPosition {
 
 /**
  * Defines the event source type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4304,7 +4019,6 @@ public enum SideBarPosition {
 public enum SourceType {
     /**
      * Unknown type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4314,7 +4028,6 @@ public enum SourceType {
     |
     /**
      * The mouse type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4324,7 +4037,6 @@ public enum SourceType {
     |
     /**
      * The touch screen type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4374,7 +4086,6 @@ public enum SourceType {
 
 /**
  * Function Called by Mouse
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4384,7 +4095,6 @@ public enum SourceType {
 public enum MouseButton {
     /**
      * Mouse None Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4394,7 +4104,6 @@ public enum MouseButton {
     |
     /**
      * Mouse Left Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4404,7 +4113,6 @@ public enum MouseButton {
     |
     /**
      * Mouse Right Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4414,7 +4122,6 @@ public enum MouseButton {
     |
     /**
      * Mouse Middle Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4424,7 +4131,6 @@ public enum MouseButton {
     |
     /**
      * Mouse Back Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4434,7 +4140,6 @@ public enum MouseButton {
     |
     /**
      * Mouse Forward Button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4470,7 +4175,6 @@ public enum MouseButton {
 
 /**
  * Function Called by Mouse
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4489,7 +4193,6 @@ public enum MouseAction {
     |
     /**
      * Triggered when the mouse is pressed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4499,7 +4202,6 @@ public enum MouseAction {
     |
     /**
      * Triggered when the mouse is released.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4509,7 +4211,6 @@ public enum MouseAction {
     |
     /**
      * Triggered when the mouse is Moved.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4519,7 +4220,6 @@ public enum MouseAction {
     |
     /**
      * Triggered when the mouse is Hovered.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4582,7 +4282,6 @@ public enum MouseAction {
 
 /**
  * Type of the input device that triggers the current key.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4592,7 +4291,6 @@ public enum MouseAction {
 public enum KeySource {
     /**
      * The input device type is unknown.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4602,7 +4300,6 @@ public enum KeySource {
     |
     /**
      * Set Device Type to Keyboard.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4639,7 +4336,6 @@ public enum KeySource {
 
 /**
  * Type of a key.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4658,7 +4354,6 @@ public enum KeyType {
     |
     /**
      * Press the key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4668,7 +4363,6 @@ public enum KeyType {
     |
     /**
      * The key is released.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4698,7 +4392,6 @@ public enum KeyType {
 
 /**
  * Modifier key for hot key.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4708,7 +4401,6 @@ public enum KeyType {
 public enum ModifierKey {
     /**
      * ctrl.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4718,7 +4410,6 @@ public enum ModifierKey {
     |
     /**
      * shift.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4728,7 +4419,6 @@ public enum ModifierKey {
     |
     /**
      * alt.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4749,7 +4439,6 @@ public enum ModifierKey {
 
 /**
  * Function key for hot key.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4759,7 +4448,6 @@ public enum ModifierKey {
 public enum FunctionKey {
     /**
      * Escape key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4769,7 +4457,6 @@ public enum FunctionKey {
     |
     /**
      * F1 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4779,7 +4466,6 @@ public enum FunctionKey {
     |
     /**
      * F2 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4789,7 +4475,6 @@ public enum FunctionKey {
     |
     /**
      * F3 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4799,7 +4484,6 @@ public enum FunctionKey {
     |
     /**
      * F4 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4809,7 +4493,6 @@ public enum FunctionKey {
     |
     /**
      * F5 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4819,7 +4502,6 @@ public enum FunctionKey {
     |
     /**
      * F6 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4829,7 +4511,6 @@ public enum FunctionKey {
     |
     /**
      * F7 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4839,7 +4520,6 @@ public enum FunctionKey {
     |
     /**
      * F8 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4849,7 +4529,6 @@ public enum FunctionKey {
     |
     /**
      * F9 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4859,7 +4538,6 @@ public enum FunctionKey {
     |
     /**
      * F10 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4869,7 +4547,6 @@ public enum FunctionKey {
     |
     /**
      * F11 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4879,7 +4556,6 @@ public enum FunctionKey {
     |
     /**
      * F12 key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4889,7 +4565,6 @@ public enum FunctionKey {
     |
     /**
      * Tab key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4919,7 +4594,6 @@ public enum FunctionKey {
     |
     /**
      * Left arrow key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -4962,7 +4636,6 @@ public enum FunctionKey {
 
 /**
  * DataPanelType enum
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -4972,7 +4645,6 @@ public enum FunctionKey {
 public enum DataPanelType {
     /**
      * Line Rainbow
-     *
      */
     @!APILevel[
         since: "22",
@@ -4982,7 +4654,6 @@ public enum DataPanelType {
     |
     /**
      * Line Type
-     *
      */
     @!APILevel[
         since: "22",
@@ -5002,7 +4673,6 @@ public enum DataPanelType {
 
 /**
  * ItemState
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5012,7 +4682,6 @@ public enum DataPanelType {
 public enum ItemState {
     /**
      * Default State
-     *
      */
     @!APILevel[
         since: "22",
@@ -5022,7 +4691,6 @@ public enum ItemState {
     |
     /**
      * Disabled State
-     *
      */
     @!APILevel[
         since: "22",
@@ -5032,7 +4700,6 @@ public enum ItemState {
     |
     /**
      * Waiting State
-     *
      */
     @!APILevel[
         since: "22",
@@ -5042,7 +4709,6 @@ public enum ItemState {
     |
     /**
      * Skip State
-     *
      */
     @!APILevel[
         since: "22",
@@ -5064,7 +4730,6 @@ public enum ItemState {
 
 /**
  * The refresh status of the drop-down refresh.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5074,7 +4739,6 @@ public enum ItemState {
 public enum RefreshStatus {
     /**
      * The refresh status of the drop-down refresh.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5084,7 +4748,6 @@ public enum RefreshStatus {
     |
     /**
      * Drop down, but the drop-down distance is less than the refresh distance.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5094,7 +4757,6 @@ public enum RefreshStatus {
     |
     /**
      * The pull-down exceeds the refresh distance.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5104,7 +4766,6 @@ public enum RefreshStatus {
     |
     /**
      * After the pull-down, it rebounds to the refresh distance and enters the refresh state.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5114,7 +4775,6 @@ public enum RefreshStatus {
     |
     /**
      * After refresh, return to the initial state.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5148,7 +4808,6 @@ public enum RefreshStatus {
 
 /**
  * Seek mode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5158,7 +4817,6 @@ public enum RefreshStatus {
 public enum SeekMode {
     /**
      * Sync to keyframes before the time point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5168,7 +4826,6 @@ public enum SeekMode {
     |
     /**
      * Sync to keyframes after the time point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5178,7 +4835,6 @@ public enum SeekMode {
     |
     /**
      * Sync to closest keyframes.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5188,7 +4844,6 @@ public enum SeekMode {
     |
     /**
      * Seek to frames closest the time point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5210,7 +4865,6 @@ public enum SeekMode {
 
 /**
  * playback speed.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5220,7 +4874,6 @@ public enum SeekMode {
 public enum PlaybackSpeed {
     /**
      * 0.75x speed playback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5230,7 +4883,6 @@ public enum PlaybackSpeed {
     |
     /**
      * 1.00x speed playback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5240,7 +4892,6 @@ public enum PlaybackSpeed {
     |
     /**
      * 1.25x speed playback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5250,7 +4901,6 @@ public enum PlaybackSpeed {
     |
     /**
      * 1.75x speed playback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5260,7 +4910,6 @@ public enum PlaybackSpeed {
     |
     /**
      * 2.00x speed playback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5333,7 +4982,6 @@ public enum PlaybackSpeed {
 
 /**
  * CheckboxGroup SelectStatus
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5343,7 +4991,6 @@ public enum PlaybackSpeed {
 public enum SelectStatus {
     /**
      * All checkboxes are selected.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5353,7 +5000,6 @@ public enum SelectStatus {
     |
     /**
      * Part of the checkbox is selected.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5363,7 +5009,6 @@ public enum SelectStatus {
     |
     /**
      * None of the checkbox is selected.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5393,7 +5038,6 @@ public enum SelectStatus {
 
 /**
  * Animation status.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5403,7 +5047,6 @@ public enum SelectStatus {
 public enum AnimationStatus {
     /**
      * Initial state of the animation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5413,7 +5056,6 @@ public enum AnimationStatus {
     |
     /**
      * The animation is playing.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5423,7 +5065,6 @@ public enum AnimationStatus {
     |
     /**
      * The animation is paused.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5433,7 +5074,6 @@ public enum AnimationStatus {
     |
     /**
      * The animation is stopped.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5455,7 +5095,6 @@ public enum AnimationStatus {
 
 /**
  * Sets the state before and after the animation starts.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5465,7 +5104,6 @@ public enum AnimationStatus {
 public enum FillMode {
     /**
      * Restores to the initial state after the playback is complete.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5475,7 +5113,6 @@ public enum FillMode {
     |
     /**
      * Retains the state at the end of the animation when the playback is complete.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5485,7 +5122,6 @@ public enum FillMode {
     |
     /**
      * Applies the start attribute value for the period specified by animation-delay before the animation is displayed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5495,7 +5131,6 @@ public enum FillMode {
     |
     /**
      * Both forward and backward fill modes are applied.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5517,7 +5152,6 @@ public enum FillMode {
 
 /**
  * Sliding effect
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5527,7 +5161,6 @@ public enum FillMode {
 public enum SwipeEdgeEffect {
     /**
      * Elastic physical action, sliding to the edge can continue to slide for a distance based on the initial speed or touch event, and spring back when released.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5537,7 +5170,6 @@ public enum SwipeEdgeEffect {
     |
     /**
      * Sliding to the edge has no effect.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5557,7 +5189,6 @@ public enum SwipeEdgeEffect {
 
 /**
  * SharedTransitionEffectType enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5568,7 +5199,6 @@ public enum SharedTransitionEffectType {
     /**
      * The location of the destination page element remains unchanged, and you can configure the transparency animation. Currently,
      * only the static effect configured for redirecting to the target page takes effect.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5578,7 +5208,6 @@ public enum SharedTransitionEffectType {
     |
     /**
      * Move the source page element to the destination page element location and scale it appropriately.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5598,7 +5227,6 @@ public enum SharedTransitionEffectType {
 
 /**
  * Declare scroll status
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5608,7 +5236,6 @@ public enum SharedTransitionEffectType {
 public enum ScrollState {
     /**
      * Not activated.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5618,7 +5245,6 @@ public enum ScrollState {
     |
     /**
      * Scrolling status.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5628,7 +5254,6 @@ public enum ScrollState {
     |
     /**
      * Inertial scrolling state.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5658,7 +5283,6 @@ public enum ScrollState {
 
 /**
  * Declare list item alignment status
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5668,7 +5292,6 @@ public enum ScrollState {
 public enum ListItemAlign {
     /**
      * The list items are packed toward the start edge of the <em>List</em> component along the cross axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5678,7 +5301,6 @@ public enum ListItemAlign {
     |
     /**
      * The list items are centered in the <em>List</em> component along the cross axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5688,7 +5310,6 @@ public enum ListItemAlign {
     |
     /**
      * The list items are packed toward the end edge of the <em>List</em> component along the cross axis.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5709,7 +5330,6 @@ public enum ListItemAlign {
 
 /**
  * Declare item group sticky style.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5720,7 +5340,6 @@ public enum StickyStyle {
     /**
      * In the ListItemGroup component, the header is not pinned to the top,
      * and the footer is not pinned to the bottom.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5731,7 +5350,6 @@ public enum StickyStyle {
     /**
      * In the ListItemGroup component, the header is pinned to the top,
      * and the footer is not pinned to the bottom.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5742,7 +5360,6 @@ public enum StickyStyle {
     /**
      * In the <em>ListItemGroup</em> component, the footer is pinned to the bottom,
      * and the header is not pinned to the top.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5774,7 +5391,6 @@ public enum StickyStyle {
 
 /**
  * Defines span type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5784,7 +5400,6 @@ public enum StickyStyle {
 public enum RichEditorSpanType {
     /**
      * Text,corresponding textSpan type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5794,7 +5409,6 @@ public enum RichEditorSpanType {
     |
     /**
      * Image,corresponding imageSpan type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5804,7 +5418,6 @@ public enum RichEditorSpanType {
     |
     /**
      * Mixed,corresponding mixed span type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5845,7 +5458,6 @@ public enum RichEditorSpanType {
 
 /**
  * The alignment of ImageSpan
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5855,7 +5467,6 @@ public enum RichEditorSpanType {
 public enum ImageSpanAlignment {
     /**
      * Indicating that the top of the ImageSpan should be aligned with the top of the surrounding text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5865,7 +5476,6 @@ public enum ImageSpanAlignment {
     |
     /**
      * Indicating that the center of the ImageSpan should be aligned with the center of the surrounding text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5875,7 +5485,6 @@ public enum ImageSpanAlignment {
     |
     /**
      * Indicating that the bottom of the ImageSpan should be aligned with the bottom of the surrounding text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5885,7 +5494,6 @@ public enum ImageSpanAlignment {
     |
     /**
      * Indicating that the bottom of the ImageSpan should be aligned with the baseline of the surrounding text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5927,7 +5535,6 @@ public enum ImageSpanAlignment {
 
 /**
  * Defines delete text direction.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -5937,7 +5544,6 @@ public enum ImageSpanAlignment {
 public enum RichEditorDeleteDirection {
     /**
      * Delete backward.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5947,7 +5553,6 @@ public enum RichEditorDeleteDirection {
     |
     /**
      * Delete forward.
-     *
      */
     @!APILevel[
         since: "22",
@@ -5975,41 +5580,37 @@ public enum RichEditorDeleteDirection {
 
 /**
  * The Web's behavior to load from HTTP or HTTPS. Defaults to MixedMode.None.
- *
  */
 @Derive[Equatable]
 @!APILevel[
     since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    syscap: "SystemCapability.Web.Webview.Core"
 ]
 public enum MixedMode {
     /**
      * Loose Mode: HTTP and HTTPS hybrid content can be loaded. This means that all insecure content can be loaded.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     All
     |
     /**
      * Compatibility Modes: HTTP and HTTPS hybrid content can be loaded in compatibility mode. This means that some insecure content may be loaded.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     Compatible
     |
     /**
      * Strict Mode: HTTP and HTTPS hybrid content cannot be loaded.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     None
     | ...
@@ -6026,7 +5627,6 @@ public enum MixedMode {
 
 /**
  * Play Mode
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6036,7 +5636,6 @@ public enum MixedMode {
 public enum PlayMode {
     /**
      * The animation plays normally.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6046,7 +5645,6 @@ public enum PlayMode {
     |
     /**
      * The animation plays backwards.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6056,7 +5654,6 @@ public enum PlayMode {
     |
     /**
      * The animation plays forward on odd numbers (1, 3, 7...) and backward on even numbers (2, 4, 6...).
-     *
      */
     @!APILevel[
         since: "22",
@@ -6066,7 +5663,6 @@ public enum PlayMode {
     |
     /**
      * The animation plays backwards on odd numbers (1, 3, 7...) and forwards on even numbers (2, 4, 6...)..
-     *
      */
     @!APILevel[
         since: "22",
@@ -6088,7 +5684,6 @@ public enum PlayMode {
 
 /**
  * GradientDirection enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6098,7 +5693,6 @@ public enum PlayMode {
 public enum GradientDirection {
     /**
      * Right to left.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6108,7 +5702,6 @@ public enum GradientDirection {
     |
     /**
      * From the bottom up.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6118,7 +5711,6 @@ public enum GradientDirection {
     |
     /**
      * From left to right.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6128,7 +5720,6 @@ public enum GradientDirection {
     |
     /**
      * From the top down.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6138,7 +5729,6 @@ public enum GradientDirection {
     |
     /**
      * Top Left
-     *
      */
     @!APILevel[
         since: "22",
@@ -6148,7 +5738,6 @@ public enum GradientDirection {
     |
     /**
      * Left Bottom
-     *
      */
     @!APILevel[
         since: "22",
@@ -6158,7 +5747,6 @@ public enum GradientDirection {
     |
     /**
      * Right Top
-     *
      */
     @!APILevel[
         since: "22",
@@ -6168,7 +5756,6 @@ public enum GradientDirection {
     |
     /**
      * Right Bottom
-     *
      */
     @!APILevel[
         since: "22",
@@ -6178,7 +5765,6 @@ public enum GradientDirection {
     |
     /**
      * None
-     *
      */
     @!APILevel[
         since: "22",
@@ -6205,7 +5791,6 @@ public enum GradientDirection {
 
 /**
  * Enum of RenderFit
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6215,7 +5800,6 @@ public enum GradientDirection {
 public enum RenderFit {
     /**
      * Without scaling the content area, the content area is drawn in the center of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6225,7 +5809,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top center of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6235,7 +5818,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom center of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6245,7 +5827,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the left center of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6255,7 +5836,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the right center of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6265,7 +5845,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top left of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6275,7 +5854,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the top right of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6285,7 +5863,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom left of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6295,7 +5872,6 @@ public enum RenderFit {
     |
     /**
      * Without scaling the content area, the content area is drawn in the bottom right of the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6305,7 +5881,6 @@ public enum RenderFit {
     |
     /**
      * Scale the length and width of the content area to the node size to fill the node.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6317,7 +5892,6 @@ public enum RenderFit {
      * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
      * the other side is less than or equal to the corresponding side of the node, and the content after scaling
      * is centered.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6331,7 +5905,6 @@ public enum RenderFit {
      * is less than or equal to the height of the node, the scaled content area is displayed at the top; otherwise,
      * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
      * displayed at the left.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6345,7 +5918,6 @@ public enum RenderFit {
      * is less than or equal to the height of the node, the scaled content area is displayed at the bottom; otherwise,
      * the width of the scaled content is less than or equal to the width of the node, the scaled content area is
      * displayed at the right.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6357,7 +5929,6 @@ public enum RenderFit {
      * Scale the length or width of the content to the length or width of the node, ensuring that one side is equal,
      * the other side is greater than or equal to the corresponding side of the node, and the content after scaling
      * displays the center area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6371,7 +5942,6 @@ public enum RenderFit {
      * is greater than or equal to the height of the node, the scaled content area displays the top area; otherwise,
      * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
      * displays the left area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6385,7 +5955,6 @@ public enum RenderFit {
      * is greater than or equal to the height of the node, the scaled content area displays the bottom area; otherwise,
      * the width of the scaled content is greater than or equal to the width of the node, the scaled content area
      * displays the right area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6419,7 +5988,6 @@ public enum RenderFit {
 
 /**
  * The alignment of dialog,
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6429,7 +5997,6 @@ public enum RenderFit {
 public enum DialogAlignment {
     /**
      * Vertical top alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6439,7 +6006,6 @@ public enum DialogAlignment {
     |
     /**
      * Align vertically to the center.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6449,7 +6015,6 @@ public enum DialogAlignment {
     |
     /**
      * Vertical bottom alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6459,7 +6024,6 @@ public enum DialogAlignment {
     |
     /**
      * Default alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6469,7 +6033,6 @@ public enum DialogAlignment {
     |
     /**
      * Align the upper left corner.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6479,7 +6042,6 @@ public enum DialogAlignment {
     |
     /**
      * Align the upper right corner.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6489,7 +6051,6 @@ public enum DialogAlignment {
     |
     /**
      * Left center alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6499,7 +6060,6 @@ public enum DialogAlignment {
     |
     /**
      * Right center alignment.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6509,7 +6069,6 @@ public enum DialogAlignment {
     |
     /**
      * Align the lower left corner.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6519,7 +6078,6 @@ public enum DialogAlignment {
     |
     /**
      * Align the lower right corner.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6547,7 +6105,6 @@ public enum DialogAlignment {
 
 /**
  * Specifies the direction value of Barrier.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6557,7 +6114,6 @@ public enum DialogAlignment {
 public enum BarrierDirection {
     /**
      * Barrier will be positioned to the far left of all referenced components.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6567,7 +6123,6 @@ public enum BarrierDirection {
     |
     /**
      * Barrier will be positioned to the far right of all referenced components.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6577,7 +6132,6 @@ public enum BarrierDirection {
     |
     /**
      * Barrier will be positioned to the top of all referenced components.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6587,7 +6141,6 @@ public enum BarrierDirection {
     |
     /**
      * Barrier will be positioned to the bottom of all referenced components.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6609,7 +6162,6 @@ public enum BarrierDirection {
 
 /**
  * The types of expanded safe areas.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6619,7 +6171,6 @@ public enum BarrierDirection {
 public enum SafeAreaType {
     /**
      * Default non-safe area of the system, including the status bar and navigation bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6629,7 +6180,6 @@ public enum SafeAreaType {
     |
     /**
      * Non-safe area of the device like Notch or punch hole.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6639,7 +6189,6 @@ public enum SafeAreaType {
     |
     /**
      * Soft keyboard area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6660,7 +6209,6 @@ public enum SafeAreaType {
 
 /**
  * Enumerates the safe area edges.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6670,7 +6218,6 @@ public enum SafeAreaType {
 public enum SafeAreaEdge {
     /**
      * Top edge.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6680,7 +6227,6 @@ public enum SafeAreaEdge {
     |
     /**
      * Bottom edge of the safe area.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6690,7 +6236,6 @@ public enum SafeAreaEdge {
     |
     /**
      * Start edge.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6700,7 +6245,6 @@ public enum SafeAreaEdge {
     |
     /**
      * End edge.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6722,7 +6266,6 @@ public enum SafeAreaEdge {
 
 /**
  * Common enum of color strategy
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6732,7 +6275,6 @@ public enum SafeAreaEdge {
 public enum ColoringStrategy {
     /**
      * Use the inverse color strategy. Gets the inverse of the background color. Only applies to foregroundColor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6771,7 +6313,6 @@ public enum ColoringStrategy {
 
 /**
  * Nested scroll nested mode
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6781,7 +6322,6 @@ public enum ColoringStrategy {
 public enum NestedScrollMode {
     /**
      * Only Self response scrolling.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6791,7 +6331,6 @@ public enum NestedScrollMode {
     |
     /**
      * Self priority response scrolling.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6801,7 +6340,6 @@ public enum NestedScrollMode {
     |
     /**
      * Parent scrollable component priority response scrolling.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6811,7 +6349,6 @@ public enum NestedScrollMode {
     |
     /**
      * Both self and parent scrollable component response scrolling.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6833,7 +6370,6 @@ public enum NestedScrollMode {
 
 /**
  * enum color mode
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6843,7 +6379,6 @@ public enum NestedScrollMode {
 public enum ThemeColorMode {
     /**
      * Defines the mode which is follow up with system.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6853,7 +6388,6 @@ public enum ThemeColorMode {
     |
     /**
      * Defines the light mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6863,7 +6397,6 @@ public enum ThemeColorMode {
     |
     /**
      * Defines the dark mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6884,7 +6417,6 @@ public enum ThemeColorMode {
 
 /**
  * Defines adaptive color
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6895,7 +6427,6 @@ public enum AdaptiveColor {
     /**
      * Adaptive color mode is not used.
      * The default color is used as the mask color. Using a mode other than **DEFAULT** can be more time-consuming.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6905,7 +6436,6 @@ public enum AdaptiveColor {
     |
     /**
      * Adaptive color mode is used. The average color value of the color picking area is used as the mask color.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6925,7 +6455,6 @@ public enum AdaptiveColor {
 
 /**
  * Enum for Control Size.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6935,7 +6464,6 @@ public enum AdaptiveColor {
 public enum ControlSize {
     /**
      * The component size is small.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6945,7 +6473,6 @@ public enum ControlSize {
     |
     /**
      * The component size is normal.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6965,7 +6492,6 @@ public enum ControlSize {
 
 /**
  * Decide whether the width of select menu fit the trigger or content
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -6975,7 +6501,6 @@ public enum ControlSize {
 public enum OptionWidthMode {
     /**
      * The menu width fit the content.
-     *
      */
     @!APILevel[
         since: "22",
@@ -6985,7 +6510,6 @@ public enum OptionWidthMode {
     |
     /**
      * The menu width fit the trigger.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7005,7 +6529,6 @@ public enum OptionWidthMode {
 
 /**
  * The enum for arrow position in the select
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7015,7 +6538,6 @@ public enum OptionWidthMode {
 public enum ArrowPosition {
     /**
      * The value of arrow position end
-     *
      */
     @!APILevel[
         since: "22",
@@ -7025,7 +6547,6 @@ public enum ArrowPosition {
     |
     /**
      * The value of arrow position start
-     *
      */
     @!APILevel[
         since: "22",
@@ -7045,7 +6566,6 @@ public enum ArrowPosition {
 
 /**
  * The type of alignment between select and menu.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7055,7 +6575,6 @@ public enum ArrowPosition {
 public enum MenuAlignType {
     /**
      * The type of alignment between select and menu.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7065,7 +6584,6 @@ public enum MenuAlignType {
     |
     /**
      * The value of menu align type center.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7075,7 +6593,6 @@ public enum MenuAlignType {
     |
     /**
      * The value of menu align type end.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7096,41 +6613,37 @@ public enum MenuAlignType {
 
 /**
  * Enum type supplied to {@link darkMode} for setting the web dark mode.
- *
  */
 @Derive[Equatable]
 @!APILevel[
     since: "22",
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    syscap: "SystemCapability.Web.Webview.Core"
 ]
 public enum WebDarkMode {
     /**
      * Disable the web dark mode.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     Off
     |
     /**
      * Enable the web dark mode.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     On
     |
     /**
      * Make web dark mode follow the system.
-     *
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        syscap: "SystemCapability.Web.Webview.Core"
     ]
     Auto
     | ...
@@ -7147,7 +6660,6 @@ public enum WebDarkMode {
 
 /**
  * Defines the event tool type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7157,7 +6669,6 @@ public enum WebDarkMode {
 public enum SourceTool {
     /**
      * Unknown type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7167,7 +6678,6 @@ public enum SourceTool {
     |
     /**
      * The finger type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7177,7 +6687,6 @@ public enum SourceTool {
     |
     /**
      * The pen type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7187,7 +6696,6 @@ public enum SourceTool {
     |
     /**
      * The mouse type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7197,7 +6705,6 @@ public enum SourceTool {
     |
     /**
      * The touchpad type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7207,7 +6714,6 @@ public enum SourceTool {
     |
     /**
      * The joystick type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7308,7 +6814,6 @@ public enum Repetition {
 
 /**
  * The possible source of scroll event
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7318,7 +6823,6 @@ public enum Repetition {
 public enum ScrollSource {
     /**
      * Drag events.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7328,7 +6832,6 @@ public enum ScrollSource {
     |
     /**
      * Fling after the drag has ended with velocity.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7338,7 +6841,6 @@ public enum ScrollSource {
     |
     /**
      * Over scroll with EdgeEffect.Spring.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7348,7 +6850,6 @@ public enum ScrollSource {
     |
     /**
      * Other user input except drag, such as mouse wheel, key event.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7358,7 +6859,6 @@ public enum ScrollSource {
     |
     /**
      * Drag events of scroll bar.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7368,7 +6868,6 @@ public enum ScrollSource {
     |
     /**
      * Fling after the drag on scroll bar has ended with velocity.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7378,7 +6877,6 @@ public enum ScrollSource {
     |
     /**
      * Member methods of Scroller without animation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7388,7 +6886,6 @@ public enum ScrollSource {
     |
     /**
      * Member methods of Scroller with animation.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7428,7 +6925,6 @@ public enum ScrollSource {
 
 /**
  * Declare the type of input content
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7439,7 +6935,6 @@ public enum ContentType {
     /**
      * User name content type.
      * Password Vault, when enabled, can automatically save and fill in usernames.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7450,7 +6945,6 @@ public enum ContentType {
     /**
      * Password content type.
      * Password Vault, when enabled, can automatically save and fill in passwords.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7461,7 +6955,6 @@ public enum ContentType {
     /**
      * New password content type.
      * Password Vault, when enabled, can automatically generate a new password.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7473,7 +6966,6 @@ public enum ContentType {
      * Full street address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in full street addresses.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7485,7 +6977,6 @@ public enum ContentType {
      * House number content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in house numbers.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7497,7 +6988,6 @@ public enum ContentType {
      * District address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in districts and counties.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7509,7 +6999,6 @@ public enum ContentType {
      * City address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in cities.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7521,7 +7010,6 @@ public enum ContentType {
      * Province address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in provinces.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7533,7 +7021,6 @@ public enum ContentType {
      * Country address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in countries.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7545,7 +7032,6 @@ public enum ContentType {
      * Person full name content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in full names.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7557,7 +7043,6 @@ public enum ContentType {
      * Person last name content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in last names.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7569,7 +7054,6 @@ public enum ContentType {
      * Person first name content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in first names.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7581,7 +7065,6 @@ public enum ContentType {
      * Phone number content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in phone numbers.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7593,7 +7076,6 @@ public enum ContentType {
      * Phone country code content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in country codes.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7605,7 +7087,6 @@ public enum ContentType {
      * Full phone number content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in phone numbers with country codes.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7617,7 +7098,6 @@ public enum ContentType {
      * Email address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in email addresses.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7629,7 +7109,6 @@ public enum ContentType {
      * Bank card number content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in bank card numbers.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7641,7 +7120,6 @@ public enum ContentType {
      * ID card number content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in ID card numbers.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7653,7 +7131,6 @@ public enum ContentType {
      * Nickname content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in nicknames.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7665,7 +7142,6 @@ public enum ContentType {
      * Detail info without street content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in address information without street addresses.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7677,7 +7153,6 @@ public enum ContentType {
      * Format address content type.
      * The scenario-based autofill feature, when enabled,
      * can automatically save and fill in standard addresses.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7855,7 +7330,6 @@ public enum ContentType {
 
 /**
  * Define the menu pop-up policy
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7865,7 +7339,6 @@ public enum ContentType {
 public enum MenuPolicy {
     /**
      * Default value. The default logic of whether to pop up a menu depends on the scene.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7875,7 +7348,6 @@ public enum MenuPolicy {
     |
     /**
      * The menu is always hidden.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7885,7 +7357,6 @@ public enum MenuPolicy {
     |
     /**
      * The menu is always displayed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7906,7 +7377,6 @@ public enum MenuPolicy {
 
 /**
  * Type of text decoration line style.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7916,7 +7386,6 @@ public enum MenuPolicy {
 public enum TextDecorationStyle {
     /**
      * Solid line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7926,7 +7395,6 @@ public enum TextDecorationStyle {
     |
     /**
      * Double lines.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7936,7 +7404,6 @@ public enum TextDecorationStyle {
     |
     /**
      * Dotted lines.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7946,7 +7413,6 @@ public enum TextDecorationStyle {
     |
     /**
      * Dashed line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7956,7 +7422,6 @@ public enum TextDecorationStyle {
     |
     /**
      * Wavy line.
-     *
      */
     @!APILevel[
         since: "22",
@@ -7979,7 +7444,6 @@ public enum TextDecorationStyle {
 
 /**
  * Enum of line break strategy
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -7990,7 +7454,6 @@ public enum LineBreakStrategy {
     /**
      * By default. Display as many characters as possible on each line until no more characters
      * can be displayed on that line, and do not automatically add hyphens under this strategy
-     *
      */
     @!APILevel[
         since: "22",
@@ -8001,7 +7464,6 @@ public enum LineBreakStrategy {
     /**
      * High quality folding. Optimize the layout of the entire text's line breaks and automatically
      * add hyphens if necessary.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8012,7 +7474,6 @@ public enum LineBreakStrategy {
     /**
      * Balanced folding. We will try our best to ensure that the width of each line in a paragraph
      * is the same, and if necessary, we will add conjunction
-     *
      */
     @!APILevel[
         since: "22",
@@ -8042,7 +7503,6 @@ public enum LineBreakStrategy {
 
 /**
  * Text content style.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8052,7 +7512,6 @@ public enum LineBreakStrategy {
 public enum TextContentStyle {
     /**
      * Text content default style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8062,7 +7521,6 @@ public enum TextContentStyle {
     |
     /**
      * Text content inline style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8082,7 +7540,6 @@ public enum TextContentStyle {
 
 /**
  * common enum of the checkbox shape
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8092,7 +7549,6 @@ public enum TextContentStyle {
 public enum CheckBoxShape {
     /**
      * Circle.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8102,7 +7558,6 @@ public enum CheckBoxShape {
     |
     /**
      * Rounded Square.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8122,7 +7577,6 @@ public enum CheckBoxShape {
 
 /**
  * Enum of text height adaptation
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8134,7 +7588,6 @@ public enum TextHeightAdaptivePolicy {
      * Priority is given to using the maxLines attribute to adapt the text height.
      * If the layout size using the maxLines attribute exceeds the layout constraint, try reducing the font size to
      * display more text.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8146,7 +7599,6 @@ public enum TextHeightAdaptivePolicy {
      * Priority is given to using the minFontSize attribute to adapt the text height.
      * If the text can be layout in a single line using the minFontSize property, try increasing the font size and using
      * the maximum possible font size.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8159,7 +7611,6 @@ public enum TextHeightAdaptivePolicy {
      * If the layout size exceeds the layout constraint, try reducing the font size. If the layout size still exceeds
      * the layout constraint after reducing the font size to minFontSize, remove the lines that exceed the layout
      * constraint.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8180,7 +7631,6 @@ public enum TextHeightAdaptivePolicy {
 
 /**
  * ArrowPointPosition enumeration description
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8190,7 +7640,6 @@ public enum TextHeightAdaptivePolicy {
 public enum ArrowPointPosition {
     /**
      * Target start position
-     *
      */
     @!APILevel[
         since: "22",
@@ -8200,7 +7649,6 @@ public enum ArrowPointPosition {
     |
     /**
      * Target center position
-     *
      */
     @!APILevel[
         since: "22",
@@ -8210,7 +7658,6 @@ public enum ArrowPointPosition {
     |
     /**
      * Target end position
-     *
      */
     @!APILevel[
         since: "22",
@@ -8231,7 +7678,6 @@ public enum ArrowPointPosition {
 
 /**
  * Title height.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8241,7 +7687,6 @@ public enum ArrowPointPosition {
 public enum TitleHeight {
     /**
      * Title height when only main title is available.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8251,7 +7696,6 @@ public enum TitleHeight {
     |
     /**
      * Title height when main title and subtitle are both available.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8271,7 +7715,6 @@ public enum TitleHeight {
 
 /**
  * The Button Style of dialog,
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8281,7 +7724,6 @@ public enum TitleHeight {
 public enum DialogButtonStyle {
     /**
      * Default Style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8291,7 +7733,6 @@ public enum DialogButtonStyle {
     |
     /**
      * Highlight Style.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8311,7 +7752,6 @@ public enum DialogButtonStyle {
 
 /**
  * Enumerates the length metrics unit.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8321,7 +7761,6 @@ public enum DialogButtonStyle {
 public enum LengthMetricsUnit {
     /**
      * The default length metrics unit, in vp.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8331,7 +7770,6 @@ public enum LengthMetricsUnit {
     |
     /**
      * The pixel length metrics unit.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8351,7 +7789,6 @@ public enum LengthMetricsUnit {
 
 /**
  * Indicates the attribute of the current text direction.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8361,7 +7798,6 @@ public enum LengthMetricsUnit {
 public enum CanvasDirection {
     /**
      * (Default) Inherit current Canvas component settings
-     *
      */
     @!APILevel[
         since: "22",
@@ -8371,7 +7807,6 @@ public enum CanvasDirection {
     |
     /**
      * The text direction is left to right.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8381,7 +7816,6 @@ public enum CanvasDirection {
     |
     /**
      * The text direction is from right to left.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8403,7 +7837,6 @@ public enum CanvasDirection {
 /**
  * Filling style algorithm, which determines whether a point is within or outside the path. The following
  * two configurations are supported:
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8413,7 +7846,6 @@ public enum CanvasDirection {
 public enum CanvasFillRule {
     /**
      * odd and even round rule
-     *
      */
     @!APILevel[
         since: "22",
@@ -8423,7 +7855,6 @@ public enum CanvasFillRule {
     |
     /**
      * (Default) Non-zero Wrap Rules
-     *
      */
     @!APILevel[
         since: "22",
@@ -8486,7 +7917,6 @@ protected enum ImageType {
 
 /**
  * Enum for FinishCallbackType.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8496,7 +7926,6 @@ protected enum ImageType {
 public enum FinishCallbackType {
     /**
      * The callback is invoked when the entire animation is removed once it has finished.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8507,7 +7936,6 @@ public enum FinishCallbackType {
     /**
      * The callback is invoked when the animation logically enters the falling state,
      * though it may still be in its long tail state.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8527,7 +7955,6 @@ public enum FinishCallbackType {
 
 /**
  * enum Blur style
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8537,7 +7964,6 @@ public enum FinishCallbackType {
 public enum BlurStyle {
     /**
      * Thin material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8547,7 +7973,6 @@ public enum BlurStyle {
     |
     /**
      * Regular material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8557,7 +7982,6 @@ public enum BlurStyle {
     |
     /**
      * Thick material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8567,7 +7991,6 @@ public enum BlurStyle {
     |
     /**
      * BackgroundThin material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8577,7 +8000,6 @@ public enum BlurStyle {
     |
     /**
      * BackgroundRegular material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8587,7 +8009,6 @@ public enum BlurStyle {
     |
     /**
      * BackgroundThick material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8597,7 +8018,6 @@ public enum BlurStyle {
     |
     /**
      * BackgroundUltraThick material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8607,7 +8027,6 @@ public enum BlurStyle {
     |
     /**
      * None material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8617,7 +8036,6 @@ public enum BlurStyle {
     |
     /**
      * ComponentUltraThin material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8627,7 +8045,6 @@ public enum BlurStyle {
     |
     /**
      * ComponentThin material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8637,7 +8054,6 @@ public enum BlurStyle {
     |
     /**
      * ComponentRegular material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8647,7 +8063,6 @@ public enum BlurStyle {
     |
     /**
      * ComponentThick material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8657,7 +8072,6 @@ public enum BlurStyle {
     |
     /**
      * ComponentUltraThick material.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8688,7 +8102,6 @@ public enum BlurStyle {
 
 /**
  * Dismiss reason type.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8698,7 +8111,6 @@ public enum BlurStyle {
 public enum DismissReason {
     /**
      * Touching the Back button, swiping left or right on the screen, or pressing the Esc key.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8708,7 +8120,6 @@ public enum DismissReason {
     |
     /**
      * Touching the mask.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8718,7 +8129,6 @@ public enum DismissReason {
     |
     /**
      * Touching the Close button.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8731,7 +8141,6 @@ public enum DismissReason {
      * <p><strong>NOTE</strong>:
      * <br>This API is effective only in sheet transition.
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -8779,7 +8188,6 @@ public enum DismissReason {
 
 /**
  * Text input style.
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8793,7 +8201,6 @@ public enum TextInputStyle {
      * <br>The caret width is fixed at 1.5.vp,
      * and the caret height is subject to the background height and font size of the selected text.
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -8809,7 +8216,6 @@ public enum TextInputStyle {
      * <br>The showError attribute is not supported for this style.
      * <br>This style does not allow for text dragging and dropping.
      * </p>
-     *
      */
     @!APILevel[
         since: "22",
@@ -8829,7 +8235,6 @@ public enum TextInputStyle {
 
 /**
  * Declare the type of input box
- *
  */
 @Derive[Equatable]
 @!APILevel[
@@ -8840,7 +8245,6 @@ public enum TextAreaType {
     /**
      * Basic input mode.
      * The value can contain digits, letters, underscores (_), spaces, and special characters.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8850,7 +8254,6 @@ public enum TextAreaType {
     |
     /**
      * Pure digital input mode.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8862,7 +8265,6 @@ public enum TextAreaType {
      * Phone number entry mode.
      * In this mode, the following are allowed: digits, spaces, plus signs (+), hyphens (-), asterisks (*), and number signs (#).
      * the length is not limited.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8874,7 +8276,6 @@ public enum TextAreaType {
      * E-mail address input mode.
      * This mode accepts only digits, letters, underscores (_), dots (.),
      * and the following special characters: ! # $ % & ' * + - / = ? ^ ` { | } ~ @ (which can only appear once).
-     *
      */
     @!APILevel[
         since: "22",
@@ -8885,7 +8286,6 @@ public enum TextAreaType {
     /**
      * Number decimal entry mode.
      * The value can contain digits and one decimal point.
-     *
      */
     @!APILevel[
         since: "22",
@@ -8895,7 +8295,6 @@ public enum TextAreaType {
     |
     /**
      * URL entry mode.
-     *
      */
     @!APILevel[
         since: "22",

@@ -279,7 +279,6 @@ public class OnPageBeginEvent {
 public class OnPageEndEvent {
     /**
      * The URL of the page.
-     *
      */
     @!APILevel[
         since: "22",
