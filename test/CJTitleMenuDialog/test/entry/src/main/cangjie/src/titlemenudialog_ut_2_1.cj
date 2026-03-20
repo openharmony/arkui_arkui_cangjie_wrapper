@@ -60,6 +60,7 @@ class TitleMenuDialogUT21 {
 
     protected override func afterEach() {
         driver.pressBack()
+        driver.delayMs(500)
     }
 
     @TestCase
@@ -173,6 +174,105 @@ class TitleMenuDialogUT21 {
         driver.delayMs(400)
         driver.pressBack()
         driver.delayMs(200)
+    }
+
+    private func clickPromptDialogShadowRadius(promptTextId: String, radiusSub: Float64): Unit {
+        driver.findComponent(On().id("viewPromptScroller")).getOrThrow().scrollSearch(On().id(promptTextId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject() // root
+        let radius = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject() // root children: AlertDialog
+            .get("$children").getOrThrow().asArray()
+            .get(0).getOrThrow().asObject() // AlertDialog children: Column
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().asObject()
+            .get("radius").getOrThrow().toString()
+
+        @Expect(radius.contains(radiusSub.toString()))
+
+        driver.pressBack()
+        driver.delayMs(500)
+    }
+
+    private func clickPromptToastShadowRadius(promptTextId: String, radiusSub: Float64): Unit {
+        driver.findComponent(On().id("viewPromptScroller")).getOrThrow().scrollSearch(On().id(promptTextId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject() // root
+        let radius = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject() // root children: Toast
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().asObject()
+            .get("radius").getOrThrow().toString()
+
+        @Expect(radius.contains(radiusSub.toString()))
+        driver.delayMs(4500)
+    }
+
+    private func clickPromptToastShadowStyle(promptTextId: String, shadowSub: String): Unit {
+        driver.findComponent(On().id("viewPromptScroller")).getOrThrow().scrollSearch(On().id(promptTextId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject() // root
+        let shadow = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject() // root children: Toast
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().toString()
+
+        @Expect(shadow.contains(shadowSub))
+        driver.delayMs(4500)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testPromptShowDialogShadowRadius() {
+        scrollTo("ViewPrompt")
+
+        clickPromptDialogShadowRadius("promptShadowRadius10", 10.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusNeg10", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadius0", 0.0)
+        clickPromptDialogShadowRadius("promptShadowRadius1", 1.0)
+//        clickPromptDialogShadowRadius("promptShadowRadiusNeg1", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusFloat64Max", Float64.Max)
+        clickPromptDialogShadowRadius("promptShadowRadiusFloat64Min", -1.0)
+//        clickPromptDialogShadowRadius("promptShadowOmitted", -1.0)
+//        clickPromptDialogShadowRadius("promptShadowRadiusOptionNone", -1.0)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testPromptShowToastShadowRadius() {
+        scrollTo("ViewPrompt")
+
+        clickPromptToastShadowRadius("promptToastShadowRadius10", 10.0)
+        clickPromptToastShadowRadius("promptToastShadowRadiusNeg10", -1.0)
+        clickPromptToastShadowRadius("promptToastShadowRadius0", 0.0)
+        clickPromptToastShadowRadius("promptToastShadowRadius1", 1.0)
+        clickPromptToastShadowRadius("promptToastShadowRadiusNeg1", -1.0)
+        clickPromptToastShadowRadius("promptToastShadowRadiusFloat64Max", Float64.Max)
+        clickPromptToastShadowRadius("promptToastShadowRadiusFloat64Min", -1.0)
+        clickPromptToastShadowStyle("promptToastShadowOmitted", "ShadowStyle.OuterDefaultMD")
+        clickPromptToastShadowRadius("promptToastShadowRadiusOptionNone", -1.0)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testPromptOpenCustomDialogShadowRadius() {
+        scrollTo("ViewPrompt")
+
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadius10", 10.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg10", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadius0", 0.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadius1", 1.0)
+//        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg1", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusFloat64Max", Float64.Max)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusFloat64Min", -1.0)
+//        clickPromptDialogShadowRadius("promptCustomDialogShadowOmitted", -1.0)
+//        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusOptionNone", -1.0)
     }
 
     // Global

@@ -243,6 +243,112 @@ class TitleMenuDialogUT11 {
         driver.delayMs(500)
     }
 
+    /** 与 testPromptOpenCustomDialogShadowRadius：遮罩层 AlertDialog 下 Column 的 shadow.radius / shadow */
+    private func clickAlertDialogShadowRadiusFromScroller(buttonId: String, radiusSub: Float64): Unit {
+        driver.findComponent(On().id("viewAlertDialogScroller")).getOrThrow().scrollSearch(On().id(buttonId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject()
+        let radius = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject()
+            .get("$children").getOrThrow().asArray()
+            .get(0).getOrThrow().asObject()
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().asObject()
+            .get("radius").getOrThrow().toString()
+
+        @Expect(radius.contains(radiusSub.toString()))
+
+        driver.pressBack()
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testShowAlertDialogWithConfirmShadowRadius() {
+        scrollTo("ViewAlertDialog")
+
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius10", 10.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius0", 0.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius1", 1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusNeg1", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusFloat64Max", Float64.Max)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowOmitted", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusOptionNone", -1.0)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testShowAlertDialogWithButtonsShadowRadius() {
+        scrollTo("ViewAlertDialog")
+
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius10", 10.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius0", 0.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius1", 1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusNeg1", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusFloat64Max", Float64.Max)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowOmitted", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusOptionNone", -1.0)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testShowAlertDialogWithOptionsShadowRadius() {
+        scrollTo("ViewAlertDialog")
+
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius10", 10.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius0", 0.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius1", 1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusNeg1", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusFloat64Max", Float64.Max)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowOmitted", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusOptionNone", -1.0)
+    }
+
+    /** ViewCustomDialog：CustomDialogController.openDialog 后遮罩层 Column 的 shadow.radius（无外层 Scroll，直接点按钮） */
+    private func clickCustomDialogShadowRadiusFromButton(buttonId: String, radiusSub: Float64): Unit {
+        driver.findComponent(On().id(buttonId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject()
+        let radius = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject()
+            .get("$children").getOrThrow().asArray()
+            .get(0).getOrThrow().asObject()
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().asObject()
+            .get("radius").getOrThrow().toString()
+
+        @Expect(radius.contains(radiusSub.toString()))
+
+        driver.pressBack()
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testCustomDialogControllerShadowRadius() {
+        scrollTo("ViewCustomDialog")
+
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius10", 10.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusNeg10", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius0", 0.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius1", 1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusNeg1", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusFloat64Max", Float64.Max)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusFloat64Min", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowOmitted", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusOptionNone", -1.0)
+    }
+
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testContextMenu() {

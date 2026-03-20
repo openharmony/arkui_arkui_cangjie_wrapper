@@ -199,6 +199,42 @@ class TitleMenuDialogUT1 {
         driver.delayMs(500)
     }
 
+    /** 与 testPromptOpenCustomDialogShadowRadius / clickPromptDialogShadowRadius 相同：遮罩层 AlertDialog 下 Column 的 shadow.radius */
+    private func clickDialogShadowRadiusFromScroller(scrollerId: String, buttonId: String, radiusSub: Float64): Unit {
+        driver.findComponent(On().id(scrollerId)).getOrThrow().scrollSearch(On().id(buttonId)).getOrThrow().click()
+        driver.delayMs(400)
+
+        let tree = getInspectorTree()
+        let treeJsonObject = JsonValue.fromStr(tree).asObject()
+        let radius = treeJsonObject.get("$children").getOrThrow().asArray()
+            .get(1).getOrThrow().asObject()
+            .get("$children").getOrThrow().asArray()
+            .get(0).getOrThrow().asObject()
+            .get("$attrs").getOrThrow().asObject()
+            .get("shadow").getOrThrow().asObject()
+            .get("radius").getOrThrow().toString()
+
+        @Expect(radius.contains(radiusSub.toString()))
+
+        driver.pressBack()
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testShowActionSheetShadowRadius() {
+        scrollTo("ViewActionSheet")
+
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius10", 10.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusNeg10", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius0", 0.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius1", 1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusNeg1", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusFloat64Max", Float64.Max)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusFloat64Min", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowOmitted", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusOptionNone", -1.0)
+    }
 
     private func formatCurrentDate(): String {
         return DateTime.now().format("yyyy-M-d")

@@ -1418,7 +1418,7 @@ func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadow {
     NativeShadow(
         true,
         NativeShadowOptions(
-            shadowOptions.radius ?? 0.0,
+            shadowOptions.radius ?? -1.0,
             (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
             transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
             shadowOptions.offsetX ?? 0.0,
@@ -1670,7 +1670,7 @@ public class SheetOptions <: BindOptions {
             }
             let shadow = match (sheetOption.shadow) {
                 case Some(value) => parseShadowOptions(value)
-                case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
+                case None => parseShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color))
             }
             let mode = match (sheetOption.mode) {
                 case Some(value) => NativeOptionUInt32(true, value.toValue())

@@ -341,8 +341,180 @@ class ViewActionSheet {
                     .fontSize(12)
                     .height(15)
                     .id("action_sheet_button_offset_none")
+
+                // showActionSheet shadow.radius：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
+                Button("ActionSheet shadow radius 10")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow radius 10",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: 10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadius10")
+                Button("ActionSheet shadow radius -10")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow radius -10",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: -10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadiusNeg10")
+                Button("ActionSheet shadow radius 0")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow radius 0",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: 0.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadius0")
+                Button("ActionSheet shadow radius 1")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow radius 1",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: 1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadius1")
+                Button("ActionSheet shadow radius -1")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow radius -1",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: -1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadiusNeg1")
+                Button("ActionSheet shadow radius Float64.Max")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow Float64.Max",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: Float64.Max, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadiusFloat64Max")
+                Button("ActionSheet shadow radius Float64.Min")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow Float64.Min",
+                                    message: "shadow.radius",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: Float64.Min, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadiusFloat64Min")
+                Button("ActionSheet shadow omitted ActionSheetOptions")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet omit shadow",
+                                    message: "omit shadow",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowOmitted")
+                Button("ActionSheet shadow radius Option.None")
+                    .onClick(
+                        {
+                            evt =>
+                            this.getUIContext().showActionSheet(
+                                ActionSheetOptions(
+                                    title: "ActionSheet shadow Option.None",
+                                    message: "ShadowOptions(radius: Option.None)",
+                                    sheets: sheets,
+                                    width: 70.percent,
+                                    height: 30.percent,
+                                    shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                                )
+                            )
+                        }
+                    )
+                    .fontSize(12)
+                    .height(15)
+                    .id("uiContextShowActionSheetShadowRadiusOptionNone")
             }.width(100.percent)
-        }.height(100.percent)
+        }.height(100.percent).id("viewActionSheetScroller")
     }
 
     func createDefaultSheetOptions(): ActionSheetOptions {
