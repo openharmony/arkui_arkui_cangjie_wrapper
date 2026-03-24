@@ -154,8 +154,10 @@ public class NavDestination <: CommonMethodComponent<NavDestination> & NavDestin
                     param: ctx.pathInfo.param.toString()
                 )
                 var id = ctx.navDestinationId.toString()
+                // Create a temporary NavPathStack to avoid deadlock inside the getOrCreate function.
+                let tmpPathStack = NavPathStack()
                 let pathStack = RemoteDataManager.getInstance().getOrCreate<NavPathStack>(
-                    ctx.pathStack, {_ => NavPathStack()}
+                    ctx.pathStack, {_ => tmpPathStack}
                 )
                 tmpCallback(NavDestinationContext(pathInfo, pathStack, id))
                 if (!ctx.pathInfo.param.isNull()) {
