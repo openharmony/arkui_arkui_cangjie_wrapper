@@ -17,25 +17,34 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, RefExpr, parseExpr, parseDecl, TokenKind, RefType, TypeNode, diagReport, DiagReportLevel}
+import std.ast.{Tokens, VarDecl, Token, RefExpr, parseExpr, parseDecl, TokenKind, RefType,
+    TypeNode, diagReport, DiagReportLevel, setItem}
 import std.regex.{Regex}
 
 public macro Watch(watcher: Tokens, watched: Tokens): Tokens {
-    checkWatch(watcher, watched)
-    let varDecl = (parseDecl(watched) as VarDecl).getOrThrow()
-    let identifier = varDecl.identifier
-    let declType = varDecl.declType
-    let identifierValue = identifier.value
-    if (isMangled(identifierValue)) {
-        // @Watch @State var cnt: Int64 = 0
-        let originDeclType = generateOriginDeclType(declType)
-        STATE_MANAGE_HANDLER.watchDeclare.add((quote($originDeclType), quote($identifier), watcher))
-    } else {
-        // @State @Watch var cnt: Int64 = 0
-        let identTokenAssociated = generateAssociatedToken(identifierValue)
-        STATE_MANAGE_HANDLER.watchDeclare.add((quote($declType), quote($identTokenAssociated), watcher))
+    if (!UISyntaxChecker.checkWatchAttr(watcher, UIMacroKind.Watch)) {
+        return watched
     }
-    return watched
+    let finalResult = UISyntaxChecker.expectVarDecl(watched, UIMacroKind.Watch)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(watched, varDecl, UIMacroKind.Watch)
+        }
+    return match(finalResult) {
+        case Success(varDecl) =>
+            if (isMangled(varDecl.identifier.value)) {
+                // @Watch @State var cnt: Int64 = 0
+                let originDeclType = generateOriginDeclType(varDecl.declType)
+                STATE_MANAGE_HANDLER.watchDeclare.add((quote($originDeclType), quote($(varDecl.identifier)), watcher, watched))
+            } else {
+                // @State @Watch var cnt: Int64 = 0
+                let identTokenAssociated = generateMangledToken(varDecl.identifier.value)
+                STATE_MANAGE_HANDLER.watchDeclare.add((quote($(varDecl.declType)), quote($identTokenAssociated), watcher, watched))
+            }
+            watched
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
+    }
 }
 
 func generateOriginDeclType(typeNode: TypeNode): TypeNode {
@@ -51,16 +60,5 @@ func isMangled(identifier: String) {
     match (regex.find(identifier)) {
         case None => return false
         case _ => return true
-    }
-}
-
-func checkWatch(watcher: Tokens, watched: Tokens) {
-    let watchFunc = parseExpr(watcher)
-    let watchDecl = parseDecl(watched)
-    if (!(watchFunc is RefExpr)) {
-        DIAG.error(quote($watchFunc), "@Watch attr should be a ref expression.")
-    }
-    if (!(watchDecl is VarDecl)) {
-        DIAG.fatal(quote($watchDecl), "@Watch should modify a variable declaration.")
     }
 }

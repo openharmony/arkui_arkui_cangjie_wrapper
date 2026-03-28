@@ -20,63 +20,6 @@ macro package ohos.arkui.state_macro_manage
 import std.ast.{Tokens, ClassDecl, FuncDecl, Node, Expr, IfExpr, Block, TrailingClosureExpr, CallExpr, LambdaExpr, RefExpr, Decl, PrimaryCtorDecl, ForInExpr, parseDecl, Visitor, diagReport, DiagReportLevel, ToTokens}
 import std.collection.{ArrayList, HashSet, HashMap}
 
-func checkComponentSyntax(input: Tokens): ClassDecl {
-    let decl = parseDecl(input)
-    let classDecl = match (decl as ClassDecl) {
-        case Some(v) => v
-        case None => throw IllegalArgumentException("Only class is supported in @Component.")
-    }
-    checkInitFunc(classDecl)
-    if (classDecl.superTypes.size > 0) {
-        DIAG.error(input, "Component class should not inherit other class or interface.")
-    }
-    return classDecl
-}
-
-/**
- * check if it is only one or zero component in build and @Builder function
- * example: return true
- * @Builder
- * func myText() {
- *     Text("hello")
- * }
- * example: return false
- * @Builder
- * func myText() {
- *     Text("hello")
- *     Text("hello")
- * }
- */
-func isComponentSingle(funcBody: ArrayList<Node>): Bool {
-    if (funcBody.size > 1) {
-        return false
-    }
-    if (funcBody.size == 0) {
-        return true
-    }
-    let comp = match (funcBody[0] as Expr) {
-        case Some(v) => v
-        case None => throw IllegalArgumentException("element from body is not an Expr")
-    }
-    match (getComponentType(comp)) {
-        case CustomComponent | BuilderComponent => false
-        case _ => true
-    }
-}
-
-/**
- * check If there is only one root component in build function.
- */
-func checkBuildFunc(funcBody: ArrayList<Node>, funcDecl: FuncDecl) {
-    if (isComponentSingle(funcBody)) {
-        return
-    }
-    DIAG.error(
-        quote($funcDecl),
-        "The build method can only have one root node and can only be a container component and cannot be a custom component."
-    )
-}
-
 func checkMonadicContainer(input: Expr, name: String): Unit {
     let childComps = getChild(input)
     var index = 0
@@ -103,18 +46,6 @@ func checkMonadicContainer(input: Expr, name: String): Unit {
     }
     if (index > 1) {
         DIAG.error(quote($input), "${quote($input)}, The component ${name} can only have a single child component.")
-    }
-}
-
-func checkArgsAndChildLimit(input: Expr, name: String) {
-    let childCount = getChild(input).size
-    let tce = match (input as TrailingClosureExpr) {
-        case Some(v) => v.expr
-        case _ => throw IllegalArgumentException("input must be TrailingClosureExpr")
-    }
-    if (childCount > 0 && tce is CallExpr && (tce as CallExpr).getOrThrow().arguments.size > 0) {
-        DIAG.error(quote($input),
-            "${quote($input)}, The component ${name} cannot create with both parameters and child component.")
     }
 }
 
@@ -369,28 +300,6 @@ let VAR_DECL_TRANSFER = [
     [Support, Support, Support, Support, Support, Support],
     [Support, Support, Support, Support, Support, Support]
 ]
-
-/**
- * @Observed class can not have constructors.
- */
-class ObservedClassInitDeclVisitor <: Visitor {
-    protected func visit(decl: Decl): Unit {
-        if (decl is PrimaryCtorDecl) {
-            DIAG.error(quote($decl), "primary constructor is not allowed in @Observed class.")
-        }
-        match (decl) {
-            case funcDecl: FuncDecl where funcDecl.identifier.value == "init" => DIAG.error(quote($decl),
-                "init constructor is not allowed in @Observed class.")
-            case _ => breakTraverse()
-        }
-        breakTraverse()
-    }
-}
-
-func checkInitFunc(classDecl: ClassDecl) {
-    let visitor = ObservedClassInitDeclVisitor()
-    classDecl.traverse(visitor)
-}
 
 class IfExprBodyVisitor <: Visitor {
     protected override func visit(expr: IfExpr): Unit {

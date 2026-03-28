@@ -17,12 +17,20 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, parseDecl}
+import std.ast.{Tokens, VarDecl, Token, parseDecl, setItem}
+
 
 public macro Publish(input: Tokens): Tokens {
-    checkStateKindAndInit(input, StateKind.PublishTy)
-    let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.publishInformation.add(mangle(identTok.value), varDecl)
-    return genProp(varDecl, StateKind.PublishTy)
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.Publish)
+        .andThen { varDecl: VarDecl => UISyntaxChecker.checkPublishRequiresVar(input, varDecl, UIMacroKind.Publish) }
+        .andThen { varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.Publish) }
+
+    return match(finalResult) {
+        case Success(varDecl) => 
+            STATE_MANAGE_HANDLER.publishInformation.add(mangle(varDecl.identifier.value), varDecl)
+            genPropDeclNode(varDecl)
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
+    }
 }

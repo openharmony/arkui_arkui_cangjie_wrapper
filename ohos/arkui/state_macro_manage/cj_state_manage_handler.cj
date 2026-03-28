@@ -140,7 +140,7 @@ class StateManageHandler {
         return false
     }
 
-    var watchDeclare = ArrayList<(Tokens, Tokens, Tokens)>()
+    var watchDeclare = ArrayList<(Tokens, Tokens, Tokens, Tokens)>()
 
     let consumeVarDeclsMap = HashMap<String, String>()
     let provideVarDeclsMap = HashMap<String, String>()

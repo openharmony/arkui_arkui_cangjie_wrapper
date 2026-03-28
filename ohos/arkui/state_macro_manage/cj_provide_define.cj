@@ -17,7 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, LitConstExpr, parseDecl, parseExpr}
+import std.ast.{Tokens, VarDecl, Token, LitConstExpr, parseDecl, parseExpr, setItem}
+
 
 public macro Provide(input: Tokens): Tokens {
     generateProvide(input)
@@ -28,17 +29,26 @@ public macro Provide(provideIdentifier: Tokens, input: Tokens): Tokens {
 }
 
 func generateProvide(input: Tokens, provideIdentifier!: Tokens = Tokens()) {
-    checkStateKindAndInit(input, StateKind.ProvideTy)
-    let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.ProvideTy, varDecl))
+    let attrResult: String = UISyntaxChecker.checkStringLiteralAttr(provideIdentifier, UIMacroKind.Provide).unwrapOr("")
 
-    if (provideIdentifier.size > 0) {
-        let expr = parseExpr(provideIdentifier)
-        checkConsumeIdentifier(expr)
-        let provideIdentifierStr = (expr as LitConstExpr).getOrThrow().literal.value
-        STATE_MANAGE_HANDLER.provideVarDeclsMap.add(identTok.value, provideIdentifierStr)
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.Provide)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.Provide)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.Provide)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.Provide)
+        }
+
+    return match(finalResult) {
+        case Success(varDecl) => 
+            STATE_MANAGE_HANDLER.stateInformation.add(mangle(varDecl.identifier.value), (VariableKind.ProvideTy, varDecl))
+            if (provideIdentifier.size != 0) {
+                STATE_MANAGE_HANDLER.provideVarDeclsMap.add(varDecl.identifier.value, attrResult)
+            }
+            genPropDeclNode(varDecl)
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
     }
-
-    return genProp(varDecl, StateKind.ProvideTy)
 }

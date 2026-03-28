@@ -18,7 +18,7 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.fs.{canonicalize, exists, File}
-import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr, diagReport, DiagReportLevel}
+import std.ast.{Tokens, LitConstExpr, ToTokens, parseExpr}
 import std.process.{Process}
 import std.convert.{Parsable}
 import std.collection.{HashMap, ArrayList}
@@ -85,8 +85,7 @@ func getResEnv(): ResEnv {
  * @r(app.media.icon)
  * @r(app.string.value, "hello", 1, 1.1)
  * @r(app.plural.value, 5, 5)
- * @throws IllegalArgumentException if The input is invalid.
- * @throws NoneValueException if The input resource not found.
+ * Reports ResourceFormatError if format invalid, ResourceNotFound if resource not found.
  */
 public macro r(input: Tokens): Tokens {
     let env = getResEnv()
@@ -95,8 +94,8 @@ public macro r(input: Tokens): Tokens {
     var resParams = Tokens()
 
     if (!checkResFormat(input)) {
-        diagReport(DiagReportLevel.ERROR, input, "Parse resource failed: ${input.toString()} format error.", "")
-        return Tokens()
+        reportError(input, MacroErrorCode.ResourceFormatError, UIMacroKind.R)
+        return input
     }
 
     let numberName = getNumberName(input)
@@ -129,7 +128,9 @@ public macro r(input: Tokens): Tokens {
         resId = getSysResId((env.ohosSysIdDefined, env.hosSysIdDefined), resType, resName)
     }
     if (resId == INVALID_RES_ID && !bundleName.isEmpty()) {
-        throw NoneValueException("Resource not found: ${resOrigin}.${resType}.${resName}")
+        reportError(input, MacroErrorCode.ResourceNotFound, UIMacroKind.R,
+            detail: "which is ${resOrigin}.${resType}.${resName}")
+        return input
     }
 
     let resToken = quote(__GenerateResource__($bundleName, $moduleType, $moduleName, $resId, $(res.toString()), [$resParams], $resTypeVal))
@@ -139,8 +140,7 @@ public macro r(input: Tokens): Tokens {
 /**
  * input example
  * @rawfile("image.png")
- * @throws IllegalArgumentException if The input is invalid.
- * @throws NoneValueException if The input resource not found.
+ * Reports RawfileInvalidName if not string literal, RawfileNotFound if file not found.
  */
 public macro rawfile(input: Tokens): Tokens {
     let env = getResEnv()
@@ -150,15 +150,30 @@ public macro rawfile(input: Tokens): Tokens {
     let rawfileRes = env.rawfileRes
     let expr = parseExpr(input)
     if (!isLiteral(expr) || !isStringType(expr)) {
-        throw IllegalArgumentException("${input.toString()} invalid rawfile name.")
+        reportError(input, MacroErrorCode.RawfileInvalidName, UIMacroKind.Rawfile)
+        return Tokens()
     }
     let name = (parseExpr(input) as LitConstExpr).getOrThrow().literal.value
-    if (!rawfileRes.isEmpty() && !rawfileExists(rawfileRes, name)) {
-        throw NoneValueException("Rawfile not found: ${name}")
+    if (!rawfileRes.isEmpty()) {
+        try {
+            if (!rawfileExists(rawfileRes, name)) {
+                reportError(input, MacroErrorCode.RawfileNotFound, UIMacroKind.Rawfile)
+                return Tokens()
+            }
+        } catch (e: Exception) {
+            reportError(input, MacroErrorCode.RawfileNotFound, UIMacroKind.Rawfile)
+            return Tokens()
+        }
     }
     return quote(__GenerateResource__($bundleName, $moduleType, $moduleName, 0, $name, [], 30000))
 }
 
+/**
+ * Check if rawfile exists at given path.
+ * May throw FSException (path not exist or cannot be canonicalized) or
+ * IllegalArgumentException (path empty or contains null).
+ * Caller should catch and report via RawfileNotFound.
+ */
 func rawfileExists(path: String, fileName: String): Bool {
     let filePath = path + "/" + fileName
     let realPath = canonicalize(filePath)
