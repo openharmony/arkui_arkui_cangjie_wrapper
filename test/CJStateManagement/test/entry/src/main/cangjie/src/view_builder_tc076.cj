@@ -103,32 +103,47 @@ class ViewBuilderTC076 {
             }
             .width(100.percent)
             .margin(top: 15)
-            
-            Text("Form Data:")
-                .fontSize(14)
-                .fontWeight(FontWeight.Bold)
-                .id("form_data_label")
-                .margin(top: 20)
-            
-            Text("Name: ${this.name}")
-                .fontSize(12)
-                .id("form_name_display")
-                .margin(top: 5)
-            
-            Text("Age: ${Int64(this.age).toString()}")
-                .fontSize(12)
-                .id("form_age_display")
-                .margin(top: 2)
-            
-            Text("Enabled: ${this.enabled}")
-                .fontSize(12)
-                .id("form_enabled_display")
-                .margin(top: 2)
-            
-            Text("Agree: ${this.agree}")
-                .fontSize(12)
-                .id("form_agree_display")
-                .margin(top: 2)
+            Row(){
+                Column(){
+                    Text("Form Data:")
+                    .fontSize(14)
+                    .fontWeight(FontWeight.Bold)
+                    .id("form_data_label")
+                    .margin(top: 20)
+
+                    Text("Name: ${this.name}")
+                    .fontSize(12)
+                    .id("form_name_display")
+                    .margin(top: 5)
+
+                    Text("Age: ${Int64(this.age).toString()}")
+                    .fontSize(12)
+                    .id("form_age_display")
+                    .margin(top: 2)
+
+                    Text("Enabled: ${this.enabled}")
+                        .fontSize(12)
+                        .id("form_enabled_display")
+                        .margin(top: 2)
+
+                    Text("Agree: ${this.agree}")
+                        .fontSize(12)
+                        .id("form_agree_display")
+                        .margin(top: 2)
+                }
+                //适配70pro，把Button按钮提前：输入文本唤起的键盘会遮挡住Button按钮导致用例执行时找不到
+                Button("Reset Form")
+                    .fontSize(14)
+                    .height(40)
+                    .margin(top: 10)
+                    .id("reset_button")
+                    .onClick({ e =>
+                        this.name = ""
+                        this.age = 25.0
+                        this.enabled = false
+                        this.agree = false
+                    })
+            }
         }
         .width(100.percent)
         .padding(10)
@@ -144,18 +159,6 @@ class ViewBuilderTC076 {
                 .id("test_title")
             
             this.formBuilder()
-            
-            Button("Reset Form")
-                .fontSize(14)
-                .height(40)
-                .margin(top: 10)
-                .id("reset_button")
-                .onClick({ e =>
-                    this.name = ""
-                    this.age = 25.0
-                    this.enabled = false
-                    this.agree = false
-                })
         }
         .width(100.percent)
         .height(100.percent)
