@@ -14,11 +14,11 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：Text 作为 leaf 时不能有子组件；或 Text 子组件须为 Span/ImageSpan/SymbolSpan/ContainerSpan
+ * 预期错误：MacroErrorCode.NoChildAllowed 或 InvalidParentChild
+ * 初学易错：在 Text 尾随闭包内写 Text 等非法子组件，应使用 Span 或仅 content 参数
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
@@ -27,10 +27,10 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class TextHasChildView {
     func build(): Unit {
-        Column() {
-            Image(@r(foo.bar.baz))
+        Text("Hello") {
+            Text("World")
         }
     }
 }

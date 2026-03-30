@@ -42,7 +42,7 @@ ohos_cangjie_macro_library("ohos.arkui.state_macro_manage") {
     "cj_state_define.cj",
     "cj_state_manage_handler.cj",
     "cj_watch_define.cj",
-    "diag_builtIn_component_err_manage.cj",
+    "diag_builtin_component_err_manage.cj",
     "diag_common.cj",
     "diag_macro_expand_result.cj",
     "diag_rules.cj",

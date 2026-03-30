@@ -14,23 +14,33 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：ForEach 的 keyGeneratorFunc 仅返回插值字符串（非 UI 组件）
+ * 预期：宏诊断通过，不报 MacroErrorCode.InvalidNodeType（key 生成器不参与 UI 子树校验）
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.foreach
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import std.collection.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class ForeachKeygeneratorTemplateOnlyView {
+    let testArray: Array<String> = ["a", "b"]
+
     func build(): Unit {
         Column() {
-            Image(@r(foo.bar.baz))
+            ForEach(
+                this.testArray,
+                itemGeneratorFunc: { item: String, idx: Int64 =>
+                    Text(item)
+                },
+                keyGeneratorFunc: { item: String, idx: Int64 =>
+                    "${idx}"
+                }
+            )
         }
     }
 }

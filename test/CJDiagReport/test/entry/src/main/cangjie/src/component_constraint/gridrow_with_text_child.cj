@@ -14,11 +14,11 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：GridRow 只能包含 GridCol
+ * 预期错误：MacroErrorCode.InvalidParentChild
+ * 开发范式：误将 Text 等放入 GridRow
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
@@ -27,10 +27,10 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class GridRowWithTextChildView {
     func build(): Unit {
-        Column() {
-            Image(@r(foo.bar.baz))
+        GridRow() {
+            Text("Wrong child")
         }
     }
 }

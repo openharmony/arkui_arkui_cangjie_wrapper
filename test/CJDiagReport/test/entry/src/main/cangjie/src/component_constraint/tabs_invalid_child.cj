@@ -14,11 +14,11 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：Tabs - 只能包含 TabContent
+ * 预期错误：MacroErrorCode.InvalidParentChild
+ * 初学易错：直接在 Tabs 内写 Column/Row，应使用 TabContent 包裹每个 Tab 页内容
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
@@ -27,10 +27,13 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class TabsInvalidChildView {
     func build(): Unit {
-        Column() {
-            Image(@r(foo.bar.baz))
+        Tabs() {
+            Column() {
+                Text("首页")
+                Text("误将 Column 作为 Tabs 直接子组件")
+            }
         }
     }
 }

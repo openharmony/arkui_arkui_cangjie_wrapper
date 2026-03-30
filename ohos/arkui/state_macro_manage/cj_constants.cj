@@ -27,7 +27,7 @@ let MACRO_MSG_EXPANDED_LOCAL_STORAGE: String = "_UI_MACRO_EXPANDED_LOCAL_STORAGE
 let MACRO_MSG_IDENTIFIER: String = "IDENTIFIER"
 
 /**
- * Macro parent-context names for std.ast `insideParentContext` / `assertParentContext`
+ * Macro parent-context names for std.ast insideParentContext / assertParentContext
  * (must match @Component / @CustomDialog / @Entry / @Observed decorator class names).
  */
 let MACRO_PARENT_CONTEXT_ENTRY: String = "Entry"
@@ -109,9 +109,14 @@ let COMPONENT_NO_CHILD_CONSTRAINT_LIST: HashSet<String> = HashSet<String>(
         "PhotoPickerComponent", "UserAuthIcon", "AVCastPicker", "MovingPhotoView", "AVVolumePanel", "AdComponent",
         "AutoAdComponent", "IconGroupSuffix", "InnerFullScreenLaunchComponent"])
 let COMPONENT_TYPE_FOREACH_LIST: HashSet<String> = HashSet<String>(["ForEach", "LazyForEach"])
+/** Named parameters for ForEach/LazyForEach key callback (diag: skip UI subtree on this lambda). */
+let FOREACH_KEY_GENERATOR_ARG_NAMES: HashSet<String> = HashSet<String>(["keyGeneratorFunc", "keyGenerator"])
+/** Positional overload: (data, itemGenerator, keyGenerator). */
+let FOREACH_POSITIONAL_ARG_COUNT_WITH_KEY: Int64 = 3
+/** getArgumentIdentifier is empty when the argument has no label. */
+let FOREACH_ARG_NAME_POSITIONAL: String = ""
 let COMPONENT_CHILD_IN_LISTCOMPONENT_LIST: HashSet<String> = HashSet<String>(["ListItem", "ListItemGroup"])
 let NEWLINE = Token(TokenKind.NL)
-
 
 /**
  * ArkTS types that are not recommended as state variables (controllers, scrollers, canvas contexts, etc.)
