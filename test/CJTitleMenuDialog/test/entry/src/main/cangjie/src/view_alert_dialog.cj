@@ -775,7 +775,6 @@ class ViewAlertDialog {
                     .fontSize(12)
                     .height(30)
                     .id("button_20")
-
                 // AlertDialogParamWithConfirm shadow.radius：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
                 Button("AlertDialogParamWithConfirm shadow radius 10")
                     .onClick(

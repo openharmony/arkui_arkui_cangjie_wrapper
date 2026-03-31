@@ -270,12 +270,12 @@ class TitleMenuDialogUT11 {
         scrollTo("ViewAlertDialog")
 
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius10", 10.0)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusNeg10", -10.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius0", 0.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadius1", 1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusNeg1", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusFloat64Max", Float64.Max)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusFloat64Min", Float64.Min)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowOmitted", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithConfirmShadowRadiusOptionNone", -1.0)
     }
@@ -286,12 +286,12 @@ class TitleMenuDialogUT11 {
         scrollTo("ViewAlertDialog")
 
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius10", 10.0)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusNeg10", -10.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius0", 0.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadius1", 1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusNeg1", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusFloat64Max", Float64.Max)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusFloat64Min", Float64.Min)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowOmitted", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithButtonsShadowRadiusOptionNone", -1.0)
     }
@@ -302,12 +302,12 @@ class TitleMenuDialogUT11 {
         scrollTo("ViewAlertDialog")
 
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius10", 10.0)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusNeg10", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusNeg10", -10.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius0", 0.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadius1", 1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusNeg1", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusFloat64Max", Float64.Max)
-        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusFloat64Min", -1.0)
+        clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusFloat64Min", Float64.Min)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowOmitted", -1.0)
         clickAlertDialogShadowRadiusFromScroller("showAlertDialogWithOptionsShadowRadiusOptionNone", -1.0)
     }
@@ -339,12 +339,12 @@ class TitleMenuDialogUT11 {
         scrollTo("ViewCustomDialog")
 
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius10", 10.0)
-        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusNeg10", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusNeg10", -10.0)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius0", 0.0)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadius1", 1.0)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusNeg1", -1.0)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusFloat64Max", Float64.Max)
-        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusFloat64Min", -1.0)
+        clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusFloat64Min", Float64.Min)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowOmitted", -1.0)
         clickCustomDialogShadowRadiusFromButton("customDialogShadowRadiusOptionNone", -1.0)
     }

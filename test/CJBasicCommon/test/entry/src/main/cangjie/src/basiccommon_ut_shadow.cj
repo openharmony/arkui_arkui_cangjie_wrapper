@@ -90,7 +90,7 @@ class BasicCommonUTShadow {
     @Tag[APILevel26, TestLevel0]
     func test_button_shadow_radius_abnormal() {
         scrollTo("ViewButtonShadow")
-        assertShadowRadius("radius_abnormal", -1.0)
+        assertShadowRadius("radius_abnormal", -10.0)
     }
 
     @TestCase
@@ -125,7 +125,7 @@ class BasicCommonUTShadow {
     @Tag[APILevel26, TestLevel0]
     func test_button_shadow_radius_boundary_min() {
         scrollTo("ViewButtonShadow")
-        assertShadowRadius("radius_boundary(Float64.Min)", -1.0)
+        assertShadowRadius("radius_boundary(Float64.Min)", Float64.Min)
     }
 
     @TestCase

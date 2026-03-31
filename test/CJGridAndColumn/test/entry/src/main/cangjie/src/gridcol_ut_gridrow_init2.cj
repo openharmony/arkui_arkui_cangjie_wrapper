@@ -24,6 +24,7 @@ import ohos.ui_test.*
 import ohos.hilog.Hilog
 import ohos.business_exception.*
 import stdx.encoding.json.*
+import ohos.display
 
 @Test
 class GridColUTGridRowInit2 {
@@ -111,7 +112,10 @@ class GridColUTGridRowInit2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let gutter = attrs.get("gutter").getOrThrow().toString()
-        @Expect(gutter, "\"<32.500000, 16.250000\"")
+        //根据不同机型计算
+        let sizeVpLpxIntx = 10.0*display.getDefaultDisplaySync().densityPixels
+        let sizeVpLpxInty = 5.0*display.getDefaultDisplaySync().densityPixels
+        @Expect(gutter, "\"<${sizeVpLpxIntx}, ${sizeVpLpxInty}\"")
     }
 
     @TestCase
@@ -123,7 +127,10 @@ class GridColUTGridRowInit2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let gutter = attrs.get("gutter").getOrThrow().toString()
-        @Expect(gutter, "\"<16.250000, 9.750000\"")
+        //根据不同机型计算
+        let sizeVpLpxIntx = 5.0*display.getDefaultDisplaySync().densityPixels
+        let sizeVpLpxInty = 3.0*display.getDefaultDisplaySync().densityPixels
+        @Expect(gutter, "\"<${sizeVpLpxIntx}, ${sizeVpLpxInty}\"")
     }
 
     @TestCase
@@ -147,7 +154,10 @@ class GridColUTGridRowInit2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let gutter = attrs.get("gutter").getOrThrow().toString()
-        @Expect(gutter, "\"<32.500000, 16.250000\"")
+        //根据不同机型计算
+        let sizeVpLpxIntx = 10.0*display.getDefaultDisplaySync().densityPixels
+        let sizeVpLpxInty = 5.0*display.getDefaultDisplaySync().densityPixels
+        @Expect(gutter, "\"<${sizeVpLpxIntx}, ${sizeVpLpxInty}\"")
     }
 
     @TestCase
@@ -159,7 +169,10 @@ class GridColUTGridRowInit2 {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let gutter = attrs.get("gutter").getOrThrow().toString()
-        @Expect(gutter, "\"<16.250000, 9.750000\"")
+        //根据不同机型计算
+        let sizeVpLpxIntx = 5.0*display.getDefaultDisplaySync().densityPixels
+        let sizeVpLpxInty = 3.0*display.getDefaultDisplaySync().densityPixels
+        @Expect(gutter, "\"<${sizeVpLpxIntx}, ${sizeVpLpxInty}\"")
     }
 
     @TestCase

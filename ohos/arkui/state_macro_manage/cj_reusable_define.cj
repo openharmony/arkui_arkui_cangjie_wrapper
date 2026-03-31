@@ -27,15 +27,22 @@ import std.ast.{Tokens, ClassDecl, FuncDecl, parseDecl, AssignExpr}
  * class Child {...}
  */
 public macro Reusable(input: Tokens): Tokens {
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
-    let decls = classDecl.body.decls
-    var initFunc = FuncDecl()
-    for (item in decls) {
-        if (item.identifier.value == "init") {
-            initFunc = (item as FuncDecl).getOrThrow()
-        }
+    let finalResult = UISyntaxChecker.expectClassDecl(input, UIMacroKind.Reusable)
+
+    return match (finalResult) {
+        case Success(classDecl) =>
+            let decls = classDecl.body.decls
+            var initFunc = FuncDecl()
+            for (item in decls) {
+                if (item.identifier.value == "init") {
+                    initFunc = (item as FuncDecl).getOrThrow()
+                    break
+                }
+            }
+            let val = AssignExpr(quote(this.isReusable_inner__ = true))
+            initFunc.block.nodes.add(val)
+            classDecl.toTokens()
+        case Err(tokens) =>
+            tokens
     }
-    let val = AssignExpr(quote(this.isReusable_inner__ = true))
-    initFunc.block.nodes.add(val)
-    return classDecl.toTokens()
 }

@@ -17,8 +17,10 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, Token, Decl, FuncDecl, CallExpr, MemberAccess, RefExpr, parseDecl, TokenKind, ToTokens, MacroExpandDecl, diagReport, DiagReportLevel}
+import std.ast.{Tokens, ClassDecl, Token, Decl, FuncDecl, CallExpr, MemberAccess, RefExpr, parseDecl, TokenKind,
+    ToTokens, MacroExpandDecl, getChildMessages}
 import std.collection.ArrayList
+
 
 public macro Entry(input: Tokens): Tokens {
     parseEntry(input, true)
@@ -33,20 +35,45 @@ public macro Preview(input: Tokens): Tokens {
 }
 
 func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens = None): Tokens {
-    let decl = parseDecl(input)
-    let classDecl = match(decl) {
-        case cd: ClassDecl => cd
+    if (getChildMessages("Component").isEmpty()) {
+        return input
+    }
+    if (hasLocalStorageExpanded()) {
+        let attrMissing = localStorageAttr.isNone() || (localStorageAttr.isSome() &&
+            localStorageAttr.getOrThrow().size == 0)
+        if (attrMissing) {
+            reportWarning(input, MacroErrorCode.EntryLocalStorageAttributeRequired, UIMacroKind.Entry)
+        }
+    }
+    let decl: Decl
+    try {
+        decl = parseDecl(input)
+    } catch(e: Exception) {
+        return input
+    }
+    var classDecl: ClassDecl
+    match(decl) {
+        case cd: ClassDecl => classDecl = cd
         case macroExpandDecl: MacroExpandDecl =>
-            diagReport(DiagReportLevel.ERROR, Tokens().append(macroExpandDecl.identifier), "undeclared indentifier '${macroExpandDecl.identifier.value}'.", "")
+            UISyntaxChecker.reportUndeclaredIdentifier(
+                Tokens().append(macroExpandDecl.identifier), UIMacroKind.Entry, macroExpandDecl.identifier.value)
             return input
         case _ =>
-            diagReport(DiagReportLevel.ERROR, Tokens().append(decl.keyword), "@Entry decorator must be used with a class declaration, other declarations are not supported.", "")
+            UISyntaxChecker.reportExpectClassDeclForEntry(Tokens().append(decl.keyword), UIMacroKind.Entry)
             return input
     }
     
     let entryClassIdent = classDecl.identifier
+    if (needCheckEntry && !checkEntry(entryClassIdent)) {
+        return input
+    }
     if (needCheckEntry) {
-        checkEntry(entryClassIdent)
+        for (modifier in classDecl.modifiers) {
+            if (modifier.keyword.value == "public") {
+                reportWarning(Tokens().append(modifier), MacroErrorCode.EntryPublicModifierNotRecommended, UIMacroKind.Entry)
+                break
+            }
+        }
     }
     let classBody = classDecl.body.decls
     checkEntryBody(classBody)
@@ -54,23 +81,41 @@ func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens 
     let entryId = generateNewEntryId()
     let appEntryIdent = Token(TokenKind.IDENTIFIER, "appEntry${entryId}")
     if (localStorageAttr.isSome()) {
-        return classDecl.toTokens().append(generateEntryFunc(input, appEntryIdent, localStorageAttr.getOrThrow()))
+        return classDecl.toTokens().append(generateEntryFunc(entryClassIdent, appEntryIdent, localStorageAttr.getOrThrow()))
             .append(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
     }
-    return classDecl.toTokens().append(generateEntryFunc(input, appEntryIdent))
+    return classDecl.toTokens().append(generateEntryFunc(entryClassIdent, appEntryIdent))
         .append(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
+}
+
+/**
+ * Check if @LocalStorageLink or @LocalStorageProp is used (Message has MACRO_MSG_EXPANDED_LOCAL_STORAGE).
+ */
+func hasLocalStorageExpanded(): Bool {
+    for (message in getChildMessages("LocalStorageLink")) {
+        if (message.hasItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE)) {
+            return true
+        }
+    }
+    for (message in getChildMessages("LocalStorageProp")) {
+        if (message.hasItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE)) {
+            return true
+        }
+    }
+    false
 }
 
 /**
  * check if there is only one @Entry in the file.
  */
-func checkEntry(input: Token) {
+func checkEntry(input: Token): Bool {
     let fileId = input.pos.fileID
     if (!STATE_MANAGE_HANDLER.entryFileId.contains(fileId)) {
         STATE_MANAGE_HANDLER.entryFileId.add(fileId)
-        ()
+        true
     } else {
-        DIAG.fatal(input.toTokens(), "An cangjie file can contain only one '@Entry' decorator.")
+        UISyntaxChecker.reportDuplicateEntry(input.toTokens())
+        false
     }
 }
 
@@ -86,14 +131,11 @@ func checkEntryBody(classBody: ArrayList<Decl>) {
                 if (!(lastDecl is CallExpr) || !((lastDecl as CallExpr).getOrThrow().callFunc is MemberAccess)) {
                     continue
                 }
-                let memAccess = ((lastDecl as CallExpr).getOrThrow().callFunc as MemberAccess).getOrThrow()
-                let compName = (memAccess.baseExpr as RefExpr).getOrThrow().identifier.value
+                let expr = (lastDecl as CallExpr).getOrThrow()
+                let compName = parseNodeToComponetName(expr)
                 if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(
                     compName)) {
-                    DIAG.fatal(
-                        quote($funcDecl),
-                        "${compName} The build method in the Entry component can only have one root node and can only be a container component and cannot be a custom component."
-                    )
+                    UISyntaxChecker.reportEntryBuildRootMustBeContainer(quote($funcDecl), UIMacroKind.Entry, compName)
                 }
             case _ => continue
         }
@@ -101,35 +143,32 @@ func checkEntryBody(classBody: ArrayList<Decl>) {
 }
 
 @When[pipeline == "NG"]
-func generateEntryFunc(input: Tokens, appEntryIdent: Token) {
-    let entryClassIdent = (parseDecl(input) as ClassDecl).getOrThrow().identifier
+func generateEntryFunc(input: Token, appEntryIdent: Token) {
     quote(
         public func $appEntryIdent(): Bool {
-            let view = $entryClassIdent(Option<CustomView>.None)
+            let view = $input(Option<CustomView>.None)
             loadNativeView(view)
         }
     )
 }
 
 @When[pipeline == "NG"]
-func generateEntryFunc(input: Tokens, appEntryIdent: Token, localStorageAttr: Tokens) {
-    let entryClassIdent = (parseDecl(input) as ClassDecl).getOrThrow().identifier
+func generateEntryFunc(input: Token, appEntryIdent: Token, localStorageAttr: Tokens) {
     quote(
         public func $appEntryIdent(): Bool {
-            let view = $entryClassIdent(Option<CustomView>.None, __gen_local_storage: $localStorageAttr)
+            let view = $input(Option<CustomView>.None, __gen_local_storage: $localStorageAttr)
             loadNativeView(view)
         }
     )
 }
 
 @When[pipeline == "CLASSIC"]
-func generateEntryFunc(input: Tokens, appEntryIdent: Token) {
-    let entryClassIdent = (parseDecl(input) as ClassDecl).getOrThrow().identifier
+func generateEntryFunc(input: Token, appEntryIdent: Token) {
     let id = generateNewId()
 
     quote(
         public func $appEntryIdent(): Bool {
-            let view = $entryClassIdent($id, Option<CustomView>.None)
+            let view = $input($id, Option<CustomView>.None)
             loadNativeView(view)
         }
     )
@@ -148,10 +187,26 @@ public macro HybridComponentEntry(input: Tokens): Tokens {
 }
 
 func parseHybridComponentEntry(input: Tokens, needCheckEntry: Bool): Tokens {
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
+    let decl: Decl
+    try {
+        decl = parseDecl(input)
+    } catch(e: Exception) {
+        return input
+    }
+    var classDecl: ClassDecl
+    match(decl) {
+        case cd: ClassDecl => classDecl = cd
+        case macroExpandDecl: MacroExpandDecl =>
+            UISyntaxChecker.reportUndeclaredIdentifier(
+                Tokens().append(macroExpandDecl.identifier), UIMacroKind.HybridComponentEntry, macroExpandDecl.identifier.value)
+            return input
+        case _ =>
+            UISyntaxChecker.reportExpectClassDeclForEntry(Tokens().append(decl.keyword), UIMacroKind.HybridComponentEntry)
+            return input
+    }
     let entryClassIdent = classDecl.identifier
-    if (needCheckEntry) {
-        checkHybridComponentEntry(entryClassIdent)
+    if (needCheckEntry && !checkHybridComponentEntry(entryClassIdent)) {
+        return input
     }
     let classBody = classDecl.body.decls
     checkHybridComponentEntryBody(classBody)
@@ -167,13 +222,14 @@ func parseHybridComponentEntry(input: Tokens, needCheckEntry: Bool): Tokens {
 /**
  * check if there is only one @HybridComponentEntry in the file.
  */
-func checkHybridComponentEntry(input: Token) {
+func checkHybridComponentEntry(input: Token): Bool {
     let fileId = input.pos.fileID
     if (!STATE_MANAGE_HANDLER.entryFileId.contains(fileId)) {
         STATE_MANAGE_HANDLER.entryFileId.add(fileId)
-        ()
+        true
     } else {
-        DIAG.fatal(input.toTokens(), "An cangjie file can contain only one '@HybridComponentEntry' decorator.")
+        UISyntaxChecker.reportDuplicateHybridComponentEntry(input.toTokens())
+        false
     }
 }
 
@@ -193,10 +249,7 @@ func checkHybridComponentEntryBody(classBody: ArrayList<Decl>) {
                 let compName = (memAccess.baseExpr as RefExpr).getOrThrow().identifier.value
                 if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(
                     compName)) {
-                    DIAG.fatal(
-                        quote($funcDecl),
-                        "${compName} The build method in the HybridComponentEntry component can only have one root node and can only be a container component and cannot be a custom component."
-                    )
+                    UISyntaxChecker.reportEntryBuildRootMustBeContainer(quote($funcDecl), UIMacroKind.HybridComponentEntry, compName)
                 }
             case _ => continue
         }

@@ -18,56 +18,61 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl, MatchExpr,
-    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr, parseExpr}
+    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr, parseExpr, setItem}
 import std.collection.{HashMap, ArrayList}
 
 public macro Builder(input: Tokens): Tokens {
-    let decl = parseDecl(input)
+    let finalResult = UISyntaxChecker.expectFuncDecl(input, UIMacroKind.Builder)
+        .andThen { funcDecl: FuncDecl => UISyntaxChecker.checkReturnTypeUnit(funcDecl, input, UIMacroKind.Builder) }
 
-    if ((decl as FuncDecl).isNone()) {
-        DIAG.fatal(input, "@Builder should decorate function.")
+    return match (finalResult) {
+        case Success(funcDecl) =>
+            if (!UISyntaxChecker.checkBuilderFunc(funcDecl)) {
+                setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                return input
+            }
+            expandBuilder(funcDecl)
+        case Err(tokens) => 
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
     }
-    let funcDecl = (decl as FuncDecl).getOrThrow()
+}
 
-    // check whether the return type is Unit or default
-    try {
-        let retType = funcDecl.declType
-        if (retType.toTokens().toString() != "Unit") {
-            DIAG.fatal(input, "The declaration type of the @Builder function should be Unit")
-        }
-    } catch (e: ASTException) {
-        ()
-    }
-
-    let modifier = funcDecl.modifiers
-    let funcIdent = funcDecl.identifier
-    var funcBody = funcDecl.block.nodes
-    var generics = None<Tokens>
+/**
+ * Parse optional generic type parameters from @Builder function declaration.
+ */
+func getFuncDeclGenericsOption(funcDecl: FuncDecl): ?Tokens {
     try {
         let gen = funcDecl.genericParam
-        generics = Some(quote($gen))
+        return Some(quote($gen))
     } catch (e: ASTException) {
-        ()
+        return None<Tokens>
     }
-    let params = funcDecl.funcParams
-    let genConstraints = if (funcDecl.genericConstraint.size != 0) {
-        var genCons = Tokens()
-        for (i in 0..funcDecl.genericConstraint.size) {
-            if (i == 0) {
-                genCons += (funcDecl.genericConstraint)[0].toTokens()
-            } else {
-                genCons += quote(,) + (funcDecl.genericConstraint)[i].toTokens()
-            }
+}
+
+/**
+ * Build generic constraint tokens for method declarations (comma-separated where clauses).
+ */
+func genericConstraintsToTokens(funcDecl: FuncDecl): ?Tokens {
+    if (funcDecl.genericConstraint.size == 0) {
+        return None<Tokens>
+    }
+    var genCons = Tokens()
+    for (i in 0..funcDecl.genericConstraint.size) {
+        if (i == 0) {
+            genCons.append(funcDecl.genericConstraint[0].toTokens())
+        } else {
+            genCons.append(quote(,)).append(funcDecl.genericConstraint[i].toTokens())
         }
-        Some(genCons)
-    } else {
-        None<Tokens>
     }
+    return Some(genCons)
+}
 
-    // create inner function identifier
-    let innerFuncIdent: Token = generateInnerFuncIdent(funcIdent.value)
-
-    // create entry and inner function params
+/**
+ * Build inner and entry parameter lists: leading thisView: CustomView plus original @Builder params.
+ * @returns (innerParams, entryParams) — entry 侧参数经 generateBuilderParam 包装为 ObservedProperty。
+ */
+func buildBuilderThisViewParams(params: ArrayList<FuncParam>): (Tokens, Tokens) {
     var entryParam = Tokens()
     var innerParam = Tokens()
     if (params.size != 0) {
@@ -81,23 +86,47 @@ public macro Builder(input: Tokens): Tokens {
         innerParam += quote($item)
         entryParam += generateBuilderParam(item)
     }
+    (innerParam, entryParam)
+}
 
-    // create inner function call's concrete parameters
+/**
+ * Arguments passed when calling the inner builder from the entry wrapper (thisView + .get() for each param).
+ */
+func buildBuilderConcreteArgs(params: ArrayList<FuncParam>): Tokens {
     var concretes = quote(thisView)
     for (item in params) {
         concretes += generateInnerValues(item)
     }
+    concretes
+}
 
-    // create entry function body
-    let entryBody = if (let Some(gen) <- generics) {
-        quote(
+/**
+ * ViewBuilder { innerName(args) }，有泛型时为 innerName 后接泛型实参再调用。
+ */
+func quoteBuilderEntryBody(innerFuncIdent: Token, generics: ?Tokens, concretes: Tokens): Tokens {
+    if (let Some(gen) <- generics) {
+        return quote(
             ViewBuilder { $innerFuncIdent$gen($concretes) }
         )
-    } else {
-        quote(
-            ViewBuilder { $innerFuncIdent($concretes) }
-        )
     }
+    quote(
+        ViewBuilder { $innerFuncIdent($concretes) }
+    )
+}
+
+func expandBuilder(funcDecl: FuncDecl): Tokens {
+    let modifier = funcDecl.modifiers
+    let funcIdent = funcDecl.identifier
+    var funcBody = funcDecl.block.nodes
+    let generics = getFuncDeclGenericsOption(funcDecl)
+    let params = funcDecl.funcParams
+    let genConstraints = genericConstraintsToTokens(funcDecl)
+    let innerFuncIdent: Token = generateInnerFuncIdent(funcIdent.value)
+    let innerAndEntry = buildBuilderThisViewParams(params)
+    let innerParam = innerAndEntry[0]
+    let entryParam = innerAndEntry[1]
+    let concretes = buildBuilderConcreteArgs(params)
+    let entryBody = quoteBuilderEntryBody(innerFuncIdent, generics, concretes)
 
     STATE_MANAGE_HANDLER.builderSingleInfo.add(funcIdent.value)
 

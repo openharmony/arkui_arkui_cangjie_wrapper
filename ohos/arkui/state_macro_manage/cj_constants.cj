@@ -20,6 +20,25 @@ macro package ohos.arkui.state_macro_manage
 import std.ast.{Token, TokenKind}
 import std.collection.{HashSet, HashMap}
 
+/** Keys for std.ast Message map (setItem / getItem / hasItem) during macro expansion. */
+let MACRO_MSG_EXPANDED_FAILED: String = "_UI_MACRO_EXPANDED_FAILED_"
+let MACRO_MSG_EXPANDED_COMPONENT: String = "_UI_MACRO_EXPANDED_COMPONENT_"
+let MACRO_MSG_EXPANDED_LOCAL_STORAGE: String = "_UI_MACRO_EXPANDED_LOCAL_STORAGE_"
+let MACRO_MSG_IDENTIFIER: String = "IDENTIFIER"
+
+/**
+ * Macro parent-context names for std.ast insideParentContext / assertParentContext
+ * (must match @Component / @CustomDialog / @Entry / @Observed decorator class names).
+ */
+let MACRO_PARENT_CONTEXT_ENTRY: String = "Entry"
+let MACRO_PARENT_CONTEXT_OBSERVED: String = "Observed"
+let MACRO_PARENT_CONTEXT_COMPONENT: String = "Component"
+let MACRO_PARENT_CONTEXT_CUSTOM_DIALOG: String = "CustomDialog"
+
+/** ArkTS type names for CustomDialog / controller checks (single source for literals). */
+let TYPE_NAME_CUSTOM_DIALOG_CONTROLLER: String = "CustomDialogController"
+let TYPE_NAME_CUSTOM_DIALOG_CONTROLLER_OPTIONS: String = "CustomDialogControllerOptions"
+
 // record all built-in component name, which will be handled when expand macro.
 let MACRO_EXPAND_COMPONENTS_INTEROP: Array<String> = ["NavRouter", "WithTheme", "LocationButton", "PasteButton",
     "SaveButton", "Component3D", "Repeat", "ContainerSpan", "FormLink", "NodeContainer", "Particle", "TimePicker",
@@ -27,7 +46,7 @@ let MACRO_EXPAND_COMPONENTS_INTEROP: Array<String> = ["NavRouter", "WithTheme", 
 let MACRO_EXPAND_COMPONENTS: Array<String> = ["Row", "Column", "Text", "Image", "ImageAnimator", "Button", "TestButton",
     "Span", "ImageSpan", "Divider", "TextClock", "TextInput", "TextArea", "TextTimer", "TextTimerController", "Search",
     "Hyperlink", "Toggle", "Slider", "Blank", "Counter", "Sheet", "Section", "Select", "TextPicker", "DatePicker",
-    "Piece", "SymbolGlyph", "Progress", "Radio", "RadioGroup", " Marquee", "Calendar", "Gauge", "DataPanel", "QRCode",
+    "Piece", "SymbolGlyph", "Progress", "Radio", "RadioGroup", "Marquee", "Calendar", "Gauge", "DataPanel", "QRCode",
     "Rating", "Stack", "List", "ListItem", "ListItemGroup", "LoadingProgress", "Grid", "GridCol", "GridItem", "GridRow",
     "Scroll", "Scroller", "Tabs", "TabContent", "ColumnSplit", "RowSplit", "Navigation", "NavDestination", "Navigator",
     "RichText", "WaterFlow", "FlowItem", "Swiper", "Panel", "Flex", "Badge", "Refresh", "Stepper", "StepperItem",
@@ -90,5 +109,23 @@ let COMPONENT_NO_CHILD_CONSTRAINT_LIST: HashSet<String> = HashSet<String>(
         "PhotoPickerComponent", "UserAuthIcon", "AVCastPicker", "MovingPhotoView", "AVVolumePanel", "AdComponent",
         "AutoAdComponent", "IconGroupSuffix", "InnerFullScreenLaunchComponent"])
 let COMPONENT_TYPE_FOREACH_LIST: HashSet<String> = HashSet<String>(["ForEach", "LazyForEach"])
+/** Named parameters for ForEach/LazyForEach key callback (diag: skip UI subtree on this lambda). */
+let FOREACH_KEY_GENERATOR_ARG_NAMES: HashSet<String> = HashSet<String>(["keyGeneratorFunc", "keyGenerator"])
+/** Positional overload: (data, itemGenerator, keyGenerator). */
+let FOREACH_POSITIONAL_ARG_COUNT_WITH_KEY: Int64 = 3
+/** getArgumentIdentifier is empty when the argument has no label. */
+let FOREACH_ARG_NAME_POSITIONAL: String = ""
 let COMPONENT_CHILD_IN_LISTCOMPONENT_LIST: HashSet<String> = HashSet<String>(["ListItem", "ListItemGroup"])
 let NEWLINE = Token(TokenKind.NL)
+
+/**
+ * ArkTS types that are not recommended as state variables (controllers, scrollers, canvas contexts, etc.)
+ */
+let UNRECOMMENDED_STATE_TYPE_NAMES = HashSet<String>([
+    "Scroller", "SwiperScroller", "VideoController", "WebController", "CustomDialogController",
+    "SwiperController", "TabsController", "CalendarController", "AbilityController", "XComponentController",
+    "CanvasRenderingContext2D", "CanvasGradient", "ImageBitmap", "ImageData", "Path2D",
+    "RenderingContextSettings", "OffscreenCanvasRenderingContext2D", "PatternLockController",
+    "TextAreaController", "TextInputController", "TextTimerController", "SearchController", "RichEditorController",
+    "ArcSwiperController"
+])

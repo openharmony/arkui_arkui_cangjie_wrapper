@@ -869,7 +869,7 @@ public class ShadowOptions {
      * Blur radius of the shadow.
      * Controls the softness of the shadow edges. Higher values create more blurred shadows.
      *
-     * @default -1.0
+     * @default 0.0
      */
     @!APILevel[
         since: "22",

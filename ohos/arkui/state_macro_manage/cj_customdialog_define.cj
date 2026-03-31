@@ -17,74 +17,116 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, VarDecl, parseDecl, Visitor, Token, TokenKind, ToTokens}
+import std.ast.{Tokens, ClassDecl, VarDecl, parseDecl, Token, TokenKind, ToTokens, Expr, MemberAccess, RefExpr, CallExpr, TypeNode, RefType}
 import std.unicode.{UnicodeStringExtension}
 import std.regex.{Regex}
 import std.collection.ArrayList
 
 public macro CustomDialog(input: Tokens): Tokens {
-    checkCustomDialogSyntax(input)
-    let classDecl = (parseDecl(input) as ClassDecl).getOrThrow()
-    let classModifier = classDecl.modifiers
-    let classIdent = classDecl.identifier
-    let classBody = classDecl.body
+    let finalResult = UISyntaxChecker.expectClassDecl(input, UIMacroKind.CustomDialog)
+        .andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoInheritance(input, classDecl, UIMacroKind.CustomDialog)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoConstructor(input, classDecl, UIMacroKind.CustomDialog)
+        }
 
-    let classBodyAfterExpand = handleClassBody(classBody.decls)
-    let initFunc = generateInitFunc(classDecl)
-    let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
-    let updateParamFunc = generateUpdateParam(classDecl)
-    let rerenderFunc = handleRerender()
-    let purgeVariableFunc = handlePurgeVariable(classDecl)
-    let setDialogControllerFunc = handleSetDialogControllerFunc()
+    match(finalResult) {
+        case Success(classDecl) =>
+            if (!checkCustomDialogController(classDecl)) {
+                return input
+            }
+            let classModifier = classDecl.modifiers
+            let classIdent = classDecl.identifier
+            let classBody = classDecl.body
 
-    // record state with component and state kind
-    STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
+            let classBodyAfterExpand = handleClassBody(classBody.decls)
+            let initFunc = generateInitFunc(classDecl)
+            let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
+            let updateParamFunc = generateUpdateParam(classDecl)
+            let rerenderFunc = handleRerender()
+            let purgeVariableFunc = handlePurgeVariable(classDecl)
+            let setDialogControllerFunc = handleSetDialogControllerFunc()
 
-    // reset global var declaration in macro
-    STATE_MANAGE_HANDLER.clearGlobalInComponent()
+            // record state with component and state kind
+            STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
 
-    // emit all error in component
-    DIAG.emit()
+            // reset global var declaration in macro
+            STATE_MANAGE_HANDLER.clearGlobalInComponent()
 
-    // generate class after expand.
-    createClassDeclaration(
-        modifiers: quote($classModifier),
-        identifier: quote($classIdent),
-        superTypes: quote($CUSTOM_VIEW),
-        body: quote(
-            $classBodyAfterExpand
-            $initFunc
-            $aboutTbDeleteFunc
-            $updateParamFunc
-            $rerenderFunc
-            $purgeVariableFunc
-            $setDialogControllerFunc
-        )
-    )
+            // emit all error in component
+            DIAG.emit()
+
+            // generate class after expand.
+            return createClassDeclaration(
+                modifiers: quote($classModifier),
+                identifier: quote($classIdent),
+                superTypes: quote($CUSTOM_VIEW),
+                body: quote(
+                    $classBodyAfterExpand
+                    $initFunc
+                    $aboutTbDeleteFunc
+                    $updateParamFunc
+                    $rerenderFunc
+                    $purgeVariableFunc
+                    $setDialogControllerFunc
+                )
+            )
+        case Err(tokens) => 
+            return tokens
+    }
 }
 
-class CustomDialogVarVisitor <: Visitor {
+func checkCustomDialogController(classDecl: ClassDecl): Bool {
     var hasController = false
-    protected func visit(varDecl: VarDecl): Unit {
-        match (varDecl) {
-            case varDecl: VarDecl where isNeeadGenerateCustomDialogOption(varDecl) =>
-                STATE_MANAGE_HANDLER.customDialogControllerVarName = varDecl.identifier.value
-                hasController = true
-                breakTraverse()
+    for (decl in classDecl.body.decls) {
+        match (decl) {
+            case varDecl: VarDecl =>
+                if (isCustomDialogControllerRelatedVarDecl(varDecl)) {
+                    if (!hasController) {
+                        STATE_MANAGE_HANDLER.customDialogControllerVarName = varDecl.identifier.value
+                        hasController = true
+                    }
+                    if (!validateCustomDialogControllerVarForCustomDialog(varDecl)) {
+                        return false
+                    }
+                }
             case _ => ()
         }
-        breakTraverse()
-        return
     }
+    if (!hasController) {
+        UISyntaxChecker.reportMissingCustomDialogController(quote($classDecl))
+        return false
+    }
+    return true
 }
 
-func checkCustomDialogController(classDecl: ClassDecl) {
-    let visitor = CustomDialogVarVisitor()
-    classDecl.traverse(visitor)
-    if (!visitor.hasController) {
-        DIAG.error(quote($classDecl),
-            "CustomDialog class must contain a property of the Option<CustomDialogController> type.")
+/**
+ * Validate CustomDialogController variable declaration for @CustomDialog class.
+ * Supports: CustomDialogController, ?CustomDialogController, Option<CustomDialogController>
+ * No initializer: warning (should explicitly pass parameter), check passes.
+ */
+func validateCustomDialogControllerVarForCustomDialog(varDecl: VarDecl): Bool {
+    var hasInitializer = false
+    try {
+        varDecl.expr
+        hasInitializer = true
+    } catch (e: Exception) {
+        hasInitializer = false
     }
+    if (!hasInitializer) {
+        let identifier = Tokens().append(varDecl.identifier)
+        reportWarning(identifier, MacroErrorCode.CustomDialogControllerNeedsInitParam, UIMacroKind.CustomDialog)
+        return true
+    }
+    let expr = varDecl.expr
+    match (expr) {
+        case memberAccess: MemberAccess =>
+            if (isInitExprCustomDialogControllerRelated(expr)) {
+                return true
+            }
+        case _ => ()
+    }
+    return UISyntaxChecker.validateCustomDialogControllerInitExpr(expr, UIMacroKind.CustomDialog)
 }
 
 func handleSetDialogControllerFunc(): Tokens {
@@ -94,19 +136,6 @@ func handleSetDialogControllerFunc(): Tokens {
             this.$varName = value
         }
     )
-}
-
-func checkCustomDialogSyntax(input: Tokens) {
-    let decl = parseDecl(input)
-    let classDecl = match (decl as ClassDecl) {
-        case Some(v) => v
-        case None => throw IllegalArgumentException("Only class is supported in @CustomDialog.")
-    }
-    checkInitFunc(classDecl)
-    if (classDecl.superTypes.size > 0) {
-        DIAG.error(input, "CustomDialog class should not inherit other class or interface.")
-    }
-    checkCustomDialogController(classDecl)
 }
 
 func isCustomdialogController(typeName: String): Bool {
@@ -127,6 +156,22 @@ func isCustomdialogControllerOption(typeName: String): Bool {
     }
 }
 
+/**
+ * Check if type is CustomDialogController, ?CustomDialogController, or Option<CustomDialogController>.
+ * Used for @CustomDialog class to accept all three forms.
+ */
+func isCustomDialogControllerRelatedType(typeNode: TypeNode): Bool {
+    if (let Some(refType) <- (typeNode as RefType)) {
+        if (refType.identifier.value == TYPE_NAME_CUSTOM_DIALOG_CONTROLLER) {
+            return true
+        }
+        if (refType.identifier.value == "Option" && refType.typeArguments.size == 1) {
+            return isCustomDialogControllerRelatedType(refType.typeArguments[0])
+        }
+    }
+    return false
+}
+
 func isNeeadGenerateCustomDialogOption(varDecl: VarDecl): Bool {
     try {
         return isCustomdialogControllerOption(varDecl.declType.toTokens().toString().trim())
@@ -140,5 +185,60 @@ func isNeeadGenerateCustomDialog(varDecl: VarDecl): Bool {
         return isCustomdialogController(varDecl.declType.toTokens().toString().trim())
     } catch (e: Exception) {
         return false
+    }
+}
+
+func isCustomDialogControllerRelatedVarDecl(varDecl: VarDecl): Bool {
+    try {
+        let declType = varDecl.declType
+        if (isCustomDialogControllerRelatedType(declType)) {
+            return true
+        }
+    } catch (e: Exception) {
+        ()
+    }
+    try {
+        let expr = varDecl.expr
+        return isInitExprCustomDialogControllerRelated(expr)
+    } catch (e: Exception) {
+        false
+    }
+}
+
+/**
+ * Check if initializer expr infers CustomDialogController-related type.
+ * e.g. var a = CustomDialogController(...) or var a = Option<CustomDialogController>.None
+ */
+func isInitExprCustomDialogControllerRelated(expr: Expr): Bool {
+    match (expr) {
+        case callExpr: CallExpr =>
+            return isInitExprCustomDialogControllerRelated(callExpr.callFunc)
+        case memberAccess: MemberAccess =>
+            if (memberAccess.field.value == TYPE_NAME_CUSTOM_DIALOG_CONTROLLER) {
+                return true
+            }
+            if (memberAccess.field.value == "None") {
+                return isInitExprCustomDialogControllerRelated(memberAccess.baseExpr)
+            }
+            return false
+        case refExpr: RefExpr =>
+            let refTypeName = refExpr.identifier.value
+            if (refTypeName == TYPE_NAME_CUSTOM_DIALOG_CONTROLLER) {
+                return true
+            }
+            if (refTypeName == "Option") {
+                if (refExpr.typeArguments.size == 0) {
+                    return true
+                }
+                if (refExpr.typeArguments.size == 1) {
+                    let refType = refExpr.typeArguments[0]
+                    if (let Some(ref) <- (refType as RefType)) {
+                        return ref.identifier.value == TYPE_NAME_CUSTOM_DIALOG_CONTROLLER
+                    }
+                }
+                return false
+            }
+            return false
+        case _ => false
     }
 }

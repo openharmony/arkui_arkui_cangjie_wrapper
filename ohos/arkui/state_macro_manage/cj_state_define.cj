@@ -17,12 +17,24 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, parseDecl}
+import std.ast.{Tokens, VarDecl, setItem}
+import std.collection.{ArrayList, forEach}
 
 public macro State(input: Tokens): Tokens {
-    checkStateKindAndInit(input, StateKind.StateTy)
-    let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.StateTy, varDecl))
-    return genProp(varDecl, StateKind.StateTy)
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.State)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.State)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.State)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.State)
+        }
+    return match(finalResult) {
+        case Success(varDecl) => 
+            STATE_MANAGE_HANDLER.stateInformation.add(mangle(varDecl.identifier.value), (VariableKind.StateTy, varDecl))
+            genPropDeclNode(varDecl)
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
+    }
 }

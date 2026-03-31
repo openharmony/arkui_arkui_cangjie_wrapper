@@ -26,6 +26,7 @@ import ohos.ui_test
 import std.collection.ArrayList
 import std.math.*
 import ohos.device_info.*
+import ohos.display
 
 enum CustomSwipeDirection {
   | Left
@@ -826,7 +827,11 @@ class ScrollSplitUT1 {
         Hilog.info(1, "info", "aaaa: ${jsonObject.toString()}")
 
         let width = attrs.get("width").getOrThrow().toString()
-        @Expect(width, "\"387.69vp\"")
+        //适配70pro，改为从windowStage获取
+        if(let Some(windowStage) <- Global.windowStage){
+        let windowInfo = windowStage.getMainWindow().getWindowProperties()
+        let result = Float32(windowInfo.windowRect.width)/display.getDefaultDisplaySync().densityPixels
+        @Expect(width, ""${result.toString()[0..6]}vp"")
 
         let height = attrs.get("height").getOrThrow().toString()
         @Expect(height, "\"300.00vp\"")

@@ -103,7 +103,7 @@ class BasicCommonUTBindSheet {
     @Tag[APILevel26, TestLevel0]
     func test_button_bindSheet_shadow_radius_abnormal() {
         scrollTo("ViewButtonBindSheet")
-        assertBindSheetShadowRadius("radius_abnormal", -1.0)
+        assertBindSheetShadowRadius("radius_abnormal", -10.0)
     }
 
     @TestCase
@@ -138,7 +138,7 @@ class BasicCommonUTBindSheet {
     @Tag[APILevel26, TestLevel0]
     func test_button_bindSheet_shadow_radius_boundary_min() {
         scrollTo("ViewButtonBindSheet")
-        assertBindSheetShadowRadius("radius_boundary(Float64.Min)", -1.0)
+        assertBindSheetShadowRadius("radius_boundary(Float64.Min)", Float64.Min)
     }
 
     @TestCase

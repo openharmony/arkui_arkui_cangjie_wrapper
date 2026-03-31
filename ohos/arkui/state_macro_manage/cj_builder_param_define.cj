@@ -17,30 +17,30 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, FuncType, PrimitiveType, TypeNode, parseDecl, TokenKind, RefType}
+import std.ast.{Tokens, VarDecl, FuncType, TypeNode, RefType, setItem, insideParentContext}
 import std.collection.ArrayList
 
 public macro BuilderParam(input: Tokens): Tokens {
-    let decl = parseDecl(input)
-
-    // check whether @BuilderParam decorated a variable declaration
-    if ((decl as VarDecl).isNone()) {
-        DIAG.fatal(input, "@BuilderParam should decorate variable declaration")
-    }
-    let varDecl: VarDecl = (decl as VarDecl).getOrThrow()
-
-    // check whether @BuilderParam decorated a variable with function type
-    if ((varDecl.declType as FuncType).isNone()) {
-        DIAG.fatal(input, "@BuilderParam variable should be function type")
-    }
-    let funcType = (varDecl.declType as FuncType).getOrThrow()
-    match (funcType.returnType as PrimitiveType) {
-        case Some(r) =>
-            if (r.keyword.kind != UNIT) {
-                DIAG.fatal(input, "@BuilderParam variable should be a function type and the return type should be Unit")
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.BuilderParam)
+        .andThen { varDecl: VarDecl => UISyntaxChecker.checkIsFuncType(varDecl, input, UIMacroKind.BuilderParam) }
+        .andThen { varDecl: VarDecl =>
+            if (insideParentContext(MACRO_PARENT_CONTEXT_ENTRY)) {
+                UISyntaxChecker.checkHasInitializer(input, varDecl, UIMacroKind.BuilderParam)
+            } else {
+                MacroExpandResult<VarDecl>.Success(varDecl)
             }
-        case None => DIAG.fatal(input, "@BuilderParam variable should be a function type and the return type is Unit")
+        }
+
+    return match (finalResult) {
+        case Success(varDecl) => expandBuilderParam(varDecl)
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
     }
+}
+
+func expandBuilderParam(varDecl: VarDecl): Tokens {
+    let funcType = (varDecl.declType as FuncType).getOrThrow()
 
     // update the return type to ViewBuilder
     funcType.returnType = RefType(quote(ViewBuilder))

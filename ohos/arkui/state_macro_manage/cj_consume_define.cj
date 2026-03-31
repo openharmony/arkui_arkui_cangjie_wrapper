@@ -17,7 +17,8 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, VarDecl, Token, LitConstExpr, Expr, parseDecl, parseExpr}
+import std.ast.{Tokens, VarDecl, Token, LitConstExpr, Expr, parseDecl, parseExpr, setItem}
+
 
 public macro Consume(input: Tokens): Tokens {
     generateConsume(input)
@@ -28,23 +29,25 @@ public macro Consume(consumeIdentifier: Tokens, input: Tokens): Tokens {
 }
 
 func generateConsume(input: Tokens, consumeIdentifier!: Tokens = Tokens()) {
-    checkStateKindAndInit(input, StateKind.ConsumeTy)
-    let varDecl = (parseDecl(input) as VarDecl).getOrThrow()
-    let identTok: Token = varDecl.identifier
-    STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.ConsumeTy, varDecl))
+    let attrResult: String = UISyntaxChecker.checkStringLiteralAttr(consumeIdentifier, UIMacroKind.Consume)
+        .unwrapOr("")
 
-    if (consumeIdentifier.size > 0) {
-        let expr = parseExpr(consumeIdentifier)
-        checkConsumeIdentifier(expr)
-        let consumeIdentifierStr = (expr as LitConstExpr).getOrThrow().literal.value
-        STATE_MANAGE_HANDLER.consumeVarDeclsMap.add(identTok.value, consumeIdentifierStr)
-    }
+    let finalResult = UISyntaxChecker.expectVarDecl(input, UIMacroKind.Consume)
+        .andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.Consume)
+        }.andThen {
+            varDecl: VarDecl => UISyntaxChecker.checkVarDeclType(input, varDecl, UIMacroKind.Consume)
+        }
 
-    return genProp(varDecl, StateKind.ConsumeTy)
-}
-
-func checkConsumeIdentifier(input: Expr) {
-    if (!isLiteral(input) || !isStringType(input)) {
-        DIAG.fatal(quote($input), "invalid type, attribute must be a string literal.")
+    return match(finalResult) {
+        case Success(varDecl) => 
+            STATE_MANAGE_HANDLER.stateInformation.add(mangle(varDecl.identifier.value), (VariableKind.ConsumeTy, varDecl))
+            if (consumeIdentifier.size != 0) {
+                STATE_MANAGE_HANDLER.consumeVarDeclsMap.add(varDecl.identifier.value, attrResult)
+            }
+            genPropDeclNode(varDecl)
+        case Err(tokens) =>
+            setItem(MACRO_MSG_EXPANDED_FAILED, false)
+            tokens
     }
 }

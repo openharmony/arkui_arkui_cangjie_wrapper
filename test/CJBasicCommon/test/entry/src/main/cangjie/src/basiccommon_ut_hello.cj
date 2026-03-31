@@ -442,25 +442,23 @@ class BasicCommonUTHello {
     @Tag[APILevel22, TestLevel0]
     func testLengthValue() {
         Hilog.info(1, "Cangjie-Test", "test_length_value start")
-        var message1 = "get value success"
+        var value: Float64 = 0.0
         try {
             var length1: Length = @r(app.string.width_100p)
-            length1.value
+            value = length1.value
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
-            message1 = e.toString()
         }
-        @Expect(message1.contains("BusinessException"))
+        @Expect(value, 1.0)
 
-        var message2 = "get unitType success"
+        var unitType: LengthUnit = LengthUnit.Vp
         try {
             var length2: Length = @r(app.string.width_100p)
-            length2.unitType
+            unitType = length2.unitType
         } catch (e: Exception) {
             Hilog.info(1, "Cangjie-Test", "test_length_value: ${e.toString()}")
-            message2 = e.toString()
         }
-        @Expect(message2.contains("BusinessException"))
+        @Expect(unitType, LengthUnit.Percent)
         Hilog.info(1, "Cangjie-Test", "test_length_value end")
     }
 

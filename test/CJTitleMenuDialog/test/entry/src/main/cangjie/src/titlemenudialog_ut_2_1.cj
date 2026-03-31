@@ -233,14 +233,14 @@ class TitleMenuDialogUT21 {
         scrollTo("ViewPrompt")
 
         clickPromptDialogShadowRadius("promptShadowRadius10", 10.0)
-        clickPromptDialogShadowRadius("promptShadowRadiusNeg10", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusNeg10", -10.0)
         clickPromptDialogShadowRadius("promptShadowRadius0", 0.0)
         clickPromptDialogShadowRadius("promptShadowRadius1", 1.0)
-//        clickPromptDialogShadowRadius("promptShadowRadiusNeg1", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusNeg1", -1.0)
         clickPromptDialogShadowRadius("promptShadowRadiusFloat64Max", Float64.Max)
-        clickPromptDialogShadowRadius("promptShadowRadiusFloat64Min", -1.0)
-//        clickPromptDialogShadowRadius("promptShadowOmitted", -1.0)
-//        clickPromptDialogShadowRadius("promptShadowRadiusOptionNone", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusFloat64Min", Float64.Min)
+        clickPromptDialogShadowRadius("promptShadowOmitted", -1.0)
+        clickPromptDialogShadowRadius("promptShadowRadiusOptionNone", -1.0)
     }
 
     @TestCase
@@ -249,12 +249,12 @@ class TitleMenuDialogUT21 {
         scrollTo("ViewPrompt")
 
         clickPromptToastShadowRadius("promptToastShadowRadius10", 10.0)
-        clickPromptToastShadowRadius("promptToastShadowRadiusNeg10", -1.0)
+        clickPromptToastShadowRadius("promptToastShadowRadiusNeg10", -10.0)
         clickPromptToastShadowRadius("promptToastShadowRadius0", 0.0)
         clickPromptToastShadowRadius("promptToastShadowRadius1", 1.0)
         clickPromptToastShadowRadius("promptToastShadowRadiusNeg1", -1.0)
         clickPromptToastShadowRadius("promptToastShadowRadiusFloat64Max", Float64.Max)
-        clickPromptToastShadowRadius("promptToastShadowRadiusFloat64Min", -1.0)
+        clickPromptToastShadowRadius("promptToastShadowRadiusFloat64Min", Float64.Min)
         clickPromptToastShadowStyle("promptToastShadowOmitted", "ShadowStyle.OuterDefaultMD")
         clickPromptToastShadowRadius("promptToastShadowRadiusOptionNone", -1.0)
     }
@@ -265,14 +265,14 @@ class TitleMenuDialogUT21 {
         scrollTo("ViewPrompt")
 
         clickPromptDialogShadowRadius("promptCustomDialogShadowRadius10", 10.0)
-        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg10", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg10", -10.0)
         clickPromptDialogShadowRadius("promptCustomDialogShadowRadius0", 0.0)
         clickPromptDialogShadowRadius("promptCustomDialogShadowRadius1", 1.0)
-//        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg1", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusNeg1", -1.0)
         clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusFloat64Max", Float64.Max)
-        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusFloat64Min", -1.0)
-//        clickPromptDialogShadowRadius("promptCustomDialogShadowOmitted", -1.0)
-//        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusOptionNone", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusFloat64Min", Float64.Min)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowOmitted", -1.0)
+        clickPromptDialogShadowRadius("promptCustomDialogShadowRadiusOptionNone", -1.0)
     }
 
     // Global

@@ -226,12 +226,12 @@ class TitleMenuDialogUT1 {
         scrollTo("ViewActionSheet")
 
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius10", 10.0)
-        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusNeg10", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusNeg10", -10.0)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius0", 0.0)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadius1", 1.0)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusNeg1", -1.0)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusFloat64Max", Float64.Max)
-        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusFloat64Min", -1.0)
+        clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusFloat64Min", Float64.Min)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowOmitted", -1.0)
         clickDialogShadowRadiusFromScroller("viewActionSheetScroller", "uiContextShowActionSheetShadowRadiusOptionNone", -1.0)
     }
