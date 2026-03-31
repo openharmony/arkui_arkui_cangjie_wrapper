@@ -14,23 +14,30 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：单子容器（Badge）尾随块内直接包含 ForEach
+ * 预期错误：MacroErrorCode.InvalidParentChild（diag_parser：ForEachNotAllowedInMonadic）；legacy 路径为 DIAG.error（ifForEach）
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import std.collection.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class MonadicBadgeContainsForeachView {
+    @State var dataList: ObservedArrayList<String> = ObservedArrayList<String>(["a"])
+
     func build(): Unit {
-        Column() {
-            Image(@r(foo.bar.baz))
+        Badge() {
+            ForEach(
+                this.dataList,
+                itemGeneratorFunc: { item: String, index: Int64 =>
+                    Text(item)
+                }
+            )
         }
     }
 }

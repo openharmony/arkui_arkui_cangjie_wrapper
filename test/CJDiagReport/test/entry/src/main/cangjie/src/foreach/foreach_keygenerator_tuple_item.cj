@@ -14,23 +14,33 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：item 为元组类型时，keyGenerator 使用插值与 `+`（曾为 BinaryExpr 易误报 InvalidNodeType）
+ * 预期：不报 InvalidNodeType（元组字段访问以 toString 避免依赖下标语法）
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.foreach
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import std.collection.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class ForeachKeygeneratorTupleItemView {
+    let pairArray: Array<(Int64, String)> = [(0, "a"), (1, "b")]
+
     func build(): Unit {
         Column() {
-            Image(@r(foo.bar.baz))
+            ForEach(
+                this.pairArray,
+                itemGeneratorFunc: { item: (Int64, String), idx: Int64 =>
+                    Text(item.toString())
+                },
+                keyGeneratorFunc: { item: (Int64, String), idx: Int64 =>
+                    "${idx}_" + item.toString()
+                }
+            )
         }
     }
 }

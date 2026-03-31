@@ -14,11 +14,11 @@
  */
 
 /*
- * 测试场景：@r 资源引用格式须为 app.type.name 或 sys.type.name
- * 预期错误：MacroErrorCode.ResourceFormatError
- * 初学易错：使用错误前缀（非 app/sys）或分段不足，如 foo.bar.baz
+ * 测试场景：ListItemGroup 必须在 List 内
+ * 预期错误：MacroErrorCode.InvalidParentChild (InvalidParentForChild)
+ * 错误消息：Component 'ListItemGroup' must be inside one of: List
  */
-package ohos_app_cangjie_entry.resource
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
@@ -27,10 +27,14 @@ import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
-class RInvalidFormatView {
+class ListItemGroupNotInListView {
     func build(): Unit {
         Column() {
-            Image(@r(foo.bar.baz))
+            ListItemGroup() {
+                ListItem() {
+                    Text("Item")
+                }
+            }
         }
     }
 }

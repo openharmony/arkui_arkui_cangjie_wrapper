@@ -16,6 +16,7 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, Expr}
+import std.collection.{ArrayList, HashMap}
 import std.deriving.Derive
 
 /**
@@ -280,11 +281,11 @@ protected func buildComponentConstraintMessage(error: ChildComponentError): (Str
 
 
 protected class ComponentRuleRegistry {
-    protected static let rules: HashMap<String, ArrayList<ComponentConstraint>> = HashMap()
-    private static let instance = ComponentRuleRegistry()
+    protected static let RULES: HashMap<String, ArrayList<ComponentConstraint>> = HashMap()
+    private static let INSTANCE = ComponentRuleRegistry()
 
     static func getInstance() {
-        return instance
+        return INSTANCE
     }
 
     // Max Children num is 1.
@@ -473,14 +474,14 @@ protected class ComponentRuleRegistry {
     }
     
     private func register(componentName: String, constraints: Array<ComponentConstraint>): Unit {
-        rules.add(componentName, ArrayList(constraints))
+        RULES.add(componentName, ArrayList(constraints))
     }
     
     /**
      * Get component constraint rules
      */
     protected func getComponentConstraintRules(componentName: String): ArrayList<ComponentConstraint> {
-        match (rules.get(componentName)) {
+        match (RULES.get(componentName)) {
             case Some(c) => c
             case None => ArrayList()
         }
@@ -552,4 +553,4 @@ protected class ComponentRuleRegistry {
     }
 }
 
-let componentRuleRegistry = ComponentRuleRegistry.getInstance()
+let COMPONENT_RULE_REGISTRY = ComponentRuleRegistry.getInstance()

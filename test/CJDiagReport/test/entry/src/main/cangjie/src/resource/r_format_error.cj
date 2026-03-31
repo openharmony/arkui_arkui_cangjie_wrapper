@@ -30,7 +30,7 @@ import ohos.arkui.state_macro_manage.*
 class RFormatErrorView {
     func build(): Unit {
         Column() {
-            Text($r(123))
+            Text(@r(123))
         }
     }
 }

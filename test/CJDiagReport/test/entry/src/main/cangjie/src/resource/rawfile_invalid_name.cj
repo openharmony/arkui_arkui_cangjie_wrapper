@@ -30,7 +30,7 @@ import ohos.arkui.state_macro_manage.*
 class RawfileInvalidNameView {
     func build(): Unit {
         Column() {
-            Image($rawfile(123))
+            Image(@rawfile(123))
         }
     }
 }

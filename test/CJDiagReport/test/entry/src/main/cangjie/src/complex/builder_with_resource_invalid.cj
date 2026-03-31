@@ -31,7 +31,7 @@ import ohos.arkui.state_macro_manage.*
 class BuilderWithResourceInvalidView {
     @Builder
     func iconBuilder(): Unit {
-        Image($r(123))
+        Image(@r(123))
     }
 
     func build(): Unit {

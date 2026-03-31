@@ -18,7 +18,26 @@ macro package ohos.arkui.state_macro_manage
 import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess,
     Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, TokenKind, parseDecl,
     Argument, Modifier, ASTException, LitConstExpr, RefType}
-import std.collection.{ArrayList}
+import std.collection.{ArrayList, forEach}
+
+/**
+ * ForEach / LazyForEach: keyGeneratorFunc / keyGenerator returns a key string, not UI.
+ * Do not run UI subtree validation on that lambda (allows templates, "+", RefExpr, etc.).
+ * Positional 3-arg form is typically (data, itemGenerator, keyGenerator).
+ */
+func isForeachKeyGeneratorLastArg(componentName: String, arguments: ArrayList<Argument>, lastArg: Argument): Bool {
+    if (!COMPONENT_TYPE_FOREACH_LIST.contains(componentName)) {
+        return false
+    }
+    let argName = getArgumentIdentifier(lastArg).value
+    if (FOREACH_KEY_GENERATOR_ARG_NAMES.contains(argName)) {
+        return true
+    }
+    if (argName == FOREACH_ARG_NAME_POSITIONAL && arguments.size == FOREACH_POSITIONAL_ARG_COUNT_WITH_KEY) {
+        return true
+    }
+    return false
+}
 
 func parseClassDeclMemberNodes(classDecl: ClassDecl): Bool {
     var buildFuncDecls = ArrayList<FuncDecl>()
@@ -77,7 +96,7 @@ func parseBuildFunction(funcDecl: FuncDecl): Bool {
     return true
 }
 
-func parseBuildFuncBodyNode(funcDecl: FuncDecl): Bool {
+func parseBuildFuncBodyNode(funcDecl: FuncDecl, bodyMacroCall!: UIMacroKind = UIMacroKind.BuildQuoted): Bool {
     for(node in funcDecl.block.nodes) {
         if (let Some(expr) <- (node as Expr)) {
             match(getComponentType(expr)) {
@@ -94,12 +113,12 @@ func parseBuildFuncBodyNode(funcDecl: FuncDecl): Bool {
                         return false
                     }
                 case _ =>
-                    if (!UISyntaxChecker.checkIsCallExpr(expr)) {
+                    if (!UISyntaxChecker.checkIsCallExpr(expr, macroCall: bodyMacroCall)) {
                         return false
                     }
             }
         } else {
-            return UISyntaxChecker.checkIsExpr(node)
+            return UISyntaxChecker.checkIsExpr(node, macroCall: bodyMacroCall)
         }
     }
     return true
@@ -125,7 +144,7 @@ func validateChildComponents(parentExpr: Expr, componentName: String, childNodes
         }
         let childName = getTrailingClosureExprValue(childCompExpr)
 
-        match (componentRuleRegistry.validateComponentConstraints(parentName: componentName, childName: childName,
+        match (COMPONENT_RULE_REGISTRY.validateComponentConstraints(parentName: componentName, childName: childName,
             childCount: childCount)) {
             case Some(error) =>
                 let reportExpr = if (error.errorType == BuiltInComponentErrorType.ForEachNotAllowedInMonadic) {
@@ -189,7 +208,7 @@ func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName:
                 }
             } else {
                 let childName = getTrailingClosureExprValue(childExpr)
-                let ancestorForChild = if (childName == "ForEach" || childName == "LazyForEach") {
+                let ancestorForChild = if (COMPONENT_TYPE_FOREACH_LIST.contains(childName)) {
                     Some(parentName)
                 } else {
                     ancestorParentForValidation
@@ -242,10 +261,13 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
                         }
                         // Extract component name from call expression
                         let componentName = getTrailingClosureExprValue(callExpr)
+                        if (isForeachKeyGeneratorLastArg(componentName, arguments, lastArgument)) {
+                            return true
+                        }
                         let childNodes = lambda.nodes
                         
                         // For ForEach/LazyForEach: validate itemGenerator's ListItem against ancestor parent (e.g. List)
-                        let validationParent = if ((componentName == "ForEach" || componentName == "LazyForEach") &&
+                        let validationParent = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
                             ancestorParentForValidation.isSome()) {
                             ancestorParentForValidation.getOrThrow()
                         } else {

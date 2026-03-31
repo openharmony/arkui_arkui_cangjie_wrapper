@@ -153,6 +153,7 @@ protected class UISyntaxChecker {
             }
         } catch (e: Exception) {
             // Skip type check on parse failure
+            return
         }
     }
 
@@ -415,6 +416,7 @@ protected class UISyntaxChecker {
             }
         } catch (e: Exception) {
             // No explicit return type, defaults to Unit, as expected
+            ()
         }
         MacroExpandResult<FuncDecl>.Success(funcDecl)
     }
@@ -550,6 +552,7 @@ protected class UISyntaxChecker {
                         }
                     } catch (e: Exception) {
                         // No return type, defaults to Unit
+                        ()
                     }
                     MacroExpandResult<VarDecl>.Success(varDecl)
                 case None =>
@@ -615,11 +618,11 @@ protected class UISyntaxChecker {
      * 
      * @param expr - The expression to check
      */
-    protected static func checkIsCallExpr(expr: Expr): Bool {
+    protected static func checkIsCallExpr(expr: Expr, macroCall!: UIMacroKind = UIMacroKind.BuildQuoted): Bool {
         match (expr as CallExpr) {
             case Some(callExpr) => true
             case None =>
-                reportError(expr.toTokens(), MacroErrorCode.ExpectCallExpr, UIMacroKind.BuildQuoted)
+                reportError(expr.toTokens(), MacroErrorCode.ExpectCallExpr, macroCall)
                 false
         }
     }
@@ -630,14 +633,14 @@ protected class UISyntaxChecker {
      * 
      * @param node - The node to check
      */
-    protected static func checkIsExpr(node: Node): Bool {
+    protected static func checkIsExpr(node: Node, macroCall!: UIMacroKind = UIMacroKind.BuildQuoted): Bool {
         match (node as Expr) {
             case Some(_) => true  // Valid expression
             case None =>
                 reportError(
                     node.toTokens(),
                     MacroErrorCode.InvalidNodeType,
-                    UIMacroKind.BuildQuoted
+                    macroCall
                 )
                 false
         }
@@ -925,6 +928,7 @@ protected class UISyntaxChecker {
             }
         } catch (e: Exception) {
             // No explicit return type, defaults to Unit, as expected
+            ()
         }
         return MacroExpandResult<FuncDecl>.Success(funcDecl)
     }
@@ -1001,40 +1005,14 @@ protected class UISyntaxChecker {
     }
 
     /**
-     * Check if @Builder function has valid component structure
-     * 
-     * Rules:
-     * 1. @Builder function must have exactly one or zero root component
-     * 2. If there is one root component, it cannot be CustomComponent or BuilderComponent
-     * 
-     * @param funcBody Builder function body nodes
-     * @param funcDecl Function declaration (for error reporting)
-     * @param getComponentType Function to get component type from expression
-     * @return true if valid, false otherwise
+     * Check @Builder function body: same deep validation as `build()` via `parseBuildFuncBodyNode`
+     * (built-in subtree constraints, If branches, CallExpr for other roots).
      */
-    protected static func checkBuilderFunc(
-        funcBody: ArrayList<Node>,
-        funcDecl: FuncDecl,
-        getComponentType: (Expr) -> ComponentType
-    ): Bool {
-        if (funcBody.size == 0) {
+    protected static func checkBuilderFunc(funcDecl: FuncDecl): Bool {
+        if (funcDecl.block.nodes.size == 0) {
             return true
         }
-        for (node in funcBody) {
-            match (node as Expr) {
-                case Some(expr) =>
-                    match (getComponentType(expr)) {
-                        case CustomComponent | BuilderComponent | MethodCall =>
-                            reportRootMustBeContainer(expr.toTokens(), macroCall: UIMacroKind.Builder)
-                            return false
-                        case _ => ()
-                    }
-                case None =>
-                    reportInvalidNodeTypeInBuild(node.toTokens(), macroCall: UIMacroKind.Builder)
-                    return false
-            }
-        }
-        return true
+        return parseBuildFuncBodyNode(funcDecl, bodyMacroCall: UIMacroKind.Builder)
     }
 
     /**

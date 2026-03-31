@@ -27,7 +27,7 @@ public macro Builder(input: Tokens): Tokens {
 
     return match (finalResult) {
         case Success(funcDecl) =>
-            if (!UISyntaxChecker.checkBuilderFunc(funcDecl.block.nodes, funcDecl, getComponentType)) {
+            if (!UISyntaxChecker.checkBuilderFunc(funcDecl)) {
                 setItem(MACRO_MSG_EXPANDED_FAILED, false)
                 return input
             }

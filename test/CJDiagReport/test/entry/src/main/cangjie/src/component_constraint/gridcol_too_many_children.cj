@@ -14,35 +14,25 @@
  */
 
 /*
- * 测试场景：@Builder 根节点不能为自定义组件
- * 预期错误：MacroErrorCode.RootMustBeContainer
- * 错误消息：custom component or builder cannot be root
+ * 测试场景：GridCol 只能有一个子组件
+ * 预期错误：MacroErrorCode.TooManyChildren
  */
-package ohos_app_cangjie_entry.builder
+package ohos_app_cangjie_entry.component_constraint
 
 import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
-@Component
-class SubComp {
-    func build(): Unit {
-        Text("Sub")
-    }
-}
-
 @Entry
 @Component
-class BuilderRootCustomView {
-    @Builder
-    func myBuilder(): Unit {
-        SubComp()
-    }
-
+class GridColTooManyChildrenView {
     func build(): Unit {
-        Column() {
-            this.myBuilder()
+        GridRow() {
+            GridCol() {
+                Text("列1")
+                Text("列2")
+            }
         }
     }
 }

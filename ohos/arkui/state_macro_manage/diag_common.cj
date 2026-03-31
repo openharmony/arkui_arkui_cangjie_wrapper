@@ -22,7 +22,6 @@ import std.ast.{
     parseDecl, parseExpr, parseExprFragment,
     diagReport, DiagReportLevel
 }
-internal import std.collection.*
 
 /**
  * UI macro / decorator kind for ArkUI diagnostics and macro-expand checks (state, component, entry, @r, build labels, etc.).
