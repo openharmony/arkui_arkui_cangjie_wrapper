@@ -16,7 +16,7 @@
 /*
  * 测试场景：@StorageLink - 不能使用let
  * 预期错误：MacroErrorCode.StorageLinkLetNotAllowed
- * 错误消息：[StateManagement]: @StorageLink cannot use let modifier
+ * 错误消息：[ArkUI]: @StorageLink cannot use let modifier
  */
 package ohos_app_cangjie_entry.storage
 

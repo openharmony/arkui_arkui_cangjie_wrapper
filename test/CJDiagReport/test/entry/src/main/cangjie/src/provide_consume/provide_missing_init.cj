@@ -16,7 +16,7 @@
 /*
  * 测试场景：@Provide - 缺少初始值
  * 预期错误：MacroErrorCode.MissingInitializer
- * 错误消息：[StateManagement]: @Provide should have an initial value
+ * 错误消息：[ArkUI]: @Provide should have an initial value
  */
 package ohos_app_cangjie_entry.provide_consume
 

@@ -16,7 +16,7 @@
 /*
  * 测试场景：存储宏 - 属性必须是字符串字面量
  * 预期错误：MacroErrorCode.InvalidAttributeType
- * 错误消息：[StateManagement]: attribute must be a string literal
+ * 错误消息：[ArkUI]: attribute must be a string literal
  */
 package ohos_app_cangjie_entry.storage
 

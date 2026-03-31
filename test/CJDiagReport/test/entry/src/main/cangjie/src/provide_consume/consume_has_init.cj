@@ -16,7 +16,7 @@
 /*
  * 测试场景：@Consume - 不应有初始值
  * 预期错误：MacroErrorCode.UnexpectedInitializer
- * 错误消息：[StateManagement]: @Consume should not have an initial value
+ * 错误消息：[ArkUI]: @Consume should not have an initial value
  */
 package ohos_app_cangjie_entry.provide_consume
 
