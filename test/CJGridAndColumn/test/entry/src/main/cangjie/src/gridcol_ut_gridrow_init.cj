@@ -24,6 +24,7 @@ import ohos.ui_test.*
 import ohos.hilog.Hilog
 import ohos.business_exception.*
 import stdx.encoding.json.*
+import ohos.display
 
 @Test
 class GridColUTGridRowInit {
@@ -99,7 +100,10 @@ class GridColUTGridRowInit {
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let gutter = attrs.get("gutter").getOrThrow().toString()
-        @Expect(gutter, "\"<32.500000, 32.500000\"")        // change vp to px
+        //根据不同机型计算
+        let SizeVpLpxIntx = 10.0*display.getDefaultDisplaySync().densityPixels
+        let SizeVpLpxInty = 10.0*display.getDefaultDisplaySync().densityPixels
+        @Expect(gutter, "\"<${SizeVpLpxIntx}, ${SizeVpLpxInty}\"")
     }
 
     @TestCase
@@ -173,8 +177,11 @@ class GridColUTGridRowInit {
         let columns = attrs.get("columns").getOrThrow().toString()
         let gutter = attrs.get("gutter").getOrThrow().toString()
         let direction = attrs.get("direction").getOrThrow().toString()
+        //根据不同机型计算
+        let SizeVpLpxIntx = 10.0*display.getDefaultDisplaySync().densityPixels
+        let SizeVpLpxInty = 10.0*display.getDefaultDisplaySync().densityPixels
         @Expect(columns, "\"12\"")
-        @Expect(gutter, "\"<32.500000, 32.500000\"")
+        @Expect(gutter, "\"<${SizeVpLpxIntx}, ${SizeVpLpxInty}\"")
         @Expect(direction, "\"Row\"")
     }
 

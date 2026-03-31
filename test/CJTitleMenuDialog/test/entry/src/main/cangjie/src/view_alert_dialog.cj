@@ -775,24 +775,25 @@ class ViewAlertDialog {
                 .height(30)
                 .id("button_20")
 
+            //适配70pro，设置fontSize
             Row {
-                Text(this.msg).id("text")
-                Text(this.msg1).id("text_1")
-                Text(this.msg1).id("text_2")
+                Text(this.msg).fontSize(8).id("text")
+                Text(this.msg1).fontSize(8).id("text_1")
+                Text(this.msg1).fontSize(8).id("text_2")
             }
             Row {
-                Text(this.msg1).id("text_3")
-                Text(this.msg2).id("text_4")
-                Text(this.msg2).id("text_5")
+                Text(this.msg1).fontSize(8).id("text_3")
+                Text(this.msg2).fontSize(8).id("text_4")
+                Text(this.msg2).fontSize(8).id("text_5")
             }
             Row {
-                Text(this.msg2).id("text_6")
-                Text(this.msg3).id("text_7")
-                Text(this.msg3).id("text_8")
+                Text(this.msg2).fontSize(8).id("text_6")
+                Text(this.msg3).fontSize(8).id("text_7")
+                Text(this.msg3).fontSize(8).id("text_8")
             }
             Row {
-                Text(this.msg3).id("text_9")
-                Text(this.msg3).id("text_11")
+                Text(this.msg3).fontSize(8).id("text_9")
+                Text(this.msg3).fontSize(8).id("text_11")
             }
         }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
     }
