@@ -829,9 +829,10 @@ class ScrollSplitUT1 {
         let width = attrs.get("width").getOrThrow().toString()
         //适配70pro，改为从windowStage获取
         if(let Some(windowStage) <- Global.windowStage){
-        let windowInfo = windowStage.getMainWindow().getWindowProperties()
-        let result = Float32(windowInfo.windowRect.width)/display.getDefaultDisplaySync().densityPixels
-        @Expect(width, ""${result.toString()[0..6]}vp"")
+            let windowInfo = windowStage.getMainWindow().getWindowProperties()
+            let result = Float32(windowInfo.windowRect.width)/display.getDefaultDisplaySync().densityPixels
+            @Expect(width, "\"${result.toString()[0..6]}vp\"")
+        }
 
         let height = attrs.get("height").getOrThrow().toString()
         @Expect(height, "\"300.00vp\"")
