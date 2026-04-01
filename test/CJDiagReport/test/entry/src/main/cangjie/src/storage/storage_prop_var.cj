@@ -16,7 +16,7 @@
 /*
  * 测试场景：@StorageProp - 不能使用var
  * 预期错误：MacroErrorCode.StoragePropVarNotAllowed
- * 错误消息：[StateManagement]: @StorageProp cannot use var modifier
+ * 错误消息：[ArkUI]: @StorageProp cannot use var modifier
  */
 package ohos_app_cangjie_entry.storage
 

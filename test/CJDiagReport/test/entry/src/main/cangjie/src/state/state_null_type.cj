@@ -16,7 +16,7 @@
 /*
  * 测试场景：@State - 无法推断类型
  * 预期错误：MacroErrorCode.NullInitType
- * 错误消息：[StateManagement]: cannot derive from the initialization expression
+ * 错误消息：[ArkUI]: cannot derive from the initialization expression
  */
 package ohos_app_cangjie_entry.state
 

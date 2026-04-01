@@ -16,7 +16,7 @@
 /*
  * 测试场景：@Publish - 必须在@Observed类内
  * 预期错误：MacroErrorCode.MustBeInObserved
- * 错误消息：[StateManagement]: @Publish can only be used inside @Observed decorated class
+ * 错误消息：[ArkUI]: @Publish can only be used inside @Observed decorated class
  */
 package ohos_app_cangjie_entry.publish_observed
 

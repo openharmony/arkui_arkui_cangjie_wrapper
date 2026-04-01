@@ -97,11 +97,16 @@ func parseBuildFunction(funcDecl: FuncDecl): Bool {
 }
 
 func parseBuildFuncBodyNode(funcDecl: FuncDecl, bodyMacroCall!: UIMacroKind = UIMacroKind.BuildQuoted): Bool {
+    let inBuilderBody = match(bodyMacroCall) {
+        case UIMacroKind.Builder => true
+        case _ => false
+    }
+
     for(node in funcDecl.block.nodes) {
         if (let Some(expr) <- (node as Expr)) {
             match(getComponentType(expr)) {
                 case BuiltInComponent =>
-                    if (!parseBuiltInComponent(expr)) {
+                    if (!parseBuiltInComponent(expr, inBuilderBody: inBuilderBody)) {
                         return false
                     }  
                 case IfComponent =>
@@ -109,7 +114,7 @@ func parseBuildFuncBodyNode(funcDecl: FuncDecl, bodyMacroCall!: UIMacroKind = UI
                         return false
                     }
                     let ifExpr = (expr as IfExpr).getOrThrow()
-                    if (!parseIfExprBody(ifExpr, expr)) {
+                    if (!parseIfExprBody(ifExpr, expr, inBuilderBody: inBuilderBody)) {
                         return false
                     }
                 case _ =>
@@ -187,7 +192,8 @@ func collectIfExprBodyNodes(ifExpr: IfExpr): ArrayList<Node> {
  * Parse IfExpr body with parent context for parent-child component validation.
  * Rules: 1) No ForIn inside if; 2) Validate body nodes against parent; 3) Recursively parse each node.
  */
-func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if"): Bool {
+func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if",
+    inBuilderBody!: Bool = false): Bool {
     if (!UISyntaxChecker.checkIfExpr4UI(ifExpr)) {
         return false
     }
@@ -195,15 +201,16 @@ func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if
     if (!validateChildComponents(parentExpr, parentName, bodyNodes)) {
         return false
     }
-    return parseLambdaNodes(bodyNodes, parentExpr, parentName)
+    return parseLambdaNodes(bodyNodes, parentExpr, parentName, ancestorParentForValidation: None,
+        inBuilderBody: inBuilderBody)
 }
 
 func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName: String,
-    ancestorParentForValidation!: ?String = None): Bool {
+    ancestorParentForValidation!: ?String = None, inBuilderBody!: Bool = false): Bool {
     for (node in childNodes) {
         if (let Some(childExpr) <- (node as Expr)) {
             if (let Some(ifExpr) <- (childExpr as IfExpr)) {
-                if (!parseIfExprBody(ifExpr, parentExpr, parentName: parentName)) {
+                if (!parseIfExprBody(ifExpr, parentExpr, parentName: parentName, inBuilderBody: inBuilderBody)) {
                     return false
                 }
             } else {
@@ -213,7 +220,8 @@ func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName:
                 } else {
                     ancestorParentForValidation
                 }
-                if (!parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild)) {
+                if (!parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild,
+                    inBuilderBody: inBuilderBody)) {
                     return false
                 }
             }
@@ -226,19 +234,22 @@ func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName:
     return true
 }
 
-func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = None): Bool {
+func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = None,
+    inBuilderBody!: Bool = false): Bool {
     match(expr) {
         case tce: TrailingClosureExpr =>
             let expr = tce.expr
             let componentName = getTrailingClosureExprValue(expr)
             let childNodes = getChildNodes(tce)
-            
-            // Validate child components, stop recursion if errors found
-            if (!validateChildComponents(expr, componentName, childNodes)) {
+            // @Builder: only when ForEach/LazyForEach is the root of the builder body (no ancestor) skip
+            // parent/child rules (item fragment may be injected elsewhere). Nested ForEach still validates.
+            let skipForeachTce = inBuilderBody && COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
+                ancestorParentForValidation.isNone()
+            if (!skipForeachTce && !validateChildComponents(expr, componentName, childNodes)) {
                 return false
             }
-            // Recursively check nested components with parent context
-            return parseLambdaNodes(childNodes, expr, componentName)
+            return parseLambdaNodes(childNodes, expr, componentName,
+                ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
         case callExpr: CallExpr =>
             // Check if the last argument is a LambdaExpr (function type parameter)
             // This handles cases like: Text("hello")
@@ -254,8 +265,9 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
                         match (callExpr.callFunc as MemberAccess) {
                             case Some(memAccess) =>
                                 if (!isDirectMemberComponent(memAccess)) {
-                                    // Lambda is callback, skip child validation; but recurse into base (e.g. Text("") { xxxx })
-                                    return parseBuiltInComponent(callExpr.callFunc)
+                                    return parseBuiltInComponent(callExpr.callFunc,
+                                        ancestorParentForValidation: ancestorParentForValidation,
+                                        inBuilderBody: inBuilderBody)
                                 }
                             case None => ()
                         }
@@ -266,20 +278,26 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
                         }
                         let childNodes = lambda.nodes
                         
-                        // For ForEach/LazyForEach: validate itemGenerator's ListItem against ancestor parent (e.g. List)
+                        // For ForEach/LazyForEach under build(): validate itemGenerator (e.g. ListItem) against ancestor (e.g. List).
+                        // Under @Builder: skip only if ForEach is root (no ancestor); if nested under Row/List, still validate.
                         let validationParent = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
                             ancestorParentForValidation.isSome()) {
                             ancestorParentForValidation.getOrThrow()
                         } else {
                             componentName
                         }
-                        if (!validateChildComponents(callExpr, validationParent, childNodes)) {
+                        let skipForeachItemConstraint = inBuilderBody && COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
+                            ancestorParentForValidation.isNone()
+                        if (!skipForeachItemConstraint && !validateChildComponents(callExpr, validationParent, childNodes)) {
                             return false
                         }
-                        
-                        // Recursively check nested components with parent context
-                        return parseLambdaNodes(childNodes, callExpr, validationParent,
-                            ancestorParentForValidation: ancestorParentForValidation)
+                        let lambdaParentName = if (skipForeachItemConstraint) {
+                            componentName
+                        } else {
+                            validationParent
+                        }
+                        return parseLambdaNodes(childNodes, callExpr, lambdaParentName,
+                            ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
                     case None => 
                         // Last argument is not a LambdaExpr
                         return true
@@ -288,8 +306,8 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
             // No arguments
             return true
         case memberAccess: MemberAccess =>
-            // Handle member access like: pkg.Column().onClick(...)
-            return parseBuiltInComponent(memberAccess.baseExpr)
+            return parseBuiltInComponent(memberAccess.baseExpr, ancestorParentForValidation: ancestorParentForValidation,
+                inBuilderBody: inBuilderBody)
         case refExpr: RefExpr =>
             return true
         case ifExpr: IfExpr =>

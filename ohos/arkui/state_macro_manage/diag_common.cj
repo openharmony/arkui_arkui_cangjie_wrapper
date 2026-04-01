@@ -58,7 +58,7 @@ protected enum UIMacroKind {
     /** Empty prefix: internal validation where message omits decorator name */
     | Implicit
 
-    /** Diagnostic label shown in [StateManagement] lines */
+    /** Diagnostic label shown in macro diagnostic lines (after `MACRO_ERROR_PREFIX`, e.g. `[ArkUI]`). */
     protected func toDisplayString(): String {
         match (this) {
             case State => "@State"
@@ -89,7 +89,8 @@ protected enum UIMacroKind {
     }
 }
 
-let MACRO_ERROR_PREFIX: String = "[StateManagement]"
+/** Log/diag tag for all macro-expand checks in this package (state, @Component, build body, entry, @r, etc.). */
+let MACRO_ERROR_PREFIX: String = "[ArkUI]"
 
 /**
  * Smart token extraction for diagnostics: first line only, stop at opening brackets, skip comments/NL, truncate long literals.
