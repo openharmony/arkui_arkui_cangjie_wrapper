@@ -28,773 +28,1209 @@ class ViewAlertDialog {
         secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
 
     func build() {
-        Column(space: 5) {
-            Button("one dialog shadowstyle")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button1"
-                        let confirm1 = AlertDialogButtonOptions(
-                            value: "button",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Button-clicking callback")
-                            }
-                        )
-                        let dialog1 = AlertDialogParamWithConfirm(
-                            message: "text",
-                            title: "title",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 3,
-                            confirm: confirm1,
-                            cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+        Scroll() {
+            Column(space: 5) {
+                Button("one dialog shadowstyle")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button1"
+                            let confirm1 = AlertDialogButtonOptions(
+                                value: "button",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Button-clicking callback")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            height: 200.vp,
-                            width: 200.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
-                        )
-                        getUIContext().showAlertDialog(dialog1)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_1")
+                            )
+                            let dialog1 = AlertDialogParamWithConfirm(
+                                message: "text",
+                                title: "title",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 3,
+                                confirm: confirm1,
+                                cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                height: 200.vp,
+                                width: 200.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
+                            )
+                            getUIContext().showAlertDialog(dialog1)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_1")
 
-            Button("one dialog shadowoptions")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button2"
-                        let confirm1 = AlertDialogButtonOptions(
-                            value: "button",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Button-clicking callback")
-                            }
-                        )
-                        let dialog1 = AlertDialogParamWithConfirm(
-                            message: "text",
-                            title: "title",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 3,
-                            confirm: confirm1,
-                            cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                Button("one dialog shadowoptions")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button2"
+                            let confirm1 = AlertDialogButtonOptions(
+                                value: "button",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Button-clicking callback")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            height: 200.vp,
-                            width: 200.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
-                        )
-                        getUIContext().showAlertDialog(dialog1)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_2")
+                            )
+                            let dialog1 = AlertDialogParamWithConfirm(
+                                message: "text",
+                                title: "title",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 3,
+                                confirm: confirm1,
+                                cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                height: 200.vp,
+                                width: 200.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
+                            )
+                            getUIContext().showAlertDialog(dialog1)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_2")
 
-            Button("one dialog")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button1"
-                        let confirm1 = AlertDialogButtonOptions(
-                            value: "button",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Button-clicking callback")
-                            }
-                        )
-                        let dialog1 = AlertDialogParamWithConfirm(
-                            message: "text",
-                            title: "title",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 3,
-                            confirm: confirm1,
-                            cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                Button("one dialog")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button1"
+                            let confirm1 = AlertDialogButtonOptions(
+                                value: "button",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Button-clicking callback")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            height: 200.vp,
-                            width: 200.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
-                        )
-                        getUIContext().showAlertDialog(dialog1)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_3")
+                            )
+                            let dialog1 = AlertDialogParamWithConfirm(
+                                message: "text",
+                                title: "title",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 3,
+                                confirm: confirm1,
+                                cornerRadius: BorderRadiuses(topLeft: 0.vp, topRight: 32.vp, bottomLeft: 0.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                maskRect: Rectangle(x: 0, y: 15, width: 85.percent, height: 100.percent),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                height: 200.vp,
+                                width: 200.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp)))
+                            )
+                            getUIContext().showAlertDialog(dialog1)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_3")
 
-            Button("two dialog shadowoptions")
-                .onClick(
-                    {
-                        e =>
-                        this.msg2 = "button2"
-                        let primaryButton = AlertDialogButtonOptions(
-                            value: "cancel",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
-                            }
-                        )
-                        let secondaryButton = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "ok",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
-                            }
-                        )
-                        let dialog2 = AlertDialogParamWithButtons(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                Button("two dialog shadowoptions")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg2 = "button2"
+                            let primaryButton = AlertDialogButtonOptions(
+                                value: "cancel",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
-                            primaryButton: primaryButton,
-                            secondaryButton: secondaryButton
-                        )
-                        getUIContext().showAlertDialog(dialog2)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_4")
-
-            Button("two dialog shadowstyle")
-                .onClick(
-                    {
-                        e =>
-                        this.msg2 = "button2"
-                        let primaryButton = AlertDialogButtonOptions(
-                            value: "cancel",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
-                            }
-                        )
-                        let secondaryButton = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "ok",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
-                            }
-                        )
-                        let dialog2 = AlertDialogParamWithButtons(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                            )
+                            let secondaryButton = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "ok",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
-                            primaryButton: primaryButton,
-                            secondaryButton: secondaryButton
-                        )
-                        getUIContext().showAlertDialog(dialog2)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_5")
+                            )
+                            let dialog2 = AlertDialogParamWithButtons(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
+                                primaryButton: primaryButton,
+                                secondaryButton: secondaryButton
+                            )
+                            getUIContext().showAlertDialog(dialog2)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_4")
 
-            Button("two dialog")
-                .onClick(
-                    {
-                        e =>
-                        this.msg2 = "button2"
-                        let primaryButton = AlertDialogButtonOptions(
-                            value: "cancel",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
-                            }
-                        )
-                        let secondaryButton = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "ok",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
-                            }
-                        )
-                        let dialog2 = AlertDialogParamWithButtons(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-                                bottomRight: 32.vp),
-                            borderColor: BorderColor(color: Color.Red),
-                            onWillDismiss: {
-                                action =>
-                                match (action.reason) {
-                                    case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
-                                    case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
-                                    case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
-                                    case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
-                                    case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                Button("two dialog shadowstyle")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg2 = "button2"
+                            let primaryButton = AlertDialogButtonOptions(
+                                value: "cancel",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
                                 }
-                                action.dismiss()
-                            },
-                            borderWidth: 3.vp,
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            transition: TransitionEffect
-                                .OPACITY
-                                .animation(AnimateParam(duration: 1000))
-                                .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
-                            primaryButton: primaryButton,
-                            secondaryButton: secondaryButton
-                        )
-                        getUIContext().showAlertDialog(dialog2)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_6")
+                            )
+                            let secondaryButton = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "ok",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
+                                }
+                            )
+                            let dialog2 = AlertDialogParamWithButtons(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
+                                primaryButton: primaryButton,
+                                secondaryButton: secondaryButton
+                            )
+                            getUIContext().showAlertDialog(dialog2)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_5")
 
-            Button("three dialog")
-                .onClick(
-                    {
-                        e =>
-                        this.msg3 = "button3"
-                        let button1 = AlertDialogButtonOptions(
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: true
-                        )
-                        let button2 = AlertDialogButtonOptions(
-                            style: DialogButtonStyle.Default,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: false
-                        )
-                        let button3 = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
-                            }
-                        )
-                        let dialog3 = AlertDialogParamWithOptions(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            buttons: [button1, button2, button3],
-                            buttonDirection: DialogButtonDirection.Horizontal
-                        )
-                        getUIContext().showAlertDialog(dialog3)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_7")
+                Button("two dialog")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg2 = "button2"
+                            let primaryButton = AlertDialogButtonOptions(
+                                value: "cancel",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the first button is clicked")
+                                }
+                            )
+                            let secondaryButton = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "ok",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when the second button is clicked")
+                                }
+                            )
+                            let dialog2 = AlertDialogParamWithButtons(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+                                    bottomRight: 32.vp),
+                                borderColor: BorderColor(color: Color.Red),
+                                onWillDismiss: {
+                                    action =>
+                                    match (action.reason) {
+                                        case PRESS_BACK => Hilog.info(1, "1", "1", "PRESS_BACK")
+                                        case TOUCH_OUTSIDE => Hilog.info(1, "1", "1", "TOUCH_OUTSIDE")
+                                        case CLOSE_BUTTON => Hilog.info(1, "1", "1", "CLOSE_BUTTON")
+                                        case SLIDE_DOWN => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                        case _ => Hilog.info(1, "1", "1", "SLIDE_DOWN")
+                                    }
+                                    action.dismiss()
+                                },
+                                borderWidth: 3.vp,
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                transition: TransitionEffect
+                                    .OPACITY
+                                    .animation(AnimateParam(duration: 1000))
+                                    .combine(TransitionEffect.translate(TranslateOptions(x: 100.vp))),
+                                primaryButton: primaryButton,
+                                secondaryButton: secondaryButton
+                            )
+                            getUIContext().showAlertDialog(dialog2)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_6")
 
-            Button("three dialog shadowoptions")
-                .onClick(
-                    {
-                        e =>
-                        this.msg3 = "button3"
-                        let button1 = AlertDialogButtonOptions(
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: true
-                        )
-                        let button2 = AlertDialogButtonOptions(
-                            style: DialogButtonStyle.Default,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: false
-                        )
-                        let button3 = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
-                            }
-                        )
-                        let dialog3 = AlertDialogParamWithOptions(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            buttons: [button1, button2, button3],
-                            buttonDirection: DialogButtonDirection.Auto
-                        )
-                        getUIContext().showAlertDialog(dialog3)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_8")
+                Button("three dialog")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg3 = "button3"
+                            let button1 = AlertDialogButtonOptions(
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: true
+                            )
+                            let button2 = AlertDialogButtonOptions(
+                                style: DialogButtonStyle.Default,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: false
+                            )
+                            let button3 = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
+                                }
+                            )
+                            let dialog3 = AlertDialogParamWithOptions(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                buttons: [button1, button2, button3],
+                                buttonDirection: DialogButtonDirection.Horizontal
+                            )
+                            getUIContext().showAlertDialog(dialog3)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_7")
 
-            Button("three dialog shadowstyle")
-                .onClick(
-                    {
-                        e =>
-                        this.msg3 = "button3"
-                        let button1 = AlertDialogButtonOptions(
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: true
-                        )
-                        let button2 = AlertDialogButtonOptions(
-                            style: DialogButtonStyle.Default,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
-                            },
-                            fontColor: Color.Blue,
-                            backgroundColor: Color.Red,
-                            primary: false
-                        )
-                        let button3 = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
-                            }
-                        )
-                        let dialog3 = AlertDialogParamWithOptions(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            buttons: [button1, button2, button3],
-                            buttonDirection: DialogButtonDirection.Horizontal
-                        )
-                        getUIContext().showAlertDialog(dialog3)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_9")
+                Button("three dialog shadowoptions")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg3 = "button3"
+                            let button1 = AlertDialogButtonOptions(
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: true
+                            )
+                            let button2 = AlertDialogButtonOptions(
+                                style: DialogButtonStyle.Default,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: false
+                            )
+                            let button3 = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
+                                }
+                            )
+                            let dialog3 = AlertDialogParamWithOptions(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                buttons: [button1, button2, button3],
+                                buttonDirection: DialogButtonDirection.Auto
+                            )
+                            getUIContext().showAlertDialog(dialog3)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_8")
 
-            Button("4 button dialog")
-                .onClick(
-                    {
-                        e =>
-                        this.msg3 = "button4"
-                        let button1 = AlertDialogButtonOptions(
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
-                            }
-                        )
-                        let button2 = AlertDialogButtonOptions(
-                            style: DialogButtonStyle.Default,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
-                            }
-                        )
-                        let button3 = AlertDialogButtonOptions(
-                            enabled: true,
-                            defaultFocus: true,
-                            style: DialogButtonStyle.Highlight,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
-                            }
-                        )
-                        let dialog4 = AlertDialogParamWithOptions(
-                            message: "text",
-                            title: "title",
-                            subtitle: "subtitle",
-                            autoCancel: true,
-                            alignment: DialogAlignment.Bottom,
-                            gridCount: 4,
-                            buttons: [button1, button2, button3],
-                            buttonDirection: DialogButtonDirection.Vertical
-                        )
-                        getUIContext().showAlertDialog(dialog4)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_10")
+                Button("three dialog shadowstyle")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg3 = "button3"
+                            let button1 = AlertDialogButtonOptions(
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: true
+                            )
+                            let button2 = AlertDialogButtonOptions(
+                                style: DialogButtonStyle.Default,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
+                                },
+                                fontColor: Color.Blue,
+                                backgroundColor: Color.Red,
+                                primary: false
+                            )
+                            let button3 = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
+                                }
+                            )
+                            let dialog3 = AlertDialogParamWithOptions(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                buttons: [button1, button2, button3],
+                                buttonDirection: DialogButtonDirection.Horizontal
+                            )
+                            getUIContext().showAlertDialog(dialog3)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_9")
 
-            Button("test None dialog")
-                .onClick(
-                    {
-                        e =>
-                        this.msg3 = "test None"
-                        let button1 = AlertDialogButtonOptions(
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
-                            }
-                        )
-                        let button2 = AlertDialogButtonOptions(
-                            style: DialogButtonStyle.Default,
-                            value: "按钮",
-                            action: {
-                                => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
-                            }
-                        )
-                        let dialog4 = AlertDialogParamWithOptions(
-                            message: "text",
-                            onWillDismiss: Option.None,
-                            title: "",
-                            subtitle: "subtitle",
-                            autoCancel: false,
-                            cancel: {=>},
-                            alignment: DialogAlignment.Default,
-                            offset: Offset(1, 1),
-                            gridCount: 2,
-                            maskRect: Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-                            showInSubWindow: false,
-                            isModal: true,
-                            backgroundColor: Color.Transparent,
-                            backgroundBlurStyle: BlurStyle.ComponentUltraThick,
-                            cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-                                bottomRight: 32.vp),
-                            borderWidth: 0,
-                            borderColor: BorderColor(color: Color.Black),
-                            borderStyle: EdgeStyles(),
-                            textStyle: WordBreak.BreakAll,
-                            buttons: [button1, button2],
-                            buttonDirection: DialogButtonDirection.Vertical
-                        )
-                        getUIContext().showAlertDialog(dialog4)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_11")
+                Button("4 button dialog")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg3 = "button4"
+                            let button1 = AlertDialogButtonOptions(
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
+                                }
+                            )
+                            let button2 = AlertDialogButtonOptions(
+                                style: DialogButtonStyle.Default,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
+                                }
+                            )
+                            let button3 = AlertDialogButtonOptions(
+                                enabled: true,
+                                defaultFocus: true,
+                                style: DialogButtonStyle.Highlight,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button3 is clicked")
+                                }
+                            )
+                            let dialog4 = AlertDialogParamWithOptions(
+                                message: "text",
+                                title: "title",
+                                subtitle: "subtitle",
+                                autoCancel: true,
+                                alignment: DialogAlignment.Bottom,
+                                gridCount: 4,
+                                buttons: [button1, button2, button3],
+                                buttonDirection: DialogButtonDirection.Vertical
+                            )
+                            getUIContext().showAlertDialog(dialog4)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_10")
 
-            Button("default_AlertDialogParam")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button12"
-                        let dialog1 = AlertDialogParam(message: "text")
-                        let dialog2 = AlertDialogParamWithConfirm(message: "text")
-                        let dialog3 = AlertDialogParamWithButtons(message: "text",
-                            primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
-                            secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
-                        let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
+                Button("test None dialog")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg3 = "test None"
+                            let button1 = AlertDialogButtonOptions(
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button1 is clicked")
+                                }
+                            )
+                            let button2 = AlertDialogButtonOptions(
+                                style: DialogButtonStyle.Default,
+                                value: "按钮",
+                                action: {
+                                    => Hilog.info(1, "1", "1", "Callback when button2 is clicked")
+                                }
+                            )
+                            let dialog4 = AlertDialogParamWithOptions(
+                                message: "text",
+                                onWillDismiss: Option.None,
+                                title: "",
+                                subtitle: "subtitle",
+                                autoCancel: false,
+                                cancel: {=>},
+                                alignment: DialogAlignment.Default,
+                                offset: Offset(1, 1),
+                                gridCount: 2,
+                                maskRect: Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+                                showInSubWindow: false,
+                                isModal: true,
+                                backgroundColor: Color.Transparent,
+                                backgroundBlurStyle: BlurStyle.ComponentUltraThick,
+                                cornerRadius: BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+                                    bottomRight: 32.vp),
+                                borderWidth: 0,
+                                borderColor: BorderColor(color: Color.Black),
+                                borderStyle: EdgeStyles(),
+                                textStyle: WordBreak.BreakAll,
+                                buttons: [button1, button2],
+                                buttonDirection: DialogButtonDirection.Vertical
+                            )
+                            getUIContext().showAlertDialog(dialog4)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_11")
 
-                        getUIContext().showAlertDialog(dialog4)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_12")
+                Button("default_AlertDialogParam")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button12"
+                            let dialog1 = AlertDialogParam(message: "text")
+                            let dialog2 = AlertDialogParamWithConfirm(message: "text")
+                            let dialog3 = AlertDialogParamWithButtons(message: "text",
+                                primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
+                                secondaryButton: AlertDialogButtonOptions(value: "", action: {=>}))
+                            let dialog4 = AlertDialogParamWithOptions(message: "text", buttons: [])
 
-
-            Button("AlertDialogButtonBaseOptions_toNative")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button13"
-
-                        let baseConfirm = AlertDialogButtonBaseOptions(
-                            value: "base_confirm",
-                            fontColor: Color.Red,
-                            backgroundColor: Color.Blue,
-                            action: {=>}
-                        )
-                        let dialog = AlertDialogParamWithConfirm(
-                            message: "test base toNative",
-                            confirm: baseConfirm
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_13")
-
-
-            Button("BorderColor_None")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button14"
-                        let dialog = AlertDialogParamWithConfirm(
-                            message: "test BorderColor None",
-                            borderColor: BorderColor(color: Option<ResourceColor>.None)
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_14")
-
-
-            Button("AlertDialogParamWithButtons_None")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button15"
-                        let dialog = AlertDialogParamWithButtons(
-                            message: "test buttons None",
-                            primaryButton: Option<AlertDialogButtonBaseOptions>.None,
-                            secondaryButton: Option<AlertDialogButtonBaseOptions>.None
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_15")
-
-
-            Button("AlertDialogParamWithOptions_None")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button16"
-                        let dialog = AlertDialogParamWithOptions(
-                            message: "test options None",
-                            buttons: Option<Array<AlertDialogButtonOptions>>.None,
-                            buttonDirection: Option<DialogButtonDirection>.None
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_16")
-
-
-            Button("AlertDialogButtonBaseOptions_ValueAction_None")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button17"
-                        let baseConfirm = AlertDialogButtonBaseOptions(
-                            value: Option<ResourceStr>.None,
-                            action: Option<VoidCallback>.None
-                        )
-                        let dialog = AlertDialogParamWithConfirm(
-                            message: "test value/action None",
-                            confirm: baseConfirm
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_17")
+                            getUIContext().showAlertDialog(dialog4)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_12")
 
 
-            Button("AlertDialogParam_Shadow_Some")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button18"
-                        let dialog = AlertDialogParamWithConfirm(
-                            message: "test shadow Some",
-                            shadow: ShadowOptions(radius: 10.0, color: Color.Gray)
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_18")
+                Button("AlertDialogButtonBaseOptions_toNative")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button13"
+
+                            let baseConfirm = AlertDialogButtonBaseOptions(
+                                value: "base_confirm",
+                                fontColor: Color.Red,
+                                backgroundColor: Color.Blue,
+                                action: {=>}
+                            )
+                            let dialog = AlertDialogParamWithConfirm(
+                                message: "test base toNative",
+                                confirm: baseConfirm
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_13")
 
 
-            Button("AlertDialogButtonOptions_ValueAction_None")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button19"
-                        let button1 = AlertDialogButtonOptions(
-                            value: Option<ResourceStr>.None,
-                            action: Option<VoidCallback>.None
-                        )
-                        let dialog = AlertDialogParamWithOptions(
-                            message: "test button value/action None",
-                            buttons: [button1]
-                        )
-                        getUIContext().showAlertDialog(dialog)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_19")
+                Button("BorderColor_None")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button14"
+                            let dialog = AlertDialogParamWithConfirm(
+                                message: "test BorderColor None",
+                                borderColor: BorderColor(color: Option<ResourceColor>.None)
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_14")
 
 
-            Button("AlertDialogParam_ManualNone")
-                .onClick(
-                    {
-                        e =>
-                        this.msg1 = "button20"
-                        let dialogConfirm = AlertDialogParamWithConfirm(message: "manual none confirm")
-                        dialogConfirm.confirm = Option<AlertDialogButtonBaseOptions>.None
-                        getUIContext().showAlertDialog(dialogConfirm)
+                Button("AlertDialogParamWithButtons_None")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button15"
+                            let dialog = AlertDialogParamWithButtons(
+                                message: "test buttons None",
+                                primaryButton: Option<AlertDialogButtonBaseOptions>.None,
+                                secondaryButton: Option<AlertDialogButtonBaseOptions>.None
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_15")
 
-                        let dialogButtons = AlertDialogParamWithButtons(
-                            message: "manual none buttons",
-                            primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
-                            secondaryButton: AlertDialogButtonOptions(value: "", action: {=>})
-                        )
-                        dialogButtons.primaryButton = Option<AlertDialogButtonBaseOptions>.None
-                        dialogButtons.secondaryButton = Option<AlertDialogButtonBaseOptions>.None
-                        getUIContext().showAlertDialog(dialogButtons)
-                    }
-                )
-                .fontSize(12)
-                .height(30)
-                .id("button_20")
 
-            //适配70pro，设置fontSize
-            Row {
-                Text(this.msg).fontSize(8).id("text")
-                Text(this.msg1).fontSize(8).id("text_1")
-                Text(this.msg1).fontSize(8).id("text_2")
-            }
-            Row {
-                Text(this.msg1).fontSize(8).id("text_3")
-                Text(this.msg2).fontSize(8).id("text_4")
-                Text(this.msg2).fontSize(8).id("text_5")
-            }
-            Row {
-                Text(this.msg2).fontSize(8).id("text_6")
-                Text(this.msg3).fontSize(8).id("text_7")
-                Text(this.msg3).fontSize(8).id("text_8")
-            }
-            Row {
-                Text(this.msg3).fontSize(8).id("text_9")
-                Text(this.msg3).fontSize(8).id("text_11")
-            }
-        }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
+                Button("AlertDialogParamWithOptions_None")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button16"
+                            let dialog = AlertDialogParamWithOptions(
+                                message: "test options None",
+                                buttons: Option<Array<AlertDialogButtonOptions>>.None,
+                                buttonDirection: Option<DialogButtonDirection>.None
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_16")
+
+
+                Button("AlertDialogButtonBaseOptions_ValueAction_None")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button17"
+                            let baseConfirm = AlertDialogButtonBaseOptions(
+                                value: Option<ResourceStr>.None,
+                                action: Option<VoidCallback>.None
+                            )
+                            let dialog = AlertDialogParamWithConfirm(
+                                message: "test value/action None",
+                                confirm: baseConfirm
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_17")
+
+
+                Button("AlertDialogParam_Shadow_Some")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button18"
+                            let dialog = AlertDialogParamWithConfirm(
+                                message: "test shadow Some",
+                                shadow: ShadowOptions(radius: 10.0, color: Color.Gray)
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_18")
+
+
+                Button("AlertDialogButtonOptions_ValueAction_None")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button19"
+                            let button1 = AlertDialogButtonOptions(
+                                value: Option<ResourceStr>.None,
+                                action: Option<VoidCallback>.None
+                            )
+                            let dialog = AlertDialogParamWithOptions(
+                                message: "test button value/action None",
+                                buttons: [button1]
+                            )
+                            getUIContext().showAlertDialog(dialog)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_19")
+
+
+                Button("AlertDialogParam_ManualNone")
+                    .onClick(
+                        {
+                            e =>
+                            this.msg1 = "button20"
+                            let dialogConfirm = AlertDialogParamWithConfirm(message: "manual none confirm")
+                            dialogConfirm.confirm = Option<AlertDialogButtonBaseOptions>.None
+                            getUIContext().showAlertDialog(dialogConfirm)
+
+                            let dialogButtons = AlertDialogParamWithButtons(
+                                message: "manual none buttons",
+                                primaryButton: AlertDialogButtonOptions(value: "", action: {=>}),
+                                secondaryButton: AlertDialogButtonOptions(value: "", action: {=>})
+                            )
+                            dialogButtons.primaryButton = Option<AlertDialogButtonBaseOptions>.None
+                            dialogButtons.secondaryButton = Option<AlertDialogButtonBaseOptions>.None
+                            getUIContext().showAlertDialog(dialogButtons)
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("button_20")
+                // AlertDialogParamWithConfirm shadow.radius：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
+                Button("AlertDialogParamWithConfirm shadow radius 10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadius10")
+                Button("AlertDialogParamWithConfirm shadow radius -10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadiusNeg10")
+                Button("AlertDialogParamWithConfirm shadow radius 0")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 0.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadius0")
+                Button("AlertDialogParamWithConfirm shadow radius 1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadius1")
+                Button("AlertDialogParamWithConfirm shadow radius -1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadiusNeg1")
+                Button("AlertDialogParamWithConfirm shadow radius Float64.Max")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Max, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadiusFloat64Max")
+                Button("AlertDialogParamWithConfirm shadow radius Float64.Min")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Min, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadiusFloat64Min")
+                Button("AlertDialogParamWithConfirm shadow omitted")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "omit shadow",
+                                width: 70.percent,
+                                height: 30.percent
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowOmitted")
+                Button("AlertDialogParamWithConfirm shadow radius Option.None")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithConfirm(
+                                message: "ShadowOptions(radius: Option.None)",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0)
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithConfirmShadowRadiusOptionNone")
+
+                // AlertDialogParamWithButtons shadow.radius：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
+                Button("AlertDialogParamWithButtons shadow radius 10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadius10")
+                Button("AlertDialogParamWithButtons shadow radius -10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadiusNeg10")
+                Button("AlertDialogParamWithButtons shadow radius 0")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 0.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadius0")
+                Button("AlertDialogParamWithButtons shadow radius 1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadius1")
+                Button("AlertDialogParamWithButtons shadow radius -1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadiusNeg1")
+                Button("AlertDialogParamWithButtons shadow radius Float64.Max")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Max, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadiusFloat64Max")
+                Button("AlertDialogParamWithButtons shadow radius Float64.Min")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Min, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadiusFloat64Min")
+                Button("AlertDialogParamWithButtons shadow omitted")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "omit shadow",
+                                width: 70.percent,
+                                height: 30.percent,
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowOmitted")
+                Button("AlertDialogParamWithButtons shadow radius Option.None")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithButtons(
+                                message: "ShadowOptions(radius: Option.None)",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                primaryButton: Option.None,
+                                secondaryButton: Option.None
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithButtonsShadowRadiusOptionNone")
+
+                // AlertDialogParamWithOptions shadow.radius：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
+                Button("AlertDialogParamWithOptions shadow radius 10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadius10")
+                Button("AlertDialogParamWithOptions shadow radius -10")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadiusNeg10")
+                Button("AlertDialogParamWithOptions shadow radius 0")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 0.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadius0")
+                Button("AlertDialogParamWithOptions shadow radius 1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: 1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadius1")
+                Button("AlertDialogParamWithOptions shadow radius -1")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: -1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadiusNeg1")
+                Button("AlertDialogParamWithOptions shadow radius Float64.Max")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Max, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadiusFloat64Max")
+                Button("AlertDialogParamWithOptions shadow radius Float64.Min")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "shadow.radius",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Float64.Min, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadiusFloat64Min")
+                Button("AlertDialogParamWithOptions shadow omitted")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "omit shadow",
+                                width: 70.percent,
+                                height: 30.percent,
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowOmitted")
+                Button("AlertDialogParamWithOptions shadow radius Option.None")
+                    .onClick(
+                        {
+                            e =>
+                            getUIContext().showAlertDialog(AlertDialogParamWithOptions(
+                                message: "ShadowOptions(radius: Option.None)",
+                                width: 70.percent,
+                                height: 30.percent,
+                                shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0),
+                                buttons: []
+                            ))
+                        }
+                    )
+                    .fontSize(12)
+                    .height(30)
+                    .id("showAlertDialogWithOptionsShadowRadiusOptionNone")
+
+                Row {
+                    Text(this.msg).id("text")
+                    Text(this.msg1).id("text_1")
+                    Text(this.msg1).id("text_2")
+                }
+                Row {
+                    Text(this.msg1).id("text_3")
+                    Text(this.msg2).id("text_4")
+                    Text(this.msg2).id("text_5")
+                }
+                Row {
+                    Text(this.msg2).id("text_6")
+                    Text(this.msg3).id("text_7")
+                    Text(this.msg3).id("text_8")
+                }
+                Row {
+                    Text(this.msg3).id("text_9")
+                    Text(this.msg3).id("text_11")
+                }
+            }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
+        }
+        .id("viewAlertDialogScroller")
     }
 }

@@ -418,7 +418,7 @@ public class CustomDialogControllerOptions {
 
 func parseNativeShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius ?? 0.0,
+        shadowOptions.radius ?? -1.0,
         (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
         (shadowOptions.color ?? Color.Black).toUInt32(),
         shadowOptions.offsetX ?? 0.0,
@@ -495,7 +495,7 @@ public class CustomDialogController <: RemoteDataLite {
         let nativeBackgroundBlurStyle = NativeOptionInt32(true, (options.backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue())
         let nativeOptionShadow = match (options.shadow) {
             case Some(value) => NativeOptionShadow(true, parseNativeShadowOptions(value))
-            case None => NativeOptionShadow(false, parseNativeShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color)))
+            case None => NativeOptionShadow(false, parseNativeShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color)))
         }
         let cancelLambda = Callback0Param<Unit>(options.cancel ?? {=>})
         this.ffiCancel_ = cancelLambda

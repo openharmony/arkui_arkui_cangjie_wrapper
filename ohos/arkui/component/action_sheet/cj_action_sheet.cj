@@ -680,7 +680,7 @@ public class ActionSheetOptions {
         this.borderStyle = borderStyle ?? EdgeStyles()
         this.width = width
         this.height = height
-        this.shadow = shadow ?? ShadowOptions(radius: 0.0)
+        this.shadow = shadow ?? ShadowOptions(radius: -1.0)
         this.transition = transition
     }
 
@@ -838,7 +838,7 @@ protected class ActionSheetInner {
     protected static func show(value: ActionSheetOptions): Unit {
         let nativeOptions = value.getNativeParam()
         unsafe {
-            FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(nativeOptions, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
+            FfiOHOSAceFrameworkActionSheetShowWithShadowOptions(nativeOptions, (value.shadow ?? ShadowOptions(radius: -1.0)).toActionSheetShadowNative())
             nativeOptions.free((value.sheets ?? []).size)
         }
         return

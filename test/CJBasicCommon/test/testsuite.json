@@ -32,6 +32,14 @@
     {
       "name": "BasicCommonUTHello",
       "timeout": 100
+    },
+    {
+      "name": "BasicCommonUTShadow",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommonUTBindSheet",
+      "timeout": 100
     }
   ]
 }

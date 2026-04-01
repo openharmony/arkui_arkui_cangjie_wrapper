@@ -11,8 +11,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Index for general-attribute bindSheet LLT (per-component views). Distinct from ViewBindSheet (UT1 demo).
  */
 
 package ohos_app_cangjie_entry
@@ -29,12 +27,12 @@ import ohos.arkui.state_macro_manage.r
 
 @Entry
 @Component
-class ViewBindSheet {
+class ViewShadow {
     func build() {
         Scroll() {
             Flex(wrap: FlexWrap.Wrap) {
                 ForEach(
-                    bindSheetViewList,
+                    shadowViewList,
                     itemGeneratorFunc: {
                         viewName: String, _: Int64 => Button(viewName).fontSize(12).width(47.percent).height(30).id(
                             viewName).borderRadius(4).margin(2).onClick ({ e

@@ -1837,7 +1837,7 @@ protected open class CommonMethodComponent<T> <: UINodeBase & CommonMethod<T> {
 
     protected open func shadowInner(radius: ?Float64, color: ?ResourceColor, offsetX: ?Float64, offsetY: ?Float64): T {
         unsafe {
-            FfiOHOSAceFrameworkViewAbstractSetShadow(radius ?? 0.0, transAppResourceToResourceColor(color ?? Color(0x666666)),
+            FfiOHOSAceFrameworkViewAbstractSetShadow(radius ?? -1.0, transAppResourceToResourceColor(color ?? Color(0x666666)),
                 offsetX ?? 0.0, offsetY ?? 0.0)
         }
         (this as T) ?? throw BusinessException(100001, "Internal error.")

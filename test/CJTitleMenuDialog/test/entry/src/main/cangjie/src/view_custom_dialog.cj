@@ -50,6 +50,28 @@ class MyDialog {
     }
 }
 
+@CustomDialog
+class DialogShadow {
+    var controller: Option<CustomDialogController> = Option.None
+    func build() {
+        Row(space: 60) {
+            Button("cancel").onClick(
+                {
+                    evt =>
+                    controller?.closeDialog()
+                }
+            ).id("cancel_button")
+
+            Button("confirm").onClick(
+                {
+                    evt =>
+                    controller?.closeDialog()
+                }
+            ).id("confirm_button")
+        }.height(500.px)
+    }
+}
+
 @Entry
 @Component
 class ViewCustomDialog {
@@ -62,6 +84,53 @@ class ViewCustomDialog {
             openAnimation: AnimateParam(), closeAnimation: AnimateParam()))
     var dialogController: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(builder: MyDialog(message: message)))
+
+    // CustomDialogControllerOptions.shadow：与 openCustomDialog 同 9 组场景（10, -10, 0, 1, -1, Max, Min, 省略 shadow, radius Option.None）
+    var customDialogShadowRadius10Controller: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: 10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadiusNeg10Controller: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: -10.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadius0Controller: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: 0.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadius1Controller: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: 1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadiusNeg1Controller: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: -1.0, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadiusFloat64MaxController: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: Float64.Max, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowRadiusFloat64MinController: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: Float64.Min, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+    var customDialogShadowOmittedController: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent))
+    var customDialogShadowRadiusOptionNoneController: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        width: 70.percent,
+        height: 30.percent,
+        shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
+
     func build() {
         Column {
             Text(this.message).width(100.percent).id("text")
@@ -72,6 +141,61 @@ class ViewCustomDialog {
                     dialogController.openDialog()
                 }
             ).id("open_button")
+
+            Button("CustomDialog shadow radius 10").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadius10Controller.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadius10")
+            Button("CustomDialog shadow radius -10").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadiusNeg10Controller.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadiusNeg10")
+            Button("CustomDialog shadow radius 0").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadius0Controller.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadius0")
+            Button("CustomDialog shadow radius 1").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadius1Controller.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadius1")
+            Button("CustomDialog shadow radius -1").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadiusNeg1Controller.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadiusNeg1")
+            Button("CustomDialog shadow radius Float64.Max").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadiusFloat64MaxController.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadiusFloat64Max")
+            Button("CustomDialog shadow radius Float64.Min").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadiusFloat64MinController.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadiusFloat64Min")
+            Button("CustomDialog shadow omitted").onClick(
+                {
+                    evt =>
+                    customDialogShadowOmittedController.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowOmitted")
+            Button("CustomDialog shadow radius Option.None").onClick(
+                {
+                    evt =>
+                    customDialogShadowRadiusOptionNoneController.openDialog()
+                }
+            ).fontSize(12).height(30).id("customDialogShadowRadiusOptionNone")
         }.id("my_dialog")
     }
 }

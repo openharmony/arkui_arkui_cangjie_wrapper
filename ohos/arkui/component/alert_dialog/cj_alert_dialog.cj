@@ -781,7 +781,7 @@ public open class AlertDialogParam {
         this.borderWidth = borderWidth ?? 0
         this.borderColor = borderColor ?? BorderColor(color: Color.Black)
         this.borderStyle = borderStyle ?? EdgeStyles()
-        this.shadow = shadow ?? ShadowOptions(radius: 0.0)
+        this.shadow = shadow ?? ShadowOptions(radius: -1.0)
         this.textStyle = textStyle ?? WordBreak.BreakAll
     }
 
@@ -957,7 +957,7 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
             borderWidth: borderWidth ?? 0,
             borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
-            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            shadow: shadow ?? ShadowOptions(radius: -1.0),
             textStyle: textStyle ?? WordBreak.BreakAll
         )
         this.confirm = confirm ?? AlertDialogButtonOptions(value: "", action: {=>})
@@ -1071,7 +1071,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
             borderWidth: borderWidth ?? 0,
             borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
-            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            shadow: shadow ?? ShadowOptions(radius: -1.0),
             textStyle: textStyle ?? WordBreak.BreakAll
         )
         this.primaryButton = primaryButton ?? AlertDialogButtonBaseOptions(value: "", action: {=>})
@@ -1188,7 +1188,7 @@ public class AlertDialogParamWithOptions <: AlertDialogParam {
             borderWidth: borderWidth ?? 0,
             borderColor: borderColor ?? BorderColor(color: Color.Black),
             borderStyle: borderStyle ?? EdgeStyles(),
-            shadow: shadow ?? ShadowOptions(radius: 0.0),
+            shadow: shadow ?? ShadowOptions(radius: -1.0),
             textStyle: textStyle ?? WordBreak.BreakAll
         )
         this.buttons = buttons ?? []
@@ -1205,7 +1205,7 @@ protected class AlertDialogInner {
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithConfirmShadowOptions(
-                nativeDialog, nativeConfirm, (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
+                nativeDialog, nativeConfirm, (value.shadow ?? ShadowOptions(radius: -1.0)).toActionSheetShadowNative())
             nativeDialog.free()
             freeButton(nativeConfirm)
         }
@@ -1224,7 +1224,7 @@ protected class AlertDialogInner {
         }
         unsafe {
             FfiOHOSShowAlertDialogParamWithButtonsShadowOptions(nativeDialog, nativePrimaryButton, nativeSecondaryButton,
-                (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative())
+                (value.shadow ?? ShadowOptions(radius: -1.0)).toActionSheetShadowNative())
             nativeDialog.free()
             freeButton(nativePrimaryButton)
             freeButton(nativeSecondaryButton)
@@ -1259,7 +1259,7 @@ protected class AlertDialogInner {
             FfiOHOSShowAlertDialogParamWithOptionsShadowOptions(
                 nativeDialog,
                 nativeButtons,
-                (value.shadow ?? ShadowOptions(radius: 0.0)).toActionSheetShadowNative(),
+                (value.shadow ?? ShadowOptions(radius: -1.0)).toActionSheetShadowNative(),
                 (value.buttonDirection ?? DialogButtonDirection.Auto).getValue())
             nativeDialog.free()
             freeButtonsArr(nativeButtons)

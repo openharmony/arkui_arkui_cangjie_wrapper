@@ -1287,7 +1287,7 @@ public class ShowToastOptions {
 
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
-        shadowOptions.radius ?? 0.0,
+        shadowOptions.radius ?? -1.0,
         (shadowOptions.shadowType ?? ShadowType.Color).getValue(),
         transAppResourceToResourceColor(shadowOptions.color ?? Color.Black),
         shadowOptions.offsetX ?? 0.0,
@@ -1345,7 +1345,7 @@ func parseCustomDialogOptions(options: CustomDialogOptions): NativeCustomDialogO
 
     let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
+        case None => parseShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color))
     }
     let shadowStyle = Int32(100)
     let widthLength = transAppResourceToLength(options.width)
@@ -1401,7 +1401,7 @@ func parseShowToastOptions(options: ShowToastOptions): NativeShowToastOptions {
         case Some(value) =>
             shadowStyle = SHADOWOPTIONS_EXIST
             parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions(radius: 0.0))
+        case None => parseShadowOptions(ShadowOptions(radius: -1.0))
     }
     unsafe {
         var cMsg = CString(CPointer<UInt8>())
@@ -1439,7 +1439,7 @@ func parseShowDialogOptions(options: ShowDialogOptions): NativeShowDialogOptions
         })
     let shadowOption = match (options.shadow) {
         case Some(value) => parseShadowOptions(value)
-        case None => parseShadowOptions(ShadowOptions(radius: 0.0, shadowType: ShadowType.Color))
+        case None => parseShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color))
     }
     let shadowStyle = Int32(100)
     unsafe {
