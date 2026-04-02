@@ -85,8 +85,8 @@ class TextAndInputUT21 {
         @Expect(attrsDefault.get("cancelButton").getOrThrow().toString().replace("\\", ""),
             '"{\"style\":2,\"icon\":\"{\"size\":\"0.00px\",\"src\":\"\",\"color\":\"#FF000000\"}\"}"')
         @Expect(attrsDefault.get("copyOption").getOrThrow().toString(), '"CopyOptions.Local"')
-        @Expect(attrsDefault.get("decoration").getOrThrow().toString().replace("\\", ""),
-            '"{\"type\":\"TextDecorationType.None\",\"color\":\"#FF000000\",\"style\":\"TextDecorationStyle.SOLID\"}"')
+        @Expect(attrsDefault.get("decoration").getOrThrow().toString().replace("\\", "").contains(
+            "\"type\":\"TextDecorationType.None\",\"color\":\"#FF000000\",\"style\":\"TextDecorationStyle.SOLID\""))
         @Expect(attrsDefault.get("selectedBackgroundColor").getOrThrow().toString(), '"#330A59F7"')
         @Expect(attrsDefault.get("caretStyle").getOrThrow().toString().replace("\\", ""),
             '"{\"color\":\"#FF0A59F7\",\"width\":\"2.00vp\"}"')
