@@ -152,12 +152,8 @@ func validateChildComponents(parentExpr: Expr, componentName: String, childNodes
         match (COMPONENT_RULE_REGISTRY.validateComponentConstraints(parentName: componentName, childName: childName,
             childCount: childCount)) {
             case Some(error) =>
-                let reportExpr = if (error.errorType == BuiltInComponentErrorType.ForEachNotAllowedInMonadic) {
-                    childCompExpr
-                } else {
-                    parentExpr
-                }
-                reportComponentConstraintError(reportExpr, error)
+                // Highlight parent (e.g. Stepper): monadic container is where the constraint applies; ForEach is the offending child name in detail.
+                reportComponentConstraintError(parentExpr, error)
                 hasError = true
             case None => ()
         }
@@ -205,33 +201,86 @@ func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if
         inBuilderBody: inBuilderBody)
 }
 
+/**
+ * Single child under a lambda/block: dispatch IfExpr, built-in UI subtree, or non-Expr rule check.
+ */
+func parseLambdaChildNode(
+    node: Node,
+    parentExpr: Expr,
+    parentName: String,
+    ancestorParentForValidation: ?String,
+    inBuilderBody: Bool
+): Bool {
+    if (let Some(childExpr) <- (node as Expr)) {
+        if (let Some(ifExpr) <- (childExpr as IfExpr)) {
+            return parseIfExprBody(ifExpr, parentExpr, parentName: parentName, inBuilderBody: inBuilderBody)
+        }
+        let childName = getTrailingClosureExprValue(childExpr)
+        let ancestorForChild = if (COMPONENT_TYPE_FOREACH_LIST.contains(childName)) {
+            Some(parentName)
+        } else {
+            ancestorParentForValidation
+        }
+        return parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild,
+            inBuilderBody: inBuilderBody)
+    }
+    return UISyntaxChecker.checkIsExpr(node)
+}
+
 func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName: String,
     ancestorParentForValidation!: ?String = None, inBuilderBody!: Bool = false): Bool {
     for (node in childNodes) {
-        if (let Some(childExpr) <- (node as Expr)) {
-            if (let Some(ifExpr) <- (childExpr as IfExpr)) {
-                if (!parseIfExprBody(ifExpr, parentExpr, parentName: parentName, inBuilderBody: inBuilderBody)) {
-                    return false
-                }
-            } else {
-                let childName = getTrailingClosureExprValue(childExpr)
-                let ancestorForChild = if (COMPONENT_TYPE_FOREACH_LIST.contains(childName)) {
-                    Some(parentName)
-                } else {
-                    ancestorParentForValidation
-                }
-                if (!parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild,
-                    inBuilderBody: inBuilderBody)) {
-                    return false
-                }
-            }
-        } else {
-            if (!UISyntaxChecker.checkIsExpr(node)) {
-                return false
-            }
+        if (!parseLambdaChildNode(node, parentExpr, parentName, ancestorParentForValidation, inBuilderBody)) {
+            return false
         }
     }
     return true
+}
+
+/**
+ * CallExpr with last argument a UI lambda (e.g. Text("") { }, ForEach(..., itemGenerator: { })).
+ * Handles MemberAccess callbacks (.onClick), keyGenerator skip, ForEach ancestor validation, then recurses.
+ */
+func parseCallExprWithTrailingLambda(
+    callExpr: CallExpr,
+    lambda: LambdaExpr,
+    lastArgument: Argument,
+    ancestorParentForValidation: ?String,
+    inBuilderBody: Bool
+): Bool {
+    match (callExpr.callFunc as MemberAccess) {
+        case Some(memAccess) =>
+            if (!isDirectMemberComponent(memAccess)) {
+                return parseBuiltInComponent(callExpr.callFunc,
+                    ancestorParentForValidation: ancestorParentForValidation,
+                    inBuilderBody: inBuilderBody)
+            }
+        case None => ()
+    }
+    let arguments = callExpr.arguments
+    let componentName = getTrailingClosureExprValue(callExpr)
+    if (isForeachKeyGeneratorLastArg(componentName, arguments, lastArgument)) {
+        return true
+    }
+    let childNodes = lambda.nodes
+    let validationParent = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
+        ancestorParentForValidation.isSome()) {
+        ancestorParentForValidation.getOrThrow()
+    } else {
+        componentName
+    }
+    let skipForeachItemConstraint = inBuilderBody && COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
+        ancestorParentForValidation.isNone()
+    if (!skipForeachItemConstraint && !validateChildComponents(callExpr, validationParent, childNodes)) {
+        return false
+    }
+    let lambdaParentName = if (skipForeachItemConstraint) {
+        componentName
+    } else {
+        validationParent
+    }
+    return parseLambdaNodes(childNodes, callExpr, lambdaParentName,
+        ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
 }
 
 func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = None,
@@ -251,60 +300,19 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
             return parseLambdaNodes(childNodes, expr, componentName,
                 ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
         case callExpr: CallExpr =>
-            // Check if the last argument is a LambdaExpr (function type parameter)
-            // This handles cases like: Text("hello")
-            // Note: This is mutually exclusive with TrailingClosureExpr
+            // Last argument may be LambdaExpr (UI subtree); else TrailingClosureExpr handles brace form.
             let arguments = callExpr.arguments
-            if (arguments.size > 0) {
-                let lastArgument = arguments[arguments.size - 1]
-                let lastExpr = lastArgument.expr
-                match (lastExpr as LambdaExpr) {
-                    case Some(lambda) =>
-                        // Skip if callFunc is MemberAccess and direct member is NOT a component (e.g. onClick) - lambda is callback
-                        // Reuse component classification: xx.Text has Text as component; Text("") { xxxx }.onClick has onClick as method
-                        match (callExpr.callFunc as MemberAccess) {
-                            case Some(memAccess) =>
-                                if (!isDirectMemberComponent(memAccess)) {
-                                    return parseBuiltInComponent(callExpr.callFunc,
-                                        ancestorParentForValidation: ancestorParentForValidation,
-                                        inBuilderBody: inBuilderBody)
-                                }
-                            case None => ()
-                        }
-                        // Extract component name from call expression
-                        let componentName = getTrailingClosureExprValue(callExpr)
-                        if (isForeachKeyGeneratorLastArg(componentName, arguments, lastArgument)) {
-                            return true
-                        }
-                        let childNodes = lambda.nodes
-                        
-                        // For ForEach/LazyForEach under build(): validate itemGenerator (e.g. ListItem) against ancestor (e.g. List).
-                        // Under @Builder: skip only if ForEach is root (no ancestor); if nested under Row/List, still validate.
-                        let validationParent = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
-                            ancestorParentForValidation.isSome()) {
-                            ancestorParentForValidation.getOrThrow()
-                        } else {
-                            componentName
-                        }
-                        let skipForeachItemConstraint = inBuilderBody && COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
-                            ancestorParentForValidation.isNone()
-                        if (!skipForeachItemConstraint && !validateChildComponents(callExpr, validationParent, childNodes)) {
-                            return false
-                        }
-                        let lambdaParentName = if (skipForeachItemConstraint) {
-                            componentName
-                        } else {
-                            validationParent
-                        }
-                        return parseLambdaNodes(childNodes, callExpr, lambdaParentName,
-                            ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
-                    case None => 
-                        // Last argument is not a LambdaExpr
-                        return true
-                }
-            } 
-            // No arguments
-            return true
+            if (arguments.size == 0) {
+                return true
+            }
+            let lastArgument = arguments[arguments.size - 1]
+            match (lastArgument.expr as LambdaExpr) {
+                case Some(lambda) =>
+                    return parseCallExprWithTrailingLambda(callExpr, lambda, lastArgument,
+                        ancestorParentForValidation, inBuilderBody)
+                case None =>
+                    return true
+            }
         case memberAccess: MemberAccess =>
             return parseBuiltInComponent(memberAccess.baseExpr, ancestorParentForValidation: ancestorParentForValidation,
                 inBuilderBody: inBuilderBody)
