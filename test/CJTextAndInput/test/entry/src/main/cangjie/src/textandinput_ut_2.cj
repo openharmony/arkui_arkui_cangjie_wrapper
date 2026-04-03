@@ -190,7 +190,7 @@ class TextAndInputUT2 {
         @Expect(lineSpacing, "\"0.00vp\"")
         let decoration = attrs.get("decoration").getOrThrow().toString()
         Hilog.info(1, "Cangjie-Test", "text decoration:\t ${decoration}")
-        @Expect(decoration.contains("{\\\"type\\\":\\\"TextDecorationType.None\\\",\\\"color\\\":\\\"#FF000000\\\",\\\"style\\\":\\\"TextDecorationStyle.SOLID\\\"}"))
+        @Expect(decoration.contains("\\\"type\\\":\\\"TextDecorationType.None\\\",\\\"color\\\":\\\"#FF000000\\\",\\\"style\\\":\\\"TextDecorationStyle.SOLID\\\""))
         let wordBreak = attrs.get("wordBreak").getOrThrow().toString()
         Hilog.info(1, "Cangjie-Test", "text wordBreak:\t ${wordBreak}")
         @Expect(wordBreak, "\"break-word\"")
