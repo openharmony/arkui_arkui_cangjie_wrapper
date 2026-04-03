@@ -248,8 +248,7 @@ protected func buildComponentConstraintMessage(error: ChildComponentError): (Str
             return ("", "")
         
         case BuiltInComponentErrorType.NoChildAllowed =>
-            let detail = "'${error.parentName}' cannot have any child components"
-            return (detail, "")
+            return ("", "")
         
         case BuiltInComponentErrorType.InvalidChildType =>
             let allowedStr = formatAllowedChildren(error.allowedChildren)
