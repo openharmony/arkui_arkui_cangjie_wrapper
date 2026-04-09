@@ -330,7 +330,7 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
 
 func genPropDeclNode(varDecl: VarDecl, stateKind: StateKind): Tokens {
     let mangledNameToken: Token = generateMangledToken(varDecl.identifier.value)
-    let propDecl = genPropDecl(varDecl)
+    let propDecl = genPropDeclForStateVar(varDecl, stateKind: stateKind)
     var initializer: Tokens = Tokens()
     try {
         let _ = varDecl.expr 
@@ -346,7 +346,7 @@ func genPropDeclNode(varDecl: VarDecl, stateKind: StateKind): Tokens {
                 localStorageStateInfo.add(
                     (quote($mangledNameToken), quote(getLocalStorage().setAndLink<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
                 return quote(
-                    $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
+                    private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
                     $propDecl
                 )
             case LocalStoragePropTy =>
@@ -354,7 +354,7 @@ func genPropDeclNode(varDecl: VarDecl, stateKind: StateKind): Tokens {
                 localStorageStateInfo.add(
                     (quote($mangledNameToken), quote(getLocalStorage().setAndProp<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
                 return quote(
-                    $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
+                    private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
                     $propDecl
                 )
             case _ => return Tokens()
@@ -373,7 +373,7 @@ func genPropDeclNode(varDecl: VarDecl, stateKind: StateKind): Tokens {
 
 func genPropDeclNode(varDecl: VarDecl): Tokens {
     let mangledNameToken: Token = generateMangledToken(varDecl.identifier.value)
-    let propDecl = genPropDecl(varDecl)
+    let propDecl = genPropDeclForStateVar(varDecl)
     let mangledNameValue = LitConstExpr(quote($(mangledNameToken.value)))
     var initializer: Tokens = Tokens()
     try {
@@ -390,13 +390,28 @@ func genPropDeclNode(varDecl: VarDecl): Tokens {
 }
 
 
-func genPropDecl(varDecl: VarDecl): Tokens {
+func genPropDeclForStateVar(varDecl: VarDecl, stateKind!: ?StateKind = None): Tokens {
     var mangledToken = generateMangledToken(varDecl.identifier.value)
     var valDeclType = varDecl.declType
     let modifiersTokens = Tokens()
     varDecl.modifiers |> forEach<Modifier> {
         modifier: Modifier => modifiersTokens.append(modifier.toTokens())
     }
+    if (modifiersTokens.size == 0) {
+        modifiersTokens.append(quote(private))
+    }
+    var setFuncBody = quote(
+        set(v) {
+            this.$mangledToken.set(v)
+        })
+
+    if (let Some(v) <- stateKind) {
+        match(v) {
+            case AppStoragePropTy | LocalStoragePropTy | LocalStoragePropInterOpTy => setFuncBody = Tokens()
+            case _ => ()
+        }
+    }
+
     let identToken = varDecl.identifier
     return if (varDecl.keyword.value == "var") {
         quote(
@@ -405,9 +420,7 @@ func genPropDecl(varDecl: VarDecl): Tokens {
                 get() {
                     return this.$mangledToken.get()
                 }
-                set(v) {
-                    this.$mangledToken.set(v)
-                }
+                $setFuncBody
             }
         )
     } else {
@@ -417,6 +430,7 @@ func genPropDecl(varDecl: VarDecl): Tokens {
                 get() {
                     return this.$mangledToken.get()
                 }
+                $setFuncBody
             }
         )
     }
