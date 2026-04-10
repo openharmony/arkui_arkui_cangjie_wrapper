@@ -52,7 +52,7 @@ public macro StorageLink(attr: Tokens, input: Tokens): Tokens {
             }
             STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStorageLinkTy, varDecl))
             STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-            return genPropDeclNode(varDecl, StateKind.AppStorageLinkTy)
+            return genPropDeclNode(varDecl, stateKind: StateKind.AppStorageLinkTy)
         case Err(_) =>
             setItem(MACRO_MSG_EXPANDED_FAILED, false)
             return input
@@ -91,7 +91,7 @@ public macro StorageProp(attr: Tokens, input: Tokens): Tokens {
             }
             STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.AppStoragePropTy, varDecl))
             STATE_MANAGE_HANDLER.appStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
-            return genPropDeclNode(varDecl, StateKind.AppStoragePropTy)
+            return genPropDeclNode(varDecl, stateKind: StateKind.AppStoragePropTy)
         case Err(_) =>
             setItem(MACRO_MSG_EXPANDED_FAILED, false)
             return input

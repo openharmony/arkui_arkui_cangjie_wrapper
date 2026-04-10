@@ -328,67 +328,91 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
     }
 }
 
-func genPropDeclNode(varDecl: VarDecl, stateKind: StateKind): Tokens {
-    let mangledNameToken: Token = generateMangledToken(varDecl.identifier.value)
-    let propDecl = genPropDeclForStateVar(varDecl, stateKind: stateKind)
+func genObservedStandardFieldDecl(varDecl: VarDecl, mangledNameToken: Token, propDecl: Tokens): Tokens {
     var initializer: Tokens = Tokens()
     try {
-        let _ = varDecl.expr 
-        match (stateKind) {
+        let _ = varDecl.expr
+        let mangledNameValue = LitConstExpr(quote($(mangledNameToken.value)))
+        initializer = quote(= $OBSERVED_PROPERTY<$(varDecl.declType)>($mangledNameValue, $(varDecl.expr)))
+    } catch (e: ASTException) {
+        ()
+    }
+    return quote(
+        private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)> $initializer
+        $propDecl
+    )
+}
+
+func genLocalStorageBackedFieldDecl(
+    varDecl: VarDecl,
+    mangledNameToken: Token,
+    propDecl: Tokens,
+    isLink!: Bool
+): Tokens {
+    try {
+        let _ = varDecl.expr
+        let attrStr = getLocalStorageAttrByIdent(mangledNameToken.value)
+        if (isLink) {
+            localStorageStateInfo.add(
+                (quote($mangledNameToken), quote(getLocalStorage().setAndLink<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
+        } else {
+            localStorageStateInfo.add(
+                (quote($mangledNameToken), quote(getLocalStorage().setAndProp<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
+        }
+        return quote(
+            private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
+            $propDecl
+        )
+    } catch (e: ASTException) {
+        ()
+    }
+    return Tokens()
+}
+
+func genAppStorageBackedFieldDecl(varDecl: VarDecl, mangledNameToken: Token, propDecl: Tokens, appKind: StateKind): Tokens {
+    var initializer: Tokens = Tokens()
+    try {
+        let _ = varDecl.expr
+        match (appKind) {
             case AppStorageLinkTy =>
                 let attrStr = getAppStorageAttrByIdent(mangledNameToken.value)
                 initializer = quote(= AppStorage.setAndLink<$(varDecl.declType)>($attrStr, $(varDecl.expr)))
             case AppStoragePropTy =>
                 let attrStr = getAppStorageAttrByIdent(mangledNameToken.value)
                 initializer = quote(= AppStorage.setAndProp<$(varDecl.declType)>($attrStr, $(varDecl.expr)))
-            case LocalStorageLinkTy =>
-                let attrStr = getLocalStorageAttrByIdent(mangledNameToken.value)
-                localStorageStateInfo.add(
-                    (quote($mangledNameToken), quote(getLocalStorage().setAndLink<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
-                return quote(
-                    private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
-                    $propDecl
-                )
-            case LocalStoragePropTy =>
-                let attrStr = getLocalStorageAttrByIdent(mangledNameToken.value)
-                localStorageStateInfo.add(
-                    (quote($mangledNameToken), quote(getLocalStorage().setAndProp<$(varDecl.declType)>($attrStr, $(varDecl.expr)))))
-                return quote(
-                    private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)>
-                    $propDecl
-                )
-            case _ => return Tokens()
-
+            case _ => ()
         }
-    } catch (e : ASTException) {
+    } catch (e: ASTException) {
         ()
     }
-
     return quote(
         private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)> $initializer
         $propDecl
     )
 }
 
-
-func genPropDeclNode(varDecl: VarDecl): Tokens {
+func genPropDeclNode(varDecl: VarDecl, stateKind!: ?StateKind = None): Tokens {
     let mangledNameToken: Token = generateMangledToken(varDecl.identifier.value)
-    let propDecl = genPropDeclForStateVar(varDecl)
-    let mangledNameValue = LitConstExpr(quote($(mangledNameToken.value)))
-    var initializer: Tokens = Tokens()
-    try {
-        let _ = varDecl.expr
-        initializer = quote(= $OBSERVED_PROPERTY<$(varDecl.declType)>($mangledNameValue, $(varDecl.expr)))
-    } catch (e : ASTException) {
-        ()
-    }
-    
-    return quote(
-        private $(varDecl.keyword) $mangledNameToken: $OBSERVED_PROPERTY<$(varDecl.declType)> $initializer
-        $propDecl
-    )
-}
+    let propDecl = genPropDeclForStateVar(varDecl, stateKind: stateKind)
 
+    match (stateKind) {
+        case None =>
+            return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
+        case Some(kind) =>
+            match (kind) {
+                case PublishTy =>
+                    return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
+                case LocalStorageLinkTy =>
+                    return genLocalStorageBackedFieldDecl(varDecl, mangledNameToken, propDecl, isLink: true)
+                case LocalStoragePropTy =>
+                    return genLocalStorageBackedFieldDecl(varDecl, mangledNameToken, propDecl, isLink: false)
+                case AppStorageLinkTy | AppStoragePropTy =>
+                    return genAppStorageBackedFieldDecl(varDecl, mangledNameToken, propDecl, kind)
+                case _ =>
+                    return Tokens()
+            }
+    }
+}
 
 func genPropDeclForStateVar(varDecl: VarDecl, stateKind!: ?StateKind = None): Tokens {
     var mangledToken = generateMangledToken(varDecl.identifier.value)
@@ -397,9 +421,14 @@ func genPropDeclForStateVar(varDecl: VarDecl, stateKind!: ?StateKind = None): To
     varDecl.modifiers |> forEach<Modifier> {
         modifier: Modifier => modifiersTokens.append(modifier.toTokens())
     }
-    if (modifiersTokens.size == 0) {
-        modifiersTokens.append(quote(private))
+    match(stateKind) {
+        case Some(v) => match(v) {
+            case PublishTy => ()
+            case _ => modifiersTokens.append(quote(private))
+        }
+        case None => modifiersTokens.append(quote(private))
     }
+
     var setFuncBody = quote(
         set(v) {
             this.$mangledToken.set(v)
