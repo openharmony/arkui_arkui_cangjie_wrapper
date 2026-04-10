@@ -28,7 +28,7 @@ public macro Publish(input: Tokens): Tokens {
     return match(finalResult) {
         case Success(varDecl) => 
             STATE_MANAGE_HANDLER.publishInformation.add(mangle(varDecl.identifier.value), varDecl)
-            genPropDeclNode(varDecl)
+            genPropDeclNode(varDecl, stateKind: StateKind.PublishTy)
         case Err(tokens) =>
             setItem(MACRO_MSG_EXPANDED_FAILED, false)
             tokens

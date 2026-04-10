@@ -54,7 +54,7 @@ public macro LocalStorageLink(attr: Tokens, input: Tokens): Tokens {
                         STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStorageLinkTy, varDecl))
                         STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
                         setItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE, true)
-                        genPropDeclNode(varDecl, StateKind.LocalStorageLinkTy)
+                        genPropDeclNode(varDecl, stateKind: StateKind.LocalStorageLinkTy)
                     case Err(_) => input
                 }
             } else {
@@ -97,7 +97,7 @@ public macro LocalStorageProp(attr: Tokens, input: Tokens): Tokens {
                         STATE_MANAGE_HANDLER.stateInformation.add(mangle(identTok.value), (VariableKind.LocalStoragePropTy, varDecl))
                         STATE_MANAGE_HANDLER.localStorageVarAttrInfo.add(mangle(identTok.value), attrStr)
                         setItem(MACRO_MSG_EXPANDED_LOCAL_STORAGE, true)
-                        genPropDeclNode(varDecl, StateKind.LocalStoragePropTy)
+                        genPropDeclNode(varDecl, stateKind: StateKind.LocalStoragePropTy)
                     case Err(_) =>
                         setItem(MACRO_MSG_EXPANDED_FAILED, false)
                         input
