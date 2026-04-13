@@ -30,7 +30,7 @@ class CustomDialogControllerInvalidInitFormatView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }

@@ -30,7 +30,7 @@ class MiniDlgForInvalidCtor {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }
@@ -47,7 +47,7 @@ class CustomDialogControllerInvalidConstructorView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }

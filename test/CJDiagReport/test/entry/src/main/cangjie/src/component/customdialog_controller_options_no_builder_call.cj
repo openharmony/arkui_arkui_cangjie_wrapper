@@ -30,7 +30,7 @@ class MiniDlgNoBuilderCall {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }
@@ -44,7 +44,7 @@ class CustomDialogControllerOptionsNoBuilderCallView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }

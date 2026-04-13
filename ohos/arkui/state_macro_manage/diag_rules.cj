@@ -76,6 +76,7 @@ protected enum MacroErrorCode {
     | TooManyRootNodes
     /** Root component must be a container component */
     | RootMustBeContainer
+    | RootShouldBeInnerComponent
     /** Build function cannot have parameters */
     | BuildFuncHasParams
     /** Build function cannot have return type */
@@ -168,7 +169,7 @@ protected enum MacroErrorCode {
             case UnexpectedInitializer => "decorated variables should not have an initial value"
 
             // Attribute errors
-            case InvalidAttributeType => "attribute must be a string literal"
+            case InvalidAttributeType => "attribute argument of type must be a string literal"
             case InvalidAttributeFormat => "has invalid attribute format"
 
             // Modifier errors
@@ -189,7 +190,8 @@ protected enum MacroErrorCode {
 
             // Component errors
             case TooManyRootNodes => "function can only have one root node"
-            case RootMustBeContainer => "function root component must be a container component"
+            case RootMustBeContainer => "internal build function should be a container component as the root node"
+            case RootShouldBeInnerComponent => "root node should be a builtin component"
             case TooManyChildren => "can only have a single child component"
             case NoChildAllowed => "cannot have any child component"
             case InvalidParentChild => "has an invalid parent-child component relationship"
@@ -201,7 +203,7 @@ protected enum MacroErrorCode {
             case CustomDialogControllerMissingInit => "must have an initializer"
             case CustomDialogControllerNeedsInitParam => "decorated class needs to explicitly pass a parameter of this type when using"
             case CustomDialogControllerInvalidInitFormat => "should be defined using type 'CustomDialogController'"
-            case CustomDialogControllerInvalidConstructor => "should use CustomDialogController constructor"
+            case CustomDialogControllerInvalidConstructor => "should be initialized with 'CustomDialogController' constructor"
             case CustomDialogControllerInvalidOptionsArg => "requires exactly one CustomDialogControllerOptions argument"
             case CustomDialogControllerOptionsRequired => "should be defined using type 'CustomDialogControllerOptions'"
             case CustomDialogControllerOptionsMustContainBuilder => "CustomDialogControllerOptions must contain a CustomDialog Object"

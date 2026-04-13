@@ -55,8 +55,10 @@ protected enum UIMacroKind {
      * Label for build-body diagnostics (displayed as `'build'` in messages).
      */
     | BuildQuoted
+    | CustomDialogController
     /** Empty prefix: internal validation where message omits decorator name */
     | Implicit
+    | ...
 
     /** Diagnostic label shown in macro diagnostic lines (after `MACRO_ERROR_PREFIX`, e.g. `[ArkUI]`). */
     protected func toDisplayString(): String {
@@ -84,7 +86,9 @@ protected enum UIMacroKind {
             case R => "@r"
             case Rawfile => "@rawfile"
             case BuildQuoted => "'build'"
+            case CustomDialogController => "'CustomDialogController'"
             case Implicit => ""
+            case _ => ""
         }
     }
 }

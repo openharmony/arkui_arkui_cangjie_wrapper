@@ -75,8 +75,6 @@ func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens 
             }
         }
     }
-    let classBody = classDecl.body.decls
-    checkEntryBody(classBody)
     let entryClassIdentStr = entryClassIdent.value
     let entryId = generateNewEntryId()
     let appEntryIdent = Token(TokenKind.IDENTIFIER, "appEntry${entryId}")
@@ -116,29 +114,6 @@ func checkEntry(input: Token): Bool {
     } else {
         UISyntaxChecker.reportDuplicateEntry(input.toTokens())
         false
-    }
-}
-
-func checkEntryBody(classBody: ArrayList<Decl>) {
-    for (item in classBody) {
-        match (item) {
-            case funcDecl: FuncDecl =>
-                if (funcDecl.identifier.value != "build") {
-                    continue
-                }
-                let funcBody = funcDecl.block.nodes
-                let lastDecl = funcBody[funcBody.size - 1]
-                if (!(lastDecl is CallExpr) || !((lastDecl as CallExpr).getOrThrow().callFunc is MemberAccess)) {
-                    continue
-                }
-                let expr = (lastDecl as CallExpr).getOrThrow()
-                let compName = parseNodeToComponetName(expr)
-                if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(
-                    compName)) {
-                    UISyntaxChecker.reportEntryBuildRootMustBeContainer(quote($funcDecl), UIMacroKind.Entry, compName)
-                }
-            case _ => continue
-        }
     }
 }
 
