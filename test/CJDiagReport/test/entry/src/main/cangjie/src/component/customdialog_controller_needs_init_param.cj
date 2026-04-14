@@ -30,7 +30,7 @@ class CustomDialogControllerNeedsInitParamView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }

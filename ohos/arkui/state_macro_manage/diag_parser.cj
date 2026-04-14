@@ -17,7 +17,7 @@ macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess,
     Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, TokenKind, parseDecl,
-    Argument, Modifier, ASTException, LitConstExpr, RefType}
+    Argument, Modifier, ASTException, LitConstExpr, RefType, insideParentContext}
 import std.collection.{ArrayList, forEach}
 
 /**
@@ -48,8 +48,10 @@ func parseClassDeclMemberNodes(classDecl: ClassDecl): Bool {
                     buildFuncDecls.add(funcDecl)
                 }
             case varDecl: VarDecl =>
-                if (!UISyntaxChecker.checkCustomDialogControllerVarDecl(varDecl, UIMacroKind.Implicit)) {
-                    return false
+                if (!STATE_MANAGE_HANDLER.stateInformation.contains(varDecl.identifier.value)) {
+                    if (!UISyntaxChecker.checkCustomDialogControllerVarDecl(varDecl, UIMacroKind.Implicit)) {
+                        return false
+                    }
                 }
             case _ => ()
         }
@@ -68,6 +70,33 @@ func parseClassDeclMemberNodes(classDecl: ClassDecl): Bool {
         return false
     }
     return true
+}
+
+func checkBuildRootMustBeContainerForEntryPage(funcDecl: FuncDecl): Unit {
+    let funcBody = funcDecl.block.nodes
+    if (funcBody.size == 0) {
+        return
+    }
+    let lastDecl = funcBody[funcBody.size - 1]
+    let expr = (lastDecl as Expr).getOrThrow()
+    let compName = parseNodeToComponetName(expr)
+    if (!STATE_MANAGE_HANDLER.isContainerComponent(compName) || STATE_MANAGE_HANDLER.isInBuilderComponents(compName)) {
+        UISyntaxChecker.reportEntryBuildRootMustBeContainer(expr.toTokens(), UIMacroKind.Entry, compName)
+    }
+}
+
+func checkEntryDecoratedBuildRootIfNeeded(funcDecl: FuncDecl, bodyMacroCall: UIMacroKind): Unit {
+    match(bodyMacroCall) {
+        case UIMacroKind.Builder => return
+        case _ => ()
+    }
+    if (funcDecl.identifier.value != "build") {
+        return
+    }
+    if (!insideParentContext(MACRO_PARENT_CONTEXT_ENTRY)) {
+        return
+    }
+    checkBuildRootMustBeContainerForEntryPage(funcDecl)
 }
 
 func parseBuildFunctionModifier(funcDecl: FuncDecl) {
@@ -101,6 +130,7 @@ func parseBuildFuncBodyNode(funcDecl: FuncDecl, bodyMacroCall!: UIMacroKind = UI
         case UIMacroKind.Builder => true
         case _ => false
     }
+    checkEntryDecoratedBuildRootIfNeeded(funcDecl, bodyMacroCall)
 
     for(node in funcDecl.block.nodes) {
         if (let Some(expr) <- (node as Expr)) {
@@ -186,19 +216,21 @@ func collectIfExprBodyNodes(ifExpr: IfExpr): ArrayList<Node> {
 
 /**
  * Parse IfExpr body with parent context for parent-child component validation.
- * Rules: 1) No ForIn inside if; 2) Validate body nodes against parent; 3) Recursively parse each node.
+ * Rules: 1) No ForIn inside if; 2) Validate body nodes against parent (skipped when if is outermost in @Builder); 3) Recursively parse each node.
  */
 func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if",
-    inBuilderBody!: Bool = false): Bool {
+    inBuilderBody!: Bool = false, ancestorParentForValidation!: ?String = None): Bool {
     if (!UISyntaxChecker.checkIfExpr4UI(ifExpr)) {
         return false
     }
     let bodyNodes = collectIfExprBodyNodes(ifExpr)
-    if (!validateChildComponents(parentExpr, parentName, bodyNodes)) {
+    // Skip parent-child validation when if is outermost in @Builder (no ancestor, just like ForEach)
+    let isOuterMost = inBuilderBody && ancestorParentForValidation.isNone()
+    if (!isOuterMost && !validateChildComponents(parentExpr, parentName, bodyNodes)) {
         return false
     }
-    return parseLambdaNodes(bodyNodes, parentExpr, parentName, ancestorParentForValidation: None,
-        inBuilderBody: inBuilderBody)
+    return parseLambdaNodes(bodyNodes, parentExpr, parentName,
+        ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
 }
 
 /**
@@ -213,7 +245,8 @@ func parseLambdaChildNode(
 ): Bool {
     if (let Some(childExpr) <- (node as Expr)) {
         if (let Some(ifExpr) <- (childExpr as IfExpr)) {
-            return parseIfExprBody(ifExpr, parentExpr, parentName: parentName, inBuilderBody: inBuilderBody)
+            return parseIfExprBody(ifExpr, parentExpr, parentName: parentName, inBuilderBody: inBuilderBody,
+                ancestorParentForValidation: ancestorParentForValidation)
         }
         let childName = getTrailingClosureExprValue(childExpr)
         let ancestorForChild = if (COMPONENT_TYPE_FOREACH_LIST.contains(childName)) {

@@ -30,7 +30,7 @@ class MiniDlgForInvalidOptionsArg {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }
@@ -44,7 +44,7 @@ class CustomDialogControllerInvalidOptionsArgView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }

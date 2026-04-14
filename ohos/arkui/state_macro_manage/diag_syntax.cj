@@ -275,16 +275,31 @@ protected class UISyntaxChecker {
     }
 
     /**
-     * Check variable has initializer
-     * Applicable to: @State, @Provide, @StorageLink, @StorageProp
+     * Check variable has initializer.
+     * Applicable to: @State, @Provide, @StorageLink, @StorageProp, @BuilderParam, LocalStorage*
+     *
+     * For any of the above: if the declared type matches CustomDialogController (`isNeeadGenerateCustomDialog`) or the
+     * initializer is a top-level `CustomDialogController(...)`-related call, run the same
+     * `validateCustomDialogControllerInitExpr` → `validateCustomDialogControllerCallExpr` path as @Component;
+     * diagnostics use the caller’s `macroCall` (e.g. `@State`, `@Provide`, `@StorageLink`).
      */
     protected static func checkHasInitializer(input: Tokens, varDecl: VarDecl, macroCall: UIMacroKind): MacroExpandResult<VarDecl> {
         try {
-            let _ = varDecl.expr  // Try to access initializer
-            MacroExpandResult<VarDecl>.Success(varDecl)
+            let expr = varDecl.expr
+            let matchDeclaredCd = isNeeadGenerateCustomDialog(varDecl)
+            let matchInitCdCall = match (expr as CallExpr) {
+                case Some(_) => isInitExprCustomDialogControllerRelated(expr)
+                case None => false
+            }
+            if (matchDeclaredCd || matchInitCdCall) {
+                if (!validateCustomDialogControllerInitExpr(expr, macroCall)) {
+                    return MacroExpandResult<VarDecl>.Err(input)
+                }
+            }
+            return MacroExpandResult<VarDecl>.Success(varDecl)
         } catch (e: Exception) {
             reportError(input, MacroErrorCode.MissingInitializer, macroCall)
-            MacroExpandResult<VarDecl>.Err(input)
+            return MacroExpandResult<VarDecl>.Err(input)
         }
     }
 
@@ -724,12 +739,14 @@ protected class UISyntaxChecker {
     protected static func validateCustomDialogControllerCallExpr(callExpr: CallExpr, macroCall: UIMacroKind): Bool {
         let callfunc = callExpr.callFunc
         if (!isCustomdialogController(callfunc.toTokens().toString().trim())) {
-            reportError(callfunc.toTokens(), MacroErrorCode.CustomDialogControllerInvalidConstructor, macroCall)
+            reportError(callfunc.toTokens(), MacroErrorCode.CustomDialogControllerInvalidConstructor,
+                UIMacroKind.CustomDialogController)
             return false
         }
         let params = callExpr.arguments
         if (params.size != 1) {
-            reportError(params[params.size-1].toTokens(), MacroErrorCode.CustomDialogControllerInvalidOptionsArg, macroCall)
+            reportError(callfunc.toTokens(), MacroErrorCode.CustomDialogControllerInvalidOptionsArg,
+                UIMacroKind.CustomDialogController)
             return false
         }
         let options = params[0].expr
@@ -774,8 +791,7 @@ protected class UISyntaxChecker {
             hasInitializer = false
         }
         if (!hasInitializer) {
-            reportError(varDecl.toTokens(), MacroErrorCode.CustomDialogControllerMissingInit, macroCall)
-            return false
+            return true
         }
         let expr = varDecl.expr
         return validateCustomDialogControllerInitExpr(expr, macroCall)
@@ -799,7 +815,7 @@ protected class UISyntaxChecker {
      * Report root component must be container (CustomComponent/BuilderComponent not allowed as root)
      */
     protected static func reportRootMustBeContainer(input: Tokens, macroCall!: UIMacroKind = UIMacroKind.BuildQuoted): Unit {
-        reportError(input, MacroErrorCode.RootMustBeContainer, macroCall)
+        reportError(input, MacroErrorCode.RootShouldBeInnerComponent, macroCall)
     }
 
     /**
@@ -852,10 +868,10 @@ protected class UISyntaxChecker {
     }
 
     /**
-     * Report Entry/HybridComponentEntry build method root must be container component
+     * Warn when Entry/HybridComponentEntry build root is not a container component (warning, not error).
      */
     protected static func reportEntryBuildRootMustBeContainer(input: Tokens, macroCall: UIMacroKind, compName: String): Unit {
-        reportError(input, MacroErrorCode.RootMustBeContainer, macroCall)
+        reportWarning(input, MacroErrorCode.RootMustBeContainer, macroCall)
     }
 
     /**

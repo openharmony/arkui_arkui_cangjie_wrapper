@@ -32,7 +32,7 @@ class EntryLocalStorageAttributeRequiredView {
 
     func build(): Unit {
         Column() {
-            Text(content: "")
+            Text("")
         }
     }
 }
