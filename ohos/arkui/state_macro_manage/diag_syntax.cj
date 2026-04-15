@@ -311,8 +311,15 @@ protected class UISyntaxChecker {
         try {
             let _ = varDecl.expr  // Try to access initializer
             // has initializer, report error
-            reportError(input, MacroErrorCode.UnexpectedInitializer, macroCall)
-            MacroExpandResult<VarDecl>.Err(input)
+            match(macroCall) {
+                case UIMacroKind.Link =>
+                    reportWarning(input, MacroErrorCode.UnexpectedInitializer, macroCall)
+                    MacroExpandResult<VarDecl>.Success(varDecl)
+                case _ =>
+                    reportError(input, MacroErrorCode.UnexpectedInitializer, macroCall)
+                    MacroExpandResult<VarDecl>.Err(input)
+            }
+            
         } catch (e: Exception) {
             // Access failed means no initializer, as expected
             MacroExpandResult<VarDecl>.Success(varDecl)
@@ -1029,28 +1036,6 @@ protected class UISyntaxChecker {
             return true
         }
         return parseBuildFuncBodyNode(funcDecl, bodyMacroCall: UIMacroKind.Builder)
-    }
-
-    /**
-     * Check if function body contains only valid expressions
-     * 
-     * Rules:
-     * 1. All nodes in function body must be expressions (Expr)
-     * 2. Expressions must be valid UI component types
-     * 
-     * @param funcBody Function body nodes
-     * @param funcDecl Function declaration (for error reporting)
-     */
-    protected static func checkFuncBodyContent(
-        funcBody: ArrayList<Node>,
-        funcDecl: FuncDecl
-    ): MacroExpandResult<FuncDecl> {
-        for (node in funcBody) {
-            if(!checkIsExpr(node)) {
-                return MacroExpandResult<FuncDecl>.Err(node.toTokens())
-            }
-        }
-        return MacroExpandResult<FuncDecl>.Success(funcDecl)
     }
 }
 

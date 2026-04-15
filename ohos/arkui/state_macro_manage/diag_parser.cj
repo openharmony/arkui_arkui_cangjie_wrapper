@@ -254,10 +254,11 @@ func parseLambdaChildNode(
         } else {
             ancestorParentForValidation
         }
+        var isCustomLambda = MACRO_EXPAND_COMPONENTS.contains(getTrailingClosureExprValue(parentExpr))
         return parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild,
-            inBuilderBody: inBuilderBody)
+            inBuilderBody: inBuilderBody, isLambdaNode: !isCustomLambda)
     }
-    return UISyntaxChecker.checkIsExpr(node)
+    return true
 }
 
 func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName: String,
@@ -317,7 +318,7 @@ func parseCallExprWithTrailingLambda(
 }
 
 func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = None,
-    inBuilderBody!: Bool = false): Bool {
+    inBuilderBody!: Bool = false, isLambdaNode!: Bool = false): Bool {
     match(expr) {
         case tce: TrailingClosureExpr =>
             let expr = tce.expr
@@ -343,9 +344,10 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
                 case Some(lambda) =>
                     return parseCallExprWithTrailingLambda(callExpr, lambda, lastArgument,
                         ancestorParentForValidation, inBuilderBody)
-                case None =>
-                    return true
+                case None => ()
             }
+            return parseBuiltInComponent(callExpr.callFunc, ancestorParentForValidation: ancestorParentForValidation,
+                inBuilderBody: inBuilderBody)
         case memberAccess: MemberAccess =>
             return parseBuiltInComponent(memberAccess.baseExpr, ancestorParentForValidation: ancestorParentForValidation,
                 inBuilderBody: inBuilderBody)
@@ -356,6 +358,9 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
             // This case is fallback when IfExpr appears in unexpected context.
             return true
         case _ =>
+            if (isLambdaNode) {
+                return true
+            }
             UISyntaxChecker.reportInvalidNodeTypeInBuild(expr.toTokens())
             return false
     }
