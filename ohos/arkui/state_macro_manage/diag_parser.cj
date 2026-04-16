@@ -177,8 +177,10 @@ func validateChildComponents(parentExpr: Expr, componentName: String, childNodes
             case Some(expr) => expr
             case None => continue
         }
+        if (childCompExpr is IfExpr) {
+            continue
+        }
         let childName = getTrailingClosureExprValue(childCompExpr)
-
         match (COMPONENT_RULE_REGISTRY.validateComponentConstraints(parentName: componentName, childName: childName,
             childCount: childCount)) {
             case Some(error) =>
@@ -192,45 +194,55 @@ func validateChildComponents(parentExpr: Expr, componentName: String, childNodes
 }
 
 /**
- * Recursively collect all body nodes from IfExpr (if/else branches, including nested IfExpr)
- */
-func collectIfExprBodyNodes(ifExpr: IfExpr): ArrayList<Node> {
-    var result = ArrayList<Node>()
-    for (node in ifExpr.ifBlock.nodes) {
-        result.add(node)
-    }
-    try {
-        match (ifExpr.elseExpr) {
-            case nestedIf: IfExpr => result.add(all: collectIfExprBodyNodes(nestedIf))
-            case elseBlock: Block =>
-                for (node in elseBlock.nodes) {
-                    result.add(node)
-                }
-            case _ => ()
-        }
-    } catch (e: Exception) {
-        ()
-    }
-    return result
-}
-
-/**
  * Parse IfExpr body with parent context for parent-child component validation.
- * Rules: 1) No ForIn inside if; 2) Validate body nodes against parent (skipped when if is outermost in @Builder); 3) Recursively parse each node.
+ * Rules: 1) No ForIn inside if; 2) Each branch (if/else if/else) is validated independently;
+ * 3) Validate body nodes against ancestor parent (skipped when if is outermost in @Builder).
  */
 func parseIfExprBody(ifExpr: IfExpr, parentExpr: Expr, parentName!: String = "if",
     inBuilderBody!: Bool = false, ancestorParentForValidation!: ?String = None): Bool {
     if (!UISyntaxChecker.checkIfExpr4UI(ifExpr)) {
         return false
     }
-    let bodyNodes = collectIfExprBodyNodes(ifExpr)
-    // Skip parent-child validation when if is outermost in @Builder (no ancestor, just like ForEach)
     let isOuterMost = inBuilderBody && ancestorParentForValidation.isNone()
-    if (!isOuterMost && !validateChildComponents(parentExpr, parentName, bodyNodes)) {
+    let validationParent = match(ancestorParentForValidation) {
+        case Some(v) => v
+        case None => parentName
+    }
+    
+    // Validate if-block nodes independently
+    if (!isOuterMost && !validateChildComponents(parentExpr, validationParent, ifExpr.ifBlock.nodes)) {
         return false
     }
-    return parseLambdaNodes(bodyNodes, parentExpr, parentName,
-        ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
+    if (!parseLambdaNodes(ifExpr.ifBlock.nodes, parentExpr, parentName,
+        ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)) {
+        return false
+    }
+    
+    // Handle else branch (if-else or else-if)
+    try {
+        match (ifExpr.elseExpr) {
+            case nestedIf: IfExpr =>
+                // else if: recursively parse, each branch validated independently
+                if (!parseIfExprBody(nestedIf, parentExpr, parentName: parentName,
+                    inBuilderBody: inBuilderBody, ancestorParentForValidation: ancestorParentForValidation)) {
+                    return false
+                }
+            case elseBlock: Block =>
+                // else: validate this branch independently
+                if (!isOuterMost && !validateChildComponents(parentExpr, validationParent, elseBlock.nodes)) {
+                    return false
+                }
+                if (!parseLambdaNodes(elseBlock.nodes, parentExpr, parentName,
+                    ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)) {
+                    return false
+                }
+            case _ => ()
+        }
+    } catch (e: Exception) {
+        ()
+    }
+    
+    return true
 }
 
 /**
@@ -254,10 +266,11 @@ func parseLambdaChildNode(
         } else {
             ancestorParentForValidation
         }
+        var isCustomLambda = MACRO_EXPAND_COMPONENTS.contains(getTrailingClosureExprValue(parentExpr))
         return parseBuiltInComponent(childExpr, ancestorParentForValidation: ancestorForChild,
-            inBuilderBody: inBuilderBody)
+            inBuilderBody: inBuilderBody, isLambdaNode: !isCustomLambda)
     }
-    return UISyntaxChecker.checkIsExpr(node)
+    return true
 }
 
 func parseLambdaNodes(childNodes: ArrayList<Node>, parentExpr: Expr, parentName: String,
@@ -295,6 +308,7 @@ func parseCallExprWithTrailingLambda(
     if (isForeachKeyGeneratorLastArg(componentName, arguments, lastArgument)) {
         return true
     }
+
     let childNodes = lambda.nodes
     let validationParent = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName) &&
         ancestorParentForValidation.isSome()) {
@@ -317,7 +331,7 @@ func parseCallExprWithTrailingLambda(
 }
 
 func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = None,
-    inBuilderBody!: Bool = false): Bool {
+    inBuilderBody!: Bool = false, isLambdaNode!: Bool = false): Bool {
     match(expr) {
         case tce: TrailingClosureExpr =>
             let expr = tce.expr
@@ -330,8 +344,13 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
             if (!skipForeachTce && !validateChildComponents(expr, componentName, childNodes)) {
                 return false
             }
+            let effectiveAncestor = if (COMPONENT_TYPE_FOREACH_LIST.contains(componentName)) {
+                ancestorParentForValidation
+            } else {
+                Option<String>.None
+            }
             return parseLambdaNodes(childNodes, expr, componentName,
-                ancestorParentForValidation: ancestorParentForValidation, inBuilderBody: inBuilderBody)
+                ancestorParentForValidation: effectiveAncestor, inBuilderBody: inBuilderBody)
         case callExpr: CallExpr =>
             // Last argument may be LambdaExpr (UI subtree); else TrailingClosureExpr handles brace form.
             let arguments = callExpr.arguments
@@ -339,13 +358,17 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
                 return true
             }
             let lastArgument = arguments[arguments.size - 1]
+            if (shouldBypassProcessing(lastArgument, callExpr)) {
+                return true
+            }
             match (lastArgument.expr as LambdaExpr) {
                 case Some(lambda) =>
                     return parseCallExprWithTrailingLambda(callExpr, lambda, lastArgument,
                         ancestorParentForValidation, inBuilderBody)
-                case None =>
-                    return true
+                case None => ()
             }
+            return parseBuiltInComponent(callExpr.callFunc, ancestorParentForValidation: ancestorParentForValidation,	 
+                inBuilderBody: inBuilderBody)
         case memberAccess: MemberAccess =>
             return parseBuiltInComponent(memberAccess.baseExpr, ancestorParentForValidation: ancestorParentForValidation,
                 inBuilderBody: inBuilderBody)
@@ -356,9 +379,24 @@ func parseBuiltInComponent(expr: Expr, ancestorParentForValidation!: ?String = N
             // This case is fallback when IfExpr appears in unexpected context.
             return true
         case _ =>
+            if (isLambdaNode) {
+                return true
+            }
             UISyntaxChecker.reportInvalidNodeTypeInBuild(expr.toTokens())
             return false
     }
+}
+
+func shouldBypassProcessing(lastArgument: Argument, callExpr: CallExpr): Bool {
+    let argName = getArgumentIdentifier(lastArgument).value
+    let componentName = getTrailingClosureExprValue(callExpr)
+    if (componentName == BuiltInComponentName.Checkbox && argName == INDICATOR_BUILDER) {
+        return true
+    }
+    if (componentName == BuiltInComponentName.MenuItemGroup && argName != CHILD_PARAMETER) {
+        return true
+    }
+    return false
 }
 
 func genObservedStandardFieldDecl(varDecl: VarDecl, mangledNameToken: Token, propDecl: Tokens): Tokens {

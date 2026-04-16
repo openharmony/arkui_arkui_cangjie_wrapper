@@ -117,7 +117,8 @@ let FOREACH_POSITIONAL_ARG_COUNT_WITH_KEY: Int64 = 3
 let FOREACH_ARG_NAME_POSITIONAL: String = ""
 let COMPONENT_CHILD_IN_LISTCOMPONENT_LIST: HashSet<String> = HashSet<String>(["ListItem", "ListItemGroup"])
 let NEWLINE = Token(TokenKind.NL)
-
+let INDICATOR_BUILDER: String = "indicatorBuilder"
+let CHILD_PARAMETER: String = "child"
 /**
  * ArkTS types that are not recommended as state variables (controllers, scrollers, canvas contexts, etc.)
  */
