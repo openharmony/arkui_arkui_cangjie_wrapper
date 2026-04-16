@@ -502,6 +502,7 @@ protected class ComponentRuleRegistry {
             }
             return None
         }
+
         let constraints = getComponentConstraintRules(parentName)
         
         for (constraint in constraints) {
@@ -523,9 +524,6 @@ protected class ComponentRuleRegistry {
                     }
                 
                 case AllowedChildren(allowed) =>
-                    if (!MACRO_EXPAND_COMPONENTS.contains(childName)) {
-                        return None
-                    }
                     if (!allowed.contains(childName)) {
                         return ChildComponentError(
                             parentName, childName, allowed,
