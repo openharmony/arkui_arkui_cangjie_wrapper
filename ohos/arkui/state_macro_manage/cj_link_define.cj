@@ -29,8 +29,7 @@ public macro Link(input: Tokens): Tokens {
         varDecl: VarDecl =>
             UISyntaxChecker.checkUnrecommendedStateType(varDecl, UIMacroKind.Link)
             UISyntaxChecker.checkNoModifiersFatal(input, varDecl, UIMacroKind.Link)
-    }
-    .andThen {
+    }.andThen {
         varDecl: VarDecl => UISyntaxChecker.checkNoInitializer(input, varDecl, UIMacroKind.Link)
     }
     return match(finalResult) {
