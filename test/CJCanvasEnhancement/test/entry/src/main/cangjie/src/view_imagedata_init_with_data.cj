@@ -59,7 +59,7 @@ class ViewImageDataInitWithData {
                         var data = Array<UInt8>(256, { _ => 255 })
                         let imageData = ImageData(-100.0, -100.0, data: data)
                         this.context3.putImageData(imageData, 20.0, 20.0)
-                    } catch (e) {
+                    } catch (e: Exception) {
                         Hilog.info(0, "cangjie-test", "ImageData(-100.0, -100.0, data: data) create failed.")
                     }
                 })
@@ -69,7 +69,7 @@ class ViewImageDataInitWithData {
                         var data = Array<UInt8>(256, { _ => 255 })
                         let imageData = ImageData(0.0, 0.0, data: data)
                         this.context4.putImageData(imageData, 20.0, 20.0)
-                    } catch (e) {
+                    } catch (e: Exception) {
                         Hilog.info(0, "cangjie-test", "ImageData(0.0, 0.0, data: data) create failed.")
                     }
                 })
@@ -79,7 +79,7 @@ class ViewImageDataInitWithData {
                         var data = Array<UInt8>(256, { _ => 255 })
                         let imageData = ImageData(Option.None, Option.None, data: Option.None, unit: Option.None)
                         this.context5.putImageData(imageData, 20.0, 20.0)
-                    } catch (e) {
+                    } catch (e: Exception) {
                         Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, data: Option.None, unit: Option.None) create failed.")
                     }
                 })
