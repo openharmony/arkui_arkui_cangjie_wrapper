@@ -18,13 +18,18 @@
 package ohos.arkui.component.alphabet_indexer
 
 import ohos.arkui.component.common.{CommonMethodComponent, FontWeight, FontStyle, IndexerAlign}
-import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString, LENGTH_PERCENT}
+import ohos.arkui.component.util.{transAppResourceToResourceColor, transAppResourceToLength, transResourceStrToString, 
+    LENGTH_PERCENT, lessNotEqual}
 import ohos.base.{FFIVectorString, Length, ResourceStr, VectorStringHandle, ResourceColor, LengthProp, Color}
 import ohos.ffi.{Callback1Param}
 import ohos.labels.{APILevel}
 
 foreign {
     func FfiOHOSAceFrameworkAlphabetIndexerCreate(handle: VectorStringHandle, selected: UInt32): Unit
+    
+    func FfiOHOSAceFrameworkAlphabetIndexerSetWidth(value: Float64, unit: Int32): Unit
+    
+    func FFISetWidthWithEmpty(): Unit
 
     func FfiOHOSAceFrameworkAlphabetIndexerColor(color: UInt32): Unit
 
@@ -515,6 +520,22 @@ public class AlphabetIndexer <: CommonMethodComponent<AlphabetIndexer> & Alphabe
         let lambdaData = Callback1Param<Int32, Unit>(wrapper)
         unsafe {
             FfiOHOSAceFrameworkAlphabetIndexerOnPopupSelected(lambdaData.getID())
+        }
+        this
+    }
+    
+    protected override func widthInner(width: ?Length): This {
+        match (width) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkAlphabetIndexerSetWidth(value_.value, value_.unitType.getValue())
+                    }
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
         }
         this
     }

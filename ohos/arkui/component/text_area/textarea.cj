@@ -434,8 +434,13 @@ public class TextArea <: CommonMethodComponent<TextArea> & TextAreaAttribute {
         this
     }
 
-    protected override func heightInner(width: ?Length): This {
-        TextField.height(width)
+    protected override func widthInner(width: ?Length): This {
+        TextField.width(width)
+        this
+    }
+
+    protected override func heightInner(height: ?Length): This {
+        TextField.height(height)
         this
     }
 

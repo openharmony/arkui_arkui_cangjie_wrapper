@@ -17,7 +17,7 @@
 
 package ohos.base
 
-import ohos.labels.{APILevel}
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 import std.deriving.Derive
 
@@ -76,7 +76,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop px: Length
-    
+
     /**
      * Defines the length property in units of vp.
      */
@@ -85,7 +85,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop vp: Length
-    
+
     /**
      * Defines the length property in units of fp.
      */
@@ -94,7 +94,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop fp: Length
-    
+
     /**
      * Defines the length property in units of percent.
      */
@@ -103,7 +103,7 @@ public interface LengthProp {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     prop percent: Length
-    
+
     /**
      * Defines the length property in units of lpx.
      */
@@ -166,6 +166,15 @@ public class LengthMetrics <: Length {
             return realUnit
         }
     }
+
+    /**
+     * Defines the auto option means to adapt to the length.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public static let AUTO: Length = LengthMetrics(0.0, unit: LengthUnit.Auto)
 }
 
 /**
@@ -185,7 +194,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Px
-    
+
     /**
      * Defines the length property in units of vp.
      */
@@ -194,7 +203,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Vp
-    
+
     /**
      * Defines the length property in units of fp.
      */
@@ -203,7 +212,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Fp
-    
+
     /**
      * Defines the length property in units of percent.
      */
@@ -212,7 +221,7 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Percent
-    
+
     /**
      * Defines the length property in units of lpx.
      */
@@ -221,6 +230,16 @@ public enum LengthUnit {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     Lpx
+
+    /**
+     * Defines the length property in units of auto.
+     */
+    | @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide[isChecked: true]
+    Auto
     | ...
 
     /**
@@ -240,6 +259,7 @@ public enum LengthUnit {
             case Fp => 2
             case Percent => 3
             case Lpx => 4
+            case Auto => 5
             case _ => throw BusinessException(100001, "Internal error.")
         }
     }
@@ -373,7 +393,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Px)
         }
     }
-    
+
     /**
      * Defines the length property in units of vp.
      */
@@ -386,7 +406,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Vp)
         }
     }
-    
+
     /**
      * Defines the length property in units of fp.
      */
@@ -399,7 +419,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Fp)
         }
     }
-    
+
     /**
      * Defines the length property in units of percent.
      */
@@ -412,7 +432,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this) / 100.0, unit: LengthUnit.Percent)
         }
     }
-    
+
     /**
      * Defines the length property in units of lpx.
      */
@@ -425,7 +445,7 @@ extend Int64 <: LengthProp & Length {
             LengthMetrics(Float64(this), unit: LengthUnit.Lpx)
         }
     }
-    
+
     /**
     * Defines the value.
     */
@@ -438,10 +458,10 @@ extend Int64 <: LengthProp & Length {
             Float64(this)
         }
     }
-    
+
     /**
     * Defines the unit.
-    */   
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
