@@ -72,6 +72,42 @@ struct NativeCustomDialogOptions {
 }
 
 @C
+struct NativeCustomDialogOptionsV2 {
+    NativeCustomDialogOptionsV2(
+        let maskRect: NativeRectangle,
+        let alignment: Int32,
+        let offset: NativeOffset,
+        let isModal: Bool,
+        let showInSubWindow: Bool,
+        let autoCancel: Bool,
+        let maskColor: UInt32,
+        let transition: Int64,
+        let hasTransition: Bool,
+        let onDidAppear: Int64,
+        let onDidDisappear: Int64,
+        let onWillAppear: Int64,
+        let onWillDisappear: Int64,
+        let keyboardAvoidMode: Int32,
+        let enableHoverMode: Bool,
+        let hoverModeArea: Int32,
+        let builder: Int64,
+        let backgroundColor: UInt32,
+        let cornerRadius: CBorderRadiuses,
+        let borderWidth: CJEdge,
+        let borderColor: NativeEdgeColor,
+        let borderEdgeStyle: NativeEdgeStyles,
+        let widthValue: Float64,
+        let widthUnit: Int32,
+        let heightValue: Float64,
+        let heightUnit: Int32,
+        let hasHeight: Bool,
+        let shadowOption: NativeShadowOptions,
+        let shadowStyle: Int32,
+        let backgroundBlurStyle: Int32,
+        let levelMode: Int32
+    ) {}
+}
+@C
 struct CBorderRadiuses {
     let topLeftRadiuses: Float64
     let topLeftUnit: Int32
@@ -157,6 +193,27 @@ struct NativeShowDialogOptions {
 }
 
 @C
+struct NativeShowDialogOptionsV2 {
+    NativeShowDialogOptionsV2(
+        let title: CString,
+        let message: CString,
+        let buttons: CPointer<CButtonInfo>,
+        let buttonsSize: UInt32,
+        let alignment: Int32,
+        let offset: NativeOffset,
+        let maskRect: NativeRectangle,
+        let showInSubWindow: Bool,
+        let isModal: Bool,
+        let backgroundColor: UInt32,
+        let backgroundBlurStyle: Int32,
+        let shadowOption: NativeShadowOptions,
+        let shadowStyle: Int32,
+        let enableHoverMode: Bool,
+        let hoverModeArea: Int32,
+        let levelMode: Int32
+    ) {}
+}
+@C
 struct NativeActionMenuOptions {
     NativeActionMenuOptions(
         let title: CString,
@@ -167,6 +224,17 @@ struct NativeActionMenuOptions {
     ) {}
 }
 
+@C
+struct NativeActionMenuOptionsV2 {
+    NativeActionMenuOptionsV2(
+        let title: CString,
+        let buttons: CPointer<CButtonInfo>, // Array<Button>
+        let buttonsSize: UInt32,
+        let showInSubWindow: Bool,
+        let isModal: Bool,
+        let levelMode: Int32
+    ) {}
+}
 foreign {
     func FfiPromptMallocButtons(size: Int64): CPointer<CButtonInfo>
 
@@ -183,11 +251,17 @@ foreign {
 
     func FfiPromptShowToastWithOptionV2(options: NativeShowToastOptions): Unit
 
-    func FfiPromptShowDialogWithOption(options: NativeShowDialogOptions, callBack: Int64): Unit
+    func FfiPromptShowDialogWithOption(options: NativeShowDialogOptions, callback: Int64): Unit
 
-    func FfiPromptShowActionMenuWithOption(options: NativeActionMenuOptions, callBack: Int64): Unit
+    func FfiPromptShowActionMenuWithOption(options: NativeActionMenuOptions, callback: Int64): Unit
 
-    func FfiPromptOpenCustomDialogWithOption(options: NativeCustomDialogOptions, callBack: Int64): Unit
+    func FfiPromptOpenCustomDialogWithOption(options: NativeCustomDialogOptions, callback: Int64): Unit
+
+    func FfiPromptShowDialogWithOptionV2(options: NativeShowDialogOptionsV2, callback: Int64): Unit
+
+    func FfiPromptShowActionMenuWithOptionV2(options: NativeActionMenuOptionsV2, callback: Int64): Unit
+
+    func FfiPromptOpenCustomDialogWithOptionV2(options: NativeCustomDialogOptionsV2, callback: Int64): Unit
 
     func free(cptr: CPointer<Unit>): Unit
 }
@@ -315,6 +389,44 @@ public enum ToastShowMode {
         match (this) {
             case Default => 0
             case TopMost => 1
+            case _ => throw BusinessException(100001, "Internal error.")
+        }
+    }
+}
+
+/**
+ * Define the display mode of all kind of dialog.
+ *
+ */
+@Derive[Equatable]
+@!APILevel[
+    since: "26.0.0",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public enum LevelMode {
+    /**
+     * Display above all page levels.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Overlay
+    |
+    /**
+     * Display within the current page.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    Embedded
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case Overlay => 0
+            case Embedded => 1
             case _ => throw BusinessException(100001, "Internal error.")
         }
     }
@@ -1285,6 +1397,899 @@ public class ShowToastOptions {
     }
 }
 
+protected class BaseDialogConfigInner {
+    protected var maskRect: ?Rectangle
+    protected var alignment: ?DialogAlignment
+    protected var offset: ?Offset
+    protected var isModal: ?Bool
+    protected var showInSubWindow: ?Bool
+    protected var autoCancel: ?Bool
+    protected var maskColor: ?ResourceColor
+    protected var transition: ?TransitionEffect
+    protected var onDidAppear: ?() -> Unit
+    protected var onDidDisappear: ?() -> Unit
+    protected var onWillAppear: ?() -> Unit
+    protected var onWillDisappear: ?() -> Unit
+    protected var keyboardAvoidMode: ?KeyboardAvoidMode
+    protected var enableHoverMode: ?Bool
+    protected var hoverModeArea: ?HoverModeAreaType
+    protected var levelMode: ?LevelMode
+
+    protected init(
+        maskRect!: ?Rectangle = Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
+        alignment!: ?DialogAlignment = DialogAlignment.Default,
+        offset!: ?Offset = Offset(0.vp, 0.vp),
+        isModal!: ?Bool = true,
+        showInSubWindow!: ?Bool = false,
+        autoCancel!: ?Bool = true,
+        maskColor!: ?ResourceColor = Color(0x33000000),
+        transition!: ?TransitionEffect = TransitionEffect.OPACITY,
+        onDidAppear!: ?() -> Unit = {=>},
+        onDidDisappear!: ?() -> Unit = {=>},
+        onWillAppear!: ?() -> Unit = {=>},
+        onWillDisappear!: ?() -> Unit = {=>},
+        keyboardAvoidMode!: ?KeyboardAvoidMode = KeyboardAvoidMode.Default,
+        enableHoverMode!: ?Bool = false,
+        hoverModeArea!: ?HoverModeAreaType = HoverModeAreaType.BottomScreen,
+        levelMode!: ?LevelMode = LevelMode.Overlay
+    ) {
+        this.maskRect = maskRect
+        this.alignment = alignment
+        this.offset = offset
+        this.isModal = isModal
+        this.showInSubWindow = showInSubWindow
+        this.autoCancel = autoCancel
+        this.maskColor = maskColor
+        this.transition = transition
+        this.onDidAppear = onDidAppear
+        this.onDidDisappear = onDidDisappear
+        this.onWillAppear = onWillAppear
+        this.onWillDisappear = onWillDisappear
+        this.keyboardAvoidMode = keyboardAvoidMode
+        this.enableHoverMode = enableHoverMode
+        this.hoverModeArea = hoverModeArea
+        this.levelMode = levelMode
+    }
+}
+
+/**
+ * Dialog base options
+ *
+ */
+@!APILevel[
+    since: "26.0.0",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public open class BaseDialogConfig {
+    var innerConfig_: BaseDialogConfigInner
+
+    /**
+     * Mask Region of dialog. The size can't exceed the main window.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop maskRect: ?Rectangle {
+        get() {
+            return this.innerConfig_.maskRect
+        }
+        set(value) {
+            this.innerConfig_.maskRect = value
+        }
+    }
+
+    /**
+     * Defines the dialog alignment of the screen.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop alignment: ?DialogAlignment {
+        get() {
+            return this.innerConfig_.alignment
+        }
+        set(value) {
+            this.innerConfig_.alignment = value
+        }
+    }
+
+    /**
+     * Defines the dialog offset.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop offset: ?Offset {
+        get() {
+            return this.innerConfig_.offset
+        }
+        set(value) {
+            this.innerConfig_.offset = value
+        }
+    }
+
+    /**
+     * Whether it is a modal dialog
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop isModal: ?Bool {
+        get() {
+            return this.innerConfig_.isModal
+        }
+        set(value) {
+            this.innerConfig_.isModal = value
+        }
+    }
+    /**
+     * Whether to display in the sub window.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop showInSubWindow: ?Bool {
+        get() {
+            return this.innerConfig_.showInSubWindow
+        }
+        set(value) {
+            this.innerConfig_.showInSubWindow = value
+        }
+    }
+
+    /**
+     * Allows users to click the mask layer to exit.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop autoCancel: ?Bool {
+        get() {
+            return this.innerConfig_.autoCancel
+        }
+        set(value) {
+            this.innerConfig_.autoCancel = value
+        }
+    }
+
+    /**
+     * Defines custom dialog maskColor
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop maskColor: ?ResourceColor {
+        get() {
+            return this.innerConfig_.maskColor
+        }
+        set(value) {
+            this.innerConfig_.maskColor = value
+        }
+    }
+
+    /**
+     * Transition parameters of opening/closing custom dialog.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop transition: ?TransitionEffect {
+        get() {
+            return this.innerConfig_.transition
+        }
+        set(value) {
+            this.innerConfig_.transition = value
+        }
+    }
+
+    /**
+     * Callback function when the dialog appears.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop onDidAppear: ?() -> Unit {
+        get() {
+            return this.innerConfig_.onDidAppear
+        }
+        set(value) {
+            this.innerConfig_.onDidAppear = value
+        }
+    }
+
+    /**
+     * Callback function when the dialog disappears.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop onDidDisappear: ?() -> Unit {
+        get() {
+            return this.innerConfig_.onDidDisappear
+        }
+        set(value) {
+            this.innerConfig_.onDidDisappear = value
+        }
+    }
+
+    /**
+     * Callback function before the dialog openAnimation starts.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop onWillAppear: ?() -> Unit {
+        get() {
+            return this.innerConfig_.onWillAppear
+        }
+        set(value) {
+            this.innerConfig_.onWillAppear = value
+        }
+    }
+
+    /**
+     * Callback function before the dialog closeAnimation starts.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop onWillDisappear: ?() -> Unit {
+        get() {
+            return this.innerConfig_.onWillDisappear
+        }
+        set(value) {
+            this.innerConfig_.onWillDisappear = value
+        }
+    }
+
+    /**
+     * Defines the customDialog's keyboard avoid mode
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop keyboardAvoidMode: ?KeyboardAvoidMode {
+        get() {
+            return this.innerConfig_.keyboardAvoidMode
+        }
+        set(value) {
+            this.innerConfig_.keyboardAvoidMode = value
+        }
+    }
+
+    /**
+     * Defines whether to respond to the hover mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop enableHoverMode: ?Bool {
+        get() {
+            return this.innerConfig_.enableHoverMode
+        }
+        set(value) {
+            this.innerConfig_.enableHoverMode = value
+        }
+    }
+
+    /**
+     * Defines the dialog's display area in hover mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop hoverModeArea: ?HoverModeAreaType {
+        get() {
+            return this.innerConfig_.hoverModeArea
+        }
+        set(value) {
+            this.innerConfig_.hoverModeArea = value
+        }
+    }
+
+    /**
+     * Determine the display level of the dialog.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public mut prop levelMode: ?LevelMode {
+        get() {
+            return this.innerConfig_.levelMode
+        }
+        set(value) {
+            this.innerConfig_.levelMode = value
+        }
+    }
+    
+    /**
+     * BaseDialogOptions constructor
+     *
+     * @param { ?Rectangle } [maskRect]
+     * @param { ?DialogAlignment } [alignment]
+     * @param { ?Offset } [offset]
+     * @param { ?Bool } [isModal]
+     * @param { ?Bool } [showInSubWindow]
+     * @param { ?Bool } [autoCancel]
+     * @param { ?ResourceColor } [maskColor]
+     * @param { ?TransitionEffect } [transition]
+     * @param { ?() -> Unit } [onDidAppear]
+     * @param { ?() -> Unit } [onDidDisappear]
+     * @param { ?() -> Unit } [onWillAppear]
+     * @param { ?() -> Unit } [onWillDisappear]
+     * @param { ?KeyboardAvoidMode } [keyboardAvoidMode]
+     * @param { ?Bool } [enableHoverMode]
+     * @param { ?HoverModeAreaType } [hoverModeArea]
+     * @param { ?LevelMode } [levelMode]
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        maskRect!: ?Rectangle = Option.None,
+        alignment!: ?DialogAlignment = Option.None,
+        offset!: ?Offset = Option.None,
+        isModal!: ?Bool = Option.None,
+        showInSubWindow!: ?Bool = Option.None,
+        autoCancel!: ?Bool = Option.None,
+        maskColor!: ?ResourceColor = Option.None,
+        transition!: ?TransitionEffect = Option.None,
+        onDidAppear!: ?() -> Unit = Option.None,
+        onDidDisappear!: ?() -> Unit = Option.None,
+        onWillAppear!: ?() -> Unit = Option.None,
+        onWillDisappear!: ?() -> Unit = Option.None,
+        keyboardAvoidMode!: ?KeyboardAvoidMode = Option.None,
+        enableHoverMode!: ?Bool = Option.None,
+        hoverModeArea!: ?HoverModeAreaType = Option.None,
+        levelMode!: ?LevelMode = Option.None
+    ) {
+        this.innerConfig_ = BaseDialogConfigInner(
+            maskRect: maskRect ?? Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
+            alignment: alignment ?? DialogAlignment.Default,
+            offset: offset ?? Offset(0.vp, 0.vp),
+            isModal: isModal ?? true,
+            showInSubWindow: showInSubWindow ?? false,
+            autoCancel: autoCancel ?? true,
+            maskColor: maskColor ?? Color(0x33000000),
+            transition: transition,
+            onDidAppear: onDidAppear ?? {=>},
+            onDidDisappear: onDidDisappear ?? {=>},
+            onWillAppear: onWillAppear ?? {=>},
+            onWillDisappear: onWillDisappear ?? {=>},
+            keyboardAvoidMode: keyboardAvoidMode ?? KeyboardAvoidMode.Default,
+            enableHoverMode: enableHoverMode ?? false,
+            hoverModeArea: hoverModeArea ?? HoverModeAreaType.BottomScreen,
+            levelMode: levelMode ?? LevelMode.Overlay
+        )
+    }
+}
+
+/**
+ * Dialog's custom content options.
+ *
+ */
+@!APILevel[
+    since: "26.0.0",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class CustomDialogConfig <: BaseDialogConfig {
+
+    /**
+     * Allow developer custom dialog's content.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var builder: () -> Unit
+
+    /**
+     * Defines the custom dialog's background color.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ?ResourceColor
+
+    /**
+     * Defines the custom dialog's corner radius.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var cornerRadius: ?BorderRadiuses
+
+    /**
+     * Defines the custom dialog's border width.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderWidth: ?EdgeWidths
+
+    /**
+     * Defines the custom dialog's border color.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderColor: ?EdgeColors
+
+    /**
+     * Defines the custom dialog's border style.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var borderStyle: ?EdgeStyles
+
+    /**
+     * Defines the dialog's width.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var width: ?Length
+
+    /**
+     * Defines the dialog's height.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var height: ?Length
+
+    /**
+     * Defines the dialog's shadow.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ?ShadowOptions
+
+    /**
+     * Defines the dialog's background blur Style.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: ?BlurStyle
+
+    /**
+     * Dialog constructor.
+     *
+     * @param { ?() -> Unit } builder
+     * @param { ?Rectangle } [maskRect]
+     * @param { ?DialogAlignment } [alignment]
+     * @param { ?Offset } [offset]
+     * @param { ?Bool } [isModal]
+     * @param { ?Bool } [showInSubWindow]
+     * @param { ?Bool } [autoCancel]
+     * @param { ?ResourceColor } [maskColor]
+     * @param { ?TransitionEffect } [transition]
+     * @param { ?() -> Unit } [onDidAppear]
+     * @param { ?() -> Unit } [onDidDisappear]
+     * @param { ?() -> Unit } [onWillAppear]
+     * @param { ?() -> Unit } [onWillDisappear]
+     * @param { ?KeyboardAvoidMode } [keyboardAvoidMode]
+     * @param { ?Bool } [enableHoverMode]
+     * @param { ?HoverModeAreaType } [hoverModeArea]
+     * @param { ?ResourceColor } [backgroundColor]
+     * @param { ?BorderRadiuses } [cornerRadius]
+     * @param { ?EdgeWidths } [borderWidth]
+     * @param { ?EdgeColors } [borderColor]
+     * @param { ?EdgeStyles } [borderStyle]
+     * @param { ?Length } [width]
+     * @param { ?Length } [height]
+     * @param { ?ShadowOptions } [shadow]
+     * @param { ?BlurStyle } [backgroundBlurStyle]
+     * @param { ?LevelMode } [levelMode]
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        builder!: () -> Unit,
+        maskRect!: ?Rectangle = Option.None,
+        alignment!: ?DialogAlignment = Option.None,
+        offset!: ?Offset = Option.None,
+        isModal!: ?Bool = Option.None,
+        showInSubWindow!: ?Bool = Option.None,
+        autoCancel!: ?Bool = Option.None,
+        maskColor!: ?ResourceColor = Option.None,
+        transition!: ?TransitionEffect = Option.None,
+        onDidAppear!: ?() -> Unit = Option.None,
+        onDidDisappear!: ?() -> Unit = Option.None,
+        onWillAppear!: ?() -> Unit = Option.None,
+        onWillDisappear!: ?() -> Unit = Option.None,
+        keyboardAvoidMode!: ?KeyboardAvoidMode = Option.None,
+        enableHoverMode!: ?Bool = Option.None,
+        hoverModeArea!: ?HoverModeAreaType = Option.None,
+        backgroundColor!: ?ResourceColor = Option.None,
+        cornerRadius!: ?BorderRadiuses = Option.None,
+        borderWidth!: ?EdgeWidths = Option.None,
+        borderColor!: ?EdgeColors = Option.None,
+        borderStyle!: ?EdgeStyles = Option.None,
+        width!: ?Length = Option.None,
+        height!: ?Length = Option.None,
+        shadow!: ?ShadowOptions = Option.None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
+        levelMode!: ?LevelMode = Option.None
+    ) {
+        super(
+            maskRect: maskRect ?? Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent),
+            alignment: alignment ?? DialogAlignment.Default,
+            offset: offset ?? Offset(0.vp, 0.vp),
+            isModal: isModal ?? true,
+            showInSubWindow: showInSubWindow ?? false,
+            autoCancel: autoCancel ?? true,
+            maskColor: maskColor ?? Color(0x33000000),
+            transition: transition ?? TransitionEffect.OPACITY,
+            onDidAppear: onDidAppear ?? {=>},
+            onDidDisappear: onDidDisappear ?? {=>},
+            onWillAppear: onWillAppear ?? {=>},
+            onWillDisappear: onWillDisappear ?? {=>},
+            keyboardAvoidMode: keyboardAvoidMode ?? KeyboardAvoidMode.Default,
+            enableHoverMode: enableHoverMode ?? false,
+            hoverModeArea: hoverModeArea ?? HoverModeAreaType.BottomScreen,
+            levelMode: levelMode ?? LevelMode.Overlay
+        )
+        this.builder = builder
+        this.backgroundColor = backgroundColor ?? Color.Transparent
+        this.cornerRadius = cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+            bottomRight: 32.vp)
+        this.borderWidth = borderWidth ?? EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)
+        this.borderColor = borderColor ?? EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)
+        this.borderStyle = borderStyle ?? EdgeStyles()
+        this.width = width ?? 400.vp
+        this.height = height
+        this.shadow = shadow
+        this.backgroundBlurStyle = backgroundBlurStyle ?? BlurStyle.ComponentUltraThick
+    }
+}
+
+/**
+ * Dialog's show options.
+ *
+ */
+@!APILevel[
+    since: "26.0.0",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class ShowDialogConfig {
+    /**
+     * Title of the text to display.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var title: ?ResourceStr
+
+    /**
+     * Text body.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var message: ?ResourceStr
+
+    /**
+     * Array of buttons in the dialog box.
+     * More than one buttons are supported.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var buttons: ?Array<ButtonInfo>
+
+    /**
+     * Defines the dialog alignment of the screen.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var alignment: ?DialogAlignment
+
+    /**
+     * Defines the dialog offset.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var offset: ?Offset
+
+    /**
+     * Mask Region of dialog. The size can't exceed the main window.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var maskRect: ?Rectangle
+
+    /**
+     * Whether to display in the sub window.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: ?Bool
+
+    /**
+     * Whether it is a modal dialog.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var isModal: ?Bool
+
+    /**
+     * Defines the dialog's background color.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundColor: ?ResourceColor
+
+    /**
+     * Defines the dialog's background blur Style.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var backgroundBlurStyle: ?BlurStyle
+
+    /**
+     * Defines the dialog's shadow option.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var shadow: ?ShadowOptions
+
+   /**
+     * Defines whether to respond to the hover mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var enableHoverMode: ?Bool
+
+    /**
+     * Defines the dialog's display area in hover mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var hoverModeArea: ?HoverModeAreaType
+
+    /**
+     * Defines the dialog's display layer mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var levelMode: ?LevelMode
+
+    /**
+     * Dialog's show options constructor.
+     *
+     * @param { ?ResourceStr } [title]
+     * @param { ?ResourceStr } [message]
+     * @param { ?Array<ButtonInfo> } [buttons]
+     * @param { ?DialogAlignment } [alignment]
+     * @param { ?Offset } [offset]
+     * @param { ?Rectangle } [maskRect]
+     * @param { ?Bool } [showInSubWindow]
+     * @param { ?Bool } [isModal]
+     * @param { ?Color } [backgroundColor]
+     * @param { ?BlurStyle } [backgroundBlurStyle]
+     * @param { ?ShadowOptions } [shadow]
+     * @param { ?Bool } [enableHoverMode]
+     * @param { ?HoverModeAreaType } [hoverModeArea]
+     * @param { ?levelMode } [LevelMode]
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        title!: ?ResourceStr = Option.None,
+        message!: ?ResourceStr = Option.None,
+        buttons!: ?Array<ButtonInfo> = Option.None,
+        alignment!: ?DialogAlignment = Option.None,
+        offset!: ?Offset = Option.None,
+        maskRect!: ?Rectangle = Option.None,
+        showInSubWindow!: ?Bool = Option.None,
+        isModal!: ?Bool = Option.None,
+        backgroundColor!: ?ResourceColor = Option.None,
+        backgroundBlurStyle!: ?BlurStyle = Option.None,
+        shadow!: ?ShadowOptions = Option.None,
+        enableHoverMode!: ?Bool = Option.None,
+        hoverModeArea!: ?HoverModeAreaType = Option.None,
+        levelMode!: ?LevelMode = Option.None
+    ) {
+        this.title = title
+        this.message = message
+        this.buttons = buttons
+        this.alignment = alignment
+        this.offset = offset
+        this.maskRect = maskRect
+        this.showInSubWindow = showInSubWindow
+        this.isModal = isModal
+        this.backgroundColor = backgroundColor
+        this.backgroundBlurStyle = backgroundBlurStyle
+        this.shadow = shadow
+        this.enableHoverMode = enableHoverMode
+        this.hoverModeArea = hoverModeArea
+        this.levelMode = levelMode
+    }
+}
+
+/**
+ * Menu's Action options.
+ *
+ */
+@!APILevel[
+    since: "26.0.0",
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public class ActionMenuConfig {
+    /**
+     * Title of the text to display.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var title: ?ResourceStr
+
+    /**
+     * Array of buttons in the dialog box.
+     * One to six buttons are supported.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var buttons: ?Array<ButtonInfo>
+
+    /**
+     * Whether to display in the sub window.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var showInSubWindow: ?Bool
+
+    /**
+     * Whether it is a modal dialog.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var isModal: ?Bool
+
+    /**
+     * Defines the dialog's display layer mode.
+     *
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public var levelMode: ?LevelMode
+
+    /**
+     * Menu's Action options constructor.
+     *
+     * @param { ?ResourceStr } [title]
+     * @param { ?Array<ButtonInfo> } [buttons]
+     * @param { ?Bool } [showInSubWindow]
+     * @param { ?Bool } [isModal]
+     * @param { ?LevelMode } [levelMode]
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public init(
+        title!: ?ResourceStr = Option.None,
+        buttons!: ?Array<ButtonInfo> = Option.None,
+        showInSubWindow!: ?Bool = Option.None,
+        isModal!: ?Bool = Option.None,
+        levelMode!: ?LevelMode = Option.None
+    ) {
+        this.title = title
+        this.buttons = buttons
+        this.showInSubWindow = showInSubWindow
+        this.isModal = isModal
+        this.levelMode = levelMode
+    }
+}
+
 func parseShadowOptions(shadowOptions: ShadowOptions): NativeShadowOptions {
     return NativeShadowOptions(
         shadowOptions.radius ?? -1.0,
@@ -1490,6 +2495,166 @@ func parseActionMenuOptions(options: ActionMenuOptions): NativeActionMenuOptions
     }
 }
 
+func parseCustomDialogConfig(options: CustomDialogConfig): NativeCustomDialogOptionsV2 {
+    let borderEdgeStyle = match (options.borderStyle) {
+        case Some(value) => value.toNative()
+        case None => EdgeStyles().toNative()
+    }
+
+    let shadowOption = match (options.shadow) {
+        case Some(value) => parseShadowOptions(value)
+        case None => parseShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color))
+    }
+    let shadowStyle = Int32(100)
+    let widthLength = transAppResourceToLength(options.width ?? 400.vp)
+    let heightLength = transAppResourceToLength(options.height ?? 0.vp)
+    let cornerRadius = match (options.cornerRadius) {
+        case Some(value) => parseBorderRadiuses(value)
+        case None => parseBorderRadiuses(BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp))
+    }
+    let borderWidth = match (options.borderWidth) {
+        case Some(value) => parseEdgeWidths(value)
+        case None => parseEdgeWidths(EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp))
+    }
+    let borderColor = match (options.borderColor) {
+        case Some(value) => value.toCEdgeColor()
+        case None => EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black).toCEdgeColor()
+    }
+    let backgroundColor = match (options.backgroundColor) {
+        case Some(value) => transAppResourceToResourceColor(value)
+        case None => Color.Transparent
+    }
+    let backgroundBlurStyle = match (options.backgroundBlurStyle) {
+        case Some(value) => value.getValue()
+        case None => BlurStyle.ComponentUltraThick.getValue()
+    }
+    return NativeCustomDialogOptionsV2(
+        parseRectangle(options.maskRect ?? Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)),
+        (options.alignment ?? DialogAlignment.Default).getValue(),
+        parseOffset(options.offset ?? Offset(0.vp, 0.vp)),
+        options.isModal ?? true,
+        options.showInSubWindow ?? false,
+        options.autoCancel ?? true,
+        (options.maskColor ?? Color(0x33000000)).toUInt32(),
+        (options.transition ?.getID() ?? 0),
+        options.transition.isSome(),
+        Callback0Param<Unit>(options.onDidAppear ?? {=>}).getID(),
+        Callback0Param<Unit>(options.onDidDisappear ?? {=>}).getID(),
+        Callback0Param<Unit>(options.onWillAppear ?? {=>}).getID(),
+        Callback0Param<Unit>(options.onWillDisappear ?? {=>}).getID(),
+        (options.keyboardAvoidMode ?? KeyboardAvoidMode.Default).getValue(),
+        options.enableHoverMode ?? false,
+        (options.hoverModeArea ?? HoverModeAreaType.BottomScreen).getValue(),
+        Callback0Param<Unit>(options.builder).getID(),
+        transAppResourceToResourceColor((options.backgroundColor ?? Color.Transparent)),
+        parseBorderRadiuses(options.cornerRadius ?? BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+            bottomRight: 32.vp)),
+        parseEdgeWidths(options.borderWidth ?? EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)),
+        (options.borderColor ?? EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)).toCEdgeColor(),
+        borderEdgeStyle,
+        widthLength.value,
+        widthLength.unitType.getValue(),
+        heightLength.value,
+        heightLength.unitType.getValue(),
+        options.height.isSome(),
+        shadowOption,
+        shadowStyle,
+        (options.backgroundBlurStyle ?? BlurStyle.ComponentUltraThick).getValue(),
+        (options.levelMode ?? LevelMode.Overlay).getValue()
+    )
+}
+
+func parseShowDialogConfig(options: ShowDialogConfig): NativeShowDialogOptionsV2 {
+    var pButtons: CPointer<CButtonInfo> = createCButtons(options.buttons ?? []) ?? CPointer<CButtonInfo>()
+    let shadowOption = match (options.shadow) {
+        case Some(value) => parseShadowOptions(value)
+        case None => parseShadowOptions(ShadowOptions(radius: -1.0, shadowType: ShadowType.Color))
+    }
+    let shadowStyle = Int32(100)
+    let backgroundColor = match (options.backgroundColor) {
+        case Some(value) => value.toUInt32()
+        case None => Color.Transparent.toUInt32()
+    }
+    let backgroundBlurStyle = match (options.backgroundBlurStyle) {
+        case Some(value) => value.getValue()
+        case None => BlurStyle.ComponentUltraThick.getValue()
+    }
+    let alignment = match (options.alignment) {
+        case Some(value) => value.getValue()
+        case None => DialogAlignment.Default.getValue()
+    }
+    let offset = match (options.offset) {
+        case Some(value) => parseOffset(value)
+        case None => parseOffset(Offset(0.vp, 0.vp))
+    }
+    let maskRect = match (options.maskRect) {
+        case Some(value) => parseRectangle(value)
+        case None => parseRectangle(Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent))
+    }
+    let showInSubWindow = options.showInSubWindow ?? false
+    let isModal = options.isModal ?? true
+    let enableHoverMode = options.enableHoverMode ?? false
+    let hoverModeArea = match (options.hoverModeArea) {
+        case Some(value) => value.getValue()
+        case None => HoverModeAreaType.BottomScreen.getValue()
+    }
+    let levelMode = match (options.levelMode) {
+        case Some(value) => value.getValue()
+        case None => LevelMode.Overlay.getValue()
+    }
+    unsafe {
+        var cTitle = CString(CPointer<UInt8>())
+        var cMsg = CString(CPointer<UInt8>())
+        try {
+            cTitle = LibC.mallocCString(transResourceStrToString(options.title ?? ''))
+            cMsg = LibC.mallocCString(transResourceStrToString(options.message ?? ''))
+        } catch (e: Exception) {
+            LibC.free(cTitle)
+            LibC.free(cMsg)
+            throw BusinessException(100001, "Internal error: failed to allocate memory.")
+        }
+        return NativeShowDialogOptionsV2(
+            cTitle,
+            cMsg,
+            pButtons,
+            UInt32((options.buttons ?? []).size),
+            alignment,
+            offset,
+            maskRect,
+            showInSubWindow,
+            isModal,
+            backgroundColor,
+            backgroundBlurStyle,
+            shadowOption,
+            shadowStyle,
+            enableHoverMode,
+            hoverModeArea,
+            levelMode
+        )
+    }
+}
+
+func parseActionMenuConfig(options: ActionMenuConfig): NativeActionMenuOptionsV2 {
+    var pButtons: CPointer<CButtonInfo> = createCButtons(options.buttons ?? []) ?? CPointer<CButtonInfo>()
+    let showInSubWindow = options.showInSubWindow ?? false
+    let isModal = options.isModal ?? true
+    let levelMode = match (options.levelMode) {
+        case Some(value) => value.getValue()
+        case None => LevelMode.Overlay.getValue()
+    }
+    unsafe {
+        let cTitle = LibC.mallocCString(transResourceStrToString(options.title ?? ''))
+        return NativeActionMenuOptionsV2(
+            cTitle,
+            pButtons,
+            UInt32((options.buttons ?? []).size),
+            showInSubWindow,
+            isModal,
+            levelMode
+        )
+    }
+}
+
 /**
  * class PromptAction.
  */
@@ -1522,6 +2687,26 @@ public class PromptAction {
         let callBackLambda = Callback1Param<Int32, Unit>(callBack)
         unsafe {
             FfiPromptOpenCustomDialogWithOption(cOptions, callBackLambda.getID())
+        }
+    }
+    
+    /**
+     * Open the custom dialog.
+     *
+     * isModal = true and showInSubWindow = true cannot be used at the same time.
+     *
+     * @param { CustomDialogConfig } options - Options.
+     * @param { (Int32) -> Unit } callback
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func openCustomDialog(options: CustomDialogConfig, callback: (Int32) -> Unit): Unit {
+        let cOptions = parseCustomDialogConfig(options)
+        let callBackLambda = Callback1Param<Int32, Unit>(callback)
+        unsafe {
+            FfiPromptOpenCustomDialogWithOptionV2(cOptions, callBackLambda.getID())
         }
     }
 
@@ -1591,6 +2776,36 @@ public class PromptAction {
     }
 
     /**
+     * Shows a dialog box in the given settings. This API uses an asynchronous callback to return the result.
+     *
+     * @param { ShowDialogConfig } option - Dialog box options.
+     * @param { ShowDialogCallBack } [callback] - Callback used to return the dialog box response result.
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> Failed to allocate memory.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func showDialog(option: ShowDialogConfig, callback!: ShowDialogCallBack = DEFAULT_CALLBACK): Unit {
+        unsafe {
+            let cOption = parseShowDialogConfig(option)
+            let wrapper = {
+                code: Int32, index: Int32 => match (code) {
+                    case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
+                    case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
+                }
+            }
+            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
+
+            FfiPromptShowDialogWithOptionV2(cOption, lambdaData.getID())
+            cOption.title.free()
+            cOption.message.free()
+            destoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
+        }
+    }
+
+    /**
      * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
      *
      * @param { ActionMenuOptions } option - Action menu options.
@@ -1614,6 +2829,35 @@ public class PromptAction {
             }
             let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
             FfiPromptShowActionMenuWithOption(cOption, lambdaData.getID())
+            cOption.title.free()
+            destoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
+        }
+    }
+    
+    /**
+     * Shows an action menu in the given settings. This API uses an asynchronous callback to return the result.
+     *
+     * @param { ActionMenuConfig } option - Action menu options.
+     * @param { ShowActionMenuCallBack } [callback] - Callback used to return the action menu
+     * response result.
+     * @throws { BusinessException } 100001 - Internal error. Possible causes:
+     * <br> Failed to allocate memory.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    public func showActionMenu(option: ActionMenuConfig, callback!: ShowActionMenuCallBack = DEFAULT_CALLBACK): Unit {
+        unsafe {
+            let cOption = parseActionMenuConfig(option)
+            let wrapper = {
+                code: Int32, index: Int32 => match (code) {
+                    case 0 => callback(Option<BusinessException>.None, Option<Int32>.Some(index))
+                    case _ => callback(Option<BusinessException>.Some(BusinessException(code, "")), Option<Int32>.None)
+                }
+            }
+            let lambdaData = Callback2Param<Int32, Int32, Unit>(wrapper)
+            FfiPromptShowActionMenuWithOptionV2(cOption, lambdaData.getID())
             cOption.title.free()
             destoryCButtons(cOption.buttons, Int64(cOption.buttonsSize))
         }
