@@ -18,7 +18,8 @@
 package ohos.arkui.component.tab
 
 import ohos.arkui.component.common.{CustomBuilder, CommonMethodComponent, CTranslateOptions, BarPosition, BarMode}
-import ohos.arkui.component.util.{transAppResourceToLength, normalizeValue, transResourceStrToString, transResourceMediaToString}
+import ohos.arkui.component.util.{transAppResourceToLength, normalizeValue, transResourceStrToString, 
+    transResourceMediaToString, lessNotEqual}
 import ohos.ffi.{Callback1Param, releaseFFIData, Callback0Param, RemoteDataLite}
 import ohos.base.{Callback, ResourceStr, VectorInt32Handle, Length, LengthProp}
 import ohos.labels.{APILevel}
@@ -27,6 +28,14 @@ foreign {
     func FfiOHOSAceFrameworkTabsCreate(barVal: Int32, controller: Int64, index: Int32): Unit
 
     func FfiOHOSAceFrameworkTabsPop(): Unit
+    
+    func FFISetWidthWithEmpty(): Unit
+    
+    func FFISetHeightWithEmpty(): Unit
+
+    func FfiOHOSAceFrameworkTabsSetWidth(width: Float64, unit: Int32): Unit
+
+    func FfiOHOSAceFrameworkTabsSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkTabsSetBarWidth(width: Float64, unit: Int32): Unit
 
@@ -303,6 +312,38 @@ public class Tabs <: CommonMethodComponent<Tabs> & TabsAttribute {
     protected override func pop(): Unit {
         unsafe {
             FfiOHOSAceFrameworkTabsPop()
+        }
+        this
+    }
+    
+    protected override func widthInner(width: ?Length): This {
+        match (width) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTabsSetWidth(value_.value, value_.unitType.getValue())
+                    }
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
+        }
+        this
+    }
+    
+    protected override func heightInner(height: ?Length): This {
+        match (height) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetHeightWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTabsSetHeight(value_.value, value_.unitType.getValue())
+                    }
+                }
+            case None => unsafe { FFISetHeightWithEmpty() }
         }
         this
     }

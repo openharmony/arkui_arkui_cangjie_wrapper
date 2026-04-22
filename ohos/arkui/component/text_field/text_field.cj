@@ -24,6 +24,10 @@ import ohos.base.{Length, ResourceColor, CStringExtend, APP_LOG, Color, LengthPr
 import ohos.ffi.{Callback1Param, Callback0Param, Callback2Param, Callback3Param}
 
 foreign {
+    func FfiOHOSAceFrameworkTextFieldSetWidth(width: Float64, unit: Int32): Unit
+
+    func FFISetWidthWithEmpty(): Unit
+
     func FfiOHOSAceFrameworkTextFieldSetHeight(height: Float64, unit: Int32): Unit
 
     func FfiOHOSAceFrameworkTextFieldSetSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
@@ -218,6 +222,21 @@ foreign {
 }
 
 protected class TextField {
+    protected static func width(width: ?Length): Unit {
+        match (width) {
+            case Some(v) =>
+                unsafe {
+                    let value_ = transAppResourceToLength(v)
+                    if (lessNotEqual(value_.value, 0.0)) {
+                        FFISetWidthWithEmpty()
+                    } else {
+                        FfiOHOSAceFrameworkTextFieldSetWidth(value_.value, value_.unitType.getValue())
+                    }
+                }
+            case None => unsafe { FFISetWidthWithEmpty() }
+        }
+    }
+
     protected static func height(width: ?Length): Unit {
         match (width) {
             case Some(v) =>

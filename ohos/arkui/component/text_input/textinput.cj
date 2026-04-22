@@ -164,6 +164,11 @@ public class TextInput <: CommonMethodComponent<TextInput> & TextInputAttribute 
         }
     }
 
+    protected override func widthInner(width: ?Length): This {
+        TextField.width(width)
+        this
+    }
+
     protected override func heightInner(width: ?Length): This {
         TextField.height(width)
         this
