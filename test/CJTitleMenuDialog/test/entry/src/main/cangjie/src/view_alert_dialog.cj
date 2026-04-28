@@ -21,6 +21,20 @@ class ViewAlertDialog {
     var msg2: String = ""
     @State
     var msg3: String = ""
+    @State
+    var msg4: String = ""
+    @State
+    var msg5: String = ""
+    @State
+    var msg6: String = ""
+    @State
+    var msg7: String = ""
+    @State
+    var msg8: String = ""
+    @State
+    var msg9: String = ""
+    @State
+    var msg11: String = ""
     let shadow = ShadowOptions(radius: 20.0, color: Color.Green, offsetX: 50.0, offsetY: 0.0)
     let dialog1 = AlertDialogParamWithConfirm(message: "text")
     let dialog2 = AlertDialogParamWithButtons(message: "text",
@@ -84,7 +98,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg1 = "button2"
+                            this.msg2 = "button2"
                             let confirm1 = AlertDialogButtonOptions(
                                 value: "button",
                                 action: {
@@ -134,7 +148,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg1 = "button1"
+                            this.msg3 = "button1"
                             let confirm1 = AlertDialogButtonOptions(
                                 value: "button",
                                 action: {
@@ -184,7 +198,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg2 = "button2"
+                            this.msg4 = "button2"
                             let primaryButton = AlertDialogButtonOptions(
                                 value: "cancel",
                                 action: {
@@ -242,7 +256,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg2 = "button2"
+                            this.msg5 = "button2"
                             let primaryButton = AlertDialogButtonOptions(
                                 value: "cancel",
                                 action: {
@@ -300,7 +314,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg2 = "button2"
+                            this.msg6 = "button2"
                             let primaryButton = AlertDialogButtonOptions(
                                 value: "cancel",
                                 action: {
@@ -358,7 +372,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg3 = "button3"
+                            this.msg7 = "button3"
                             let button1 = AlertDialogButtonOptions(
                                 value: "按钮",
                                 action: {
@@ -408,7 +422,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg3 = "button3"
+                            this.msg8 = "button3"
                             let button1 = AlertDialogButtonOptions(
                                 value: "按钮",
                                 action: {
@@ -458,7 +472,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg3 = "button3"
+                            this.msg9 = "button3"
                             let button1 = AlertDialogButtonOptions(
                                 value: "按钮",
                                 action: {
@@ -552,7 +566,7 @@ class ViewAlertDialog {
                     .onClick(
                         {
                             e =>
-                            this.msg3 = "test None"
+                            this.msg11 = "test None"
                             let button1 = AlertDialogButtonOptions(
                                 value: "按钮",
                                 action: {
@@ -1213,21 +1227,21 @@ class ViewAlertDialog {
                 Row {
                     Text(this.msg).id("text")
                     Text(this.msg1).id("text_1")
-                    Text(this.msg1).id("text_2")
+                    Text(this.msg2).id("text_2")
                 }
                 Row {
-                    Text(this.msg1).id("text_3")
-                    Text(this.msg2).id("text_4")
-                    Text(this.msg2).id("text_5")
+                    Text(this.msg3).id("text_3")
+                    Text(this.msg4).id("text_4")
+                    Text(this.msg5).id("text_5")
                 }
                 Row {
-                    Text(this.msg2).id("text_6")
-                    Text(this.msg3).id("text_7")
-                    Text(this.msg3).id("text_8")
+                    Text(this.msg6).id("text_6")
+                    Text(this.msg7).id("text_7")
+                    Text(this.msg8).id("text_8")
                 }
                 Row {
-                    Text(this.msg3).id("text_9")
-                    Text(this.msg3).id("text_11")
+                    Text(this.msg9).id("text_9")
+                    Text(this.msg11).id("text_11")
                 }
             }.width(@r(app.string.width_100p)).margin(5.percent).id("my_aDialog")
         }
