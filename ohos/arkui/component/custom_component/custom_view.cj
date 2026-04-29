@@ -19,7 +19,12 @@ import ohos.arkui.component.common.{UINodeBase}
 import ohos.arkui.component.ifcomponent.{If}
 import ohos.arkui.component.for_each.{ForEach}
 import ohos.arkui.component.custom_view.{RemoteView}
-import ohos.arkui.state_management.{Observer, ObservedPropertyAbstract, LocalStorage, ObservedProperty, ObservedComplexAbstract, SubscriberManager, ViewStackProcessor}
+import ohos.arkui.state_management.{
+    Observer, ObservedPropertyAbstract, LocalStorage, ObservedProperty,
+    ObservedComplexAbstract, SubscriberManager, ViewStackProcessor,
+    profilerDependencyPushObserver, profilerDependencyPopObserver,
+    profilerGetClassName, profilerCleanupObserver, profilerConsumePendingClassName
+}
 import ohos.arkui.ui_context.{UIContext}
 import ohos.base.{ExternalString, CollectionEx, ReuseParams, BASE_LOG}
 import ohos.ffi.{FFIDataManager}
@@ -101,6 +106,7 @@ public abstract class CustomView <: RemoteView & Observer {
     private var delayRecycleNodeRerender_: Bool = false
     private var delayRecycleNodeRerenderDeep_: Bool = false
     private var runReuse_: Bool = false
+    private var profilerViewElementId_inner__: Int32 = -1
 
     /**
      * init function.
@@ -183,8 +189,21 @@ public abstract class CustomView <: RemoteView & Observer {
         this.build()
     }
 
+    private func getProfilerViewName(): String {
+        let name = profilerGetClassName(this.id())
+        if (!name.isEmpty()) {
+            return name
+        }
+        profilerConsumePendingClassName()
+    }
+
     @!Hide
     protected override func onAboutToRender(): Unit {
+        updateProfilerViewElementId()
+        let viewName = this.getProfilerViewName()
+        if (!viewName.isEmpty()) {
+            View.applyProfilerViewNameToNativeView(nativeView_inner__, viewName)
+        }
         isRenderingInProgress_inner__ = true
         propsUsedForRender_inner__.clear()
     }
@@ -373,7 +392,9 @@ public abstract class CustomView <: RemoteView & Observer {
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
         let elmtId = ViewStackProcessor.allocateNewElmetIdForNextComponent()
         ViewStackProcessor.startGetAccessRecordingFor(elmtId)
+        profilerDependencyPushObserver(this.id())
         compilerAssignedUpdateFunc(elmtId, true).initial()
+        profilerDependencyPopObserver()
         ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
         // Register element ID to owning view mapping
@@ -411,7 +432,9 @@ public abstract class CustomView <: RemoteView & Observer {
             updateFuncByElmtId_inner__[oldElemtId] = compilerAssignedUpdateFunc
         }
         ViewStackProcessor.startGetAccessRecordingFor(newElemtId)
+        profilerDependencyPushObserver(this.id())
         recycleUpdateFunc(oldElemtId, true, node).initial()
+        profilerDependencyPopObserver()
         ViewStackProcessor.stopGetAccessRecording()
     }
     /**
@@ -656,6 +679,28 @@ public abstract class CustomView <: RemoteView & Observer {
         return compId_inner__
     }
 
+    /**
+     * Native element id for Deveco Profiler state change reporting.
+     */
+    @!APILevel[
+        since: "26.0.0",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func getProfilerViewElementId(): Int32 {
+        let id = nativeView_inner__.getElementId()
+        if (id >= 0) {
+            return id
+        }
+        profilerViewElementId_inner__
+    }
+
+    private func updateProfilerViewElementId(): Unit {
+        if (profilerViewElementId_inner__ < 0) {
+            profilerViewElementId_inner__ = nativeView_inner__.getElementId()
+        }
+    }
+
     @!Hide
     protected func markLazyForEachProcess(groupId: String): Unit {
         isLazyForEachProcess_inner__ = true
@@ -748,6 +793,8 @@ public abstract class CustomView <: RemoteView & Observer {
         this.propsUsedForRender_inner__.clear()
         this.lazyChildren_inner__.clear()
         this.lazyGroups_inner__.clear()
+
+        profilerCleanupObserver(id())
 
         if (let Some(parent) <- parent_inner__) {
             parent.removeChildById(id())

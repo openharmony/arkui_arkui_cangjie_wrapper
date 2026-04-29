@@ -79,6 +79,23 @@ enum StateKind <: ToString {
             case LocalStoragePropInterOpTy => return "LocalStoragePropInterOp"
         }
     }
+
+    public func getDecorator(): String {
+        match (this) {
+            case StateTy => "@State"
+            case LinkTy => "@Link"
+            case PropTy => "@Prop"
+            case ProvideTy => "@Provide"
+            case ConsumeTy => "@Consume"
+            case PublishTy => "@Publish"
+            case AppStorageLinkTy => "@StorageLink"
+            case AppStoragePropTy => "@StorageProp"
+            case LocalStorageLinkTy => "@LocalStorageLink"
+            case LocalStoragePropTy => "@LocalStorageProp"
+            case LocalStorageLinkInterOpTy => "@LocalStorageLink"
+            case LocalStoragePropInterOpTy => "@LocalStorageProp"
+        }
+    }
 }
 
 enum VariableKind {
@@ -109,6 +126,23 @@ enum VariableKind {
             case LocalStoragePropTy => 9
             case LocalStorageLinkInterOpTy => 10
             case LocalStoragePropInterOpTy => 11
+        }
+    }
+
+    public func getDecorator(): String {
+        match (this) {
+            case StateTy => "@State"
+            case LinkTy => "@Link"
+            case PropTy => "@Prop"
+            case ProvideTy => "@Provide"
+            case ConsumeTy => "@Consume"
+            case AppStorageLinkTy => "@StorageLink"
+            case AppStoragePropTy => "@StorageProp"
+            case LocalStorageLinkTy => "@LocalStorageLink"
+            case LocalStoragePropTy => "@LocalStorageProp"
+            case LocalStorageLinkInterOpTy => "@LocalStorageLink"
+            case LocalStoragePropInterOpTy => "@LocalStorageProp"
+            case CommonTy => ""
         }
     }
 }
@@ -260,6 +294,24 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
 
 func mangle(name: String): String {
     "stateVarDecl_" + name + "_"
+}
+
+var currentProfilerClassName: String = ""
+
+func buildProfilerInfo(decorator: String, userFieldName: String): String {
+    if (decorator.isEmpty()) {
+        return mangle(userFieldName)
+    }
+    let base = mangle(userFieldName)
+    let encoded = "cjprf|" + decorator + "|" + userFieldName + "|" + base
+    if (currentProfilerClassName.isEmpty()) {
+        return encoded
+    }
+    encoded + "|" + currentProfilerClassName
+}
+
+func mangleInfoForObservedPublishField(userFieldName: String): String {
+    buildProfilerInfo("@Publish", userFieldName)
 }
 
 func generateMangledToken(identTokStr: String): Token {
