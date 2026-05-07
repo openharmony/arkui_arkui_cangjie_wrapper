@@ -19,6 +19,8 @@ import ohos.base.*
 import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import ohos.device_info.*
+import ohos.hilog.*
 
 @Entry
 @Component
@@ -46,31 +48,46 @@ class ViewImageDataInitNoData {
                 
                 Canvas(this.context2).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataException").onReady({
                     =>
-                    try {
+                    if (DeviceInfo.sdkApiVersion >= 23) {
                         let imageData = ImageData(-100.0, -100.0)
                         this.context2.putImageData(imageData, 100.0, 100.0)
-                    } catch (e: Exception) {
-                        Hilog.info(0, "cangjie-test", "ImageData(-100.0, -100.0) create failed.")
+                    } else {
+                        try {
+                            let imageData = ImageData(-100.0, -100.0)
+                            this.context2.putImageData(imageData, 100.0, 100.0)
+                        } catch (e: Exception) {
+                            Hilog.info(0, "cangjie-test", "ImageData(-100.0, -100.0) create failed.")
+                        }
                     }
                 })
                 
                 Canvas(this.context3).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataBoundary").onReady({
                     =>
-                    try {
+                    if (DeviceInfo.sdkApiVersion >= 23) {
                         let imageData = ImageData(0.0, 0.0)
                         this.context3.putImageData(imageData, 100.0, 100.0)
-                    } catch (e: Exception) {
-                        Hilog.info(0, "cangjie-test", "ImageData(0.0, 0.0) create failed.")
+                    } else {
+                        try {
+                            let imageData = ImageData(0.0, 0.0)
+                            this.context3.putImageData(imageData, 100.0, 100.0)
+                        } catch (e: Exception) {
+                            Hilog.info(0, "cangjie-test", "ImageData(0.0, 0.0) create failed.")
+                        }
                     }
                 })
                 
                 Canvas(this.context4).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataInitNoDataNone").onReady({
                     =>
-                    try {
+                    if (DeviceInfo.sdkApiVersion >= 23) {
                         let imageData = ImageData(Option.None, Option.None, unit: Option.None)
                         this.context4.putImageData(imageData, 100.0, 100.0)
-                    } catch (e: Exception) {
-                        Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, unit: Option.None) create failed.")
+                    } else {
+                        try {
+                            let imageData = ImageData(Option.None, Option.None, unit: Option.None)
+                            this.context4.putImageData(imageData, 100.0, 100.0)
+                        } catch (e: Exception) {
+                            Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, unit: Option.None) create failed.")
+                        }
                     }
                 })
             }.width(100.percent)
