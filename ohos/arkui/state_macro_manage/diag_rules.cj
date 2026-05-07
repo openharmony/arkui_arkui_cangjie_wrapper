@@ -148,6 +148,9 @@ protected enum MacroErrorCode {
     | RawfileInvalidName
     /** Rawfile not found */
     | RawfileNotFound
+    
+    /** @Reusable can only be used with @Component */
+    | ReusableOnlyForComponent
     | ...
 
     /**
@@ -211,6 +214,7 @@ protected enum MacroErrorCode {
             case DuplicateBuild => "can only have one build function"
             case MissingBuild => "decorated class must have the 'build' function"
             case InvalidNodeType => "can only be written with UI syntax"
+            case ReusableOnlyForComponent => "can only be used with @Component"
 
             // Uniqueness errors
             case DuplicateEntry => "only one instance is allowed per file"
@@ -289,6 +293,8 @@ protected enum MacroErrorCode {
                 "Remove 'open'; this declaration does not support inheritance."
             case InvalidNodeType =>
                 "Remove non-UI statements; the build body should only contain UI component expressions."
+            case ReusableOnlyForComponent =>
+                "Use @Reusable together with @Component (e.g. @Reusable @Component class MyComponent {})."
             case RootMustBeContainer =>
                 "Use a container component (e.g. Column, Row) as the root."
             case ForInNotAllowedInIf =>

@@ -54,7 +54,7 @@ protected class RecycleManager {
         if (arr.size > 0) {
             return arr.remove(at: arr.size - 1)
         }
-        None
+        return None
     }
 
     // When parent View is deleted, release all cached nodes
@@ -78,24 +78,19 @@ class BidirectionalMap {
     }
 
     func remove(key: Int64): Unit {
-        if (!fwdMap.contains(key)) {
-            return
+        if (let Some(value) <- fwdMap.get(key)) {
+            fwdMap.remove(key)
+            revMap.remove(value)
         }
-        fwdMap.remove(key)
-        revMap.remove(key)
         ()
     }
 
     func get(key: Int64): ?Int64 {
         let fwdVal = fwdMap.get(key)
-        let revVal = revMap.get(key)
         if (let Some(v) <- fwdVal) {
             return v
         }
-        if (let Some(v) <- revVal) {
-            return v
-        }
-        return None
+        return revMap.get(key)
     }
 
     func put(pair: (Int64, Int64)) {
