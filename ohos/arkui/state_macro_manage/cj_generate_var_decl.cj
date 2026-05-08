@@ -120,7 +120,7 @@ func generateCommonVarDecl(varDecl: VarDecl): MacroExpandInitInfo {
 
 func generateStateVarDecl(kind: VariableKind, varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
     match (kind) {
-        case StateTy => generateStateInit(varDecl, varExpand)
+        case StateTy => generateStateInit(varDecl, varExpand, VariableKind.StateTy)
         case PropTy => generatePropInit(varDecl, varExpand)
         case LinkTy => generateLinkInit(varDecl, varExpand)
         case ProvideTy => generateProvideInit(varDecl, varExpand)
@@ -152,10 +152,10 @@ enum VarInitType {
     | PropType
 }
 
-func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType): Tokens {
+func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType, kind: VariableKind): Tokens {
     let identifierAssociated = varExpand.identifier
     let valTypeExpand = varExpand.getTypeByInitializer()
-    let info = mangle(identifier.value)
+    let info = buildProfilerInfo(kind.getDecorator(), identifier.value)
     var hasInitializer = false
     try {
         varExpand.expr
@@ -187,14 +187,14 @@ func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType)
     }
 }
 
-func generateStateInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
+func generateStateInit(varDecl: VarDecl, varExpand: VarDecl, stateKind: VariableKind): MacroExpandInitInfo {
     let identifier = varDecl.identifier
     let valType = varExpand.getTypeByInitializer()
 
     let identifierAssociated = varExpand.identifier
     let initParam = quote($identifier!: Option<$valType> = None)
 
-    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.StateType)
+    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.StateType, stateKind)
 
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
@@ -209,7 +209,7 @@ func generatePropInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo
     let identifierAssociated = varExpand.identifier
     let initParam = quote($identifier!: $valType)
 
-    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.PropType)
+    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.PropType, VariableKind.PropTy)
 
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
@@ -247,7 +247,7 @@ func generateProvideInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
     }
     let identifierAssociated = varExpand.identifier
 
-    let value = generateStateInit(varDecl, varExpand)
+    let value = generateStateInit(varDecl, varExpand, VariableKind.ProvideTy)
     let initParam = value[0]
     let initBodyAssign = value[1]
     let initBodySubscribe = value[2] + quote(

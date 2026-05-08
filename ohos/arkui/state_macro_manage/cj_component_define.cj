@@ -49,7 +49,10 @@ public macro Component(input: Tokens): Tokens {
             let classBody = classDecl.body
 
             checkChildMessage(classBody.decls, classDecl.identifier.value)
+            // Set class name for buildProfilerInfo to encode in ObservedProperty info strings.
+            currentProfilerClassName = classDecl.identifier.value
             let classBodyAfterExpand = handleClassBody(classBody.decls)
+            currentProfilerClassName = ""
             let initFunc = generateInitFunc(classDecl)
             let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
             let updateParamFunc = generateUpdateParam(classDecl)
@@ -1234,7 +1237,6 @@ func generateCustomDialogBindDecls(): Tokens {
 func generateInitFunc(classDecl: ClassDecl) {
     // variable declarations: variable declarations in @Component Class
     let varDecls = getVarDecls(classDecl)
-
     var initParams = Tokens()
     var initBodyAssign = Tokens()
     var initBodySubscribe = Tokens()
