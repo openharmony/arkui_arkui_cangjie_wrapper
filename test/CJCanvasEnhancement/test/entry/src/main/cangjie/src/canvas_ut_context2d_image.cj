@@ -325,7 +325,7 @@ class CanvasUTContext2DImage {
     func testContext2DHeight() {
         scrollTo("ViewCanvasContext2DHeight")
         let height = getContent("heightText")
-        @Expect(width, "\"150.000000\"")
+        @Expect(height, "\"150.000000\"")
         driver.pressBack()
     }
 
