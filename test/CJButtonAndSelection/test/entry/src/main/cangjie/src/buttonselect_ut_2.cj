@@ -69,6 +69,7 @@ class ButtonSelectUT2 {
         // OnNext
         var buttonNext = driver.findComponent(On().text("下一页")).getOrThrow()
         buttonNext.click()
+        driver.delayMs(500)
         var secondText = driver.findComponent(On().id("secondText")).getOrThrow()
         var text = secondText.getText()
         @Expect(text, "Page Two")
@@ -76,6 +77,7 @@ class ButtonSelectUT2 {
         // OnChange
         let buttonPrev = driver.findComponent(On().text("上一页")).getOrThrow()
         buttonPrev.click()
+        driver.delayMs(500)
         secondText = driver.findComponent(On().id("firstText")).getOrThrow()
         text = secondText.getText()
         @Expect(text, "Page One")
@@ -83,8 +85,10 @@ class ButtonSelectUT2 {
         // OnSkip
         let firstButton = driver.findComponent(On().id("firstButton")).getOrThrow()
         firstButton.click()
+        driver.delayMs(500)
         buttonNext = driver.findComponent(On().text("下一页")).getOrThrow()
         buttonNext.click()
+        driver.delayMs(500)
         let thirdText = driver.findComponent(On().id("thirdText")).getOrThrow()
         text = thirdText.getText()
         @Expect(text, "Page Three")
@@ -92,6 +96,7 @@ class ButtonSelectUT2 {
         //onPrevious
         let buttonPrevious = driver.findComponent(On().text("上一页")).getOrThrow()
         buttonPrevious.click()
+        driver.delayMs(500)
         secondText = driver.findComponent(On().id("secondText")).getOrThrow()
         text = secondText.getText()
         @Expect(text, "Page Two")
