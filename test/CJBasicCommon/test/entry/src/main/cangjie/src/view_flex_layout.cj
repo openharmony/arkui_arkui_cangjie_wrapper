@@ -41,6 +41,12 @@ class ViewFlexLayout{
             .backgroundColor(0x999999)
             .alignSelf(ItemAlign.Center)
             .id("my_view_flex_layout3")
+            
+            Text("Hello CangJie")
+            .flexBasis(LengthMetrics.AUTO)
+            .backgroundColor(0x222222)
+            .alignSelf(ItemAlign.Center)
+            .id("my_view_flex_layout_auto")
         }
         .padding(10)
         .width(300)

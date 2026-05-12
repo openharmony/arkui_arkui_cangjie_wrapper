@@ -76,6 +76,13 @@ class ViewRowInit {
             Row(space: Option.None) {
                 Text("test")
             }.id("testRowInitSpaceOptionNone")
+            
+            Row() {
+                Text("size auto")
+            }
+            .width(LengthMetrics.AUTO)
+            .height(LengthMetrics.AUTO)
+            .id("testRowSizeAuto")
         }
     }
 }

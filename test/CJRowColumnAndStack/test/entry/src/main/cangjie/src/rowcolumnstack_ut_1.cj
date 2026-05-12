@@ -210,6 +210,21 @@ class RowColumnStackUT1 {
         let space = attrs.get("space").getOrThrow().toString()
         @Expect(space, "\"0.00vp\"")
     }
+    
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testColumnSizeAuto() {
+        scrollTo("ViewColumnInit")
+        
+        let inspector = getInspectorByKey("testColumnSizeAuto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        @Expect(width, "\"0.00auto\"")
+        
+        let height = attrs.get("height").getOrThrow().toString()
+        @Expect(height, "\"0.00auto\"")
+    }
 
     // Column AlignItems tests
     @TestCase
@@ -498,6 +513,21 @@ class RowColumnStackUT1 {
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let space = attrs.get("space").getOrThrow().toString()
         @Expect(space, "\"0.00vp\"")
+    }
+    
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRowSizeAuto() {
+        scrollTo("ViewRowInit")
+        
+        let inspector = getInspectorByKey("testRowSizeAuto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        @Expect(width, "\"0.00auto\"")
+        
+        let height = attrs.get("height").getOrThrow().toString()
+        @Expect(height, "\"0.00auto\"")
     }
 
     // Row AlignItems tests

@@ -202,6 +202,10 @@ class ViewAlphabetIndexer {
                     .selectedFont(size: @r(app.string.font_size), family: @r(app.string.DEFAULT_FONT))
                     .popupFont(size: @r(app.string.font_size), family: @r(app.string.DEFAULT_FONT))
                     .font(size: @r(app.string.font_size), family: @r(app.string.DEFAULT_FONT))
+                    
+                AlphabetIndexer(arrayValue: value.get().toArray(), selected: idx)
+                    .width(LengthMetrics.AUTO)
+                    .id("alphabetIndexer_width_auto")
             }
         }.width(100.percent).height(100.percent)
     }

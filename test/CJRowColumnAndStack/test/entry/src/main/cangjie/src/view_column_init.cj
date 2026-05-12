@@ -76,6 +76,13 @@ class ViewColumnInit {
             Column(space: Option.None) {
                 Text("test")
             }.id("testColumnInitSpaceOptionNone")
+            
+            Column() {
+                Text("size auto")
+            }
+            .height(LengthMetrics.AUTO)
+            .width(LengthMetrics.AUTO)
+            .id("testColumnSizeAuto")
         }
     }
 }

@@ -169,6 +169,19 @@ class BasicCommonUT2 {
         @Expect(alignSelf_t,"\"ItemAlign.Center\"")
     }
 
+    // flex lay out auto
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testFlexLayoutAuto() {
+        scrollTo("ViewFlexLayout")
+
+        var inspector = getInspectorByKey("my_view_flex_layout_auto")
+        var jsonObject = JsonValue.fromStr(inspector).asObject()
+        var attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let flexBasis = attrs.get("flexBasis").getOrThrow().toString()
+        @Expect(flexBasis,"\"0.00auto\"")
+    }
+
     // GeometryTransition
     @TestCase
     @Tag[APILevel22, TestLevel0]

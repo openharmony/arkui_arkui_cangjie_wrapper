@@ -427,6 +427,36 @@ class TextAndInputUT2 {
         let maxLength = attrs2.get("maxLength").getOrThrow().toString()
         Hilog.info(1, "Cangjie-Test", "maxLength:\t ${maxLength}")
         @Expect(maxLength, "\"9\"")
-
+    }
+    
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testTextInputWidthAuto() {
+        scrollTo("ViewTextInput")
+        
+        let inspector = getInspectorByKey("textInput_width_auto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        
+        let device_name = DeviceInfo.marketName
+        if (device_name == "HUAWEI Mate 60 Pro") {
+            @Expect(width, "\"111.07vp\"")
+        }
+    }
+    
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testTextAreaWidthAuto() {
+        scrollTo("ViewTextArea")
+        let inspector = getInspectorByKey("textArea_width_auto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        
+        let device_name = DeviceInfo.marketName
+        if (device_name == "HUAWEI Mate 60 Pro") {
+            @Expect(width, "\"111.07vp\"")
+        }
     }
 }
