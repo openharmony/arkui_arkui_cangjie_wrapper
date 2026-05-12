@@ -17,7 +17,7 @@
 
 macro package ohos.arkui.state_macro_manage
 
-import std.ast.{Tokens, ClassDecl, FuncDecl, parseDecl, AssignExpr}
+import std.ast.{Tokens, ClassDecl, FuncDecl, parseDecl, AssignExpr, getChildMessages, setItem}
 
 /**
  * Constraint: define reuseable component before @Entry
@@ -27,22 +27,34 @@ import std.ast.{Tokens, ClassDecl, FuncDecl, parseDecl, AssignExpr}
  * class Child {...}
  */
 public macro Reusable(input: Tokens): Tokens {
-    let finalResult = UISyntaxChecker.expectClassDecl(input, UIMacroKind.Reusable)
-
-    return match (finalResult) {
-        case Success(classDecl) =>
-            let decls = classDecl.body.decls
-            var initFunc = FuncDecl()
-            for (item in decls) {
-                if (item.identifier.value == "init") {
-                    initFunc = (item as FuncDecl).getOrThrow()
-                    break
+    try {
+        let decl = parseDecl(input)
+        match (decl as ClassDecl) {
+            case Some(classDecl) =>
+                if (getChildMessages("Component").isEmpty()) {
+                    reportError(input, MacroErrorCode.ReusableOnlyForComponent, UIMacroKind.Reusable)
+                    setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                    return input
                 }
-            }
-            let val = AssignExpr(quote(this.isReusable_inner__ = true))
-            initFunc.block.nodes.add(val)
-            classDecl.toTokens()
-        case Err(tokens) =>
-            tokens
+                let decls = classDecl.body.decls
+                var initFunc = FuncDecl()
+                for (item in decls) {
+                    if (item.identifier.value == "init") {
+                        initFunc = (item as FuncDecl).getOrThrow()
+                        break
+                    }
+                }
+                let val = AssignExpr(quote(this.isReusable_inner__ = true))
+                initFunc.block.nodes.add(val)
+                classDecl.toTokens()
+            case None =>
+                reportError(input, MacroErrorCode.ReusableOnlyForComponent, UIMacroKind.Reusable)
+                setItem(MACRO_MSG_EXPANDED_FAILED, false)
+                return input
+        }
+    } catch (e: Exception) {
+        reportError(input, MacroErrorCode.ReusableOnlyForComponent, UIMacroKind.Reusable)
+        setItem(MACRO_MSG_EXPANDED_FAILED, false)
+        return input
     }
 }

@@ -92,8 +92,14 @@ protected class View <: RemoteData {
 
     protected static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit) {
         unsafe {
-            FfiOHOSAceFrameworkNativeViewCreateRecycle(componentCall.getID(), isRecycling, LibC.mallocCString(reuseId),
-                Callback0Param<Unit>(callback).getID())
+            try(cReuseId = LibC.mallocCString(reuseId).asResource()) {
+                FfiOHOSAceFrameworkNativeViewCreateRecycle(
+                    componentCall.getID(),
+                    isRecycling,
+                    cReuseId.value,
+                    Callback0Param<Unit>(callback).getID()
+                )
+            }
         }
     }
 
