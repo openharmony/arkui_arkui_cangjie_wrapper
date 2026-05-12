@@ -171,6 +171,10 @@ class ViewTextArea {
 
                 TextArea(placeholder:"placeholder!: String =  text!: AppResource",text: @r(app.string.text))
                     .id("component_41")
+                    
+                TextArea(placeholder:"width auto")
+                    .width(LengthMetrics.AUTO)
+                    .id("textArea_width_auto")
             }.width(100.percent)
         }
     }

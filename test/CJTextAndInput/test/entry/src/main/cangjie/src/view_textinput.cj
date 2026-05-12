@@ -190,6 +190,8 @@ class ViewTextInput {
             }).id("textinput")
 
             TextInput(placeholder: "borderRadiusTest").borderRadius()
+            
+            TextInput(placeholder: "width auto").width(LengthMetrics.AUTO).id("textInput_width_auto")
 
         }.width(100.percent)
     }

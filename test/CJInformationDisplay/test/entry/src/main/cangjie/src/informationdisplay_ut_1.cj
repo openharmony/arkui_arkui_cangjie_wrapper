@@ -165,6 +165,19 @@ class InformationDisplayUT1 {
         driver.delayMs(500)
         @Expect(textC, "Chu Cai Chen ")
     }
+    
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testAlphabetIndexerWidthAuto() {
+        scrollTo("ViewAlphabetIndexer")
+
+        let inspector = getInspectorByKey("alphabetIndexer_width_auto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        @Expect(width, "\"0.00auto\"")
+    }
+    
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testBadgeCommonAttrs() {

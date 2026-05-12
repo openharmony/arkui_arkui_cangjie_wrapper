@@ -22,6 +22,7 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
+import ohos.device_info.*
 
 @Test
 class ButtonSelectUT21 {
@@ -596,5 +597,22 @@ class ButtonSelectUT21 {
         barModeText = driver.waitForComponent(On().id("barModeText"),1000).getOrThrow()
        // @Expect(barModeText.getText(), "\\\"BarMode.Scrollable,{\\\\\\\"margin\\\\\\\":\\\\\\\"0.00vp\\\\\\\",\\\\\\\"nonScrollableLayoutStyle\\\\\\\":\\\\\\\"LayoutStyle.SPACE_BETWEEN_OR_CENTER\\\\\\\"}\\\"")
     }
-
+    
+    @TestCase
+    @Tag[APILevel26, TestLevel0]
+    func testTabsAuto() {
+        clickTabsExample("ButtonTabsExample15")
+        
+        let inspector = getInspectorByKey("TabsExamplewidth_auto")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let width = attrs.get("width").getOrThrow().toString()
+        let height = attrs.get("height").getOrThrow().toString()
+        
+        let device_name = DeviceInfo.marketName
+        if (device_name == "HUAWEI Mate 60 Pro") {
+            @Expect(width, "\"387.69vp\"")
+            @Expect(height, "\"771.07vp\"")
+        }
+    }
 }
