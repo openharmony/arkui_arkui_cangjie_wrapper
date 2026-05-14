@@ -141,8 +141,7 @@ func generateSetFunc(classIdent: Tokens, classDecl: ClassDecl): Tokens {
 func generatePublishVarDecl(varDecl: VarDecl, varExpand: VarDecl): (Tokens, Tokens, Tokens) {
     let identifierAssociated = varExpand.identifier
     let identifier = varDecl.identifier
-    let infoEncoded = mangleInfoForObservedPublishField(identifier.value)
-    let infoBase = mangle(identifier.value)
+    let info = mangle(identifier.value)
     let varDeclType = varDecl.getTypeByInitializer()
     let valTypeExpand = varExpand.getTypeByInitializer()
     var hasInitializer = false
@@ -160,16 +159,16 @@ func generatePublishVarDecl(varDecl: VarDecl, varExpand: VarDecl): (Tokens, Toke
     let commonAssign = match (hasInitializer) {
         case true => quote(
             if (let Some(v) <- $identifier) {
-                this.$identifierAssociated = $valTypeExpand($infoEncoded, v)
+                this.$identifierAssociated = $valTypeExpand($info, v)
             }
         )
         case _ => quote(
-            this.$identifierAssociated = $valTypeExpand($infoEncoded, $identifier)
+            this.$identifierAssociated = $valTypeExpand($info, $identifier)
         )
     }
     let initBodySubscribe = quote(
         this.addPublishVar(this.$identifierAssociated)
-        this.addPropsInfo($infoBase)
+        this.addPropsInfo($info)
     )
 
     return (initParams, commonAssign, initBodySubscribe)

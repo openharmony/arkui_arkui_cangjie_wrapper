@@ -77,17 +77,4 @@ public interface Observer {
     ]
     @!Hide
     func aboutToBeDeleted(): Unit
-
-    /**
-     * Element id of the CustomView that observes this property, for Deveco Profiler state reporting.
-     * Non-UI observers (e.g. PersistentStorage) return -1.
-     *
-     * @returns { Int32 } Native view element id, or -1 if not applicable.
-     */
-    @!APILevel[
-        since: "26.0.0",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    @!Hide
-    func getProfilerViewElementId(): Int32 { -1 }
 }

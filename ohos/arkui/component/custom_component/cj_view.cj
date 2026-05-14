@@ -18,15 +18,12 @@ package ohos.arkui.component.custom_component
 import ohos.arkui.component.native_struct.{VectorToCFFIArray}
 import ohos.base.{FFIVectorInt64}
 import ohos.ffi.{Callback0Param, RemoteData}
-import std.core.LibC
 import std.collection.ArrayList
 
 type VectorCJInt64Handle = CPointer<Unit>
 
 foreign {
     func FfiOHOSAceFrameworkNativeViewCreate(view: Int64): Unit
-
-    func FfiOHOSAceFrameworkNativeViewSetJsViewName(view: Int64, name: CString): Unit
 
     func FfiOHOSAceFrameworkNativeViewCreateRecycle(view: Int64, isRecycling: Bool, reuseId: CString, callback: Int64): Unit
 
@@ -71,23 +68,11 @@ protected class View <: RemoteData {
             FfiOHOSAceFrameworkNativeViewCreate(view.getID())
         }
     }
-
     protected static func create(remoteId: Int64): View {
         let id = unsafe {
             FfiOHOSAceFrameworkNativeViewCtor(remoteId)
         }
         View(id)
-    }
-
-    protected static func applyProfilerViewNameToNativeView(view: View, profilerViewName: String): Unit {
-        if (profilerViewName.isEmpty()) {
-            return
-        }
-        unsafe {
-            try(s = LibC.mallocCString(profilerViewName).asResource()) {
-                FfiOHOSAceFrameworkNativeViewSetJsViewName(view.getID(), s.value)
-            }
-        }
     }
 
     protected static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit) {

@@ -32,7 +32,7 @@ public macro State(input: Tokens): Tokens {
     return match(finalResult) {
         case Success(varDecl) => 
             STATE_MANAGE_HANDLER.stateInformation.add(mangle(varDecl.identifier.value), (VariableKind.StateTy, varDecl))
-            genPropDeclNode(varDecl, stateKind: StateKind.StateTy)
+            genPropDeclNode(varDecl)
         case Err(tokens) =>
             setItem(MACRO_MSG_EXPANDED_FAILED, false)
             tokens
