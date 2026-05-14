@@ -32,8 +32,6 @@ public abstract class ObservedPropertyAbstract <: Observable {
     protected let info: String
     protected let dependentElementIds_: ArrayList<Int64> = ArrayList<Int64>()
 
-    private let profilerDependentDepsPerObserver_: ArrayList<(Int64, ArrayList<Int64>)> = ArrayList<(Int64, ArrayList<Int64>)>()
-
     /**
      * ObservedPropertyAbstract constructor.
      *
@@ -78,23 +76,8 @@ public abstract class ObservedPropertyAbstract <: Observable {
     @!Hide
     public func unsubscribeEx(observer: Observer): Unit
 
-    protected open func subscribeExFromObservedModel(observer: Observer): Unit {
-        subscribeEx(observer)
-    }
-
     protected func notifyChanges() {
         notifyChangesInner(info, dependentElementIds_)
-    }
-
-    private func profilerFindOrAddObserverDeps(observerCompId: Int64): ArrayList<Int64> {
-        for (entry in profilerDependentDepsPerObserver_) {
-            if (entry[0] == observerCompId) {
-                return entry[1]
-            }
-        }
-        let deps = ArrayList<Int64>()
-        profilerDependentDepsPerObserver_.add((observerCompId, deps))
-        deps
     }
 
     protected func recordDependentUpdate() {
@@ -103,10 +86,6 @@ public abstract class ObservedPropertyAbstract <: Observable {
             return
         }
         dependentElementIds_.add(elmtId)
-        let ownerId = profilerDependencyCurrentObserver()
-        if (ownerId >= 0) {
-            profilerFindOrAddObserverDeps(ownerId).add(elmtId)
-        }
         ()
     }
 
@@ -125,23 +104,5 @@ public abstract class ObservedPropertyAbstract <: Observable {
         this.dependentElementIds_.removeIf({
             v => v == rmElmtId
         })
-        for (entry in profilerDependentDepsPerObserver_) {
-            entry[1].removeIf({
-                v => v == rmElmtId
-            })
-        }
-    }
-
-    protected func getProfilerDependentElementIdsForDump(forObserverCompId: Int64): ArrayList<Int64> {
-        let result = ArrayList<Int64>()
-        for (entry in profilerDependentDepsPerObserver_) {
-            if (entry[0] == forObserverCompId) {
-                for (elementId in entry[1]) {
-                    result.add(elementId)
-                }
-                return result
-            }
-        }
-        result
     }
 }

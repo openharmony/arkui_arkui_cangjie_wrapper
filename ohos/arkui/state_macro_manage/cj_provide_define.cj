@@ -46,7 +46,7 @@ func generateProvide(input: Tokens, provideIdentifier!: Tokens = Tokens()) {
             if (provideIdentifier.size != 0) {
                 STATE_MANAGE_HANDLER.provideVarDeclsMap.add(varDecl.identifier.value, attrResult)
             }
-            genPropDeclNode(varDecl, stateKind: StateKind.ProvideTy)
+            genPropDeclNode(varDecl)
         case Err(tokens) =>
             setItem(MACRO_MSG_EXPANDED_FAILED, false)
             tokens

@@ -62,7 +62,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {
 
     protected func subscribeInner(observer: Observer): Unit {
         for (publishVar in publishVars) {
-            publishVar.subscribeExFromObservedModel(observer)
+            publishVar.subscribeEx(observer)
         }
     }
 

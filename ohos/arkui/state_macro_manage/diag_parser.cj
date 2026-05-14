@@ -399,16 +399,12 @@ func shouldBypassProcessing(lastArgument: Argument, callExpr: CallExpr): Bool {
     return false
 }
 
-func genObservedStandardFieldDecl(varDecl: VarDecl, mangledNameToken: Token, propDecl: Tokens, stateKind: Option<StateKind>): Tokens {
+func genObservedStandardFieldDecl(varDecl: VarDecl, mangledNameToken: Token, propDecl: Tokens): Tokens {
     var initializer: Tokens = Tokens()
     try {
         let _ = varDecl.expr
-        let infoValue = match (stateKind) {
-            case Some(kind) => buildProfilerInfo(kind.getDecorator(), varDecl.identifier.value)
-            case None => mangledNameToken.value
-        }
-        let infoStr = LitConstExpr(quote($infoValue))
-        initializer = quote(= $OBSERVED_PROPERTY<$(varDecl.declType)>($infoStr, $(varDecl.expr)))
+        let mangledNameValue = LitConstExpr(quote($(mangledNameToken.value)))
+        initializer = quote(= $OBSERVED_PROPERTY<$(varDecl.declType)>($mangledNameValue, $(varDecl.expr)))
     } catch (e: ASTException) {
         ()
     }
@@ -472,11 +468,11 @@ func genPropDeclNode(varDecl: VarDecl, stateKind!: ?StateKind = None): Tokens {
 
     match (stateKind) {
         case None =>
-            return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl, None)
+            return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
         case Some(kind) =>
             match (kind) {
-                case PublishTy | StateTy | PropTy | LinkTy | ProvideTy =>
-                    return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl, Some(kind))
+                case PublishTy =>
+                    return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
                 case LocalStorageLinkTy =>
                     return genLocalStorageBackedFieldDecl(varDecl, mangledNameToken, propDecl, isLink: true)
                 case LocalStoragePropTy =>
