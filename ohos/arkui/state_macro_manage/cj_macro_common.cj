@@ -79,6 +79,23 @@ enum StateKind <: ToString {
             case LocalStoragePropInterOpTy => return "LocalStoragePropInterOp"
         }
     }
+
+    func getDecorator(): String {
+        match (this) {
+            case StateTy => "@State"
+            case LinkTy => "@Link"
+            case PropTy => "@Prop"
+            case ProvideTy => "@Provide"
+            case ConsumeTy => "@Consume"
+            case PublishTy => "@Publish"
+            case AppStorageLinkTy => "@StorageLink"
+            case AppStoragePropTy => "@StorageProp"
+            case LocalStorageLinkTy => "@LocalStorageLink"
+            case LocalStoragePropTy => "@LocalStorageProp"
+            case LocalStorageLinkInterOpTy => "@LocalStorageLink"
+            case LocalStoragePropInterOpTy => "@LocalStorageProp"
+        }
+    }
 }
 
 enum VariableKind {
@@ -109,6 +126,23 @@ enum VariableKind {
             case LocalStoragePropTy => 9
             case LocalStorageLinkInterOpTy => 10
             case LocalStoragePropInterOpTy => 11
+        }
+    }
+
+    func getDecorator(): String {
+        match (this) {
+            case StateTy => "@State"
+            case LinkTy => "@Link"
+            case PropTy => "@Prop"
+            case ProvideTy => "@Provide"
+            case ConsumeTy => "@Consume"
+            case AppStorageLinkTy => "@StorageLink"
+            case AppStoragePropTy => "@StorageProp"
+            case LocalStorageLinkTy => "@LocalStorageLink"
+            case LocalStoragePropTy => "@LocalStorageProp"
+            case LocalStorageLinkInterOpTy => "@LocalStorageLink"
+            case LocalStoragePropInterOpTy => "@LocalStorageProp"
+            case CommonTy => ""
         }
     }
 }
@@ -260,6 +294,167 @@ func genPropDecl(varDecl: VarDecl, stateKind: StateKind): Tokens {
 
 func mangle(name: String): String {
     "stateVarDecl_" + name + "_"
+}
+
+/**
+ * Compile-time record of a single property declaration's profiler metadata.
+ * Each @Component/@Observed var decl produces one entry during macro expansion.
+ * The collected entries are consumed by generateStaticProfilerArrays
+ * that std.reflect reads at runtime to populate the profiler metadata registry.
+ *
+ * Fields:
+ *   mangledKey       — Internal mangled identifier (e.g. "stateVarDecl_message_").
+ *                      Used as the lookup key in fieldMetaMap at runtime.
+ *   decorator        — Decorator label (e.g. "@State", "@Link", "@Prop", "@Publish").
+ *                      Stored in __profilerDecs__ and used as the default decorator
+ *                      in collectProfilerBindings when no override is registered.
+ *   fieldName        — Original variable name from user source (e.g. "message").
+ *                      Stored in __profilerFNames__ and reported as "propertyName"
+ *                      in the profiler JSON output.
+ *   overrideDecorator — Non-empty when the decorator should override the default
+ *                      at runtime (e.g. "@Link" or "@Consume" vs. self-decorator).
+ *                      Stored in __profilerOverrideDecs__ and consumed by
+ *                      registerComponentOverrides → profilerRegisterDecoratorOverride.
+ *   runtimeKey       — Alternate key for runtime lookup, typically the AppStorage /
+ *                      LocalStorage key when it differs from the mangledKey.
+ *                      Stored in __profilerRuntimeKeys__.
+ */
+struct ProfilerPropertyMetaInfo {
+    let mangledKey: String
+    let decorator: String
+    let fieldName: String
+    let overrideDecorator: String
+    let runtimeKey: String
+
+    init(mangledKey: String, decorator: String, fieldName: String, overrideDecorator: String, runtimeKey: String) {
+        this.mangledKey = mangledKey
+        this.decorator = decorator
+        this.fieldName = fieldName
+        this.overrideDecorator = overrideDecorator
+        this.runtimeKey = runtimeKey
+    }
+}
+
+private var currentComponentProfilerMetas = ArrayList<ProfilerPropertyMetaInfo>()
+private var currentObservedProfilerMetas = ArrayList<ProfilerPropertyMetaInfo>()
+
+func resetComponentProfilerMetas(): Unit {
+    currentComponentProfilerMetas.clear()
+}
+
+/**
+ * Append a profiler metadata entry to currentComponentProfilerMetas.
+ * Called during macro expansion from var-init functions (varInitAssign,
+ * generateStorageInit, generateLinkInit, generateConsumeInit).
+ *
+ * Example call site (varInitAssign in cj_generate_var_decl.cj):
+ *   let info = mangle("message")  // "stateVarDecl_message_"
+ *   addProfilerPropertyMeta(info, "@State", "message", "", info)
+ *
+ * For @Link the overrideDecorator is non-empty so the runtime can override
+ * the default decorator during reporting:
+ *   addProfilerPropertyMeta("stateVarDecl_message_", "@Link", "message", "@Link", "stateVarDecl_message_")
+ */
+func addProfilerPropertyMeta(mangledKey: String, decorator: String, fieldName: String, overrideDecorator: String, runtimeKey: String): Unit {
+    currentComponentProfilerMetas.add(ProfilerPropertyMetaInfo(mangledKey, decorator, fieldName, overrideDecorator, runtimeKey))
+}
+
+/**
+ * Convert a list of ProfilerPropertyMetaInfo into 5 parallel Token arrays
+ * for embedding into the class body as static let declarations.
+ * Uses append (not +) for macro-expansion performance.
+ *
+ * Input example:
+ *   metas = [
+ *     { mangledKey="stateVarDecl_message_", decorator="@State", fieldName="message", overrideDecorator="",  runtimeKey="stateVarDecl_message_" },
+ *     { mangledKey="stateVarDecl_count_",   decorator="@Link",  fieldName="count",   overrideDecorator="@Link", runtimeKey="stateVarDecl_count_" },
+ *   ]
+ *
+ * Output 5-tuple (each element is a token sequence):
+ *   [0]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __profilerKeys__
+ *   [1]: ["@State",                "@Link"]                 // __profilerDecs__
+ *   [2]: ["message",               "count"]                 // __profilerFNames__
+ *   [3]: ["",                      "@Link"]                 // __profilerOverrideDecs__
+ *   [4]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __profilerRuntimeKeys__
+ */
+func buildProfilerPropertyArrays(metas: ArrayList<ProfilerPropertyMetaInfo>): (Tokens, Tokens, Tokens, Tokens, Tokens) {
+    var mangledKeysTok = Tokens()
+    var decoratorsTok = Tokens()
+    var fieldNamesTok = Tokens()
+    var overrideDecsTok = Tokens()
+    var runtimeKeysTok = Tokens()
+    if (metas.isEmpty()) {
+        return (mangledKeysTok, decoratorsTok, fieldNamesTok, overrideDecsTok, runtimeKeysTok)
+    }
+    let sep = quote(, ) + Token(TokenKind.NL)
+    for (i in 0..metas.size) {
+        if (i > 0) {
+            mangledKeysTok.append(sep)
+            decoratorsTok.append(sep)
+            fieldNamesTok.append(sep)
+            overrideDecsTok.append(sep)
+            runtimeKeysTok.append(sep)
+        }
+        let meta = metas[i]
+        mangledKeysTok.append(quote($(meta.mangledKey)))
+        decoratorsTok.append(quote($(meta.decorator)))
+        fieldNamesTok.append(quote($(meta.fieldName)))
+        overrideDecsTok.append(quote($(meta.overrideDecorator)))
+        runtimeKeysTok.append(quote($(meta.runtimeKey)))
+    }
+    (mangledKeysTok, decoratorsTok, fieldNamesTok, overrideDecsTok, runtimeKeysTok)
+}
+
+/**
+ * Emit public static let array declarations into the class body from the
+ * given profiler metadata list. Called for both @Component and @Observed.
+ *
+ * At runtime std.reflect.ClassTypeInfo.getStaticVariable(name) reads them.
+ *
+ * User source:
+ *   @Component
+ *   class Page {
+ *       @State var message: String = "hello world"
+ *   }
+ *
+ * Macro expands to insert into the class body:
+ *   class Page {
+ *       public static let __profilerKeys__:        Array<String> = ["stateVarDecl_message_"]
+ *       public static let __profilerDecs__:        Array<String> = ["@State"]
+ *       public static let __profilerFNames__:      Array<String> = ["message"]
+ *       public static let __profilerOverrideDecs__: Array<String> = [""]
+ *       public static let __profilerRuntimeKeys__: Array<String> = ["stateVarDecl_message_"]
+ *       // ... other members
+ *   }
+ */
+func generateStaticProfilerArrays(metas: ArrayList<ProfilerPropertyMetaInfo>): Tokens {
+    let arrays = buildProfilerPropertyArrays(metas)
+    if (arrays[0].size == 0) {
+        return Tokens()
+    }
+    return quote(
+        public static let __profilerKeys__: Array<String> = [$(arrays[0])]
+        public static let __profilerDecs__: Array<String> = [$(arrays[1])]
+        public static let __profilerFNames__: Array<String> = [$(arrays[2])]
+        public static let __profilerOverrideDecs__: Array<String> = [$(arrays[3])]
+        public static let __profilerRuntimeKeys__: Array<String> = [$(arrays[4])]
+    )
+}
+
+func generateComponentStaticProfilerArrays(): Tokens {
+    generateStaticProfilerArrays(currentComponentProfilerMetas)
+}
+
+func generateObservedStaticProfilerArrays(): Tokens {
+    generateStaticProfilerArrays(currentObservedProfilerMetas)
+}
+
+func resetObservedProfilerMetas(): Unit {
+    currentObservedProfilerMetas.clear()
+}
+
+func addObservedProfilerPropertyMeta(mangledKey: String, decorator: String, fieldName: String, runtimeKey: String): Unit {
+    currentObservedProfilerMetas.add(ProfilerPropertyMetaInfo(mangledKey, decorator, fieldName, "", runtimeKey))
 }
 
 func generateMangledToken(identTokStr: String): Token {

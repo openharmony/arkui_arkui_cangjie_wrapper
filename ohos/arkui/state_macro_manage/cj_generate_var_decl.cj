@@ -120,27 +120,38 @@ func generateCommonVarDecl(varDecl: VarDecl): MacroExpandInitInfo {
 
 func generateStateVarDecl(kind: VariableKind, varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
     match (kind) {
-        case StateTy => generateStateInit(varDecl, varExpand)
+        case StateTy => generateStateInit(varDecl, varExpand, VariableKind.StateTy)
         case PropTy => generatePropInit(varDecl, varExpand)
         case LinkTy => generateLinkInit(varDecl, varExpand)
         case ProvideTy => generateProvideInit(varDecl, varExpand)
         case ConsumeTy => generateConsumeInit(varDecl, varExpand)
         case CommonTy => (Tokens(), Tokens(), Tokens())
-        case AppStorageLinkTy => generateStorageInit(varDecl, varExpand, true)
-        case AppStoragePropTy => generateStorageInit(varDecl, varExpand, false)
-        case LocalStorageLinkTy => generateStorageInit(varDecl, varExpand, true)
-        case LocalStoragePropTy => generateStorageInit(varDecl, varExpand, false)
-        case LocalStorageLinkInterOpTy => generateStorageInit(varDecl, varExpand, true)
-        case LocalStoragePropInterOpTy => generateStorageInit(varDecl, varExpand, false)
+        case AppStorageLinkTy => generateStorageInit(varDecl, varExpand, VariableKind.AppStorageLinkTy)
+        case AppStoragePropTy => generateStorageInit(varDecl, varExpand, VariableKind.AppStoragePropTy)
+        case LocalStorageLinkTy => generateStorageInit(varDecl, varExpand, VariableKind.LocalStorageLinkTy)
+        case LocalStoragePropTy => generateStorageInit(varDecl, varExpand, VariableKind.LocalStoragePropTy)
+        case LocalStorageLinkInterOpTy => generateStorageInit(varDecl, varExpand, VariableKind.LocalStorageLinkInterOpTy)
+        case LocalStoragePropInterOpTy => generateStorageInit(varDecl, varExpand, VariableKind.LocalStoragePropInterOpTy)
     }
 }
 
 func generateStorageInit(
-    _: VarDecl,
+    varDecl: VarDecl,
     varExpand: VarDecl,
-    _: Bool
+    kind: VariableKind
 ): MacroExpandInitInfo {
     let identifierAssociated = varExpand.identifier
+    let mangledKey = mangle(varDecl.identifier.value)
+    let decorator = kind.getDecorator()
+    let fieldName = varDecl.identifier.value
+    let storageKeyOpt = match (kind) {
+        case AppStorageLinkTy | AppStoragePropTy => STATE_MANAGE_HANDLER.appStorageVarAttrInfo.get(mangledKey)
+        case LocalStorageLinkTy | LocalStoragePropTy | LocalStorageLinkInterOpTy | LocalStoragePropInterOpTy =>
+            STATE_MANAGE_HANDLER.localStorageVarAttrInfo.get(mangledKey)
+        case _ => None<String>
+    }
+    let runtimeKey = storageKeyOpt ?? mangledKey
+    addProfilerPropertyMeta(mangledKey, decorator, fieldName, "", runtimeKey)
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
     )
@@ -152,10 +163,30 @@ enum VarInitType {
     | PropType
 }
 
-func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType): Tokens {
+/**
+ * Generate init-time assignment for @State / @Prop declarations and
+ * collect profiler metadata via addProfilerPropertyMeta.
+ *
+ * User source:
+ *   @State var message: String = "hello world"
+ *
+ * Macro expansion:
+ *   // field decl:  private var stateVarDecl_message_ = ObservedProperty<String>("stateVarDecl_message_", "hello world")
+ *   // init assign: this.stateVarDecl_message_ = ObservedProperty<String>("stateVarDecl_message_", message)
+ *   // init sub:    this.stateVarDecl_message_.subscribeEx(this)
+ *
+ * Profiler metadata collected:
+ *   addProfilerPropertyMeta("stateVarDecl_message_", "@State", "message", "", "stateVarDecl_message_")
+ *   → ProfilerPropertyMetaInfo{ decorator="@State", fieldName="message" }
+ *   → consumed by generateStaticProfilerArrays to emit __profilerKeys__ / __profilerDecs__ / __profilerFNames__
+ */
+func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType, kind: VariableKind): Tokens {
     let identifierAssociated = varExpand.identifier
     let valTypeExpand = varExpand.getTypeByInitializer()
     let info = mangle(identifier.value)
+    let decorator = kind.getDecorator()
+    let fieldName = identifier.value
+    addProfilerPropertyMeta(info, decorator, fieldName, "", info)
     var hasInitializer = false
     try {
         varExpand.expr
@@ -187,14 +218,14 @@ func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType)
     }
 }
 
-func generateStateInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
+func generateStateInit(varDecl: VarDecl, varExpand: VarDecl, stateKind: VariableKind): MacroExpandInitInfo {
     let identifier = varDecl.identifier
     let valType = varExpand.getTypeByInitializer()
 
     let identifierAssociated = varExpand.identifier
     let initParam = quote($identifier!: Option<$valType> = None)
 
-    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.StateType)
+    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.StateType, stateKind)
 
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
@@ -209,7 +240,7 @@ func generatePropInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo
     let identifierAssociated = varExpand.identifier
     let initParam = quote($identifier!: $valType)
 
-    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.PropType)
+    let initBodyAssign = varInitAssign(identifier, varExpand, VarInitType.PropType, VariableKind.PropTy)
 
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
@@ -222,6 +253,29 @@ func getInitParamVarType(identifier: Token, varExpand: VarDecl): Tokens {
     return quote($identifier!: $valTypeExpand)
 }
 
+/**
+ * Generate init-time assignment for @Link declarations and collect
+ * profiler metadata with overrideDecorator set to "@Link".
+ *
+ * User source:
+ *   class Child {
+ *       @Link var message: String
+ *   }
+ *
+ * Macro expansion:
+ *   // init assign: this.stateVarDecl_message_ = message  (aliases the parent's ObservedProperty)
+ *   // init sub:    this.stateVarDecl_message_.subscribeEx(this)
+ *
+ * Profiler metadata (overrideDecorator="@Link" so the runtime can distinguish
+ * @Link from the underlying @State decorator during reporting):
+ *   addProfilerPropertyMeta("stateVarDecl_message_", "@Link", "message", "@Link", "stateVarDecl_message_")
+ *   → runtime: profilerLoadClassMetadata → registerComponentOverrides
+ *     → profilerRegisterDecoratorOverride(observer.id(), "message", "@Link")
+ *   → reporting: profilerLookupDecoratorOverride returns "@Link" instead of meta.decorator
+ *
+ * Reported JSON (concise):
+ *   {"decorator":"@Link","propertyName":"message","owningView":{"componentName":"Child"},...}
+ */
 func generateLinkInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo {
     let identifier = varDecl.identifier
 
@@ -233,6 +287,8 @@ func generateLinkInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitInfo
         this.$identifierAssociated = $identifier
     )
 
+    let mangledKey = mangle(identifier.value)
+    addProfilerPropertyMeta(mangledKey, "@Link", identifier.value, "@Link", mangledKey)
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
     )
@@ -247,7 +303,7 @@ func generateProvideInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
     }
     let identifierAssociated = varExpand.identifier
 
-    let value = generateStateInit(varDecl, varExpand)
+    let value = generateStateInit(varDecl, varExpand, VariableKind.ProvideTy)
     let initParam = value[0]
     let initBodyAssign = value[1]
     let initBodySubscribe = value[2] + quote(
@@ -301,6 +357,8 @@ func generateConsumeInit(varDecl: VarDecl, varExpand: VarDecl): MacroExpandInitI
      * =>
      * this.stateVarDecl_cnt_.subscribeEx(this)
      */
+    let mangledKey = mangle(identifier.value)
+    addProfilerPropertyMeta(mangledKey, "@Consume", identifier.value, "@Consume", mangledKey)
     let initBodySubscribe = quote(
         this.$identifierAssociated.subscribeEx(this)
     )

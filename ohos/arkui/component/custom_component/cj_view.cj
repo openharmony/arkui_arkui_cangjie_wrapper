@@ -68,6 +68,7 @@ protected class View <: RemoteData {
             FfiOHOSAceFrameworkNativeViewCreate(view.getID())
         }
     }
+
     protected static func create(remoteId: Int64): View {
         let id = unsafe {
             FfiOHOSAceFrameworkNativeViewCtor(remoteId)

@@ -86,6 +86,12 @@ public abstract class ObservedPropertyAbstract <: Observable {
             return
         }
         dependentElementIds_.add(elmtId)
+        if (getStateProfilerStatus()) {
+            let ownerId = profilerDependencyCurrentObserver()
+            if (ownerId >= 0) {
+                profilerRecordDependentUpdate(ownerId, this.info, elmtId)
+            }
+        }
         ()
     }
 
@@ -104,5 +110,6 @@ public abstract class ObservedPropertyAbstract <: Observable {
         this.dependentElementIds_.removeIf({
             v => v == rmElmtId
         })
+        profilerPurgeDepsForProperty(this.info, rmElmtId)
     }
 }
