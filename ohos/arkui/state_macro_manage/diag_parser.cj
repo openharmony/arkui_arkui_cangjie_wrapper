@@ -471,7 +471,7 @@ func genPropDeclNode(varDecl: VarDecl, stateKind!: ?StateKind = None): Tokens {
             return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
         case Some(kind) =>
             match (kind) {
-                case PublishTy =>
+                case PublishTy | StateTy | PropTy | LinkTy | ProvideTy =>
                     return genObservedStandardFieldDecl(varDecl, mangledNameToken, propDecl)
                 case LocalStorageLinkTy =>
                     return genLocalStorageBackedFieldDecl(varDecl, mangledNameToken, propDecl, isLink: true)

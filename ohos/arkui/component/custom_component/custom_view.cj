@@ -19,7 +19,12 @@ import ohos.arkui.component.common.{UINodeBase}
 import ohos.arkui.component.ifcomponent.{If}
 import ohos.arkui.component.for_each.{ForEach}
 import ohos.arkui.component.custom_view.{RemoteView}
-import ohos.arkui.state_management.{Observer, ObservedPropertyAbstract, LocalStorage, ObservedProperty, ObservedComplexAbstract, SubscriberManager, ViewStackProcessor}
+import ohos.arkui.state_management.{
+    Observer, ObservedPropertyAbstract, LocalStorage, ObservedProperty,
+    ObservedComplexAbstract, SubscriberManager, ViewStackProcessor,
+    profilerDependencyPushObserver, profilerDependencyPopObserver,
+    profilerCleanupObserver, profilerRegisterViewElementId
+}
 import ohos.arkui.ui_context.{UIContext}
 import ohos.base.{ExternalString, CollectionEx, ReuseParams, BASE_LOG}
 import ohos.ffi.{FFIDataManager}
@@ -372,8 +377,11 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew): Unit {
         let elmtId = ViewStackProcessor.allocateNewElmetIdForNextComponent()
+        profilerRegisterViewElementId(this.id(), nativeView_inner__.getElementId())
         ViewStackProcessor.startGetAccessRecordingFor(elmtId)
+        profilerDependencyPushObserver(this.id())
         compilerAssignedUpdateFunc(elmtId, true).initial()
+        profilerDependencyPopObserver()
         ViewStackProcessor.stopGetAccessRecording()
         updateFuncByElmtId_inner__.add(elmtId, compilerAssignedUpdateFunc)
         // Register element ID to owning view mapping
@@ -411,7 +419,9 @@ public abstract class CustomView <: RemoteView & Observer {
             updateFuncByElmtId_inner__[oldElemtId] = compilerAssignedUpdateFunc
         }
         ViewStackProcessor.startGetAccessRecordingFor(newElemtId)
+        profilerDependencyPushObserver(this.id())
         recycleUpdateFunc(oldElemtId, true, node).initial()
+        profilerDependencyPopObserver()
         ViewStackProcessor.stopGetAccessRecording()
     }
     /**
@@ -748,6 +758,8 @@ public abstract class CustomView <: RemoteView & Observer {
         this.propsUsedForRender_inner__.clear()
         this.lazyChildren_inner__.clear()
         this.lazyGroups_inner__.clear()
+
+        profilerCleanupObserver(id())
 
         if (let Some(parent) <- parent_inner__) {
             parent.removeChildById(id())

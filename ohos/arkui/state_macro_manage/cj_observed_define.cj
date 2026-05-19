@@ -66,6 +66,9 @@ public macro Observed(input: Tokens): Tokens {
             let memberSetFunc = generateSetFunc(quote($(classDecl.identifier)), classDecl)
             // generate init function
             let initFunc = generateObservedInitFunc(classDecl)
+            // generate static profiler arrays (accessed via std.reflect at runtime)
+            let observedStaticArrays = generateObservedStaticProfilerArrays()
+            resetObservedProfilerMetas()
 
             // reset global var declaration in macro
             STATE_MANAGE_HANDLER.publishInformation.clear()
@@ -81,6 +84,7 @@ public macro Observed(input: Tokens): Tokens {
                     $classBody
                     $initFunc
                     $memberSetFunc
+                    $observedStaticArrays
                 )
             )
         case Err(tokens) => tokens
@@ -155,6 +159,8 @@ func generatePublishVarDecl(varDecl: VarDecl, varExpand: VarDecl): (Tokens, Toke
         case true => quote($identifier!: Option<$varDeclType> = Option.None)
         case _ => quote($identifier!: $varDeclType)
     }
+
+    addObservedProfilerPropertyMeta(info, "@Publish", identifier.value, info)
 
     let commonAssign = match (hasInitializer) {
         case true => quote(

@@ -16,6 +16,8 @@ import("//build/templates/cangjie/cjc.gni")
 ohos_cangjie_shared_library("ohos.arkui.state_management") {
   sources = [
     "app_storage.cj",
+    "cj_layout_inspector.cj",
+    "cj_value_string.cj",
     "environment.cj",
     "local_storage.cj",
     "observable.cj",
@@ -26,9 +28,16 @@ ohos_cangjie_shared_library("ohos.arkui.state_management") {
     "observed_property_abstract.cj",
     "observer.cj",
     "persistent_storage.cj",
+    "profiler_dependency_recorder.cj",
     "subscriber_manager.cj",
     "view_stack_processor.cj",
   ]
+
+  if (target_cpu == "arm") {
+    sources += [ "profiler_reflection_stub.cj" ]
+  } else {
+    sources += [ "profiler_reflection.cj" ]
+  }
 
   cj_deps = [
     "../../base:ohos.base",

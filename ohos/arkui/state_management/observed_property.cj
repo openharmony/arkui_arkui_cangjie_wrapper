@@ -38,7 +38,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     /**
      * ObservedProperty constructor.
      *
-     * @param { String } info - Information about the property.
+     * @param { String } info - Information about the property (mangled name for profiler lookup).
      * @param { T } initValue - Initial value for the property.
      */
     @!APILevel[
@@ -108,6 +108,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
         for (subProp in subProps_) {
             subProp.set(newValue)
         }
+        notifyProfilerStateChange(getObservers(), info, newValue)
     }
 
     /**
@@ -123,13 +124,21 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
     ]
     @!Hide
     public func subscribeEx(observer: Observer): Unit {
-        subscribe(observer)
-        let observedObject = internalValue as ObservedComplexAbstract
-        match (observedObject) {
-            case Some(v) =>
-                v.subscribeInner(observer)
-                v.setInfo(info)
-            case _ => ()
+        subscribeExWithProfiler(observer)
+    }
+
+    private func subscribeExWithProfiler(observer: Observer): Unit {
+        let firstSubscription = !isSubscribed(observer)
+        if (firstSubscription) {
+            subscribe(observer)
+            let observedObject = internalValue as ObservedComplexAbstract
+            match (observedObject) {
+                case Some(v) =>
+                    profilerLoadClassMetadata(v)
+                    v.subscribeInner(observer)
+                    v.setInfo(info)
+                case _ => ()
+            }
         }
     }
 

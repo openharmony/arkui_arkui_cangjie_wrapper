@@ -51,6 +51,8 @@ public macro Component(input: Tokens): Tokens {
             checkChildMessage(classBody.decls, classDecl.identifier.value)
             let classBodyAfterExpand = handleClassBody(classBody.decls)
             let initFunc = generateInitFunc(classDecl)
+            let profilerStaticArrays = generateComponentStaticProfilerArrays()
+            resetComponentProfilerMetas()
             let aboutTbDeleteFunc = generateAboutToBeDelete(classDecl)
             let updateParamFunc = generateUpdateParam(classDecl)
             let rerenderFunc = handleRerender()
@@ -79,6 +81,7 @@ public macro Component(input: Tokens): Tokens {
                     $rerenderFunc
                     $purgeVariableFunc
                     $forceRerendFunc
+                    $profilerStaticArrays
                 )
             )
         case Err(tokens) => 
@@ -1234,7 +1237,6 @@ func generateCustomDialogBindDecls(): Tokens {
 func generateInitFunc(classDecl: ClassDecl) {
     // variable declarations: variable declarations in @Component Class
     let varDecls = getVarDecls(classDecl)
-
     var initParams = Tokens()
     var initBodyAssign = Tokens()
     var initBodySubscribe = Tokens()
@@ -1261,6 +1263,8 @@ func generateInitFunc(classDecl: ClassDecl) {
         localStorageVarInit.append(Token(TokenKind.NL))
     }
     localStorageStateInfo = ArrayList([])
+
+    let className = classDecl.identifier.value
 
     // add init function
     return quote(
