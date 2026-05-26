@@ -35,7 +35,7 @@ let APP_ID_DEFINED = "idDefined"
 let OHOS_SYS_ID_DEFINED = "ohosSysIdDefined"
 let HOS_SYS_ID_DEFINED = "hosSysIdDefined"
 let RAWFILE_RESOURCE = "rawfileRes"
-let INVALID_RES_ID: Int32 = 0
+let INVALID_RES_ID: UInt32 = 0
 let INVALID_NUMBER_NAME: Int64 = -1
 let APP_ID_MAP = HashMap<String, JsonObject>()
 let SYS_ID_MAP = HashMap<String, JsonObject>()
@@ -206,7 +206,7 @@ func getOrCreateSysIdJsonObj(path: String, sysType: String): JsonObject {
     return jsonObj
 }
 
-func getAppResId(path: String, moduleName: String, resType: String, resName: String): Int32 {
+func getAppResId(path: String, moduleName: String, resType: String, resName: String): UInt32 {
     let jsonObj = getOrCreateAppIdJsonObj(path, moduleName)
     let recordOpt = jsonObj.get("record")
     var recordArr = ArrayList<JsonValue>([])
@@ -239,7 +239,7 @@ func getAppResId(path: String, moduleName: String, resType: String, resName: Str
     return id
 }
 
-func findSysId(obj: JsonObject, resType: String, resName: String): Int32 {
+func findSysId(obj: JsonObject, resType: String, resName: String): UInt32 {
     var id = INVALID_RES_ID
     if (!obj.containsKey("startId")) {
         return id
@@ -291,7 +291,7 @@ func findSysId(obj: JsonObject, resType: String, resName: String): Int32 {
     return id
 }
 
-func getSysResId(path: (String, String), resType: String, resName: String): Int32 {
+func getSysResId(path: (String, String), resType: String, resName: String): UInt32 {
     var id = INVALID_RES_ID
     let ohosObj = getOrCreateSysIdJsonObj(path[0], "ohos")
     let hosObj = getOrCreateSysIdJsonObj(path[1], "hos")
@@ -345,7 +345,6 @@ func trimSpace(input: Tokens): String {
 }
 
 @OverflowWrapping
-func parseResId(resId: String): Int32 {
-    // Forced conversion for Int32 overflow, consistent with existed scenarios
-    return Int32(UInt32.parse(resId))
+func parseResId(resId: String): UInt32 {
+    return UInt32.parse(resId)
 }
