@@ -178,7 +178,7 @@ enum VarInitType {
  * Profiler metadata collected:
  *   addProfilerPropertyMeta("stateVarDecl_message_", "@State", "message", "", "stateVarDecl_message_")
  *   → ProfilerPropertyMetaInfo{ decorator="@State", fieldName="message" }
- *   → consumed by generateStaticProfilerArrays to emit __profilerKeys__ / __profilerDecs__ / __profilerFNames__
+ *   → consumed by generateStaticProfilerArrays to emit __PROFILER_KEYS__ / __PROFILER_DECS__ / __PROFILER_FNAMES__
  */
 func varInitAssign(identifier: Token, varExpand: VarDecl, initType: VarInitType, kind: VariableKind): Tokens {
     let identifierAssociated = varExpand.identifier
