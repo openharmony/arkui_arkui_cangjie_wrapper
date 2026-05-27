@@ -33,8 +33,8 @@ func profilerClearComponentMetaRegistry(): Unit {
  * Load profiler metadata from the static arrays embedded in a @Component or @Observed class
  * via std.reflect.ClassTypeInfo.
  *
- * - For @Component instances: reads __profilerKeys__, __profilerDecs__, __profilerFNames__,
- *   __profilerOverrideDecs__, and __profilerRuntimeKeys__, then populates fieldMetaMap
+ * - For @Component instances: reads __PROFILER_KEYS__, __PROFILER_DECS__, __PROFILER_FNAMES__,
+ *   __PROFILER_OVERRIDE_DECS__, and __PROFILER_RUNTIME_KEYS__, then populates fieldMetaMap
  *   and registers decorator overrides and observer-to-class mappings.
  * - For @Observed instances: reads the same arrays (except overrides which are empty for
  *   @Observed classes) and populates fieldMetaMap with @Publish metadata.
@@ -65,16 +65,16 @@ func profilerLoadClassMetadata(obj: Any): Unit {
     }
     componentMetaRegistry.add(className)
 
-    let keys = readProfilerStaticArray(classInfo, "__profilerKeys__") ?? return
-    let decs = readProfilerStaticArray(classInfo, "__profilerDecs__") ?? return
-    let fnames = readProfilerStaticArray(classInfo, "__profilerFNames__") ?? return
-    let runtimeKeys = readProfilerStaticArray(classInfo, "__profilerRuntimeKeys__") ?? keys
+    let keys = readProfilerStaticArray(classInfo, "__PROFILER_KEYS__") ?? return
+    let decs = readProfilerStaticArray(classInfo, "__PROFILER_DECS__") ?? return
+    let fnames = readProfilerStaticArray(classInfo, "__PROFILER_FNAMES__") ?? return
+    let runtimeKeys = readProfilerStaticArray(classInfo, "__PROFILER_RUNTIME_KEYS__") ?? keys
 
     registerFieldMetadatas(keys, decs, fnames, runtimeKeys,
         if (isObserved) { "" } else { className })
 
     if (!isObserved) {
-        let overrides = match (readProfilerStaticArray(classInfo, "__profilerOverrideDecs__")) {
+        let overrides = match (readProfilerStaticArray(classInfo, "__PROFILER_OVERRIDE_DECS__")) {
             case Some(arr) => arr
             case None => return
         }
@@ -86,7 +86,7 @@ func profilerLoadClassMetadata(obj: Any): Unit {
  * Read a public static let array of String from a class via std.reflect.
  *
  * @param classInfo - ClassTypeInfo obtained from ClassTypeInfo.of(obj).
- * @param name - Name of the static variable (e.g. "__profilerKeys__").
+ * @param name - Name of the static variable (e.g. "__PROFILER_KEYS__").
  * @returns Some(array) on success, None if the variable does not exist, is not an
  *          Array<String>, or if any reflection call throws.
  */
@@ -114,10 +114,10 @@ private func readProfilerStaticArray(classInfo: ClassTypeInfo, name: String): Op
  * array provides alternate lookup keys (e.g. AppStorage key "myAppKey" vs. mangled key).
  * In the common case runtimeKeys[i] == keys[i], so the second add is a no-op.
  *
- * @param keys               — mangled property keys (__profilerKeys__)
- * @param decs               — decorator labels (__profilerDecs__)
- * @param fnames             — user-visible field names (__profilerFNames__)
- * @param runtimeKeys        — alternate lookup keys (__profilerRuntimeKeys__)
+ * @param keys               — mangled property keys (__PROFILER_KEYS__)
+ * @param decs               — decorator labels (__PROFILER_DECS__)
+ * @param fnames             — user-visible field names (__PROFILER_FNAMES__)
+ * @param runtimeKeys        — alternate lookup keys (__PROFILER_RUNTIME_KEYS__)
  * @param effectiveClassName — class name for the ProfilerFieldMeta entries
  */
 private func registerFieldMetadatas(
@@ -139,7 +139,7 @@ private func registerFieldMetadatas(
 
 /**
  * Register an observer's class name and any non-empty decorator overrides
- * (e.g. "@Link", "@Consume") from the __profilerOverrideDecs__ array.
+ * (e.g. "@Link", "@Consume") from the __PROFILER_OVERRIDE_DECS__ array.
  *
  * Called only for @Component classes (not @Observed). Each non-empty entry
  * in overrides[i] is registered as a decorator override keyed by
@@ -148,8 +148,8 @@ private func registerFieldMetadatas(
  *
  * @param obj       — the @Component instance (cast to Observer for its id)
  * @param className — the component class name for observerClassMap
- * @param overrides — decorator override strings (__profilerOverrideDecs__)
- * @param fnames    — corresponding field names (__profilerFNames__)
+ * @param overrides — decorator override strings (__PROFILER_OVERRIDE_DECS__)
+ * @param fnames    — corresponding field names (__PROFILER_FNAMES__)
  */
 private func registerComponentOverrides(obj: Any, className: String, overrides: Array<String>, fnames: Array<String>): Unit {
     profilerRegisterObserverClassIfNeeded(obj, className)

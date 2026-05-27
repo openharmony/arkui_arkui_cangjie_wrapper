@@ -306,18 +306,18 @@ func mangle(name: String): String {
  *   mangledKey       — Internal mangled identifier (e.g. "stateVarDecl_message_").
  *                      Used as the lookup key in fieldMetaMap at runtime.
  *   decorator        — Decorator label (e.g. "@State", "@Link", "@Prop", "@Publish").
- *                      Stored in __profilerDecs__ and used as the default decorator
+ *                      Stored in __PROFILER_DECS__ and used as the default decorator
  *                      in collectProfilerBindings when no override is registered.
  *   fieldName        — Original variable name from user source (e.g. "message").
- *                      Stored in __profilerFNames__ and reported as "propertyName"
+ *                      Stored in __PROFILER_FNAMES__ and reported as "propertyName"
  *                      in the profiler JSON output.
  *   overrideDecorator — Non-empty when the decorator should override the default
  *                      at runtime (e.g. "@Link" or "@Consume" vs. self-decorator).
- *                      Stored in __profilerOverrideDecs__ and consumed by
+ *                      Stored in __PROFILER_OVERRIDE_DECS__ and consumed by
  *                      registerComponentOverrides → profilerRegisterDecoratorOverride.
  *   runtimeKey       — Alternate key for runtime lookup, typically the AppStorage /
  *                      LocalStorage key when it differs from the mangledKey.
- *                      Stored in __profilerRuntimeKeys__.
+ *                      Stored in __PROFILER_RUNTIME_KEYS__.
  */
 struct ProfilerPropertyMetaInfo {
     let mangledKey: String
@@ -371,11 +371,11 @@ func addProfilerPropertyMeta(mangledKey: String, decorator: String, fieldName: S
  *   ]
  *
  * Output 5-tuple (each element is a token sequence):
- *   [0]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __profilerKeys__
- *   [1]: ["@State",                "@Link"]                 // __profilerDecs__
- *   [2]: ["message",               "count"]                 // __profilerFNames__
- *   [3]: ["",                      "@Link"]                 // __profilerOverrideDecs__
- *   [4]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __profilerRuntimeKeys__
+ *   [0]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __PROFILER_KEYS__
+ *   [1]: ["@State",                "@Link"]                 // __PROFILER_DECS__
+ *   [2]: ["message",               "count"]                 // __PROFILER_FNAMES__
+ *   [3]: ["",                      "@Link"]                 // __PROFILER_OVERRIDE_DECS__
+ *   [4]: ["stateVarDecl_message_", "stateVarDecl_count_"]   // __PROFILER_RUNTIME_KEYS__
  */
 func buildProfilerPropertyArrays(metas: ArrayList<ProfilerPropertyMetaInfo>): (Tokens, Tokens, Tokens, Tokens, Tokens) {
     var mangledKeysTok = Tokens()
@@ -419,11 +419,11 @@ func buildProfilerPropertyArrays(metas: ArrayList<ProfilerPropertyMetaInfo>): (T
  *
  * Macro expands to insert into the class body:
  *   class Page {
- *       public static let __profilerKeys__:        Array<String> = ["stateVarDecl_message_"]
- *       public static let __profilerDecs__:        Array<String> = ["@State"]
- *       public static let __profilerFNames__:      Array<String> = ["message"]
- *       public static let __profilerOverrideDecs__: Array<String> = [""]
- *       public static let __profilerRuntimeKeys__: Array<String> = ["stateVarDecl_message_"]
+ *       public static let __PROFILER_KEYS__:        Array<String> = ["stateVarDecl_message_"]
+ *       public static let __PROFILER_DECS__:        Array<String> = ["@State"]
+ *       public static let __PROFILER_FNAMES__:      Array<String> = ["message"]
+ *       public static let __PROFILER_OVERRIDE_DECS__: Array<String> = [""]
+ *       public static let __PROFILER_RUNTIME_KEYS__: Array<String> = ["stateVarDecl_message_"]
  *       // ... other members
  *   }
  */
@@ -433,11 +433,11 @@ func generateStaticProfilerArrays(metas: ArrayList<ProfilerPropertyMetaInfo>): T
         return Tokens()
     }
     return quote(
-        public static let __profilerKeys__: Array<String> = [$(arrays[0])]
-        public static let __profilerDecs__: Array<String> = [$(arrays[1])]
-        public static let __profilerFNames__: Array<String> = [$(arrays[2])]
-        public static let __profilerOverrideDecs__: Array<String> = [$(arrays[3])]
-        public static let __profilerRuntimeKeys__: Array<String> = [$(arrays[4])]
+        public static let __PROFILER_KEYS__: Array<String> = [$(arrays[0])]
+        public static let __PROFILER_DECS__: Array<String> = [$(arrays[1])]
+        public static let __PROFILER_FNAMES__: Array<String> = [$(arrays[2])]
+        public static let __PROFILER_OVERRIDE_DECS__: Array<String> = [$(arrays[3])]
+        public static let __PROFILER_RUNTIME_KEYS__: Array<String> = [$(arrays[4])]
     )
 }
 
