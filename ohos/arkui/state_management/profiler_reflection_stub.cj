@@ -20,3 +20,5 @@ package ohos.arkui.state_management
  * so profiler state reporting will fall back gracefully (fieldMetaMap stays empty).
  */
 func profilerLoadClassMetadata(obj: Any): Unit {}
+
+func profilerClearComponentMetaRegistry(): Unit {}

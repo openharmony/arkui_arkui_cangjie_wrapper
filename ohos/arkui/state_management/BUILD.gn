@@ -33,7 +33,7 @@ ohos_cangjie_shared_library("ohos.arkui.state_management") {
     "view_stack_processor.cj",
   ]
 
-  if (target_cpu == "arm") {
+  if (target_cpu == "arm" || is_mac) {
     sources += [ "profiler_reflection_stub.cj" ]
   } else {
     sources += [ "profiler_reflection.cj" ]
