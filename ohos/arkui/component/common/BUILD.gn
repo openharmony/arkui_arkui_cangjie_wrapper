@@ -51,8 +51,9 @@ ohos_cangjie_shared_library("ohos.arkui.component.common") {
     "cangjie_ark_interop:ohos.business_exception",
     "multimedia_cangjie_wrapper:ohos.multimedia.image",
   ]
-
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
+  cjc_args = [ "--no-sub-pkg" ]
+
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_wrapper"
 }

@@ -102,6 +102,7 @@ ohos_cangjie_shared_library("ohos.arkui.component") {
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
+
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_wrapper"
 }
