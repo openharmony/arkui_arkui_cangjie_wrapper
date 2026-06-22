@@ -1570,11 +1570,12 @@ public class SheetOptions <: BindOptions {
             }
             let detents = match (sheetOption.detents) {
                 case Some(value) =>
-                    let ptr = LibC.malloc<Int32>(count: 3)
-                    for (i in 0..2) {
+                    let detentsSize = value.size
+                    let ptr = LibC.malloc<Int32>(count: detentsSize)
+                    for (i in 0..detentsSize) {
                         ptr.write(i, value[i].getValue())
                     }
-                    NativeOptionCArrInt32(true, CArrInt32(CPointer<Int32>(ptr), 3))
+                    NativeOptionCArrInt32(true, CArrInt32(CPointer<Int32>(ptr), detentsSize))
                 case None => NativeOptionCArrInt32(false, CArrInt32(CPointer<Int32>(), 0))
             }
             let preferType = match (sheetOption.preferType) {
