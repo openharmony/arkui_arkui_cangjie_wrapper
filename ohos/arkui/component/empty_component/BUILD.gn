@@ -22,6 +22,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.empty_component") {
     "cangjie_ark_interop:ohos.labels",
     "cangjie_ark_interop:ohos.ffi",
   ]
+  cjc_args = [ "--no-sub-pkg" ]
 
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_wrapper"

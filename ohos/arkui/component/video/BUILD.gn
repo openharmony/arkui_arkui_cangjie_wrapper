@@ -33,6 +33,8 @@ ohos_cangjie_shared_library("ohos.arkui.component.video") {
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]
+  cjc_args = [ "--no-sub-pkg" ]
+
   subsystem_name = "arkui"
   part_name = "arkui_cangjie_wrapper"
 }
