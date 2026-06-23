@@ -189,9 +189,12 @@ func parseHybridComponentEntry(input: Tokens, needCheckEntry: Bool): Tokens {
     let entryId = generateNewEntryId()
     let hybridCompLoadIdent = Token(TokenKind.IDENTIFIER, "hybridComponent_${entryId}_load")
     let hybridCompUnloadIdent = Token(TokenKind.IDENTIFIER, "hybridComponent_${entryId}_unload")
+    let hybridCompReuseIdent = Token(TokenKind.IDENTIFIER, "hybridComponent_${entryId}_reuse")
+    let hybridCompRecycleIdent = Token(TokenKind.IDENTIFIER, "hybridComponent_${entryId}_recycle")
     return input + generateHybridComponentEntryFunc(input, hybridCompLoadIdent, hybridCompUnloadIdent,
-        quote($entryClassIdentStr)) + generateRegisterDecl(quote($entryClassIdentStr), entryClassIdentStr,
-        hybridCompLoadIdent, hybridCompUnloadIdent)
+        hybridCompReuseIdent, hybridCompRecycleIdent, quote($entryClassIdentStr)) +
+        generateRegisterDecl(quote($entryClassIdentStr), entryClassIdentStr,
+        hybridCompLoadIdent, hybridCompUnloadIdent, hybridCompReuseIdent, hybridCompRecycleIdent)
 }
 
 /**
@@ -232,7 +235,7 @@ func checkHybridComponentEntryBody(classBody: ArrayList<Decl>) {
 }
 
 func generateHybridComponentEntryFunc(input: Tokens, hybridCompIdentLoad: Token, hybridCompIdentUnload: Token,
-    registerName: Tokens) {
+    hybridCompIdentReuse: Token, hybridCompIdentRecycle: Token, registerName: Tokens) {
     let entryClassIdent = (parseDecl(input) as ClassDecl).getOrThrow().identifier
     let entryClassIdentStr = entryClassIdent.value
     let instanceIdent = Token(TokenKind.IDENTIFIER, "${entryClassIdentStr}_instance")
@@ -251,16 +254,26 @@ func generateHybridComponentEntryFunc(input: Tokens, hybridCompIdentLoad: Token,
         public func $hybridCompIdentUnload(): Unit {
             CJPageEntry.getInstance().removeHybridPage($registerName)
         }
+
+        public func $hybridCompIdentReuse(id: Int64, rp: ReuseParams): Unit {
+            tryReuseHybridPage(id, $registerName, rp)
+        }
+
+        public func $hybridCompIdentRecycle(id: Int64): Unit {
+            tryRecycleHybridPage(id, $registerName)
+        }
     )
 }
 
 func generateRegisterDecl(registerName: Tokens, className: String, hybridCompIdentLoad: Token,
-    hybridCompIdentUnload: Token) {
+    hybridCompIdentUnload: Token, hybridCompIdentReuse: Token, hybridCompIdentRecycle: Token) {
     let classNameIdent = Token(TokenKind.IDENTIFIER, "${className}_register")
     quote(
         class $classNameIdent <: HybridComponentBase {
             static init() {
                 registerHybridComponent($registerName, $hybridCompIdentLoad, $hybridCompIdentUnload)
+                tryRegisterReuseHandle($registerName + "_reuse", $hybridCompIdentReuse)
+                tryRegisterRecycleHandle($registerName + "_recycle", $hybridCompIdentRecycle)
             }
         }
     )

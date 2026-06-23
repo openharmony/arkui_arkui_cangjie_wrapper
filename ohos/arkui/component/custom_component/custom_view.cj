@@ -102,7 +102,8 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public var isReusable_inner__: Bool = false
     private var recycleManager_: ?RecycleManager = None
-    private var hasBeenRecycled_: Bool = false
+    @!Hide
+    protected var hasBeenRecycled_: Bool = false
     private var delayRecycleNodeRerender_: Bool = false
     private var delayRecycleNodeRerenderDeep_: Bool = false
     private var runReuse_: Bool = false
@@ -456,13 +457,17 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
-        aboutToReuse(param)
+        let actualParam = match (getParamsGenerator()) {
+            case Some(gen) => gen()
+            case None => param
+        }
+        aboutToReuse(actualParam)
         if (!this.delayRecycleNodeRerender_) {
             updateDirtyElements()
         } else {
             flushDelayCompleteRerender()
         }
-        traverseChildDoRecycleOrReuse(false, param: param)
+        traverseChildDoRecycleOrReuse(false, param: actualParam)
         runReuse_ = false
     }
 
@@ -481,6 +486,27 @@ public abstract class CustomView <: RemoteView & Observer {
         }
         recycleManager_ = RecycleManager()
         recycleManager_.getOrThrow()
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func setParamsGenerator(gen: () -> ReuseParams): Unit {
+        getOrCreateRecycleManager().setParamsGenerator(gen)
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func getParamsGenerator(): ?(() -> ReuseParams) {
+        if (let Some(rm) <- recycleManager_) {
+            return rm.getParamsGenerator()
+        }
+        return None
     }
 
     @!Hide
@@ -515,7 +541,11 @@ public abstract class CustomView <: RemoteView & Observer {
                 if (recycleOrReuse) {
                     child.aboutToRecycleInternal()
                 } else {
-                    child.aboutToReuseInternal(param)
+                    let childParam = match (child.getParamsGenerator()) {
+                        case Some(gen) => gen()
+                        case None => param
+                    }
+                    child.aboutToReuseInternal(childParam)
                 }
             }
         }

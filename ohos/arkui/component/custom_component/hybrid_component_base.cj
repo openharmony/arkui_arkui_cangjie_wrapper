@@ -16,11 +16,12 @@
 package ohos.arkui.component.custom_component
 
 import ohos.hilog.{Hilog}
-import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule}
+import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule, JSObject, JSType, JSInteropType}
 import ohos.business_exception.BusinessException
-import std.collection.HashMap
-import ohos.base.{launch}
+import std.collection.{HashMap, ArrayList}
+import ohos.base.{launch, ReuseParams}
 import ohos.labels.{APILevel, Hide}
+import ohos.arkui.state_management.{ViewStackProcessor}
 
 /**
  * CJPageEntry for register hybrid component.
@@ -93,6 +94,50 @@ public class CJPageEntry {
             }
         }
     }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func removeHybridPageById(id: Int64): Unit {
+        for ((name, page) in entries_) {
+            if (page.id() == id) {
+                entries_.remove(name)
+                return
+            }
+        }
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func recycleHybridPage(id: Int64, compName: String): Unit {
+        for ((_, page) in entries_) {
+            if (page.id() == id) {
+                page.hasBeenRecycled_ = true
+                page.aboutToRecycleInternal()
+                return
+            }
+        }
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public func reuseHybridPage(id: Int64, compName: String, params: ReuseParams): Unit {
+        for ((_, page) in entries_) {
+            if (page.id() == id) {
+                page.hasBeenRecycled_ = false
+                page.aboutToReuseInternal(params)
+                return
+            }
+        }
+    }
 }
 
 /**
@@ -154,5 +199,88 @@ public open class HybridComponentBase <: SharedObject {
         unloadHandle: () -> Unit): Unit {
         registerLoadHandle(compName + "_load", loadHandle)
         registerUnloadHandle(compName + "_unload", unloadHandle)
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public static func registerHybridComponentV2(compName: String, loadHandle: () -> Int64,
+        unloadHandle: (Int64) -> Unit): Unit {
+        registerLoadHandleV2(compName + "_load", loadHandle)
+        registerUnloadHandleV2(compName + "_unload", unloadHandle)
+    }
+
+    static func registerLoadHandleV2(handleName: String, handle: () -> Int64) {
+        let hd = {context: JSContext, _: JSCallInfo =>
+            let id = unsafe { handle() }
+            return Float64(id).toJSValue(context)
+        }
+        JSModule.registerFunc(handleName, hd)
+    }
+
+    static func registerUnloadHandleV2(handleName: String, handle: (Int64) -> Unit) {
+        let hd = {context: JSContext, callInfo: JSCallInfo =>
+            if (callInfo.count > 0) {
+                let id = Int64(callInfo[0].toNumber())
+                unsafe { handle(id) }
+            }
+            return context.undefined().toJSValue()
+        }
+        JSModule.registerFunc(handleName, hd)
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public static func registerReuseHandle(handleName: String, handle: (Int64, ReuseParams) -> Unit): Unit {
+        let hd = {context: JSContext, callInfo: JSCallInfo =>
+            if (callInfo.count > 1) {
+                let id = Int64(callInfo[0].toNumber())
+                let paramsObj = callInfo[1].asObject()
+                let rp = buildReuseParamsFromJSObject(context, paramsObj)
+                unsafe { handle(id, rp) }
+            }
+            return context.undefined().toJSValue()
+        }
+        JSModule.registerFunc(handleName, hd)
+    }
+
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    ]
+    @!Hide
+    public static func registerRecycleHandle(handleName: String, handle: (Int64) -> Unit): Unit {
+        let hd = {context: JSContext, callInfo: JSCallInfo =>
+            if (callInfo.count > 0) {
+                let id = Int64(callInfo[0].toNumber())
+                unsafe { handle(id) }
+            }
+            return context.undefined().toJSValue()
+        }
+        JSModule.registerFunc(handleName, hd)
+    }
+
+    private static func buildReuseParamsFromJSObject(ctx: JSContext, paramsObj: JSObject): ReuseParams {
+        let keys = paramsObj.keys()
+        var pairs = ArrayList<(String, Any)>()
+        for (key in keys) {
+            let jsVal = paramsObj[key]
+            let ty = jsVal.typeof()
+            if (ty == JSType.NUMBER) {
+                pairs.add((key, Float64.fromJSValue(ctx, jsVal)))
+            } else if (ty == JSType.STRING) {
+                pairs.add((key, String.fromJSValue(ctx, jsVal)))
+            } else if (ty == JSType.BOOLEAN) {
+                pairs.add((key, Bool.fromJSValue(ctx, jsVal)))
+            } else {
+                pairs.add((key, jsVal))
+            }
+        }
+        return ReuseParams(pairs.toArray())
     }
 }
