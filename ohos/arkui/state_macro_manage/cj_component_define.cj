@@ -1514,13 +1514,16 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
+                let paramsLambda = { => ReuseParams($paramTokens) }
                 if (cv.isReusable_inner__) {
-                    let rp: ReuseParams = ReuseParams($paramTokens)
+                    trySetParamsGenerator(cv, paramsLambda)
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>
-                            CustomView.createRecycle(recycleNode ?? cv, recycleNode.isSome(), $funcName, { =>
+                            let componentCall = recycleNode ?? cv
+                            trySetParamsGenerator(componentCall, paramsLambda)
+                            CustomView.createRecycle(componentCall, recycleNode.isSome(), $funcName, { =>
                                 if (let Some(rn) <- recycleNode) {
-                                    rn.aboutToReuseInternal(rp)
+                                    rn.aboutToReuseInternal(ReuseParams($paramTokens))
                                 }
                             })
                             EmptyComponent()
@@ -1528,6 +1531,7 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
                     }})
                 } else {
                     ViewStackProcessor.startGetAccessRecordingFor(ViewStackProcessor.allocateNewElmetIdForNextComponent())
+                    trySetParamsGenerator(cv, paramsLambda)
                     $CUSTOM_VIEW.create(cv)
                     ViewStackProcessor.stopGetAccessRecording()
                 }
