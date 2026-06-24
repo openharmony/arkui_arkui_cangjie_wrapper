@@ -31,9 +31,7 @@ import ohos.ffi.{FFIDataManager}
 import ohos.business_exception.BusinessException
 import ohos.labels.{APILevel, Hide}
 import std.sort.{SortByExtension}
-import std.collection.{HashSet}
-import std.collection.HashMap
-import std.collection.ArrayList
+import std.collection.{HashSet, HashMap, ArrayList}
 
 foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 
@@ -457,8 +455,8 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
-        let actualParam = match (getParamsGenerator()) {
-            case Some(gen) => gen()
+        let actualParam = match (getReuseParamsFromParentRegistry()) {
+            case Some(rp) => rp
             case None => param
         }
         aboutToReuse(actualParam)
@@ -469,6 +467,15 @@ public abstract class CustomView <: RemoteView & Observer {
         }
         traverseChildDoRecycleOrReuse(false, param: actualParam)
         runReuse_ = false
+    }
+
+    private func getReuseParamsFromParentRegistry(): Option<ReuseParams> {
+        match (parent_inner__) {
+            case Some(parent) =>
+                tryGetReuseParamsFromParent(parent, this.id())
+            case None =>
+                Option<ReuseParams>.None
+        }
     }
 
     @!Hide
@@ -486,27 +493,6 @@ public abstract class CustomView <: RemoteView & Observer {
         }
         recycleManager_ = RecycleManager()
         recycleManager_.getOrThrow()
-    }
-
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    @!Hide
-    public func setParamsGenerator(gen: () -> ReuseParams): Unit {
-        getOrCreateRecycleManager().setParamsGenerator(gen)
-    }
-
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
-    ]
-    @!Hide
-    public func getParamsGenerator(): ?(() -> ReuseParams) {
-        if (let Some(rm) <- recycleManager_) {
-            return rm.getParamsGenerator()
-        }
-        return None
     }
 
     @!Hide
@@ -541,8 +527,8 @@ public abstract class CustomView <: RemoteView & Observer {
                 if (recycleOrReuse) {
                     child.aboutToRecycleInternal()
                 } else {
-                    let childParam = match (child.getParamsGenerator()) {
-                        case Some(gen) => gen()
+                    let childParam = match (tryGetReuseParamsFromParent(this, child.id())) {
+                        case Some(rp) => rp
                         case None => param
                     }
                     child.aboutToReuseInternal(childParam)
@@ -792,6 +778,7 @@ public abstract class CustomView <: RemoteView & Observer {
         profilerCleanupObserver(id())
 
         if (let Some(parent) <- parent_inner__) {
+            cleanupReuseParamsEntry(parent, this.id())
             parent.removeChildById(id())
         }
         if (hasRecycleManager()) {
@@ -802,6 +789,9 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     protected func onAboutToBeDeleted(): Unit {
         aboutToBeDeleted()
+        for (child in children_inner__.values()) {
+            cleanupReuseParamsEntry(this, child.id())
+        }
         children_inner__.clear()
         nativeView_inner__.release()
     }

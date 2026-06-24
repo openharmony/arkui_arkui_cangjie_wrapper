@@ -26,9 +26,9 @@ ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
   ]
 
   if (target_cpu == "arm" || is_mac) {
-    sources += [ "reuse_reflection_helper_stub.cj" ]
+    sources += [ "reuse_reflection_reader_stub.cj" ]
   } else {
-    sources += [ "reuse_reflection_helper.cj" ]
+    sources += [ "reuse_reflection_reader.cj" ]
   }
 
   cj_deps = [
