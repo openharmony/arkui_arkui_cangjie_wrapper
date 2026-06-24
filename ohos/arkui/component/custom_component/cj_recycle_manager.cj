@@ -17,24 +17,14 @@ package ohos.arkui.component.custom_component
 
 import std.collection.HashMap
 import std.collection.ArrayList
-import ohos.base.ReuseParams
 
 protected class RecycleManager {
     private let cachedRecycleNodes: HashMap<String, ArrayList<CustomView>>
     private let biMap: BidirectionalMap
-    private var paramsGenerator: ?(() -> ReuseParams) = None
 
     protected init() {
         cachedRecycleNodes = HashMap<String, ArrayList<CustomView>>()
         biMap = BidirectionalMap()
-    }
-
-    protected func setParamsGenerator(gen: () -> ReuseParams): Unit {
-        paramsGenerator = gen
-    }
-
-    protected func getParamsGenerator(): ?(() -> ReuseParams) {
-        paramsGenerator
     }
 
     protected func updateNodeId(oldElmtId: Int64, newElmtId: Int64) {

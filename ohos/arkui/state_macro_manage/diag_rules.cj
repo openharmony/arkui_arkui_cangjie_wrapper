@@ -139,6 +139,8 @@ protected enum MacroErrorCode {
     | MustBeInComponent
     /** Duplicate member name (variable) in class */
     | DuplicateMemberName
+    /** Member name conflicts with a name reserved by the @Component macro */
+    | ReservedMemberName
 
     // ========== Resource errors ========== //
     /** Resource format invalid, expected app.type.name or sys.type.name */
@@ -149,7 +151,7 @@ protected enum MacroErrorCode {
     | RawfileInvalidName
     /** Rawfile not found */
     | RawfileNotFound
-    
+
     /** @Reusable can only be used with @Component */
     | ReusableOnlyForComponent
     | ...
@@ -228,6 +230,7 @@ protected enum MacroErrorCode {
             case MustBeInObserved => "can only be used inside '@Observed' decorated class"
             case MustBeInComponent => "can only be used inside '@Component' or '@CustomDialog' decorated class"
             case DuplicateMemberName => "decorated class has a duplicate member name"
+            case ReservedMemberName => "member name is reserved by @Component macro"
 
             // Resource errors
             case ResourceFormatError => "has invalid format"
@@ -304,6 +307,8 @@ protected enum MacroErrorCode {
             case TooManyChildren =>
                 "Wrap multiple children in a container such as Column or Row"
             case NoChildAllowed => "Remove the trailing closure: {...}"
+            case ReservedMemberName =>
+                "Rename this member; this name is reserved for macro-generated code"
             case _ => ""
         }
     }
