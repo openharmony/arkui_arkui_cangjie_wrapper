@@ -339,6 +339,14 @@ func createCButtons(buttons: Array<ButtonInfo>): Option<CPointer<CButtonInfo>> {
     unsafe {
         for (i in 0..size) {
             var text = LibC.mallocCString(transResourceStrToString(buttons[i].text))
+            if (text.isNull()) {
+                for (j in 0..i) {
+                    let prevButton = pButtons.read(j)
+                    LibC.free(prevButton.text)
+                }
+                free(CPointer<Unit>(pButtons))
+                return Option<CPointer<CButtonInfo>>.None
+            }
             let color = transAppResourceToResourceColor(buttons[i].color)
             let primary = buttons[i].primary
             var cButton = CButtonInfo(text, color, primary)

@@ -176,7 +176,7 @@ foreign func FfiFontManagerRegisterFont(familyName: CString, familySrc: CString)
 
 foreign func FfiFontManagerGetSystemFontList(): VectorStringHandle
 
-foreign func FfiFontManagerGetFontByName(fontName: CString): CPointer<NativeFontInfo4Font>
+foreign func FfiFontManagerGetFontByNameV2(fontName: CString): CPointer<NativeFontInfo4Font>
 
 foreign func FfiFontManagerGetUIFontConfig(): NativeUIFontConfig
 
@@ -266,7 +266,7 @@ public class Font {
         unsafe {
             var result: ?FontInfo = None
             try (name = LibC.mallocCString(fontName).asResource()) {
-                let res = FfiFontManagerGetFontByName(name.value)
+                let res = FfiFontManagerGetFontByNameV2(name.value)
                 if (res.isNull()) {
                     APP_LOG.warn("Can not find system FontInfo for ${fontName}")
                     return None
