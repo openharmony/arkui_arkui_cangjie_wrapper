@@ -62,7 +62,7 @@ func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens 
             UISyntaxChecker.reportExpectClassDeclForEntry(Tokens().append(decl.keyword), UIMacroKind.Entry)
             return input
     }
-    
+
     let entryClassIdent = classDecl.identifier
     if (needCheckEntry && !checkEntry(entryClassIdent)) {
         return input

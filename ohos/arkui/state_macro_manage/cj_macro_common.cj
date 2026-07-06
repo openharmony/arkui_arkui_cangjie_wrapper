@@ -19,6 +19,8 @@ macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, Argument, Token, ASTException, VarDecl, Expr, LitConstExpr, ClassDecl, PrimaryCtorDecl, FuncDecl, TokenKind, ToTokens, parseDecl, Visitor}
 import std.collection.{ArrayList}
+// re-export HashMap for macro-generated code (public static var __REUSE_PARAMS__)
+public import std.collection.{HashMap}
 
 /**
  * record state and init declaration

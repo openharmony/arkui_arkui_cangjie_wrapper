@@ -35,6 +35,8 @@ public macro Component(input: Tokens): Tokens {
         }.andThen {
             classDecl: ClassDecl => UISyntaxChecker.checkNoDuplicateMemberNames(input, classDecl, UIMacroKind.Component)
         }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoReservedMemberNames(input, classDecl, UIMacroKind.Component)
+        }.andThen {
             classDecl: ClassDecl => UISyntaxChecker.checkComponentNameNotBuiltIn(input, classDecl, UIMacroKind.Component,
                 MACRO_EXPAND_COMPONENTS)
         }
@@ -58,6 +60,7 @@ public macro Component(input: Tokens): Tokens {
             let rerenderFunc = handleRerender()
             let forceRerendFunc = handleForceRerender()
             let purgeVariableFunc = handlePurgeVariable(classDecl)
+            let reuseParamsRegistry = generateReuseParamsRegistry()
 
             // record state with component and state kind
             STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
@@ -82,6 +85,7 @@ public macro Component(input: Tokens): Tokens {
                     $purgeVariableFunc
                     $forceRerendFunc
                     $profilerStaticArrays
+                    $reuseParamsRegistry
                 )
             )
         case Err(tokens) => 
@@ -1497,6 +1501,12 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     }
 }
 
+func generateReuseParamsRegistry(): Tokens {
+    return quote(
+        public static var __REUSE_PARAMS__: HashMap<Int64, () -> ReuseParams> = HashMap<Int64, () -> ReuseParams>()
+    )
+}
+
 func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView: Tokens): Tokens {
     let expr = (input as CallExpr).getOrThrow()
     let args = expr.arguments
@@ -1514,13 +1524,16 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
+                let paramsLambda = { => ReuseParams($paramTokens) }
                 if (cv.isReusable_inner__) {
-                    let rp: ReuseParams = ReuseParams($paramTokens)
+                    __REUSE_PARAMS__[cv.id()] = paramsLambda
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>
-                            CustomView.createRecycle(recycleNode ?? cv, recycleNode.isSome(), $funcName, { =>
+                            let componentCall = recycleNode ?? cv
+                            __REUSE_PARAMS__[componentCall.id()] = paramsLambda
+                            CustomView.createRecycle(componentCall, recycleNode.isSome(), $funcName, { =>
                                 if (let Some(rn) <- recycleNode) {
-                                    rn.aboutToReuseInternal(rp)
+                                    rn.aboutToReuseInternal(ReuseParams($paramTokens))
                                 }
                             })
                             EmptyComponent()
@@ -1528,6 +1541,7 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
                     }})
                 } else {
                     ViewStackProcessor.startGetAccessRecordingFor(ViewStackProcessor.allocateNewElmetIdForNextComponent())
+                    __REUSE_PARAMS__[cv.id()] = paramsLambda
                     $CUSTOM_VIEW.create(cv)
                     ViewStackProcessor.stopGetAccessRecording()
                 }
