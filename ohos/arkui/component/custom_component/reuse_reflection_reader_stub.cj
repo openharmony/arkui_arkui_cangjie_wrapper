@@ -14,15 +14,11 @@
  */
 
 // Stub for arm32 / macOS where std.reflect is disabled.
-// All functions return None / no-op, gracefully degrading
-// to the old (pre-paramsGenerator) behavior.
 
 package ohos.arkui.component.custom_component
 
 import ohos.base.ReuseParams
 
-func tryGetReuseParamsFromParent(parent: CustomView, childId: Int64): Option<ReuseParams> {
+func tryGetReuseParamsFromChild(child: CustomView): Option<ReuseParams> {
     return Option<ReuseParams>.None
 }
-
-func cleanupReuseParamsEntry(parent: CustomView, childId: Int64): Unit {}
