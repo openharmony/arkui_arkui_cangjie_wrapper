@@ -543,20 +543,13 @@ protected class UISyntaxChecker {
     }
 
     /**
-     * Check that the class body does not contain members whose names match
-     * a name that the @Component macro injects (e.g. __REUSE_PARAMS__,
-     * __PROFILER_KEYS__). A user-declared member with the same name would
-     * cause a duplicate-member compilation error with a confusing message.
-     * This check produces a clear, actionable error instead.
-     *
-     * Only exact-match names in the reserved set are blocked; other '__'
-     * prefixed names are allowed for user-defined internal members.
-     *
-     * Applicable to: @Component
+     * Block user-declared members whose names collide with macro-injected
+     * members (e.g. paramsGenerator_inner__, __PROFILER_KEYS__).
+     * Produces a clear error instead of a confusing duplicate-member message.
      */
     protected static func checkNoReservedMemberNames(
         input: Tokens, classDecl: ClassDecl, macroCall: UIMacroKind): MacroExpandResult<ClassDecl> {
-        let reservedNames = HashSet<String>(["__REUSE_PARAMS__", "__PROFILER_KEYS__", "__PROFILER_DECS__",
+        let reservedNames = HashSet<String>(["paramsGenerator_inner__", "__PROFILER_KEYS__", "__PROFILER_DECS__",
             "__PROFILER_FNAMES__", "__PROFILER_OVERRIDE_DECS__", "__PROFILER_RUNTIME_KEYS__"])
         for (decl in classDecl.body.decls) {
             match (decl as VarDecl) {
