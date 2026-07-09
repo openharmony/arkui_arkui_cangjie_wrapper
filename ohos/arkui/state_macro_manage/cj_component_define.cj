@@ -60,7 +60,7 @@ public macro Component(input: Tokens): Tokens {
             let rerenderFunc = handleRerender()
             let forceRerendFunc = handleForceRerender()
             let purgeVariableFunc = handlePurgeVariable(classDecl)
-            let reuseParamsRegistry = generateReuseParamsRegistry()
+            let reuseParamsRegistry = generateParamsGenerator()
 
             // record state with component and state kind
             STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
@@ -88,7 +88,7 @@ public macro Component(input: Tokens): Tokens {
                     $reuseParamsRegistry
                 )
             )
-        case Err(tokens) => 
+        case Err(tokens) =>
             return tokens
     }
 }
@@ -100,7 +100,7 @@ func isForEach(refExpr: RefExpr) {
 
 /**
  * Validates and processes the parameters of a ForEach component.
- * 
+ *
  * This function checks if the given parameter has a valid identifier and if that identifier
  * matches one of the expected parameter names for the ForEach component. It reports errors
  * if the parameter is invalid or unknown.
@@ -119,7 +119,7 @@ func validateAndProcessForEachParameter(para: Argument, expectedParamNames: Arra
         "Invalid parameter: expected named parameter '${paramName}'.", "")
         return false
     }
-    
+
     var isValidName = false
     for (expectedName in expectedParamNames) {
         if (identifier.value == expectedName) {
@@ -127,7 +127,7 @@ func validateAndProcessForEachParameter(para: Argument, expectedParamNames: Arra
             break
         }
     }
-    
+
     if (!isValidName) {
         diagReport(DiagReportLevel.ERROR, Tokens().append(identifier),
         "unknown named argument: '" + identifier.value + "'.", "")
@@ -211,7 +211,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
                 // Item generator parameter
                 checkLazyForEachBody(para.expr)
                 let lambdaParams = itemLambda.funcParams
-                
+
                 // Create item generator function signature
                 var lambdaSignature = if (validateAndProcessForEachParameter(
                         para, ["itemGenerator", "itemGeneratorFunc"], "itemGenerator")) {
@@ -219,17 +219,17 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
                 } else {
                     quote({)
                 }
-                
+
                 // Add parameters to signature
                 for (param in lambdaParams) {
                     lambdaSignature = lambdaSignature + quote($param)
                 }
-                
+
                 // Complete lambda function
                 let lambdaBody = itemLambda.nodes
                 let processedBody = generateFuncBody(lambdaBody, thisView)
                 res = res + lambdaSignature + quote( => ) + processedBody + quote(})
-                
+
                 // Add separator if not last argument
                 if (idx != callExpr.arguments.size - 1) {
                     res = res + quote(, )
@@ -304,7 +304,7 @@ func validateComponentChildConstraints(parentExpr: CallExpr, componentName: Stri
     if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
         checkChildInBody(childNodes, componentName)
     }
-    
+
     // Check parent constraints
     checkParentInBody(childNodes, componentName)
 }
@@ -325,7 +325,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             if (refExpr.identifier.value == "LazyForEach") {
                 return generateLazyForEachCreate(callExpr, thisView)
             }
-            
+
             // Check if the last argument is a LambdaExpr (function type parameter)
             // This handles cases like: Column({ => Text("hello") })
             // Note: This is mutually exclusive with TrailingClosureExpr because:
@@ -344,7 +344,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
                     case None => ()
                 }
             }
-            
+
             return generateCompCreate(callExpr)
         case v: TrailingClosureExpr =>
             // only inside TrailingClosureExpr may have other LambdaBody, can get the complete LambdaBody for judgment
@@ -1501,9 +1501,24 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     }
 }
 
-func generateReuseParamsRegistry(): Tokens {
+/** Emit `public var paramsGenerator_inner__` — instance field for reuse params on child. */
+func generateParamsGenerator(): Tokens {
     return quote(
-        public static var __REUSE_PARAMS__: HashMap<Int64, () -> ReuseParams> = HashMap<Int64, () -> ReuseParams>()
+        public var paramsGenerator_inner__: () -> Array<(String, Any)> = { => [] }
+    )
+}
+
+/** Generate downcast + direct write to child's paramsGenerator_inner__. */
+func writeParamsToChild(childExpr: Tokens, childType: Tokens, params: Tokens): Tokens {
+    if (childType.size == 0) {
+        return quote()
+    }
+    return quote(
+        match ($childExpr as $childType) {
+            case Some(typed) =>
+                typed.paramsGenerator_inner__ = { => $params }
+            case None => ()
+        }
     )
 }
 
@@ -1521,16 +1536,21 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
         }
     }
     paramTokens += quote(])
+
+    let childTypeTokens = match (expr.callFunc as RefExpr) {
+        case Some(refExpr) => refExpr.toTokens()
+        case None => Tokens()
+    }
+
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
-                let paramsLambda = { => ReuseParams($paramTokens) }
+                $(writeParamsToChild(quote(cv), childTypeTokens, paramTokens))
                 if (cv.isReusable_inner__) {
-                    __REUSE_PARAMS__[cv.id()] = paramsLambda
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>
                             let componentCall = recycleNode ?? cv
-                            __REUSE_PARAMS__[componentCall.id()] = paramsLambda
+                            $(writeParamsToChild(quote(componentCall), childTypeTokens, paramTokens))
                             CustomView.createRecycle(componentCall, recycleNode.isSome(), $funcName, { =>
                                 if (let Some(rn) <- recycleNode) {
                                     rn.aboutToReuseInternal(ReuseParams($paramTokens))
@@ -1541,7 +1561,6 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
                     }})
                 } else {
                     ViewStackProcessor.startGetAccessRecordingFor(ViewStackProcessor.allocateNewElmetIdForNextComponent())
-                    __REUSE_PARAMS__[cv.id()] = paramsLambda
                     $CUSTOM_VIEW.create(cv)
                     ViewStackProcessor.stopGetAccessRecording()
                 }

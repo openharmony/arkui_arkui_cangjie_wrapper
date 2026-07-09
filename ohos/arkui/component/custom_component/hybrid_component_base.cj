@@ -16,11 +16,10 @@
 package ohos.arkui.component.custom_component
 
 import ohos.hilog.{Hilog}
-import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule, JSObject, JSType, JSInteropType, JSFunction}
+import ohos.ark_interop.{SharedObject, JSContext, JSCallInfo, JSModule, JSObject, JSType, JSInteropType}
 import ohos.business_exception.BusinessException
 import ohos.base.{launch, ReuseParams}
 import ohos.labels.{APILevel, Hide}
-import ohos.arkui.state_management.{ViewStackProcessor}
 import std.collection.{HashMap, ArrayList, HashSet}
 
 /**
@@ -79,8 +78,7 @@ public class CJPageEntry {
     }
 
     /**
-     * Register _getId / _unloadById / _reuse / _recycle under globalThis.__cj_hybrid__ namespace.
-     * Uses a dedicated namespace object to avoid polluting globalThis top-level keys.
+     * Register _getId / _unloadById / _reuse / _recycle under globalThis.__cj_hybrid__.
      */
     private func registerReuseHandles(name: String, cjPage: CustomView): Unit {
         let pageId = cjPage.id()

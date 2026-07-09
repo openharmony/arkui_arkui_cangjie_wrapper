@@ -455,7 +455,7 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
-        let actualParam = match (getReuseParamsFromParentRegistry()) {
+        let actualParam = match (tryGetReuseParamsFromChild(this)) {
             case Some(rp) => rp
             case None => param
         }
@@ -467,15 +467,6 @@ public abstract class CustomView <: RemoteView & Observer {
         }
         traverseChildDoRecycleOrReuse(false, param: actualParam)
         runReuse_ = false
-    }
-
-    private func getReuseParamsFromParentRegistry(): Option<ReuseParams> {
-        match (parent_inner__) {
-            case Some(parent) =>
-                tryGetReuseParamsFromParent(parent, this.id())
-            case None =>
-                Option<ReuseParams>.None
-        }
     }
 
     @!Hide
@@ -527,7 +518,7 @@ public abstract class CustomView <: RemoteView & Observer {
                 if (recycleOrReuse) {
                     child.aboutToRecycleInternal()
                 } else {
-                    let childParam = match (tryGetReuseParamsFromParent(this, child.id())) {
+                    let childParam = match (tryGetReuseParamsFromChild(child)) {
                         case Some(rp) => rp
                         case None => param
                     }
@@ -778,7 +769,6 @@ public abstract class CustomView <: RemoteView & Observer {
         profilerCleanupObserver(id())
 
         if (let Some(parent) <- parent_inner__) {
-            cleanupReuseParamsEntry(parent, this.id())
             parent.removeChildById(id())
         }
         if (hasRecycleManager()) {
@@ -789,9 +779,6 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     protected func onAboutToBeDeleted(): Unit {
         aboutToBeDeleted()
-        for (child in children_inner__.values()) {
-            cleanupReuseParamsEntry(this, child.id())
-        }
         children_inner__.clear()
         nativeView_inner__.release()
     }
