@@ -17,7 +17,7 @@
 
 protected package ohos.arkui.component.util
 
-import ohos.base.{Length, ResourceColor, LengthUnit, ResourceStr, registerTransAppResourceToResourceColor, registerTransAppResourceToLength}
+import ohos.base.{Length, ResourceColor, LengthUnit, ResourceStr, registerTransAppResourceToResourceColor, registerTransAppResourceToLength, NativeOptionLength, NativeLength}
 import ohos.resource.{AppResource, getResourceLength, getResourceColor, getResourceString, getResourceMedia}
 
 // !! Do not use the following variables as match-case conditions
@@ -89,4 +89,14 @@ protected func lessNotEqual(left: Float64, right: Float64): Bool {
 
 protected func lessOrEqual(left: Float64, right: Float64): Bool {
     return (left - right < EPSILON)
+}
+
+protected func toNativeOptionLength(value: ?Length): NativeOptionLength {
+    match (value) {
+        case Some(len) =>
+            let l = transAppResourceToLength(len)
+            NativeOptionLength(true, NativeLength(l.value, l.unitType.getValue()))
+        case None =>
+            NativeOptionLength(false, NativeLength(0.0, 0))
+    }
 }

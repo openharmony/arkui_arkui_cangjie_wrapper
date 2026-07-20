@@ -28,7 +28,8 @@
                 "multimedia_cangjie_wrapper",
                 "arkweb_cangjie_wrapper",
                 "access_token",
-                "ace_engine"
+                "ace_engine",
+                "startup_cangjie_wrapper"
             ]
         },
         "build": {
