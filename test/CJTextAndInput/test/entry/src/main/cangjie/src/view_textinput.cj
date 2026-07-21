@@ -193,6 +193,16 @@ class ViewTextInput {
             
             TextInput(placeholder: "width auto").width(LengthMetrics.AUTO).id("textInput_width_auto")
 
+            TextInput(placeholder: "inputFilter no error")
+                .inputFilter("a")
+                .id("textinput_cov_inputfilter_no_error")
+
+            TextInput(placeholder: "cov boundary")
+                .width((-1).vp)
+                .width(Option<Length>.None)
+                .fontSize(100.percent)
+                .id("textinput_cov_boundary")
+
         }.width(100.percent)
     }
 }

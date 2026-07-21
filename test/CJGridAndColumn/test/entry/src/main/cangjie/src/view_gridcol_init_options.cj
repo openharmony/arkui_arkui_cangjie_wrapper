@@ -25,6 +25,17 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class ViewGridColInitOptions {
+    func gridColNoneFieldOpts(): GridColOptions {
+        let opts = GridColOptions(6)
+        opts.xs = Option<Int32>.None
+        opts.sm = Option<Int32>.None
+        opts.md = Option<Int32>.None
+        opts.lg = Option<Int32>.None
+        opts.xl = Option<Int32>.None
+        opts.xxl = Option<Int32>.None
+        return opts
+    }
+
     func build() {
         Column() {
             GridRow(columns: 12) {
@@ -67,6 +78,25 @@ class ViewGridColInitOptions {
                     Text("test")
                 }
                 .id("testGridColInitOrderOptionsNormalValue2")
+            }
+
+            GridRow(columns: 12) {
+                GridCol(span: GridColOptions(Option<Int32>.None), offset: Option<GridColOptions>.None, order: Option<GridColOptions>.None) {
+                    Text("test")
+                }
+                .id("testGridColInitNoneValueOptions")
+            }
+
+            GridRow(columns: 12) {
+                GridCol(span: gridColNoneFieldOpts(), offset: Option<GridColOptions>.None, order: Option<GridColOptions>.None) {
+                    Text("test")
+                }
+                .id("testGridColInitNoneFieldOptions")
+            }
+
+            GridRow(columns: 12) {
+                GridCol(span: Option<GridColOptions>.None, offset: Option<GridColOptions>.None, order: Option<GridColOptions>.None)
+                .id("testGridColDefaultChild")
             }
         }
         .width(100.percent)

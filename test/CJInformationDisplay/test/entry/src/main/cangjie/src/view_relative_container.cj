@@ -26,6 +26,24 @@ let emptyguideline: Array<GuideLineStyle> = []
 @Entry
 @Component
 class ViewRelativeContainer {
+    let noneGuideLine: Array<GuideLineStyle> = [{ =>
+        let g = GuideLineStyle("test", Axis.Vertical, GuideLinePosition(start: 0))
+        g.id = Option<String>.None
+        g.direction = Option<Axis>.None
+        g.position = Option<GuideLinePosition>.None
+        g
+    }()]
+    let noneBarrier: Array<BarrierStyle> = [{ =>
+        let b = BarrierStyle("test", BarrierDirection.Left, ["ref"])
+        b.id = Option<String>.None
+        b.direction = Option<BarrierDirection>.None
+        b.referencedId = Option<Array<String>>.None
+        b
+    }()]
+    let emptyRefBarrier: Array<BarrierStyle> = [
+        BarrierStyle("test", BarrierDirection.Left, [])
+    ]
+
     func build() {
         Scroll() {
             Column() {
@@ -302,6 +320,19 @@ class ViewRelativeContainer {
                     .backgroundColor(0xDDDDDD)
                     .id('relative12_2')
                     .guideLine(emptyguideline)
+
+                RelativeContainer()
+                    .width(100.px).height(100.px)
+                    .id('relative_cov_none_guideline')
+                    .guideLine(noneGuideLine)
+                RelativeContainer()
+                    .width(100.px).height(100.px)
+                    .id('relative_cov_none_barrier')
+                    .barrier(noneBarrier)
+                RelativeContainer()
+                    .width(100.px).height(100.px)
+                    .id('relative_cov_empty_ref')
+                    .barrier(emptyRefBarrier)
 
             }.width(100.percent).alignItems(HorizontalAlign.Start)
         }.height(100.percent).width(100.percent)

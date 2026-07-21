@@ -25,6 +25,16 @@ class Name {
     @Publish var title: String = "English"
 }
 
+func makeButtonOptionsNone(): ButtonOptions {
+    let opts = ButtonOptions()
+    opts.shape = Option<ButtonType>.None
+    opts.stateEffect = Option<Bool>.None
+    opts.buttonStyle = Option<ButtonStyleMode>.None
+    opts.controlSize = Option<ControlSize>.None
+    opts.role = Option<ButtonRole>.None
+    return opts
+}
+
 @Entry
 @Component
 class ViewButton {
@@ -170,6 +180,34 @@ class ViewButton {
 //                    )
 //                )
             }
+
+            Text('fontSize Option.None').fontSize(9).fontColor(0xCCCCCC)
+            Button("TestFontSizeNone").fontSize(Option<Length>.None).backgroundColor(0x317aff).id("button_fontsize_none")
+
+            Text('ButtonOptions').fontSize(9).fontColor(0xCCCCCC)
+            Button(Option<ButtonOptions>.None).id("button_options_none")
+            Button(ButtonOptions(shape: Option<ButtonType>.None, stateEffect: Option<Bool>.None,
+                buttonStyle: Option<ButtonStyleMode>.None, controlSize: Option<ControlSize>.None,
+                role: Option<ButtonRole>.None)).id("button_options_all_none")
+            Button(Option<ButtonOptions>.None) { Text("child") }.id("button_child_options_none")
+            Button(Option<ResourceStr>.None, Option<ButtonOptions>.None).id("button_label_none_options_none")
+            Button("test", ButtonOptions(shape: Option<ButtonType>.None, stateEffect: Option<Bool>.None,
+                buttonStyle: Option<ButtonStyleMode>.None, controlSize: Option<ControlSize>.None,
+                role: Option<ButtonRole>.None)).id("button_label_options_all_none")
+            Button(makeButtonOptionsNone()).id("button_options_postnone")
+            Button(makeButtonOptionsNone()) { Text("postnone") }.id("button_child_options_postnone")
+            Button(Option<ResourceStr>.None, makeButtonOptionsNone()).id("button_label_none_options_postnone")
+
+            Text('covBoundary').fontSize(9).fontColor(0xCCCCCC)
+            Button("covB")
+                .fontSize(100.percent)
+                .fontSize((-1).vp)
+                .padding((-1).vp)
+                .padding(top: (-1).vp, right: (-1).vp, bottom: (-1).vp, left: (-1).vp)
+                .size(width: 80.vp, height: 40.vp)
+                .size(width: (-1).vp, height: 40.vp)
+                .fontFamily(Option<ResourceStr>.None)
+                .backgroundColor(0x317aff).id("button_cov_boundary")
         }.height(700).padding(left: 35, right: 35, top: 35)
     }
 }

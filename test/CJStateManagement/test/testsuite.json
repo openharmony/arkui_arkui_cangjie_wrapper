@@ -2,15 +2,67 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "ScrollSplitUT1",
+      "name": "StateManagementUTBuilder",
       "timeout": 100
     },
     {
-      "name": "ScrollSplitUT11",
+      "name": "StateManagementUTComplexTypes",
       "timeout": 100
     },
     {
-      "name": "ScrollSplitUT2",
+      "name": "StateManagementUTComponentUsage",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTCustomDialog",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTLink",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTLocalStorage",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTMultiMacro",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTObservedPublish",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTProp",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTProvideConsume",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTResource",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTReusable",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTState",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTStateDriven",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTStorage",
+      "timeout": 100
+    },
+    {
+      "name": "StateManagementUTWatch",
       "timeout": 100
     }
   ]

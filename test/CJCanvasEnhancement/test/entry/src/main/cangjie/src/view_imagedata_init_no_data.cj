@@ -37,6 +37,9 @@ class ViewImageDataInitNoData {
     var settings4: RenderingContextSettings = RenderingContextSettings(antialias: true)
     var context4: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings4)
 
+    var settings5: RenderingContextSettings = RenderingContextSettings(antialias: true)
+    var context5: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings5)
+
     func build() {
        Scroll() {
             Column(space: 10.0) {
@@ -88,6 +91,24 @@ class ViewImageDataInitNoData {
                         } catch (e: Exception) {
                             Hilog.info(0, "cangjie-test", "ImageData(Option.None, Option.None, unit: Option.None) create failed.")
                         }
+                    }
+                })
+                Canvas(this.context5).width(90.percent).height(150.00.vp).backgroundColor(0xf0f0f0).id("imageDataCovInvalid").onReady({
+                    =>
+                    try {
+                        let invalid = ImageData(-100.0, -100.0)
+                        let w = invalid.width
+                        let h = invalid.height
+                        let d = invalid.data
+                        Hilog.info(0, "cangjie-test", "cov invalid imgData w=${w} h=${h} d.size=${d.size}")
+                    } catch (e: Exception) {
+                        Hilog.info(0, "cangjie-test", "cov invalid imgData create threw")
+                    }
+                    try {
+                        let emptyData = ImageData(100.0, 100.0, data: [])
+                        this.context5.putImageData(emptyData, 0.0, 0.0)
+                    } catch (e: Exception) {
+                        Hilog.info(0, "cangjie-test", "cov empty-data imgData threw")
                     }
                 })
             }.width(100.percent)

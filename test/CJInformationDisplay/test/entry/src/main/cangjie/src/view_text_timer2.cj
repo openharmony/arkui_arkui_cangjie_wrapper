@@ -20,6 +20,17 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
+func makeTextTimerShadowOptionsAllNoneFields(): ShadowOptions {
+    let opts = ShadowOptions(radius: 1.0)
+    opts.radius = Option<Float64>.None
+    opts.shadowType = Option<ShadowType>.None
+    opts.color = Option<ResourceColor>.None
+    opts.offsetX = Option<Float64>.None
+    opts.offsetY = Option<Float64>.None
+    opts.fill = Option<Bool>.None
+    return opts
+}
+
 @Entry
 @Component
 class ViewTextTimer2 {
@@ -67,6 +78,15 @@ class ViewTextTimer2 {
             TextTimer()
                 .textShadow(ShadowOptions(radius: 10.0, offsetX: 10.0, offsetY: 0.0, color: 0xa52a2a))
                 .id("TextTimer_4")
+
+            TextTimer()
+                .fontSize((-1).fp)
+                .fontColor(Option<ResourceColor>.None)
+                .textShadow(makeTextTimerShadowOptionsAllNoneFields())
+                .textShadow(Option<ShadowOptions>.None)
+                .textShadow(Option<Array<ShadowOptions>>.None)
+                .textShadow([])
+                .id("texttimer_cov")
 
             Row() {
                 Button("start").onClick({

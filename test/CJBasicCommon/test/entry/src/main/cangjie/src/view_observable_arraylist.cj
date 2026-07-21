@@ -38,8 +38,14 @@ class ViewObservableArrayList {
         // tmp_arrlist = ArrayList<Book2>([Book2(title: "test_appendall_1", id: 123456), Book2(title: "test_appendall_2", id: 123456)])
         // obs_arrlist.appendAll(tmp_arrlist)
         // 调用obs_arrlist_test 里的 append那些方法
-        
 
+        obs_arrlist.appendAll(tmp_arrlist)
+
+        obs_arrlist.insertAll(0, tmp_arrlist)
+
+        obs_arrlist.prependAll(tmp_arrlist)
+
+        obs_arrlist.set(tmp_obs_arrlist)
     }
 
 //    protected override func aboutToDisappear() {

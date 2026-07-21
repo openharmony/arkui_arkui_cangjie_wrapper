@@ -163,14 +163,6 @@ struct OHOSAceFrameworkCJInstanceLoadEntryParams {
 }
 
 @C
-struct OHOSAceFrameworkCJInstanceExistParams {
-    OHOSAceFrameworkCJInstanceExistParams(
-        let id: Int64,
-        let result: CPointer<Bool>
-    ) {}
-}
-
-@C
 func OHOSAceFrameworkCJInstanceInitialize(paramsPtr: CPointer<OHOSAceFrameworkCJInstanceInitializeParams>): Int64 {
     unsafe {
         let params = paramsPtr.read()

@@ -24,6 +24,7 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.{ArrayList, HashMap}
 
+
 @Entry
 @Component
 class ViewGrid {
@@ -657,10 +658,28 @@ class ViewGrid {
                     .rowsGap(Option.None)
                     .nestedScroll(Option.None)
                     .friction(@r(app.float.testFriction))
+                    .friction(Option<AppResource>.None)
+                    .friction(@r(app.string.DEFAULT_FONT))
                     .width(90.percent)
                     .backgroundColor(0xFAEEE0)
                     .height(200)
                     .id("grid_case_306")
+
+                Grid(child: { =>
+                    ForEach(
+                        value2,
+                        itemGeneratorFunc: {
+                            day: String, idx: Int64 => GridItem() {
+                                Text("nsfn_${idx.toString()}_${day}").fontSize(16).width(30.vp).height(30.vp).textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                })
+                    .columnsTemplate("1fr 1fr")
+                    .nestedScroll(makeNestedScrollOptionsNoneFields())
+                    .width(90.percent)
+                    .height(200)
+                    .id("grid_case_nestedScroll_fieldsNone")
             }
         }
     }

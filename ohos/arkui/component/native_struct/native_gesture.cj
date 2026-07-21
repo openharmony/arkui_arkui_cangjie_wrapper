@@ -41,36 +41,6 @@ protected struct CJEventTarget {
 }
 
 @C
-protected struct CJGestureEventV2 {
-    protected CJGestureEventV2(
-        protected let timestamp: Int64,
-        protected let target: CPointer<CJEventTarget>,
-        protected let repeat: Bool,
-        protected let fingerList: CPointer<CJFingerInfo>,
-        protected let fingerListSize: Int32,
-        protected let source: Int32,
-        protected let offsetX: Float64,
-        protected let offsetY: Float64,
-        protected let scale: Float64,
-        protected let pinchCenterX: Float64,
-        protected let pinchCenterY: Float64,
-        protected let angle: Float64,
-        protected let speed: Float64,
-        protected let tiltX: Int64,
-        protected let tiltY: Int64,
-        protected let sourceTool: Int32,
-        protected let velocityX: Float64,
-        protected let velocityY: Float64,
-        protected let velocity: Float64,
-        protected let pressure: Float64,
-        protected let axisHorizontal: Float32,
-        protected let axisVertical: Float32,
-        protected let deviveId: Int64,
-        protected let baseEvtInfo: CPointer<Unit>
-    ) {}
-}
-
-@C
 protected struct CJFingerInfo {
     protected CJFingerInfo(
         protected let id: Int32,

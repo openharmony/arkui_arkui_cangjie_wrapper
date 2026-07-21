@@ -57,6 +57,8 @@ class ViewUiContext {
 
                     var f2 = getUIContext().getMeasureUtils().measureText(MeasureOptions(textContent: "textContent"))
                     var sizeOptions  = getUIContext().getMeasureUtils().measureTextSize(MeasureOptions(textContent: "textContent"))
+                    var measureNone = getUIContext().getMeasureUtils().measureText(MeasureOptions(
+                        textContent: "textContent", fontSize: Option<Length>.None, baselineOffset: Option<Length>.None))
 
                     var vp2px  = getUIContext().vp2px(2.vp).getOrThrow()
                     var vp2px1  = getUIContext().vp2px(2.px)
@@ -85,6 +87,12 @@ class ViewUiContext {
                     } catch (e: Exception) {
                         Hilog.info(1, "Cangjie-Test", "initializeConsume: ${e.toString()}")
                     }
+
+                    getUIContext().getPromptAction()
+                    getUIContext().getMeasureUtils()
+                    getUIContext().getFont()
+                    getUIContext().getRouter()
+                    getUIContext().getContextMenuController()
                 })
                 .fontSize(40)
                 .height(80)

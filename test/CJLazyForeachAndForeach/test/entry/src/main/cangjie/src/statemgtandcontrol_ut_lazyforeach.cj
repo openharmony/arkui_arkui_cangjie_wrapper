@@ -871,5 +871,11 @@ class StateMgtAndControlUTLazyForEach {
         }
         Hilog.info(1, "Cangjie-Test", "[LazyForEach TC_043] 测试完成")
     }
-}
 
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testLazyForEach_InitOutsideBuild_CoverStubInit() {
+        let ds = SimpleDataSource<String>(ArrayList<String>([]))
+        let lf = LazyForEach<String>(ds, itemGenerator: { item: String, index: Int64 => })
+    }
+}

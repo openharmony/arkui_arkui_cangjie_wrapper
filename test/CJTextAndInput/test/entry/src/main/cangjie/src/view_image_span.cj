@@ -100,6 +100,13 @@ class ViewImageSpan {
                     .objectFit(ImageFit.None)
             }.id("11111")
 
+            Text() {
+                ImageSpan(@r(app.media.app_icon))
+                    .colorFilter(Option<ColorFilter>.None)
+                    .borderRadius(topLeft: 5.vp, topRight: 5.vp, bottomLeft: 5.vp, bottomRight: 5.vp)
+                    .id("imagespan_cov")
+            }
+
         }.width(100.percent).alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
     }
 

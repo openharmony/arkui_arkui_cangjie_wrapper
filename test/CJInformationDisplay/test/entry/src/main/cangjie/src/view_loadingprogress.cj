@@ -50,6 +50,11 @@ class ViewLoadingProgress {
                     .foregroundColor(0xCCCCCC)
                     .width(60)
                     .height(60)
+                LoadingProgress()
+                    .foregroundColor(Option<ColoringStrategy>.None)
+                    .id("loadingprogress_cov_none")
+                    .width(60)
+                    .height(60)
             }
                 .height(100.percent)
                 .width(100.percent)

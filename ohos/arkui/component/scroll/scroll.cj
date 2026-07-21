@@ -129,16 +129,6 @@ struct ScrollSnapOptionsParams {
     ) {}
 }
 
-@C
-struct ScrollOnWillScrollCallbackParams {
-    ScrollOnWillScrollCallbackParams(
-        let xOffset: Float64,
-        let yOffset: Float64,
-        let scrollState: Int32,
-        let scrollSource: Int32
-    ) {}
-}
-
 /**
  * Represents the rect values resulting from a scroll operation.
  */

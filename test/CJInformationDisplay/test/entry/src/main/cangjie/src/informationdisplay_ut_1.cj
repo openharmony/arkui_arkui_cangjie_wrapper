@@ -593,4 +593,59 @@ class InformationDisplayUT1 {
         let enableLoading3 = attrs3.get("enableLoading").getOrThrow().toString()
         @Expect(enableLoading3, "\"true\"")
     }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testBadgeStyleNone() {
+        scrollTo("ViewBadge")
+        let inspector = getInspectorByKey("my_badge_style_none")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let count = attrs.get("count").getOrThrow().toString()
+        @Expect(count, "\"1\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testBadgeNoPosition() {
+        scrollTo("ViewBadge")
+        let inspector = getInspectorByKey("my_badge_no_position")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let count = attrs.get("count").getOrThrow().toString()
+        @Expect(count, "\"5\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testBadgeStyleNegative() {
+        scrollTo("ViewBadge")
+        let inspector = getInspectorByKey("my_badge_style_negative")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let count = attrs.get("count").getOrThrow().toString()
+        @Expect(count, "\"2\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testBadgeTextNone() {
+        scrollTo("ViewBadge")
+        let inspector = getInspectorByKey("my_badge_text_none")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let value = attrs.get("value").getOrThrow().toString()
+        @Expect(value, "\"test\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testBadgeTextFull() {
+        scrollTo("ViewBadge")
+        let inspector = getInspectorByKey("my_badge_text_full")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let value = attrs.get("value").getOrThrow().toString()
+        @Expect(value, "\"full\"")
+    }
 }

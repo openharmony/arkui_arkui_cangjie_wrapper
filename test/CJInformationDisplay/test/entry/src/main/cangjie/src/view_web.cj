@@ -130,6 +130,20 @@ class ViewWeb {
                     .verticalScrollBarAccess(true)
                     .nestedScroll(scrollForward: NestedScrollMode.SelfFirst,
                         scrollBackward: NestedScrollMode.SelfFirst)
+                    .javaScriptProxy(funcList: Option<Array<(String) -> String>>.None,
+                        name: Option<String>.None, methodList: Option<Array<String>>.None,
+                        controller: Option<WebviewController>.None)
+                Web(src: this.url, controller: webController)
+                    .nestedScroll(scrollForward: Option<NestedScrollMode>.None,
+                        scrollBackward: Option<NestedScrollMode>.None)
+                Web(src: this.url, controller: webController)
+                    .javaScriptProxy(funcList: Option<Array<(String) -> String>>.None,
+                        name: Option<String>.None, methodList: Option<Array<String>>.None,
+                        controller: Option<WebviewController>.None)
+                Web(src: this.url, controller: webController)
+                    .rotate(x: Option<Float32>.None, y: Option<Float32>.None,
+                        z: Option<Float32>.None, angle: Option<Float32>.None,
+                        centerX: Option<Length>.None, centerY: Option<Length>.None)
             }
         }
     }

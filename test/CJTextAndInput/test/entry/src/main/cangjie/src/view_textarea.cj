@@ -175,6 +175,10 @@ class ViewTextArea {
                 TextArea(placeholder:"width auto")
                     .width(LengthMetrics.AUTO)
                     .id("textArea_width_auto")
+
+                TextArea(placeholder:"inputFilter no error")
+                    .inputFilter(value: "b")
+                    .id("textArea_cov_inputfilter_no_error")
             }.width(100.percent)
         }
     }

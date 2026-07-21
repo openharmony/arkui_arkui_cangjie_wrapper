@@ -367,7 +367,6 @@ class TextAndInputUT1 {
 //        @Expect(attrs5Text,'"Editing true"')
 
 
-
         let button6 = driver.waitForComponent(On().id("stopEditing"),500).getOrThrow()
         button6.click()
 
@@ -520,5 +519,20 @@ class TextAndInputUT1 {
         spanComponent2?.click()
         spanComponent2?.click()
         driver.delayMs(200)
+    }
+
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRichTextCovDefault() {
+        scrollTo("ViewRichText")
+        driver.delayMs(500)
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRichEditorCovNone() {
+        scrollTo("ViewRichEditor")
+        driver.delayMs(1000)
     }
 }

@@ -40,6 +40,14 @@
     {
       "name": "BasicCommonUTBindSheet",
       "timeout": 100
+    },
+    {
+      "name": "BasicCommonOnlyCov",
+      "timeout": 100
+    },
+    {
+      "name": "BasicCommonUTRequestFocus",
+      "timeout": 100
     }
   ]
 }

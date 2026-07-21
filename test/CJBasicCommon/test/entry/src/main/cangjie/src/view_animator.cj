@@ -351,6 +351,21 @@ class ViewAnimator {
                             )
                     })
                     .id("expectedFrameRateRangeButton4").fontSize(12).width(47.percent).height(30)
+                Button("expectedFrameRateRangeNone")
+                    .fontSize(20)
+                    .fontColor(Color.Black)
+                    .onClick ({ e =>
+                        this.flag = false
+                        this.backAnimator?
+                            .setExpectedFrameRateRange(
+                                ExpectedFrameRateRange(
+                                    min: Option<Int32>.None,
+                                    max: Option<Int32>.None,
+                                    expected: Option<Int32>.None
+                                )
+                            )
+                    })
+                    .id("expectedFrameRateRangeNoneButton").fontSize(12).width(47.percent).height(30)
                 Button("pause")
                     .fontSize(20)
                     .fontColor(Color.Black)

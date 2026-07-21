@@ -131,6 +131,16 @@ class ViewCustomDialog {
         height: 30.percent,
         shadow: ShadowOptions(radius: Option<Float64>.None, color: Color.Red, offsetX: 50.0, offsetY: 20.0)))
 
+    var covShadowAllNoneController: CustomDialogController = CustomDialogController(CustomDialogControllerOptions(
+        builder: DialogShadow(),
+        shadow: ShadowOptions(
+            radius: Option<Float64>.None,
+            shadowType: Option<ShadowType>.None,
+            color: Option<ResourceColor>.None,
+            offsetX: Option<Float64>.None,
+            offsetY: Option<Float64>.None,
+            fill: Option<Bool>.None)))
+
     func build() {
         Column {
             Text(this.message).width(100.percent).id("text")
@@ -196,6 +206,13 @@ class ViewCustomDialog {
                     customDialogShadowRadiusOptionNoneController.openDialog()
                 }
             ).fontSize(12).height(30).id("customDialogShadowRadiusOptionNone")
+
+            Button("CovReleaseSelf").onClick(
+                {
+                    evt =>
+                    dialogController.releaseSelf()
+                }
+            ).fontSize(12).height(30).id("covReleaseSelf")
         }.id("my_dialog")
     }
 }

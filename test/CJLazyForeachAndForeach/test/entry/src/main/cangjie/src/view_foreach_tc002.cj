@@ -49,6 +49,19 @@ class ViewForeachTC002 {
                     "${item}_${index}"
                 }
             )
+
+            ForEach(
+                this.testArray,
+                itemGenerator: { item: String, index: Int64 =>
+                    Text(item)
+                        .fontSize(16)
+                        .padding(5)
+                        .id("foreach_dup_${index}")
+                },
+                keyGenerator: { item: String, index: Int64 =>
+                    "duplicate_key"
+                }
+            )
         }
         .width(100.percent)
         .height(100.percent)
@@ -56,4 +69,3 @@ class ViewForeachTC002 {
         .backgroundColor(0xF1F3F5)
     }
 }
-

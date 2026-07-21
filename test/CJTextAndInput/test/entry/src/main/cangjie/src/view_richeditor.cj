@@ -78,6 +78,10 @@ class ViewRichEditor {
     let richEditorSelection: RichEditorSelection = RichEditorSelection((1, 1), ArrayList<RichEditorSpanResult>())
     let richEditorDeleteValue: RichEditorDeleteValue = RichEditorDeleteValue(1, RichEditorDeleteDirection.Backward, 1, ArrayList<RichEditorSpanResult>())
 
+    let covTextDecoNone: TextDecorationOptions = TextDecorationOptions(decorationType: Option<TextDecorationType>.None)
+    let covRichTextStyleNone: RichEditorTextStyle = RichEditorTextStyle()
+    let covRichLayoutStyleNone: RichEditorLayoutStyle = RichEditorLayoutStyle()
+
     @Builder
     func builder() {
         Column {
@@ -410,6 +414,21 @@ class ViewRichEditor {
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle(leadingMargin: 1.vp))
                         controller1.updateParagraphStyle(style: RichEditorParagraphStyle(textAlign: TextAlign.Start, leadingMargin: leadingMarginPlaceholder))
                         controller1.closeSelectionMenu()
+
+                        controller1.addTextSpan(content: Option<ResourceStr>.None, options: Option<RichEditorTextSpanOptions>.None)
+                        controller1.addTextSpan(content: "covTextStyleNone", options: RichEditorTextSpanOptions(style: RichEditorTextStyle()))
+
+                        controller1.addImageSpan(value: Option<ResourceStr>.None, options: Option<RichEditorImageSpanOptions>.None)
+                        controller1.addImageSpan(value: "covImgStyleNone", options: RichEditorImageSpanOptions(imageStyle: RichEditorImageSpanStyle()))
+
+                        controller1.deleteSpans()
+
+                        let covSpans = controller1.getSpans()
+
+                        controller1.setCaretOffset(Option<Int32>.None)
+
+                        let covLeadingMarginNone = LeadingMarginPlaceholder(pixelMap: this.pix, size: Option<(Length, Length)>.None)
+                        controller1.updateParagraphStyle(style: RichEditorParagraphStyle(leadingMargin: covLeadingMarginNone))
                         Hilog.info(1,"Cangjie-Test", "[ViewRichEditor]: leetcode log:  onReady end")
                     }
                 ).customKeyboard(value: bind(builder, this)).copyOptions(CopyOptions.InApp).onPaste(

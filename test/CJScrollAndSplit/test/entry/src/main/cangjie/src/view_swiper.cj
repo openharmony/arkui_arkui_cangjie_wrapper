@@ -197,6 +197,7 @@ class ViewSwiper {
                     .effectMode(EdgeEffect.Spring)
                     .curve(Curve.ExtremeDeceleration)
                     .curve(Curve.Linear)
+                    .curve(Option<Curve>.None)
                     .itemSpace(@r(app.string.swiper_itemSpace))
 
                 Swiper() {
@@ -222,6 +223,17 @@ class ViewSwiper {
                     .width(100.percent)
 
                 Swiper() {}.size(width: 1.vp, height: 1.vp)
+
+            Swiper() {}
+                .cachedCount(-1)
+                .curve(Option<Curve>.None)
+                .width((-1).vp)
+                .width(Option<Length>.None)
+                .height((-1).vp)
+                .height(Option<Length>.None)
+                .size(width: (-1).vp, height: 50.vp)
+                .size(width: Option<Length>.None, height: Option<Length>.None)
+                .id("swiper_cov")
             }
         }
     }

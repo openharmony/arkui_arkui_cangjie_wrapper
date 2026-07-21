@@ -76,6 +76,28 @@ class ViewSideBarInit {
     let ctrlButton6: ButtonStyle = ButtonStyle(left: 2.0, top: 10.0, width: 30.0, height: 20.0,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: @r(app.media.startIcon), switching: ""))
     let ctrlButton7: ?ButtonStyle = Option.None
+    let noneColorDivider: DividerStyle = { =>
+        let d = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
+        d.color = Option<ResourceColor>.None
+        d
+    }()
+    let noneFieldDivider: DividerStyle = { =>
+        let d = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
+        d.strokeWidth = Option<Length>.None
+        d.startMargin = Option<Length>.None
+        d.endMargin = Option<Length>.None
+        d
+    }()
+    let noneIconsButton: ButtonStyle = { =>
+        let b = ButtonStyle()
+        b.icons = Option<ButtonIconOptions>.None
+        b
+    }()
+    let noneHeightButton: ButtonStyle = { =>
+        let b = ButtonStyle()
+        b.height = Option<Float64>.None
+        b
+    }()
     var init_Rect: rect = rect(left: 1, top: 1, width: 1, height: 1)
     var avoidArea: AvoidArea=AvoidArea(visible: true, leftRect: init_Rect, topRect: init_Rect, rightRect: init_Rect, bottomRect: init_Rect)
 
@@ -189,6 +211,30 @@ class ViewSideBarInit {
         .minContentWidth(10.vp)
         .width(Option<Length>.None)
         .height(Option<Length>.None)
+
+        SideBarContainer(sideBarType: SideBarContainerType.Embed) {
+            Column() { Text("Index08") }
+        }
+        .id("SideBarInit_8")
+        .divider(this.noneColorDivider)
+
+        SideBarContainer(sideBarType: SideBarContainerType.Embed) {
+            Column() { Text("Index09") }
+        }
+        .id("SideBarInit_9")
+        .divider(this.noneFieldDivider)
+
+        SideBarContainer(sideBarType: SideBarContainerType.Embed) {
+            Column() { Text("Index10") }
+        }
+        .id("SideBarInit_10")
+        .controlButton(this.noneIconsButton)
+
+        SideBarContainer(sideBarType: SideBarContainerType.Embed) {
+            Column() { Text("Index11") }
+        }
+        .id("SideBarInit_11")
+        .controlButton(this.noneHeightButton)
 
     }
 

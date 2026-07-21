@@ -39,6 +39,10 @@ class ViewShape{
     var color: Array<UInt8> = Array<UInt8>(96, {i => UInt8(i + 1)})
     let opts: InitializationOptions = InitializationOptions(Size(4, 6), editable: true, pixelFormat: Rgba8888)
     var pix: PixelMap = createPixelMap(color, opts)
+    let emptyRadiusArray: Array<Length> = []
+    let emptyRadiusTupleArray: Array<(Length, Length)> = []
+    let negWidthRadiusArray: Array<(Length, Length)> = [(-5.0, 5.0)]
+    let negHeightRadiusArray: Array<(Length, Length)> = [(5.0, -5.0)]
     func build(){
         Column(){
              Shape() {
@@ -232,6 +236,100 @@ class ViewShape{
             .maskShape(PathShape())
             Shape(value: this.pix)
             .maskShape(PathShape(width:10.0.vp,height:10.0.vp))
+            .maskShape(PathShape(width: Option<Length>.None, height: 10.vp))
+
+            Shape()
+                .fill(Option<ResourceColor>.None)
+                .fillOpacity(Option<Float64>.None)
+                .fillOpacity(Option<AppResource>.None)
+                .stroke(Option<ResourceColor>.None)
+                .strokeLineCap(Option<LineCapStyle>.None)
+                .strokeLineJoin(Option<LineJoinStyle>.None)
+                .strokeMiterLimit(Option<Float64>.None)
+                .strokeOpacity(Option<Float64>.None)
+                .strokeOpacity(Option<AppResource>.None)
+                .antiAlias(Option<Bool>.None)
+                .width(Option<Length>.None)
+                .height(Option<Length>.None)
+                .fillOpacity(Option<AppResource>.None)
+                .id('shapeNoneFields')
+
+            Shape(value: Option<PixelMap>.None).id('shapeNonePixelMap')
+
+            Shape().mesh(Option<Array<Float64>>.None, Option<UInt32>.None, Option<UInt32>.None).id('shapeNoneMesh')
+
+            Shape()
+                .foregroundColor(Option<ResourceColor>.Some(Color.Red))
+                .foregroundColor(Option<ColoringStrategy>.None)
+                .id('shapeSomeForegroundColor')
+            
+            Shape()
+                .foregroundColor(Option<ResourceColor>.None)
+                .id('shapeNoneForegroundColor')
+
+            Shape()
+                .width(0.vp)
+                .height(0.vp)
+                .size(width: 0.vp, height: 10.vp)
+                .size(width: 10.vp, height: 0.vp)
+                .id('shapeBoundaryValues')
+
+            Shape().maskShape(RectShape().width(Option<Length>.None).height(Option<Length>.None))
+
+            Shape() {
+                Rect().width(30).height(50).radius(Option<Array<Length>>.None).radius(Option<Array<(Length, Length)>>.None).id("rect_radius_empty_array")
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusEmptyTest')
+
+            Shape() {
+                Rect().width(30).height(50).radius([((-1.0).vp, (-1.0).vp), (2.0.vp, 2.0.vp)]).id("rect_radius_negative_values")
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusNegativeTest')
+
+
+            Shape() {
+                Rect().width(30).height(50).radius(emptyRadiusArray)
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusEmptyArray')
+
+            Shape() {
+                Rect().width(30).height(50).radius(emptyRadiusTupleArray)
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusEmptyTupleArray')
+
+            Shape() {
+                Rect().width(30).height(50).radius(negWidthRadiusArray)
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusNegWidth')
+
+            Shape() {
+                Rect().width(30).height(50).radius(negHeightRadiusArray)
+            }
+            .width(30)
+            .height(80)
+            .viewPort()
+            .fill(0x317AF7)
+            .id('RectRadiusNegHeight')
         }
    }
 }

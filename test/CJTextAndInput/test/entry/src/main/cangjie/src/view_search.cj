@@ -102,6 +102,9 @@ class ViewSearch {
                 Search(value: "", icon: @r(app.media.startIcon))
                     .placeholderFont(size: 5.percent)
                     .textFont(size: 5.percent)
+                    .placeholderFont()
+                    .textFont()
+                    .border(width: Option<Length>.None, color: Color.Red, radius: 5.vp)
 //            Search(value: "", placeholder: "Type to search").width(300.00.vp).height(35).placeholderFont(
 //                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).textFont(
 //                size: 10.percent, weight: FontWeight.W100, family: "serif", style: FontStyle.Normal).copyOption(CopyOptions.LocalDevice)

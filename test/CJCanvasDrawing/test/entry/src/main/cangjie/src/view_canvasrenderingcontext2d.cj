@@ -219,6 +219,14 @@ class ViewCanvasRenderingContext2D {
                          let data = ImageData(100.0, 100.0, data: s)
                          this.context14.putImageData(data, 10.0, 10.0)
                          this.context14.putImageData(data, 150.0, 10.0, 0.0, 0.0, 50.0, 50.0)
+                         this.context14.putImageData(data, 10.0.fp, 10.0.fp)
+                         this.context14.putImageData(data, 10.0.percent, 10.0.percent)
+                         this.context14.putImageData(data, 10.0.lpx, 10.0.lpx)
+
+                         let noneAntialiasSettings = RenderingContextSettings()
+                         noneAntialiasSettings.antialias = Option<Bool>.None
+                         let ctxNoneAntialias = CanvasRenderingContext2D(noneAntialiasSettings)
+                         ctxNoneAntialias.fillStyle = 0xff0000
                     })
                     Canvas(this.context15).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                     .onReady({=>
@@ -286,11 +294,15 @@ class ViewCanvasRenderingContext2D {
                          this.context23.font = "normal normal 50px sans-serif"
                          this.context23.fillText("Hello World!", 20.0, 100.0)
                          let withstr = "width:" + this.context23.measureText("Hello World!").width.toString()
+                         let noneWidth = this.context23.measureText(Option<String>.None).width.toString()
                          this.context23.fillText(withstr, 20.0, 200.0)
 
                          this.context23.font = "normal normal 55px sans-serif"
                          this.context23.strokeText("Hello World!", 20.0, 300.0)
                          this.context23.strokeText("???", 20.0, 400.0)
+
+                         this.context23.font = "16px HarmonyOS Sans"
+                         this.context23.fillText("HarmonyOS", 20.0, 500.0)
                     })
                     Canvas(this.context24).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)
                     .onReady({=>
@@ -320,6 +332,7 @@ class ViewCanvasRenderingContext2D {
                          this.context26.drawImage(this.img,0.0,0.0,130.0,130.0)
                          let imagedata = this.context26.getImageData(50.0,50.0,130.0,130.0)
                          let imagedata1 = this.context26.getImageData(50.0,50.0,130.0,130.0)
+                         let imagedata2 = this.context26.getImageData(Option<Float64>.None, Option<Float64>.None, Option<Float64>.None, Option<Float64>.None)
                          this.context26.putImageData(imagedata,150,150)
                     })
                     Canvas(this.context28).width(100.percent).height(600.00.vp).backgroundColor(0xffff00)

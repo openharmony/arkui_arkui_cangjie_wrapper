@@ -24,6 +24,22 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.{ArrayList, HashMap}
 
+func makeNestedScrollOptionsNoneFields(): NestedScrollOptions {
+    let opts = NestedScrollOptions(NestedScrollMode.SelfOnly, NestedScrollMode.SelfOnly)
+    opts.scrollForward = Option<NestedScrollMode>.None
+    opts.scrollBackward = Option<NestedScrollMode>.None
+    return opts
+}
+
+func makeListDividerOptionsNoneFields(): ListDividerOptions {
+    let opts = ListDividerOptions(strokeWidth: 1.vp)
+    opts.strokeWidth = Option<Length>.None
+    opts.color = Option<ResourceColor>.None
+    opts.startMargin = Option<Length>.None
+    opts.endMargin = Option<Length>.None
+    return opts
+}
+
 func parseScrollState(state: ScrollState) {
         match (state) {
             case Idle => "Idle"
@@ -235,6 +251,22 @@ class ViewList {
                 .height(20.percent)
                 .backgroundColor(0xDCDCDC)
                 .padding(top: 5.px)
+
+            List() {
+                ListItem() { Text("cov") }
+            }
+                .width((-1).vp)
+                .height((-1).vp)
+                .clipContent(ContentClipMode.ContentOnly)
+                .clipContent(Option<ContentClipMode>.None)
+                .friction(Option<AppResource>.None)
+                .friction(@r(app.string.DEFAULT_FONT))
+                .friction(@r(app.float.testFriction))
+                .nestedScroll(makeNestedScrollOptionsNoneFields())
+                .divider(makeListDividerOptionsNoneFields())
+                .lanes(minLength: Option<Length>.None, maxLength: 30.vp)
+                .lanes(minLength: 30.vp, maxLength: Option<Length>.None)
+                .id("list_cov")
         }
     }
 }

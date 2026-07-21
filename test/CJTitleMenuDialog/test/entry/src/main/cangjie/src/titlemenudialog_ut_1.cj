@@ -402,6 +402,8 @@ class TitleMenuDialogUT11 {
         cancle_button.click()
         let text2 = driver.waitForComponent(On().id("text"), 1000)?.getText()
         @Expect(text2, "cancel")
+        let releaseBtn = driver.findComponent(On().id("covReleaseSelf"))
+        releaseBtn?.click()
     }
 
     @TestCase
