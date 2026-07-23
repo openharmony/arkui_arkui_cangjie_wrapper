@@ -18,14 +18,18 @@
 package ohos.arkui.component.path
 
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
-import ohos.arkui.component.util.{transResourceStrToString, transAppResourceToLength}
-import ohos.base.{ResourceStr, Length}
+import ohos.arkui.component.util.{transResourceStrToString, toNativeOptionLength, transAppResourceToLength}
+import ohos.base.{ResourceStr, Length, NativeOptionLength}
 import ohos.labels.{APILevel}
+import ohos.device_info.{DeviceInfo}
 
 foreign {
     func FfiOHOSAceFrameworkPathCreate(commands: CString): Unit
 
     func FfiOHOSAceFrameworkPathCreateWithSize(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32,
+        commands: CString): Unit
+
+    func FfiOHOSAceFrameworkPathCreateWithSizeEx(width: NativeOptionLength, height: NativeOptionLength,
         commands: CString): Unit
 
     func FfiOHOSAceFrameworkPathSetCommands(commands: CString): Unit
@@ -69,13 +73,19 @@ public class Path <: CommonShapeMethodComponent<Path> & PathAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None) {
-        var width_ = transAppResourceToLength(width ?? 0.0)
-        var height_ = transAppResourceToLength(height ?? 0.0)
         unsafe {
             let commandsValue = transResourceStrToString(commands ?? "")
             try (unsafeContent = LibC.mallocCString(commandsValue).asResource()) {
-                FfiOHOSAceFrameworkPathCreateWithSize(width_.value, width_.unitType.getValue(),
-                    height_.value, height_.unitType.getValue(), unsafeContent.value)
+                if (DeviceInfo.sdkApiVersion >= 26) {
+                    let widthOpt = toNativeOptionLength(width)
+                    let heightOpt = toNativeOptionLength(height)
+                    FfiOHOSAceFrameworkPathCreateWithSizeEx(widthOpt, heightOpt, unsafeContent.value)
+                } else {
+                    let width_ = transAppResourceToLength(width ?? 0.0)
+                    let height_ = transAppResourceToLength(height ?? 0.0)
+                    FfiOHOSAceFrameworkPathCreateWithSize(width_.value, width_.unitType.getValue(),
+                        height_.value, height_.unitType.getValue(), unsafeContent.value)
+                }
             }
         }
     }
