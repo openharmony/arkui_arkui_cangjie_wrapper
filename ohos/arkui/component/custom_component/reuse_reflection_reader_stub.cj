@@ -22,3 +22,7 @@ import ohos.base.ReuseParams
 func tryGetReuseParamsFromChild(child: CustomView): Option<ReuseParams> {
     return Option<ReuseParams>.None
 }
+
+func tryGetReuseParamsFromParent(parent: CustomView, childId: Int64): Option<ReuseParams> {
+    return Option<ReuseParams>.None
+}

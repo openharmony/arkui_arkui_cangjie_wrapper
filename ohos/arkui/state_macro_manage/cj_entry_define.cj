@@ -78,12 +78,30 @@ func parseEntry(input: Tokens, needCheckEntry: Bool, localStorageAttr!: ?Tokens 
     let entryClassIdentStr = entryClassIdent.value
     let entryId = generateNewEntryId()
     let appEntryIdent = Token(TokenKind.IDENTIFIER, "appEntry${entryId}")
-    if (localStorageAttr.isSome()) {
-        return classDecl.toTokens().append(generateEntryFunc(entryClassIdent, appEntryIdent, localStorageAttr.getOrThrow()))
-            .append(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
+
+    // Generate CustomViewEx interface once per compilation unit.
+    // @Component inside @Entry skips generation (stripped by parseDecl), so @Entry generates it here.
+    let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated) {
+        STATE_MANAGE_HANDLER.interfaceGenerated = true
+        generateCustomViewExInterface()
+    } else {
+        Tokens()
     }
-    return classDecl.toTokens().append(generateEntryFunc(entryClassIdent, appEntryIdent))
-        .append(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
+
+    if (localStorageAttr.isSome()) {
+        return quote(
+            $interfaceDecl
+            $classDecl
+            $(generateEntryFunc(entryClassIdent, appEntryIdent, localStorageAttr.getOrThrow()))
+            $(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
+        )
+    }
+    return quote(
+        $interfaceDecl
+        $classDecl
+        $(generateEntryFunc(entryClassIdent, appEntryIdent))
+        $(generateRegisterDecl(quote($entryClassIdentStr), appEntryIdent))
+    )
 }
 
 /**

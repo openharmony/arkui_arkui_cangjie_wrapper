@@ -457,7 +457,15 @@ public abstract class CustomView <: RemoteView & Observer {
         this.runReuse_ = true
         let actualParam = match (tryGetReuseParamsFromChild(this)) {
             case Some(rp) => rp
-            case None => param
+            case None =>
+                match (parent_inner__) {
+                    case Some(parent) =>
+                        match (tryGetReuseParamsFromParent(parent, this.id())) {
+                            case Some(rp) => rp
+                            case None => param
+                        }
+                    case None => param
+                }
         }
         aboutToReuse(actualParam)
         if (!this.delayRecycleNodeRerender_) {
@@ -520,7 +528,11 @@ public abstract class CustomView <: RemoteView & Observer {
                 } else {
                     let childParam = match (tryGetReuseParamsFromChild(child)) {
                         case Some(rp) => rp
-                        case None => param
+                        case None =>
+                            match (tryGetReuseParamsFromParent(this, child.id())) {
+                                case Some(rp) => rp
+                                case None => param
+                            }
                     }
                     child.aboutToReuseInternal(childParam)
                 }
