@@ -1525,7 +1525,7 @@ func generateCustomViewExInterface(): Tokens {
 func generateCustomViewExImpl(): Tokens {
     return quote(
         public var __paramsGenerator__inner__: () -> Array<(String, Any)> = { => [] }
-        public mut prop paramsGenerator__inner: () -> Array<(String, Any)> {
+        public mut prop paramsGenerator__inner: () -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
             get() {
                 this.__paramsGenerator__inner__
             }
@@ -1534,7 +1534,7 @@ func generateCustomViewExImpl(): Tokens {
             }
         }
         public var __childParamsGetter__inner__: (Int64) -> Array<(String, Any)> = { _ => [] }
-        public mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)> {
+        public mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
             get() {
                 this.__childParamsGetter__inner__
             }
