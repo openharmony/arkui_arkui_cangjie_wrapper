@@ -77,6 +77,8 @@ class ViewSpan {
                     .fontSize(12)
                 Span("Test span font")
                     .fontSize(12)
+                    .fontWeight(Option<FontWeight>.None)
+                    .fontFamily(Option<ResourceStr>.None)
             }
 
             Text() {

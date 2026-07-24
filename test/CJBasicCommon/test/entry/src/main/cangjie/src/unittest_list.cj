@@ -258,5 +258,9 @@ let UT4 = ObservedArrayList<String>([
 let COVERAGE_VIEW = ObservedArrayList<String>([
     "ViewCovCommonModule",
     "ViewCovPersistentStorage",
-    "ViewCovCommonComponent"
+    "ViewCovCommonComponent",
+    "ViewCovGridColDefault",
+    "ViewCovActionSheetDefault",
+    "ViewCovAlphabetIndexerDefault",
+    "ViewCovCommonComponent2"
 ])

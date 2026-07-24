@@ -52,6 +52,8 @@ class ViewRichText {
                 {=> Hilog.info(1, "Cangjie-Test", "RichText onComplete")}).backgroundColor(0X92C48D).layoutWeight(2)
 
             RichText(@r(app.string.len_px))
+
+            RichText(Option<ResourceStr>.None).id("RichTextCovDefaultContent")
         }
     }
 }

@@ -16,6 +16,10 @@
     {
       "name": "TitleMenuDialogUT21",
       "timeout": 100
+    },
+    {
+      "name": "TitleMenuDialogUTDialogV2",
+      "timeout": 100
     }
   ]
 }

@@ -273,6 +273,8 @@ class ViewCanvas {
                         this.context.drawImage(imageBitmap, 0.0, 0.0, 200.0, 200.0, 0.0, 0.0, 200.0, 200.0)
                     }
                 )
+
+                Canvas(Option<CanvasRenderingContext2D>.None).width(50.00.vp).height(30.00.vp).backgroundColor(0xffff00).id("MyCanvasNone")
             }
         }.id("scroller")
     }

@@ -2,15 +2,23 @@
   "name": "testsuite_cj_common_test",
   "test_list": [
     {
-      "name": "ScrollSplitUT1",
+      "name": "BuilderUTBasic",
       "timeout": 100
     },
     {
-      "name": "ScrollSplitUT11",
+      "name": "BuilderUTCombination",
       "timeout": 100
     },
     {
-      "name": "ScrollSplitUT2",
+      "name": "BuilderUTParamBinding",
+      "timeout": 100
+    },
+    {
+      "name": "BuilderUTPerformance",
+      "timeout": 100
+    },
+    {
+      "name": "BuilderUTTypeSafety",
       "timeout": 100
     }
   ]

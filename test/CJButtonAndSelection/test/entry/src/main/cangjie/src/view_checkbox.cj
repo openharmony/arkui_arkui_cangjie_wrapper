@@ -59,6 +59,23 @@ class ViewCheckbox {
 
             Checkbox(indicatorBuilder: { => })
             Text(message).width(50.percent).height(20.vp).borderColor(0x055555).id("text")
+
+            Checkbox(indicatorBuilder: { => Text("custom").fontSize(10) })
+                .id("checkbox_init_indicatorBuilder")
+
+            Checkbox().width(Option<Length>.None).height(Option<Length>.None).id("checkbox_size_none")
+
+            Checkbox().id("checkbox_cov_boundary")
+                .width((-1).vp)
+                .height((-1).vp)
+                .size(width: (-1).vp, height: 50.vp)
+                .size(width: Option<Length>.None, height: Option<Length>.None)
+                .padding((-1).vp)
+                .padding(top: (-1).vp, right: (-1).vp, bottom: (-1).vp, left: (-1).vp)
+                .padding(top: Option<Length>.None, right: Option<Length>.None, bottom: Option<Length>.None, left: Option<Length>.None)
+                .responseRegion([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
+                    Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+
         }.height(400.vp)
     }
 }

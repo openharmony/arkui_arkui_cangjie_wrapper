@@ -88,6 +88,12 @@ class ViewStackAlignContent {
             }
             .alignContent(Option.None)
             .id("testStackAlignContentOptionNone")
+            
+            Stack() {
+                Text("test")
+            }
+            .size(width: Option<Length>.None, height: Option<Length>.None)
+            .id("testStackSizeOptionNone")
         }
     }
 }

@@ -20,15 +20,6 @@ package ohos.arkui.component.canvas
 import ohos.ffi.{RemoteData, RemoteDataManager}
 import ohos.labels.{APILevel}
 
-@C
-struct ImageBitMapParams {
-    ImageBitMapParams(
-        let unit: Int32,
-        let hasSrc: Bool,
-        let selfId: Int64
-    ) {}
-}
-
 foreign {
     func FfiOHOSAceFrameworkImageBitMapCtor(src: CString, unit: Int32): Int64
 

@@ -99,6 +99,12 @@ class ViewPatternLock {
 
             PatternLock()
 
+            PatternLock(controller: this.patternLockController)
+                .circleRadius((-1).vp)
+                .circleRadius(50.percent)
+                .pathStrokeWidth(Option<Length>.None)
+                .id("patternlock_cov")
+
             Button("Reset")
                 .margin(30)
                 .onClick(

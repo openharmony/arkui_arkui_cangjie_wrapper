@@ -172,6 +172,9 @@ class ViewAlphabetIndexer {
 
             Text(message).width(80.percent).height(20).borderColor(0x055555).borderWidth(1).id("text")
 
+            AlphabetIndexer(arrayValue: [], selected: 0)
+                .id("alphabetIndexer_cov_empty")
+
             Row() {
                 AlphabetIndexer(arrayValue: value.get().toArray(), selected: idx)
                     .color(0xff182431)
@@ -206,6 +209,12 @@ class ViewAlphabetIndexer {
                 AlphabetIndexer(arrayValue: value.get().toArray(), selected: idx)
                     .width(LengthMetrics.AUTO)
                     .id("alphabetIndexer_width_auto")
+
+                AlphabetIndexer(arrayValue: value.get().toArray(), selected: idx)
+                    .selectedFont(style: FontStyle.Italic)
+                    .popupFont(style: FontStyle.Italic, size: (-1).vp)
+                    .font(style: FontStyle.Italic)
+                    .id("alphabetIndexer_cov_style")
             }
         }.width(100.percent).height(100.percent)
     }

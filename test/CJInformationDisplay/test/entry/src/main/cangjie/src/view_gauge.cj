@@ -105,6 +105,20 @@ class ViewGauge {
                 .value(30.0)
                 .colors([(Color.Red, 2)])
                 .indicator(space: 2)
+
+            Gauge(value: 50.0)
+                .colors(Option<Array<(ResourceColor, Int32)>>.None)
+                .colors(Option<Array<(LinearGradient, Int32)>>.None)
+                .colors(Option<ResourceColor>.None)
+                .colors(Option<LinearGradient>.None)
+                .colors([(Color.Red, -1)])
+                .strokeWidth(100.percent)
+                .trackShadow()
+                .indicator(space: (-1).vp)
+                .id("gauge_cov_none")
+
+            Gauge(value: Option<Float32>.None)
+                .id("gauge_cov_value_none")
         }.width(100.percent)
     }
 }

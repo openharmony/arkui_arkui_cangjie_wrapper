@@ -50,6 +50,10 @@ class ViewQRCode {
                     .color(Color.Black)
                     .contentOpacity(@r(app.string.content_opacity))
                     .id("QRCode2")
+
+                QRCode(Option<ResourceStr>.None)
+                    .contentOpacity(Option<AppResource>.None)
+                    .id("qrcode_cov_none")
             }.width(100.percent).margin(top: 5)
         }
     }

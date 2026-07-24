@@ -730,4 +730,11 @@ class TextAndInputUT22 {
         driver.swipe(500,1000,500,500,speed:10000)
     }
 
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testTextCovDefaults() {
+        scrollTo("ViewText")
+        driver.delayMs(500)
+    }
+
 }

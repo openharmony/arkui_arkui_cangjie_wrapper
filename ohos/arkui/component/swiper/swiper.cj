@@ -211,27 +211,6 @@ struct CJArrowStyle {
     ) {}
 }
 
-@C
-struct CJSwiperAnimationEvent {
-    CJSwiperAnimationEvent(
-        let currentOffset: Float64,
-        let targetOffset: Float64,
-        let velocity: Float64
-    ) {}
-}
-
-@C
-struct CJSwiperContentTransitionProxy {
-    CJSwiperContentTransitionProxy(
-        let selectedIndex: Int32,
-        let index: Int32,
-        let position: Float64,
-        let mainAxisLength: Float64,
-        let proxy: CPointer<Unit>,
-        let finishTransition: CFunc<(CPointer<Unit>) -> Unit>
-    ) {}
-}
-
 /**
  * Defines the indicator class.
  * Base class for navigation indicators in Swiper component.

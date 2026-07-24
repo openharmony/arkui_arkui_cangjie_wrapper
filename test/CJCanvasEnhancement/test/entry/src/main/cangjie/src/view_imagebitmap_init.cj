@@ -46,6 +46,8 @@ class ViewImageBitmapInit {
     
     var img4: ImageBitmap = ImageBitmap("")
 
+    var img5: ImageBitmap = ImageBitmap(Option.None)
+
     func build() {
        Scroll() {
             Column(space: 10.0) {

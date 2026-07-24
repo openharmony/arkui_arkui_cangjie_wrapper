@@ -1,0 +1,9 @@
+{
+  "name": "testsuite_cj_reusable_test",
+  "test_list": [
+    {
+      "name": "Reusable_UT_1",
+      "timeout": 100
+    }
+  ]
+}

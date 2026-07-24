@@ -86,6 +86,16 @@ class ViewRadio {
             Radio(value: '80', group: '数字')
                 .checked(true)
                 //.radioStyle()
+
+            Radio(value: Option<String>.None, group: Option<String>.None)
+                .size(width: (-1).vp, height: 50.vp)
+                .size(width: Option<Length>.None, height: Option<Length>.None)
+                .padding((-1).vp)
+                .padding(top: (-1).vp, right: (-1).vp, bottom: (-1).vp, left: (-1).vp)
+                .padding(top: Option<Length>.None, right: Option<Length>.None, bottom: Option<Length>.None, left: Option<Length>.None)
+                .responseRegion([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
+                    Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+                .id("radio_cov")
         }.margin(top: 40, left: 40)
     }
 }

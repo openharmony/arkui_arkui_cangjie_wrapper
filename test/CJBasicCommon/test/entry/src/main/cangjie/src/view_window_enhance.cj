@@ -366,6 +366,23 @@ class ViewWindowEnhance {
                             }catch (e: Exception) {
                                     Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
                             }
+                            try {
+                                TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+                                TestSubWindow1.on(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+                            }catch (e: Exception) {
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
+                            }
+                            try {
+                                TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+                                TestSubWindow1.off(WindowCallbackType.KeyboardHeightChange, onKeyboardHeightChangeCb)
+                            }catch (e: Exception) {
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
+                            }
+                            try {
+                                TestSubWindow1.setWindowSystemBarEnabled([])
+                            }catch (e: Exception) {
+                                    Hilog.info(1, "Cangjie-Test", "case_CFwindow " + e.toString())
+                            }
                     })
                         .width(20.percent)
                         .height(20)

@@ -133,6 +133,10 @@ class ButtonSelectUT1 {
         driver.delayMs(500)
         Create.click()
         driver.delayMs(500)
+
+        let checkbox1 = driver.findComponent(On().id("my_checkbox1")).getOrThrow()
+        checkbox1.click()
+        driver.delayMs(1000)
     }
 
     // rating unittest

@@ -22,6 +22,17 @@ import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.*
 import std.collection.*
 
+func makeShadowOptionsAllNoneFields(): ShadowOptions {
+    let opts = ShadowOptions(radius: 1.0)
+    opts.radius = Option<Float64>.None
+    opts.shadowType = Option<ShadowType>.None
+    opts.color = Option<ResourceColor>.None
+    opts.offsetX = Option<Float64>.None
+    opts.offsetY = Option<Float64>.None
+    opts.fill = Option<Bool>.None
+    return opts
+}
+
 @Entry
 @Component
 class ViewTextClock {
@@ -111,6 +122,15 @@ class ViewTextClock {
             TextClock().fontWeight(FontWeight.Lighter).id("Text_clock18")
             TextClock().fontWeight(FontWeight.Medium).id("Text_clock20")
             TextClock().fontWeight(FontWeight.Regular).id("Text_clock22")
+
+            TextClock(timeZoneOffset: 0.0)
+                .fontSize((-1).fp)
+                .fontColor(Option<ResourceColor>.None)
+                .textShadow(makeShadowOptionsAllNoneFields())
+                .textShadow(Option<ShadowOptions>.None)
+                .textShadow(Option<Array<ShadowOptions>>.None)
+                .textShadow([])
+                .id("textclock_cov")
         }.width(100.percent).padding(top: 5)
     }
 }

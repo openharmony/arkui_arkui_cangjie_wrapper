@@ -100,6 +100,105 @@ class ViewBadge {
                     Text("message5").textAlign(TextAlign.Center)
                 }.id("my_badge5").width(80).height(50)
             }
+
+            Row(space:30) {
+                Badge(
+                    count: 1,
+                    style: BadgeStyle(color: Option<ResourceColor>.None, fontSize: Option<Length>.None,
+                        badgeSize: Option<Length>.None, badgeColor: Option<ResourceColor>.None,
+                        fontWeight: Option<FontWeight>.None, borderColor: Option<ResourceColor>.None,
+                        borderWidth: Option<Length>.None),
+                    position: BadgePosition.Left,
+                    maxCount: 99
+                ) {
+                    Text("badge_none").textAlign(TextAlign.Center)
+                }.id("my_badge_style_none").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    count: 2,
+                    style: BadgeStyle(fontSize: (-5).vp, badgeSize: (-3).vp, borderWidth: (-1).vp),
+                    position: BadgePosition.Left,
+                    maxCount: 99
+                ) {
+                    Text("badge_neg").textAlign(TextAlign.Center)
+                }.id("my_badge_style_negative").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    count: 3,
+                    style: BadgeStyle(fontSize: 100.percent, badgeSize: 100.percent, borderWidth: 100.percent),
+                    position: BadgePosition.Left,
+                    maxCount: 99
+                ) {
+                    Text("badge_percent").textAlign(TextAlign.Center)
+                }.id("my_badge_style_percent").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    count: 5,
+                    style: Option<BadgeStyle>.None,
+                    position: Option<BadgePosition>.None,
+                    maxCount: Option<Int32>.None
+                ) {
+                    Text("badge_no_pos").textAlign(TextAlign.Center)
+                }.id("my_badge_no_position").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    value: "test",
+                    style: Option<BadgeStyle>.None,
+                    position: Option<BadgePosition>.None
+                ) {
+                    Text("badge_text_none").textAlign(TextAlign.Center)
+                }.id("my_badge_text_none").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    value: "full",
+                    style: BadgeStyle(color: Color(0xffffff00), fontSize: 12.fp, badgeSize: 18.vp,
+                        badgeColor: Color.Green, fontWeight: FontWeight.Bolder,
+                        borderColor: Color.White, borderWidth: 3.vp),
+                    position: BadgePosition.Left
+                ) {
+                    Text("badge_text_full").textAlign(TextAlign.Center)
+                }.id("my_badge_text_full").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    count: 3,
+                    style: makeBadgeStyleNoneFields(),
+                    position: BadgePosition.Left,
+                    maxCount: 99
+                ) {
+                    Text("badge_cov_none_fields").textAlign(TextAlign.Center)
+                }.id("my_badge_cov_none_fields").width(80).height(50)
+            }
+
+            Row(space:30) {
+                Badge(
+                    value: "cov",
+                    style: makeBadgeStyleNoneFields(),
+                    position: BadgePosition.Left
+                ) {
+                    Text("badge_cov_text_none").textAlign(TextAlign.Center)
+                }.id("my_badge_cov_text_none").width(80).height(50)
+            }
         }
     }
+}
+
+func makeBadgeStyleNoneFields(): BadgeStyle {
+    let style = BadgeStyle(color: Color.Red, fontWeight: FontWeight.Normal,
+        borderColor: Color.Black)
+    style.fontSize = Option<Length>.None
+    style.badgeSize = Option<Length>.None
+    style.borderWidth = Option<Length>.None
+    return style
 }

@@ -12,6 +12,10 @@
     {
       "name": "ScrollSplitUT2",
       "timeout": 100
+    },
+    {
+      "name": "ScrollSplitUTForCov",
+      "timeout": 100
     }
   ]
 }

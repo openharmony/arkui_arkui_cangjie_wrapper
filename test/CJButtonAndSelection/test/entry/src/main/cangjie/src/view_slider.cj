@@ -102,7 +102,6 @@ class ViewSlider {
                 .id("my_slider6")
 
 
-
             //各类枚举
             Row() {
                 Column(){
@@ -123,6 +122,9 @@ class ViewSlider {
                     Slider(step: -1.0, value: -1.0)
 //                        .blockStyle(SliderBlockType.DEFAULT, shape: PathShape())
                     .showTips(true, content: "content")
+                    .blockColor(Option<ResourceColor>.None)
+                    .trackColor(Option<ResourceColor>.None)
+                    .selectedColor(Option<ResourceColor>.None)
                 }.width(80.percent).height(300)
             }
         }

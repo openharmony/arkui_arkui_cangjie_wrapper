@@ -41,14 +41,6 @@ struct NativeFontInfo4Font {
     ) {}
 }
 
-@C
-struct NativeOptionFontInfo {
-    NativeOptionFontInfo(
-        let hasValue: Bool,
-        let info: CPointer<NativeFontInfo4Font>
-    ) {}
-}
-
 /**
  * Provides a font component.
  */

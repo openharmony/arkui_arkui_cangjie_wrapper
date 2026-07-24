@@ -98,6 +98,8 @@ class ViewAddCov {
             }.height(Option<Length>.None)
             
             Flex(){}.width(Option<Length>.None).height(Option<Length>.None)
+            Flex().id("flexDefaultChild")
+            Flex(){}.size(width: Option<Length>.None, height: Option<Length>.None)
             Flex(direction: FlexDirection.RowReverse){}.size(width: -10, height: -10)
             
             Column(space: 10) {

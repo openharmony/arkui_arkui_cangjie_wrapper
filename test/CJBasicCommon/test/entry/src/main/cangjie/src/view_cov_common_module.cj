@@ -21,7 +21,11 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.multimedia.image.*
+import ohos.multimedia.image.InitializationOptions
+import ohos.multimedia.image.PixelMapFormat
+import ohos.multimedia.image.PixelMap
+import ohos.multimedia.image.createPixelMap
+import ohos.multimedia.image.Size as UniqueImageSize
 import std.collection.{ ArrayList }
 
 let SysColorMode_ = Environment.envProp<ColorMode>("colorMode", ColorMode.Dark)
@@ -85,8 +89,11 @@ class ViewCovCommonModule {
             // case1: For interactable view file.
             Text("Test DragItemInfo: cj branch coverage...").fontSize(30)
             .onAppear({ =>
-                // DragItemInfo(Option<PixelMap>.None, Option<CustomBuilder>.None, Option<String>.None)
-                // DragItemInfo(Option<PixelMap>.None, { => }, "")
+                let color: Array<UInt8> = Array<UInt8>(96, repeat: 0)
+                let opts: InitializationOptions = InitializationOptions(UniqueImageSize(4, 6))
+                let pixelMap = createPixelMap(color, opts)
+
+                let _ = DragItemInfo(pixelMap, { => }, "test")
             })
             // case2: For env file.
             Text("Test Env: cj branch coverage...").fontSize(30)

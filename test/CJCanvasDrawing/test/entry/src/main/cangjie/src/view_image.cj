@@ -184,6 +184,11 @@ class ViewImage {
                 .height(30)
                 .interpolation(ImageInterpolation.Low)
                 .id("Image_Low")
+
+                Image(@r(app.media.startIcon))
+                    .sourceSize(Option<Length>.None, Option<Length>.None)
+                    .fillColor(Option<ResourceColor>.None)
+                    .id("image_cov_none")
             }.width(100.percent)
         }.id("image_scroller")
     }

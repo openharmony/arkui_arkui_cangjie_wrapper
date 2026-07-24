@@ -323,6 +323,51 @@ class CanvasDrawingUT2 {
         @Expect(stroke,'"#FF000000"')
     }
 
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusEmptyArray() {
+        scrollTo("ViewShape")
+        driver.delayMs(300)
+        let inspector = getInspectorByKey("RectRadiusEmptyArray")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusEmptyTupleArray() {
+        scrollTo("ViewShape")
+        driver.delayMs(300)
+        let inspector = getInspectorByKey("RectRadiusEmptyTupleArray")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusNegWidth() {
+        scrollTo("ViewShape")
+        driver.delayMs(300)
+        let inspector = getInspectorByKey("RectRadiusNegWidth")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusNegHeight() {
+        scrollTo("ViewShape")
+        driver.delayMs(300)
+        let inspector = getInspectorByKey("RectRadiusNegHeight")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+    }
+
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testOffsetShape() {
@@ -375,6 +420,34 @@ class CanvasDrawingUT2 {
             Hilog.info(1,"Cangjie-Test", "[testSizeLength]: 小艺对话同意点 不存在")
         }
         let inspector = getInspectorByKey("SizeLengthTest")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+        @Expect(fill,"\"#FF317AF7\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusEmptyArray1() {
+        scrollTo("ViewShape")
+        let GetSurfaceId = driver.findComponent(On().id("RectRadiusEmptyTest"))
+        GetSurfaceId?.click()
+        driver.delayMs(200)
+        let inspector = getInspectorByKey("rect_radius_empty_array")
+        let jsonObject = JsonValue.fromStr(inspector).asObject()
+        let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
+        let fill = attrs.get("fill").getOrThrow().toString()
+        @Expect(fill,"\"#FF317AF7\"")
+    }
+
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testRectRadiusNegativeValues() {
+        scrollTo("ViewShape")
+        let GetSurfaceId = driver.findComponent(On().id("RectRadiusNegativeTest"))
+        GetSurfaceId?.click()
+        driver.delayMs(200)
+        let inspector = getInspectorByKey("rect_radius_negative_values")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let fill = attrs.get("fill").getOrThrow().toString()

@@ -21,6 +21,25 @@ import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
 import ohos.arkui.state_macro_manage.r
 import ohos.base.*
+
+func makeDataPanelShadowOptionsAllNone(): DataPanelShadowOptions {
+    let opts = DataPanelShadowOptions()
+    opts.colors = Option<Array<LinearGradient>>.None
+    opts.radius = Option<Length>.None
+    opts.offsetX = Option<Length>.None
+    opts.offsetY = Option<Length>.None
+    return opts
+}
+
+func makeDataPanelShadowOptionsFieldsNone(): DataPanelShadowOptions {
+    let opts = DataPanelShadowOptions()
+    opts.colors = Option<Array<LinearGradient>>.Some([LinearGradient(Color(0x00FF00))])
+    opts.radius = Option<Length>.None
+    opts.offsetX = Option<Length>.None
+    opts.offsetY = Option<Length>.None
+    return opts
+}
+
 @Entry
 @Component
 class ViewDataPanel {
@@ -185,6 +204,19 @@ class ViewDataPanel {
                         offsetY: this.offsetY_1
                     )
                 )
+
+            DataPanel(values: [30.0], max: 100.0, panelType: DataPanelType.Circle)
+                .trackShadow(makeDataPanelShadowOptionsFieldsNone())
+                .id("dataPanel_cov_trackShadow_fieldsNone")
+
+            DataPanel(values: [30.0])
+                .valueColors(Option<Array<LinearGradient>>.None)
+                .valueColors([])
+                .strokeWidth((-1).vp)
+                .trackShadow(makeDataPanelShadowOptionsAllNone())
+                .id("dataPanel_cov_boundary")
+
+            DataPanel(values: []).id("dataPanel_cov_empty_values")
         }.width(100.percent).margin(top: 5)
     }
 }

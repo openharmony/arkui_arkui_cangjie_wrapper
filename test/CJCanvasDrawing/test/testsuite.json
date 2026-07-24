@@ -12,6 +12,10 @@
     {
       "name": "CanvasDrawingUT2",
       "timeout": 100
+    },
+    {
+      "name": "CanvasDrawingUTShapeMaskClip",
+      "timeout": 100
     }
   ]
 }

@@ -176,6 +176,16 @@ class ViewRefresh {
                 .width(100.percent)
                 .height(100.percent)
                 .id("refresh_none_attr")
+
+            Refresh(makeRefreshOptionsNone()) {}
+                .id("refresh_cov_none")
         }
     }
+}
+
+func makeRefreshOptionsNone(): RefreshOptions {
+    let opts = RefreshOptions(refreshing: false)
+    opts.refreshing = Option<Bool>.None
+    opts.changeEvent = Option<(Bool) -> Unit>.None
+    return opts
 }

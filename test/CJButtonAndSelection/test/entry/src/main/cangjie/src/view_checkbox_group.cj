@@ -45,7 +45,7 @@ class ViewCheckboxGroup {
                 Text(text).fontSize(50).id("textComponent")
             }
             Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
-                Checkbox(name: "checkbox1", group: "checkboxGroup1").size(width: 50.vp, height: 50.vp)
+                Checkbox(name: "checkbox1", group: "checkboxGroup1").size(width: 50.vp, height: 50.vp).id("my_checkbox1")
 
                 Text("checkbox1").fontSize(50)
             }
@@ -103,6 +103,28 @@ class ViewCheckboxGroup {
                     .padding(top: 0.0, right: 0.0, bottom: 0.0, left: 1.0)
 
                 Text("Select All 3").fontSize(50)
+            }
+
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
+                CheckboxGroup(group: "checkboxGroup4")
+                    .selectedColor(Option<ResourceColor>.None)
+                    .id("checkboxGroup_selectedColorNone")
+
+                Text("selectedColor None").fontSize(30)
+            }
+
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
+                CheckboxGroup()
+                    .size(width: (-1).vp, height: 50.vp)
+                    .size(width: Option<Length>.None, height: Option<Length>.None)
+                    .padding((-1).vp)
+                    .padding(top: (-1).vp, right: (-1).vp, bottom: (-1).vp, left: (-1).vp)
+                    .padding(top: Option<Length>.None, right: Option<Length>.None, bottom: Option<Length>.None, left: Option<Length>.None)
+                    .responseRegion([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
+                        Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+                    .id("checkboxGroup_cov_boundary")
+
+                Text("cov boundary").fontSize(30)
             }
         }
     }

@@ -43,6 +43,24 @@ class ViewSideBar {
     let dividerProp = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
     let ctrlButton: ButtonStyle = ButtonStyle(left: 17.0, top: 49.0, width: 33.0, height: 31.0,
         icons: ButtonIconOptions(shown: @r(app.media.startIcon), hidden: @r(app.media.startIcon), switching: @r(app.media.startIcon)))
+    let noneColorDivider: DividerStyle = { =>
+        let d = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
+        d.color = Option<ResourceColor>.None
+        d
+    }()
+    let noneFieldDivider: DividerStyle = { =>
+        let d = DividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
+        d.strokeWidth = Option<Length>.None
+        d.startMargin = Option<Length>.None
+        d.endMargin = Option<Length>.None
+        d
+    }()
+    let noneFieldButton: ButtonStyle = { =>
+        let b = ButtonStyle()
+        b.icons = Option<ButtonIconOptions>.None
+        b.height = Option<Float64>.None
+        b
+    }()
     @State
     var showSideBarTxt: String = "showSideBar:"
     func build() {

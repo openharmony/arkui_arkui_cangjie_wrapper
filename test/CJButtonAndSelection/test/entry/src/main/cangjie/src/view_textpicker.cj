@@ -107,6 +107,16 @@ class ViewTextPicker {
                 })
                 .id("no_divider_effect")
 
+            TextPicker(range: Option<Array<String>>.None)
+                .id("textpicker_cov_range_none")
+            TextPicker(range: [], value: "x")
+                .id("textpicker_cov_empty_range")
+            TextPicker(range: ["a"])
+                .defaultPickerItemHeight(Option<Length>.None)
+                .id("textpicker_cov_height_none")
+            TextPicker(range: ["a", "b"], selected: 10)
+                .id("textpicker_cov_selected_oor")
+
         }.width(100.percent).height(100.percent)
     }
 }

@@ -68,6 +68,14 @@ class ViewRating {
                 })
 
             Text("current score is ${this.rating2}").fontSize(16).fontColor(0x182431).margin(16)
+
+            Rating(rating: rating)
+                .starStyle(backgroundUri: Option<ResourceStr>.None, foregroundUri: Option<ResourceStr>.None,
+                    secondaryUri: Option<ResourceStr>.None)
+                .starStyle(backgroundUri: backPng, foregroundUri: @r(app.string.fontFamily), secondaryUri: secondPng)
+                .id("rating_cov")
+
+            Rating(rating: Option<Float64>.None).id("rating_cov_rating_none")
         }.width(100.percent).padding(top: 5)
     }
 }

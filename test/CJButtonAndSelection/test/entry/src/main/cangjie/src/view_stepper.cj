@@ -192,11 +192,38 @@ class ViewStepper {
                         Text("Page A").fontSize(35).fontColor(0x182431).id("AText")
                     }
                 }.id("AStepperItem")
-                .prevLabel(Option.None)
-                .nextLabel(Option.None)
+                .prevLabel(Option<String>.None)
+                .nextLabel(Option<String>.None)
             }
             .onChange(Option<(UInt32, UInt32) -> Unit>.None)
             .onNext(Option<(UInt32, UInt32) -> Unit>.None)
+            .onPrevious(Option<(UInt32, UInt32) -> Unit>.None)
+            
+            Stepper() {
+                StepperItem() {
+                    Column() {
+                        Text("Page B").fontSize(35).fontColor(0x182431).id("BText")
+                    }
+                }.id("BStepperItem")
+            }
+            .onChange(Option<(UInt32, UInt32) -> Unit>.None)
+            
+            Stepper() {
+                StepperItem() {
+                    Column() {
+                        Text("Page C").fontSize(35).fontColor(0x182431).id("CText")
+                    }
+                }.id("CStepperItem")
+            }
+            .onNext(Option<(UInt32, UInt32) -> Unit>.None)
+            
+            Stepper() {
+                StepperItem() {
+                    Column() {
+                        Text("Page D").fontSize(35).fontColor(0x182431).id("DText")
+                    }
+                }.id("DStepperItem")
+            }
             .onPrevious(Option<(UInt32, UInt32) -> Unit>.None)
         }.width(100.percent).padding(top: 5)
     }

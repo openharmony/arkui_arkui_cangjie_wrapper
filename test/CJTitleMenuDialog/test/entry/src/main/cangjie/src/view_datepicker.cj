@@ -21,6 +21,19 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.time.*
 
+func makeFontAllNoneFields(): Font {
+    let font = Font()
+    font.size = Option<Length>.None
+    font.weight = Option<FontWeight>.None
+    font.family = Option<ResourceStr>.None
+    font.style = Option<FontStyle>.None
+    return font
+}
+
+func makePickerTextStyleWithFontNoneFields(): PickerTextStyle {
+    return PickerTextStyle(font: makeFontAllNoneFields())
+}
+
 @Entry
 @Component
 class ViewDatePicker {
@@ -129,6 +142,33 @@ class ViewDatePicker {
                     .opacity(0.8)
 
                 DatePicker(selected: DateTime.of(year: 1969, month: Month.of(12), dayOfMonth: 31)).id("selectChange")
+
+                DatePicker()
+                    .disappearTextStyle(PickerTextStyle())
+                    .disappearTextStyle(PickerTextStyle(font: Font()))
+                    .textStyle(PickerTextStyle(font: Font()))
+                    .selectedTextStyle(PickerTextStyle(font: Font()))
+                    .id("datepicker_cov_none")
+
+
+                DatePicker()
+                    .disappearTextStyle(PickerTextStyle(font: Option<Font>.None))
+                    .disappearTextStyle(PickerTextStyle(font: Font()))
+                    .id("DatePickerCovDisappear")
+
+                DatePicker()
+                    .textStyle(PickerTextStyle(font: Font()))
+                    .id("DatePickerCovText")
+
+                DatePicker()
+                    .selectedTextStyle(PickerTextStyle(font: Font()))
+                    .id("DatePickerCovSelected")
+
+                DatePicker()
+                    .disappearTextStyle(makePickerTextStyleWithFontNoneFields())
+                    .textStyle(makePickerTextStyleWithFontNoneFields())
+                    .selectedTextStyle(makePickerTextStyleWithFontNoneFields())
+                    .id("datepicker_cov_font_none_fields")
             }.width(100.percent)
         }
     }

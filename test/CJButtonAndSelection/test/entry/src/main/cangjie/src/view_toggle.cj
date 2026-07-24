@@ -70,6 +70,21 @@ class ViewToggle {
                        .responseRegion(
                        [Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),
                            Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+
+            Toggle(Option<ToggleType>.None, isOn: Option<Bool>.None)
+                .width((-1).vp)
+                .width(Option<Length>.None)
+                .height((-1).vp)
+                .height(Option<Length>.None)
+                .size(width: (-1).vp, height: 50.vp)
+                .size(width: Option<Length>.None, height: Option<Length>.None)
+                .padding(top: Option<Length>.None, right: Option<Length>.None, bottom: Option<Length>.None, left: Option<Length>.None)
+                .selectedColor(Option<ResourceColor>.None)
+                .switchPointColor(Option<ResourceColor>.None)
+                .id("toggle_cov")
+
+            Toggle(Option<ToggleType>.None, Option<Bool>.None) { Text("cov3") }
+                .id("toggle_cov_3arg")
         }.width(100.percent).padding(24)
     }
 }

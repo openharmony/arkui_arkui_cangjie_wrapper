@@ -2,7 +2,11 @@
   "name": "StateMgtAndControlUTLazyForEach",
   "test_list": [
     {
-      "name": "testForEachTC001_ArrayWithoutKeyGenerator",
+      "name": "StateMgtAndControlUTForEach",
+      "timeout": 100
+    },
+    {
+      "name": "StateMgtAndControlUTLazyForEach",
       "timeout": 100
     }
   ]

@@ -149,13 +149,6 @@ struct CJMouseEvent {
     }
 }
 
-@C
-struct CJDragInfo {
-    CJDragInfo(
-        let extraParams: CString,
-        let dragEvent: CPointer<CJPosition>
-    ) {}
-}
 
 @C
 struct CJDragItemInfo {

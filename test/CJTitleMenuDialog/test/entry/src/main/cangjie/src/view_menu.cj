@@ -65,7 +65,11 @@ class ViewMenu {
     func myMenuRadiusNone() {
         Menu() {
             MenuItem(startIcon: "", content: "RadiusNone", endIcon: "", labelInfo: "")
-        }.radius(Option<Length>.None).id("menuRadiusNone")
+        }.radius(Option<Length>.None)
+            .font()
+            .radius(Option<BorderRadiuses>.None)
+            .width((-1).vp)
+            .id("menuRadiusNone")
     }
 
 

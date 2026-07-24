@@ -986,6 +986,13 @@ class StateMgtAndControlUTForEach {
         Hilog.info(1, "Cangjie-Test", "[TC_042] 测试完成")
     }
 
+    @TestCase
+    @Tag[APILevel22, TestLevel0]
+    func testForEach_InitOutsideBuild_CoverStubInit() {
+        let arr: Array<String> = ["a", "b", "c"]
+        let fe = ForEach<String>(arr, itemGenerator: { item: String, index: Int64 => })
+    }
+
     // ============================================================================
     // 以下测试用例（TC_043-TC_046）为异常场景，不适合UI测试，因此未实现
     // ============================================================================
@@ -1008,4 +1015,3 @@ class StateMgtAndControlUTForEach {
     //
     // ============================================================================
 }
-

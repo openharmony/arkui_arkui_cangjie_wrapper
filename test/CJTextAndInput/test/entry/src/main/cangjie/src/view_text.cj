@@ -254,6 +254,41 @@ class ViewText {
 
                 // Test: transResourceStrToString  case _
                 Text(Clazz())
+
+                Text(Option<ResourceStr>.None)
+                    .fontSize(Option<Length>.None)
+                    .fontSize((-1).fp)
+                    .fontColor(Option<ResourceColor>.None)
+                    .fontFamily(Option<ResourceStr>.None)
+                    .id("text_cov_none")
+
+
+                Text(Option<ResourceStr>.None).id("TextCovDefaultContent")
+
+                Text("CovFontSize")
+                    .fontSize(Option<Length>.None)
+                    .fontSize((-1.0).vp)
+                    .id("TextCovFontSize")
+
+                Text("CovFontColor")
+                    .fontColor(Option<ResourceColor>.None)
+                    .id("TextCovFontColor")
+
+                Text("CovFontWeight")
+                    .fontWeight(Option<FontWeight>.None)
+                    .id("TextCovFontWeight")
+
+                Text("CovFontFamily")
+                    .fontFamily(Option<ResourceStr>.None)
+                    .id("TextCovFontFamily")
+
+                Text("CovDecoration")
+                    .decoration(
+                        decorationType: Option<TextDecorationType>.None,
+                        color: Option<ResourceColor>.None,
+                        decorationStyle: Option<TextDecorationStyle>.None
+                    )
+                    .id("TextCovDecoration")
             }
         }.height(100.percent).width(100.percent)
     }

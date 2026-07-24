@@ -25,6 +25,13 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class ViewGridRowInitGutterOptionOptionsPart1 {
+    func noneBreakPoints(): BreakPoints {
+        let bp = BreakPoints()
+        bp.value = Option<Array<Length>>.None
+        bp.reference = Option<BreakpointsReference>.None
+        return bp
+    }
+
     func build() {
         Column() {
             GridRow(columns: GridRowOptions(), gutter: GutterOption(x: 10.vp, y: 5.vp)) {
@@ -33,6 +40,23 @@ class ViewGridRowInitGutterOptionOptionsPart1 {
                 }
             }
             .id("testGridRowInitGutterOptionNormalValue1")
+
+            GridRow(columns: 12)
+            .id("testGridRowChildDefault1")
+
+            GridRow(columns: GridRowOptions(12), gutter: 10.vp, breakpoints: noneBreakPoints())
+            .id("testGridRowChildDefault2NoneBP")
+
+            GridRow(columns: 12, gutter: GutterOption(x: 10.vp, y: 5.vp), breakpoints: noneBreakPoints())
+            .id("testGridRowChildDefault3NoneBP")
+
+            GridRow(columns: GridRowOptions(12), gutter: GutterOption(x: 10.vp, y: 5.vp), breakpoints: noneBreakPoints())
+            .id("testGridRowChildDefault4NoneBPLen")
+
+            GridRow(columns: GridRowOptions(12), gutter: GutterOption(x: GridRowSizeOption(sm: 5.vp), y: GridRowSizeOption(sm: 3.vp)), breakpoints: noneBreakPoints()) {
+                GridCol() { Text("test") }
+            }
+            .id("testGridRowGutterOptionNoneBP")
         }
         .width(100.percent)
         .height(100.percent)
