@@ -544,12 +544,14 @@ protected class UISyntaxChecker {
 
     /**
      * Block user-declared members whose names collide with macro-injected
-     * members (e.g. paramsGenerator_inner__, __PROFILER_KEYS__).
+     * members (e.g. __paramsGenerator__inner__, CustomViewEx, __PROFILER_KEYS__).
      * Produces a clear error instead of a confusing duplicate-member message.
      */
     protected static func checkNoReservedMemberNames(
         input: Tokens, classDecl: ClassDecl, macroCall: UIMacroKind): MacroExpandResult<ClassDecl> {
-        let reservedNames = HashSet<String>(["paramsGenerator_inner__", "__PROFILER_KEYS__", "__PROFILER_DECS__",
+        let reservedNames = HashSet<String>(["__paramsGenerator__inner__", "paramsGenerator__inner",
+            "__childParamsGetter__inner__", "childParamsGetter__inner",
+            "CustomViewEx", "__PROFILER_KEYS__", "__PROFILER_DECS__",
             "__PROFILER_FNAMES__", "__PROFILER_OVERRIDE_DECS__", "__PROFILER_RUNTIME_KEYS__"])
         for (decl in classDecl.body.decls) {
             match (decl as VarDecl) {

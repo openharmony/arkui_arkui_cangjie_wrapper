@@ -119,6 +119,10 @@ class StateManageHandler {
     let builderSingleInfo: HashSet<String> = HashSet<String>()
     let builderParamInfo: HashSet<String> = HashSet<String>()
 
+    // Whether CustomViewEx interface has been generated in this compilation unit.
+    // Not cleared by clearGlobalInComponent — persists across @Component / @Builder expansions.
+    var interfaceGenerated: Bool = false
+
     func isContainerComponent(value: String): Bool {
         if (CONTAINER_EXPAND_COMPONENTS.contains(value)) {
             return true

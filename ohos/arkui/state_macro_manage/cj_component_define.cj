@@ -19,7 +19,7 @@ macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess,
     Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl,
-    getChildMessages, Argument, DiagReportLevel, diagReport, Modifier, setItem}
+    getChildMessages, Argument, DiagReportLevel, diagReport, Modifier, setItem, insideParentContext}
 import std.collection.{ArrayList, HashSet}
 import std.unicode.{UnicodeStringExtension}
 
@@ -60,7 +60,16 @@ public macro Component(input: Tokens): Tokens {
             let rerenderFunc = handleRerender()
             let forceRerendFunc = handleForceRerender()
             let purgeVariableFunc = handlePurgeVariable(classDecl)
-            let reuseParamsRegistry = generateParamsGenerator()
+            let customViewExImpl = generateCustomViewExImpl()
+
+            // Generate CustomViewEx interface once per compilation unit.
+            // Skip if inside @Entry — @Entry will generate it (avoids being stripped by parseDecl).
+            let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated && !insideParentContext("Entry")) {
+                STATE_MANAGE_HANDLER.interfaceGenerated = true
+                generateCustomViewExInterface()
+            } else {
+                Tokens()
+            }
 
             // record state with component and state kind
             STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
@@ -72,10 +81,10 @@ public macro Component(input: Tokens): Tokens {
             DIAG.emit()
             setItem(MACRO_MSG_EXPANDED_COMPONENT, "")
             // generate class after expand.
-            createClassDeclaration(
+            let classTokens = createClassDeclaration(
                 modifiers: quote($classModifier),
                 identifier: quote($classIdent),
-                superTypes: quote($CUSTOM_VIEW),
+                superTypes: quote($CUSTOM_VIEW & CustomViewEx),
                 body: quote(
                     $classBodyAfterExpand
                     $initFunc
@@ -85,9 +94,10 @@ public macro Component(input: Tokens): Tokens {
                     $purgeVariableFunc
                     $forceRerendFunc
                     $profilerStaticArrays
-                    $reuseParamsRegistry
+                    $customViewExImpl
                 )
             )
+            return quote($classTokens $interfaceDecl)
         case Err(tokens) =>
             return tokens
     }
@@ -1501,23 +1511,36 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     }
 }
 
-/** Emit `public var paramsGenerator_inner__` — instance field for reuse params on child. */
-func generateParamsGenerator(): Tokens {
+/** Generate CustomViewEx interface declaration (once per compilation unit). */
+func generateCustomViewExInterface(): Tokens {
     return quote(
-        public var paramsGenerator_inner__: () -> Array<(String, Any)> = { => [] }
+        interface CustomViewEx {
+            mut prop paramsGenerator__inner: () -> Array<(String, Any)>
+            mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)>
+        }
     )
 }
 
-/** Generate downcast + direct write to child's paramsGenerator_inner__. */
-func writeParamsToChild(childExpr: Tokens, childType: Tokens, params: Tokens): Tokens {
-    if (childType.size == 0) {
-        return quote()
-    }
+/** Generate field + property implementation for CustomViewEx. */
+func generateCustomViewExImpl(): Tokens {
     return quote(
-        match ($childExpr as $childType) {
-            case Some(typed) =>
-                typed.paramsGenerator_inner__ = { => $params }
-            case None => ()
+        public var __paramsGenerator__inner__: () -> Array<(String, Any)> = { => [] }
+        public mut prop paramsGenerator__inner: () -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
+            get() {
+                this.__paramsGenerator__inner__
+            }
+            set(v) {
+                this.__paramsGenerator__inner__ = v
+            }
+        }
+        public var __childParamsGetter__inner__: (Int64) -> Array<(String, Any)> = { _ => [] }
+        public mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
+            get() {
+                this.__childParamsGetter__inner__
+            }
+            set(v) {
+                this.__childParamsGetter__inner__ = v
+            }
         }
     )
 }
@@ -1537,20 +1560,49 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
     }
     paramTokens += quote(])
 
-    let childTypeTokens = match (expr.callFunc as RefExpr) {
-        case Some(refExpr) => refExpr.toTokens()
-        case None => Tokens()
-    }
-
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
-                $(writeParamsToChild(quote(cv), childTypeTokens, paramTokens))
+                let childId = cv.id()
+                match ($thisView as CustomViewEx) {
+                    case Some(provider) =>
+                        let prev = provider.childParamsGetter__inner
+                        provider.childParamsGetter__inner = { id: Int64 =>
+                            if (id == childId) {
+                                $paramTokens
+                            } else {
+                                prev(id)
+                            }
+                        }
+                    case None => ()
+                }
+                match (cv as CustomViewEx) {
+                    case Some(provider) =>
+                        provider.paramsGenerator__inner = { => $paramTokens }
+                    case None => ()
+                }
                 if (cv.isReusable_inner__) {
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>
                             let componentCall = recycleNode ?? cv
-                            $(writeParamsToChild(quote(componentCall), childTypeTokens, paramTokens))
+                            let compId = componentCall.id()
+                            match ($thisView as CustomViewEx) {
+                                case Some(provider) =>
+                                    let prev = provider.childParamsGetter__inner
+                                    provider.childParamsGetter__inner = { id: Int64 =>
+                                        if (id == compId) {
+                                            $paramTokens
+                                        } else {
+                                            prev(id)
+                                        }
+                                    }
+                                case None => ()
+                            }
+                            match (componentCall as CustomViewEx) {
+                                case Some(provider) =>
+                                    provider.paramsGenerator__inner = { => $paramTokens }
+                                case None => ()
+                            }
                             CustomView.createRecycle(componentCall, recycleNode.isSome(), $funcName, { =>
                                 if (let Some(rn) <- recycleNode) {
                                     rn.aboutToReuseInternal(ReuseParams($paramTokens))

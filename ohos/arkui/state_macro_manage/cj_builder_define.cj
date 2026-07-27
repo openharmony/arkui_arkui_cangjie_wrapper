@@ -18,7 +18,7 @@
 macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, CallExpr, MemberAccess, VarDecl, Node, Expr, parseDecl, Token, Visitor, TokenKind, FuncDecl, MatchExpr,
-    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr, parseExpr, setItem}
+    ASTException, FuncParam, ToTokens, RefType, RefExpr, LambdaExpr, TrailingClosureExpr, Argument, LitConstExpr, parseExpr, setItem, insideParentContext}
 import std.collection.{HashMap, ArrayList}
 
 public macro Builder(input: Tokens): Tokens {
@@ -140,7 +140,7 @@ func expandBuilder(funcDecl: FuncDecl): Tokens {
         body: generateFuncBody(funcBody, quote(thisView))
     )
 
-    createMethodDeclaration(
+    let methodDecl = createMethodDeclaration(
         modifiers: quote($modifier),
         identifier: quote($funcIdent),
         generics: generics,
@@ -150,6 +150,18 @@ func expandBuilder(funcDecl: FuncDecl): Tokens {
         body: innerFunc + quote(
             ) + entryBody
     )
+
+    // Generate CustomViewEx interface once per compilation unit.
+    // Skip if inside @Component — Interface cannot be declared inside a class body.
+    // @Component (or @Entry if nested) will generate it at top level.
+    let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated && !insideParentContext("Component")) {
+        STATE_MANAGE_HANDLER.interfaceGenerated = true
+        generateCustomViewExInterface()
+    } else {
+        Tokens()
+    }
+
+    return quote($interfaceDecl $methodDecl)
 }
 
 func generateBuilderParam(param: FuncParam): Tokens {
