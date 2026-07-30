@@ -543,6 +543,32 @@ protected class UISyntaxChecker {
     }
 
     /**
+     * Block user-declared members whose names collide with macro-injected
+     * members (e.g. __paramsGenerator__inner__, CustomViewEx, __PROFILER_KEYS__).
+     * Produces a clear error instead of a confusing duplicate-member message.
+     */
+    protected static func checkNoReservedMemberNames(
+        input: Tokens, classDecl: ClassDecl, macroCall: UIMacroKind): MacroExpandResult<ClassDecl> {
+        let reservedNames = HashSet<String>(["__paramsGenerator__inner__", "paramsGenerator__inner",
+            "__childParamsGetter__inner__", "childParamsGetter__inner",
+            "CustomViewEx", "__PROFILER_KEYS__", "__PROFILER_DECS__",
+            "__PROFILER_FNAMES__", "__PROFILER_OVERRIDE_DECS__", "__PROFILER_RUNTIME_KEYS__"])
+        for (decl in classDecl.body.decls) {
+            match (decl as VarDecl) {
+                case Some(varDecl) =>
+                    let memberName = demangle(varDecl.identifier.value)
+                    if (reservedNames.contains(memberName)) {
+                        reportError(varDecl.toTokens(), MacroErrorCode.ReservedMemberName, macroCall,
+                            detail: "'${memberName}' is reserved by @Component macro")
+                        return MacroExpandResult<ClassDecl>.Err(input)
+                    }
+                case None => ()
+            }
+        }
+        MacroExpandResult<ClassDecl>.Success(classDecl)
+    }
+
+    /**
      * Check custom component name does not conflict with built-in component names
      * @Component class identifier cannot be the same as built-in component names
      * @param builtInNames Array of built-in component names (e.g. MACRO_EXPAND_COMPONENTS)

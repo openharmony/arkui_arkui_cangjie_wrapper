@@ -19,7 +19,7 @@ macro package ohos.arkui.state_macro_manage
 
 import std.ast.{Tokens, ClassDecl, RefExpr, CallExpr, LambdaExpr, Expr, TrailingClosureExpr, MemberAccess,
     Token, Node, IfExpr, Block, VarDecl, FuncDecl, Decl, ToTokens, parseExprFragment, TokenKind, parseDecl,
-    getChildMessages, Argument, DiagReportLevel, diagReport, Modifier, setItem}
+    getChildMessages, Argument, DiagReportLevel, diagReport, Modifier, setItem, insideParentContext}
 import std.collection.{ArrayList, HashSet}
 import std.unicode.{UnicodeStringExtension}
 
@@ -34,6 +34,8 @@ public macro Component(input: Tokens): Tokens {
             classDecl: ClassDecl => UISyntaxChecker.checkNoConstructor(input, classDecl, UIMacroKind.Component)
         }.andThen {
             classDecl: ClassDecl => UISyntaxChecker.checkNoDuplicateMemberNames(input, classDecl, UIMacroKind.Component)
+        }.andThen {
+            classDecl: ClassDecl => UISyntaxChecker.checkNoReservedMemberNames(input, classDecl, UIMacroKind.Component)
         }.andThen {
             classDecl: ClassDecl => UISyntaxChecker.checkComponentNameNotBuiltIn(input, classDecl, UIMacroKind.Component,
                 MACRO_EXPAND_COMPONENTS)
@@ -58,6 +60,16 @@ public macro Component(input: Tokens): Tokens {
             let rerenderFunc = handleRerender()
             let forceRerendFunc = handleForceRerender()
             let purgeVariableFunc = handlePurgeVariable(classDecl)
+            let customViewExImpl = generateCustomViewExImpl()
+
+            // Generate CustomViewEx interface once per compilation unit.
+            // Skip if inside @Entry — @Entry will generate it (avoids being stripped by parseDecl).
+            let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated && !insideParentContext("Entry")) {
+                STATE_MANAGE_HANDLER.interfaceGenerated = true
+                generateCustomViewExInterface()
+            } else {
+                Tokens()
+            }
 
             // record state with component and state kind
             STATE_MANAGE_HANDLER.compWithStateInfo.add(classIdent.value, STATE_MANAGE_HANDLER.stateInformation.clone())
@@ -69,10 +81,10 @@ public macro Component(input: Tokens): Tokens {
             DIAG.emit()
             setItem(MACRO_MSG_EXPANDED_COMPONENT, "")
             // generate class after expand.
-            createClassDeclaration(
+            let classTokens = createClassDeclaration(
                 modifiers: quote($classModifier),
                 identifier: quote($classIdent),
-                superTypes: quote($CUSTOM_VIEW),
+                superTypes: quote($CUSTOM_VIEW & CustomViewEx),
                 body: quote(
                     $classBodyAfterExpand
                     $initFunc
@@ -82,9 +94,11 @@ public macro Component(input: Tokens): Tokens {
                     $purgeVariableFunc
                     $forceRerendFunc
                     $profilerStaticArrays
+                    $customViewExImpl
                 )
             )
-        case Err(tokens) => 
+            return quote($classTokens $interfaceDecl)
+        case Err(tokens) =>
             return tokens
     }
 }
@@ -96,7 +110,7 @@ func isForEach(refExpr: RefExpr) {
 
 /**
  * Validates and processes the parameters of a ForEach component.
- * 
+ *
  * This function checks if the given parameter has a valid identifier and if that identifier
  * matches one of the expected parameter names for the ForEach component. It reports errors
  * if the parameter is invalid or unknown.
@@ -115,7 +129,7 @@ func validateAndProcessForEachParameter(para: Argument, expectedParamNames: Arra
         "Invalid parameter: expected named parameter '${paramName}'.", "")
         return false
     }
-    
+
     var isValidName = false
     for (expectedName in expectedParamNames) {
         if (identifier.value == expectedName) {
@@ -123,7 +137,7 @@ func validateAndProcessForEachParameter(para: Argument, expectedParamNames: Arra
             break
         }
     }
-    
+
     if (!isValidName) {
         diagReport(DiagReportLevel.ERROR, Tokens().append(identifier),
         "unknown named argument: '" + identifier.value + "'.", "")
@@ -207,7 +221,7 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
                 // Item generator parameter
                 checkLazyForEachBody(para.expr)
                 let lambdaParams = itemLambda.funcParams
-                
+
                 // Create item generator function signature
                 var lambdaSignature = if (validateAndProcessForEachParameter(
                         para, ["itemGenerator", "itemGeneratorFunc"], "itemGenerator")) {
@@ -215,17 +229,17 @@ func generateLazyForEachCreate(callExpr: CallExpr, thisView: Tokens) {
                 } else {
                     quote({)
                 }
-                
+
                 // Add parameters to signature
                 for (param in lambdaParams) {
                     lambdaSignature = lambdaSignature + quote($param)
                 }
-                
+
                 // Complete lambda function
                 let lambdaBody = itemLambda.nodes
                 let processedBody = generateFuncBody(lambdaBody, thisView)
                 res = res + lambdaSignature + quote( => ) + processedBody + quote(})
-                
+
                 // Add separator if not last argument
                 if (idx != callExpr.arguments.size - 1) {
                     res = res + quote(, )
@@ -300,7 +314,7 @@ func validateComponentChildConstraints(parentExpr: CallExpr, componentName: Stri
     if (COMPONENT_TYPE_CONSTRAINT_LIST.contains(componentName)) {
         checkChildInBody(childNodes, componentName)
     }
-    
+
     // Check parent constraints
     checkParentInBody(childNodes, componentName)
 }
@@ -321,7 +335,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
             if (refExpr.identifier.value == "LazyForEach") {
                 return generateLazyForEachCreate(callExpr, thisView)
             }
-            
+
             // Check if the last argument is a LambdaExpr (function type parameter)
             // This handles cases like: Column({ => Text("hello") })
             // Note: This is mutually exclusive with TrailingClosureExpr because:
@@ -340,7 +354,7 @@ func generateBaseComp(input: Expr, thisView: Tokens): Tokens {
                     case None => ()
                 }
             }
-            
+
             return generateCompCreate(callExpr)
         case v: TrailingClosureExpr =>
             // only inside TrailingClosureExpr may have other LambdaBody, can get the complete LambdaBody for judgment
@@ -1497,6 +1511,40 @@ func generateCustomDialogControllerCreate(varDecl: VarDecl): Unit {
     }
 }
 
+/** Generate CustomViewEx interface declaration (once per compilation unit). */
+func generateCustomViewExInterface(): Tokens {
+    return quote(
+        interface CustomViewEx {
+            mut prop paramsGenerator__inner: () -> Array<(String, Any)>
+            mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)>
+        }
+    )
+}
+
+/** Generate field + property implementation for CustomViewEx. */
+func generateCustomViewExImpl(): Tokens {
+    return quote(
+        public var __paramsGenerator__inner__: () -> Array<(String, Any)> = { => [] }
+        public mut prop paramsGenerator__inner: () -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
+            get() {
+                this.__paramsGenerator__inner__
+            }
+            set(v) {
+                this.__paramsGenerator__inner__ = v
+            }
+        }
+        public var __childParamsGetter__inner__: (Int64) -> Array<(String, Any)> = { _ => [] }
+        public mut prop childParamsGetter__inner: (Int64) -> Array<(String, Any)> { /* cjlint-ignore !G.VAR.01 */
+            get() {
+                this.__childParamsGetter__inner__
+            }
+            set(v) {
+                this.__childParamsGetter__inner__ = v
+            }
+        }
+    )
+}
+
 func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView: Tokens): Tokens {
     let expr = (input as CallExpr).getOrThrow()
     let args = expr.arguments
@@ -1511,16 +1559,53 @@ func handleReuseRender(funcName: String, input: Expr, callExpr: Tokens, thisView
         }
     }
     paramTokens += quote(])
+
     return quote(
         match ($callExpr) {
             case cv: $CUSTOM_VIEW =>
+                let childId = cv.id()
+                match ($thisView as CustomViewEx) {
+                    case Some(provider) =>
+                        let prev = provider.childParamsGetter__inner
+                        provider.childParamsGetter__inner = { id: Int64 =>
+                            if (id == childId) {
+                                $paramTokens
+                            } else {
+                                prev(id)
+                            }
+                        }
+                    case None => ()
+                }
+                match (cv as CustomViewEx) {
+                    case Some(provider) =>
+                        provider.paramsGenerator__inner = { => $paramTokens }
+                    case None => ()
+                }
                 if (cv.isReusable_inner__) {
-                    let rp: ReuseParams = ReuseParams($paramTokens)
                     $thisView.observeComponentCreation({elmtId, isInitialRender => __Recycle__ {
                         $thisView.observeRecycleComponentCreation($funcName, {elmtId, isInitialRender, recycleNode =>
-                            CustomView.createRecycle(recycleNode ?? cv, recycleNode.isSome(), $funcName, { =>
+                            let componentCall = recycleNode ?? cv
+                            let compId = componentCall.id()
+                            match ($thisView as CustomViewEx) {
+                                case Some(provider) =>
+                                    let prev = provider.childParamsGetter__inner
+                                    provider.childParamsGetter__inner = { id: Int64 =>
+                                        if (id == compId) {
+                                            $paramTokens
+                                        } else {
+                                            prev(id)
+                                        }
+                                    }
+                                case None => ()
+                            }
+                            match (componentCall as CustomViewEx) {
+                                case Some(provider) =>
+                                    provider.paramsGenerator__inner = { => $paramTokens }
+                                case None => ()
+                            }
+                            CustomView.createRecycle(componentCall, recycleNode.isSome(), $funcName, { =>
                                 if (let Some(rn) <- recycleNode) {
-                                    rn.aboutToReuseInternal(rp)
+                                    rn.aboutToReuseInternal(ReuseParams($paramTokens))
                                 }
                             })
                             EmptyComponent()

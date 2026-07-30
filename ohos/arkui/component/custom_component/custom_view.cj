@@ -31,9 +31,7 @@ import ohos.ffi.{FFIDataManager}
 import ohos.business_exception.BusinessException
 import ohos.labels.{APILevel, Hide}
 import std.sort.{SortByExtension}
-import std.collection.{HashSet}
-import std.collection.HashMap
-import std.collection.ArrayList
+import std.collection.{HashSet, HashMap, ArrayList}
 
 foreign func FfiOHOSAceFrameworkLoadNativeView(view: Int64): Bool
 
@@ -102,7 +100,8 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public var isReusable_inner__: Bool = false
     private var recycleManager_: ?RecycleManager = None
-    private var hasBeenRecycled_: Bool = false
+    @!Hide
+    protected var hasBeenRecycled_: Bool = false
     private var delayRecycleNodeRerender_: Bool = false
     private var delayRecycleNodeRerenderDeep_: Bool = false
     private var runReuse_: Bool = false
@@ -456,13 +455,25 @@ public abstract class CustomView <: RemoteView & Observer {
     @!Hide
     public override func aboutToReuseInternal(param: ReuseParams): Unit {
         this.runReuse_ = true
-        aboutToReuse(param)
+        let actualParam = match (tryGetReuseParamsFromChild(this)) {
+            case Some(rp) => rp
+            case None =>
+                match (parent_inner__) {
+                    case Some(parent) =>
+                        match (tryGetReuseParamsFromParent(parent, this.id())) {
+                            case Some(rp) => rp
+                            case None => param
+                        }
+                    case None => param
+                }
+        }
+        aboutToReuse(actualParam)
         if (!this.delayRecycleNodeRerender_) {
             updateDirtyElements()
         } else {
             flushDelayCompleteRerender()
         }
-        traverseChildDoRecycleOrReuse(false, param: param)
+        traverseChildDoRecycleOrReuse(false, param: actualParam)
         runReuse_ = false
     }
 
@@ -515,7 +526,15 @@ public abstract class CustomView <: RemoteView & Observer {
                 if (recycleOrReuse) {
                     child.aboutToRecycleInternal()
                 } else {
-                    child.aboutToReuseInternal(param)
+                    let childParam = match (tryGetReuseParamsFromChild(child)) {
+                        case Some(rp) => rp
+                        case None =>
+                            match (tryGetReuseParamsFromParent(this, child.id())) {
+                                case Some(rp) => rp
+                                case None => param
+                            }
+                    }
+                    child.aboutToReuseInternal(childParam)
                 }
             }
         }

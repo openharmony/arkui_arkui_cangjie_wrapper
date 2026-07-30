@@ -25,6 +25,12 @@ ohos_cangjie_shared_library("ohos.arkui.component.custom_component") {
     "uinode_register_proxy.cj",
   ]
 
+  if (target_cpu == "arm" || is_mac) {
+    sources += [ "reuse_reflection_reader_stub.cj" ]
+  } else {
+    sources += [ "reuse_reflection_reader.cj" ]
+  }
+
   cj_deps = [
     "../../../base:ohos.base",
     "../../state_management:ohos.arkui.state_management",
