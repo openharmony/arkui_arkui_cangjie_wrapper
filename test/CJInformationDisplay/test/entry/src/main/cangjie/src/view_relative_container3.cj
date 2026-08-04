@@ -24,7 +24,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class ViewRelativeContainer3 {
     func build() {
-        Row() {
+        Column() {
             RelativeContainer() {
                 Row() {
                     Text('row1')
@@ -44,7 +44,7 @@ class ViewRelativeContainer3 {
                     )
                 )
                 .id("row1")
-            }
+            }.id("rc1")
             .width(300).height(300)
             .margin(left: 50)
             .border(width: 2, color: 0x6699FF)
@@ -67,7 +67,7 @@ class ViewRelativeContainer3 {
                     )
                 )
                 .id("row2_1")
-            }
+            }.id("rc2")
             .width(300).height(300)
             .margin(left: 50)
             .border(width: 2, color: 0x6699FF)

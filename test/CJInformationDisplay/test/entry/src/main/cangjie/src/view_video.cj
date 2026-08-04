@@ -37,6 +37,14 @@ class ViewVideo {
     var showControls: Bool = true
     @State var msgText: String = ""
     var controller: VideoController = VideoController()
+    var controller1: VideoController = VideoController()
+    var controller2: VideoController = VideoController()
+    var controller3: VideoController = VideoController()
+    var controller4: VideoController = VideoController()
+    var controller5: VideoController = VideoController()
+    var controller6: VideoController = VideoController()
+    var controller7: VideoController = VideoController()
+    var controller8: VideoController = VideoController()
     func build() {
         Column() {
             Video(
@@ -57,7 +65,7 @@ class ViewVideo {
                 src: @rawfile("index.html"),
                 previewUri: this.previewUri,
                 currentProgressRate: PlaybackSpeed.SpeedForward100X,
-                controller: this.controller
+                controller: this.controller1
             ).width(100.percent)
             .height(240.px)
             .onError({ => this.msgText = "onError"})
@@ -66,7 +74,7 @@ class ViewVideo {
                 src: this.videoSrc,
                 previewUri: this.previewUri,
                 currentProgressRate: PlaybackSpeed.SpeedForward100X,
-                controller: this.controller
+                controller: this.controller2
             ).width(100.percent)
             .height(240.px)
             .autoPlay(this.isAutoPlay)
@@ -78,7 +86,7 @@ class ViewVideo {
                 src: "https://media.w3.org/2010/05/sintel/trailer.mp4",
                 previewUri: this.previewUri,
                 currentProgressRate: PlaybackSpeed.SpeedForward100X,
-                controller: this.controller
+                controller: this.controller3
             ).width(100.percent)
             .height(240.px)
             .autoPlay(this.isAutoPlay)
@@ -89,35 +97,35 @@ class ViewVideo {
                 src: "https://media.w3.org/2010/05/sintel/trailer.mp4",
                 previewUri: this.previewUri,
                 currentProgressRate: this.curRate,
-                controller: this.controller
+                controller: this.controller4
             ).width(100.percent).height(240.px).autoPlay(this.isAutoPlay).controls(this.showControls)
 
             Video(
                 src: this.videoSrc,
                 previewUri: "https://csdnimg.cn/release/devpress-cangjie/public/img/logo.81433277.png",
                 currentProgressRate: this.curRate,
-                controller: this.controller
+                controller: this.controller5
             ).width(100.percent).height(240.px).autoPlay(this.isAutoPlay).controls(this.showControls)
 
             Video(
                 src: this.videoSrc,
                 previewUri: "https://csdnimg.cn/release/devpress-cangjie/public/img/logo.81433277.png",
                 currentProgressRate: PlaybackSpeed.SpeedForward100X,
-                controller: this.controller
+                controller: this.controller6
             ).width(100.percent).height(240.px).autoPlay(this.isAutoPlay).controls(this.showControls)
 
             Video(
                 src: "https://media.w3.org/2010/05/sintel/trailer.mp4",
                 previewUri: "https://csdnimg.cn/release/devpress-cangjie/public/img/logo.81433277.png",
                 currentProgressRate: PlaybackSpeed.SpeedForward100X,
-                controller: this.controller
+                controller: this.controller7
             ).width(100.percent).height(240.px).autoPlay(this.isAutoPlay).controls(this.showControls)
 
             Video(
                 src: "https://media.w3.org/2010/05/sintel/trailer.mp4",
                 previewUri: "https://csdnimg.cn/release/devpress-cangjie/public/img/logo.81433277.png",
                 currentProgressRate: this.curRate,
-                controller: this.controller
+                controller: this.controller8
             ).width(100.percent).height(240.px).autoPlay(this.isAutoPlay).controls(this.showControls)
 
 
@@ -144,7 +152,7 @@ class ViewVideo {
                 }).margin(5).id("Fullscreen")
                 Button("at 8s")
                     .onClick({
-                        evt => this.controller.setCurrentTime(8, SeekMode.ClosestKeyframe)
+                        evt => this.controller8.setCurrentTime(8, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 8s")
