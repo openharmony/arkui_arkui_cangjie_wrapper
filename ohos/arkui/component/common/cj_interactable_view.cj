@@ -299,7 +299,7 @@ public class DragItemInfo {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(pixelMap: ?PixelMap, builder: ?CustomBuilder, extraInfo: ?String) {
-        this.pixelMap = pixelMap ?? PixelMap(0)
+        this.pixelMap = pixelMap
         this.builder = builder ?? {=>}
         this.extraInfo = extraInfo ?? ""
     }
@@ -438,7 +438,7 @@ public class TouchEvent <: BaseEvent {
 
     init(eventType: TouchType, touches: Array<TouchObject>, changedTouches: Array<TouchObject>, timestamp: Int64,
         target: EventTarget, source: SourceType) {
-        super(source: source, target: target, timestamp: timestamp)    
+        super(source: source, target: target, timestamp: timestamp)
         this.eventType = eventType
         this.touches = touches
         this.changedTouches = changedTouches

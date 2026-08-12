@@ -822,8 +822,10 @@ public class RichEditorParagraphStyle {
     ]
     public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceholder) {
         this.textAlign = textAlign ?? TextAlign.Start
-        let tmpLeadingMargin = leadingMargin ?? LeadingMarginPlaceholder(pixelMap: PixelMap(0), size: (0.0.px, 0.0.px))
-        this.leadingMargin = LeadingMarginType.PlaceholderType(tmpLeadingMargin)
+        this.leadingMargin = match (leadingMargin) {
+            case Some(v) => LeadingMarginType.PlaceholderType(v)
+            case None => LeadingMarginType.None
+        }
     }
 }
 

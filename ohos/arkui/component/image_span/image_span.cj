@@ -110,9 +110,16 @@ public class ImageSpan <: CommonMethodComponent<ImageSpan> & ImageSpanAttribute 
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(value: ?PixelMap) {
-        let tmpValue = value ?? PixelMap(0)
-        unsafe {
-            FfiOHOSAceFrameworkImageSpanCreateWithPixelMap(tmpValue.getID())
+        if (let Some(v) <- value) {
+            unsafe {
+                FfiOHOSAceFrameworkImageSpanCreateWithPixelMap(v.getID())
+            }
+        } else {
+            unsafe {
+                try (unsafeSrc = LibC.mallocCString("").asResource()) {
+                    FfiOHOSAceFrameworkImageSpanCreateWithUrl(unsafeSrc.value)
+                }
+            }
         }
     }
 
