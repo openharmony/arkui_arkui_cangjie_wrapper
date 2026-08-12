@@ -675,6 +675,7 @@ class ViewScroll2 {
                     .divider(ListDividerOptions(strokeWidth: 0.vp, color: Color.Black, startMargin: 0.vp, endMargin: 0.vp))
                     .edgeEffect(EdgeEffect.Spring)
                     .width(90.percent)
+                    .id("list_getItemRect")
                 }.height(20.percent)
 
 

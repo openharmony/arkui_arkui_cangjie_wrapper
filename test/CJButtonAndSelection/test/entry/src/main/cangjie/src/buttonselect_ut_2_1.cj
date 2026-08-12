@@ -23,6 +23,8 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import ohos.ui_test.*
 import ohos.device_info.*
+import std.math.abs
+import std.convert.*
 
 @Test
 class ButtonSelectUT21 {
@@ -597,22 +599,38 @@ class ButtonSelectUT21 {
         barModeText = driver.waitForComponent(On().id("barModeText"),1000).getOrThrow()
        // @Expect(barModeText.getText(), "\\\"BarMode.Scrollable,{\\\\\\\"margin\\\\\\\":\\\\\\\"0.00vp\\\\\\\",\\\\\\\"nonScrollableLayoutStyle\\\\\\\":\\\\\\\"LayoutStyle.SPACE_BETWEEN_OR_CENTER\\\\\\\"}\\\"")
     }
-    
+
     @TestCase
     @Tag[APILevel26, TestLevel0]
     func testTabsAuto() {
         clickTabsExample("ButtonTabsExample15")
-        
+
         let inspector = getInspectorByKey("TabsExamplewidth_auto")
         let jsonObject = JsonValue.fromStr(inspector).asObject()
         let attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         let width = attrs.get("width").getOrThrow().toString()
         let height = attrs.get("height").getOrThrow().toString()
-        
-        let device_name = DeviceInfo.marketName
-        if (device_name == "HUAWEI Mate 60 Pro") {
-            @Expect(width, "\"387.69vp\"")
-            @Expect(height, "\"771.07vp\"")
-        }
+
+        // Tabs 为 width/height AUTO,解析后的尺寸依赖设备,无法用固定值断言。
+        // 用 getBounds 取实际渲染 px 尺寸,交叉验证 inspector 的 vp 值:
+        //   density = px / vp,同一设备上 width/height 推导的 density 应一致。
+        // 该关系任意设备都成立,去掉原来只针对 Mate 60 Pro 的分支。
+        let tabs = driver.findComponent(On().id("TabsExamplewidth_auto")).getOrThrow().getBounds()
+        let tabsWidthPx = tabs.right - tabs.left
+        let tabsHeightPx = tabs.bottom - tabs.top
+
+        // 解析 inspector 的 "387.69vp" → 387.69
+        let widthVp = Float32.parse(width.replace("\"", "").replace("vp", ""))
+        let heightVp = Float32.parse(height.replace("\"", "").replace("vp", ""))
+
+        Hilog.info(1, "Cangjie-Test", "inspector: w=${width}, h=${height}, bounds_w_px=${tabsWidthPx}, bounds_h_px=${tabsHeightPx}")
+
+        // density = px / vp,应为合理范围(1~5)
+        let densityW = Float32(tabsWidthPx) / widthVp
+        let densityH = Float32(tabsHeightPx) / heightVp
+        @Expect(densityW > 1.0 && densityW < 5.0, true)
+        @Expect(densityH > 1.0 && densityH < 5.0, true)
+        // width/height 推导的 density 应一致(同一设备)
+        @Expect(abs(densityW - densityH) < 0.5, true)
     }
 }

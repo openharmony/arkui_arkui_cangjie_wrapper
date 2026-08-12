@@ -335,6 +335,6 @@ class ViewRelativeContainer {
                     .barrier(emptyRefBarrier)
 
             }.width(100.percent).alignItems(HorizontalAlign.Start)
-        }.height(100.percent).width(100.percent)
+        }.height(100.percent).width(100.percent).id("scroller")
     }
 }
