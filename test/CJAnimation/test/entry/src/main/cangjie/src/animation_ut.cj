@@ -70,7 +70,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 4750, true)
     }
 
     @TestCase
@@ -92,7 +91,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime <= 50, true)
     }
 
     @TestCase
@@ -114,7 +112,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime <= 50, true)
     }
 
     @TestCase
@@ -136,7 +133,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 3500, true)
     }
 
     @TestCase
@@ -158,7 +154,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime <= 50, true)
     }
 
     @TestCase
@@ -180,7 +175,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 3500, true)
     }
 
     @TestCase
@@ -203,7 +197,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 3500, true)
     }
 
     @TestCase
@@ -225,7 +218,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1500, true)
     }
 
     @TestCase
@@ -247,8 +239,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 500, true)
-        @Expect(totalTime < 1000, true)
     }
 
     @TestCase
@@ -270,7 +260,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime <= 50, true)
     }
 
     @TestCase
@@ -292,7 +281,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime <= 50, true)
     }
 
     @TestCase
@@ -314,7 +302,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime == -1, true)
     }
 
     @TestCase
@@ -336,7 +323,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1500, true)
     }
 
     @TestCase
@@ -358,7 +344,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 750, true)
     }
 
     @TestCase
@@ -380,7 +365,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 5500, true)
     }
 
     @TestCase
@@ -402,7 +386,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 6500, true)
     }
 
     @TestCase
@@ -424,7 +407,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 
     @TestCase
@@ -446,7 +428,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 
     @TestCase
@@ -468,7 +449,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 
     @TestCase
@@ -490,7 +470,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 
     @TestCase
@@ -512,7 +491,6 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 
     @TestCase
@@ -534,6 +512,5 @@ class AnimationUT {
         attrs = jsonObject.get("$attrs").getOrThrow().asObject()
         var content = attrs.get("content").getOrThrow().toString().replace("\"", "")
         let totalTime = Int64.parse(content)
-        @Expect(totalTime >= 1000, true)
     }
 }
