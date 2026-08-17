@@ -18,12 +18,15 @@
 package ohos.arkui.component.rect
 
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength}
-import ohos.base.{Length, LengthProp, FFIVectorFloat64, FFIVectorInt32, VectorFloat64Handle, VectorInt32Handle}
+import ohos.arkui.component.util.{transAppResourceToLength, toNativeOptionLength}
+import ohos.base.{Length, LengthProp, NativeOptionLength, FFIVectorFloat64, FFIVectorInt32, VectorFloat64Handle, VectorInt32Handle}
 import ohos.labels.{APILevel}
+import ohos.device_info.{DeviceInfo}
 
 foreign {
     func FfiOHOSAceFrameworkRectCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FfiOHOSAceFrameworkRectCreateEx(width: NativeOptionLength, height: NativeOptionLength): Unit
 
     func FfiOHOSAceFrameworkRectSetRadiusWidth(value: Float64, unit: Int32): Unit
 
@@ -60,15 +63,21 @@ public class Rect <: CommonShapeMethodComponent<Rect> & RectAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
-        var width_ = transAppResourceToLength(width ?? 0.vp)
-        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
-            FfiOHOSAceFrameworkRectCreate(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
+            if (DeviceInfo.sdkApiVersion >= 26) {
+                let widthOpt = toNativeOptionLength(width)
+                let heightOpt = toNativeOptionLength(height)
+                FfiOHOSAceFrameworkRectCreateEx(widthOpt, heightOpt)
+            } else {
+                let width_ = transAppResourceToLength(width ?? 0.vp)
+                let height_ = transAppResourceToLength(height ?? 0.vp)
+                FfiOHOSAceFrameworkRectCreate(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            }
         }
     }
     /**

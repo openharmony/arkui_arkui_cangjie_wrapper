@@ -18,12 +18,15 @@
 package ohos.arkui.component.line
 
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength}
-import ohos.base.{Length, LengthProp}
+import ohos.arkui.component.util.{transAppResourceToLength, toNativeOptionLength}
+import ohos.base.{Length, LengthProp, NativeOptionLength}
 import ohos.labels.{APILevel}
+import ohos.device_info.{DeviceInfo}
 
 foreign {
     func FfiOHOSAceFrameworkLineCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FfiOHOSAceFrameworkLineCreateEx(width: NativeOptionLength, height: NativeOptionLength): Unit
 
     func FfiOHOSAceFrameworkLineSetStart(x: Float64, y: Float64): Unit
 
@@ -49,15 +52,21 @@ public class Line <: CommonShapeMethodComponent<Line> & LineAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
-        var width_ = transAppResourceToLength(width ?? 0.vp)
-        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
-            FfiOHOSAceFrameworkLineCreate(
-                width_.value,
-                width_.unitType.getValue(),
-                height_.value,
-                height_.unitType.getValue()
-            )
+            if (DeviceInfo.sdkApiVersion >= 26) {
+                let widthOpt = toNativeOptionLength(width)
+                let heightOpt = toNativeOptionLength(height)
+                FfiOHOSAceFrameworkLineCreateEx(widthOpt, heightOpt)
+            } else {
+                let width_ = transAppResourceToLength(width ?? 0.vp)
+                let height_ = transAppResourceToLength(height ?? 0.vp)
+                FfiOHOSAceFrameworkLineCreate(
+                    width_.value,
+                    width_.unitType.getValue(),
+                    height_.value,
+                    height_.unitType.getValue()
+                )
+            }
         }
     }
 
