@@ -382,9 +382,14 @@ public class Image <: CommonMethodComponent<Image> & ImageAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(src: ?PixelMap) {
-        let tmpSrc = src ?? PixelMap(0)
-        unsafe {
-            FfiOHOSAceFrameworkImageCreateWithPixelMap(tmpSrc.getID())
+        if (let Some(v) <- src) {
+            unsafe {
+                FfiOHOSAceFrameworkImageCreateWithPixelMap(v.getID())
+            }
+        } else {
+            unsafe {
+                FfiOHOSAceFrameworkImageCreateWithContent(0)
+            }
         }
     }
 
