@@ -70,6 +70,11 @@ class InformationDisplayUT2 {
         driver.pressBack()
     }
 
+    protected override func afterAll() {
+        driver.pressBack()
+        driver.delayMs(200)
+    }
+
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testProgressCommonAttrs() {
@@ -589,17 +594,14 @@ class InformationDisplayUT2 {
         clickButton("at 8s")
         clickButton("stop")
         clickButton("Fullscreen")
-
-        for (i in 0..9) {
-            driver.pressBack()
-        }
+        driver.pressBack()
     }
 
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testVideoCtor2() {
         scrollTo("ViewVideo2")
-
+        driver.delayMs(500)
         let videoContainer_1 = driver.findComponent(On().id("video")).getOrThrow()
         @Expect(videoContainer_1.getType(), "Video")
 

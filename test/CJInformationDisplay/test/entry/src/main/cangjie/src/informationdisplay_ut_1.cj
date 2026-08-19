@@ -70,6 +70,11 @@ class InformationDisplayUT1 {
         driver.pressBack()
     }
 
+    protected override func afterAll() {
+        driver.pressBack()
+        driver.delayMs(200)
+    }
+
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testAlphabetIndexerCommonAttrs() {
@@ -165,7 +170,7 @@ class InformationDisplayUT1 {
         driver.delayMs(500)
         @Expect(textC, "Chu Cai Chen ")
     }
-    
+
     @TestCase
     @Tag[APILevel26, TestLevel0]
     func testAlphabetIndexerWidthAuto() {
@@ -177,7 +182,7 @@ class InformationDisplayUT1 {
         let width = attrs.get("width").getOrThrow().toString()
         @Expect(width, "\"0.00auto\"")
     }
-    
+
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func testBadgeCommonAttrs() {

@@ -23,7 +23,7 @@ import std.collection.ArrayList
 
 @Entry
 @Component
-class ViewObservableArrayList {   
+class ViewObservableArrayList {
     var arrlist: ArrayList<Book2> = ArrayList<Book2>([Book2(title: "arrlist1", id: 123456), Book2(title: "arrlist2", id: 123456)])
     @State var obs_arrlist: ObservedArrayList<Book2> = ObservedArrayList<Book2>(arrlist)
     var tmp_arrlist: ArrayList<Book2> = ArrayList<Book2>([Book2(title: "tmp_arrlist1", id: 123456), Book2(title: "tmp_arrlist2", id: 123456)])
@@ -34,27 +34,17 @@ class ViewObservableArrayList {
     var tmp_array: Array<Book2> = [Book2(title: "set_arr1", id: 123456), Book2(title: "set_arr2", id: 123456)]
 
 
-    protected override func aboutToAppear() {
+    protected override func aboutToAppear() {}
+
+   protected override func aboutToDisappear() {
         // tmp_arrlist = ArrayList<Book2>([Book2(title: "test_appendall_1", id: 123456), Book2(title: "test_appendall_2", id: 123456)])
         // obs_arrlist.appendAll(tmp_arrlist)
         // 调用obs_arrlist_test 里的 append那些方法
-
         obs_arrlist.appendAll(tmp_arrlist)
-
         obs_arrlist.insertAll(0, tmp_arrlist)
-
         obs_arrlist.prependAll(tmp_arrlist)
-
         obs_arrlist.set(tmp_obs_arrlist)
-    }
-
-//    protected override func aboutToDisappear() {
-//
-//        obs_arrlist.unsubscribeAll()
-//        tmp_obs_arrlist.unsubscribeAll()
-//
-//
-//    }
+   }
 
     public func removeif_predicate(test_book: Book2): Bool{
         if(test_book.id == 0){
@@ -72,7 +62,7 @@ class ViewObservableArrayList {
             Text("tmp_obs_arrlist[0].title is ${tmp_obs_arrlist[0].title}").id("tmp_obs_arrlist_firbook")
             Text("tmp_obs_arrlist_isempty is ${tmp_obs_arrlist_isempty}").id("tmp_obs_arrlist_isempty")
             Text("arrlist[0].title is ${arrlist[0].title}").id("arrlist_firbok")
-        
+
             Button("test_arrlist_get").onClick({ e =>
                 obs_arrlist[0] = Book2(title: "test_get", id: 123456)
                 arrlist = obs_arrlist.get()
@@ -143,7 +133,7 @@ class ViewObservableArrayList {
 
             Button("test_remove_range").onClick({ e =>
                 obs_arrlist.clear()
-                tmp_arrlist = ArrayList<Book2>([Book2(title: "test_remove_range_1", id: 123456), Book2(title: "test_remove_range_2", id: 123456), 
+                tmp_arrlist = ArrayList<Book2>([Book2(title: "test_remove_range_1", id: 123456), Book2(title: "test_remove_range_2", id: 123456),
                                                                                                 Book2(title: "test_remove_range_3", id: 123456)])
                 obs_arrlist.appendAll(tmp_arrlist)
                 obs_arrlist.remove(Range<Int64>(0,1,1, true, true, true))
@@ -158,9 +148,9 @@ class ViewObservableArrayList {
                 obs_arrlist.removeIf(predicate)
             }).id("test_removeif")
 
-        
+
         }
-        
+
 
     }
 }
