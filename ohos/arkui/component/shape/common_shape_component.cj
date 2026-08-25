@@ -314,7 +314,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     if (lessNotEqual(value_.value, 0.0)) {
-                        FFISetWidthWithEmpty()
+                        FfiOHOSAceFrameworkShapeSetWidth(0.0, value_.unitType.getValue())
                     } else {
                         FfiOHOSAceFrameworkShapeSetWidth(value_.value, value_.unitType.getValue())
                     }
@@ -330,7 +330,7 @@ public abstract class CommonShapeMethodComponent<T> <: CommonMethodComponent<T> 
                 unsafe {
                     let value_ = transAppResourceToLength(v)
                     if (lessNotEqual(value_.value, 0.0)) {
-                        FFISetHeightWithEmpty()
+                        FfiOHOSAceFrameworkShapeSetHeight(0.0, value_.unitType.getValue())
                     } else {
                         FfiOHOSAceFrameworkShapeSetHeight(value_.value, value_.unitType.getValue())
                     }

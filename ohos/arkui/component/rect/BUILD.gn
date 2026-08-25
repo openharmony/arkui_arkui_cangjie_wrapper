@@ -29,6 +29,7 @@ ohos_cangjie_shared_library("ohos.arkui.component.rect") {
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
+    "startup_cangjie_wrapper:ohos.device_info"
   ]
 
   external_deps = [ "ace_engine:cj_frontend_ohos" ]

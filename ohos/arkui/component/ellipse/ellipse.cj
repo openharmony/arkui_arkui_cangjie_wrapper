@@ -18,11 +18,16 @@
 package ohos.arkui.component.ellipse
 
 import ohos.arkui.component.shape.{CommonShapeMethodComponent}
-import ohos.arkui.component.util.{transAppResourceToLength}
-import ohos.base.{Length, LengthProp}
+import ohos.arkui.component.util.{transAppResourceToLength, toNativeOptionLength}
+import ohos.base.{Length, LengthProp, NativeOptionLength}
 import ohos.labels.{APILevel}
+import ohos.device_info.{DeviceInfo}
 
-foreign func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+foreign {
+    func FfiOHOSAceFrameworkEllipseCreate(width: Float64, widthUnit: Int32, height: Float64, heightUnit: Int32): Unit
+
+    func FfiOHOSAceFrameworkEllipseCreateEx(width: NativeOptionLength, height: NativeOptionLength): Unit
+}
 
 /**
  * Defines Ellipse Component.
@@ -43,11 +48,17 @@ public class Ellipse <: CommonShapeMethodComponent<Ellipse> & EllipseAttribute {
         syscap: "SystemCapability.ArkUI.ArkUI.Full"
     ]
     public init(width!: ?Length = None, height!: ?Length = None) {
-        var width_ = transAppResourceToLength(width ?? 0.vp)
-        var height_ = transAppResourceToLength(height ?? 0.vp)
         unsafe {
-            FfiOHOSAceFrameworkEllipseCreate(width_.value, width_.unitType.getValue(), height_.value,
-                height_.unitType.getValue())
+            if (DeviceInfo.sdkApiVersion >= 26) {
+                let widthOpt = toNativeOptionLength(width)
+                let heightOpt = toNativeOptionLength(height)
+                FfiOHOSAceFrameworkEllipseCreateEx(widthOpt, heightOpt)
+            } else {
+                let width_ = transAppResourceToLength(width ?? 0.vp)
+                let height_ = transAppResourceToLength(height ?? 0.vp)
+                FfiOHOSAceFrameworkEllipseCreate(width_.value, width_.unitType.getValue(), height_.value,
+                    height_.unitType.getValue())
+            }
         }
     }
     protected override func initial() {}
