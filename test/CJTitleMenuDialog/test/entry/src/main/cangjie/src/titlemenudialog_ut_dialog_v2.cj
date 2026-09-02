@@ -66,11 +66,6 @@ class TitleMenuDialogUTDialogV2 {
         driver.delayMs(200)
     }
 
-    protected override func afterEach() {
-        driver.pressBack()
-    }
-
-
     @TestCase
     @Tag[APILevel26, TestLevel0]
     func testOpenCustomDialogTc01() {
