@@ -62,9 +62,8 @@ public macro Component(input: Tokens): Tokens {
             let purgeVariableFunc = handlePurgeVariable(classDecl)
             let customViewExImpl = generateCustomViewExImpl()
 
-            // Generate CustomViewEx interface once per compilation unit.
-            // Skip if inside @Entry — @Entry will generate it (avoids being stripped by parseDecl).
-            let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated && !insideParentContext("Entry")) {
+            let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated &&
+                !insideParentContext("Entry") && !insideParentContext("Reusable")) {
                 STATE_MANAGE_HANDLER.interfaceGenerated = true
                 generateCustomViewExInterface()
             } else {

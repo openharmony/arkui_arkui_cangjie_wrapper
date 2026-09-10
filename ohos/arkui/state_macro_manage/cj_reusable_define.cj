@@ -46,7 +46,15 @@ public macro Reusable(input: Tokens): Tokens {
                 }
                 let val = AssignExpr(quote(this.isReusable_inner__ = true))
                 initFunc.block.nodes.add(val)
-                classDecl.toTokens()
+
+                let interfaceDecl = if (!STATE_MANAGE_HANDLER.interfaceGenerated) {
+                    STATE_MANAGE_HANDLER.interfaceGenerated = true
+                    generateCustomViewExInterface()
+                } else {
+                    Tokens()
+                }
+
+                quote($interfaceDecl $classDecl)
             case None =>
                 reportError(input, MacroErrorCode.ReusableOnlyForComponent, UIMacroKind.Reusable)
                 setItem(MACRO_MSG_EXPANDED_FAILED, false)
