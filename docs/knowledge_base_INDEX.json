@@ -1,0 +1,61 @@
+{
+  "version": "1.3.0",
+  "last_updated": "2026-09-10",
+  "repo": "foundation/arkui/arkui_cangjie_wrapper",
+  "entry": "AGENTS.md",
+  "human_index": "docs/README.md",
+  "documents": [
+    {
+      "path": "docs/architecture/Cangjie_Wrapper_Architecture.md",
+      "summary": "三层架构、目录职责、上下游依赖仓",
+      "task_triggers": ["architecture", "模块交互", "依赖关系", "UIContext"],
+      "path_triggers": ["ohos/arkui/ui_context/", "kit/ArkUI/"]
+    },
+    {
+      "path": "docs/ffi/FFI_Bridge_Knowledge_Base.md",
+      "summary": "FFI 三仓分工（本仓声明/ace_engine 实现/interop 基础库）、类型映射、回调与 RemoteData 生命周期、错误处理与 DFX（BusinessException 错误码/Hilog/宏诊断）",
+      "task_triggers": ["FFI", "foreign", "@C struct", "回调", "RemoteData", "size_t", "IntNative", "interface 仓", "interop", "ohos.ffi", "ohos.labels", "BusinessException", "errorCode", "Hilog", "日志", "diag", "UISyntaxChecker"],
+      "path_triggers": ["ohos/arkui/component/native_struct/", "foreign {}"]
+    },
+    {
+      "path": "docs/build/Build_Guide.md",
+      "summary": "构建 targets、命令、产物位置（cangjie_libraries/cjsdk）、新模块注册、构建问题排查",
+      "task_triggers": ["build", "编译失败", "找不到产物", "SDK", "cjo", "cangjie_libraries", "cjsdk"],
+      "path_triggers": ["BUILD.gn", "bundle.json"]
+    },
+    {
+      "path": "docs/components/Component_Development_Guide.md",
+      "summary": "组件四件套模式（真实 Button 模板）、BUILD.gn 模板、新增组件检查清单",
+      "task_triggers": ["新增组件", "组件 API", "Attribute", "CommonMethod", "@!APILevel"],
+      "path_triggers": ["ohos/arkui/component/"]
+    },
+    {
+      "path": "docs/state_management/State_Management_Guide.md",
+      "summary": "全部状态管理宏清单（以源码核对）、用法示例、宏实现要点",
+      "task_triggers": ["@State", "@Prop", "@Link", "@Watch", "@Provide", "@Consume", "@Observed", "@Publish", "@Reusable", "@StorageLink", "@LocalStorageLink", "@Entry", "@Component", "@Builder", "@r", "状态管理"],
+      "path_triggers": ["ohos/arkui/state_macro_manage/", "ohos/arkui/state_management/"]
+    },
+    {
+      "path": "docs/testing/Testing_Guide.md",
+      "summary": "test/ 设备侧 LLT 套件结构、DevEco 构建流程与环境变量、新增用例方法",
+      "task_triggers": ["测试", "LLT", "test suite", "用例", "hap", "DevEco"],
+      "path_triggers": ["test/"]
+    },
+    {
+      "path": "docs/expert/Expert_Knowledge.md",
+      "summary": "专家经验：组件 FFI 属性扩展全链路、仓颉实现惯用法（Option/getValue/CString 生命周期）、宏实现级经验、症状→根因速查表",
+      "task_triggers": ["踩坑", "排查", "崩溃", "不刷新", "惯用法", "getValue", "unsafe", "mallocCString", "stateVarDecl", "属性扩展", "专家经验"],
+      "path_triggers": ["docs/expert/"]
+    }
+  ],
+  "skills": [
+    {
+      "path": ".claude/skills/cangjie-component-api-design/SKILL.md",
+      "when": "新增或修改组件对外 API"
+    },
+    {
+      "path": ".claude/skills/cangjie-ffi-signature-sync/SKILL.md",
+      "when": "修改 foreign 函数声明或 @C 结构体"
+    }
+  ]
+}
